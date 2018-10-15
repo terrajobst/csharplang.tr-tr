@@ -1,0 +1,6 @@
+<a name="the-following-notice-governs-the-c-spec"></a><span data-ttu-id="61a48-101">C# SPEC AŞAĞIDAKİ BİLDİRİMİ YÖNETİR</span><span class="sxs-lookup"><span data-stu-id="61a48-101">THE FOLLOWING NOTICE GOVERNS THE C# SPEC</span></span>
+=====
+
+<span data-ttu-id="61a48-102">(c) Telif Hakkı 1999-2017 Microsoft Corporation.</span><span class="sxs-lookup"><span data-stu-id="61a48-102">(c) Copyright 1999-2017 Microsoft Corporation.</span></span> <span data-ttu-id="61a48-103">Tüm hakları saklıdır.</span><span class="sxs-lookup"><span data-stu-id="61a48-103">All rights reserved.</span></span>
+<span data-ttu-id="61a48-104">Microsoft, Windows, Visual Basic, Visual C# ve Visual C++ kayıtlı markaları veya ticari Microsoft Corporation'ın ABD'de ve/veya diğer ülkeler/bölgeler şunlardır.</span><span class="sxs-lookup"><span data-stu-id="61a48-104">Microsoft, Windows, Visual Basic, Visual C#, and Visual C++ are either registered trademarks or trademarks of Microsoft Corporation in the U.S.A. and/or other countries/regions.</span></span>
+<span data-ttu-id="61a48-105">Burada bahsedilen diğer ürün ve şirket adı, ticari markalar kendi sahiplerinin olabilir.</span><span class="sxs-lookup"><span data-stu-id="61a48-105">Other product and company names mentioned herein may be the trademarks of their respective owners.</span></span>
