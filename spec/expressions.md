@@ -125,12 +125,12 @@ Tüm işleçler sırayla önceliği en yüksekten en düşüğe aşağıdaki tab
 | [İlişkisel ve tür testi işleçleri](expressions.md#relational-and-type-testing-operators) | Eşitlik                    | `==`  `!=`    | 
 | [Mantıksal işleçler](expressions.md#logical-operators)                                         | Mantıksal VE                 | `&`           | 
 | [Mantıksal işleçler](expressions.md#logical-operators)                                         | Mantıksal XOR                 | `^`           | 
-| [Mantıksal işleçler](expressions.md#logical-operators)                                         | Mantıksal VEYA                  | `|`           |
+| [Mantıksal işleçler](expressions.md#logical-operators)                                         | Mantıksal VEYA                  | <code>&#124;</code>           |
 | [Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)                 | Koşullu VE             | `&&`          | 
-| [Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)                 | Koşullu VEYA              | `||`          | 
+| [Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)                 | Koşullu VEYA              | <code>&#124;&#124;</code>          | 
 | [Null birleşim işleci](expressions.md#the-null-coalescing-operator)                   | Null birleşim             | `??`          | 
 | [Koşullu işleç](expressions.md#conditional-operator)                                   | Koşullu                 | `?:`          | 
-| [Atama işleçleri](expressions.md#assignment-operators), [anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)  | Atama ve lambda ifadesi | `=`  `*=`  `/=`  `%=`  `+=`  `-=`  `<<=`  `>>=`  `&=`  `^=`  `|=`  `=>` | 
+| [Atama işleçleri](expressions.md#assignment-operators), [anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)  | Atama ve lambda ifadesi | `=`  `*=`  `/=`  `%=`  `+=`  `-=`  `<<=`  `>>=`  `&=`  `^=`  <code>&#124;=</code>  `=>` | 
 
 Aynı önceliğe sahip iki işleç arasında bir işlenen ortaya çıktığında, işleçlerin ilişkiselliği işlemlerinin gerçekleştirildiği sırayı denetler:
 
@@ -3503,7 +3503,7 @@ bool? operator |(bool? x, bool? y);
 
 Bu işleçler için tüm değerleri birleşimlerini tarafından üretilen sonuçları aşağıdaki tabloda listelenmektedir `true`, `false`, ve `null`.
 
-| `x`     | `y`     | `x & y` | ' x | y' |
+| `x`     | `y`     | `x & y` | <code>x &#124; y</code> |
 |:-------:|:-------:|:-------:|:-------:|
 | `true`  | `true`  | `true`  | `true`  | 
 | `true`  | `false` | `false` | `true`  | 

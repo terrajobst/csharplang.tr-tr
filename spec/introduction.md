@@ -277,13 +277,13 @@ En yüksek öncelikten en düşüğe sırasını işleci kategorileri listeleme 
 |                                  | `x != y`          | Eşit değildir |
 | Mantıksal VE                      | `x & y`           | Tamsayı bitwise ve, boolean mantıksal ve |
 | Mantıksal XOR                      | `x ^ y`           | Tamsayı bitwise XOR, Boolean mantıksal XOR |
-| Mantıksal VEYA                       | ' x | y'           | Tamsayı bitwise VEYA, boolean mantıksal VEYA |
+| Mantıksal VEYA                       | <code>x &#124; y</code> | Tamsayı bitwise VEYA, boolean mantıksal VEYA |
 | Koşullu VE                  | `x && y`          | Değerlendirilen `y` yalnızca `x` olduğu `true` |
-| Koşullu VEYA                   | ' x || y'          | Değerlendirilen `y` yalnızca `x` olduğu `false` |
+| Koşullu VEYA                   | <code>x &#124;&#124; y</code> | Değerlendirilen `y` yalnızca `x` olduğu `false` |
 | Null birleşim                  | `X ?? y`          | Değerlendiren `y` varsa `x` olduğu `null`, `x` Aksi takdirde |
 | Koşullu                      | `x ? y : z`       | Değerlendirir `y` varsa `x` olduğu `true`, `z` varsa `x` olduğu `false` |
 | Atama ve anonim işlev | `x = y`           | Atama |
-|                                  | `x op= y`         | Bileşik atama; desteklenen işleçler şunlardır: `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` `|=` |
+|                                  | `x op= y`         | Bileşik atama; desteklenen işleçler şunlardır: `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` <code>&#124;=</code> |
 |                                  | `(T x) => y`      | Anonim işlevi (lambda ifadesi) |
 
 ## <a name="statements"></a>Deyimler
