@@ -366,7 +366,7 @@ class X<T>
 }
 ```
 
-Varsa doğrudan açıkça dönüştürülmesini `t` için `int` bir kolayca beklenebilir izni, `X<int>.F(7)` döndürecekti `7L`. Standart sayısal dönüştürmeler, yalnızca türleri bağlama zamanında sayısal bir değer olduğunda kabul edildiği için ancak bunu istemezsiniz. Semantiği yapmak için Temizle, yukarıdaki örnekte bunun yerine yazılmış olmalıdır:
+Varsa doğrudan açıkça dönüştürülmesini `t` için `int` bir kolayca beklenebilir izni, `X<int>.F(7)` döndürecekti `7L`. Standart sayısal dönüştürmeler, yalnızca türleri bağlama zamanında sayısal bir değer olduğunda kabul edildiği için ancak bunu istemezsiniz. Semantiği yapmak için Temizle, yukarıdaki örnekte bunun yerine yazılmış olmalıdır:
 ```csharp
 class X<T>
 {
@@ -738,7 +738,7 @@ Bir yöntem grubu dönüştürme derleme zamanı uygulamasının `E` temsilci t�
 *  Seçilen yöntemi `M` uyumlu olması gerekir ([temsilci Uyumluluk](delegates.md#delegate-compatibility)) temsilci türüyle `D`, veya aksi halde, bir derleme zamanı hatası oluşur.
 *  Seçilen yöntemi `M` örnek ifade ile ilişkili bir örnek yöntemi olduğundan `E` hedef nesneye temsilci belirler.
 *  Seçili yöntem M örnek bir ifade üzerinde bir üye erişimi ile belirtilir bir genişletme yöntemi ise, hedef nesneye temsilci örneği ifade belirler.
-*  Dönüştürme sonucu olarak bir tür değeri `D`, yani seçili yöntemi ve hedef nesneye başvuran bir yeni oluşturulan temsilci.
+*  Dönüştürme sonucu olarak bir tür değeri `D`, yani seçili yöntemi ve hedef nesneye başvuran bir yeni oluşturulan temsilci.
 *  Bu işlem bir genişletme yöntemi için bir temsilci oluşturulmasına yol açabilir Not algoritmasının [yöntem çağrıları](expressions.md#method-invocations) bir örnek yöntemi bulmada başarısız ancak çağırmayı işlenirken başarılı `E(A)` bir uzantısı olarak yöntem çağırma ([uzantısı yöntem çağrıları](expressions.md#extension-method-invocations)). Bu nedenle oluşturulan bir temsilci, genişletme yönteminin yanı sıra, ilk bağımsız değişkeninin yakalar.
 
 Aşağıdaki örnekte, yöntem grubu dönüştürmeler göstermektedir:
@@ -770,7 +770,7 @@ class Test
 
 Atamayı `d1` örtük olarak yöntem grubu dönüştürür `F` türünde bir değer için `D1`.
 
-Atamayı `d2` nasıl daha az türetilmiş (değişken karşıt) parametre türleri ve daha türetilmiş (değişken) dönüş türü, yönteme bir temsilci oluşturmak mümkün olduğunu gösterir.
+Atamayı `d2` nasıl daha az türetilmiş (değişken karşıtı) parametre türleri içeren bir yöntem için temsilci oluşturmak mümkündür ve daha türetilmiş (değişken) dönüş türü gösterir.
 
 Atamayı `d3` nasıl dönüştürme var yöntemi uygulanabilir değilse gösterir.
 
