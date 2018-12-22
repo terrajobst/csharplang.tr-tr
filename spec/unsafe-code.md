@@ -197,7 +197,7 @@ Bir *unmanaged_type* olmayan herhangi bir tür bir *reference_type* veya türü 
 
 Belirli bir uygulama için tüm işaretçi türleri aynı büyüklük ve gösterimi olmalıdır.
 
-C ve C++, C# ' de aynı bildirimde birden çok işaretçi bildirildiğinde aksine `*` yalnızca, temel alınan türü ile birlikte, her bir işaretçi adı bir önek noktalama işaretçisi olarak yazılır. Örneğin
+C ve C++, C# ' de aynı bildirimde birden çok işaretçi bildirildiğinde aksine `*` yalnızca, temel alınan türü ile birlikte, her bir işaretçi adı bir önek noktalama işaretçisi olarak yazılır. Örneğin:
 
 ```csharp
 int* pi, pj;    // NOT as int *pi, *pj;
@@ -276,7 +276,7 @@ Güvenli olmayan bir bağlamda işaretçiler üzerinde çalışan için çeşitl
 
 ## <a name="fixed-and-moveable-variables"></a>Sabit ve taşınabilir değişkenleri
 
-Address-of işlecini ([address-of işlecini](unsafe-code.md#the-address-of-operator)) ve `fixed` deyimi ([fixed deyimi](unsafe-code.md#the-fixed-statement)) iki kategoride değişkenleri bölmek: ***değişkenlerisabit***ve ***taşınabilir değişkenleri***.
+Address-of işlecini ([address-of işlecini](unsafe-code.md#the-address-of-operator)) ve `fixed` deyimi ([fixed deyimi](unsafe-code.md#the-fixed-statement)) iki kategoride değişkenleri bölmek: ***Değişkenler sabit*** ve ***taşınabilir değişkenleri***.
 
 Sabit değişkenler, atık toplayıcı bir işlem tarafından etkilenmez, depolama konumları olarak yer alır. (Sabit değişkenler yerel değişkenler, değer parametreleri ve değişkenleri başvuruluyor işaretçiler tarafından oluşturulan örneklerindendir.) Öte yandan, yeniden konumlandırma veya çöp toplayıcı tarafından elden tabidir depolama konumları olarak taşınabilir değişkenleri bulunur. (Taşınabilir değişkenleri örnekleri alanları nesneler ve diziler öğelerini içerir.)
 
@@ -908,7 +908,7 @@ Arabellek öğe türü, her biri yeni bir üye tanıtır listesini sabit boyutlu
 
 Sabit boyutlu arabellek öğelerini sırayla bellekte düzenlendiği garanti edilir.
 
-Birden çok sabit boyutlu arabellekler bildiren bir sabit boyutlu arabellek bildirimi, aynı özniteliklerle ve öğe türleri tek bir sabit boyutlu arabellek bildirimin birden fazla bildirimi eşdeğerdir. Örneğin
+Birden çok sabit boyutlu arabellekler bildiren bir sabit boyutlu arabellek bildirimi, aynı özniteliklerle ve öğe türleri tek bir sabit boyutlu arabellek bildirimin birden fazla bildirimi eşdeğerdir. Örneğin:
 
 ```csharp
 unsafe struct A

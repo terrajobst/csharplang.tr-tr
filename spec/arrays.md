@@ -4,7 +4,7 @@ Bir dizi hesaplanan dizinlerini erişilen değişken bir sayı içeren bir veri 
 
 Bir dizinin her dizi öğesi ile ilişkili sayısından belirleyen bir dereceli. Dizi boyut, dizi boyutları da bilinir. Bir boyut ile bir dizi olarak adlandırılan bir ***tek boyutlu dizi***. Daha fazla biri derece olan bir dizi bir ***çok boyutlu dizi***. Belirli bir boyuttaki çok boyutlu diziler, iki boyutlu diziler, üç boyutlu dizileri vb. da anılır.
 
-Bir dizinin her boyutunun sıfır olarak bir tamsayı değerinden büyük veya eşit olan ilişkili bir uzunluğa sahip. Boyut uzunlukları dizinin türü bir parçası değildir, ancak çalışma zamanında dizi türünün bir örneği oluşturulduğunda yerine oluşturulur. Bir boyutun uzunluğu o boyut için dizin geçerli aralık belirler: bir boyutun uzunluğu `N`, dizinler arasında değişebilir `0` için `N - 1` dahil. Bir dizideki öğelerin sayısı dizideki her boyutun uzunluğu ürünüdür. Sıfır uzunlukta bir veya daha fazla dizi boyutları varsa, dizi, boş olarak kabul edilir.
+Bir dizinin her boyutunun sıfır olarak bir tamsayı değerinden büyük veya eşit olan ilişkili bir uzunluğa sahip. Boyut uzunlukları dizinin türü bir parçası değildir, ancak çalışma zamanında dizi türünün bir örneği oluşturulduğunda yerine oluşturulur. Bir boyutun uzunluğu o boyut için dizin geçerli aralık belirler: Boyut uzunluğu `N`, dizinler arasında değişebilir `0` için `N - 1` dahil. Bir dizideki öğelerin sayısı dizideki her boyutun uzunluğu ürünüdür. Sıfır uzunlukta bir veya daha fazla dizi boyutları varsa, dizi, boş olarak kabul edilir.
 
 Bir dizinin öğe türü bir dizi türü de dahil olmak üzere herhangi bir tür olabilir.
 
@@ -32,7 +32,7 @@ dim_separator
 
 A *non_array_type* herhangi *türü* diğer bir deyişle kendisi bir *array_type*.
 
-Boyut sayısı bir dizi türü soldaki tarafından verilen *rank_specifier* içinde *array_type*: A *rank_specifier* dizi bir boyut olan bir dizi olduğunu gösterir artı sayısı "`,`" içinde belirteçler *rank_specifier*.
+Boyut sayısı bir dizi türü soldaki tarafından verilen *rank_specifier* içinde *array_type*: A *rank_specifier* bir artı sayısı derecesi olan bir dizi dizi belirtir "`,`" içinde belirteçler *rank_specifier*.
 
 Bir dizi türünün öğe türü soldaki silmesi sonuçları türdür *rank_specifier*:
 

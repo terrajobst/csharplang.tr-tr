@@ -202,7 +202,7 @@ geçerli olduğundan ve bu adı kullanan `x` hem bir parametre hem de bir etiket
 
 Etiketli deyim yürütülmesini etiketi takiben deyime sahip yürütme için tam olarak karşılık gelir.
 
-Normal denetim akışını tarafından sağlanan erişilebilirlik ek olarak etiketli bir deyim etiketi tarafından erişilebilir başvuruyorsa ulaşılabildiğinden `goto` deyimi. (Özel durum: varsa bir `goto` deyimdir içinde bir `try` içeren bir `finally` blok ve etiketli deyim olduğu dışında `try`ve bitiş noktasını `finally` blok erişilemez ve etiketli deyim değil Sunucusu'ndan `goto` deyimi.)
+Normal denetim akışını tarafından sağlanan erişilebilirlik ek olarak etiketli bir deyim etiketi tarafından erişilebilir başvuruyorsa ulaşılabildiğinden `goto` deyimi. (Özel durum: Varsa bir `goto` deyimdir içinde bir `try` içeren bir `finally` blok ve etiketli deyim olduğu dışında `try`ve bitiş noktasını `finally` blok erişilemez ve etiketli deyim öğesinden erişilebilir değil `goto` deyimi.)
 
 ## <a name="declaration-statements"></a>Bildirim deyimleri
 
@@ -801,7 +801,7 @@ Gövdesi finally bloğu göre aşağıdaki adımları oluşturulur:
 
    Yerel değişken `d` görülebilir ya da herhangi bir kullanıcı kodu tarafından erişilebilir değil. Özellikle, kapsamı içeren diğer değişkeni ile çakışmaz finally bloğunda.
 
-Bir sırayı `foreach` bir dizinin öğeleri erişir, şu şekildedir: tek boyutlu dizi öğeleri, artan dizin sırasıyla çapraz geçiş için ile dizininden başlayarak `0` ve dizin ile biten `Length - 1`. En sağdaki boyutu dizinleri artan ilk sonra sonraki sol boyut vb. için sol olduğuna gibi çok boyutlu diziler için öğeleri geçirilir.
+Bir sırayı `foreach` bir dizinin öğeleri erişir, aşağıdaki gibidir: Tek boyutlu dizi öğeleri, artan dizin sırasıyla çapraz geçiş için ile dizininden başlayarak `0` ve dizin ile biten `Length - 1`. En sağdaki boyutu dizinleri artan ilk sonra sonraki sol boyut vb. için sol olduğuna gibi çok boyutlu diziler için öğeleri geçirilir.
 
 Aşağıdaki örnek, her değer sırayla öğesi iki boyutlu bir dizi kullanıma yazdırır:
 ```csharp

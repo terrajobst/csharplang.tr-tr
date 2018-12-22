@@ -821,7 +821,7 @@ Dizin Oluşturucu erişimcileri içinde gerçekleşen çağrıları için kullan
 
 ## <a name="attributes-for-interoperation"></a>Birlikte çalışma için öznitelikler
 
-Not: Bu bölüm yalnızca Microsoft .NET uygulamasını C# için geçerlidir.
+Not: Bu bölüm, yalnızca Microsoft .NET uygulaması için geçerlidir C#.
 
 ### <a name="interoperation-with-com-and-win32-components"></a>COM ve Win32 bileşenleri ile birlikte çalışma
 

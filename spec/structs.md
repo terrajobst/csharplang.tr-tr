@@ -104,7 +104,7 @@ Yapılar, birkaç önemli şekilde sınıflardan farklılık gösterir:
 
 Değer türleri yapı birimleridir ([değer türleri](types.md#value-types)) ve değer semantiği olduğu söylenir. Sınıflar, diğer taraftan, başvuru türleridir ([başvuru türleri](types.md#reference-types)) ve başvuru semantiği olduğu söylenir.
 
-Bir sınıf türünün bir değişkeni verilerin ikinci bilinen bir nesne olarak başvuru içerirken bir yapı türünün değişkenini doğrudan, struct'ın verileri içerir. Bir struct olduğunda `B` bir örnek alan türü içeren `A` ve `A` bir yapı türü için bir derleme zamanı hata `A` bağlıdır `B` veya bir tür oluşturulan `B`. Bir yapı `X` ***doğrudan bağlı*** yapı `Y` varsa `X` bir örnek alan türü içeren `Y`. Bu tanımı verildiğinde, tam bir yapı olduğu yapıları geçişli kapatılmasını kümesidir ***doğrudan bağlı*** ilişki.  Örneğin
+Bir sınıf türünün bir değişkeni verilerin ikinci bilinen bir nesne olarak başvuru içerirken bir yapı türünün değişkenini doğrudan, struct'ın verileri içerir. Bir struct olduğunda `B` bir örnek alan türü içeren `A` ve `A` bir yapı türü için bir derleme zamanı hata `A` bağlıdır `B` veya bir tür oluşturulan `B`. Bir yapı `X` ***doğrudan bağlı*** yapı `Y` varsa `X` bir örnek alan türü içeren `Y`. Bu tanımı verildiğinde, tam bir yapı olduğu yapıları geçişli kapatılmasını kümesidir ***doğrudan bağlı*** ilişki.  Örneğin:
 ```csharp
 struct Node
 {
@@ -308,7 +308,7 @@ struct Point
 
 ### <a name="constructors"></a>Oluşturucular
 
-Bir sınıf, yapı, parametresiz örnek oluşturucusu bildirmek için izin verilmez. Bunun yerine, her yapı her zaman null tür alanları tüm değer tür alanları varsayılan değerlerine ve tüm başvuru ayarından sonucunda değeri döndüren bir parametresiz örnek oluşturucusu örtük olarak sahip ([varsayılan oluşturucular](types.md#default-constructors)). Örnek oluşturucuları parametreleri olan bir yapı bildirebilirsiniz. Örneğin
+Bir sınıf, yapı, parametresiz örnek oluşturucusu bildirmek için izin verilmez. Bunun yerine, her yapı her zaman null tür alanları tüm değer tür alanları varsayılan değerlerine ve tüm başvuru ayarından sonucunda değeri döndüren bir parametresiz örnek oluşturucusu örtük olarak sahip ([varsayılan oluşturucular](types.md#default-constructors)). Örnek oluşturucuları parametreleri olan bir yapı bildirebilirsiniz. Örneğin:
 ```csharp
 struct Point
 {

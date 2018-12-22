@@ -597,13 +597,13 @@ Kimliği dizesi oluştururken aşağıdaki kuralları belgeleri Oluşturucu göz
 *  İkinci dize ad alanı kökünde başlangıç öğesi tam olarak nitelenmiş adını parçasıdır. Öğe, kapsayan türleri ve ad alanı adı noktalarla ayrılmış. Öğenin adını nokta varsa, bunlar tarafından değiştirilir `#(U+0023)` karakter. (Hiçbir öğe adını bu karakteri olduğunu varsayılır.)
 *  Yöntemleri ve özellikleri parantez içindeki bağımsız değişken, bağımsız değişken listesi aşağıdadır. Bu bağımsız değişkenler olmadan parantezler göz ardı edilir. Bağımsız değişkenlerin virgülle ayrılır. Kodlama her bağımsız değişkeni bir CLI imza aynı şu şekildedir:
    *  Bağımsız değişkenler şu şekilde değiştirilmiş kendi tam adına göre kendi belgesi adı tarafından temsil edilir:
-      * Genel türleri temsil eden bağımsız değişkenlere sahip bir eklenmiş "'" karakteri ve ardından tür parametrelerinin sayısı
+      * Genel türleri temsil eden bağımsız değişkenlere sahip bir eklenmiş `` ` `` (vurgulamasını belirtir) karakteri ve ardından tür parametrelerinin sayısı
       * Bağımsız değişkenleri olan `out` veya `ref` değiştiricisine sahip bir `@` izleyerek kendi tür adı. Geçirilen bağımsız değişkenleri değere veya aracılığıyla `params` hiçbir özel gösterimi vardır.
-      * Dizileri bağımsız değişkenleri olarak temsil edilir `[lowerbound:size, ... , lowerbound:size]` burada virgüllerle küçük bir boyut sayısıdır ve her boyut, boyutu ve alt sınırlarını biliniyorsa, ondalık olarak gösterilir. Alt sınır veya boyutu belirtilmezse atlanır. Belirli bir boyut için boyut ve alt sınır atlanırsa, "`:`" de atlanır. Basit diziler tarafından temsil edilir "`[]`" düzeyi başına.
+      * Dizileri bağımsız değişkenleri olarak temsil edilir `[lowerbound:size, ... , lowerbound:size]` burada virgüllerle küçük bir boyut sayısıdır ve her boyut, boyutu ve alt sınırlarını biliniyorsa, ondalık olarak gösterilir. Alt sınır veya boyutu belirtilmezse atlanır. Belirli bir boyut için boyut ve alt sınır atlanırsa, `:` de atlanır. Basit diziler tarafından temsil edilir `[]` düzeyi başına.
       * İşaretçi türleri void dışında olan bağımsız değişkenler kullanılarak temsil edilir bir `*` aşağıdaki tür adı. Void bir işaretçi türü adını kullanılarak temsil edilir `System.Void`.
-      * Genel tür parametreleri türlerinde tanımlanan başvuran bağımsız değişkenler kullanılarak kodlanır "'" karakteri ve ardından tür parametresi sıfır tabanlı dizini.
-      * Yöntemleri tanımlanan genel tür parametrelerini kullanan bağımsız değişkenleri kullanma double-vurgulamasını belirtir "\`\`" yerine "\`" türleri için kullanılır.
-      * Oluşturulan genel türler için başvuru bağımsız değişkenleri, ardından genel türü kullanılarak kodlanır "{", tür bağımsız değişkenleri virgülle ayrılmış listesi tarafından izlenen, ardından "}".
+      * Genel tür parametreleri türlerinde tanımlanan başvuran bağımsız değişkenler kullanılarak kodlanır `` ` `` (vurgulamasını belirtir) karakteri ve ardından tür parametresi sıfır tabanlı dizini.
+      * Yöntemleri tanımlanan genel tür parametrelerini kullanan bağımsız değişkenleri kullanma double-vurgulamasını belirtir ``` `` ``` yerine `` ` `` türleri için kullanılır.
+      * Oluşturulan genel türler için başvuru bağımsız değişkenleri, ardından genel türü kullanılarak kodlanır `{`, tür bağımsız değişkenleri virgülle ayrılmış listesi tarafından izlenen, ardından `}`.
 
 ### <a name="id-string-examples"></a>Kimlik dizesi örnekleri
 

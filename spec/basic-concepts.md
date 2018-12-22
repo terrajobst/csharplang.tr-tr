@@ -65,7 +65,7 @@ Adları bildirilen metinsel genellikle hiçbir önemini sırasıdır. Özellikle
 *  Yerel değişkenler, kullanılmadan önce tanımlanmalıdır ([kapsamları](basic-concepts.md#scopes)).
 *  Sabit listesi üye bildirimleri için bildirim sırasında ([numaralandırma üyeleri](enums.md#enum-members)) önemli olduğunda *constant_expression* değerleri atlanmış.
 
-Bildirimi bir ad alanının "Bitti" açık"ve iki ad alanı bildirimleri aynı tam ada sahip aynı bildirim alanına katkıda bulunan bir alandır. Örneğin
+Bildirimi bir ad alanının "Bitti" açık"ve iki ad alanı bildirimleri aynı tam ada sahip aynı bildirim alanına katkıda bulunan bir alandır. Örneğin:
 ```csharp
 namespace Megacorp.Data
 {
@@ -418,7 +418,7 @@ Yöntemleri, örnek oluşturucuları, dizin oluşturucular ve işleçleri göre 
 *  Bunların imzalarını Bu sınıf, yapı veya arabirim içinde benzersiz olması koşuluyla dizin oluşturucu aşırı yüklemesi bir sınıf, yapı veya arabirim birden çok dizin oluşturucu bildirmek için verir.
 *  Operatörleri aşırı yükleme, bir sınıf veya yapı bunların imzalarını sağlanan aynı ada sahip birden çok işleç, sınıf veya yapı içinde benzersiz bildirmek için izin verir.
 
-Ancak `out` ve `ref` parametre değiştiriciler imzasının bir parçası olarak kabul edilir, tek bir türde bildirilen üyeler olamaz farklı imzasında sadece onun tarafından `ref` ve `out`. İki üye aynı ise olacaktır imzalarla aynı türdeki her iki yöntemde de tüm parametrelerinde bildirilir, bir derleme zamanı hatası meydana gelir `out` değiştiriciler değiştirildi `ref` değiştiriciler. İmza eşleşen diğer amaçlar için (örneğin, gizleme veya geçersiz kılma), `ref` ve `out` imzasının bir parçası olarak kabul edilir ve birbirlerine eşleşmiyor. (Bu kısıtlama, ortak dil altyapısı (yalnızca içinde farklı yöntemleri tanımlamak için bir yol sağlamaz, CLI üzerinde), çalıştırılacak kolayca çevrilmesi C# programları izin vermektir `ref` ve `out`.)
+Ancak `out` ve `ref` parametre değiştiriciler imzasının bir parçası olarak kabul edilir, tek bir türde bildirilen üyeler olamaz farklı imzasında sadece onun tarafından `ref` ve `out`. İki üye aynı ise olacaktır imzalarla aynı türdeki her iki yöntemde de tüm parametrelerinde bildirilir, bir derleme zamanı hatası meydana gelir `out` değiştiriciler değiştirildi `ref` değiştiriciler. İmza eşleşen diğer amaçlar için (örneğin, gizleme veya geçersiz kılma), `ref` ve `out` imzasının bir parçası olarak kabul edilir ve birbirlerine eşleşmiyor. (Bu kısıtlama izin vermektir C# programları, ortak dil altyapısı (yalnızca içinde farklı yöntemleri tanımlamak için bir yol sağlamaz, CLI üzerinde), çalıştırılacak kolayca çevrilemeyen `ref` ve `out`.)
 
 İmzaların türleri amacıyla `object` ve `dynamic` aynı olarak kabul edilir. Tek bir türde bildirilen üyeler bu nedenle farklı imzasında sadece onun tarafından `object` ve `dynamic`.
 
@@ -476,7 +476,7 @@ Herhangi bir Not `ref` ve `out` parametre değiştiriciler ([yöntem parametrele
 *  Bir yerel sabit kapsamı içinde bildirilen bir *local_constant_declaration* ([yerel sabit bildirimleri](statements.md#local-constant-declarations)) blok bildirimi oluştuğu içinde. Önündeki değerinin metinsel bir konumda yerel bir sabit belirtmek için bir derleme zamanı hata kendi *constant_declarator*.
 *  Bir değişkenin kapsamını bir parçası olarak bildirilen bir *foreach_statement*, *using_statement*, *lock_statement* veya *query_expression* olduğu verilen yapısının genişletme tarafından belirlenir.
 
-Ad alanı, sınıf, yapı veya sabit listesi üyesi kapsamında üyesi bildirimi önündeki bir metinsel konumu üye başvurmak mümkündür. Örneğin
+Ad alanı, sınıf, yapı veya sabit listesi üyesi kapsamında üyesi bildirimi önündeki bir metinsel konumu üye başvurmak mümkündür. Örneğin:
 ```csharp
 class A
 {
@@ -489,7 +489,7 @@ class A
 ```
 Burada, geçerli `F` başvurmak için `i` bildirilmeden önce.
 
-İsteğe bağlı olarak yerel bir değişken kapsamında önündeki değerinin metinsel bir konumda yerel değişkene başvurmak için bir derleme zamanı hatası olmayan *local_variable_declarator* yerel değişkenin. Örneğin
+İsteğe bağlı olarak yerel bir değişken kapsamında önündeki değerinin metinsel bir konumda yerel değişkene başvurmak için bir derleme zamanı hatası olmayan *local_variable_declarator* yerel değişkenin. Örneğin:
 ```csharp
 class A
 {
@@ -646,7 +646,7 @@ Bildirimi yukarıdaki örnekte `F` içinde `Derived` gizler `F` , öğesinden de
 
 ## <a name="namespace-and-type-names"></a>Namespace ve tür adları
 
-Bir C# programı çeşitli bağlamlarda gerektiren bir *namespace_name* veya *type_name* belirtilmelidir.
+Çeşitli bağlamlarda bir C# programını gerektiren bir *namespace_name* veya *type_name* belirtilmelidir.
 
 ```antlr
 namespace_name
@@ -680,26 +680,26 @@ Burada `I` tek bir tanımlayıcı `N` olduğu bir *namespace_or_type_name* ve `<
 Anlamı bir *namespace_or_type_name* şu şekilde belirlenir:
 
 *   Varsa *namespace_or_type_name* biçimindedir `I` veya formun `I<A1, ..., Ak>`:
-    * Varsa `K` sıfırdır ve *namespace_or_type_name* genel yöntem bildiriminde içinde görünür ([yöntemleri](classes.md#methods)) ve bu bildirimi bir tür parametresi içeriyorsa ([türü parametreleri](classes.md#type-parameters)) adıyla `I`, ardından *namespace_or_type_name* bu tür parametresine başvuruyor.
-    * Aksi takdirde *namespace_or_type_name* türü bildiriminden sonra her örnek türü için görüntülenen `T` ([örnek türü](classes.md#the-instance-type)) itibaren bu türdeki örnek türü bildirim ve (varsa) her kapsayan bir class veya struct bildiriminde örneği türü ile devam etmeden:
-        * Varsa `K` sıfır ve bildirimi `T` ada sahip bir tür parametresi içeren `I`, ardından *namespace_or_type_name* bu tür parametresine başvuran.
-        * Aksi takdirde *namespace_or_type_name* türü bildirimi gövdesi içinde görünür ve `T` veya temel türlerinden birinin adına sahip iç içe erişilebilir türü içeren `I` ve `K` tür parametrelerindeki , ardından *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder. Birden fazla tür ise daha türetilmiş türde bildirilen türü seçilir. Tür olmayan üyeler (sabitleri, alanları, yöntemleri, özellikleri, Dizinleyicileri, işleçleri, örnek oluşturucuları, yok ediciler ve statik oluşturucular) ve tür üyelerinin farklı sayıda tür parametreleri ile anlamını belirlenirken yoksayılacak olduğunu unutmayın. *namespace_or_type_name*.
-    * Önceki adımları her ad alanı için daha sonra başarısız olursa `N`, ad alanı ile başlayan *namespace_or_type_name* her kapsayan ad uzayı ile (eğer varsa) devam etmeden ve ile biten gerçekleşir Genel ad alanı, aşağıdaki adımları bir varlığı bulunana kadar değerlendirilir:
-        * Varsa `K` sıfırdır ve `I` bir ad alanındaki adı `N`, ardından:
-            * Varsa konumu burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *namespace_or_type_name* belirsiz ve bir derleme zamanı hatası oluşur.
+    * Varsa `K` sıfırdır ve *namespace_or_type_name* genel yöntem bildiriminde içinde görünür ([yöntemleri](classes.md#methods)) ve bu bildirimi bir tür parametresi içeriyorsa ([türü parametreleri](classes.md#type-parameters)) adıyla `I`, ardından *namespace_or_type_name* bu tür parametresine başvuruyor.
+    * Aksi takdirde *namespace_or_type_name* türü bildiriminden sonra her örnek türü için görüntülenen `T` ([örnek türü](classes.md#the-instance-type)) itibaren bu türdeki örnek türü bildirim ve (varsa) her kapsayan bir class veya struct bildiriminde örneği türü ile devam etmeden:
+        * Varsa `K` sıfır ve bildirimi `T` ada sahip bir tür parametresi içeren `I`, ardından *namespace_or_type_name* bu tür parametresine başvuran.
+        * Aksi takdirde *namespace_or_type_name* türü bildirimi gövdesi içinde görünür ve `T` veya temel türlerinden birinin adına sahip iç içe erişilebilir türü içeren `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder. Birden fazla tür ise daha türetilmiş türde bildirilen türü seçilir. Tür olmayan üyeler (sabitleri, alanları, yöntemleri, özellikleri, Dizinleyicileri, işleçleri, örnek oluşturucuları, yok ediciler ve statik oluşturucular) ve tür üyelerinin farklı sayıda tür parametreleri ile anlamını belirlenirken yoksayılacak olduğunu unutmayın. *namespace_or_type_name*.
+    * Önceki adımları her ad alanı için daha sonra başarısız olursa `N`, ad alanı ile başlayan *namespace_or_type_name* her kapsayan ad uzayı ile (eğer varsa) devam etmeden ve ile biten gerçekleşir Genel ad alanı, aşağıdaki adımları bir varlığı bulunana kadar değerlendirilir:
+        * Varsa `K` sıfırdır ve `I` bir ad alanındaki adı `N`, ardından:
+            * Varsa konumu burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *namespace_or_type_name* belirsiz ve bir derleme zamanı hatası oluşur.
             * Aksi takdirde, *namespace_or_type_name* adlı isim uzayına başvuruyor `I` içinde `N`.
-        * Aksi takdirde `N` adına sahip bir erişilebilir türü içeren `I` ve `K` tür parametreleri:
-            * Varsa `K` sıfır ve konumun burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive*  veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *namespace_or_type_name* belirsiz ve derleme zamanı hata oluşur.
+        * Aksi takdirde `N` adına sahip bir erişilebilir türü içeren `I` ve `K`  tür parametreleri:
+            * Varsa `K` sıfır ve konumun burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive*  veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *namespace_or_type_name* belirsiz ve derleme zamanı hata oluşur.
             * Aksi takdirde, *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
         * Aksi halde, konum burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N`:
-            * Varsa `K` sıfırdır ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` bir içeri aktarılan ad alanıyla veya tür, ardından *namespace_or_type_name* bu ad alanı veya tür ifade eder.
-            * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_alias_directive*ad alanı bildiriminin bir s içeren tam olarak bir erişilebilir türü adına sahip `I` ve `K` tür parametrelerindeki, ardından *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
-            * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_alias_directive*ad alanı bildiriminin bir s erişilebilir birden fazla tür içeriyor adına sahip `I` ve `K` tür parametrelerindeki, ardından *namespace_or_type_name* belirsiz ve hata oluşur.
+            * Varsa `K` sıfırdır ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` bir içeri aktarılan ad alanıyla veya tür, ardından *namespace_or_type_name* bu ad alanı veya tür ifade eder.
+            * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_alias_directive*ad alanı bildiriminin bir s içeren tam olarak bir erişilebilir türü adına sahip `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
+            * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_alias_directive*ad alanı bildiriminin bir s erişilebilir birden fazla tür içeriyor adına sahip `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* belirsiz ve hata oluşur.
     * Aksi takdirde, *namespace_or_type_name* olup tanımsız ve bir derleme zamanı hatası oluşur.
 *  Aksi takdirde, *namespace_or_type_name* biçimindedir `N.I` veya formun `N.I<A1, ..., Ak>`. `N` ilk olarak çözümlenen bir *namespace_or_type_name*. Varsa çözünürlüğünü `N` bir derleme zamanı hatası oluşur başarılı değil. Aksi takdirde, `N.I` veya `N.I<A1, ..., Ak>` gibi çözümlenir:
     * Varsa `K` sıfır ve `N` bir isim uzayına başvuruyor ve `N` ada sahip iç içe geçmiş bir ad alanı içeren `I`, ardından *namespace_or_type_name* , iç içe geçmiş ad alanına başvuruyor.
-    * Aksi takdirde `N` bir isim uzayına başvuruyor ve `N` adına sahip bir erişilebilir türü içeren `I` ve `K` tür parametrelerindeki, ardından *namespace_or_type_name* bu türe başvurur Belirtilen tür bağımsız değişkenleri ile oluşturulmuş.
-    * Aksi takdirde `N` (büyük olasılıkla yapılandırılmış) bir sınıf veya yapı türe başvuruyor ve `N` veya iç içe bir erişilebilir tür adına sahip tüm temel sınıflarını içeren `I` ve `K` tür parametrelerindeki, ardından *ad alanı _or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder. Birden fazla tür ise daha türetilmiş türde bildirilen türü seçilir. Anlamını unutmayın `N.I` temel sınıf belirtimi çözümünün bir parçası belirlenen `N` sonra doğrudan temel sınıfını `N` nesne olarak kabul edilir ([temel sınıflar](classes.md#base-classes)).
+    * Aksi takdirde `N` bir isim uzayına başvuruyor ve `N` adına sahip bir erişilebilir türü içeren `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* başvurur Bu türe belirli tür bağımsız değişkenleri ile oluşturulmuş.
+    * Aksi takdirde `N` (büyük olasılıkla yapılandırılmış) bir sınıf veya yapı türe başvuruyor ve `N` veya iç içe bir erişilebilir tür adına sahip tüm temel sınıflarını içeren `I` ve `K`  parametreleri, ardından yazın*namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder. Birden fazla tür ise daha türetilmiş türde bildirilen türü seçilir. Anlamını unutmayın `N.I` temel sınıf belirtimi çözümünün bir parçası belirlenen `N` sonra doğrudan temel sınıfını `N` nesne olarak kabul edilir ([temel sınıflar](classes.md#base-classes)).
     * Aksi takdirde, `N.I` geçersiz bir *namespace_or_type_name*, ve bir derleme zamanı hatası oluşur.
 
 A *namespace_or_type_name* statik sınıf başvurmak için izin verilir ([statik sınıflar](classes.md#static-classes)) yalnızca

@@ -496,7 +496,7 @@ namespace N2
 
 A *using_static_directive* üyeleri ve türleri temel sınıflarda bildirilen üyeler ve doğrudan belirli türü bildirilmiş türleri yalnızca içeri aktarır.
 
-TODO: örnek
+TODO: Örnek
 
 Birden çok arasında belirsizlikleri *using_namespace_directives* ve *using_static_directives* ele alınmıştır [ad alanı yönergeleri kullanarak](namespaces.md#using-namespace-directives).
 
@@ -561,22 +561,22 @@ A *qualified_alias_member* iki farklı vardır:
 Bu gösterim anlamını kullanılarak bir *qualified_alias_member* şu şekilde belirlenir:
 
 *  Varsa `N` tanımlayıcı `global`, sonra da için genel ad aranır `I`:
-   * Genel ad alanı adındaki bir ad içeriyorsa `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu isim uzayına başvuruyor.
-   * Aksi durumda, genel olmayan bir tür adı genel ad içeriyorsa `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu türe başvuruyor.
-   * Aksi takdirde genel ad adlı bir tür içeriyorsa `I` olan `K` tür parametrelerindeki, ardından *qualified_alias_member* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
+   * Genel ad alanı adındaki bir ad içeriyorsa `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu isim uzayına başvuruyor.
+   * Aksi durumda, genel olmayan bir tür adı genel ad içeriyorsa `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu türe başvuruyor.
+   * Aksi takdirde genel ad adlı bir tür içeriyorsa `I` olan `K`  tür parametrelerindeki, ardından *qualified_alias_member* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
    * Aksi takdirde, *qualified_alias_member* olup tanımsız ve bir derleme zamanı hatası oluşur.
 
 *  Aksi takdirde, ad alanı bildirimi ile başlayan ([Namespace bildirimi](namespaces.md#namespace-declarations)) hemen içeren *qualified_alias_member* (varsa), her kapsayan ad alanı bildirimi ile devam ediliyor (varsa) ve içeren derleme birimi ile biten *qualified_alias_member*, aşağıdaki adımları bir varlığı bulunana kadar değerlendirilir:
 
    * Ad alanı bildirimi veya derleme birimi içeriyorsa, bir *using_alias_directive* , ilişkilendirir `N` bir türle sonra *qualified_alias_member* tanımlı değildir ve derleme zamanı hata oluşur.
    * Aksi takdirde ad alanı bildirimi veya derleme biriminin içeriyorsa bir *extern_alias_directive* veya *using_alias_directive* , ilişkilendirir `N` bir ad alanı, ardından:
-     * Ad alanı ile ilişkili değilse `N` adlı bir ad alanı içerir `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu isim uzayına başvuruyor.
-     * Aksi takdirde, ad alanı ile ilişkili `N` adlı bir genel olmayan tür içeren `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu türe başvuruyor.
-     * Aksi takdirde, ad alanı ile ilişkili `N` adlı bir tür içeren `I` olan `K` tür parametrelerindeki, sonra *qualified_alias_member* belirtilen türle oluşturulmuş o türe başvurur bağımsız değişkenler.
+     * Ad alanı ile ilişkili değilse `N` adlı bir ad alanı içerir `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu isim uzayına başvuruyor.
+     * Aksi takdirde, ad alanı ile ilişkili `N` adlı bir genel olmayan tür içeren `I` ve `K` sıfırsa, ardından *qualified_alias_member* bu türe başvuruyor.
+     * Aksi takdirde, ad alanı ile ilişkili `N` adlı bir tür içeren `I` olan `K`  tür parametrelerindeki, ardından *qualified_alias_member* türü ile oluşturulan ifade eder Belirtilen tür bağımsız değişkenleri.
      * Aksi takdirde, *qualified_alias_member* olup tanımsız ve bir derleme zamanı hatası oluşur.
 *  Aksi takdirde, *qualified_alias_member* olup tanımsız ve bir derleme zamanı hatası oluşur.
 
-Ad alanı diğer ad niteleyicisi bir türe başvuran bir diğer ad ile kullanarak bir derleme zamanı hatası neden olacağını unutmayın. Ayrıca tanımlayıcı unutmayın `N` olduğu `global`, olsa bile bir diğer ad ilişkilendirme kullanarak genel ad alanında arama gerçekleştirilir `global` türü veya ad alanı.
+Ad alanı diğer ad niteleyicisi bir türe başvuran bir diğer ad ile kullanarak bir derleme zamanı hatası neden olacağını unutmayın. Ayrıca tanımlayıcı unutmayın `N` olduğu `global`, olsa bile bir diğer ad ilişkilendirme kullanarak genel ad alanında arama gerçekleştirilir `global` türü veya ad alanı.
 
 ### <a name="uniqueness-of-aliases"></a>Diğer ad benzersizliğini
 

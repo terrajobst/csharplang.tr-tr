@@ -28,7 +28,7 @@ Her kaynak dosyası bir C# programında uymalıdır *giriş* üretimi sözcük d
 
 C# sözdizimi dilbilgisi bölümleri ve bu bölümün aşağıdaki ek sunulur. Söz dizimi dilbilgisi terminal simgelerini sözcük dilbilgisi tarafından tanımlanan belirteçleridir ve belirteçleri form C# programları nasıl birleştirildiğini söz dizimsel dilbilgisi belirtir.
 
-Her kaynak dosyası bir C# programında uymalıdır *compilation_unit* söz dizimsel dilbilgisi üretimini ([derleme biriminden](namespaces.md#compilation-units)).
+Her kaynak dosyada bir C# programı için uygun olmalıdır *compilation_unit* söz dizimsel dilbilgisi üretimini ([derleme biriminden](namespaces.md#compilation-units)).
 
 ## <a name="lexical-analysis"></a>Sözcük analizi
 
@@ -55,7 +55,7 @@ input_element
     ;
 ```
 
-Beş temel öğeleri bir C# kaynak dosyası sözcük yapınızı olun: satır sonlandırıcılar ([satır sonlandırıcılar](lexical-structure.md#line-terminators)), boşluk ([boşluk](lexical-structure.md#white-space)), açıklamalar ([açıklamaları](lexical-structure.md#comments)), belirteçleri ([belirteçleri](lexical-structure.md#tokens)) ve ön işleme yönergeleri ([yönergeleri ön işleme](lexical-structure.md#pre-processing-directives)). Bu temel öğeleri, yalnızca belirteçleri söz dizimi bir C# programı dilbilgisi içinde önemli ([söz Dizimsel Dilbilgisi](lexical-structure.md#syntactic-grammar)).
+Beş temel öğeleri olun sözcük yapısı, bir C# kaynak dosyası: Satır sonlandırıcılar ([satır sonlandırıcılar](lexical-structure.md#line-terminators)), boşluk ([boşluk](lexical-structure.md#white-space)), açıklamalar ([açıklamaları](lexical-structure.md#comments)), belirteçleri ([belirteçleri](lexical-structure.md#tokens)), ve yönergeleri ön işleme ([yönergeleri ön işleme](lexical-structure.md#pre-processing-directives)). Bu temel öğeleri, yalnızca belirteçleri söz dizimi bir C# programı dilbilgisi içinde önemli ([söz Dizimsel Dilbilgisi](lexical-structure.md#syntactic-grammar)).
 
 Dosya, söz dizimi analizi giriş dönüşen belirteçleri dizisini azaltma C# kaynak dosyası sözcük işlenmesini oluşur. Satır sonlandırıcılar, boşluk ve yorum belirteçleri, ayırmak için görebilir ve ön işleme yönergeleri atlanacak kaynak dosyasının bölümlerini neden olabilir, ancak Aksi halde bu sözcük temelli öğeler söz dizimi bir C# programı yapısını üzerinde hiçbir etkiye sahip.
 
@@ -467,7 +467,7 @@ Bir gerçek değişmez değerin ondalık basamak her zaman ondalık ayırıcıda
 
 Karakterin değişmez değeri tek bir karakteri temsil eder ve genellikle bir tırnak karakteri olarak oluşan `'a'`.
 
-Not: Aşağıdaki ANTLR dilbilgisi gösterimi kafa karıştırıcı getirir! Siz yazarken ANTLR içinde `\'` için tek bir teklif anlaşıldığı `'`. Ve yazarken `\\` için tek bir ters eğik çizgi anlaşıldığı `\`. Bu nedenle tek tırnak işareti sonra bir karakter, sonra da tek bir tırnak işareti ile başlayan bir karakter sabiti için ilk kural anlamına gelir. Ve on olası basit çıkış sıraları `\'`, `\"`, `\\`, `\0`, `\a`, `\b`, `\f`, `\n`, `\r`, `\t`, `\v`.
+Not: ANTLR dilbilgisi gösterimi aşağıdaki karmaşık hale getirir! Siz yazarken ANTLR içinde `\'` için tek bir teklif anlaşıldığı `'`. Ve yazarken `\\` için tek bir ters eğik çizgi anlaşıldığı `\`. Bu nedenle tek tırnak işareti sonra bir karakter, sonra da tek bir tırnak işareti ile başlayan bir karakter sabiti için ilk kural anlamına gelir. Ve on olası basit çıkış sıraları `\'`, `\"`, `\\`, `\0`, `\a`, `\b`, `\f`, `\n`, `\r`, `\t`, `\v`.
 
 ```antlr
 character_literal

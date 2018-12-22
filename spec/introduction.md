@@ -4,7 +4,7 @@ C# (okunur "Bkz Sharp") bir basit, modern, nesne yönelimli ve tür kullanımı 
 
 C#, nesne yönelimli bir dildir ancak C# daha fazla için destek içerir ***bileşen odaklı*** programlama. Çağdaş yazılım tasarımı giderek daha fazla işlevsellik müstakil ve kendiliğinden açıklayıcı paketleri biçiminde yazılım bileşenlerini kullanır. Bu bileşenler özellikleri, yöntemleri ve olayları ile bunların bir programlama modeli sunar, anahtarıdır; bileşen hakkında tanımlayıcı bilgiler sağlayan özniteliklerine sahip oldukları; ve bunlar kendi belgelerinin dahil edilip derecelendirilir. C# doğrudan bu kavramlar desteklemek için dil yapıları C# yapmak çok doğal dili oluşturma ve yazılım bileşenlerini kullanma sağlar.
 
-Güçlü ve dayanıklı uygulamalar oluşturma, birkaç C# özelliklerini yardımcı: ***çöp toplama*** otomatik olarak; kullanılmayan nesnelerin kapladığı belleği geri kazanır ***özel durum işleme*** hata algılama ve kurtarma; yapılandırılmış ve Genişletilebilir bir yaklaşım sunan ve ***tür kullanımı uyumlu*** dilinin tasarım yapar, mümkün olmayan öğesinden başlatılmamış okumak Dizin dizilerine kendi sınırları ötesinde veya işaretsiz tür atamaları gerçekleştirmek için değişkenleri.
+Birkaç C# ürettiği yapımı güçlü ve dayanıklı uygulamaların özellikleri: ***Çöp toplama*** otomatik olarak; kullanılmayan nesnelerin kapladığı belleği geri kazanır ***özel durum işleme*** hata algılama ve kurtarma; yapılandırılmış ve Genişletilebilir bir yaklaşım sunan ve ***tür kullanımı uyumlu*** dilinin tasarım kılar imkansız başlatılmamış değişkenlerinden okuyun dizin için kendi sınırları ötesinde veya denetlenmeyen gerçekleştirmek için bir dizi yayınları yazın.
 
 C# sahip bir ***tür sistemi birleşik***. Gibi ilkel türler dahil olmak üzere tüm C# türü, `int` ve `double`, tek bir kök devral `object` türü. Bu nedenle, bir dizi ortak işlemlerini tüm türleri paylaşın ve herhangi bir tür değerleri depolanan, taşınan ve tutarlı bir şekilde üzerinde işlem. Ayrıca, C# hem kullanıcı tarafından tanımlanan başvuru türleri ve değer türleri, nesnelerin dinamik ayırması yanı sıra basit yapılar satır içi depolanmasını sağlayan destekler.
 
@@ -162,7 +162,7 @@ Karakter ve dize işleme C# dilinde Unicode kodlaması kullanır. `char` Türün
 Aşağıdaki tablo, C# ' ın sayısal türleri özetlenmektedir.
 
 
-| __Kategori__      | __BITS__ | __Türü__  | __Aralık/duyarlık__ |
+| __Kategori__      | __BITS__ | __Tür__  | __Aralık/duyarlık__ |
 |-------------------|----------|-----------|---------------------|
 | İmzalı tam sayı   | 8        | `sbyte`   | -128... 127 |
 |                   | 16       | `short`   | -32, 768... 32, 767 girişini |
@@ -265,7 +265,7 @@ En yüksek öncelikten en düşüğe sırasını işleci kategorileri listeleme 
 |                                  | `x % y`           | Kalan |
 | Eklenebilir                         | `x + y`           | Toplama, dize bitiştirme, temsilci birleşimi |
 |                                  | `x - y`           | Çıkarma, temsilci kaldırma |
-| Kaydırma                            | `x << y`          | Sola kaydırma |
+| Shift                            | `x << y`          | Sola kaydırma |
 |                                  | `x >> y`          | Sağa kaydırma |
 | İlişkisel ve tür testi      | `x < y`           | Küçüktür |
 |                                  | `x > y`           | Büyüktür |
@@ -1160,7 +1160,7 @@ Bir özelliğin accessor(s) sanal olabilir. Ne zaman bir özellik bildirimi içe
 
 Bir ***dizin oluşturucu*** nesneleri dizisi olarak aynı şekilde dizinlenmesini sağlar bir üyesidir. Üyenin adını olması dışında dizin oluşturucu bir özellik gibi bildirilir `this` sınırlayıcılar arasında yazılmış bir parametre listesi ardından `[` ve `]`. Parametreler, dizin oluşturucunun accessor(s) içinde kullanılabilir. Benzer şekilde, özellikler, dizin oluşturucular okuma-yazma, salt okunur ve salt yazılır olabilir ve bir dizin oluşturucu accessor(s) sanal olabilir.
 
-`List` Sınıfı bildirir gereken tek bir okuma-yazma dizin oluşturucu bir `int` parametresi. Dizin oluşturucunun, dizin mümkün kılar `List` ile örnekler `int` değerleri. Örneğin
+`List` Sınıfı bildirir gereken tek bir okuma-yazma dizin oluşturucu bir `int` parametresi. Dizin oluşturucunun, dizin mümkün kılar `List` ile örnekler `int` değerleri. Örneğin:
 
 ```csharp
 List<string> names = new List<string>();
@@ -1403,7 +1403,7 @@ public class EditBox: IControl, IDataBound
     public void Bind(Binder b) {...}
 }
 ```
-Bir sınıf veya yapı, belirli bir arabirim uygular, bu sınıfın veya yapının örneği, bir arabirim türüne örtük olarak dönüştürülebilir. Örneğin
+Bir sınıf veya yapı, belirli bir arabirim uygular, bu sınıfın veya yapının örneği, bir arabirim türüne örtük olarak dönüştürülebilir. Örneğin:
 
 ```csharp
 EditBox editBox = new EditBox();
@@ -1489,7 +1489,7 @@ enum Alignment: sbyte
 ```
 Önceki örnekte gösterildiği gibi bir numaralandırma üyesi bildirimi üyenin değerini belirten sabit bir ifade içerebilir. Her sabit listesi üyesi için sabit değerin sabit listesinin temel alınan türü aralığında olması gerekir. Bir numaralandırma üyesi bildirimi bir değeri açıkça belirtmediği üyesi (sabit listesi türü ilk üye ise) sıfır değerini veya metin içeriğini eklemek önceki sabit listesi üyesi artı bir değer verilir.
 
-Sabit listesi değerlerinin dönüştürülür tamsayı değerleri ve tersi tür atamaları kullanarak olabilir. Örneğin
+Sabit listesi değerlerinin dönüştürülür tamsayı değerleri ve tersi tür atamaları kullanarak olabilir. Örneğin:
 
 ```csharp
 int i = (int)Color.Blue;        // int i = 2;

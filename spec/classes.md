@@ -601,7 +601,7 @@ Kısmi yöntemler tür bildirimi bir parçası tanımlanabilir ve başka bir pro
 
 Kısmi yöntemler erişim değiştiricileri tanımlayamazsınız ancak örtük olarak olan `private`. Kendi dönüş türü olmalıdır `void`, ve bunların parametreleri olamaz `out` değiştiricisi. Tanımlayıcı `partial` yalnızca hemen önce görünürse, özel bir anahtar sözcüğü bir yöntem bildiriminde olarak değerlendirilmiştir `void` yazın; Aksi halde normal bir tanımlayıcı olarak kullanılabilir. Kısmi bir yöntemin, arabirim yöntemleri olarak açıkça uygulayamaz.
 
-Kısmi yöntem bildiriminin iki tür vardır: yöntem bildiriminde gövdesi bir noktalı virgül, bildirimi olarak kabul edilir bir ***kısmi yöntem bildiriminde tanımlama***. Gövde olarak belirtilen bir *blok*, bildirimi olarak kabul edilir bir ***kısmi yöntem bildiriminin yürüten***. Bir tür bildirimi bölümleri arasında yalnızca bir olabilir kısmi yöntem bildiriminde verilen imzayla tanımlama ve yalnızca bir kısmi yöntem bildiriminde verilen imzayla uygulama olabilir. Uygulama kısmi yöntem bildirimi verilir, kısmi yöntem bildiriminde tanımlama karşılık gelen bulunmalı ve bildirimleri olarak eşleşmelidir aşağıdaki konumlarda arar:
+Kısmi yöntem bildiriminin iki tür vardır: Yöntem bildiriminde gövdesi bir noktalı virgül, bildirimi olarak kabul edilir bir ***kısmi yöntem bildiriminde tanımlama***. Gövde olarak belirtilen bir *blok*, bildirimi olarak kabul edilir bir ***kısmi yöntem bildiriminin yürüten***. Bir tür bildirimi bölümleri arasında yalnızca bir olabilir kısmi yöntem bildiriminde verilen imzayla tanımlama ve yalnızca bir kısmi yöntem bildiriminde verilen imzayla uygulama olabilir. Uygulama kısmi yöntem bildirimi verilir, kısmi yöntem bildiriminde tanımlama karşılık gelen bulunmalı ve bildirimleri olarak eşleşmelidir aşağıdaki konumlarda arar:
 
 * (Mutlaka aynı sırada rağmen) bildirimleri aynı değiştiricilere sahip olmalıdır, yöntem adı, türü parametre sayısı ve parametre sayısı.
 * Parametrelerini ilgili bildirimleri aynı değiştiricilere (mutlaka aynı sırada rağmen) olmalıdır ve aynı türleri (modül tür parametresi adlarına farklılıkları).
@@ -1287,7 +1287,7 @@ Bölümünde anlatıldığı gibi [sabit ifadeler](expressions.md#constant-expre
 
 Sabit değer için bir simgesel ad ne zaman isterseniz, ancak, bu değerin türü Sabit bildiriminde izin verilmez veya ne zaman değeri derleme zamanında deltanın hesaplanamaması bir *constant_expression*, `readonly` alan () [Salt okunur alanların](classes.md#readonly-fields)) bunun yerine kullanılabilir.
 
-Birden fazla sabit bildirir sabit bir bildirimde öznitelikler, değiştiriciler ve türe sahip tek sabitlerin birden fazla bildirimi eşdeğerdir. Örneğin
+Birden fazla sabit bildirir sabit bir bildirimde öznitelikler, değiştiriciler ve türe sahip tek sabitlerin birden fazla bildirimi eşdeğerdir. Örneğin:
 ```csharp
 class A
 {
@@ -1362,7 +1362,7 @@ A *field_declaration* bir dizi içerebilir *öznitelikleri* ([öznitelikleri](at
 
 Bir alanın değeri bir ifade kullanarak alınan bir *simple_name* ([basit adları](expressions.md#simple-names)) veya bir *member_access* ([üye erişimi](expressions.md#member-access)). Kullanarak salt okunur olmayan bir alan değerini değiştiren bir *atama* ([atama işleçleri](expressions.md#assignment-operators)). Salt okunur olmayan bir alan değeri, değiştirilmiş ve elde edilen hem de sonek artırma ve azaltma işleçleri olabilir ([sonek arttırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators)) ve önek arttırma ve azaltma işleçleri ([ön eki artırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)).
 
-Birden çok alan bildiren bir alan bildirimi tek alanların özniteliklerini, değiştiriciler ve türe sahip birden fazla bildirimi eşdeğerdir. Örneğin
+Birden çok alan bildiren bir alan bildirimi tek alanların özniteliklerini, değiştiriciler ve türe sahip birden fazla bildirimi eşdeğerdir. Örneğin:
 ```csharp
 class A
 {
@@ -2114,7 +2114,7 @@ Statik arasındaki farklar ve örnek üyeleri ele alınmıştır daha ayrıntıl
 
 Ne zaman bir örnek yöntemi bildirimi içeren bir `virtual` değiştiricisi, yöntemi sanal bir yöntem olarak değerlendirilir. Hiçbir `virtual` değiştirici mevcut olduğundan, yöntemi sanal olmayan bir yöntem olarak kabul edilir.
 
-Sanal olmayan bir yöntemin uygulanmasını sabit: yöntemi sınıfının bir örneği üzerinde çağrıldıktan uygulaması aynı olup, bildirilen veya türetilmiş bir sınıfın bir örneği. Buna karşılık, bir sanal yöntemin uygulanmasını türetilmiş sınıflar tarafından yenisiyle değiştirilmiş. Devralınan bir sanal yöntemin uygulanmasını yerini alma işlemi olarak bilinir ***geçersiz kılma*** bu yöntem ([geçersiz kılma yöntemleri](classes.md#override-methods)).
+Sanal olmayan bir yöntem sabit uygulamasıdır: Sınıfının bir örneği yöntemi çağrılır uygulaması aynı olup, bildirilen veya türetilmiş bir sınıfın bir örneği. Buna karşılık, bir sanal yöntemin uygulanmasını türetilmiş sınıflar tarafından yenisiyle değiştirilmiş. Devralınan bir sanal yöntemin uygulanmasını yerini alma işlemi olarak bilinir ***geçersiz kılma*** bu yöntem ([geçersiz kılma yöntemleri](classes.md#override-methods)).
 
 Bir sanal yöntem çağrısı ***çalışma zamanı tür*** bu çağırma aldığı örneğini yerde çağrılacak gerçek yöntem uygulaması belirler. Bir sanal olmayan bir yöntem çağrısı ***derleme zamanı tür*** belirleyici faktör örneğidir. Kesin terimleri, zaman adlı yöntemi `N` bir bağımsız değişken listesi ile çağrılan `A` ile bir derleme zamanı tür örneği üzerinde `C` ve çalışma zamanı tür `R` (burada `R` ya da `C` veya türetilmiş bir sınıf gelen `C`), çağırma şu şekilde işlenir:
 
@@ -2207,7 +2207,7 @@ class Test
     }
 }
 ```
-`C` ve `D` sınıflar aynı imzaya sahip iki sanal yöntem bulunur: tarafından sunulan bir `A` tarafından sunulan bir `C`. Yöntemi tarafından tanıtılan `C` devralınan yöntemini gizliyor `A`. Bu nedenle, geçersiz kılma bildiriminde `D` tarafından tanıtılan yöntemini geçersiz kılan `C`, ve mümkün değil `D` tarafından tanıtılan yöntemi geçersiz kılmak için `A`. Örnek çıktıyı üretir:
+`C` ve `D` sınıflar aynı imzaya sahip iki sanal yöntem bulunur: Bir kullanıma sunulan `A` tarafından sunulan bir `C`. Yöntemi tarafından tanıtılan `C` devralınan yöntemini gizliyor `A`. Bu nedenle, geçersiz kılma bildiriminde `D` tarafından tanıtılan yöntemini geçersiz kılan `C`, ve mümkün değil `D` tarafından tanıtılan yöntemi geçersiz kılmak için `A`. Örnek çıktıyı üretir:
 ```
 B.F
 B.F
@@ -2694,7 +2694,7 @@ public class Button: Control
     }
 }
 ```
-`Button` denetimini bildirir genel `Caption` özelliği. `get` Erişimcisine `Caption` özelliği, özel depolanan bir dize döndürür `caption` alan. `set` Erişimcisi varsa yeni değerin geçerli değerden farklı ve bu durumda, yeni bir değer depolar. denetler ve denetimi halinde yeniden boyar. Özellikleri, yukarıda gösterilen deseni genellikle izleyin: `get` erişimcisi yalnızca özel bir alanda depolanmış bir değer döndürür ve `set` erişimcisi bu özel alan değiştirir ve ardından tam durumu güncelleştirmek için gereken ek eylemleri gerçekleştirir nesne.
+`Button` denetimini bildirir genel `Caption` özelliği. `get` Erişimcisine `Caption` özelliği, özel depolanan bir dize döndürür `caption` alan. `set` Erişimcisi varsa yeni değerin geçerli değerden farklı ve bu durumda, yeni bir değer depolar. denetler ve denetimi halinde yeniden boyar. Özellikler, yukarıda gösterilen deseni genellikle izleyin: `get` Erişimcisi yalnızca özel bir alanda depolanmış bir değer döndürür ve `set` erişimcisi bu özel alan değiştirir ve ardından tam nesnenin durumunu güncelleştirmek için gereken ek eylemleri gerçekleştirir.
 
 Verilen `Button` sınıfında above, aşağıdaki örneğidir kullanımını `Caption` özelliği:
 ```csharp
@@ -3532,7 +3532,7 @@ binary_operator_declarator
 
 overloadable_binary_operator
     : '+'   | '-'   | '*'   | '/'   | '%'   | '&'   | '|'   | '^'   | '<<'
-    | 'right_shift' | '=='  | '!='  | '>'   | '<'   | '>='  | '<='
+    | right_shift | '=='  | '!='  | '>'   | '<'   | '>='  | '<='
     ;
 
 conversion_operator_declarator
@@ -3547,7 +3547,7 @@ operator_body
     ;
 ```
 
-Fazla yüklenebilir işleçler üç kategorisi vardır: tekli işleçler ([birli işleçler](classes.md#unary-operators)), ikili işleçler ([ikili işleçler](classes.md#binary-operators)) ve dönüştürme işleçleri ([dönüştürme işleçleri ](classes.md#conversion-operators)).
+Fazla yüklenebilir işleçler üç kategoriye ayrılır: Birli işleçleri ([birli işleçler](classes.md#unary-operators)), ikili işleçler ([ikili işleçler](classes.md#binary-operators)) ve dönüştürme işleçleri ([dönüştürme işleçleri](classes.md#conversion-operators)).
 
 *Operator_body* ya da bir noktalı virgüldür bir ***deyim gövdesi*** veya ***ifade gövdesi***. Deyim gövdesi oluşan bir *blok*, işleci çağrıldığında çalıştırılacak deyimleri belirtir. *Blok* değeri döndürmek için kurallarına uymalıdır açıklanan yöntemlerden [yöntem gövdesini](classes.md#method-body). İfade gövdesi oluşan `=>` bir ifade ve noktalı virgül tarafından izlenen ve tek bir ifade işleci çağrıldığında gerçekleştirilecek gösterir.
 
@@ -4115,7 +4115,7 @@ class B
 X = 1, Y = 2
 ```
 
-Yürütülecek `Main` yöntemi, sistemin ilk için Başlatıcı çalıştırır `B.Y`, sınıfa önceki `B`'s statik Oluşturucu. `Y`ın Başlatıcı neden olur `A`ait olduğundan çalıştırılacak statik Oluşturucu değerini `A.X` başvuruluyor. Statik oluşturucusunun `A` değerini hesaplamak için sırayla geçer `X`ve bunu öğesinden varsayılan değerini `Y`, sıfır olan. `A.X` Bu nedenle, 1 olarak başlatılır. Çalışan işlemi `A`ilk değerini hesaplaması için döndüren tamamlandıktan sonra statik alan başlatıcıları ve statik Oluşturucu `Y`, 2 sonucunu olur.
+Yürütülecek `Main` yöntemi, sistemin ilk için Başlatıcı çalıştırır `B.Y`, sınıfa önceki `B`'s statik Oluşturucu. `Y`ın Başlatıcı neden olur `A`ait olduğundan çalıştırılacak statik Oluşturucu değerini `A.X` başvuruluyor. Statik oluşturucusunun `A` değerini hesaplamak için sırayla geçer `X`ve bunu öğesinden varsayılan değerini `Y`, sıfır olan. `A.X` Bu nedenle, 1 olarak başlatılır. Çalışan işlemi `A`ilk değerini hesaplaması için döndüren tamamlandıktan sonra statik alan başlatıcıları ve statik Oluşturucu `Y`, 2 sonucunu olur.
 
 Statik Oluşturucu her kapalı oluşturulan sınıf türü için tam bir kez yürütülür çünkü bu iade edilemez kısıtlamaları aracılığıyla derleme zamanında tür parametresi üzerinde çalışma zamanı denetimleri zorunlu kılmak için kullanışlı bir yerdir ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)). Örneğin, şu tür, tür bağımsız değişkeni bir sabit listesi olduğunu zorlamak için bir statik Oluşturucu kullanır:
 ```csharp
@@ -4272,7 +4272,7 @@ Numaralandırıcı nesne desteklemeyen unutmayın `IEnumerator.Reset` yöntemi. 
 *  Numaralandırıcı nesne durumunu ise ***sonra***, çağrılıyor `MoveNext` döndürür `false`.
 
 
-Zaman `MoveNext` yineleyici bloğun yürütme dört yollarla kesintiye: tarafından bir `yield return` deyimi tarafından bir `yield break` deyimi, bir özel durum ve yineleyici bloğunun sonu karşılaşıldığında tarafından oluşturulur ve tanesi yayılan yineleyici bloğu.
+Zaman `MoveNext` yineleyici bloğun yürütme dört yollarla kesintiye: Tarafından bir `yield return` deyimi tarafından bir `yield break` deyimi, bir özel durum ve yineleyici bloğunun sonu karşılaşıldığında tarafından oluşturulur ve yineleyici bloğu dışında yayılır.
 
 *  Olduğunda bir `yield return` deyimi karşılaşıldığında ([yield deyimi](statements.md#the-yield-statement)):
    * Deyiminde belirtilen ifade değerlendirilir, örtük olarak yield türüne dönüştürülerek ve atanan `Current` Numaralandırıcı nesnesi bir özelliğidir.
@@ -4734,6 +4734,6 @@ Zaman uyumsuz işlev gövdesini sonlandırıldığında dönüş görev tamamlan
 
 ### <a name="evaluation-of-a-void-returning-async-function"></a>Void döndüren zaman uyumsuz işlev değerlendirme
 
-Zaman uyumsuz işlev dönüş türü ise `void`, değerlendirme farklı Yukarıdakilerden şu şekilde: hiçbir görev döndürdüğünden işlevi yerine tamamlama ve geçerli iş parçacığının özel durumlar iletişim kuran ***eşitleme bağlam***. Eşitleme bağlamı tam tanımı uygulamaya bağlıdır, ancak bir gösterimiyse, geçerli iş parçacığı "nerede" çalışıyor. Void döndüren zaman uyumsuz işlev değerlendirme yenilenirse, başarıyla tamamlandığında veya yakalanmayan bir özel durum oluşturulmasına neden olur, eşitleme bağlamı bildirilir.
+Zaman uyumsuz işlev dönüş türü ise `void`, değerlendirme farklı Yukarıdakilerden şu şekilde: Hiçbir görev döndürdüğünden işlevi yerine tamamlama ve geçerli iş parçacığının özel durumlar iletişim kuran ***eşitleme bağlamı***. Eşitleme bağlamı tam tanımı uygulamaya bağlıdır, ancak bir gösterimiyse, geçerli iş parçacığı "nerede" çalışıyor. Void döndüren zaman uyumsuz işlev değerlendirme yenilenirse, başarıyla tamamlandığında veya yakalanmayan bir özel durum oluşturulmasına neden olur, eşitleme bağlamı bildirilir.
 
 Bu, kaç void döndüren zaman uyumsuz işlevleri altında çalışan izler ve bunların dışında özel durum yayma nasıl karar vermek için bağlam sağlar.

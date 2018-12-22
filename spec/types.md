@@ -188,11 +188,11 @@ C# destekleyen iki kayan nokta türleri: `float` ve `double`. `float` Ve `double
 *  Pozitif sıfır ve sıfır negatif. Çoğu durumda, pozitif sıfır ve negatif sıfır aynı şekilde davranır basit değer sıfır, ancak belirli işlemleri ikisi arasında ayrım ([bölme işleci](expressions.md#division-operator)).
 *  Pozitif sonsuz ve negatif sonsuz. Sonsuz, sıfır olmayan bir sayı sıfıra bölme olarak bu işlemler tarafından oluşturulur. Örneğin, `1.0 / 0.0` Pozitif sonsuz verir ve `-1.0 / 0.0` konusundaki negatif sonsuz.
 *  ***Sayı değil*** genellikle kısaltılmış NaN değeri. NaN'ler sıfır olarak sıfıra bölme gibi geçersiz kayan nokta işlemleri tarafından oluşturulur.
-*  Sıfır olmayan değerler biçiminin sınırlı kümesini `s * m * 2^e`burada `s` 1 veya -1'dir ve `m` ve `e` belirli kayan nokta türüne göre belirlenir: için `float`, `0 < m < 2^24` ve `-149 <= e <= 104`ve `double`, `0 < m < 2^53` ve `1075 <= e <= 970`. Normalleştirilmemiş bir kayan noktalı sayılar, geçerli sıfır olmayan değerler olarak kabul edilir.
+*  Sıfır olmayan değerler biçiminin sınırlı kümesini `s * m * 2^e`burada `s` 1 veya -1'dir ve `m` ve `e` belirli kayan nokta türüne göre belirlenir: İçin `float`, `0 < m < 2^24` ve `-149 <= e <= 104`ve `double`, `0 < m < 2^53` ve `1075 <= e <= 970`. Normalleştirilmemiş bir kayan noktalı sayılar, geçerli sıfır olmayan değerler olarak kabul edilir.
 
-`float` Türü yaklaşık aralığındaki değerleri temsil eden `1.5 * 10^-45` için `3.4 * 10^38` 7 basamak kesinliği ile.
+`float` Türü yaklaşık aralığındaki değerleri temsil eden `1.5 * 10^-45` için `3.4 * 10^38` 7 basamak kesinliği ile.
 
-`double` Türü yaklaşık aralığındaki değerleri temsil eden `5.0 * 10^-324` için `1.7 × 10^308` 15-16 basamak kesinliği ile.
+`double` Türü yaklaşık aralığındaki değerleri temsil eden `5.0 * 10^-324` için `1.7 × 10^308` 15-16 basamak kesinliği ile.
 
 İkili işlecinin işlenenleri kayan nokta türü ise, daha sonra diğer işlenen bir tamsayı türü veya bir kayan nokta türü olmalıdır ve işlem gibi değerlendirilir:
 
@@ -211,15 +211,15 @@ Kayan nokta işlemleri, işlemin sonuç türü daha yüksek duyarlık ile gerçe
 
 ### <a name="the-decimal-type"></a>Decimal türü
 
-`decimal` Türüdür finansal ve parasal hesaplamalar için uygun bir 128-bit veri türü. `decimal` Türü arasında değişen değerlerini temsil eden `1.0 * 10^-28` için yaklaşık `7.9 * 10^28` 28-29 belirgin basamağı ile.
+`decimal` Türüdür finansal ve parasal hesaplamalar için uygun bir 128-bit veri türü. `decimal` Türü arasında değişen değerlerini temsil eden `1.0 * 10^-28` için yaklaşık `7.9 * 10^28` 28-29 belirgin basamağı ile.
 
-Sınırlı tür değerleri kümesi `decimal` biçimindedir `(-1)^s * c * 10^-e`burada oturum `s` 0 veya 1, katsayısı `c` tarafından verilen `0 <= *c* < 2^96`ve ölçek `e` olduğu gibi `0 <= e <= 28`. `decimal` İmzalı sıfır, sonsuz veya NaN'ın türü desteklemiyor. A `decimal` yaklaşık on kuvveti Ölçeklendirildi 96 bitlik bir tamsayı olarak temsil edilir. İçin `decimal`s mutlak bir değer ile kısa `1.0m`, 28 ondalık basamak için tam, ancak başka değerdir. İçin `decimal`mutlak bir değer büyüktür veya eşittir s `1.0m`, 28 ya da 29 basamağa kadar kesin bir değerdir. Contrary için `float` ve `double` veri türlerini ondalık kesirli sayılar gibi 0,1 gösterilebileceği tam olarak `decimal` gösterimi. İçinde `float` ve `double` temsilleri böyle sayılardır genellikle sonsuz kesir bu gösterimler yuvarlama daha açık hale getirme hataları.
+Sınırlı tür değerleri kümesi `decimal` biçimindedir `(-1)^s * c * 10^-e`burada oturum `s` 0 veya 1, katsayısı `c` tarafından verilen `0 <= *c* < 2^96`ve ölçek `e` olduğu gibi `0 <= e <= 28`. `decimal` İmzalı sıfır, sonsuz veya NaN'ın türü desteklemiyor. A `decimal` yaklaşık on kuvveti Ölçeklendirildi 96 bitlik bir tamsayı olarak temsil edilir. İçin `decimal`s mutlak bir değer ile kısa `1.0m`, 28 ondalık basamak için tam, ancak başka değerdir. İçin `decimal`mutlak bir değer büyüktür veya eşittir s `1.0m`, 28 ya da 29 basamağa kadar kesin bir değerdir. Contrary için `float` ve `double` veri türlerini ondalık kesirli sayılar gibi 0,1 gösterilebileceği tam olarak `decimal` gösterimi. İçinde `float` ve `double` temsilleri böyle sayılardır genellikle sonsuz kesir bu gösterimler yuvarlama daha açık hale getirme hataları.
 
 İkili işlecinin işlenenleri birini türde ise `decimal`, diğer işlenen bir tamsayı türü veya tür olmalıdır `decimal`. Bir tamsayı türü işlenen mevcutsa dönüştürülür `decimal` işlemi gerçekleştirilmeden önce.
 
 Türünün değerleri üzerinde bir işlemin sonucunu `decimal` olduğundan, tam bir sonucu (her işleç tanımlanmış olarak koruyucu ölçeklendirme) hesaplama ve ardından gösterimi uyacak şekilde yuvarlama sonuçlanır. Sonuç yuvarlanır en yakın gösterilebilir değere ve bir sonuç yakın iki temsil edilebilir değerler, bir çift sayı olan en az önemli basamak konumu (Bu bilinen "banker yuvarlama gibi") değerine eşit olduğunda. Sıfır sonuç her zaman 0'ın bir oturum ve ölçeği 0 sahiptir.
 
-Eşit veya daha düşük bir değere ondalık bir aritmetik işlemi neden oluyorsa `5 * 10^-29` mutlak değeri, işlemin sonucunu sıfır olur. Varsa bir `decimal` aritmetik işlemi için çok büyük bir sonuç üretir `decimal` biçiminde bir `System.OverflowException` oluşturulur.
+Eşit veya daha düşük bir değere ondalık bir aritmetik işlemi neden oluyorsa `5 * 10^-29` mutlak değeri, işlemin sonucunu sıfır olur. Varsa bir `decimal` aritmetik işlemi için çok büyük bir sonuç üretir `decimal` biçiminde bir `System.OverflowException` oluşturulur.
 
 `decimal` Türünde daha fazla duyarlık ancak daha küçük aralığından daha kayan nokta türleri. Bu nedenle, kayan nokta türlerinden dönüşümler `decimal` taşması özel durumları ve dönüşümlerse üretebilir `decimal` kayan nokta türleri için duyarlık kaybına neden. Bu nedenlerle, kayan nokta türleri arasında örtük dönüştürme işlemi yok mevcut ve `decimal`, ve açık atamaları kayan nokta karıştırmak mümkün değildir ve `decimal` işlenenler aynı ifadede.
 
@@ -545,7 +545,7 @@ Güvenli olmayan kod ([güvenli olmayan kod](unsafe-code.md)), *type_argument* b
 
 ### <a name="open-and-closed-types"></a>Açık ve kapalı türleri
 
-Tüm türleri olarak sınıflandırılabilir ***açın türleri*** veya ***kapalı türleri***. Tür parametreleri içeren bir tür bir açık türdür. Daha açık belirtmek gerekirse:
+Tüm türleri olarak sınıflandırılabilir ***açın türleri*** veya ***kapalı türleri***. Tür parametreleri içeren bir tür bir açık türdür. Daha ayrıntılı belirtmek gerekirse:
 
 *  Bir tür parametresi açık bir tür tanımlar.
 *  Öğe türünün bir açık türdür ve yalnızca, bir dizi türü bir açık türdür.

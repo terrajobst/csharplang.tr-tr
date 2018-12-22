@@ -189,7 +189,7 @@ public interface IStringList
     string this[int index] { get; set; }
 }
 ```
-Her bir üye olası türleri içeren bir arabirim bildirir: bir yöntem, özellik, bir olay ve dizin oluşturucu.
+Her bir üye olası türleri içeren bir arabirim bildirir: Bir yöntem, özellik, bir olay ve dizin oluşturucu.
 
 Bir *interface_declaration* yeni bir bildirim alanı oluşturur ([bildirimleri](basic-concepts.md#declarations)) ve *interface_member_declaration*hemen tarafındanbulunans*interface_declaration* bu bildirim alanına yeni üye tanıtır. Aşağıdaki kurallar geçerli *interface_member_declaration*: %s
 
@@ -295,7 +295,7 @@ Arabirim dizin oluşturucu çıkış uyumlu bir alma erişimcisi varsa türünde
 
 Arabirim üyeleri, üye erişimi erişilir ([üye erişimi](expressions.md#member-access)) ve dizinleyici erişimi ([dizinleyici erişimi](expressions.md#indexer-access)) ifadeleri biçiminde `I.M` ve `I[A]`burada `I` bir arabirim türü `M` yöntemi, özelliği veya arabirim türü, olay ve `A` bir dizin oluşturucu bağımsız değişken listesi.
 
-Kesinlikle olan arabirimler için tek devralma (devralma zincirini her arabirim, tam olarak sıfır veya bir doğrudan temel arabirimi vardır), üye araması etkilerini ([üye araması](expressions.md#member-lookup)), yöntem çağırma ([ Yöntem çağrıları](expressions.md#method-invocations)) ve dizin oluşturucu erişim ([dizinleyici erişimi](expressions.md#indexer-access)) kuralları, tam olarak aynı sınıfları ve yapıları: aynı ada veya imzaya sahip türetilmiş üyeleri daha az daha türetilmiş üyeleri gizle. Ancak, birden çok devralma arabirimleri için belirsizlikleri iki oluşabilir veya daha ilgisiz temel arabirimleri aynı ad veya imzaya üyeleri tanımlanmış olarak bildirin. Bu bölüm, bu tür durumlarda çeşitli örneklerini gösterir. Tüm durumlarda açık yayınları belirsizlikleri gidermek için kullanılabilir.
+Kesinlikle olan arabirimler için tek devralma (devralma zincirini her arabirim, tam olarak sıfır veya bir doğrudan temel arabirimi vardır), üye araması etkilerini ([üye araması](expressions.md#member-lookup)), yöntem çağırma ([ Yöntem çağrıları](expressions.md#method-invocations)) ve dizin oluşturucu erişim ([dizinleyici erişimi](expressions.md#indexer-access)) kuralları, tam olarak aynı sınıflar ve yapılar için: Daha fazla üyeleri Gizle daha az türetilmiş üyeleri aynı ad veya imzaya sahip türetilmiş. Ancak, birden çok devralma arabirimleri için belirsizlikleri iki oluşabilir veya daha ilgisiz temel arabirimleri aynı ad veya imzaya üyeleri tanımlanmış olarak bildirin. Bu bölüm, bu tür durumlarda çeşitli örneklerini gösterir. Tüm durumlarda açık yayınları belirsizlikleri gidermek için kullanılabilir.
 
 Örnekte
 ```csharp
@@ -380,7 +380,7 @@ class A
 ```
 `IBase.F` üyesi tarafından gizlenir `ILeft.F` üyesi. Çağırma `d.F(1)` böylece seçer `ILeft.F`rağmen `IBase.F` aracılığıyla müşteri adayları erişim yolda gizlenmemiş görünmesine `IRight`.
 
-Birden çok devralma arabirimlerde gizleme için sezgisel kuralı sadece budur: bir üye herhangi bir erişim yolunda gizli ise, tüm erişim yollarında gizlenir. Çünkü erişim yolundan `IDerived` için `ILeft` için `IBase` gizler `IBase.F`, üye erişimi yolundan gizlidir ayrıca `IDerived` için `IRight` için `IBase`.
+Birden çok devralma arabirimlerde gizleme için sezgisel Kuralın yalnızca bu. Üye herhangi bir erişim yolunda gizli ise, tüm erişim yollarında gizlenir. Çünkü erişim yolundan `IDerived` için `ILeft` için `IBase` gizler `IBase.F`, üye erişimi yolundan gizlidir ayrıca `IDerived` için `IRight` için `IBase`.
 
 ## <a name="fully-qualified-interface-member-names"></a>Tam bir arabirim üye adları
 
@@ -400,7 +400,7 @@ tam olarak nitelenmiş adını `Paint` olduğu `IControl.Paint` ve tam olarak ni
 
 Yukarıdaki örnekte, başvurmak mümkün değildir `Paint` olarak `ITextBox.Paint`.
 
-Bir arabirim bir ad alanının parçası olduğunda, bir arabirim üyesi tam adı ad alanı adı içerir. Örneğin
+Bir arabirim bir ad alanının parçası olduğunda, bir arabirim üyesi tam adı ad alanı adı içerir. Örneğin:
 ```csharp
 namespace System
 {
@@ -470,7 +470,7 @@ Genel sınıf bildiriminin temel arabirimleri açıklanan benzersizlik kuralı k
 
 ### <a name="explicit-interface-member-implementations"></a>Açık arabirim üyesi uygulamaları
 
-Arabirimleri uygulama amacıyla, bir sınıf veya yapı bildirebilir ***açık arabirim üyesi uygulamalarını***. Açık arabirim üyesi tam arabirim üye adına başvuran bir yöntem, özellik, olay veya dizin oluşturucu bildirimi uygulamasıdır. Örneğin
+Arabirimleri uygulama amacıyla, bir sınıf veya yapı bildirebilir ***açık arabirim üyesi uygulamalarını***. Açık arabirim üyesi tam arabirim üye adına başvuran bir yöntem, özellik, olay veya dizin oluşturucu bildirimi uygulamasıdır. Örneğin:
 ```csharp
 interface IList<T>
 {
@@ -699,7 +699,7 @@ class C: ICloneable
 ```
 `ICloneable.Clone` üyesi `C` uygulaması haline gelir `Clone` içinde `ICloneable` çünkü açık arabirim üyesi uygulamalarını diğer üyelere göre önceliklidir.
 
-Bir sınıf veya yapı iki uyguluyorsa veya daha fazla arabirim bir üyeyi aynı adı, türü ve parametre türleri ile içeren, her biri tek bir sınıf veya yapı üyesi üzerine bu arabirim üyeleri eşlemek mümkündür. Örneğin
+Bir sınıf veya yapı iki uyguluyorsa veya daha fazla arabirim bir üyeyi aynı adı, türü ve parametre türleri ile içeren, her biri tek bir sınıf veya yapı üyesi üzerine bu arabirim üyeleri eşlemek mümkündür. Örneğin:
 ```csharp
 interface IControl
 {
@@ -719,7 +719,7 @@ class Page: IControl, IForm
 
 Burada, `Paint` hem de yöntemleri `IControl` ve `IForm` üzerine eşlenen `Paint` yönteminde `Page`. Elbette da iki yöntem için ayrı açık arabirim üyesi uygulamalarını olması mümkündür.
 
-Gizli üyeleri içeren bir arabirim uygularsa, bir sınıfın veya yapının bazı üyeleri mutlaka açık arabirim üyesi uygulamaları uygulanmalıdır. Örneğin
+Gizli üyeleri içeren bir arabirim uygularsa, bir sınıfın veya yapının bazı üyeleri mutlaka açık arabirim üyesi uygulamaları uygulanmalıdır. Örneğin:
 ```csharp
 interface IBase
 {
@@ -861,7 +861,7 @@ ic.Paint();           // invokes Control.Paint();
 it.Paint();           // invokes TextBox.Paint();
 ```
 
-Açık arabirim üyesi uygulaması geçersiz kılmak mümkün değildir, bu yana açık arabirim üyesi uygulamalarını sanal olarak bildirilemez. Ancak başka bir yöntem çağırmak açık arabirim üyesi uygulaması için mükemmel bir şekilde geçerli olduğundan ve başka bir yöntem izin vermek için sanal bildirilen, türetilmiş sınıfları geçersiz kılmak için. Örneğin
+Açık arabirim üyesi uygulaması geçersiz kılmak mümkün değildir, bu yana açık arabirim üyesi uygulamalarını sanal olarak bildirilemez. Ancak başka bir yöntem çağırmak açık arabirim üyesi uygulaması için mükemmel bir şekilde geçerli olduğundan ve başka bir yöntem izin vermek için sanal bildirilen, türetilmiş sınıfları geçersiz kılmak için. Örneğin:
 ```csharp
 interface IControl
 {
@@ -905,7 +905,7 @@ class MyControl: Control, IControl
 ```
 Olgu, `Control` eşler `IControl.Paint` üzerine `Control.IControl.Paint` yeniden uygulamasında etkilemez `MyControl`, hangi haritalar `IControl.Paint` üzerine `MyControl.Paint`.
 
-Genel üye bildirimleri ve devralınan açık arabirim üyesi bildirimi yeniden uygulanan arabirimleri için arabirim eşleme işlemi katılmak devralındı. Örneğin
+Genel üye bildirimleri ve devralınan açık arabirim üyesi bildirimi yeniden uygulanan arabirimleri için arabirim eşleme işlemi katılmak devralındı. Örneğin:
 ```csharp
 interface IMethods
 {
@@ -932,7 +932,7 @@ class Derived: Base, IMethods
 
 Burada, uygulanması `IMethods` içinde `Derived` eşleyen arabirim yöntemleri üzerine `Derived.F`, `Base.IMethods.G`, `Derived.IMethods.H`, ve `Base.I`.
 
-Arabirimini uygulayan bir sınıf, arayüz, örtük olarak bu arabirimin temel arabirimleri de uygular. Benzer şekilde, bir yeniden bir arabirimin de örtülü olarak tüm arabiriminin temel arabirimleri bir yeniden uygulanmasına uygulamasıdır. Örneğin
+Arabirimini uygulayan bir sınıf, arayüz, örtük olarak bu arabirimin temel arabirimleri de uygular. Benzer şekilde, bir yeniden bir arabirimin de örtülü olarak tüm arabiriminin temel arabirimleri bir yeniden uygulanmasına uygulamasıdır. Örneğin:
 ```csharp
 interface IBase
 {
@@ -961,7 +961,7 @@ Burada, yeniden uygulanması `IDerived` de yeniden uygular `IBase`eşleme `IBase
 
 ### <a name="abstract-classes-and-interfaces"></a>Soyut sınıflar ve arabirimler
 
-Soyut olmayan sınıfı gibi tüm üyeleri sınıfın temel sınıf listesinde listelenen arabirimler uygulamaları soyut bir sınıf sağlamanız gerekir. Ancak, soyut bir sınıf, arabirim yöntemleri soyut yöntemler üzerine eşlemek için izin verilir. Örneğin
+Soyut olmayan sınıfı gibi tüm üyeleri sınıfın temel sınıf listesinde listelenen arabirimler uygulamaları soyut bir sınıf sağlamanız gerekir. Ancak, soyut bir sınıf, arabirim yöntemleri soyut yöntemler üzerine eşlemek için izin verilir. Örneğin:
 ```csharp
 interface IMethods
 {
@@ -978,7 +978,7 @@ abstract class C: IMethods
 
 Burada, uygulanması `IMethods` eşler `F` ve `G` soyut yöntemler hangi kılınmalıdır öğesinden türetilen soyut olmayan sınıflarda `C`.
 
-Açık arabirim üyesi uygulamalarını soyut olamaz, ancak açık arabirim üyesi uygulamalarını Elbette soyut yöntemlerini çağırmak için izin verilen unutmayın. Örneğin
+Açık arabirim üyesi uygulamalarını soyut olamaz, ancak açık arabirim üyesi uygulamalarını Elbette soyut yöntemlerini çağırmak için izin verilen unutmayın. Örneğin:
 ```csharp
 interface IMethods
 {

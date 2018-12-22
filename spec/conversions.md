@@ -512,7 +512,7 @@ Konuyu uzatmamak amacıyla, bu bölümde kısa formunu görev türleri için kul
 
 Bir lambda ifadesi `F` bir ifade ağacı türü ile uyumlu `Expression<D>` varsa `F` temsilci türüyle uyumlu `D`. Bu anonim yöntem, lambda ifadeleri uygulanmaz unutmayın.
 
-Belirli lambda ifadeleri ifade ağacı türlere dönüştürülemez: olsa bile dönüştürme *var.*, derleme zamanında başarısız olur. Bu büyük/küçük harf ise lambda ifadesi:
+Belirli lambda ifadeleri ifade ağacı türlere dönüştürülemez: Olsa da dönüştürmenin *var*, derleme zamanında başarısız olur. Bu büyük/küçük harf ise lambda ifadesi:
 
 *  Sahip bir *blok* gövdesi
 *  Basit ve bileşik atama işleçleri içeriyor
@@ -723,7 +723,7 @@ class Test
 }
 ```
 
-Burada yerel değişkenler yakalamak için uygulanan aynı tekniği de anonim işlevler için ifade ağaçları dönüştürülürken kullanılabilir: derleyicinin ürettiği nesnelere başvuru ifade ağacında depolanabilir ve yerel değişkenlere erişimi olabilir. Bu nesneler üzerinde alan erişen olarak temsil edilir. Bu yaklaşımın avantajı, temsilciler ve ifade ağaçları arasında paylaşılmak üzere "lifted" yerel değişkenler olanak sağlamasıdır.
+Anonim işlevler için ifade ağaçları dönüştürülürken burada yerel değişkenler yakalamak için uygulanan aynı yöntemleri de kullanılabilir: Derleyicinin ürettiği nesnelere başvuru ifade ağacında depolanabilir ve bu nesneler üzerinde alan erişir gibi yerel değişkenlere erişim temsil edilebilir. Bu yaklaşımın avantajı, temsilciler ve ifade ağaçları arasında paylaşılmak üzere "lifted" yerel değişkenler olanak sağlamasıdır.
 
 ## <a name="method-group-conversions"></a>Yöntem grubu dönüştürmeler
 
