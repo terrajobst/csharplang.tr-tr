@@ -37,12 +37,12 @@ public class Point
 }
 ```
 
-Kurallara göre XML belge açıklamaları içindeki metin iyi biçimlendirilmiş olmalıdır (http://www.w3.org/TR/REC-xml). Doğru biçimlendirilmiş XML olgu olması durumunda bir uyarı oluşturulur ve soubor dokumentace bir hatayla karşılaşıldı belirten bir açıklama içerir.
+Kurallara göre XML belge açıklamaları içindeki metin iyi biçimlendirilmiş olmalıdır (https://www.w3.org/TR/REC-xml). Doğru biçimlendirilmiş XML olgu olması durumunda bir uyarı oluşturulur ve soubor dokumentace bir hatayla karşılaşıldı belirten bir açıklama içerir.
 
 Geliştiriciler kendi kümesi etiketleri oluşturmak ücretsiz olsa da, önerilen kümesi tanımlanan [önerilen etiketler](documentation-comments.md#recommended-tags). Önerilen etiketler bazıları, özel anlamları vardır:
 
 *  `<param>` Etiketi parametreler tanımlamak için kullanılır. Böyle bir etiket kullandıysanız, belgeleri Oluşturucu belirtilen parametre var olduğundan ve tüm parametreleri belgeleri açıklamaları açıklanan doğrulamanız gerekir. Bu tür doğrulama başarısız olursa, belgeleri Oluşturucu bir uyarı verir.
-*  `cref` Öznitelik, bir kod öğesi başvuru sağlamak için herhangi bir etiket eklenebilir. Belgeleri Oluşturucu, bu kod öğesi var olduğunu doğrulamanız gerekir. Belgeleri Oluşturucu, doğrulama başarısız olursa bir uyarı verir. Bir ad açıklanan için aranırken bir `cref` özniteliği belgeleri Oluşturucu gerekir saygı göre ad alanı görünürlük `using` kaynak kodu içinde görünen deyimleri. Genel, kod öğeleri normal genel sözdizimi için (IE "`List<T>`") kullanılamaz çünkü geçersiz XML üretir. Kaşlı ayraçlar yerine kullanılabilir (IE "`List{T}`"), veya XML kaçış sözdiziminin kullanılabilir (IE "`List&lt;T&gt;`").
+*  `cref` Öznitelik, bir kod öğesi başvuru sağlamak için herhangi bir etiket eklenebilir. Belgeleri Oluşturucu, bu kod öğesi var olduğunu doğrulamanız gerekir. Belgeleri Oluşturucu, doğrulama başarısız olursa bir uyarı verir. Bir ad açıklanan için aranırken bir `cref` özniteliği belgeleri Oluşturucu gerekir saygı göre ad alanı görünürlük `using` kaynak kodu içinde görünen deyimleri. Genel, kod öğeleri normal genel sözdizimi için (diğer bir deyişle, "`List<T>`") kullanılamaz çünkü geçersiz XML üretir. Kaşlı ayraçlar yerine kullanılabilir (diğer bir deyişle, "`List{T}`"), veya XML kaçış sözdiziminin kullanılabilir (diğer bir deyişle, "`List&lt;T&gt;`").
 *  `<summary>` Etiketi bir tür veya üyeyle ilgili ek bilgileri görüntülemek için bir belge Görüntüleyici tarafından kullanılmak üzere tasarlanmıştır.
 *  `<include>` Etiketi harici bir XML dosyasından bilgiler içerir.
 
