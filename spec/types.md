@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a28397b1ce97dbead6d5014e2b20e108a1018502
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229971"
+---
 # <a name="types"></a>Türler
 
 C# dili türlerini iki ana kategoriye ayrılır: ***değer türleri*** ve ***başvuru türleri***. Hem değer türleri ve başvuru türleri olabilir ***genel türler***, bir veya daha fazla almakta ***tür parametrelerindeki***. Tür parametreleri, her iki değer türleri belirlemek ve başvuru türleri.

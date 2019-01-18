@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 61eeae6173eaa19f9cf6d6e985f3dc107d4c3ac9
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "50245532"
+---
 # <a name="conversions"></a>Dönüşümler
 
 A ***dönüştürme*** bir ifadenin belirli bir tür olacak şekilde değerlendirilmesi olanak sağlar. Bir dönüştürme, farklı bir türe sahip olarak kabul edilmesi için belirli bir türde bir ifade neden olabilecek ya da bir tür için bir tür olmayan bir ifade neden olabilir. Dönüştürmeleri olabilir ***örtük*** veya ***açık***, ve bu bir açık tür dönüştürme gerekli olup olmadığını belirler. Örneği için tür dönüştürme `int` türüne `long` kapalıdır, bunu ifadeler tür `int` türü örtük olarak davranılıp `long`. Türünden ters dönüştürme `long` türüne `int`, açık olan ve açık bir tür dönüştürme gerekiyor.

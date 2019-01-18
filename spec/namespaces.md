@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 9c3863c9a139f5b8309fca6e0c099d0fae7677c3
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47230015"
+---
 # <a name="namespaces"></a>Ad Alanları
 
 Ad alanlarını kullanarak C# programları düzenlenir. Ad alanları, hem bir program için bir "İç" Kuruluş sistemi olarak ve "harici" Kuruluş sistemi olarak kullanılır — diğer programlara sunulan program öğelerini sunmak için bir yol.

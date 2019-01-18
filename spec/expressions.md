@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 75454072a5137b3044f78bb896317fd88a29e336
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "49640918"
+---
 # <a name="expressions"></a>İfadeler
 
 Bir ifade, işleçler ve işlenenler dizisidir. Bu bölümde sözdizimi, değerlendirme işleçler ve işlenenler ve ifadeler anlamını sırasını tanımlar.
@@ -2700,9 +2708,9 @@ Aşağıdaki önceden tanımlanmış çarpma işleçleri listelenir. Tüm işle�
 
    |      |      |      |     |     |      |      |     |
    |:----:|-----:|:----:|:---:|:---:|:----:|:----:|:----|
-   |      | + y   | -y   | +0  | -0  | + INF | -INF | NaN | 
-   | + x   | + z   | -z   | +0  | -0  | + INF | -INF | NaN | 
-   | -x   | -z   | + z   | -0  | +0  | -INF | + INF | NaN | 
+   |      | +y   | -y   | +0  | -0  | + INF | -INF | NaN | 
+   | + x   | +z   | -z   | +0  | -0  | + INF | -INF | NaN | 
+   | -x   | -z   | +z   | -0  | +0  | -INF | + INF | NaN | 
    | +0   | +0   | -0   | +0  | -0  | NaN  | NaN  | NaN | 
    | -0   | -0   | +0   | -0  | +0  | NaN  | NaN  | NaN | 
    | + INF | + INF | -INF | NaN | NaN | + INF | -INF | NaN | 
@@ -2752,9 +2760,9 @@ Formun bir işlem için `x / y`, ikili İşleç aşırı yükleme çözümlemesi
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | + y   | -y   | +0   | -0   | + INF | -INF | NaN  | 
-   | + x   | + z   | -z   | + INF | -INF | +0   | -0   | NaN  | 
-   | -x   | -z   | + z   | -INF | + INF | -0   | +0   | NaN  | 
+   |      | +y   | -y   | +0   | -0   | + INF | -INF | NaN  | 
+   | + x   | +z   | -z   | + INF | -INF | +0   | -0   | NaN  | 
+   | -x   | -z   | +z   | -INF | + INF | -0   | +0   | NaN  | 
    | +0   | +0   | -0   | NaN  | NaN  | +0   | -0   | NaN  | 
    | -0   | -0   | +0   | NaN  | NaN  | -0   | +0   | NaN  | 
    | + INF | + INF | -INF | + INF | -INF | NaN  | NaN  | NaN  | 
@@ -2802,8 +2810,8 @@ Aşağıdaki önceden tanımlanmış kalan işleçleri listelenir. Tüm işleçl
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | + y   | -y   | +0   | -0   | + INF | -INF | NaN  | 
-   | + x   | + z   | + z   | NaN  | NaN  | x    | x    | NaN  | 
+   |      | +y   | -y   | +0   | -0   | + INF | -INF | NaN  | 
+   | + x   | +z   | +z   | NaN  | NaN  | x    | x    | NaN  | 
    | -x   | -z   | -z   | NaN  | NaN  | -x   | -x   | NaN  | 
    | +0   | +0   | +0   | NaN  | NaN  | +0   | +0   | NaN  | 
    | -0   | -0   | -0   | NaN  | NaN  | -0   | -0   | NaN  | 
@@ -3538,7 +3546,7 @@ conditional_or_expression
 
 Koşullu bir mantıksal işlecinin bir işleneni derleme zamanı türü olup olmadığını `dynamic`, ifadeyi dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı ifadenin türüdür `dynamic`, ve çalışma zamanında derleme zamanı türü bu işlenenler çalışma zamanı türünü kullanarak aşağıda açıklanan çözümleme gerçekleşecek `dynamic`.
 
-Form işlemini `x && y` veya `x || y` aşırı yükleme çözünürlüğü uygulama tarafından işlenen ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) işlemi olarak yazılmışsa `x & y` veya `x | y`. Ardından,
+Form işlemini `x && y` veya `x || y` aşırı yükleme çözünürlüğü uygulama tarafından işlenen ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) işlemi olarak yazılmışsa `x & y` veya `x | y`. Then,
 
 *  Tek bir en iyi işleci bulmak aşırı yükleme çözümlemesi başarısız olursa veya aşırı yükleme çözünürlüğü önceden tanımlanmış tamsayı mantıksal işleçler seçerse, bir bağlama zamanı hatası oluşur.
 *  Aksi takdirde, seçilen operatöre önceden tanımlanmış boolean mantıksal işleçler ise ([Boolean mantıksal işleçler](expressions.md#boolean-logical-operators)) veya boş değer atanabilir boolean mantıksal işleçler ([null, boolean mantıksal işleçler](expressions.md#nullable-boolean-logical-operators)), işlem bölümünde anlatıldığı gibi işlenir [Boole koşullu mantıksal işleçleri](expressions.md#boolean-conditional-logical-operators).
@@ -4739,7 +4747,7 @@ atamaları itibaren tüm geçersiz `r.A` ve `r.B` değişkenleri değildir.
 
 Bileşik atama sol işleneni biçiminde olup olmadığını `E.P` veya `E[Ei]` burada `E` derleme zamanı türü `dynamic`, atama dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı Atama ifadesinin türüdür `dynamic`, ve çalışma zamanında çalışma zamanı türüne göre aşağıda açıklanan çözümleme gerçekleşecek `E`.
 
-Formun bir işlem `x op= y` ikili işleci aşırı yükleme çözünürlüğü uygulama tarafından işlenen ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) işlemi olarak yazılmışsa `x op y`. Ardından,
+Formun bir işlem `x op= y` ikili işleci aşırı yükleme çözünürlüğü uygulama tarafından işlenen ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) işlemi olarak yazılmışsa `x op y`. Then,
 
 *  Seçili işlecinin dönüş türü türüne örtük olarak dönüştürülebilir ise `x`, işlemi olarak değerlendirilir `x = x op y`dışında `x` yalnızca bir kez değerlendirilir.
 *  Aksi takdirde seçilen işlecinin dönüş türü türüne açıkça dönüştürülebilir ise seçilen operatöre bir önceden tanımlanmış işleç ise `x`ve eğer `y` türüne açıkça dönüştürülemez `x` veya işlecin bir kaydırma işleci, sonra da işlemi olarak değerlendirilir `x = (T)(x op y)`burada `T` türü `x`dışında `x` yalnızca bir kez değerlendirilir.

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: af7af574814dc04ee3ece0396b7ae5f86b3ec8eb
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229972"
+---
 # <a name="classes"></a>Sınıflar
 
 Bir sınıf veri üyeleri (sabitleri ve alanları), işlev üyeleri (yöntemler, özellikler, olaylar, dizin oluşturucular, işleçler, örnek oluşturucuları, yok ediciler ve statik oluşturucular) ve iç içe türler içerebilecek bir veri yapısıdır. Sınıf türleri, devralma, yapabildiği türetilmiş bir sınıf genişletin ve bir temel sınıf uzmanlaşmış bir mekanizma destekler.

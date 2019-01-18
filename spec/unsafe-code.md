@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 90001cf3d48f216787fc65e59166ec57c5d0ca34
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229964"
+---
 # <a name="unsafe-code"></a>Güvenli olmayan kod
 
 C# dili, çekirdek önceki bölümde tanımlanan özellikle C ve C++ içindeki veri türü olarak işaretçiler, atlama farklıdır. Bunun yerine, C# başvurular ve atık toplayıcısı tarafından yönetilen nesneleri oluşturma yeteneği sağlar. Diğer özelliklerle birlikte bu tasarım, C# C veya C++ daha çok daha güvenli dil sağlar. Çekirdek C# dilinde, yalnızca başlatılmayan bir değişken, "Sallantıdaki" bir işaretçi veya dizi sınırlarının ötesine dizinler bir ifade olması mümkün değildir. Tüm kategoriler hataların C düzenli olarak bu tehdit ve bu nedenle C++ programları ortadan kalkar.

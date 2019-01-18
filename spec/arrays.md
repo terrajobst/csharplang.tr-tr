@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 155c1beecddfdfcce2e7948bcb8d6b80428fbd7a
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229973"
+---
 # <a name="arrays"></a>Diziler
 
 Bir dizi hesaplanan dizinlerini erişilen değişken bir sayı içeren bir veri yapısıdır. Dizinin öğeleri olarak da bilinen bir dizi içindeki tüm aynı türdeki değişkenlerdir ve bu tür dizinin öğe türü olarak adlandırılır.

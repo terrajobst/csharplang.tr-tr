@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: ab41a3c99f79c4cc70f7d4720f7e53b91a410859
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "49640905"
+---
 # <a name="introduction"></a>Giriş
 
 C# (okunur "Bkz Sharp") bir basit, modern, nesne yönelimli ve tür kullanımı uyumlu programlama dilidir. C# dilleri C ailesinde kendi kökleri sahiptir ve Java C ve C++ programcıları için hemen tanıdık gelecektir. C# Standart ECMA uluslararası tarafından ***ECMA 334*** standart ve ISO/IEC ***ISO/IEC 23270*** standart. Microsoft'un C# derleyicisi .NET Framework için hem bu standartlarla uyumlu bir uygulamadır.
@@ -164,14 +172,14 @@ Aşağıdaki tablo, C# ' ın sayısal türleri özetlenmektedir.
 
 | __Kategori__      | __BITS__ | __Tür__  | __Aralık/duyarlık__ |
 |-------------------|----------|-----------|---------------------|
-| İmzalı tam sayı   | 8        | `sbyte`   | -128... 127 |
-|                   | 16       | `short`   | -32, 768... 32, 767 girişini |
-|                   | 32       | `int`     | -2,147,483, 648... 2, 147, 483, 647 |
-|                   | 64       | `long`    | -9,223,372,036,854,775, 808... 9, 223, 372, 036, 854, 775, 807 |
-| İşaretsiz tamsayı | 8        | `byte`    | 0... 255 |
-|                   | 16       | `ushort`  | 0... 65.535 |
-|                   | 32       | `uint`    | 0... 4.294.967.295'e |
-|                   | 64       | `ulong`   | 0... 18,446,744,073,709,551,615 |
+| İmzalı tam sayı   | 8        | `sbyte`   | -128...127 |
+|                   | 16       | `short`   | -32,768...32,767 |
+|                   | 32       | `int`     | -2,147,483,648...2,147,483,647 |
+|                   | 64       | `long`    | -9,223,372,036,854,775,808...9,223,372,036,854,775,807 |
+| İşaretsiz tamsayı | 8        | `byte`    | 0...255 |
+|                   | 16       | `ushort`  | 0...65,535 |
+|                   | 32       | `uint`    | 0...4,294,967,295 |
+|                   | 64       | `ulong`   | 0...18,446,744,073,709,551,615 |
 | Kayan nokta    | 32       | `float`   | 1.5 × 10 ^ −45 3.4 × 10 ^ 7 basamaklı duyarlık 38, |
 |                   | 64       | `double`  | 5.0 × 10 ^ −324 1.7 × 10 ^ 308, 15 basamaklı duyarlık |
 | Ondalık           | 128      | `decimal` | 1.0 × 10 ^ −28 7,9 × 10 ^ 28, 28 basamaklı duyarlık |

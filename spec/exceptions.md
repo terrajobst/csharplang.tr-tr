@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 75fcd5b00ea5cac218a9f7809c53b179df97825c
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229976"
+---
 # <a name="exceptions"></a>Özel Durumlar
 
 C# dilinde özel durumlar hem sistem düzeyinde hem de uygulama düzeyinde işleme yapılandırılmış, Tekdüzen ve tür kullanımı uyumlu bir yol sağlar hata koşulları. C# dilinde özel durum mekanizması ile bazı önemli farklar oldukça, C++, benzer:

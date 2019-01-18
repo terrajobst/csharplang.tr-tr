@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c3b716e6eb331be2ee33fffeb42c1e2406cd3a5c
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229982"
+---
 # <a name="enums"></a>Numaralandırmalar
 
 Bir ***sabit listesi türü*** ayrı değer türü ([değer türleri](types.md#value-types)), adlandırılmış sabitler kümesini bildirir.

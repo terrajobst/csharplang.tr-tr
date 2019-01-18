@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 08c14d9ef2afe30580f456995066c141653ede92
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229974"
+---
 # <a name="delegates"></a>Temsilciler
 
 Temsilciler, diğer diller senaryoları etkinleştirmek — sahip işlev işaretçilerine, C++, Pascal ve Modula--gibi giderdik. C++ işlev işaretçilerinden farklı ancak temsilcileri nesne yönelimli tam olarak, ve hem nesne örneği hem de bir yöntem üye işlevlerinin C++ işaretçileri, temsilciler kapsüller.

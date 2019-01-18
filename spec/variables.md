@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: b7bb7dd575d9e2e6d5dd85bdd3e535411e29fcf4
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229963"
+---
 # <a name="variables"></a>Değişkenler
 
 Değişkenleri depolama konumlarını temsil eder. Her değişken değerlerin neler olması belirleyen bir türe sahip bir değişkende depolanır. C# bir tür kullanımı uyumlu bir dildir ve C# derleyicisi değişkenlerinde depolanan değerler her zaman uygun türü olduğunu garanti eder. Bir değişkenin değerini kullanımını veya atama üzerinden değiştirilebilir `++` ve `--` işleçleri.

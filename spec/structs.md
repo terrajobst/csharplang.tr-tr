@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 72d17175dfb8ef284dce6cf7e5837420fa06f16a
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "47229960"
+---
 # <a name="structs"></a>Yapılar
 
 Veri üyeleri ve işlev üyeleri içerebilir veri yapılarını temsil ettikleri yapılar için sınıflar benzer. Ancak, farklı sınıflar, yapılar değer türleri ve yığın ayırma gerektirmez. Bir sınıf türünün bir değişkeni verilerin ikinci bilinen bir nesne olarak başvuru içerirken bir yapı türünün değişkenini doğrudan, struct'ın verileri içerir.

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c9f8417dc68153f02ceb72bb1d51f3615f3c4961
+ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54272052"
+---
 # <a name="documentation-comments"></a>Belge açıklamaları
 
 C# programcıları kodlarını XML metni içeren bir özel açıklama sözdizimi kullanılarak belge için bir mekanizma sağlar. Kaynak kodu dosyalarında açıklamaları belirli bir biçime sahip bir aracı bu yorumlar ve bunlar önce kaynak kodu öğesi XML üretmek için yönlendirmek için kullanılabilir. Bu söz dizimi çağrılır yorumları kullanarak ***belge açıklamaları***. Hemen bir kullanıcı tanımlı türü (örneğin, bir sınıf, temsilci veya arabirimi) ya da bir üyesi (örneğin, bir alan, olay, özelliği veya yöntemi) gelmelidir. XML oluşturma aracı olarak adlandırılır ***belgeleri Oluşturucu***. (Bu oluşturucunun olabilir, ancak olması gerekmez, C# derleyicisi kendisini.) Belgeleri Oluşturucu tarafından üretilen çıkış adlı ***soubor dokumentace***. Soubor dokumentace girdi olarak kullanılan bir ***belgeleri Görüntüleyicisi***; bir tür bilgilerini ve ilişkili belgelerini görünümünü çeşit üretmek için hedeflenen bir aracı.
