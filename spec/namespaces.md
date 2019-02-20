@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 9c3863c9a139f5b8309fca6e0c099d0fae7677c3
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "47230015"
----
 # <a name="namespaces"></a>Ad Alanları
 
 Ad alanlarını kullanarak C# programları düzenlenir. Ad alanları, hem bir program için bir "İç" Kuruluş sistemi olarak ve "harici" Kuruluş sistemi olarak kullanılır — diğer programlara sunulan program öğelerini sunmak için bir yol.
@@ -434,7 +426,7 @@ namespace N2
     }
 }
 ```
-`N1` bir tür üyesi içeren `A`, ve `C` statik bir yöntem içerir `A`ve çünkü `N2` her ikisi de başvuru alır `A` olarak bir *simple_name* belirsiz ve derleme zamanı bir hata oluştu. 
+`N1` bir tür üyesi içeren `A`, ve `C` içeren bir statik alan `A`ve çünkü `N2` her ikisi de başvuru alır `A` olarak bir *simple_name* belirsiz ve derleme zamanı bir hata oluştu. 
 
 Gibi bir *using_alias_directive*, *using_namespace_directive* derleme biriminde veya ad alanı temel alınan bildirim alanına tüm yeni üyeleri katkıda değil, ancak bunun yerine yalnızca etkiler göründüğü derleme birimi veya ad alanı gövdesi.
 

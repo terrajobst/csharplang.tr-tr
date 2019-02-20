@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 75454072a5137b3044f78bb896317fd88a29e336
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "49640918"
----
 # <a name="expressions"></a>İfadeler
 
 Bir ifade, işleçler ve işlenenler dizisidir. Bu bölümde sözdizimi, değerlendirme işleçler ve işlenenler ve ifadeler anlamını sırasını tanımlar.
@@ -92,7 +84,7 @@ Tam olarak tüm--uygulanır, dinamik bağlama, ne zaman denetleme--derleme uygul
 
 ### <a name="types-of-constituent-expressions"></a>Bağlı ifade türleri
 
-Bir işlem statik olarak bağlı olduğunda (örneğin bir alıcı ve bağımsız değişken, bir dizin veya bir işlenen) bağlı bir ifadenin türü her zaman bu ifade, derleme zamanı türünde kabul edilir.
+Bir işlem statik olarak bağlı olduğunda (örneğin bir alıcı, bağımsız değişken, bir dizin veya bir işlenen) bağlı bir ifadenin türü her zaman bu ifade, derleme zamanı türünde kabul edilir.
 
 Bir işlemi dinamik olarak bağlı olduğunda, bağlı bir ifadenin türü oluşturan ifadenin derleme zamanı türüne bağlı olarak farklı şekilde belirlenir:
 
