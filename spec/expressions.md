@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 67019511d49a786a5d6edf6fea442f745fc40f3f
+ms.sourcegitcommit: 0a80f26b8e455c4f09843a10e11e29c24d2d922e
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57347280"
+---
 # <a name="expressions"></a>İfadeler
 
 Bir ifade, işleçler ve işlenenler dizisidir. Bu bölümde sözdizimi, değerlendirme işleçler ve işlenenler ve ifadeler anlamını sırasını tanımlar.
@@ -2943,7 +2951,7 @@ Aşağıdaki önceden tanımlanmış çıkarma işleçleri listelenir. Tüm çı
 
    |      |      |      |      |      |      |     |
    |:----:|:----:|:----:|:----:|:----:|:----:|:---:|
-   | NaN  | y    | +0   | -0   | + INF | -INF | NaN | 
+   |      | y    | +0   | -0   | + INF | -INF | NaN | 
    | x    | z    | x    | x    | -INF | + INF | NaN | 
    | +0   | -y   | +0   | +0   | -INF | + INF | NaN | 
    | -0   | -y   | -0   | +0   | -INF | + INF | NaN | 
