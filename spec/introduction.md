@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ab41a3c99f79c4cc70f7d4720f7e53b91a410859
-ms.sourcegitcommit: 3fc033b6e98ed7ecdf46a85c79b00a3a3ddcf963
+ms.openlocfilehash: db10046af5d635b430951679a448e23680b18b87
+ms.sourcegitcommit: a19fac74c01a6c3da67d38b2f79527145d4edcbc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "49640905"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426818"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -170,7 +170,7 @@ Karakter ve dize işleme C# dilinde Unicode kodlaması kullanır. `char` Türün
 Aşağıdaki tablo, C# ' ın sayısal türleri özetlenmektedir.
 
 
-| __Kategori__      | __BITS__ | __Tür__  | __Aralık/duyarlık__ |
+| __Kategori__      | __Bits__ | __Tür__  | __Aralık/duyarlık__ |
 |-------------------|----------|-----------|---------------------|
 | İmzalı tam sayı   | 8        | `sbyte`   | -128...127 |
 |                   | 16       | `short`   | -32,768...32,767 |
@@ -288,7 +288,7 @@ En yüksek öncelikten en düşüğe sırasını işleci kategorileri listeleme 
 | Mantıksal VEYA                       | <code>x &#124; y</code> | Tamsayı bitwise VEYA, boolean mantıksal VEYA |
 | Koşullu VE                  | `x && y`          | Değerlendirilen `y` yalnızca `x` olduğu `true` |
 | Koşullu VEYA                   | <code>x &#124;&#124; y</code> | Değerlendirilen `y` yalnızca `x` olduğu `false` |
-| Null birleşim                  | `X ?? y`          | Değerlendiren `y` varsa `x` olduğu `null`, `x` Aksi takdirde |
+| Null birleşim                  | `x ?? y`          | Değerlendiren `y` varsa `x` olduğu `null`, `x` Aksi takdirde |
 | Koşullu                      | `x ? y : z`       | Değerlendirir `y` varsa `x` olduğu `true`, `z` varsa `x` olduğu `false` |
 | Atama ve anonim işlev | `x = y`           | Atama |
 |                                  | `x op= y`         | Bileşik atama; desteklenen işleçler şunlardır: `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` <code>&#124;=</code> |
@@ -602,7 +602,7 @@ Bir sınıf üyesi ya da olan ***statik üyeleri*** veya ***örnek üyeleri***. 
 Aşağıdaki tabloda, tür üyeleri bir sınıf içeren genel bir bakış sağlar.
 
 
-| __Üyesi__   | __Açıklama__ |
+| __Üye__   | __Açıklama__ |
 |------------  |-----------------|
 | Sabitler    | Sınıf ile ilişkili olan sabit değerler |
 | Alanlar       | Sınıfın değişkenleri |
@@ -620,7 +620,7 @@ Aşağıdaki tabloda, tür üyeleri bir sınıf içeren genel bir bakış sağla
 Bir sınıfın her üyesine erişebilir üyeyi program metni bölümlerine denetleyen bir ilişkili erişilebilirlik sahiptir. Erişilebilirlik beş olası biçimi vardır. Bunlar aşağıdaki tabloda özetlenmiştir.
 
 
-| __Erişilebilirlik__    | __Anlamı__ |
+| __Erişilebilirlik__    | __Açıklama__ |
 |----------------------|-----------------|
 | `public`             | Olmayan sınırlı erişim |
 | `protected`          | Bu sınıf veya sınıfların sınırlı erişim, bu sınıftan türetilen |
