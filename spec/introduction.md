@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: db10046af5d635b430951679a448e23680b18b87
-ms.sourcegitcommit: a19fac74c01a6c3da67d38b2f79527145d4edcbc
+ms.sourcegitcommit: 4cc6d73a765ac9827ab00c48ad9f09204baf888f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426818"
 ---
 # <a name="introduction"></a>Giriş
@@ -170,7 +170,7 @@ Karakter ve dize işleme C# dilinde Unicode kodlaması kullanır. `char` Türün
 Aşağıdaki tablo, C# ' ın sayısal türleri özetlenmektedir.
 
 
-| __Kategori__      | __Bits__ | __Tür__  | __Aralık/duyarlık__ |
+| __Kategori__      | __BITS__ | __Tür__  | __Aralık/duyarlık__ |
 |-------------------|----------|-----------|---------------------|
 | İmzalı tam sayı   | 8        | `sbyte`   | -128...127 |
 |                   | 16       | `short`   | -32,768...32,767 |
@@ -602,7 +602,7 @@ Bir sınıf üyesi ya da olan ***statik üyeleri*** veya ***örnek üyeleri***. 
 Aşağıdaki tabloda, tür üyeleri bir sınıf içeren genel bir bakış sağlar.
 
 
-| __Üye__   | __Açıklama__ |
+| __Üyesi__   | __Açıklama__ |
 |------------  |-----------------|
 | Sabitler    | Sınıf ile ilişkili olan sabit değerler |
 | Alanlar       | Sınıfın değişkenleri |
@@ -620,7 +620,7 @@ Aşağıdaki tabloda, tür üyeleri bir sınıf içeren genel bir bakış sağla
 Bir sınıfın her üyesine erişebilir üyeyi program metni bölümlerine denetleyen bir ilişkili erişilebilirlik sahiptir. Erişilebilirlik beş olası biçimi vardır. Bunlar aşağıdaki tabloda özetlenmiştir.
 
 
-| __Erişilebilirlik__    | __Açıklama__ |
+| __Erişilebilirlik__    | __Anlamı__ |
 |----------------------|-----------------|
 | `public`             | Olmayan sınırlı erişim |
 | `protected`          | Bu sınıf veya sınıfların sınırlı erişim, bu sınıftan türetilen |
