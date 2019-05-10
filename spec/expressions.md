@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 67019511d49a786a5d6edf6fea442f745fc40f3f
-ms.sourcegitcommit: 0a80f26b8e455c4f09843a10e11e29c24d2d922e
+ms.openlocfilehash: 066c300d4c2baa8749e132730ecd48275e2957f7
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57347280"
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64489006"
 ---
 # <a name="expressions"></a>İfadeler
 
@@ -2658,7 +2658,7 @@ Amacı `GetResult` yöntemi tamamlandığında, görevin sonucunu elde etmektir.
 
 Arabirim yöntemleri bir awaiter'ın uygulaması `INotifyCompletion.OnCompleted` ve `ICriticalNotifyCompletion.UnsafeOnCompleted` temsilci edilmesini `r` en fazla bir kez çağrılacak. Aksi takdirde, kapsayan zaman uyumsuz işlev davranışı tanımsızdır.
 
-## <a name="arithmetic-operators"></a>Aritmetik işleçler
+## <a name="arithmetic-operators"></a>Aritmetik İşleçler
 
 `*`, `/`, `%`, `+`, Ve `-` işleçleri aritmetik işleçler çağrılır.
 
@@ -3485,7 +3485,7 @@ E operator ^(E x, E y);
 
 Değerlendirme sonucu `x op y`burada `x` ve `y` ifadeler bir numaralandırma türünün `E` bir temel türü ile `U`, ve `op` mantıksal işleçler biridir, tamamen aynı. Değerlendirme `(E)((U)x op (U)y)`. Diğer bir deyişle, sabit listesi türü mantıksal işleçler yalnızca iki işlenenden temel alınan türü üzerinde mantıksal işlem gerçekleştirin.
 
-### <a name="boolean-logical-operators"></a>Boolean mantıksal işleçler
+### <a name="boolean-logical-operators"></a>Boole mantıksal işleçleri
 
 Önceden tanımlanmış boolean mantıksal işleçler şunlardır:
 ```csharp

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 3232163ed91d9d8bb6b0babf94c4282bfd60976c
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488930"
+---
 # <a name="namespaces"></a>Ad Alanları
 
 Ad alanlarını kullanarak C# programları düzenlenir. Ad alanları, hem bir program için bir "İç" Kuruluş sistemi olarak ve "harici" Kuruluş sistemi olarak kullanılır — diğer programlara sunulan program öğelerini sunmak için bir yol.
@@ -127,7 +135,7 @@ class Test
 
 Program extern varlığını diğer adları bildirir `X` ve `Y`, ancak diğer adlar gerçek tanımlarını programa dış. Aynı adlı `N.B` sınıfları artık başvurulabilir olarak `X.N.B` ve `Y.N.B`, veya ad alanı diğer ad niteleyicisi kullanarak `X::N.B` ve `Y::N.B`. Bir program dış tanım olarak sağlanan bir extern diğer adı bildiren bir hata oluşur.
 
-## <a name="using-directives"></a>using yönergeleri
+## <a name="using-directives"></a>Using yönergeleri
 
 ***Using yönergeleri*** ad alanları ve diğer ad alanlarında tanımlanan türlerin kullanımı kolaylaştırmak. Ad çözümleme işlemi yönergeleri etkisi kullanarak *namespace_or_type_name*s ([Namespace ve tür adları](basic-concepts.md#namespace-and-type-names)) ve *simple_name*s ([basit adları ](expressions.md#simple-names)), ancak bildirimleri yönergeleri kullanarak, farklı değil katkıda yeni üyeler temel alınan bildirim alanlarına derleme biriminden veya ad alanları içinde bunlar kullanılır.
 

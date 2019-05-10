@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: e103f6629a363c6cd76607699ff74d69aa73ed57
+ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 04/25/2019
+ms.locfileid: "64488964"
+---
 # <a name="lexical-structure"></a>Sözcük yapısı
 
 ## <a name="programs"></a>Programlar
@@ -321,7 +329,7 @@ Bunlar aşağıdaki dönüştürmeleri, sırayla uygulanır sonra aynıysa iki t
 
 İki ardışık içeren tanımlayıcılar alt çizgi karakteri (`U+005F`) uygulama tarafından kullanım için ayrılmıştır. Örneğin, bir uygulama iki alt çizgi ile başlayan genişletilmiş anahtar sözcükleri sağlayabilir.
 
-### <a name="keywords"></a>Anahtar Sözcükler
+### <a name="keywords"></a>anahtar sözcükler
 
 A ***anahtar sözcüğü*** ayrılmıştır ve tarafından zaman başında dışında bir tanımlayıcı olarak kullanılamaz, tanımlayıcı benzeri karakter dizisidir `@` karakter.
 
