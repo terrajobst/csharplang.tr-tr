@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 9a9baf63b83ae4eb8af0e3b8c65ed3256222f12f
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 201db57d243c9d0e22553366bc653d02e183aa4b
+ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488887"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66193862"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -20,7 +20,7 @@ C# programları ve kitaplıkları zaman uyumlu bir şekilde geliştirebilirsiniz
 
 Bu bölümün geri kalanında, C# dilinin temel özelliklerini açıklar. Sonraki bölümlerde ayrıntılı odaklı ve bazen matematiksel bir şekilde kurallar ve özel durumlar açıklayan olsa da, bu bölümde açıklık ve bütünlük çoğaltamaz kısaltma üstlenmeye çalışır. Amaç, erken programlar yazılmasını ve sonraki bölümlerde okunmasını kolaylaştırmak dil için bir tanıtım okuyucu sağlamaktır.
 
-## <a name="hello-world"></a>Merhaba Dünya
+## <a name="hello-world"></a>Merhaba dünya
 
 "Hello, World" programı, geleneksel bir programlama dili tanıtmak için kullanılır. Bunu C# ' de şu şekildedir:
 
@@ -648,8 +648,7 @@ Pair<int,string> pair = new Pair<int,string> { First = 1, Second = "two" };
 int i = pair.First;     // TFirst is int
 string s = pair.Second; // TSecond is string
 ```
-Sağlanan gibi tür bağımsız değişkenleri ile genel tür `Pair<int,string>
-    ` yukarıda oluşturulan tür adı verilir.
+Sağlanan gibi tür bağımsız değişkenleri ile genel tür `Pair<int,string>` yukarıda oluşturulan tür adı verilir.
 
 ### <a name="base-classes"></a>Temel sınıflar
 
@@ -1131,9 +1130,7 @@ C# örneği hem de statik oluşturucular destekler. Bir ***örnek oluşturucusu*
 
 Bir oluşturucu dönüş türü ve kapsayan sınıfı aynı ada sahip bir yöntemi gibi bildirilir. Bir oluşturucu bildirimi içeriyorsa bir `static` değiştiricisi, bir statik Oluşturucu bildirir. Aksi takdirde, bir örnek oluşturucusu bildirir.
 
-Örnek oluşturucuları aşırı yüklenebilir. Örneğin, `List<T>
-` sınıfı bildirir, bir parametre ve süren iki örnek oluşturucuları bir `int` parametresi. Örnek oluşturucuları kullanarak çağrılır `new` işleci. Aşağıdaki deyimleri iki ayırma `List<string>
-` her oluşturucular kullanma örnekleri `List` sınıfı.
+Örnek oluşturucuları aşırı yüklenebilir. Örneğin, `List<T>` sınıfı bildirir, bir parametre ve süren iki örnek oluşturucuları bir `int` parametresi. Örnek oluşturucuları kullanarak çağrılır `new` işleci. Aşağıdaki deyimleri iki ayırma `List<string>` her oluşturucular kullanma örnekleri `List` sınıfı.
 
 ```csharp
 List<string> list1 = new List<string>();
@@ -1151,8 +1148,7 @@ A `get` bir parametresiz yöntemin dönüş değerini özellik türü ile erişi
 
 A `set` erişimci karşılık gelen bir yönteme adlı tek bir parametre `value` ve dönüş türü yok. Ne zaman bir özelliği başvuru atama hedefi veya işleneni olarak `++` veya `--`, `set` erişimci, yeni değer sağlayan bağımsız değişkenlerle çağrılır.
 
-`List<T>
-` Sınıfı bildirir iki özellik `Count` ve `Capacity`, olan salt okunur ve okuma-yazma, sırasıyla. Bu özelliklerin kullanımı bir örnek verilmiştir.
+`List<T>` Sınıfı bildirir iki özellik `Count` ve `Capacity`, olan salt okunur ve okuma-yazma, sırasıyla. Bu özelliklerin kullanımı bir örnek verilmiştir.
 
 ```csharp
 List<string> names = new List<string>();
@@ -1188,11 +1184,9 @@ Bir ***olay*** bir sınıf veya nesne bildirimleri sağlamak için sağlayan bir
 
 (Olay soyut değil ve erişimcileri bildirmiyor sağlanan) bir olay üyesi bildiren bir sınıf içinde olay yalnızca bir temsilci türüne bir alan gibi davranır. Olaya eklenmiş olan olay işleyicilerini temsil eden bir temsilci bir başvuru alan depolar. Olay işleyici mevcut olması durumunda, alandır `null`.
 
-`List<T>
-` Sınıfı olarak adlandırılan tek bir olay üyesi bildirir `Changed`, yeni bir öğe listesine eklendiğini gösterir. `Changed` Olayı tarafından oluşturulur `OnChanged` hangi ilk olay olup olmadığını denetler, sanal bir yöntem `null` (hiçbir işleyicileri bulunduğunu anlamına gelir). Olay bildirmek, kavram olay tarafından temsil edilen temsilci çağırmak için tam olarak eşittir; Bu nedenle, olayları oluşturma için hiçbir özel dil yapıları vardır.
+`List<T>` Sınıfı olarak adlandırılan tek bir olay üyesi bildirir `Changed`, yeni bir öğe listesine eklendiğini gösterir. `Changed` Olayı tarafından oluşturulur `OnChanged` hangi ilk olay olup olmadığını denetler, sanal bir yöntem `null` (hiçbir işleyicileri bulunduğunu anlamına gelir). Olay bildirmek, kavram olay tarafından temsil edilen temsilci çağırmak için tam olarak eşittir; Bu nedenle, olayları oluşturma için hiçbir özel dil yapıları vardır.
 
-İstemciler react ile olayları ***olay işleyicileri***. Olay işleyicileri kullanılarak eklenen `+=` işleci ve kaldırılan kullanarak `-=` işleci. Aşağıdaki örnek bir olay işleyicisi ekler `Changed` olayı bir `List<string>
-`.
+İstemciler react ile olayları ***olay işleyicileri***. Olay işleyicileri kullanılarak eklenen `+=` işleci ve kaldırılan kullanarak `-=` işleci. Aşağıdaki örnek bir olay işleyicisi ekler `Changed` olayı bir `List<string>`.
 
 ```csharp
 using System;
@@ -1221,10 +1215,7 @@ Denetim bir olay temel alınan depolamanın istenen burada Gelişmiş senaryolar
 
 Bir ***işleci*** belirli ifade işleci bir sınıfın bir örneği için uygulama ne anlama geldiğini tanımlayan bir üyesidir. Üç tür işleç tanımlanabilir: Birli işleçler, ikili işleçler ve dönüştürme işleçleri. Tüm işleçler olarak bildirilmelidir `public` ve `static`.
 
-`List<T>
-` Sınıfı bildirir iki işleç `operator==` ve `operator!=`ve bu nedenle bu işleçleri için geçerli ifadeler için yeni anlamı verir `List` örnekleri. Özellikle, da iki eşitlik operatörlerini tanımlayın `List<T>
-` örnekler olarak karşılaştırma kullanarak içerdiği nesnelerin her biri kendi `Equals` yöntemleri. Aşağıdaki örnekte `==` karşılaştırmak için işleci `List<int>
-` örnekleri.
+`List<T>` Sınıfı bildirir iki işleç `operator==` ve `operator!=`ve bu nedenle bu işleçleri için geçerli ifadeler için yeni anlamı verir `List` örnekleri. Özellikle, da iki eşitlik operatörlerini tanımlayın `List<T>` örnekler olarak karşılaştırma kullanarak içerdiği nesnelerin her biri kendi `Equals` yöntemleri. Aşağıdaki örnekte `==` karşılaştırmak için işleci `List<int>` örnekleri.
 
 ```csharp
 using System;
@@ -1245,9 +1236,7 @@ class Test
 }
 ```
 
-İlk `Console.WriteLine` çıkarır `True` listelerini nesneleri aynı sırada aynı değerlerle aynı sayıda içerdiğinden. Vardı `List<T>
-` tanımlanmamış `operator==`, ilk `Console.WriteLine` çıkış `False` çünkü `a` ve `b` başvuru farklı `List<int>
-` örnekleri.
+İlk `Console.WriteLine` çıkarır `True` listelerini nesneleri aynı sırada aynı değerlerle aynı sayıda içerdiğinden. Vardı `List<T>` tanımlanmamış `operator==`, ilk `Console.WriteLine` çıkış `False` çünkü `a` ve `b` başvuru farklı `List<int>` örnekleri.
 
 #### <a name="destructors"></a>Yıkıcılar
 

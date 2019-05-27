@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b7bb7dd575d9e2e6d5dd85bdd3e535411e29fcf4
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: ff285fc202d14c2060c5f005c319c7886458a168
+ms.sourcegitcommit: 8152182f0a477cb3082e625b607262cc459a17f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488860"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66174244"
 ---
 # <a name="variables"></a>Değişkenler
 
@@ -574,7 +574,7 @@ Bir ifade için *expr* formun `expr_first ?? expr_second`:
 *  Belirli atama onayına durumunu *v* önce *expr_first* kesin atama durumu ile aynı *v* önce *expr*.
 *  Belirli atama onayına durumunu *v* önce *expr_second* kesin atama durumu ile aynı *v* sonra *expr_first*.
 *  Belirli atama onayına deyiminin *v* sonra *expr* tarafından belirlenir:
-    * Varsa *expr_first* sabit ifade ([sabit ifadeler](expressions.md#constant-expressions)) null değeriyle sonra durumunu *v* sonra *expr* aynıdır durumu *v* sonra *expr_second*.
+    * Varsa *expr_first* sabit ifade ([sabit ifadeler](expressions.md#constant-expressions)) null değerine ve durumu ile *v* sonra *expr* aynıdır durumunu *v* sonra *expr_second*.
 *  Aksi takdirde, durumunu *v* sonra *expr* kesin atama durumu ile aynı *v* sonra *expr_first*.
 
 #### <a name="-conditional-expressions"></a>?: (koşullu) ifadeler

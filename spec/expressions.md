@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 066c300d4c2baa8749e132730ecd48275e2957f7
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 130898a8b5a7b8eb986b314cb4cf78038e840b02
+ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64489006"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66193928"
 ---
 # <a name="expressions"></a>İfadeler
 
@@ -2489,7 +2489,7 @@ Formun bir işlem için `-x`, birli işleç aşırı yükleme çözümlemesi ([b
    long operator -(long x);
    ```
 
-   Sonuç çıkarılmasıyla hesaplanır `x` sıfırdan. Varsa değerini, `x` işlenen türünde gösterilebilir en küçük değer (-2 ^ 31 için `int` veya -2 ^ 63 için `long`), matematik negation ardından `x` işlenen türü içinde gösterilebilir değil. İçinde bu meydana gelirse bir `checked` bağlamı bir `System.OverflowException` içinde ortaya çıkarsa; oluşturulur bir `unchecked` bağlamını, işlenenin sonucudur ve taşma bildirilmedi.
+   Sonuç çıkarılmasıyla hesaplanır `x` sıfırdan. Varsa değerini `x` işlenen türünde gösterilebilir en küçük değer (-2 ^ 31 için `int` veya -2 ^ 63 için `long`), ardından matematik negation `x` işlenen türü içinde gösterilebilir değil. İçinde bu meydana gelirse bir `checked` bağlamı bir `System.OverflowException` içinde ortaya çıkarsa; oluşturulur bir `unchecked` bağlamını, işlenenin sonucudur ve taşma bildirilmedi.
 
    Değilleme işleci, işlenenin türü olup olmadığını `uint`, türüne dönüştürülür `long`, ve sonuç türü `long`. Bir özel durum verir kuralıdır `int` değeri -2147483648 (-2 ^ 31) ondalık tamsayı sabit değeri yazılacak ([tamsayı sabit değerlerinde](lexical-structure.md#integer-literals)).
 

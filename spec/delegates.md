@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 08c14d9ef2afe30580f456995066c141653ede92
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 994b22f5375d57cfc4c7537c64345a27ddf3e416
+ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488978"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66193883"
 ---
 # <a name="delegates"></a>Temsilciler
 
@@ -73,7 +73,7 @@ class B
 }
 ```
 
-Yöntemleri `A.M1` ve `B.M1 `her iki temsilci türleriyle uyumlu `D1` ve `D2` , sahip oldukları olduğundan aynı dönüş türü ve parametre listesi; ancak, bu temsilci türleri olmadıkları için iki farklı türleri olan değiştirilebilir. Yöntemleri `B.M2`, `B.M3`, ve `B.M4` temsilci türleriyle uyumsuz `D1` ve `D2`, parametre listeleri ya da farklı dönüş türlerine sahip olduğu.
+Yöntemleri `A.M1` ve `B.M1` her iki temsilci türleriyle uyumlu `D1` ve `D2` , sahip oldukları olduğundan aynı dönüş türü ve parametre listesi; ancak, bu temsilci türleri olmadıkları için iki farklı türleri olan değiştirilebilir. Yöntemleri `B.M2`, `B.M3`, ve `B.M4` temsilci türleriyle uyumsuz `D1` ve `D2`, parametre listeleri ya da farklı dönüş türlerine sahip olduğu.
 
 Diğer genel tür bildirimleri gibi bir oluşturulmuş bir temsilci türü oluşturmak için tür bağımsız değişkenleri verilmelidir. Parametre türleri ve dönüş türü bir oluşturulmuş bir temsilci türü, her tür parametresi temsilci bildirimi için karşılık gelen tür bağımsız değişkeni oluşturulmuş bir temsilci türünün getirilmesiyle oluşturulur. Parametre türleri ve sonuçta elde edilen dönüş türünü belirlemede yöntemleri oluşturulmuş temsilci türüyle uyumlu kullanılır. Örneğin:
 

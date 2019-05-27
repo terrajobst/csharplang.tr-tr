@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: af7af574814dc04ee3ece0396b7ae5f86b3ec8eb
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 917e2f1e196013f85eefbda21fb3d717cc681084
+ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488908"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66193903"
 ---
 # <a name="classes"></a>Sınıflar
 
@@ -1500,7 +1500,7 @@ Geçici olmayan alanlar için yönergeler yeniden sıralama iyileştirme teknikl
 Bu kısıtlamalar, tüm iş parçacıkları tarafından gerçekleştirilen sırada başka bir iş parçacığı tarafından gerçekleştirilen geçici yazma dikkate aldığınızdan emin olun. Uyumlu bir uygulama, bir tek toplam yürütme tüm iş parçacıklarından görülen olarak geçici yazma sıralamasını sağlamak için gerekli değildir. Geçici bir alan türü aşağıdakilerden biri olmalıdır:
 
 *  A *reference_type*.
-*  Türü `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `char`, `float`, `bool`, `System.IntPtr`, veya` System.UIntPtr`.
+*  Türü `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `char`, `float`, `bool`, `System.IntPtr`, veya `System.UIntPtr`.
 *  Bir *enum_type* temel bir enum türü olan `byte`, `sbyte`, `short`, `ushort`, `int`, veya `uint`.
 
 Örnek
