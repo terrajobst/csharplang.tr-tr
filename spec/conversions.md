@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 61eeae6173eaa19f9cf6d6e985f3dc107d4c3ac9
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: d082393a00496b948ad4e3ff9e135d94e89d2448
+ms.sourcegitcommit: 1a46441156b13db6c845f4bbb886284387d73023
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488953"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67047030"
 ---
 # <a name="conversions"></a>Dönüşümler
 
@@ -47,7 +47,7 @@ Ancak, dinamik dönüştürmeler ([dinamik örtük dönüştürmelerin](conversi
 
 Bir kimlik dönüştürme herhangi bir türü aynı türe dönüştürür. Gerekli bir tür zaten olan bir varlık, bu türe dönüştürülebilir olmalıdır söylenebilir, bu dönüşümü yok.
 
-*  Nesne ve dinamik eşdeğer kabul edildiği için bir kimlik dönüştürme arasında yoktur `object` ve `dynamic`, aynı olan tüm oluşumlarını değiştirilirken oluşturulan türler arasında `dynamic` ile `object`.
+*  Çünkü `object` ve `dynamic` eşdeğer bir kimlik dönüştürme arasında değerlendirilir `object` ve `dynamic`, aynı olan tüm oluşumlarını değiştirilirken oluşturulan türler arasında `dynamic` ile`object`.
 
 ### <a name="implicit-numeric-conversions"></a>Örtük sayısal dönüşümler
 
@@ -412,7 +412,7 @@ Standart örtük dönüştürmeler, örtük dönüştürmelerin kullanıcı tan�
 
 Standart açık dönüştürmeler, tüm standart örtük dönüştürmeler yanı sıra alt kümesini bir ters standart örtük dönüştürme bulunduğu açık dönüştürmeler ' dir. Diğer bir deyişle, standart bir örtük dönüştürme bir türden varsa `A` türüne `B`, standart bir açık dönüştürme türünden varsa `A` türüne `B` ve türünden `B` türüne `A`.
 
-## <a name="user-defined-conversions"></a>Kullanıcı tanımlı dönüşümler
+## <a name="user-defined-conversions"></a>Kullanıcı tanımlı dönüştürmeler
 
 C# ile genişletilmesi önceden tanımlanmış örtük ve açık dönüştürmeler sağlar ***kullanıcı tanımlı dönüşümler***. Dönüştürme işleçleri bildirerek kullanıcı tanımlı dönüştürmeler sunulmuştur ([dönüştürme işleçleri](classes.md#conversion-operators)) sınıf ile yapı türleri.
 
