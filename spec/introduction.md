@@ -1,28 +1,28 @@
 ---
-ms.openlocfilehash: 201db57d243c9d0e22553366bc653d02e183aa4b
-ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
+ms.openlocfilehash: 8bc4bf6310fb8a8457beee167f18d30aaca10a8e
+ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66193862"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876905"
 ---
 # <a name="introduction"></a>Giriş
 
-C# (okunur "Bkz Sharp") bir basit, modern, nesne yönelimli ve tür kullanımı uyumlu programlama dilidir. C# dilleri C ailesinde kendi kökleri sahiptir ve Java C ve C++ programcıları için hemen tanıdık gelecektir. C# Standart ECMA uluslararası tarafından ***ECMA 334*** standart ve ISO/IEC ***ISO/IEC 23270*** standart. Microsoft'un C# derleyicisi .NET Framework için hem bu standartlarla uyumlu bir uygulamadır.
+C#("bkz. diyez") basit, modern, nesne odaklı ve tür açısından güvenli bir programlama dilidir. C#C 'nin dil ailesinde köklerine sahiptir ve hemen C, C++ve Java programcılarına tanıdık gelecektir. C#ECMA ***-334*** standardı ve ISO/IEC tarafından ***ıso/IEC 23270*** standardı olarak standartlaştırılmış Ecma International tarafından standartlaştırılmış olur. Microsoft 'un C# .NET Framework derleyicisi, bu standartların her ikisinin de uyumlu bir uygulamasıdır.
 
-C#, nesne yönelimli bir dildir ancak C# daha fazla için destek içerir ***bileşen odaklı*** programlama. Çağdaş yazılım tasarımı giderek daha fazla işlevsellik müstakil ve kendiliğinden açıklayıcı paketleri biçiminde yazılım bileşenlerini kullanır. Bu bileşenler özellikleri, yöntemleri ve olayları ile bunların bir programlama modeli sunar, anahtarıdır; bileşen hakkında tanımlayıcı bilgiler sağlayan özniteliklerine sahip oldukları; ve bunlar kendi belgelerinin dahil edilip derecelendirilir. C# doğrudan bu kavramlar desteklemek için dil yapıları C# yapmak çok doğal dili oluşturma ve yazılım bileşenlerini kullanma sağlar.
+C#, nesne odaklı bir dildir, ancak C# daha fazla ***bileşen odaklı*** programlama desteğini içerir. Modern yazılım tasarımı giderek, yazılım bileşenlerini, kendi kendine içerilen ve kendi kendine açıklayan işlev paketleri biçiminde kullanır. Bu bileşenlere anahtar, özellikler, Yöntemler ve olaylar içeren bir programlama modeli sunduklarında; Bunlar, bileşen hakkında bildirime dayalı bilgiler sağlayan özniteliklere sahiptir; ve kendi belgelerini içerirler. C#, bu kavramları doğrudan desteklemek için yazılım bileşenlerinin oluşturulması ve C# kullanılması için çok doğal bir dil sunarak dil yapıları sağlar.
 
-Birkaç C# ürettiği yapımı güçlü ve dayanıklı uygulamaların özellikleri: ***Çöp toplama*** otomatik olarak; kullanılmayan nesnelerin kapladığı belleği geri kazanır ***özel durum işleme*** hata algılama ve kurtarma; yapılandırılmış ve Genişletilebilir bir yaklaşım sunan ve ***tür kullanımı uyumlu*** dilinin tasarım kılar imkansız başlatılmamış değişkenlerinden okuyun dizin için kendi sınırları ötesinde veya denetlenmeyen gerçekleştirmek için bir dizi yayınları yazın.
+Birçok C# Özellik sağlam ve dayanıklı uygulamaların yapımasına yardımcı olur: ***Çöp toplama*** , kullanılmayan nesneler tarafından kullanılan belleği otomatik olarak geri kazanır; ***özel durum işleme*** , hata algılama ve kurtarmaya yönelik yapılandırılmış ve genişletilebilir bir yaklaşım sağlar; dilin ***tür kullanımı uyumlu*** tasarımı, başlatılmamış değişkenlerden okumayı, sınırları ötesinde dizileri dizin haline getirmek veya Denetlenmemiş tür yayınları gerçekleştirmeyi olanaksız hale getirir.
 
-C# sahip bir ***tür sistemi birleşik***. Gibi ilkel türler dahil olmak üzere tüm C# türü, `int` ve `double`, tek bir kök devral `object` türü. Bu nedenle, bir dizi ortak işlemlerini tüm türleri paylaşın ve herhangi bir tür değerleri depolanan, taşınan ve tutarlı bir şekilde üzerinde işlem. Ayrıca, C# hem kullanıcı tarafından tanımlanan başvuru türleri ve değer türleri, nesnelerin dinamik ayırması yanı sıra basit yapılar satır içi depolanmasını sağlayan destekler.
+C#Birleşik bir ***tür sistemine***sahiptir. `int` Ve `object` C# gibitemeltürlerdahilolmaküzeretümtürler,tekbirköktüründendevralınır.`double` Bu nedenle, tüm türler ortak işlemler kümesini paylaşır ve herhangi bir türdeki değerler tutarlı bir şekilde depolanabilir, taşınır ve çalıştırılabilir. Ayrıca, C# hem Kullanıcı tanımlı başvuru türlerini hem de değer türlerini destekler, bu da nesnelerin dinamik ayrılmasına ve basit yapıların satır içi depolamamasına olanak tanır.
 
-C# programları ve kitaplıkları zaman uyumlu bir şekilde geliştirebilirsiniz emin olmak için çok Vurgu üzerinde yerleştirilen ***sürüm*** C# ' ın tasarım. Birçok programlama dili bu sorun için çok az dikkat edin ve sonuç olarak, bu dillerin sonu bağımlı kitaplıkları gerekli olduğunda daha yeni sürümleri daha sık yazılan programlar sunulmuştur. Sürüm değerlendirmeleri tarafından doğrudan etkileyen C# ' ın tasarım yönlerini dahil ayrı `virtual` ve `override` değiştiriciler, yöntem aşırı yükleme çözümlemesi için kurallar ve açık arabirim üyesi bildirimi için destek.
+Programlar ve kitaplıkların zaman içinde zaman içinde gelişebilmesini sağlamak için, tasarımına daha fazla vurgu konulmuştur. C# C# Birçok programlama dili bu sorunla ilgileniyor ve sonuç olarak, bu dillerde yazılmış programlar, bağımlı kitaplıkların daha yeni sürümleri tanıtıldığında gerekenden çok daha fazla. C#Sürüm oluşturma konuları tarafından doğrudan etkilenen tasarımın yönleri, ayrı `virtual` ve `override` değiştiriciler, yöntem aşırı yükleme çözümlemesi kuralları ve açık arabirim üye bildirimleri için destek içerir.
 
-Bu bölümün geri kalanında, C# dilinin temel özelliklerini açıklar. Sonraki bölümlerde ayrıntılı odaklı ve bazen matematiksel bir şekilde kurallar ve özel durumlar açıklayan olsa da, bu bölümde açıklık ve bütünlük çoğaltamaz kısaltma üstlenmeye çalışır. Amaç, erken programlar yazılmasını ve sonraki bölümlerde okunmasını kolaylaştırmak dil için bir tanıtım okuyucu sağlamaktır.
+Bu bölümün geri kalanında C# dilin önemli özellikleri açıklanmaktadır. Sonraki bölümlerde, kuralları ve özel durumları ayrıntı yönelimli ve bazen matematik olarak anlasa da, bu bölüm, tamamlanma masrafında açıklık ve kısaltma açısından çok çaba harcar. Amaç, okuyucuya erken programların yazılmasına ve sonraki bölümlerin okunmasına yardımcı olacak dile bir giriş sunmaktır.
 
 ## <a name="hello-world"></a>Merhaba dünya
 
-"Hello, World" programı, geleneksel bir programlama dili tanıtmak için kullanılır. Bunu C# ' de şu şekildedir:
+"Hello, World" programı, genellikle bir programlama dilini tanıtmak için kullanılır. Burada yer C#verilmiştir:
 
 ```csharp
 using System;
@@ -35,24 +35,24 @@ class Hello
 }
 ```
 
-C# kaynak dosyaları, genellikle dosya uzantısına sahip `.cs`. "Hello, World" program dosyasında depolanan varsayarak `hello.cs`, programın komut satırı kullanılarak Microsoft C# derleyicisi ile derlenebilir
+C#Kaynak dosyalar genellikle dosya uzantısına `.cs`sahiptir. "Hello, World" programının dosyada `hello.cs`depolandığını varsayarak, program komut satırı kullanılarak Microsoft C# derleyicisi ile derlenebilir
 ```
 csc hello.cs
 ```
-adlı yürütülebilir bir derleme üreten `hello.exe`. Çalıştırıldığında, bu uygulama tarafından üretilen çıkış
+adında `hello.exe`bir çalıştırılabilir derleme üreten. Bu uygulama tarafından çalıştırıldığında üretilen çıkış,
 ```
 Hello, World
 ```
 
-"Hello, World" programı ile başlayan bir `using` başvuran yönergesi `System` ad alanı. Ad alanlarında, C# programları ve kitaplıkları düzenleme, hiyerarşik bir yöntem sağlar. Ad alanları, türler ve diğer ad alanları içerir — örneğin, `System` ad alanı içeren bir dizi türleri gibi `Console` program ve diğer ad alanları, bir sayı gibi başvurulan sınıfı `IO` ve `Collections`. A `using` belirtilen bir ad alanı başvuruyor yönergesi bu ad alanının üyeleri olan türlerinin nitelenmemiş kullanımı sağlar. Nedeniyle `using` yönerge, programın kullanabilirsiniz `Console.WriteLine` için kısayol olarak `System.Console.WriteLine`.
+"Hello, World" programı, `using` `System` ad alanına başvuran bir yönergeyle başlar. Ad alanları, programları ve kitaplıkları düzenlemek C# için hiyerarşik bir yol sağlar. Ad alanları türler ve diğer ad alanlarını içerir — örneğin, `System` ad alanı programda başvurulan `Console` sınıf gibi bir dizi tür içerir ve `IO` ve `Collections`gibi diğer ad alanları vardır. Verilen `using` bir ad alanına başvuruda bulunan bir yönerge, bu ad alanının üyesi olan türlerin nitelenmemiş kullanımını mümkün değildir. Yönergesi nedeniyle program, için `System.Console.WriteLine`toplu olarak kullanabilir `Console.WriteLine`. `using`
 
-`Hello` "Hello, World" program tarafından bildirilen adlı yöntem tek bir üye sınıfında `Main`. `Main` Yöntemi ile bildirilir `static` değiştiricisi. Örnek yöntemleri anahtar sözcüğü kullanılarak belirli kapsayan nesne örneği başvurabilirsiniz ancak `this`, belirli bir nesneye başvuru olmadan statik yöntemleri çalışır. Kural gereği, adlı statik bir yöntemi `Main` bir programın giriş noktası olarak görev yapar.
+"Hello, World" programı tarafından belirtilen `Main` sınıftekbirüyeyesahiptir,yöntemiadlı.`Hello` `Main` Yöntemi`static` değiştiriciyle birlikte bildirilmiştir. Örnek yöntemleri, anahtar sözcüğünü `this`kullanarak belirli bir kapsayan nesne örneğine başvurabilir, ancak statik yöntemler belirli bir nesneye başvuru olmadan çalışır. Kurala göre, adlı `Main` statik bir yöntem, bir programın giriş noktası olarak görev yapar.
 
-Program çıktısı tarafından üretilen `WriteLine` yöntemi `Console` sınıfını `System` ad alanı. Bu sınıf, varsayılan olarak, Microsoft C# Derleyici tarafından otomatik olarak başvurulur, .NET Framework sınıf kitaplıkları tarafından sağlanır. C# kendisini'nın ayrı bir çalışma zamanı kitaplığı olmadığını unutmayın. Bunun yerine, .NET Framework çalışma zamanı kitaplığı, C# ' dir.
+Programın çıktısı, `WriteLine` `System` ad alanındaki `Console` sınıfının yöntemi tarafından üretilir. Bu sınıf, varsayılan olarak Microsoft C# derleyicisi tarafından otomatik olarak başvurulduğu .NET Framework sınıf kitaplıkları tarafından sağlanır. C# Kendisinin ayrı bir çalışma zamanı kitaplığı olmadığına unutmayın. Bunun yerine, .NET Framework çalışma zamanı kitaplığıdır C#.
 
 ## <a name="program-structure"></a>Program yapısı
 
-C# anahtar kuruluş kavramlar ***programlar***, ***ad alanları***, ***türleri***, ***üyeleri***, ve ***derlemeleri***. C# programları, bir veya daha fazla kaynak dosyadan oluşur. Programları üyeleri içerir ve ad alanları olarak düzenlenmiş türleri bildirin. Sınıflar ve arabirimler türleri örnekleridir. Alanlar, yöntemler, özellikler ve olaylar üyeleri örnekleridir. C# programları derlendiğinde, bunlar derlemelerine fiziksel olarak paketlenir. Derlemeler genellikle dosya uzantısına sahip `.exe` veya `.dll`uyguladıkları mi bağlı olarak ***uygulamaları*** veya ***kitaplıkları***.
+' Deki C# temel kurumsal kavramlar, ***Programlar***, ***ad alanları***, ***türler***, ***Üyeler***ve ***derlemelerdir***. C#programlar bir veya daha fazla kaynak dosyadan oluşur. Programlar, üyeleri içeren ve ad alanları halinde düzenlenebilen türleri bildirir. Sınıflar ve arabirimler tür örnekleridir. Alanlar, Yöntemler, Özellikler ve olaylar üye örnekleridir. C# Programlar derlendiğinde, fiziksel olarak derlemeler halinde paketlenir. Derlemeler `.dll`, ***uygulama*** veya ***kitaplık***uygulanıp `.exe` uygulamadığına bağlı olarak genellikle dosya uzantısına sahiptir.
 
 Örnek
 
@@ -89,16 +89,16 @@ namespace Acme.Collections
     }
 }
 ```
-adlı bir sınıfı bildirir `Stack` adlı bir ad alanında `Acme.Collections`. Bu sınıfın tam adı `Acme.Collections.Stack`. Sınıf bazı üyeler içerir: adlı bir alan `top`, adlı iki yöntem `Push` ve `Pop`ve bir iç içe geçmiş sınıf adlı `Entry`. `Entry` Sınıfı daha da içeren üç üye: adlı bir alan `next`, adında bir alan `data`ve bir oluşturucu. Örnek kaynak kodu dosyasında depolanan varsayarak `acme.cs`, komut satırı
+adlı bir `Stack` `Acme.Collections`ad alanında adında bir sınıf bildirir. Bu sınıfın `Acme.Collections.Stack`tam adı. Sınıf birçok `top`üye içerir: adlı bir alan, `Push` ve `Pop`adlı iki yöntem ve adlı `Entry`bir iç içe sınıf. Sınıf daha fazla üç üye içerir: adlı `next`alan, adlı `data`alan ve Oluşturucu. `Entry` Örneğin kaynak kodunun dosyada `acme.cs`depolandığını varsayarak, komut satırı
 
 ```
 csc /t:library acme.cs
 ```
-Örnek bir kitaplık olarak derler (olmadan kod bir `Main` giriş noktası) adlı bir derleme oluşturur `acme.dll`.
+örneği bir kitaplık (bir `Main` giriş noktası olmayan kod) olarak derler ve adında `acme.dll`bir derleme oluşturur.
 
-Derlemeleri içeren yürütülebilir kod biçiminde ***Ara dil*** (IL) yönergeleri ve simgesel bilgiler biçiminde ***meta verileri***. Çalıştırılmadan önce bir derlemede IL kodu işlemciye özgü kodu .NET ortak dil çalışma zamanı tam zamanında (JIT) derleyici tarafından otomatik olarak dönüştürülür.
+Derlemeler, ***ara dil*** (IL) yönergeleri biçiminde çalıştırılabilir kodu ve ***meta veri***biçimindeki sembolik bilgileri içerir. Yürütülmeden önce, bir derlemedeki IL kodu, .NET ortak dil çalışma zamanının tam zamanında (JıT) derleyicisi tarafından otomatik olarak işlemciye özgü koda dönüştürülür.
 
-Bir derleme kendiliğinden açıklayıcı bir işlevsellik hem kod hem de meta verileri içeren birimi olduğundan için gerek yoktur `#include` yönergeleri ve C# üst bilgi dosyaları. Genel türler ve üyeler belirli bir derlemede bulunan program derlerken bu derlemeye yalnızca başvurarak bir C# programı içinde kullanılabilir hale getirilir. Örneğin, bu programın kullandığı `Acme.Collections.Stack` gelen sınıfı `acme.dll` derleme:
+Bir derleme, hem kodu hem de meta verileri içeren bir işlevsellik birimi olduğundan, içinde `#include` C#yönergeler ve başlık dosyaları gerekmez. Belirli bir derlemede yer alan ortak türler ve Üyeler, yalnızca program derlenirken bu derlemeye C# başvurarak bir programda kullanılabilir hale getirilir. Örneğin, bu program `Acme.Collections.Stack` `acme.dll` derlemeden sınıfını kullanır:
 
 ```csharp
 using System;
@@ -117,92 +117,92 @@ class Test
     }
 }
 ```
-Program dosyada saklanıyorsa `test.cs`, `test.cs` derlenir, `acme.dll` kullanarak derleyicinin derleme başvurulabilir `/r` seçeneği:
+Program dosyada `test.cs`depolanıyorsa `test.cs` , derlendikten sonra `acme.dll` `/r` derlemeye derleyicinin seçeneği kullanılarak başvurulabilir:
 
 ```
 csc /r:acme.dll test.cs
 ```
-Bu adında bir yürütülebilir bir derleme oluşturur `test.exe`, çalıştırdığınızda, çıktıyı üretir:
+Bu, çalıştırıldığında bir çalıştırılabilir derleme `test.exe`oluşturur; Bu, çalıştırıldığında çıktıyı üretir:
 
 ```
 100
 10
 1
 ```
-C# kaynak metni bir programın çeşitli kaynak dosyalarında depolanan izin verir. Çok dosyalı C# programı derlenir, tüm kaynak dosyaları birlikte işlenir ve kaynak dosyaları serbestçe birbirlerine başvurabilir — kavramsal olarak, tüm kaynak dosyalarını tek bir büyük dosyaya işlenmeden önce art arda eklenmiş gibi öyledir. Çok az sayıda özel durum dışında bildirim sırasında Önemsiz olduğundan, iletme bildirimleri hiçbir zaman C# ' de gereklidir. C#, yalnızca bir genel türü bildirmek için bir kaynak dosyası sınırlamaz veya kaynak dosyada bildirilen bir tür ile eşleştirilecek kaynak dosyasının adı gerektirir.
+C#bir programın kaynak metninin birkaç kaynak dosyada depolanmasına izin verir. Birden çok dosya C# programı derlendiğinde, tüm kaynak dosyalar birlikte işlenir ve kaynak dosyalar birbirini tamamen başvurabilir — kavramsal olarak, tüm kaynak dosyaları işlenmeden önce bir büyük dosyada birleştirilmiş olur. Bildirim sırası çok önemli olduğundan, C# bazı durumlarda ileri bildirimlere hiçbir şekilde gerek yoktur. C#kaynak dosyayı yalnızca bir ortak tür bildirmek üzere sınırlamaz veya kaynak dosyanın adının kaynak dosyada belirtilen bir türle eşleşmesi gerekir.
 
 ## <a name="types-and-variables"></a>Türler ve değişkenler
 
-C# türlerinde iki tür vardır: ***değer türleri*** ve ***başvuru türleri***. Başvuru türlerinin değişkenleri başvuruları kendi verilerine depolamak ise, değer türlerinin değişkenleri kendi verilerini doğrudan içerir, ikincisi nesneler olarak bilinen. Başvuru türleri ile bu iki değişken aynı nesneye başvurmak mümkün ve dolayısıyla işlemler diğer değişkenin başvurduğu nesneyi etkileyebilir bir değişken üzerinde mümkün olur. Değer türleri ile her değişkenleri kendi veri kopyasını sahip ve işlemlerin bir diğerini etkilemesi olanaklı değildir (dışındaki durumunda `ref` ve `out` parametresi değişkenleri).
+' De C#iki tür tür vardır: ***değer türleri*** ve ***başvuru türleri***. Değer türlerinin değişkenleri doğrudan verilerini içerir, ancak başvuru türündeki değişkenler verilerine başvuruları depolar, ikincisi ise nesneler olarak bilinir. Başvuru türleriyle, iki değişkenin aynı nesneye başvurması ve bu nedenle bir değişkende işlemler için diğer değişken tarafından başvurulan nesneyi etkilemesi mümkündür. Değer türleriyle, her biri kendi verilerinin kopyasına sahiptir ve bir üzerindeki işlemler, diğerini ( `ref` ve `out` parametre değişkenleri hariç) etkileyecek şekilde mümkün değildir.
 
-C# ' ın değer türleri içinde daha bölünür ***basit türler***, ***Numaralandırma türleri***, ***yapı türleri***, ve ***boş değer atanabilir türler***ve C# başvurusu türleri içine daha bölünür ***sınıf türleri***, ***arabirim türleri***, ***dizisi, türlerini***, ve ***temsilci türleri***.
+C#değer türleri, ***basit türler***, ***sabit listesi türleri***, ***yapı türleri***ve ***null yapılabilir türlere***daha da bölünür ve C#başvuru türleri, ***Sınıf türlerine***, ***arabirim türlerine***, ***diziye daha fazla bölünmüştür türler***ve ***temsilci türleri***.
 
-Aşağıdaki tablo, C# tür sistemi genel bir bakış sağlar.
+Aşağıdaki tabloda, tür sistemine genel bir C#bakış sağlanmaktadır.
 
 | __Kategori__    |                 | __Açıklama__ |
 |-----------------|-----------------|-----------------|
-| Değer türleri     | Basit türler    | İmzalı tam sayı: `sbyte`, `short`, `int`, `long` |
-|                 |                 | İşaretsiz integral: `byte`, `ushort`, `uint`, `ulong` |
-|                 |                 | Unicode karakter sayısı: `char` |
-|                 |                 | IEEE kayan nokta: `float`, `double` |
-|                 |                 | Yüksek duyarlıklı ondalık: `decimal` |
-|                 |                 | Boole: `bool` |
-|                 | Numaralandırma türleri      | Formun kullanıcı tanımlı türler `enum E {...}` |
-|                 | Yapı türleri    | Formun kullanıcı tanımlı türler `struct S {...}` |
-|                 | Boş değer atanabilir tipler  | Diğer tüm değer türleri ile uzantıları bir `null` değeri |
-| Başvuru türleri | Sınıf türleri     | Diğer tüm türlerin Ultimate temel sınıf: `object` |
-|                 |                 | Unicode dizelerini: `string` |
-|                 |                 | Formun kullanıcı tanımlı türler `class C {...}` |
-|                 | Arabirim türleri | Formun kullanıcı tanımlı türler `interface I {...}` |
-|                 | Dizi türleri     | Tek ve örneğin, çok boyutlu `int[]` ve `int[,]` |
-|                 | Temsilci türleri  | Kullanıcı tanımlı türler formun örn: `delegate int  D(...)` |
+| Değer türleri     | Basit türler    | İmzalanan integral: `sbyte`, `short`, `int`,`long` |
+|                 |                 | İşaretsiz integral: `byte`, `ushort`, `uint`,`ulong` |
+|                 |                 | Unicode karakterler:`char` |
+|                 |                 | IEEE kayan nokta: `float`,`double` |
+|                 |                 | Yüksek duyarlıklı ondalık:`decimal` |
+|                 |                 | Boolean`bool` |
+|                 | Sabit listesi türleri      | Formun Kullanıcı tanımlı türleri`enum E {...}` |
+|                 | Yapı türleri    | Formun Kullanıcı tanımlı türleri`struct S {...}` |
+|                 | Boş değer atanabilir tipler  | Bir `null` değere sahip diğer tüm değer türlerinin uzantıları |
+| Başvuru türleri | Sınıf türleri     | Diğer tüm türlerin Ultimate temel sınıfı:`object` |
+|                 |                 | Unicode dizeleri:`string` |
+|                 |                 | Formun Kullanıcı tanımlı türleri`class C {...}` |
+|                 | Arabirim türleri | Formun Kullanıcı tanımlı türleri`interface I {...}` |
+|                 | Dizi türleri     | Tek ve çok boyutlu, örneğin `int[]` ve`int[,]` |
+|                 | Temsilci türleri  | Formun Kullanıcı tanımlı türleri örn.`delegate int  D(...)` |
 
-Sekiz integral türleri, 8-bit, 16-bit, 32-bit ve 64-bit işaretli veya işaretsiz form değerleri için destek sağlar.
+Sekiz integral türü, imzalanmış veya imzasız biçimde 8 bit, 16 bit, 32-bit ve 64 bit değerleri için destek sağlar.
 
-İki kayan noktası türleri `float` ve `double`, 32-bit tek duyarlıklı ve 64-bit çift duyarlıklı IEEE 754 biçimleri kullanılarak temsil edilir.
+İki kayan nokta türü `float` ve `double`, 32-bit tek duyarlıklı ve 64-bit çift duyarlıklı IEEE 754 biçimleri kullanılarak temsil edilir.
 
-`decimal` Türüdür finansal ve parasal hesaplamalar için uygun bir 128-bit veri türü.
+`decimal` Türü, finansal ve parasal hesaplamalar için uygun olan 128 bitlik bir veri türüdür.
 
-C# `bool` türü boolean değerlerini temsil edecek şekilde kullanılır — ya da değerler `true` veya `false`.
+C#türü, Boole değerlerini ( `true` veya `false`olan değerler) temsil etmek için kullanılır. `bool`
 
-Karakter ve dize işleme C# dilinde Unicode kodlaması kullanır. `char` Türünü bir UTF-16 kod birimini temsil eder ve `string` türü UTF-16 kod birimlerini dizisini temsil eder.
+İçindeki C# karakter ve dize işleme Unicode kodlaması kullanır. Tür bir UTF-16 kod birimini temsil eder `string` ve tür bir UTF-16 kod birimi dizisini temsil eder. `char`
 
-Aşağıdaki tablo, C# ' ın sayısal türleri özetlenmektedir.
+Aşağıdaki tabloda sayısal türler C#özetlenmektedir.
 
 
-| __Kategori__      | __BITS__ | __Tür__  | __Aralık/duyarlık__ |
+| __Kategori__      | __Bitlik__ | __Tür__  | __Aralık/duyarlık__ |
 |-------------------|----------|-----------|---------------------|
-| İmzalı tam sayı   | 8        | `sbyte`   | -128...127 |
-|                   | 16       | `short`   | -32,768...32,767 |
-|                   | 32       | `int`     | -2,147,483,648...2,147,483,647 |
-|                   | 64       | `long`    | -9,223,372,036,854,775,808...9,223,372,036,854,775,807 |
-| İşaretsiz tamsayı | 8        | `byte`    | 0...255 |
-|                   | 16       | `ushort`  | 0...65,535 |
-|                   | 32       | `uint`    | 0...4,294,967,295 |
-|                   | 64       | `ulong`   | 0...18,446,744,073,709,551,615 |
-| Kayan nokta    | 32       | `float`   | 1.5 × 10 ^ −45 3.4 × 10 ^ 7 basamaklı duyarlık 38, |
-|                   | 64       | `double`  | 5.0 × 10 ^ −324 1.7 × 10 ^ 308, 15 basamaklı duyarlık |
-| Ondalık           | 128      | `decimal` | 1.0 × 10 ^ −28 7,9 × 10 ^ 28, 28 basamaklı duyarlık |
+| İmzalanan integral   | 8        | `sbyte`   | -128... 127 |
+|                   | 16       | `short`   | -32768... 32, 767 |
+|                   | 32       | `int`     | -2147483648... 2, 147, 483, 647 |
+|                   | 64       | `long`    | -9223372036854775808... 9, 223, 372, 036, 854, 775, 807 |
+| İşaretsiz integral | 8        | `byte`    | 0... 255 |
+|                   | 16       | `ushort`  | 0... 65, |
+|                   | 32       | `uint`    | 0... 4, 294, 967, 295 |
+|                   | 64       | `ulong`   | 0... 18, 446,, 073, 709, 551, 615 |
+| Kayan nokta    | 32       | `float`   | 1,5 × 10 ^ − 45 ila 3,4 × 10 ^ 38, 7 basamaklı duyarlık |
+|                   | 64       | `double`  | 5,0 × 10 ^ − 324 ila 1,7 × 10 ^ 308, 15 basamaklı duyarlık |
+| Ondalık           | 128      | `decimal` | 1,0 × 10 ^ − 28 ila 7,9 × 10 ^ 28, 28 basamaklı duyarlık |
 
-C# programları kullanım ***tür bildirimleri*** yeni türler oluşturmak için. Bir tür bildirimi, adı ve yeni türün üyeleri belirtir. C# türleri kategorilerini beş kullanıcı tarafından tanımlanabilir: Sınıf türleri, yapı türleri, arabirim türleri, sabit listesi türleri ve temsilci türleri.
+C#programlar yeni türler oluşturmak için ***tür bildirimleri*** kullanır. Tür bildiriminde yeni türün adı ve üyeleri belirtilir. C#Türlerin beş kategorisi Kullanıcı tarafından tanımlanabilir: sınıf türleri, yapı türleri, arabirim türleri, sabit listesi türleri ve temsilci türleri.
 
-Bir sınıf türü, veri üyelerine (alanları) ve işlev üyeleri (yöntemler, özellikler ve diğerleri) içeren bir veri yapısı tanımlar. Sınıf türleri tek devralma ve çok biçimlilik, yapabildiği türetilmiş sınıfları genişletmek ve temel sınıflar specialize mekanizmaları destekler.
+Bir sınıf türü, veri üyeleri (alanlar) ve işlev üyeleri (Yöntemler, Özellikler ve diğerleri) içeren bir veri yapısını tanımlar. Sınıf türleri, tek devralma ve çok biçimlilik destekler, türetilmiş sınıfların temel sınıfları genişletebileceği ve özelleştireceği mekanizmalar.
 
-Bir yapı türü, veri üyeleri ve işlev üyeleri bir yapıya temsil ettiği, bir sınıf türüne benzerdir. Ancak, farklı sınıflar, yapılar değer türleri ve yığın ayırma gerektirmez. Yapı türleri, kullanıcı tarafından belirtilen devralma desteklemez ve tüm yapı türleri örtülü olarak tür devralmasına `object`.
+Yapı türü, veri üyeleri ve işlev üyeleri olan bir yapıyı temsil eden bir sınıf türüne benzerdir. Ancak, sınıfların aksine yapılar değer türlerdir ve yığın ayırmayı gerektirmez. Yapı türleri Kullanıcı tarafından belirtilen devralmayı desteklemez ve tüm yapı türleri örtülü olarak türünden `object`devralınır.
 
-Bir arabirim türü genel işlev üyeleri adlandırılmış bir dizi bir sözleşmeyi tanımlar. Bir sınıf ya da bir arabirimi uygulayan yapı arabirimin işlev üyeleri uygulamaları sağlamanız gerekir. Birden fazla temel Ara birimden arabirim devralabilir ve bir sınıf veya yapı birden fazla arabirim uygulayabilir.
+Arabirim türü, bir sözleşmeyi adlandırılmış bir ortak işlev üyeleri kümesi olarak tanımlar. Arabirim uygulayan bir sınıf veya yapı, arabirimin işlev üyelerinin uygulamalarını sağlamalıdır. Bir arabirim birden çok temel arabirimden devralınabilir ve bir sınıf ya da yapı birden çok arabirim uygulayabilir.
 
-Bir temsilci türü, belirli bir parametre listesi ve dönüş türü olan yöntemlere başvuruları temsil eder. Temsilciler, yöntemleri değişkenine atanır ve parametre olarak geçirilen varlıklar olarak değerlendirmek mümkün kılar. Diğer dillerde bulunan işlev işaretçileri kavramı temsilcileri benzerdir ancak işlev işaretçileri, nesne yönelimli ve tür kullanımı uyumlu temsilciler.
+Bir temsilci türü, belirli bir parametre listesi ve dönüş türü olan yöntemlere yapılan başvuruları temsil eder. Temsilciler, yöntemleri değişkenlere atanabilecek ve parametre olarak geçirilen varlıklar olarak işleme olanağı tanır. Temsilciler, bazı diğer dillerde bulunan işlev işaretçileri kavramına benzerdir, ancak işlev işaretçilerinden farklı olarak Temsilciler nesne yönelimli ve tür açısından güvenlidir.
 
-Diğer türlerle bunlar yapabildiği parametreleştirilebilir tüm destek genel türler, sınıf, yapı, arabirim ve temsilci türleri.
+Sınıf, yapı, arabirim ve temsilci türleri tüm genel türleri destekler ve diğer türlerle parametrelenebilir.
 
-Bir sabit listesi türünde, adlandırılmış sabitler ile farklı bir türdür. Her sabit listesi türü sekiz integral türlerinden biri olması gereken bir temel türü vardır. Bir numaralandırma türünün değerleri kümesi, temel alınan tür değerleri kümesi ile aynıdır.
+Sabit listesi türü, adlandırılmış sabitleri olan ayrı bir türdür. Her numaralandırma türünün, sekiz integral türünden biri olması gereken temel bir türü vardır. Bir sabit listesi türünün değer kümesi, temel alınan türün değerleri kümesiyle aynıdır.
 
-C# tek ve çoklu dimensional dizilerini herhangi bir türde destekler. Yukarıda listelenen türlerinin aksine, dizi türleri kullanılabilmesi için önce bildirilmiş gerekmez. Bunun yerine, dizi türleri bir tür adı köşeli ayraç içine uygulayarak oluşturulur. Örneğin, `int[]` , tek boyutlu bir dizidir `int`, `int[,]` iki boyutlu bir dizidir `int`, ve `int[][]` tek boyutlu dizi tek boyutlu bir dizidir `int`.
+C#herhangi bir türdeki tek ve çok boyutlu dizileri destekler. Yukarıda listelenen türlerin aksine,, kullanılmadan önce dizi türlerinin bildirilmesini gerektirmez. Bunun yerine, dizi türleri Köşeli parantezlerle bir tür adı izleyerek oluşturulur. Örneğin, `int[]` tek boyutlu bir `int` `int`diziyse, `int[,]` iki boyutlu bir dizidir ve `int[][]` tek boyutlu dizilerinin tek boyutlu dizilerdir `int`.
 
-Boş değer atanabilir türler de kullanılabilmesi için önce bildirilmiş gerekmez. Her değer atanamayan değer türü `T` karşılık gelen null yapılabilir bir tür yoktur `T?`, ek bir değeri tutabilir `null`. Örneğin, `int?` herhangi bir 32 bit tamsayı veya değeri bir arada tutan bir türdür `null`.
+Null yapılabilir türler, kullanılmadan önce de bildirilemez. Her null yapılamayan değer türü `T` için, karşılık gelen bir null yapılabilir tür `T?`vardır ve bu, ek bir değer `null`tutabilir. Örneğin, `int?` herhangi bir 32 bit tamsayı veya değeri `null`tutabilecek bir türdür.
 
-C# tür sistemi, herhangi bir türde bir değer bir nesne olarak davranılıp şekilde birleşiktir. C# ' de her tür doğrudan veya dolaylı olarak türetir `object` sınıf türü, ve `object` tüm türlerin ultimate temel sınıftır. Başvuru türlerindeki değerleri nesneler olarak değer türü olarak yalnızca görüntüleyerek edilir `object`. Değer türlerinin değerleri nesneler olarak gerçekleştirerek edilir ***kutulama*** ve ***kutudan çıkarma*** operations. Aşağıdaki örnekte, bir `int` değerinin `object` ve yeniden geri `int`.
+C#tür sistemi, herhangi bir tür değeri bir nesne olarak işlenemeyeceği şekilde birleştirilmiştir. Her tür doğrudan C# veya dolaylı olarak `object` sınıf türünden türetilir ve `object` tüm türlerin en son temel sınıfıdır. Başvuru türlerinin değerleri, yalnızca değerleri tür `object`olarak görüntüleyerek nesne olarak değerlendirilir. Değer türlerinin değerleri, ***kutulama*** ve ***kutudan*** çıkarma işlemleri gerçekleştirerek nesneler olarak değerlendirilir. Aşağıdaki örnekte, bir `int` değeri öğesine `object` dönüştürülüp öğesine `int`yeniden döndürülür.
 
 ```csharp
 using System;
@@ -216,35 +216,35 @@ class Test
     }
 }
 ```
-Ne zaman bir değer türünün bir değer türüne dönüştürülür `object`değerini tutacak bir "kutu," olarak da adlandırılan bir nesne örneği ayrılır ve değer kutuya kopyalanır. Buna karşılık, bir `object` başvuru, bir değer türü için atandığında, başvurulan nesnenin doğru değer türünün bir kutusu olan bir onay yapılır ve, denetimi başarılı olursa kutudaki değer kopyalanır.
+Değer türünde bir değer türüne `object`dönüştürüldüğünde, "Box" olarak da bilinen bir nesne örneği değeri tutacak şekilde ayrılır ve değer bu kutuya kopyalanır. Buna karşılık, bir `object` başvuru bir değer türüne dönüştürülzaman, başvurulan nesnenin doğru değer türünün bir kutusu olması ve denetim başarılı olursa, kutudaki değer kopyalanır.
 
-Değer türleri "üzerine." nesneleri dönüşebilir C# ' ın birleşik tür sistemi etkili bir şekilde anlamına gelir Birleştirme türü kullanan genel amaçlı kitaplıkları nedeniyle `object` başvuru türleri ve değer türleri ile kullanılabilir.
+C#öğesinin Birleşik tür sistemi etkin bir şekilde değer türlerinin "isteğe bağlı" nesneler olabileceği anlamına gelir. Birleşme nedeniyle, türü `object` kullanan genel amaçlı kitaplıklar, başvuru türleri ve değer türleriyle birlikte kullanılabilir.
 
-Birkaç türü vardır, ***değişkenleri*** C# ' ta alanlar, dizi öğeleri, yerel değişkenleri ve parametreleri dahil. Değişkenleri temsil eden, depolama konumları ve her değişken değerlerin neler olması belirleyen bir türe sahip aşağıdaki tabloda gösterildiği gibi değişkeninde depolanır.
+İçinde C#alanlar, dizi öğeleri, yerel değişkenler ve parametreler dahil olmak üzere birkaç tür ***değişken*** vardır. Değişkenler, depolama konumlarını temsil eder ve her değişken, aşağıdaki tabloda gösterildiği gibi, değişkende hangi değerlerin depolanabileceğini belirleyen bir tür içerir.
 
 
-| __Değişken türü__    | __Olası içeriği__ |
+| __Değişken türü__    | __Olası Içerikler__ |
 |-------------------------|-----------------------|
-| NULL olmayan değer türü | Bu kesin türde bir değer |
-| Null değer türü     | Bir null değer veya bu kesin türde bir değer |
-| `object`                | Bir null başvuru, bir nesneye bir başvuru türünün bir başvuru veya herhangi bir değer türünün kutulanmış bir değer başvurusu |
-| Sınıf türü              | Bir null başvuru, bu sınıf türünün bir örneğine başvuru veya bir başvuru sınıfının bir örneği, sınıf türünden türetilmiş |
-| Arabirim türü          | Bir null başvuru, bu arabirim türünü uygulayıp bir sınıf türünün bir örneğine başvuru veya paketlenmiş değere bu arabirim türünü uygulayıp bir değer türü başvurusu |
-| Dizi türü              | Bir null başvuru, dizi türü bir örneğe bir başvuru veya uyumlu dizi türünde bir örneğe bir başvuru |
-| Temsilci türü           | Bu temsilci türünün bir örneği başvurusu veya bir null başvuru |
+| Null yapılamayan değer türü | Bu tam türden bir değer |
+| Null yapılabilir değer türü     | Null değer veya bu tam tür değeri |
+| `object`                | Bir null başvurusu, herhangi bir başvuru türünün nesnesine başvuru veya herhangi bir değer türünün paketlenmiş değerine başvuru |
+| Sınıf türü              | Null başvurusu, bu sınıf türünün bir örneğine başvuru veya bu sınıf türünden türetilmiş bir sınıfın örneğine başvuru |
+| Arabirim türü          | Null başvurusu, bu arabirim türünü uygulayan bir sınıf türü örneğine başvuru veya bu arabirim türünü uygulayan bir değer türünün paketlenmiş değerine başvuru |
+| Dizi türü              | Null başvuru, bu dizi türünün bir örneğine başvuru veya uyumlu bir dizi türü örneğine başvuru |
+| Temsilci türü           | Bu temsilci türünün bir örneğine null başvuru veya başvuru |
 
 ## <a name="expressions"></a>İfadeler
 
-***İfadeleri*** oluşturulan ***işlenenler*** ve ***işleçleri***. İfade işleçleri işlenenlere uygulamak için hangi işlemleri gösterir. İşleçler örnekler `+`, `-`, `*`, `/`, ve `new`. Değişmez değerler, alanlar, yerel değişkenleri ve ifadeleri işlenenler örnekleridir.
+***İfadeler*** , ***işlenenler*** ve ***işleçlerden***oluşturulur. Bir ifadenin işleçleri, işlenenlerin hangi işlemleri uygulanacağını gösterir. `+`İşleç örnekleri `-` ,`/`,, ve`new`içerir. `*` İşlenenlerin örnekleri, sabit değerleri, alanları, yerel değişkenleri ve ifadeleri içerir.
 
-Bir ifade birden çok işleç içeren ***öncelik*** işleçleri tek tek işleçler değerlendirilme sırası denetler. Örneğin, ifade `x + y * z` değerlendirmesinde `x + (y * z)` çünkü `*` işleci daha yüksek önceliğe sahip `+` işleci.
+Bir ifade birden çok işleç içerdiğinde, işleçlerin ***önceliği*** ayrı işleçlerin değerlendirilme sırasını denetler. Örneğin, `x + y * z` `*` işleç işleçten`+` daha yüksek önceliğe `x + (y * z)` sahip olduğu için ifade değerlendirilir.
 
-Çoğu işleçleri olabilir ***aşırı***. İşleç aşırı yüklemesi, aşağıdakilerden birini veya her iki işlenen kullanıcı tanımlı sınıf veya yapı türü olduğu işlemlerinde belirtilmesi için kullanıcı tanımlı işleç uygulamalarına izin verir.
+Çoğu işleç ***aşırı***yüklenebilir. İşleç aşırı yüklemesi, Kullanıcı tanımlı operatör uygulamalarının bir veya her ikisinin de Kullanıcı tanımlı sınıf veya yapı türünde olduğu işlemler için belirtilmesine izin verir.
 
-En yüksek öncelikten en düşüğe sırasını işleci kategorileri listeleme C# işleçleri, aşağıdaki tabloda özetlenmiştir. Aynı kategoride işleçleri eşit önceliğe sahiptir.
+Aşağıdaki tabloda, işleç C#kategorilerinin en yüksekten en düşüğe öncelik sırasına göre listelenmesi ve işleçleri özetlenmektedir. Aynı kategorideki operatörler eşit önceliğe sahiptir.
 
 
-| __Kategori__                     | __İfade__    | __Açıklama__ |
+| __Kategori__                     | __İfadesini__    | __Açıklama__ |
 |----------------------------------|-------------------|-----------------|
 | Birincil                          | `x.m`             | Üye erişimi |
 |                                  | `x(...)`          | Yöntem ve temsilci çağırma |
@@ -253,25 +253,25 @@ En yüksek öncelikten en düşüğe sırasını işleci kategorileri listeleme 
 |                                  | `x--`             | Azaltım sonrası |
 |                                  | `new T(...)`      | Nesne ve temsilci oluşturma |
 |                                  | `new T(...){...}` | Başlatıcı ile nesne oluşturma |
-|                                  | `new {...}`       | Anonim nesne Başlatıcı |
+|                                  | `new {...}`       | Anonim nesne Başlatıcısı |
 |                                  | `new T[...]`      | Dizi oluşturma |
-|                                  | `typeof(T)`       | Elde `System.Type` nesnesi `T` |
+|                                  | `typeof(T)`       | İçin `System.Type` nesne al`T` |
 |                                  | `checked(x)`      | İşaretli bağlamında ifade değerlendirme |
 |                                  | `unchecked(x)`    | İşaretlenmemiş bağlamında ifade değerlendirme |
-|                                  | `default(T)`      | Türünün varsayılan değerini alın `T` |
+|                                  | `default(T)`      | Türün varsayılan değerini Al`T` |
 |                                  | `delegate {...}`  | Anonim işlevi (anonim yöntemi) |
-| Birli                            | `+x`              | Kimlik |
+| Li                            | `+x`              | Kimlik |
 |                                  | `-x`              | Olumsuzlama |
 |                                  | `!x`              | Mantıksal olumsuzlama |
 |                                  | `~x`              | Bitwise olumsuzlama |
 |                                  | `++x`             | Artırım öncesi |
 |                                  | `--x`             | Azaltım öncesi |
-|                                  | `(T)x`            | Açıkça dönüştürmek `x` yazmak için `T` |
-|                                  | `await x`         | Zaman uyumsuz olarak bekleyin `x` tamamlamak için |
+|                                  | `(T)x`            | Açıkça türe `x` Dönüştür`T` |
+|                                  | `await x`         | Zaman uyumsuz `x` olarak işlemin tamamlanmasını bekleyin |
 | Çarpma                   | `x * y`           | Çarpma |
 |                                  | `x / y`           | Bölme |
 |                                  | `x % y`           | Kalan |
-| Eklenebilir                         | `x + y`           | Toplama, dize bitiştirme, temsilci birleşimi |
+| Msal                         | `x + y`           | Toplama, dize bitiştirme, temsilci birleşimi |
 |                                  | `x - y`           | Çıkarma, temsilci kaldırma |
 | Shift                            | `x << y`          | Sola kaydırma |
 |                                  | `x >> y`          | Sağa kaydırma |
@@ -279,46 +279,46 @@ En yüksek öncelikten en düşüğe sırasını işleci kategorileri listeleme 
 |                                  | `x > y`           | Büyüktür |
 |                                  | `x <= y`          | Küçük veya eşittir |
 |                                  | `x >= y`          | Büyük veya eşittir |
-|                                  | `x is T`          | Dönüş `true` varsa `x` olduğu bir `T`, `false` Aksi takdirde |
-|                                  | `x as T`          | Dönüş `x` olarak yazılan `T`, veya `null` varsa `x` değil bir `T` |
+|                                  | `x is T`          | Bir `true` ise`T`, tersidurumda`false` döndürün `x` |
+|                                  | `x as T`          | Dönüş `x` olarak `T`yazılmış veya `null` `x``T` |
 | Eşitlik                         | `x == y`          | Eşittir      |
 |                                  | `x != y`          | Eşit değildir |
-| Mantıksal VE                      | `x & y`           | Tamsayı bitwise ve, boolean mantıksal ve |
+| Mantıksal VE                      | `x & y`           | Tamsayı bit düzeyinde ve, Boolean mantıksal ve |
 | Mantıksal XOR                      | `x ^ y`           | Tamsayı bitwise XOR, Boolean mantıksal XOR |
 | Mantıksal VEYA                       | <code>x &#124; y</code> | Tamsayı bitwise VEYA, boolean mantıksal VEYA |
-| Koşullu VE                  | `x && y`          | Değerlendirilen `y` yalnızca `x` olduğu `true` |
-| Koşullu VEYA                   | <code>x &#124;&#124; y</code> | Değerlendirilen `y` yalnızca `x` olduğu `false` |
-| Null birleşim                  | `x ?? y`          | Değerlendiren `y` varsa `x` olduğu `null`, `x` Aksi takdirde |
-| Koşullu                      | `x ? y : z`       | Değerlendirir `y` varsa `x` olduğu `true`, `z` varsa `x` olduğu `false` |
-| Atama ve anonim işlev | `x = y`           | Atama |
-|                                  | `x op= y`         | Bileşik atama; desteklenen işleçler şunlardır: `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=` <code>&#124;=</code> |
+| Koşullu VE                  | `x && y`          | Yalnızca `y` şu durumlarda `x` değerlendirilir`true` |
+| Koşullu VEYA                   | <code>x &#124;&#124; y</code> | Yalnızca `y` şu durumlarda `x` değerlendirilir`false` |
+| Null birleşim                  | `x ?? y`          | `y` ,Değilse`x`olarakdeğerlendirilir `null` `x` |
+| Koşullu                      | `x ? y : z`       | Olupolmadığını`x` değerlendirir `y` `true` `z` `x``false` |
+| Atama veya anonim işlev | `x = y`           | Atama |
+|                                  | `x op= y`         | Bileşik atama; Desteklenen işleçler şunlardır `*=` `/=` `%=` `+=` `-=` `<<=` `>>=` `&=` `^=`<code>&#124;=</code> |
 |                                  | `(T x) => y`      | Anonim işlevi (lambda ifadesi) |
 
 ## <a name="statements"></a>Deyimler
 
-Bir programın eylemleri kullanılarak ifade edilir ***deyimleri***. C# ifadeleri açısından katıştırılmış deyimi bir dizi tanımlanmış birkaç farklı türde destekler.
+Bir programın eylemleri ***deyimler***kullanılarak ifade edilir. C#, birden çok farklı türde deyimi destekler, bu sayı katıştırılmış deyimler bakımından tanımlanır.
 
-A ***blok*** bağlamlarda yazılacak birden çok deyime burada tek bir deyimde izin verir. Sınırlayıcılar yazılan deyimlerin listesini bir blok oluşan `{` ve `}`.
+Bir ***blok*** , tek bir ifadeye izin verilen bağlamlarda birden çok deyimin yazılmasına izin verir. Bir blok, sınırlayıcılar `{` ve `}`arasında yazılmış deyimler listesinden oluşur.
 
 ***Bildirim deyimleri*** yerel değişkenleri ve sabitleri bildirmek için kullanılır.
 
-***İfade deyimleri*** ifadeler değerlendirilir. Deyimleri kullanılabilir ifadeler, yöntem çağrılarını içeren nesne ayırmaları kullanarak `new` işleç, atamaları kullanarak `=` ve bileşik atama işleçleri, artırma ve azaltma işlemlerini kullanarak`++`ve `--` işleçler ve ifadeler bekler.
+***İfade deyimleri*** , ifadeleri değerlendirmek için kullanılır. Deyim olarak kullanılabilecek ifadeler, yöntem etkinleştirmeleri, `new` işleci kullanılarak nesne ayırmaları, `=` ve bileşik atama işleçleri kullanan atamalar, artırma ve azaltma işlemleri `++` ve`--` işleçleri ve await ifadeleri.
 
-***Seçim deyimleri*** olası deyimleri yürütme bazı ifadesinin değerine göre bir dizi birini seçmek için kullanılır. Bu gruba `if` ve `switch` deyimleri.
+***Seçim deyimleri*** , bazı deyimlerin değerine göre yürütme için bir dizi olası deyimden birini seçmek için kullanılır. Bu grupta `if` ve `switch` deyimleri vardır.
 
-***Yineleme deyimleri*** sürekli bir katıştırılmış deyimi yürütmek için kullanılır. Bu gruba `while`, `do`, `for`, ve `foreach` deyimleri.
+***Yineleme deyimleri*** , gömülü bir deyimi tekrar tekrar yürütmek için kullanılır. `while`Bu grupta `do` ,,ve`foreach`deyimleribulunur. `for`
 
-***Atlama deyimleri*** denetim aktarmak için kullanılır. Bu gruba `break`, `continue`, `goto`, `throw`, `return`, ve `yield` deyimleri.
+***Sıçrama deyimleri*** , denetimi aktarmak için kullanılır. Bu `break`grupta `continue`, ,,`throw`, ve deyimleribulunur`yield` . `goto` `return`
 
-`try`... `catch` deyimi, bir blok yürütülmesi sırasında oluşan özel durumları yakalamak için kullanılır ve `try`... `finally` deyimi veya bir özel durum oluştu olup olmadığını her zaman yürütülür, sonlandırma kodu belirtmek için kullanılır.
+`try`... Bildiri, bir bloğun yürütülmesi sırasında oluşan özel durumları yakalamak için kullanılır `try`ve... `catch` `finally` bildirim, her zaman yürütülen ve özel durumun gerçekleşmediğini belirten sonlandırma kodunu belirtmek için kullanılır.
 
-`checked` Ve `unchecked` deyimleri bağlam Tamsayı türünde aritmetik işlemler ve dönüştürmeler için taşma denetimini için kullanılır.
+`checked` Ve`unchecked` deyimleri, tamsayı türü aritmetik işlemler ve dönüştürmeler için taşma denetimi bağlamını denetlemek için kullanılır.
 
-`lock` Deyimi belirli bir nesne için karşılıklı dışlama kilidini almak, bir deyimi yürütün ve sonra kilidi için kullanılır.
+Bu `lock` ifade, belirli bir nesne için karşılıklı dışlama kilidini almak, bir ifadeyi yürütmek ve sonra kilidi serbest bırakmak için kullanılır.
 
-`using` Deyimi bir kaynağı almak, bir deyimi yürütün ve sonra o kaynağını atma için kullanılır.
+`using` İfade, kaynak almak, bir ifadeyi yürütmek ve ardından bu kaynağı atmak için kullanılır.
 
-Her deyim türü örnekleri aşağıda verilmiştir
+Aşağıda her bir tür deyimin örnekleri verilmiştir
 
 __Yerel değişken bildirimleri__
 
@@ -332,7 +332,7 @@ static void Main() {
 ```
 
 
-__Yerel sabit bildiriminde__
+__Yerel sabit bildirimi__
 
 ```csharp
 static void Main() {
@@ -343,7 +343,7 @@ static void Main() {
 ```
 
 
-__ifade deyimi__
+__İfade deyimi__
 
 ```csharp
 static void Main() {
@@ -355,7 +355,7 @@ static void Main() {
 }
 ```
 
-__`if` Deyimi__
+__`if`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -369,7 +369,7 @@ static void Main(string[] args) {
 ```
 
 
-__`switch` Deyimi__
+__`switch`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -388,7 +388,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`while` Deyimi__
+__`while`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -401,7 +401,7 @@ static void Main(string[] args) {
 ```
 
 
-__`do` Deyimi__
+__`do`Ekstre__
 
 ```csharp
 static void Main() {
@@ -413,7 +413,7 @@ static void Main() {
 }
 ```
 
-__`for` Deyimi__
+__`for`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -423,7 +423,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`foreach` Deyimi__
+__`foreach`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -433,7 +433,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`break` Deyimi__
+__`break`Ekstre__
 
 ```csharp
 static void Main() {
@@ -445,7 +445,7 @@ static void Main() {
 }
 ```
 
-__`continue` Deyimi__
+__`continue`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -456,7 +456,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`goto` Deyimi__
+__`goto`Ekstre__
 
 ```csharp
 static void Main(string[] args) {
@@ -469,7 +469,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`return` Deyimi__
+__`return`Ekstre__
 
 ```csharp
 static int Add(int a, int b) {
@@ -482,7 +482,7 @@ static void Main() {
 }
 ```
 
-__`yield` Deyimi__
+__`yield`Ekstre__
 
 ```csharp
 static IEnumerable<int> Range(int from, int to) {
@@ -499,7 +499,7 @@ static void Main() {
 }
 ```
 
-__`throw` ve `try` deyimleri__
+__`throw`ve `try` deyimleri__
 
 ```csharp
 static double Divide(double x, double y) {
@@ -525,7 +525,7 @@ static void Main(string[] args) {
 }
 ```
 
-__`checked` ve `unchecked` deyimleri__
+__`checked`ve `unchecked` deyimleri__
 
 ```csharp
 static void Main() {
@@ -539,7 +539,7 @@ static void Main() {
 }
 ```
 
-__`lock` Deyimi__
+__`lock`Ekstre__
 
 ```csharp
 class Account
@@ -556,7 +556,7 @@ class Account
 }
 ```
 
-__`using` Deyimi__
+__`using`Ekstre__
 
 ```csharp
 static void Main() {
@@ -570,11 +570,11 @@ static void Main() {
 
 ## <a name="classes-and-objects"></a>Sınıflar ve nesneler
 
-***Sınıflar*** olan en temel C# türü. Bir sınıf durumu (alanlar) ve işlemleri (yöntemler ve diğer işlev üyeleri) bir araya getiren bir veri yapısı içinde tek bir birimdir. Dinamik olarak oluşturulan için bir sınıf tanımı sağlar ***örnekleri*** olarak da bilinen, sınıfın ***nesneleri***. Destek sınıfları ***devralma*** ve ***çok biçimlilik***, mekanizmaları yapabildiği ***türetilmiş sınıflar*** genişletmek ve uzmanlaşmış ***temel sınıflar***.
+***Sınıflar*** , türlerin en temel C#larıdır. Bir sınıf, durumu (alanları) ve eylemleri (Yöntemler ve diğer işlev üyelerini) tek bir birimde birleştiren bir veri yapısıdır. Sınıf, ***nesne***olarak da bilinen, sınıfının dinamik olarak oluşturulan ***örnekleri*** için bir tanım sağlar. Sınıflar, ***Devralma*** ve çok ***biçimlilik***desteği, ***türetilmiş sınıfların*** ***temel sınıfları***genişletebileceği ve özelleştirilebilecek mekanizmalar.
 
-Yeni sınıflar, sınıf bildirimi kullanarak oluşturulur. Bir sınıf bildiriminin öznitelikleri ve sınıfı değiştiricileri, sınıf, taban sınıf (belirtilmişse) ve bir sınıf tarafından uygulanan arabirimler adını belirten bir üst bilgisi ile başlar. Başlık sınırlayıcılar arasında yazılan üye bildirimleri listesini içeren sınıf gövdesinin arkasından `{` ve `}`.
+Yeni sınıflar sınıf bildirimleri kullanılarak oluşturulur. Sınıf bildirimi, sınıfın özniteliklerini ve değiştiricilerini, sınıfın adını, Taban sınıfını (belirtilmişse) ve sınıf tarafından uygulanan arabirimleri belirten bir üstbilgiyle başlar. Üst bilgi, sınırlayıcılar `{` ve `}`arasında yazılmış üye bildirimlerinin listesinden oluşan sınıf gövdesinden gelir.
 
-Adlı basit bir sınıf bildirimi verilmiştir `Point`:
+Aşağıda adlı `Point`basit bir sınıfın bildirimi verilmiştir:
 
 ```csharp
 public class Point
@@ -587,50 +587,50 @@ public class Point
     }
 }
 ```
-Sınıfların örneklerini kullanılarak oluşturulur `new` yeni bir örneği için bellek ayırır, işleci örneği başlatmak için bir oluşturucu çağırır ve örneğe bir başvuru döndürür. Aşağıdaki deyimleri iki oluşturma `Point` nesneleri ve bu nesnelere başvurular iki değişken depolayabilirsiniz:
+Sınıf örnekleri, yeni bir örnek için `new` bellek ayıran işleç kullanılarak oluşturulur, örneği başlatmak için bir oluşturucu çağırır ve örneğe bir başvuru döndürür. Aşağıdaki deyimler iki `Point` nesne oluşturur ve bu nesnelere başvuruları iki değişken halinde depolar:
 
-```
+```csharp
 Point p1 = new Point(0, 0);
 Point p2 = new Point(10, 20);
 ```
-Nesne artık kullanımda olmadığında otomatik olarak bir nesnenin kapladığı belleği geri kazanılır. Bu, gerekli veya C# nesneler açıkça serbest mümkün olur.
+Nesne artık kullanımda olmadığında bir nesnenin kapladığı bellek otomatik olarak geri kazanılır. Üzerinde C#nesneleri açıkça serbest bırakmak gerekli değildir veya mümkün değildir.
 
 ### <a name="members"></a>Üyeler
 
-Bir sınıf üyesi ya da olan ***statik üyeleri*** veya ***örnek üyeleri***. Statik üyeleri sınıflarına ait ve örnek üyeleri (sınıfların örneklerini) nesnelere ait.
+Bir sınıfın üyeleri ***statik Üyeler*** veya ***örnek üyeleridir***. Statik Üyeler sınıflara aittir ve örnek üyeleri nesnelere aittir (sınıf örnekleri).
 
-Aşağıdaki tabloda, tür üyeleri bir sınıf içeren genel bir bakış sağlar.
+Aşağıdaki tabloda bir sınıfın içerebileceği üye türlerine genel bakış sunulmaktadır.
 
 
-| __Üyesi__   | __Açıklama__ |
+| __Üyesidir__   | __Açıklama__ |
 |------------  |-----------------|
-| Sabitler    | Sınıf ile ilişkili olan sabit değerler |
+| Sabitler    | Sınıfla ilişkili sabit değerler |
 | Alanlar       | Sınıfın değişkenleri |
-| Yöntemler      | Sınıfı tarafından gerçekleştirilen eylemler ve hesaplamaları |
-| Özellikler   | Okuma ve adlandırılmış sınıfın özelliklerini yazma ile ilişkili eylemler |
-| Dizin Oluşturucular     | Dizin oluşturma sınıfına bir dizi gibi örnekleriyle ilişkili eylemler |
-| Olaylar       | Sınıfı tarafından oluşturulan bildirimleri |
-| İşleçler    | Dönüşümler ve sınıfı tarafından desteklenen ifade işleçleri |
-| Oluşturucular | Sınıfın veya sınıf örneği başlatmak için gerekli eylemleri |
-| Yıkıcılar  | Sınıf örneğini kalıcı olarak atılmadan önce gerçekleştirilecek eylemler |
-| Türler        | Sınıfı tarafından bildirilen iç içe geçmiş türler |
+| Yöntemler      | Sınıfı tarafından gerçekleştirilebilecek hesaplamalar ve eylemler |
+| Özellikler   | Sınıfın adlandırılmış özelliklerini okuma ve yazma ile ilişkili eylemler |
+| Dizin Oluşturucular     | Bir dizi gibi sınıfın dizin oluşturma örnekleri ile ilişkili eylemler |
+| Olaylar       | Sınıfı tarafından oluşturulabilecek bildirimler |
+| İşleçler    | Sınıf tarafından desteklenen dönüşümler ve ifade işleçleri |
+| Oluşturucular | Sınıfın veya sınıfın örneklerinin örneğini başlatmak için gereken eylemler |
+| Yıkıcılar  | Sınıfın örneklerinden önce gerçekleştirilecek eylemler kalıcı olarak atılır |
+| Türler        | Sınıf tarafından tanımlanan iç içe türler |
 
 ### <a name="accessibility"></a>Erişilebilirlik
 
-Bir sınıfın her üyesine erişebilir üyeyi program metni bölümlerine denetleyen bir ilişkili erişilebilirlik sahiptir. Erişilebilirlik beş olası biçimi vardır. Bunlar aşağıdaki tabloda özetlenmiştir.
+Bir sınıfın her üyesinin ilişkili bir erişilebilirliği vardır ve bu, üyeye erişebilen program metni bölgelerini denetler. Olası beş erişilebilirlik biçimi vardır. Bunlar aşağıdaki tabloda özetlenmiştir.
 
 
-| __Erişilebilirlik__    | __Anlamı__ |
+| __Erişilebilirlik__    | __Anlamına__ |
 |----------------------|-----------------|
-| `public`             | Olmayan sınırlı erişim |
-| `protected`          | Bu sınıf veya sınıfların sınırlı erişim, bu sınıftan türetilen |
-| `internal`           | Bu program için sınırlı erişim |
-| `protected internal` | Bu program için sınırlı erişim veya bu sınıftan türetilmiş sınıflar |
-| `private`            | Bu sınıf için sınırlı erişim |
+| `public`             | Erişim sınırlı değil |
+| `protected`          | Bu sınıftan türetilmiş bu sınıfla veya sınıflarla sınırlı erişim |
+| `internal`           | Bu programla sınırlı erişim |
+| `protected internal` | Bu sınıftan türetilmiş bu program veya sınıflarla sınırlı erişim |
+| `private`            | Bu sınıfla sınırlı erişim |
 
 ### <a name="type-parameters"></a>Tür parametreleri
 
-Bir sınıf tanımı, sınıf adı türü parametre adları listesini çevreleyen açılı ayraçlar ile izleyerek tür parametrelerinin kümesi belirtebilirsiniz. Tür parametreleri için sınıf üyelerini tanımlamak için sınıf bildirimi gövdesinde kullanılabilir. Aşağıdaki örnekte, tür parametreleri `Pair` olan `TFirst` ve `TSecond`:
+Sınıf tanımı, tür parametre adlarının bir listesini kapsayan açılı ayraçları olan sınıf adını izleyerek bir tür parametreleri kümesi belirtebilir. Tür parametreleri, sınıfının üyelerini tanımlamak için sınıf bildirimlerinin gövdesinde kullanılabilir. Aşağıdaki örnekte, öğesinin `Pair` `TFirst` tür parametreleri ve `TSecond`:
 
 ```csharp
 public class Pair<TFirst,TSecond>
@@ -639,20 +639,20 @@ public class Pair<TFirst,TSecond>
     public TSecond Second;
 }
 ```
-Tür parametreleri gerçekleştirilecek bildirildiği bir sınıf türü bir genel sınıf türü olarak adlandırılır. Yapı, arabirim ve temsilci türlerinin genel olabilir.
+Tür parametrelerini almak için belirtilen bir sınıf türüne genel sınıf türü denir. Yapı, arabirim ve temsilci türleri de genel olabilir.
 
-Genel sınıf kullanıldığında, tür bağımsız değişkenleri her tür parametreleri için sağlanmalıdır:
+Genel sınıf kullanıldığında, tür parametrelerinin her biri için tür bağımsız değişkenlerinin sağlanması gerekir:
 
 ```csharp
 Pair<int,string> pair = new Pair<int,string> { First = 1, Second = "two" };
 int i = pair.First;     // TFirst is int
 string s = pair.Second; // TSecond is string
 ```
-Sağlanan gibi tür bağımsız değişkenleri ile genel tür `Pair<int,string>` yukarıda oluşturulan tür adı verilir.
+Yukarıda olduğu gibi `Pair<int,string>` , tür bağımsız değişkenlerine sahip genel bir tür, oluşturulmuş bir tür olarak adlandırılır.
 
 ### <a name="base-classes"></a>Temel sınıflar
 
-Sınıf bildiriminin bir temel sınıf, bir iki nokta üst üste ve temel sınıfın adını sınıf adı ve türü parametreleri izleyerek belirtebilirsiniz. Bir temel sınıf belirtimini atlama aynıdır türünden türetme `object`. Aşağıdaki örnekte, temel sınıfını `Point3D` olduğu `Point`ve temel sınıfını `Point` olduğu `object`:
+Sınıf bildirimi, sınıf adı ve tür parametreleri iki nokta ve temel sınıfın adı ile birlikte bir temel sınıf belirtebilir. Temel sınıf belirtiminin atlanması, türden `object`türetmeye benzer. `Point3D` Aşağıdaki örnekte, öğesinin `Point`temel sınıfı ve öğesinin `Point` `object`temel sınıfı:
 
 ```csharp
 public class Point
@@ -674,9 +674,9 @@ public class Point3D: Point
     }
 }
 ```
-Bir sınıf, taban sınıfı üyelerini devralır. Devralma, bir sınıf dolaylı temel sınıfı, örneği ve statik oluşturucular ve Yıkıcılar temel sınıfın dışındaki tüm üyeleri içeren anlamına gelir. Türetilmiş bir sınıf devralır bu yeni üyeler ekleyebilirsiniz, ancak devralınan bir üyeyi tanımını kaldırılamaz. Önceki örnekte, `Point3D` devralan `x` ve `y` alanlarını `Point`ve her `Point3D` örneğini içeren üç alan `x`, `y`, ve `z`.
+Bir sınıf, temel sınıfının üyelerini devralır. Devralma, bir sınıfın örnek ve statik oluşturucular ve temel sınıfın yıkıcıları dışında, temel sınıfının tüm üyelerini örtük olarak içerdiği anlamına gelir. Türetilmiş bir sınıf, devralananlara yeni üyeler ekleyebilir, ancak devralınmış bir üyenin tanımını kaldıramaz. Önceki örnekte `Point3D` , `Point3D` `x` `z`ve alanlarını`y` öğesinden`Point`devralır ve her örnek üç alan`y`içerir,, ve. `x`
 
-Temel sınıf türlerinden birinin bir sınıf türünden örtük bir dönüştürme yok. Bu nedenle, bir sınıf türünün bir değişkeni, bu sınıfın bir örneğini veya türetilmiş bir sınıf örneği başvuruda bulunabilir. Örneğin, önceki bir sınıf bildirimleri, türünde bir değişken verilen `Point` ya da başvurabilirsiniz bir `Point` veya `Point3D`:
+Bir sınıf türünden, temel sınıf türlerinden herhangi birine örtük bir dönüştürme vardır. Bu nedenle, bir sınıf türünün değişkeni bu sınıfın bir örneğine veya türetilmiş herhangi bir sınıfın örneğine başvurabilir. Örneğin, önceki sınıf bildirimleri verildiğinde, türünde `Point` bir değişken bir `Point` veya a `Point3D`başvurabilir:
 
 ```csharp
 Point a = new Point(10, 20);
@@ -685,13 +685,13 @@ Point b = new Point3D(10, 20, 30);
 
 ### <a name="fields"></a>Alanlar
 
-Bir alanın bir sınıf veya bir sınıf örneği ile ilişkili bir değişkendir.
+Alan, bir sınıf ile veya bir sınıf örneğiyle ilişkili bir değişkendir.
 
-Bir alana bildirilen `static` değiştiricisi tanımlayan bir ***statik alan***. Statik alan tam olarak bir depolama konumunu tanımlar. Bir sınıfın kaç örneklerin oluşturulduğu ne olursa olsun, yalnızca bir kopyasını statik bir alan yoktur.
+`static` Değiştiriciyle belirtilen bir alan ***statik bir alan***tanımlar. Statik alan tam olarak bir depolama konumunu tanımlar. Bir sınıfın kaç örneğinin oluşturulduğuna bakılmaksızın, bir statik alanın yalnızca bir kopyası vardır.
 
-Bir alan olmadan bildirilen `static` değiştiricisi tanımlayan bir ***örnek alanı***. Bir sınıfın her örneği, bu sınıfın tüm örnek alanları ayrı bir kopyasını içerir.
+`static` Değiştirici olmadan belirtilen bir alan bir ***örnek alanını***tanımlar. Bir sınıfın her örneği, bu sınıfın tüm örnek alanlarının ayrı bir kopyasını içerir.
 
-Aşağıdaki örnekte, her bir örneği `Color` sınıfına sahip ayrı bir kopyasını `r`, `g`, ve `b` örnek alanları, ancak yalnızca bir kopyası `Black`, `White`, `Red`, `Green`, ve `Blue` statik alanlar:
+Aşağıdaki örnekte `Color` , sınıfının her örneği `r`, `g`, ve `b` `Black`örnek `Red`alanlarının ayrı bir kopyasına sahiptir ancak `White` ,,,,,,,,,,,,,,,,,,,`Green` ve`Blue` statik alanları:
 
 ```csharp
 public class Color
@@ -710,27 +710,27 @@ public class Color
     }
 }
 ```
-Önceki örnekte gösterilen şekilde ***salt okunur alanları*** ile bildirilebilir bir `readonly` değiştiricisi. Atama bir `readonly` alan alanın bildirimin veya aynı sınıftaki bir oluşturucunun parçası olarak yalnızca oluşabilir.
+Önceki örnekte gösterildiği gibi, ***salt okuma alanları*** bir `readonly` değiştirici ile bildirilebilecek. Bir `readonly` alana atama yalnızca alanın bildiriminin veya aynı sınıftaki bir oluşturucunun parçası olarak gerçekleşebilir.
 
 ### <a name="methods"></a>Yöntemler
 
-A ***yöntemi*** hesaplama veya bir nesne veya sınıf tarafından gerçekleştirilen eylem uygulayan bir üyesidir. ***Statik yöntemler*** sınıfı üzerinden erişilir. ***Örnek yöntemleri*** sınıfının örneklerini erişilir.
+Bir ***Yöntem*** , bir nesne veya sınıf tarafından gerçekleştirilebilecek bir hesaplama veya eylem uygulayan bir üyesidir. ***Statik yöntemlere*** sınıfı aracılığıyla erişilir. ***Örnek yöntemlerine*** , sınıfının örnekleri aracılığıyla erişilir.
 
-Yöntemleri (büyük olasılıkla boş) bir listesi olan ***parametreleri***, değerleri veya değişken başvuruları yöntemine geçirilen temsil ve ***dönüş türü***, hesaplanan ve tarafından döndürülen değerin türü belirtir yöntem. Bir yöntemin dönüş türü `void` bir değer döndürmezse.
+Metotlarda (muhtemelen boş) bir ***parametre***listesi vardır. Bu, yönteme geçirilen değerleri ya da değişken başvurularını temsil eder ve bir ***dönüş türü***, hesaplanan ve yöntemi tarafından döndürülen değer türünü belirtir. Bir yöntemin dönüş türü `void` bir değer döndürmezse.
 
-Türleri gibi yöntemleri de bir dizi yöntem çağrıldığında tür bağımsız değişkenleri belirtilmiş olmalıdır, tür parametreleri olabilir. Türleri, farklı tür bağımsız değişkeni genellikle bir yöntem çağrısının bağımsız değişkenlerden çıkarılan ve açıkça verilmemiş.
+Türler gibi yöntemler de bir tür parametreleri kümesine sahip olabilir, bu da yöntem çağrıldığında tür bağımsız değişkenlerinin belirtilmesi gerekir. Türlerin aksine, tür bağımsız değişkenleri genellikle yöntem çağrısının bağımsız değişkenlerinden çıkarsanamıyor ve açıkça verilmemelidir.
 
-***İmza*** yöntemi yöntemi bildirilmiş sınıfında benzersiz olması gerekir. Yöntemin imzası yöntem, tür parametreleri ve sayısı, değiştiriciler ve parametrelerinin türleri sayısı adını oluşur. Yöntemin imzası dönüş türü içermez.
+Yöntemin ***imzası*** , yöntemin bildirildiği sınıfta benzersiz olmalıdır. Bir yöntemin imzası yöntemin adından, tür parametrelerinin sayısına ve parametrelerinin sayısına, değiştiricilerine ve türlerine sahiptir. Bir yöntemin imzası, dönüş türünü içermez.
 
 #### <a name="parameters"></a>Parametreler
 
-Parametre değerleri veya değişken başvuruları yöntemlere geçirmek için kullanılır. Bir yöntem parametreleri, gerçek değerleri alma ***bağımsız değişkenleri*** yöntemi çağrıldığında belirtilir. Dört tür parametrelerinin vardır: parametreler, başvuru parametreleri, çıktı parametreleri ve parametre dizileri değeri.
+Parametreler, değerlere veya değişken başvurularını yöntemlere geçirmek için kullanılır. Bir yöntemin parametreleri, yöntemi çağrıldığında belirtilen ***bağımsız değişkenlerden*** gerçek değerlerini alır. Dört tür parametre vardır: değer parametreleri, başvuru parametreleri, çıkış parametreleri ve parametre dizileri.
 
-A ***değer parametresi*** giriş parametre geçirme için kullanılır. Bir değer parametresini karşılık gelen bir yerel değişkene parametresi için geçirilen bağımsız ilk değerini alır. Parametresi için geçirilen bağımsız değişken bir değer parametresini değişiklikler etkilemez.
+Giriş parametresi geçirme için bir ***değer parametresi*** kullanılır. Değer parametresi, parametresi için geçirilen bağımsız değişkenden ilk değerini alan yerel bir değişkene karşılık gelir. Değer parametresindeki değişiklikler, parametresi için geçirilen bağımsız değişkeni etkilemez.
 
-Böylece karşılık gelen bağımsız değişken atlanırsa, varsayılan bir değer belirterek değeri parametreleri, isteğe bağlı olabilir.
+Değer parametreleri, ilgili bağımsız değişkenlerin atlanabilmesi için varsayılan bir değer belirtilerek isteğe bağlı olabilir.
 
-A ***parametre başvurusunu*** giriş ve çıkış parametre geçirme için kullanılır. Bir başvuru parametresi için geçirilen bağımsız değişken bir değişken olmalıdır ve yöntemin yürütülmesi sırasında aynı depolama konumu olarak bir bağımsız değişken başvuru parametresi temsil eder. Bir başvuru parametresi ile bildirilen `ref` değiştiricisi. Aşağıdaki örnek kullanımını gösterir `ref` parametreleri.
+Hem giriş hem de çıkış parametresi geçirme için ***başvuru parametresi*** kullanılır. Başvuru parametresi için geçirilen bağımsız değişken bir değişken olmalıdır ve yöntemin yürütülmesi sırasında başvuru parametresi, bağımsız değişken değişkeniyle aynı depolama konumunu temsil eder. Bir başvuru parametresi `ref` değiştiriciyle birlikte bildirilmiştir. Aşağıdaki örnek `ref` parametrelerin kullanımını gösterir.
 
 ```csharp
 using System;
@@ -750,7 +750,7 @@ class Test
     }
 }
 ```
-Bir ***çıkış parametresi*** geçirme çıkış parametresi için kullanılır. Çağıran tarafından sağlanan bağımsız değişkenin ilk değeri önemli olması dışında başvuru parametresi bir output parametresi benzer. Çıkış parametresi ile bildirilen `out` değiştiricisi. Aşağıdaki örnek kullanımını gösterir `out` parametreleri.
+Çıkış parametresi geçirme için ***çıkış parametresi*** kullanılır. Bir çıktı parametresi, çağıran tarafından belirtilen bağımsız değişkenin ilk değeri önemli olmayan bir başvuru parametresine benzerdir. Bir çıkış parametresi `out` değiştiriciyle birlikte bildirilmiştir. Aşağıdaki örnek `out` parametrelerin kullanımını gösterir.
 
 ```csharp
 using System;
@@ -769,7 +769,7 @@ class Test
     }
 }
 ```
-A ***parametre dizisi*** bir yönteme iletilecek bağımsız değişken bir sayı verir. Bir parametre dizisi ile bildirilen `params` değiştiricisi. Bir yöntem yalnızca son parametresi bir parametre dizisi olabilir ve bir parametre dizisi türünde tek boyutlu dizi türü olmalıdır. `Write` Ve `WriteLine` yöntemlerinin `System.Console` sınıfı iyi parametre dizisi kullanımı örnekleri verilmiştir. Bunlar aşağıdaki gibi bildirilir.
+Bir ***parametre dizisi*** , bir metoda değişken sayıda bağımsız değişken geçirilmesine izin verir. Bir parametre dizisi `params` değiştiriciyle birlikte bildirilmiştir. Bir yöntemin yalnızca son parametresi bir parametre dizisi olabilir ve bir parametre dizisinin türü tek boyutlu bir dizi türü olmalıdır. Sınıfının ve `WriteLine` yöntemleri `Write` , parametre dizisi kullanımının iyi örnekleridir. `System.Console` Bunlar aşağıdaki gibi bildirilmiştir.
 
 ```csharp
 public class Console
@@ -779,12 +779,12 @@ public class Console
     ...
 }
 ```
-Parametre dizisi, bir parametre dizisi kullanan bir yöntem içinde bir dizi türünde tam olarak normal bir parametre gibi davranır. Ancak, bir parametre dizisi olan bir yöntem çağrısını içinde parametresi dizi türünde tek bir bağımsız değişken veya herhangi bir sayıda öğe türü parametre dizisi bağımsız değişkenleri geçirmek mümkündür. İkinci durumda, bir dizi örneği otomatik olarak oluşturulur ve belirtilen bağımsız değişkenler ile başlatıldı. Bu örnek
+Bir parametre dizisi kullanan bir yöntem içinde, parametre dizisi tam olarak bir dizi türünün normal parametresine benzer şekilde davranır. Ancak, bir parametre dizisi olan bir yöntem çağrısında, parametre dizisi türünün tek bir bağımsız değişkenini veya parametre dizisinin öğe türünün herhangi bir sayıda bağımsız değişkenini geçirmek mümkündür. İkinci durumda, bir dizi örneği otomatik olarak oluşturulur ve verilen bağımsız değişkenlerle başlatılır. Bu örnek
 
 ```csharp
 Console.WriteLine("x={0} y={1} z={2}", x, y, z);
 ```
-Aşağıdaki yazmaya eşdeğerdir.
+, aşağıdaki yazma ile eşdeğerdir.
 
 ```csharp
 string s = "x={0} y={1} z={2}";
@@ -795,11 +795,11 @@ args[2] = z;
 Console.WriteLine(s, args);
 ```
 
-#### <a name="method-body-and-local-variables"></a>Yöntem gövdesini ve yerel değişkenler
+#### <a name="method-body-and-local-variables"></a>Yöntem gövdesi ve yerel değişkenler
 
-Bir yöntemin gövdesi yöntemi çağrıldığında çalıştırılacak deyimleri belirtir.
+Yöntemin gövdesi, yöntemi çağrıldığında yürütülecek deyimleri belirtir.
 
-Bir yöntem gövdesi yöntemi çağırmayı için özel değişkenleri bildirebilirsiniz. Bu tür değişkenleri olarak adlandırılmasının ***yerel değişkenler***. Yerel bir değişken bildirimi bir tür adı, bir değişken adı ve büyük olasılıkla bir başlangıç değeri belirtir. Aşağıdaki örnek, yerel bir değişken bildirir `i` bir başlangıç değeri sıfır ve yerel bir değişken ile `j` ile başlangıç değeri yok.
+Yöntem gövdesi, yöntemi çağrısına özgü değişkenleri bildirebilir. Bu tür değişkenlere ***yerel değişkenler***denir. Yerel bir değişken bildirimi bir tür adı, değişken adı ve muhtemelen bir başlangıç değeri belirtir. Aşağıdaki örnek, başlangıç değeri sıfır olan `i` yerel bir değişken ve ilk değeri olmayan bir yerel değişken `j` bildirir.
 
 ```csharp
 using System;
@@ -817,17 +817,17 @@ class Squares
     }
 }
 ```
-C# olarak yerel bir değişken gerektirir ***kesinlikle atanan*** önce değeri elde edilebilir. Örneğin, önceki bildirimi `i` bir başlangıç değeri içermesi gerekmez, derleyici bir hata sonraki kullanımlar için rapor `i` çünkü `i` kesinlikle noktalarda program atanır değil.
+C#değeri alınabilmesi için önce bir yerel değişkenin ***kesinlikle atanmasını*** gerektirir. Örneğin, önceki `i` bildiriminde bir başlangıç değeri yoksa, derleyici programın sonraki `i` kullanımları için bir hata bildirir çünkü `i` bu, programda bu noktalarda kesinlikle atanmamalıdır.
 
-Bir yöntemi kullanabilirsiniz `return` denetimi onu arayan döndürülecek deyimleri. Döndüren bir yöntem içinde `void`, `return` deyimleri, bir ifade belirtemez. Olmayan döndüren bir yöntem içinde`void`, `return` deyimleri, dönüş değeri hesaplar bir ifade içermelidir.
+Bir yöntem, çağrı `return` yapana denetim döndürmek için deyimlerini kullanabilir. `void` Döndürülen`return` bir yöntemde deyimler bir ifade belirtemez. Olmayan`void`deyimler döndüren bir yöntemde, `return` dönüş değerini hesaplayan bir ifade içermelidir.
 
 #### <a name="static-and-instance-methods"></a>Statik ve örnek yöntemleri
 
-Bir yöntem ile bildirilen bir `static` değiştiricisi bir ***statik yöntem***. Statik bir yöntemi, belirli bir örneği üzerinde çalışmaz ve statik üyeler yalnızca doğrudan erişebilir.
+`static` Değiştirici ile belirtilen bir yöntem ***statik bir yöntemdir***. Statik bir yöntem belirli bir örnek üzerinde çalışmaz ve yalnızca statik üyelere doğrudan erişebilir.
 
-Bir yöntem olmadan bildirilen bir `static` değiştiricisi bir ***örnek yöntemi***. Bir örnek yöntemi belirli bir örneği üzerinde çalışır ve hem statik erişebilir ve örnek üyeler. Bir örnek yöntemi çağrıldığı örnek olarak açıkça erişilebilir `this`. Başvurmak için bir hata olduğunu `this` statik yöntemde.
+`static` Değiştirici olmadan bildirildiği bir yöntem bir ***örnek yöntemidir***. Örnek yöntemi, belirli bir örnek üzerinde çalışır ve hem statik hem de örnek üyelerine erişebilir. Örnek yönteminin çağrıldığı örnek, olarak `this`açıkça erişilebilir. Statik bir yöntemde başvurmak `this` için bir hatadır.
 
-Aşağıdaki `Entity` sınıfında statik ve örnek üyeleri.
+Aşağıdaki `Entity` sınıfta hem statik hem de örnek üyeleri vardır.
 
 ```csharp
 class Entity
@@ -852,11 +852,11 @@ class Entity
     }
 }
 ```
-Her `Entity` örneği seri numarası (ve burada gösterilmez büyük olasılıkla bazı diğer bilgileri içerir). `Entity` (Olan bir örnek yöntemi gibi) bir oluşturucu sonraki kullanılabilir seri numarasına sahip yeni örneğini başlatır. Oluşturucu bir örnek üyesi olduğundan, her ikisi de erişmesine izin verilen `serialNo` örnek alan ve `nextSerialNo` statik alan.
+Her `Entity` örnek bir seri numarası içerir (ve burada görünmeyen bazı diğer bilgileri kabul etmez). `Entity` Oluşturucu (bir örnek yöntemi gibi) yeni örneği bir sonraki kullanılabilir seri numarasıyla başlatır. Oluşturucu bir örnek üyesi olduğundan, hem `serialNo` örnek alanına `nextSerialNo` hem de statik alana erişim izni verilir.
 
-`GetNextSerialNo` Ve `SetNextSerialNo` statik yöntemler erişebilir `nextSerialNo` statik alan, ancak bir hata için bunları doğrudan erişimini olacak `serialNo` örnek alanı.
+`GetNextSerialNo` Ve `serialNo` statik yöntemler statikalanaerişebilir,ancakörnekalanınadoğrudanerişmesiiçinbirhataolabilir.`nextSerialNo` `SetNextSerialNo`
 
-Aşağıdaki örnek kullanımını gösterir `Entity` sınıfı.
+Aşağıdaki örnek `Entity` sınıfının kullanımını gösterir.
 
 ```csharp
 using System;
@@ -873,19 +873,19 @@ class Test
     }
 }
 ```
-Unutmayın `SetNextSerialNo` ve `GetNextSerialNo` statik yöntemler, sınıf üzerinde çağrılır, ancak `GetSerialNo` sınıf örnekleri üzerinde örnek yöntemi çağrılır.
+Sınıfının örneklerinde `GetSerialNo` örnek `SetNextSerialNo` yöntemi `GetNextSerialNo` çağrıldığında, ve statik yöntemlerin sınıfında çağrılabileceğini unutmayın.
 
-#### <a name="virtual-override-and-abstract-methods"></a>Soyut metotlar sanal ve geçersiz kılma
+#### <a name="virtual-override-and-abstract-methods"></a>Sanal, geçersiz kılma ve soyut yöntemler
 
-Ne zaman bir örnek yöntemi bildirimi içeren bir `virtual` değiştiricisi, yöntem olarak kabul edilir bir ***sanal yöntem***. Hiçbir `virtual` değiştirici mevcut ise, yöntem olarak kabul edilir bir ***sanal olmayan yöntemiyle***.
+Bir örnek yöntemi bildirimi bir `virtual` değiştirici içerdiğinde, yöntemi bir ***sanal yöntem***olarak kabul edilir. Değiştirici yoksa, yöntemi ***sanal olmayan bir yöntem***olarak kabul edilir. `virtual`
 
-Sanal bir yöntem çağrıldığında ***çalışma zamanı tür*** bu çağırma aldığı örneğini yerde çağrılacak gerçek yöntem uygulaması belirler. Bir sanal olmayan bir yöntem çağrısı ***derleme zamanı tür*** belirleyici faktör örneğidir.
+Bir sanal yöntem çağrıldığında, çağrının gerçekleştiği örneğin ***çalışma zamanı türü*** , çağrılacak gerçek Yöntem uygulamasını belirler. Sanal olmayan bir yöntem çağrısında, örneğin ***derleme zamanı türü*** belirleme faktörü olur.
 
-Sanal bir yöntem olabilir ***geçersiz kılınan*** türetilen bir sınıfta. Ne zaman bir örnek yöntemi bildirimi içeren bir `override` değiştiricisi, yöntemin aynı imzaya sahip devralınan sanal yöntemi geçersiz kılar. Bir geçersiz kılma yöntemi bildirimini sanal yöntem bildiriminde bir yöntem sunar ancak bu yöntem yeni bir uygulamasını sağlayarak mevcut devralınan sanal yöntemi uzmanlaşmış.
+Bir sanal yöntem, türetilmiş bir sınıfta ***geçersiz kılınabilir*** . Bir örnek yöntemi bildirimi bir `override` değiştirici içerdiğinde, yöntemi aynı imzaya sahip devralınmış bir sanal yöntemi geçersiz kılar. Sanal bir yöntem bildiriminde yeni bir yöntem tanıtıldığı halde, bir geçersiz kılma yöntemi bildirimi, bu yöntemin yeni bir uygulamasını sağlayarak, var olan bir devralınmış sanal yöntemi uzmanlık eder.
 
-Bir ***soyut*** sanal bir yöntem uygulama içermeyen bir yöntemdir. Soyut bir yöntem ile bildirilen `abstract` değiştiricisi ve ayrıca bildirilen bir sınıfta izin `abstract`. Her bir soyut olmayan türetilmiş sınıf içinde soyut bir yöntemi geçersiz kılınmalıdır.
+***Soyut*** bir yöntem, uygulama içermeyen bir sanal yöntemdir. Soyut bir yöntem `abstract` değiştiriciyle birlikte bildirilmiştir ve yalnızca da belirtilen `abstract`bir sınıfta izin verilir. Soyut olmayan her türetilmiş sınıfta bir soyut yöntem geçersiz kılınmalıdır.
 
-Aşağıdaki örnek, bir soyut sınıfı bildirir `Expression`, bir ifade ağacı düğümünü temsil eder ve üç türetilmiş sınıfları `Constant`, `VariableReference`, ve `Operation`, sabitler, değişken için ifade ağaç düğümleri uygulayın başvurular ve aritmetik işlemler. (Bu benzer, ancak ile karıştırılmamalıdır ifade ağacı türleri sürümünde [ifade ağacı türleri](types.md#expression-tree-types)).
+Aşağıdaki örnek, bir ifade ağaç düğümünü temsil `Expression`eden bir soyut sınıfı ve sabitler, değişken için ifade ağacı düğümleri uygulayan `Constant`üç `VariableReference`türetilmiş sınıfı `Operation`,, ve ve ' ı tanımlar. başvurular ve aritmetik işlemler. (Bu şuna benzerdir, ancak [ifade ağacı türlerinde](types.md#expression-tree-types)tanıtılan ifade ağacı türleriyle karıştırılmamalıdır).
 
 ```csharp
 using System;
@@ -951,7 +951,7 @@ public class Operation: Expression
     }
 }
 ```
-Önceki dört sınıfları, aritmetik ifadeler modellemek için kullanılabilir. Örneğin, ifade bu sınıfların örnekleri kullanarak `x + 3` şu şekilde temsil edilebilir.
+Önceki dört sınıf aritmetik ifadeleri modellemek için kullanılabilir. Örneğin, bu sınıfların örneklerini kullanarak, ifadesi `x + 3` aşağıdaki gibi gösterilebilir.
 
 ```csharp
 Expression e = new Operation(
@@ -959,11 +959,11 @@ Expression e = new Operation(
     '+',
     new Constant(3));
 ```
-`Evaluate` Yöntemi bir `Expression` örneği belirtilen ifadeyi değerlendirir ve üretmek için çağrıldığında bir `double` değeri. Yöntem bağımsız değişken olarak alır bir `Hashtable` (anahtar olarak girişlerinin) değişken adları ve değerleri (olarak girdilerinin değerlerini) içeren. `Evaluate` Yöntemdir, türetilmiş soyut olmayan sınıflar, gerçek bir uygulama sağlamak için kılmalı yani sanal soyut bir yöntem.
+`double` Bir `Evaluate` Örneğinyöntemi,verilenifadeyideğerlendirmekvebirdeğerüretmekiçinçağrılır.`Expression` Yöntemi, değişken adlarını (girdilerin anahtarları `Hashtable` olarak) ve değerlerini (girdilerin değerleri olarak) içeren bir bağımsız değişken olarak alır. `Evaluate` Yöntemi, bir sanal soyut yöntemidir, yani soyut olmayan türetilmiş sınıfların gerçek bir uygulama sağlamak için onu geçersiz kılması gerekir.
 
-A `Constant`'s uygulaması `Evaluate` yalnızca saklı sabiti döndürür. A `VariableReference`hashtable değişken adında uygulama şuna kullanıcının ve sonuçta elde edilen değeri döndürür. Bir `Operation`ait uygulama ilk sol ve sağ işlenen değerlendirilir (yinelemeli olarak çağırarak kendi `Evaluate` yöntemleri) ve ardından belirli bir aritmetik işlemi gerçekleştirir.
+' Nin uygulanması, `Evaluate` yalnızca saklı sabiti döndürür. `Constant` Bir `VariableReference`uygulama, Hashtable 'daki değişken adını arar ve elde edilen değeri döndürür. Bir `Operation`uygulama ilk olarak sol ve sağ işlenenleri değerlendirir ( `Evaluate` yöntemlerini özyinelemeli olarak çağırarak) ve ardından verilen aritmetik işlemi gerçekleştirir.
 
-Aşağıdaki program kullanan `Expression` ifadeyi değerlendiren şeyde sınıfları `x * (y + 2)` farklı değerler için `x` ve `y`.
+Aşağıdaki program, `Expression` `x` ve `x * (y + 2)` farklı`y`değerleri için ifadeyi değerlendirmek için sınıflarını kullanır.
 
 ```csharp
 using System;
@@ -992,9 +992,9 @@ class Test
 }
 ```
 
-#### <a name="method-overloading"></a>Yöntemi aşırı yüklemesi
+#### <a name="method-overloading"></a>Yöntem aşırı yüklemesi
 
-Yöntemi ***aşırı yükleme*** aynı sınıfta benzersiz imzaları sahip oldukları sürece aynı ada sahip birden çok yöntem izin verir. Aşırı yüklenmiş yöntem çağrısından derlerken, derleyicinin kullandığı ***aşırı yükleme çözümlemesi*** çağrılacak belirli yöntemi belirlemek için. En iyi eşleşen bağımsız değişkenler veya tek en iyi eşleşme bulunamazsa, bir hata raporları bir yöntemi aşırı yükleme çözünürlüğü bulur. Aşağıdaki örnek, aşırı yükleme çözünürlüğü geçerli gösterir. Her bir çağrıda yorum `Main` yöntemi gösterir hangi yöntemi gerçekten çağrılır.
+Yöntem ***aşırı yüklemesi*** , aynı sınıftaki birden çok metodun benzersiz imzalara sahip oldukları sürece aynı ada sahip olmasını sağlar. Aşırı yüklenmiş bir yöntemin çağrılması derlenirken, derleyici çağrılacak özel yöntemi belirlemekte ***aşırı yükleme çözümü*** kullanır. Aşırı yükleme çözümlemesi, bağımsız değişkenlerle en iyi eşleşen bir yöntemi bulur veya tek bir en iyi eşleşme bulunamazsa hata bildiriyor. Aşağıdaki örnekte, etkin olan aşırı yükleme çözümü gösterilmektedir. `Main` Yöntemi içindeki her çağrının yorumu aslında hangi yöntemin çağrılacağını gösterir.
 
 ```csharp
 class Test
@@ -1035,13 +1035,13 @@ class Test
     }
 }
 ```
-Örnekte gösterildiği gibi belirli bir yöntem her zaman tam parametre türleri bağımsız değişkenleri açıkça atama ve/veya tür bağımsız değişkenleri açıkça sağlama tarafından seçilebilir.
+Örnekte gösterildiği gibi belirli bir yöntem her zaman bağımsız değişkenleri tam parametre türlerine açıkça atayarak ve/veya açıkça tür bağımsız değişkenleri sunarak seçilebilir.
 
 ### <a name="other-function-members"></a>Diğer işlev üyeleri
 
-Yürütülebilir kod içeren bir üye olarak bilinir topluca ***işlev üyeleri*** bir sınıf. Birincil işlev üyeleri türü olan yöntemler, önceki bölümde açıklanmaktadır. Bu bölümde, işlev üyeleri C# tarafından desteklenen diğer türleri açıklanmaktadır: Oluşturucular, özellikler, dizin oluşturucular, olaylar, işleçleri ve Yıkıcılar.
+Yürütülebilir kod içeren Üyeler topluca bir sınıfın ***işlev üyeleri*** olarak bilinir. Yukarıdaki bölümde, işlev üyelerinin birincil türü olan yöntemler açıklanmıştır. Bu bölümde, tarafından C#desteklenen diğer işlev üyesi türleri açıklanmaktadır: oluşturucular, özellikler, Dizin oluşturucular, olaylar, işleçler ve Yıkıcılar.
 
-Adlı bir genel sınıf aşağıdaki kodda gösterildiği `List<T>`, growable nesnelerin listesini uygular. Sınıf işlev üyeleri en yaygın tür çeşitli örneklerini içerir.
+Aşağıdaki kod, bir nesne growable listesini uygulayan `List<T>`adlı bir genel sınıfı gösterir. Sınıfı, en yaygın işlev üyesi türlerine birkaç örnek içerir.
 
 
 ```csharp
@@ -1126,29 +1126,29 @@ public class List<T> {
 
 #### <a name="constructors"></a>Oluşturucular
 
-C# örneği hem de statik oluşturucular destekler. Bir ***örnek oluşturucusu*** uygulayan bir sınıf örneği başlatmak için gerekli eylemleri bir üyesidir. A ***statik Oluşturucu*** ilk yüklendiğinde bir sınıf başlatmak için gerekli eylemleri uygulayan bir üyesidir.
+C#hem örnek hem de statik oluşturucuları destekler. ***Örnek Oluşturucu*** , bir sınıfın örneğini başlatmak için gereken eylemleri uygulayan bir üyedir. ***Statik Oluşturucu*** , ilk yüklendiği zaman bir sınıfın kendisini başlatmak için gereken eylemleri uygulayan bir üyesidir.
 
-Bir oluşturucu dönüş türü ve kapsayan sınıfı aynı ada sahip bir yöntemi gibi bildirilir. Bir oluşturucu bildirimi içeriyorsa bir `static` değiştiricisi, bir statik Oluşturucu bildirir. Aksi takdirde, bir örnek oluşturucusu bildirir.
+Bir Oluşturucu, dönüş türü olmayan bir yöntem ve kapsayan sınıfla aynı adı ile birlikte bildirilmiştir. Bir Oluşturucu bildiriminde `static` bir değiştirici varsa, bir statik oluşturucu bildirir. Aksi takdirde, bir örnek Oluşturucu bildirir.
 
-Örnek oluşturucuları aşırı yüklenebilir. Örneğin, `List<T>` sınıfı bildirir, bir parametre ve süren iki örnek oluşturucuları bir `int` parametresi. Örnek oluşturucuları kullanarak çağrılır `new` işleci. Aşağıdaki deyimleri iki ayırma `List<string>` her oluşturucular kullanma örnekleri `List` sınıfı.
+Örnek oluşturucular aşırı yüklenebilir. Örneğin, `List<T>` sınıfı, biri `int` parametresi olmayan iki örnek Oluşturucu bildirir ve bir parametre alır. Örnek oluşturucular `new` işleci kullanılarak çağrılır. Aşağıdaki deyimler, `List<string>` `List` sınıfının oluşturucularının her birini kullanarak iki örnek ayırır.
 
 ```csharp
 List<string> list1 = new List<string>();
 List<string> list2 = new List<string>(10);
 ```
-Diğer üyeleri farklı olarak örnek oluşturucuları olmayan devralınır ve sınıfı, bu gerçekte bildirilen dışında hiçbir örnek oluşturucuları bir sınıfa sahip. Hiçbir örnek oluşturucusu için bir sınıf sağlanırsa, sonra boş bir parametre olmadan otomatik olarak sağlanır.
+Diğer üyelerin aksine, örnek oluşturucular devralınmaz ve bir sınıfın sınıfta tanımlananlardan farklı örnek oluşturucuları yoktur. Bir sınıf için örnek Oluşturucu sağlanmazsa, parametresi olmayan boş bir değer otomatik olarak sağlanır.
 
 #### <a name="properties"></a>Özellikler
 
-***Özellikleri*** alanları doğal bir uzantısıdır. Her ikisi de ilişkili türlerini üyeleriyle adlı ve alanlar ve Özellikler erişmek için sözdizimi aynıdır. Ancak, alanlar özellikleri depolama konumları belirtmek değil. Bunun yerine, özelliklere sahip ***erişimcileri*** değerlerine okunabilir veya yazılabilir bırakıldığında yürütülecek deyimler belirtin.
+***Özellikler*** , alanlar için doğal bir uzantıdır. Her ikisi de ilişkili türlerin bulunduğu isimlerdir ve alanlara ve özelliklere erişim için sözdizimi aynıdır. Ancak, alanların aksine, Özellikler depolama konumlarını göstermiyor. Bunun yerine, özellikler, değerleri okunmak veya yazıldığında yürütülecek deyimleri belirten ***erişimcileri*** vardır.
 
-Bildirimi ile biten dışında bir özellik gibi bir alan, bildirilmiş bir `get` erişimci veya `set` sınırlayıcılar arasında yazılan erişimci `{` ve `}` noktalı bitiş yerine. Her ikisi de sahip bir özellik bir `get` erişimci ve `set` erişen bir ***okuma-yazma özelliği***, yalnızca bir özellik bir `get` erişen bir ***salt okunur özelliği***ve yalnızca özellik bir `set` erişen bir ***salt yazılır özelliği***.
+Bir `get` özellik, bildirim bir erişimci ile sona erene ve/ `set` veya sınırlayıcılar `{` arasında `}` yazılmış bir erişimciyi ve noktalı virgül ile sona ermek yerine bir alan olarak belirtilir. Hem `get` `set` erişimci `get`hem de erişimciyesahipbirözellikokuma-yazmaözelliğidir,yalnızcabirerişimcisiolanbirözelliksaltokunurdurveyalnızcaerişimcisiolanbirözellik`set` ***salt yazılır özelliği***.
 
-A `get` bir parametresiz yöntemin dönüş değerini özellik türü ile erişimci karşılık gelir. Bir özellik bir ifadede başvurulduğunda, atama hedefi olarak dışında `get` özelliğin erişimci özelliğin değerini hesaplamak için çağrılır.
+`get` Erişimci, özellik türünün dönüş değeri olan parametresiz bir yönteme karşılık gelir. Atama hedefi dışında, bir ifadede bir özelliğe başvurulduğunda, `get` özelliğin erişimcisi özelliğin değerini hesaplamak için çağrılır.
 
-A `set` erişimci karşılık gelen bir yönteme adlı tek bir parametre `value` ve dönüş türü yok. Ne zaman bir özelliği başvuru atama hedefi veya işleneni olarak `++` veya `--`, `set` erişimci, yeni değer sağlayan bağımsız değişkenlerle çağrılır.
+Erişimci, adlandırılmış `value` ve dönüş türü olmayan tek parametreli bir yönteme karşılık gelir. `set` Bir özelliğe bir atamanın hedefi veya işleneni `++` `--`olarak başvurulduğunda, `set` erişimci yeni değeri sağlayan bir bağımsız değişkenle çağrılır.
 
-`List<T>` Sınıfı bildirir iki özellik `Count` ve `Capacity`, olan salt okunur ve okuma-yazma, sırasıyla. Bu özelliklerin kullanımı bir örnek verilmiştir.
+Sınıfı iki özellik bildirir `Capacity`ve sırasıyla salt okunurdur ve okuma-yazma olur. `Count` `List<T>` Aşağıda bu özelliklerin kullanılmasına bir örnek verilmiştir.
 
 ```csharp
 List<string> names = new List<string>();
@@ -1156,15 +1156,15 @@ names.Capacity = 100;            // Invokes set accessor
 int i = names.Count;             // Invokes get accessor
 int j = names.Capacity;          // Invokes get accessor
 ```
-Benzer şekilde, alanlar ve yöntemler, C# örnek özelliklerini hem statik özelliklerini destekler. Statik özellikler ile bildirilmiş `static` değiştiricisi ve örnek özelliklerini bildirilir olmadan.
+Alanlar ve yöntemlere benzer şekilde hem C# örnek özelliklerini hem de statik özellikleri destekler. Statik özellikler `static` değiştiriciyle, örnek özellikleri ise bu olmadan tanımlanır.
 
-Bir özelliğin accessor(s) sanal olabilir. Ne zaman bir özellik bildirimi içeren bir `virtual`, `abstract`, veya `override` değiştiricisi, özellik accessor(s) için geçerlidir.
+Bir özelliğin erişimcisi sanal olabilir. Bir özellik bildirimi `virtual`, `abstract`, veya `override` değiştiricisini içerdiğinde, özelliğin erişimcilerle geçerli olur.
 
 #### <a name="indexers"></a>Dizin Oluşturucular
 
-Bir ***dizin oluşturucu*** nesneleri dizisi olarak aynı şekilde dizinlenmesini sağlar bir üyesidir. Üyenin adını olması dışında dizin oluşturucu bir özellik gibi bildirilir `this` sınırlayıcılar arasında yazılmış bir parametre listesi ardından `[` ve `]`. Parametreler, dizin oluşturucunun accessor(s) içinde kullanılabilir. Benzer şekilde, özellikler, dizin oluşturucular okuma-yazma, salt okunur ve salt yazılır olabilir ve bir dizin oluşturucu accessor(s) sanal olabilir.
+***Dizin Oluşturucu*** , nesnelerin diziyle aynı şekilde dizinlenmesini sağlayan bir üyedir. Bir Dizin Oluşturucu, üyenin `this` adının ardından sınırlayıcılar `[` ve `]`arasında yazılmış bir parametre listesi gelmesi dışında bir özellik gibi bildirilmiştir. Parametreler, dizin oluşturucunun erişimcisinde kullanılabilir. Özelliklere benzer şekilde, Dizin oluşturucular okunabilir-yazılır, salt okunurdur ve salt yazılır olabilir ve bir dizin oluşturucunun erişimcisi sanal olabilir.
 
-`List` Sınıfı bildirir gereken tek bir okuma-yazma dizin oluşturucu bir `int` parametresi. Dizin oluşturucunun, dizin mümkün kılar `List` ile örnekler `int` değerleri. Örneğin:
+Sınıfı `List` , bir `int` parametresi alan tek bir okuma-yazma Dizin Oluşturucu bildirir. Dizin Oluşturucu, `List` `int` örneklerin değerleriyle dizin oluşturmanızı mümkün kılar. Örneğin:
 
 ```csharp
 List<string> names = new List<string>();
@@ -1176,17 +1176,17 @@ for (int i = 0; i < names.Count; i++) {
     names[i] = s.ToUpper();
 }
 ```
-Dizin Oluşturucular, sayı veya kendi parametre türleri farklı olduğu sürece bir sınıfın birden çok dizin oluşturucu bildirebilirsiniz anlamına gelen aşırı yüklenebilir.
+Dizin oluşturucular aşırı yüklenebilir, yani parametrelerinin sayısı veya türleri farklı olduğu sürece bir sınıfın birden çok dizin kümesini bildirebileceği anlamına gelir.
 
 #### <a name="events"></a>Olaylar
 
-Bir ***olay*** bir sınıf veya nesne bildirimleri sağlamak için sağlayan bir üyesidir. Dışında bildirimi içeren bir olay gibi bir alan bildirilmiş bir `event` anahtar sözcüğü ile tür bir temsilci türü olmalıdır.
+Bir ***olay*** , bir sınıf veya nesnenin bildirimler sağlamasını sağlayan bir üyedir. Bildirimin bir `event` anahtar sözcük içermesi ve türün bir temsilci türü olması dışında bir olay, bir alan gibi bildirilmiştir.
 
-(Olay soyut değil ve erişimcileri bildirmiyor sağlanan) bir olay üyesi bildiren bir sınıf içinde olay yalnızca bir temsilci türüne bir alan gibi davranır. Olaya eklenmiş olan olay işleyicilerini temsil eden bir temsilci bir başvuru alan depolar. Olay işleyici mevcut olması durumunda, alandır `null`.
+Olay üyesini bildiren bir sınıf içinde, olay bir temsilci türünün alanı gibi davranır (olay soyut değildir ve erişimcileri bildirmez). Bu alan, olaya eklenmiş olan olay işleyicilerini temsil eden bir temsilciye bir başvuru depolar. Hiçbir olay tanıtıcısı yoksa, alanı olur `null`.
 
-`List<T>` Sınıfı olarak adlandırılan tek bir olay üyesi bildirir `Changed`, yeni bir öğe listesine eklendiğini gösterir. `Changed` Olayı tarafından oluşturulur `OnChanged` hangi ilk olay olup olmadığını denetler, sanal bir yöntem `null` (hiçbir işleyicileri bulunduğunu anlamına gelir). Olay bildirmek, kavram olay tarafından temsil edilen temsilci çağırmak için tam olarak eşittir; Bu nedenle, olayları oluşturma için hiçbir özel dil yapıları vardır.
+Sınıfı, adlı `Changed`tek bir olay üyesini bildirir ve bu, listeye yeni bir öğe eklendiğini gösterir. `List<T>` Olay sanal yöntemi tarafından tetiklenir, bu, önce olayın `null` (hiçbir işleyicinin mevcut olmadığı anlamına gelir) olup olmadığını denetler. `OnChanged` `Changed` Bir olayı oluşturma kavramı, olayın gösterdiği temsilciyi çağırmak için tam olarak eşdeğerdir. bu nedenle, olayları yükseltmek için özel dil yapıları yoktur.
 
-İstemciler react ile olayları ***olay işleyicileri***. Olay işleyicileri kullanılarak eklenen `+=` işleci ve kaldırılan kullanarak `-=` işleci. Aşağıdaki örnek bir olay işleyicisi ekler `Changed` olayı bir `List<string>`.
+İstemciler ***olay işleyicileri***aracılığıyla olaylara tepki verir. Olay işleyicileri `+=` işleci kullanılarak eklenir ve `-=` işleci kullanılarak kaldırılır. Aşağıdaki örnek, olayına bir `Changed` `List<string>`olay işleyicisi ekler.
 
 ```csharp
 using System;
@@ -1209,13 +1209,13 @@ class Test
     }
 }
 ```
-Denetim bir olay temel alınan depolamanın istenen burada Gelişmiş senaryolar için bir olay bildirimi açıkça sağlayabilir `add` ve `remove` biraz benzerdir erişimcileri `set` özellik erişimcisi.
+Bir olayın temeldeki depolamanın denetiminin istendiği Gelişmiş senaryolarda, bir olay bildirimi açıkça bir özelliğin `add` `set` erişenine benzer bir şekilde sağlayabilir ve `remove` erişimciler sağlar.
 
 #### <a name="operators"></a>İşleçler
 
-Bir ***işleci*** belirli ifade işleci bir sınıfın bir örneği için uygulama ne anlama geldiğini tanımlayan bir üyesidir. Üç tür işleç tanımlanabilir: Birli işleçler, ikili işleçler ve dönüştürme işleçleri. Tüm işleçler olarak bildirilmelidir `public` ve `static`.
+***İşleci*** , bir sınıfın örneklerine belirli bir ifade işlecini uygulamanın anlamını tanımlayan bir üyesidir. Üç tür işleç tanımlanabilir: Birli İşleçler, ikili işleçler ve dönüştürme işleçleri. Tüm işleçler ve `public` `static`olarak bildirilmelidir.
 
-`List<T>` Sınıfı bildirir iki işleç `operator==` ve `operator!=`ve bu nedenle bu işleçleri için geçerli ifadeler için yeni anlamı verir `List` örnekleri. Özellikle, da iki eşitlik operatörlerini tanımlayın `List<T>` örnekler olarak karşılaştırma kullanarak içerdiği nesnelerin her biri kendi `Equals` yöntemleri. Aşağıdaki örnekte `==` karşılaştırmak için işleci `List<int>` örnekleri.
+Sınıfı iki `List` işleç `operator==` bildirirvebunedenlebuişleçleriörneklereuygulayandeyimlereyenianlamıverir.`operator!=` `List<T>` Özellikle, işleçler, içerilen nesnelerin her birini `List<T>` `Equals` yöntemlerini kullanarak karşılaştıran iki örneğin eşitliğini tanımlar. Aşağıdaki örnek, iki `==` `List<int>` örneği karşılaştırmak için işlecini kullanır.
 
 ```csharp
 using System;
@@ -1236,21 +1236,21 @@ class Test
 }
 ```
 
-İlk `Console.WriteLine` çıkarır `True` listelerini nesneleri aynı sırada aynı değerlerle aynı sayıda içerdiğinden. Vardı `List<T>` tanımlanmamış `operator==`, ilk `Console.WriteLine` çıkış `False` çünkü `a` ve `b` başvuru farklı `List<int>` örnekleri.
+Bu iki `Console.WriteLine` liste `True` aynı sırada aynı değerleri taşıyan aynı sayıda nesne içerdiğinden ilk çıktılar. `List<T>` Tanımlı değil,`Console.WriteLine` ilkiçıktıyı`False` içeriyor ve`b` farklı örneklere`List<int>` başvuracaktır. `a` `operator==`
 
 #### <a name="destructors"></a>Yıkıcılar
 
-A ***yok Edicisi*** uygulayan bir sınıf örneği yok etmek için gereken eylemler bir üyesidir. Yok ediciler parametrelere sahip olamaz, Erişilebilirlik değiştiricilere sahip olamaz ve açıkça çağrılamaz. Bir örneği için yok edici, çöp toplama sırasında otomatik olarak çağrılır.
+***Yıkıcı*** , bir sınıf örneğinin yapısını kaldırma için gereken eylemleri uygulayan bir üyesidir. Yok ediciler parametrelere sahip olamaz, erişilebilirlik değiştiricilerine sahip olamaz ve açıkça çağrılamaz. Örnek için yıkıcısı çöp toplama sırasında otomatik olarak çağrılır.
 
-Çöp Toplayıcısı nesneleri toplar ve Yıkıcılar çalıştırmak ne zaman karar içinde geniş enlem izin verilir. Özellikle, yok edici çağrıları zamanlamasını belirleyici değildir ve yok ediciler herhangi bir iş parçacığı üzerinde çalıştırılabilir. Diğer çözüm uygun olduğunda bunlar ve diğer nedenler, sınıfları yok ediciler uygulamalıdır.
+Çöp toplayıcısına, nesnelerin toplanması ve yıkıcıları çalıştırma konusunda karar verirken geniş bir enlem vardır. Özellikle, yıkıcı etkinleştirmeleri zamanlaması belirleyici değildir ve herhangi bir iş parçacığında yok ediciler çalıştırılabilir. Bu ve diğer nedenlerden dolayı sınıfların yalnızca başka hiçbir çözüm uygulanabilir olmadığında Yıkıcılar uygulaması gerekir.
 
-`using` Deyim nesnesi yok etme için daha iyi bir yaklaşım sağlar.
+İfade `using` , nesne yok etme için daha iyi bir yaklaşım sağlar.
 
 ## <a name="structs"></a>Yapılar
 
-Sınıflar gibi ***yapılar*** veri yapıları, veri üyeleri ve işlev üyeleri içerebilir, ancak farklı sınıflar, yapılar değer türleri ve yığın ayırma gerektirmez. Bir sınıf türünün bir değişkeni dinamik olarak ayrılan bir nesneye başvuru depoladığı bir yapı türünün değişkenini doğrudan, struct'ın verileri depolar. Yapı türleri, kullanıcı tarafından belirtilen devralma desteklemez ve tüm yapı türleri örtülü olarak tür devralmasına `object`.
+Sınıflar gibi ***yapılar*** , veri üyeleri ve işlev üyeleri içerebilen veri yapılarıdır, ancak sınıfların aksine, yapılar değer türlerdir ve yığın ayırmayı gerektirmez. Yapı türünün bir değişkeni yapının verisini doğrudan depolarken, sınıf türündeki bir değişken, dinamik olarak ayrılan bir nesneye bir başvuru depolar. Yapı türleri Kullanıcı tarafından belirtilen devralmayı desteklemez ve tüm yapı türleri örtülü olarak türünden `object`devralınır.
 
-Yapılar değer semantiklere sahip küçük veri yapıları için özellikle yararlıdır. Karmaşık sayılar, koordinat sisteminde noktaları veya anahtar-değer çiftlerinin bir sözlükteki tüm iyi yapılar örnekleridir. Küçük veri yapıları için sınıflar, bir uygulama bellek ayırmaları sayısında büyük bir fark yapabilirsiniz yerine yapılar kullanımını gerçekleştirir. Örneğin, aşağıdaki program oluşturur ve 100 noktaları dizisini başlatır. İle `Point` sınıfı olarak uygulanır, 101 ayrı nesneler örneği oluşturulur; bir dizi ve her biri 100 öğeleri için.
+Yapılar, özellikle değer semantiği olan küçük veri yapıları için yararlıdır. Karmaşık sayılar, bir koordinat sistemindeki işaret veya bir sözlükte anahtar-değer çiftleri, yapı birimlerinin iyi örnekleridir. Küçük veri yapıları için sınıflar yerine yapıların kullanımı, bir uygulamanın gerçekleştirdiği bellek ayırma sayısında büyük bir farklılık yapabilir. Örneğin, aşağıdaki program 100 noktadan oluşan bir dizi oluşturur ve başlatır. Sınıf `Point` olarak uygulanan 101 ayrı nesneler, biri Array için ve her biri 100 öğeleri için oluşturulur.
 
 ```csharp
 class Point
@@ -1271,7 +1271,7 @@ class Test
     }
 }
 ```
-Alternatif olmaktır `Point` yapı.
+Alternatif olarak bir yapı oluşturma `Point` .
 
 ```csharp
 struct Point
@@ -1284,11 +1284,11 @@ struct Point
     }
 }
 ```
-Şimdi, yalnızca bir nesne örneği — bir dizi — ve `Point` depolanan satır içi dizi örnekleridir.
+Şimdi yalnızca bir nesne örneği oluşturulur — dizi için bir tane ve `Point` örnekler dizide satır içinde depolanır.
 
-Yapı Oluşturucuları ile çağrılır `new` işleci, ancak değil yaptığından bu bellek tahsis edilir. Dinamik olarak bir nesne ayırma ve buna bir başvuru döndürerek, yerine bir yapı Oluşturucu yalnızca yapı değerini kendisi (genellikle geçici bir konuma yığın üzerinde) döndürür ve bu değer daha sonra gerektiğinde kopyalanır.
+Struct oluşturucuları `new` işleçle çağrılır, ancak bu belleğin ayrılmakta olduğunu göstermez. Bir nesne dinamik olarak tahsis etmek ve ona bir başvuru döndürmek yerine, bir struct Oluşturucusu yalnızca struct değerinin kendisini döndürür (genellikle yığındaki geçici bir konumda) ve bu değer, gereken şekilde kopyalanır.
 
-Sınıfları ile bu iki değişken aynı nesneye başvurmak mümkün ve dolayısıyla işlemler diğer değişkenin başvurduğu nesneyi etkileyebilir bir değişken üzerinde mümkün olur. Yapılar, her değişkenleri kendi veri kopyası vardır ve yapılan işlemlerin diğerini etkilemesi olanaklı birinde değil. Örneğin, aşağıdaki kod parçası tarafından üretilen çıkış bağlıdır `Point` bir sınıf veya yapı.
+Sınıflar ile, iki değişkenin aynı nesneye başvurması ve bu nedenle bir değişkende işlemler için diğer değişken tarafından başvurulan nesneyi etkilemesi mümkündür. Yapılar ile, her birinin kendi verilerinin bir kopyasına sahip olduğu ve bir üzerindeki işlemlerin diğerini etkilemesi mümkün değildir. Örneğin, aşağıdaki kod parçası tarafından üretilen çıkış, bir sınıf veya yapı olmasına `Point` bağlıdır.
 
 ```csharp
 Point a = new Point(10, 10);
@@ -1296,17 +1296,17 @@ Point b = a;
 a.x = 20;
 Console.WriteLine(b.x);
 ```
-Varsa `Point` bir sınıf çıkış `20` çünkü `a` ve `b` aynı nesneye başvuru. Varsa `Point` bir yapı çıktı `10` çünkü atamasını `a` için `b` değeri bir kopyasını oluşturur ve bu kopyayı sonraki atamaya tarafından etkilenmez `a.x`.
+Bir sınıfınise, `a` çıkış olur `20` ve `b` aynı nesneye başvurur. `Point` `10` `a` `a.x`Bir struct ise çıktı, öğesinin`b` atamanın değerin bir kopyasını oluşturması ve bu kopyanın sonraki atamasından etkilenmemelerdir. `Point`
 
-Önceki örnekte iki yapılar sınırlamaları vurgular. İlk olarak, bir yapının tamamını kopyalama atama ve değerin parametre geçirme başvuru türleri ile yapılar ile daha pahalı olabilir. Bu nedenle, bir nesne başvurusu kopyalama daha genellikle daha az verimlidir. İkinci dışında `ref` ve `out` parametreleri, bu durumlarda, çeşitli kullanımları kullanıma kuralları yapı birimleri için başvuru oluşturmak mümkün değildir.
+Önceki örnek, yapıların sınırlamalarını iki vurgulamaktadır. İlk olarak, bir yapının tamamını kopyalamak bir nesne başvurusunu kopyalamaya kıyasla genellikle daha etkilidir, bu nedenle atama ve değer parametresi, yapı ile başvuru türleriyle daha pahalı olabilir. İkincisi, `ref` ve parametreleri dışında `out` , yapılara başvurular oluşturmak mümkün değildir ve bu sayede kullanımları bir dizi durumda kurallar oluşturulur.
 
 ## <a name="arrays"></a>Diziler
 
-Bir ***dizi*** hesaplanan dizinlerini erişilen değişken bir sayı içeren bir veri yapısıdır. Bir dizi içindeki değişkenler olarak da bilinir ***öğeleri*** dizinin tümü aynı türde ve bu tür çağrılır ***öğe türü*** dizi.
+***Dizi*** , hesaplanan dizinler üzerinden erişilen çeşitli değişkenler içeren bir veri yapısıdır. Bir dizide bulunan değişkenler, dizi ***öğeleri*** de denir, hepsi aynı türdür ve bu tür dizinin ***öğe türü*** olarak adlandırılır.
 
-Dizi türleri, başvuru türleridir ve bir dizi değişkeni bildirimi yalnızca kenara alanı başvuru bir dizi örneği için ayarlar. Gerçek bir dizi örnekleri dinamik olarak çalışma zamanı kullanılarak oluşturulur `new` işleci. `new` İşlemi belirtir ***uzunluğu*** sonra Örneğin ömrü boyunca sabittir yeni dizi örneği. Dizinleri öğelerinden oluşan bir dizi aralığından `0` için `Length - 1`. `new` İşleci, örneğin, sıfır olan tüm sayısal türler için varsayılan değerlerine bir dizinin öğeleri otomatik olarak başlatır ve `null` tüm başvuru türleri için.
+Dizi türleri başvuru türlerdir ve bir dizi değişkeninin bildirimi, bir dizi örneğine yönelik bir başvuru için yalnızca alan ayırın. Gerçek dizi örnekleri işleci kullanılarak, `new` çalışma zamanında dinamik olarak oluşturulur. İşlem, daha sonra örneğin ömrü boyunca düzeltilen yeni dizi örneğinin uzunluğunu belirtir. `new` Bir dizi öğelerinin ' den `0` `Length - 1`' a kadar olan dizinleri. İşleci, bir dizinin öğelerini otomatik olarak varsayılan değerlerine başlatır. Bu, örneğin, tüm sayısal türler ve `null` tüm başvuru türleri için sıfırdır. `new`
 
-Aşağıdaki örnek, bir dizi oluşturur. `int` öğeleri, dizi başlatır ve dizinin içeriği yazdırır.
+Aşağıdaki örnek, bir dizi `int` öğe oluşturur, diziyi başlatır ve dizinin içeriğini yazdırır.
 
 ```csharp
 using System;
@@ -1324,16 +1324,16 @@ class Test
     }
 }
 ```
-Bu örneği oluşturur ve üzerinde çalıştığı bir ***tek boyutlu dizi***. C# ' yı da destekler ***çok boyutlu diziler***. Olarak da bilinen bir dizinin boyut sayısını yazın ***derece*** dizi türü köşeli ayraç yazılan virgül sayısı artı bir dizi türünde olduğu. Aşağıdaki örnek, tek boyutlu bir, iki boyutlu bir ve üç boyutlu bir dizi ayırır.
+Bu örnek, ***tek boyutlu bir dizi***üzerinde oluşturur ve çalışır. C#, ***çok boyutlu dizileri***de destekler. Dizi türünün ***derecesi*** olarak da bilinen bir dizi türünün boyut sayısı, dizi türünün köşeli ayraçları arasına yazılan virgüllerin sayısıdır. Aşağıdaki örnek tek boyutlu, iki boyutlu ve üç boyutlu bir diziyi ayırır.
 
 ```csharp
 int[] a1 = new int[10];
 int[,] a2 = new int[10, 5];
 int[,,] a3 = new int[10, 5, 2];
 ```
-`a1` Dizi 10 öğe içeriyor `a2` dizi içeriyor 50 (10 × 5) öğeleri ve `a3` dizi içeriyor (10 × 5 × 2) 100 öğeleri.
+Dizi 10 öğe içeriyorsa `a2` , dizi 50 (10 × 5 `a3` ) öğesi içerir ve dizi 100 (10 × 5 × 2) öğesi içerir. `a1`
 
-Bir dizinin öğe türü bir dizi türü de dahil olmak üzere herhangi bir tür olabilir. Bir dizi türünde öğelere sahip bir dizi adlandırılan bir ***düzensiz dizi*** öğe dizisi uzunluklarının tümünü değil aynı olmak zorunda olduğu. Aşağıdaki örnekte dizi ayırır `int`:
+Bir dizinin öğe türü, bir dizi türü de dahil olmak üzere herhangi bir tür olabilir. Dizi türündeki öğeleri içeren bir dizi, bazen öğe dizilerinin uzunluklarının tümünün aynı olması gerektiğinden ***pürüzlü dizi*** olarak adlandırılır. Aşağıdaki örnek dizi dizilerini `int`ayırır:
 
 ```csharp
 int[][] a = new int[3][];
@@ -1341,19 +1341,19 @@ a[0] = new int[10];
 a[1] = new int[5];
 a[2] = new int[20];
 ```
-İlk satır, üç öğeyle her türü bir dizi oluşturur `int[]` ve her bir başlangıç değeri ile `null`. Sonraki satırların başvurular değişen uzunlukları örneklerini tek bir dizi üç öğeleri ardından başlatın.
+İlk satır, her biri türü `int[]` ve her biri bir başlangıç `null`değeri olan üç öğe içeren bir dizi oluşturur. Sonraki satırlar, Farklı uzunluklardaki ayrı dizi örneklerine yapılan başvurularla üç öğeyi başlatır.
 
-`new` İşleci verir başlangıç değerlerini kullanarak belirtilen dizi öğelerinin bir ***dizi Başlatıcısı***, sınırlayıcılar arasında yazılan ifadeler listesi olduğu `{` ve `}`. Aşağıdaki örnek ayırır ve başlatan bir `int[]` üç öğelerle.
+İşleci, dizi öğelerinin başlangıç değerlerinin, sınırlayıcılar `{` ve `}`arasında yazılan ifadelerin listesi olan bir ***dizi başlatıcısı***kullanılarak belirtilmesine izin verir. `new` Aşağıdaki örnek, üç öğesi ile bir `int[]` ayırır ve başlatır.
 
 ```csharp
 int[] a = new int[] {1, 2, 3};
 ```
-Dizinin uzunluğu arasında ifadelerin sayısından algılanır Not `{` ve `}`. Yerel değişken ve alan bildirimleri kısalttık daha fazla sağlayacak şekilde dizi türü açıklandı gerekmez.
+Dizi uzunluğunun ve `{` `}`arasındaki ifade sayısından çıkarsandığına unutmayın. Yerel değişken ve alan bildirimleri daha fazla kısaltılarak, dizi türünün yeniden oluşturulması gerekmez.
 
 ```csharp
 int[] a = {1, 2, 3};
 ```
-Önceki örneklerin her ikisi de aşağıdakine eşdeğerdir:
+Yukarıdaki örneklerin her ikisi de aşağıdaki gibi eşdeğerdir:
 
 ```csharp
 int[] t = new int[3];
@@ -1364,9 +1364,9 @@ int[] a = t;
 ```
 ## <a name="interfaces"></a>Arabirimler
 
-Bir ***arabirimi*** sınıfları ve yapıları tarafından uygulanan bir sözleşmeyi tanımlar. Bir arabirim yöntemleri, özellikleri, olayları ve dizin oluşturucular içerebilir. Bir arabirim tanımlar üyelerinin uygulamalarını sağlamaz; yalnızca bir sınıf ya da arabirimi uygulayan yapının tarafından sağlanması gereken üyeleri belirtir.
+***Arabirim*** , sınıflar ve yapılar tarafından uygulanabilecek bir sözleşmeyi tanımlar. Arabirim, Yöntemler, özellikler, olaylar ve Dizin oluşturucular içerebilir. Arabirim, tanımladığı üyelerin uygulamalarını sağlamaz; yalnızca arabirimini uygulayan sınıflar veya yapılar tarafından sağlanması gereken üyeleri belirtir.
 
-, Arabirimleri görevlendirmek ***birden çok devralma***. Aşağıdaki örnekte, arabirim `IComboBox` hem de devralan `ITextBox` ve `IListBox`.
+Arabirimler ***birden fazla devralma***kullanabilir. Aşağıdaki örnekte, arabirimi `IComboBox` `ITextBox` hem hem de öğesinden devralır. `IListBox`
 
 ```csharp
 interface IControl
@@ -1386,7 +1386,7 @@ interface IListBox: IControl
 
 interface IComboBox: ITextBox, IListBox {}
 ```
-Sınıflar ve yapı birimleri birden fazla arabirim uygulayabilir. Aşağıdaki örnekte, sınıf `EditBox` hem `IControl` ve `IDataBound`.
+Sınıflar ve yapılar birden çok arabirim uygulayabilir. Aşağıdaki örnekte, sınıfı `EditBox` hem hem `IDataBound`de `IControl` uygular.
 
 ```csharp
 interface IDataBound
@@ -1400,21 +1400,21 @@ public class EditBox: IControl, IDataBound
     public void Bind(Binder b) {...}
 }
 ```
-Bir sınıf veya yapı, belirli bir arabirim uygular, bu sınıfın veya yapının örneği, bir arabirim türüne örtük olarak dönüştürülebilir. Örneğin:
+Bir sınıf veya yapı belirli bir arabirimi uygularsa, bu sınıfın veya yapının örnekleri örtülü olarak bu arabirim türüne dönüştürülebilir. Örneğin:
 
 ```csharp
 EditBox editBox = new EditBox();
 IControl control = editBox;
 IDataBound dataBound = editBox;
 ```
-Dinamik tür atamaları, burada bir örnek statik olarak belirli bir arabirim uygulamak için bilinmiyor durumlarda kullanılabilir. Örneğin, bir nesnenin elde etmek için dinamik tür atamaları aşağıdaki deyimleri kullanın `IControl` ve `IDataBound` arabirimi uygulamaları. Nesnenin gerçek türü olduğundan `EditBox`, yayınları başarılı.
+Bir örneğin belirli bir arabirimi uygulamak üzere statik olarak bilinmediği durumlarda dinamik tür atamaları kullanılabilir. Örneğin, aşağıdaki deyimler bir nesnenin `IControl` ve `IDataBound` arabirim uygulamalarının elde edileceği dinamik tür yayınlarını kullanır. Nesnenin gerçek türü olduğundan `EditBox`, yayınlar başarılı olur.
 
 ```csharp
 object obj = new EditBox();
 IControl control = (IControl)obj;
 IDataBound dataBound = (IDataBound)obj;
 ```
-Önceki `EditBox` sınıfı `Paint` yönteminden `IControl` arabirimi ve `Bind` yönteminden `IDataBound` arabirimi kullanılarak uygulanır `public` üyeleri. C# ' yı da destekler ***açık arabirim üyesi uygulamalarını***, sınıfın kullandığı veya yapı kaçınmak üyeleri yapmadan `public`. Açık arabirim üyesi uygulaması, tam bir arabirim üye adını kullanarak yazılır. Örneğin, `EditBox` sınıf uygulama `IControl.Paint` ve `IDataBound.Bind` yöntemlerini kullanarak açık arabirim üyesi uygulamaları gibi.
+Önceki `EditBox` sınıfta `IControl` , arabiriminden `public` yöntemi ve arabiriminden`IDataBound` yöntemi, Üyeler kullanılarak uygulanır. `Bind` `Paint` C#Ayrıca, sınıf veya yapının üyeleri `public`yapmaktan kaçınmasına engel olabilecek ***Açık arabirim üye uygulamalarını***destekler. Açık arabirim üyesi uygulama, tam nitelikli arabirim üye adı kullanılarak yazılır. Örneğin, `EditBox` sınıfı aşağıdaki gibi açık arabirim üye uygulamalarını `IDataBound.Bind` kullanarak `IControl.Paint` ve yöntemlerini uygulayabilir.
 
 ```csharp
 public class EditBox: IControl, IDataBound
@@ -1423,7 +1423,7 @@ public class EditBox: IControl, IDataBound
     void IDataBound.Bind(Binder b) {...}
 }
 ```
-Açık arabirim üyeleri yalnızca arabirim türü erişilebilir. Örneğin, uygulanması `IControl.Paint` önceki tarafından sağlanan `EditBox` sınıf yalnızca çağrılabilir ilk dönüştürerek `EditBox` başvurusu `IControl` arabirim türü.
+Açık arabirim üyelerine yalnızca arabirim türü aracılığıyla erişilebilir. Örneğin, önceki `EditBox` sınıf tarafından sağlanmış `IControl.Paint` olan uygulama, yalnızca öncelikle `IControl` arabirim türüne `EditBox` başvuru dönüştürülürken çağrılabilir.
 
 ```csharp
 EditBox editBox = new EditBox();
@@ -1434,7 +1434,7 @@ control.Paint();                        // Ok
 
 ## <a name="enums"></a>Numaralandırmalar
 
-Bir ***sabit listesi türü*** adlandırılmış sabitler kümesini içeren farklı bir değer türüdür. Aşağıdaki örnek bildirir ve adlı bir sabit listesi türünü kullanıyor `Color` üç sabit değerler ile `Red`, `Green`, ve `Blue`.
+***Sabit listesi türü*** , adlandırılmış sabitler kümesi olan ayrı bir değer türüdür. Aşağıdaki örnek `Color` ,,, ve `Red` `Blue`üç sabit değeri `Green`olan adlı bir sabit listesi türü bildirir ve kullanır.
 
 ```csharp
 using System;
@@ -1472,9 +1472,9 @@ class Test
     }
 }
 ```
-Her bir numaralandırma türünün adlı karşılık gelen bir integral türü olan ***temel alınan türü*** sabit listesi türü. Bir temel türü açıkça bildirmiyor bir sabit listesi türü temel alınan türündedir `int`. Bir numaralandırma türünün depolama biçimi ve olası değerler aralığı kendi temel türü tarafından belirlenir. Enum türü alan değerleri kümesi numaralandırma üyelerini sınırlı değildir. Özellikle, bir sabit listesi türünü temel herhangi bir değerini numaralandırma türüne dönüştürülebilen ve sabit listesi türü farklı geçerli bir değer.
+Her sabit listesi türünün, enum türünün ***temel alınan türü*** olarak adlandırılan karşılık gelen bir integral türü vardır. Temel alınan bir türü açıkça bildirmiyor bir sabit listesi türü, temel alınan `int`bir tür içerir. Sabit listesi türünün depolama biçimi ve olası değerlerinin aralığı, temel alınan türüne göre belirlenir. Bir numaralandırma türünün üzerinde sürebelirlenen değerler kümesi, sabit listesi üyeleri tarafından sınırlı değildir. Özellikle, bir sabit listesinin temel alınan türünün herhangi bir değeri, sabit listesi türüne dönüşebilir ve bu sabit listesi türünün ayrı bir geçerli değeridir.
 
-Aşağıdaki örnek adlı bir sabit listesi türü bildirir `Alignment` bir temel alınan türüyle `sbyte`.
+Aşağıdaki örnek, temel alınan `Alignment` `sbyte`türü ile adlı bir sabit listesi türü bildirir.
 
 ```csharp
 enum Alignment: sbyte
@@ -1484,15 +1484,15 @@ enum Alignment: sbyte
     Right = 1
 }
 ```
-Önceki örnekte gösterildiği gibi bir numaralandırma üyesi bildirimi üyenin değerini belirten sabit bir ifade içerebilir. Her sabit listesi üyesi için sabit değerin sabit listesinin temel alınan türü aralığında olması gerekir. Bir numaralandırma üyesi bildirimi bir değeri açıkça belirtmediği üyesi (sabit listesi türü ilk üye ise) sıfır değerini veya metin içeriğini eklemek önceki sabit listesi üyesi artı bir değer verilir.
+Önceki örnekte gösterildiği gibi, enum üye bildirimi üyenin değerini belirten bir sabit ifade içerebilir. Her sabit listesi üyesinin sabit değeri, sabit listesinin temel alınan türü aralığında olmalıdır. Sabit listesi üyesi bildirimi açıkça bir değer belirtmezse, üyeye sıfır değeri verilir (sabit listesi türünde ilk üye ise) veya metin içeriğini eklemek önceki enum üyesinin değeri ve bir.
 
-Sabit listesi değerlerinin dönüştürülür tamsayı değerleri ve tersi tür atamaları kullanarak olabilir. Örneğin:
+Sabit listesi değerleri tamsayı değerlerine dönüştürülebilir ve tür atamaları kullanılarak tam tersi olabilir. Örneğin:
 
 ```csharp
 int i = (int)Color.Blue;        // int i = 2;
 Color c = (Color)2;             // Color c = Color.Blue;
 ```
-Tam sayı değeri sıfır numaralandırma türüne dönüştürülerek herhangi bir enum tür varsayılan değerdir. Burada değişkenleri için varsayılan değer otomatik olarak başlatılır durumlarda değişkenleri sabit listesi türleri için verilen değer budur. Varsayılan değer olan kolayca kullanılabilir olması için bir liste türü değişmez değer için sırayla `0` örtük olarak herhangi bir numaralandırma türüne dönüştürür. Bu nedenle, aşağıdaki izin verilir.
+Herhangi bir sabit listesi türünün varsayılan değeri, enum türüne dönüştürülen tam sayı değeridir. Değişkenlerin otomatik olarak varsayılan bir değere başlatıldığı durumlarda, bu değer enum türü değişkenlerine verilen değerdir. Bir sabit listesi türünün varsayılan değerinin kolayca kullanılabilmesi için, değişmez `0` değer örtülü olarak herhangi bir numaralandırma türüne dönüştürülür. Bu nedenle, aşağıdakilere izin verilir.
 
 ```csharp
 Color c = 0;
@@ -1500,9 +1500,9 @@ Color c = 0;
 
 ## <a name="delegates"></a>Temsilciler
 
-A ***temsilci türü*** belirli bir parametre olan yöntemlere başvuruları temsil listesi ve dönüş türü. Temsilciler, yöntemleri değişkenine atanır ve parametre olarak geçirilen varlıklar olarak değerlendirmek mümkün kılar. Diğer dillerde bulunan işlev işaretçileri kavramı temsilcileri benzerdir ancak işlev işaretçileri, nesne yönelimli ve tür kullanımı uyumlu temsilciler.
+Bir ***temsilci türü*** , belirli bir parametre listesi ve dönüş türü olan yöntemlere yapılan başvuruları temsil eder. Temsilciler, yöntemleri değişkenlere atanabilecek ve parametre olarak geçirilen varlıklar olarak işleme olanağı tanır. Temsilciler, bazı diğer dillerde bulunan işlev işaretçileri kavramına benzerdir, ancak işlev işaretçilerinden farklı olarak Temsilciler nesne yönelimli ve tür açısından güvenlidir.
 
-Aşağıdaki örnek bildirir ve adlandırılmış bir temsilci türü kullanır `Function`.
+Aşağıdaki örnek adlı `Function`bir temsilci türü bildirir ve kullanır.
 
 ```csharp
 using System;
@@ -1543,22 +1543,22 @@ class Test
     }
 }
 ```
-Örneği `Function` temsilci türü, alan herhangi bir yöntemi başvurabilir bir `double` bağımsız değişkeni ve döndürür bir `double` değeri. `Apply` Yöntemi uygular bir verilen `Function` öğelerin bir `double[]`, döndüren bir `double[]` sonuçları. İçinde `Main` yöntemi `Apply` üç farklı işlevlere uygulamak için kullanılan bir `double[]`.
+Temsilci türünün bir örneği `Function` , `double` bağımsız değişken alan ve bir `double` değer döndüren herhangi bir yönteme başvurabilir. Yöntemi, bir `Function` `double[]` öğesine verilen öğeleri uygular ve sonuçları ile döndürür. `double[]` `Apply` Yönteminde, `Apply` bir`double[]`öğesine üç farklı işlev uygulamak için kullanılır. `Main`
 
-Bir temsilci bir statik yöntem başvurabilir (gibi `Square` veya `Math.Sin` önceki örnekte) veya bir örnek yöntemi (gibi `m.Multiply` önceki örnekte). Bir örnek yöntemi başvuran bir temsilci Ayrıca belirli bir nesnenin başvuruda bulunduğundan ve temsilci örnek yöntemi çağrıldığında, bu nesne haline gelir `this` çağrısı.
+Bir temsilci, statik bir yönteme (örn. veya `Square` `Math.Sin` önceki örnekte olduğu gibi) ya da bir örnek yöntemine (örneğin, önceki `m.Multiply` örnekte olduğu gibi) başvurabilir. Örnek yönteme başvuran bir temsilci belirli bir nesneye de başvurur ve örnek yöntemi temsilci aracılığıyla çağrıldığında, bu nesne çağrı içinde olur `this` .
 
-Temsilciler da "anında oluşturulan satır içi yöntemler" anonim işlevler kullanılarak oluşturulabilir. Anonim İşlevler, yerel değişkenler çevreleyen yöntemlerden görebilirsiniz. Bu nedenle, yukarıdaki çarpan örneği daha kolay kullanmadan yazılabilir bir `Multiplier` sınıfı:
+Temsilciler, anında oluşturulan "satır içi Yöntemler" olan anonim işlevler kullanılarak da oluşturulabilir. Anonim işlevler, çevresindeki yöntemlerin yerel değişkenlerini görebilir. Bu nedenle, yukarıdaki çarpan örneği bir `Multiplier` sınıf kullanılmadan daha kolay yazılabilir:
 
 ```csharp
 double[] doubles =  Apply(a, (double x) => x * 2.0);
 ```
-Bir ilgi çekici ve kullanışlı bir temsilci, bilmiyorsanız veya yöntemin başvurduğu sınıfı hakkında dikkatli olun, özelliğidir; önemli olan başvurulan yöntemi aynı parametre ve dönüş türü temsilciyle sahiptir.
+Bir temsilcinin ilgi çekici ve yararlı bir özelliği, başvurduğu yöntemin sınıfını bilmez veya ilgilenmez; her önemli şey, başvurulan yöntemin aynı parametrelere sahip olması ve temsilciyle aynı türde dönüş türüdür.
 
 ## <a name="attributes"></a>Öznitelikler
 
-Bazı yönlerini davranışlarını denetleyen değiştiriciler, türleri, üyeleri ve diğer varlıkların bir C# programında destekler. Örneğin, bir yöntemin erişilebilirliği kullanılarak denetlenir `public`, `protected`, `internal`, ve `private` değiştiriciler. Bildirim temelli bilgileri kullanıcı tanımlı türde program varlıklara bağlı ve çalışma zamanında alınan C# bu özellik genelleştirir. Programlar belirtmek bu ek tanımlayıcı bilgiler tanımlama ve kullanma ***öznitelikleri***.
+Bir C# programdaki türler, Üyeler ve diğer varlıklar, davranışlarının belirli yönlerini denetleyen değiştiricilerin özelliklerini destekler. Örneğin, bir `public`yöntemin erişilebilirliği `internal`, `protected`,, ve `private` değiştiricileri kullanılarak denetlenir. C#Bu özelliği, bildirim temelli bilgilerin Kullanıcı tanımlı türleri program varlıklarına iliştirilebilecek ve çalışma zamanında alınabilecek şekilde genelleştirir. Programlar, ***öznitelikleri***tanımlayarak ve kullanarak bu ek bildirime dayalı bilgileri belirtir.
 
-Aşağıdaki örnek bildirir bir `HelpAttribute` , ilişkili belgelere bağlantılar sağlamak için program varlıkları yerleştirildiği özniteliği.
+Aşağıdaki örnek, ilişkili belgelerinin `HelpAttribute` bağlantılarını sağlamak için program varlıklarına yerleştirilebilecek bir özniteliği bildirir.
 
 ```csharp
 using System;
@@ -1582,7 +1582,7 @@ public class HelpAttribute: Attribute
     }
 }
 ```
-Tüm öznitelik sınıfları türetilmesi `System.Attribute` temel .NET Framework tarafından sağlanan sınıfı. Öznitelik, köşeli ayraç içinde ilişkili bildirimi hemen önce tüm bağımsız değişkenleri yanı sıra bunların adı vererek uygulanabilir. Bir özniteliğin adı biterse `Attribute`, öznitelik başvurulduğunda bu bölümü adı atlanmış olabilir. Örneğin, `HelpAttribute` özniteliği aşağıdaki gibi kullanılabilir.
+Tüm öznitelik sınıfları, .NET Framework tarafından `System.Attribute` belirtilen temel sınıftan türetilir. Öznitelikler, ilişkili bildirimden hemen önceki köşeli parantez içinde, adı ve bağımsız değişkenlerle birlikte uygulanabilir. Bir özniteliğin adı içinde `Attribute`biterse, özniteliğe başvuruluyorsa adın bu bölümü atlanabilir. Örneğin, `HelpAttribute` özniteliği aşağıdaki gibi kullanılabilir.
 
 ```csharp
 [Help("http://msdn.microsoft.com/.../MyClass.htm")]
@@ -1592,9 +1592,9 @@ public class Widget
     public void Display(string text) {}
 }
 ```
-Bu örnekte bağlayan bir `HelpAttribute` için `Widget` sınıf ve başka `HelpAttribute` için `Display` sınıfında yöntemi. Genel oluşturucular bir öznitelik sınıfı özniteliği için bir program varlığı eklendiğinde sağlanmalıdır bilgileri denetler. Ek bilgi öznitelik sınıfının ortak okuma-yazma özelliklerine başvurarak sağlanabilir (başvuru gibi `Topic` özelliği daha önce).
+Bu örnek, sınıfına `HelpAttribute` `Widget` öğesine ve başka `HelpAttribute` `Display` bir sınıftaki yöntemine bir iliştirir. Öznitelik sınıfının ortak oluşturucuları, özniteliği bir program varlığına eklendiğinde sağlanması gereken bilgileri denetler. Öznitelik sınıfının genel okuma-yazma özelliklerine (daha önce `Topic` özelliğine başvuru gibi) başvurarak ek bilgiler sunulabilir.
 
-Aşağıdaki örnek, belirli bir programı varlık için öznitelik bilgileri, çalışma zamanında nasıl alınabilir gösterir yansıma kullanarak.
+Aşağıdaki örnek, belirli bir program varlığı için öznitelik bilgilerinin yansıma kullanarak çalışma zamanında nasıl alınamayacağını gösterir.
 
 ```csharp
 using System;
@@ -1620,4 +1620,4 @@ class Test
     }
 }
 ```
-Belirli bir özniteliği yansıma yoluyla istendiğinde program kaynakta sağlanan bilgileri ile öznitelik sınıfı için oluşturucu çağrılır ve sonuçta elde edilen öznitelik örneği döndürülür. Ek bilgi özellikleri aracılığıyla sağlandıysa, öznitelik örneği döndürülmeden önce bu özellikleri için belirtilen değerlere ayarlanır.
+Belirli bir öznitelik yansıma aracılığıyla istendiğinde, öznitelik sınıfı için Oluşturucu program kaynağında sağlanan bilgilerle çağrılır ve sonuçta elde edilen öznitelik örneği döndürülür. Özellikler aracılığıyla ek bilgiler sağlanmışsa, öznitelik örneği döndürülmeden önce bu özellikler verilen değerlere ayarlanır.

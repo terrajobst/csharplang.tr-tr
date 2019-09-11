@@ -1,46 +1,46 @@
 ---
-ms.openlocfilehash: e103f6629a363c6cd76607699ff74d69aa73ed57
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 5fbe0267b5b33b1a24dbdca493d118c576092573
+ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488964"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876918"
 ---
 # <a name="lexical-structure"></a>Sözcük yapısı
 
 ## <a name="programs"></a>Programlar
 
-C# ***program*** bir veya daha fazla oluşur ***kaynak dosyaları***, resmi olarak bilinen ***derleme biriminden*** ([derleme biriminden](namespaces.md#compilation-units)). Sıralı bir Unicode karakter kaynak dosyasıdır. Kaynak dosyaları, dosyaları ile bire bir ilişkisi genellikle bir dosya sisteminde vardır. ancak bu yazışma gerekli değildir. Düzeyde taşınabilirlik için dosya sistemindeki dosyaları UTF-8 ile kodlanmış önerilir kodlama.
+C# ***Program*** , bilinen bir veya daha fazla ***kaynak dosyadan*** ***oluşur (derleme birimleri)*** .[](namespaces.md#compilation-units) Kaynak dosya, bir dizi Unicode karakterden oluşan sıralı bir dizidir. Kaynak dosyaların bir dosya sistemindeki dosyalarla genellikle bire bir yazışmaları vardır, ancak bu yazışma gerekli değildir. En fazla taşınabilirlik için, bir dosya sistemindeki dosyaların UTF-8 kodlaması ile kodlanması önerilir.
 
-Kavramsal olarak açıklamak gerekirse, bir program üç adımda derlenir:
+Kavramsal olarak bakıldığında, bir program üç adım kullanılarak derlenir:
 
-1. Dönüştürme, bir dosyayı bir özel karakter topluluğunun ve kodlama düzeni, Unicode karakter dizisine dönüştürür.
-2. Sözcük analizi giriş karakter Unicode akışı belirteçleri bir akışa dönüştürür.
-3. Söz dizimi analizi, belirteçlerin akışı yürütülebilir koda çevirir.
+1. Bir dosyayı belirli bir karakter topluluğunun ve kodlama düzeninden bir Unicode karakter dizisine dönüştüren dönüştürme.
+2. Unicode giriş karakterlerinden oluşan bir akışı belirteç akışına çeviren sözcük temelli analiz.
+3. Belirteçlerin akışını yürütülebilir koda çeviren sözdizimsel analiz.
 
-## <a name="grammars"></a>Dilbilgisi
+## <a name="grammars"></a>Dilbilgisinde
 
-Bu belirtimi iki dilbilgisi kullanarak C# programlama dilinin söz dizimini gösterir. ***Sözcük Dilbilgisi*** ([sözcük Dilbilgisi](lexical-structure.md#lexical-grammar)) formunu satır sonlandırıcılar, boşluk, yorumlar, belirteçleri ve ön işleme yönergeleri için Unicode karakterler nasıl birleştirileceğini tanımlar. ***Söz dizimsel Dilbilgisi*** ([söz Dizimsel Dilbilgisi](lexical-structure.md#syntactic-grammar)) sözcük dilbilgisi kaynaklanan belirteçleri form C# programları nasıl birleştirileceğini tanımlar.
+Bu belirtim, C# programlama dilinin sözdizimini iki dilmars kullanarak gösterir. ***Sözlü dilbilgisi*** ([sözlü dilbilgisi](lexical-structure.md#lexical-grammar)), Unicode karakterlerinin form satır sonlandırıcılar, beyaz boşluk, açıklama, belirteç ve ön işleme yönergeleri ile nasıl birleştirildiğini tanımlar. ***Sözdizimsel*** dilbilgisi ([sözdizimsel dilbilgisi](lexical-structure.md#syntactic-grammar)), sözcük temelli dilbilgisinde elde edilen belirteçlerin form C# programlarında nasıl birleştirildiğini tanımlar.
 
 ### <a name="grammar-notation"></a>Dilbilgisi gösterimi
 
-Sözcük temelli ve söz dizimsel dilbilgisi ANTLR dilbilgisi aracının gösterimini kullanarak Backus-Naur formu içinde sunulur.
+Sözlü ve sözdizimsel dilbilgisinde, ANTLR dilbilgisi aracının gösterimi kullanılarak Backus-Naur form sunulmaktadır.
 
 ### <a name="lexical-grammar"></a>Sözcük dilbilgisi
 
-Sözcük dilbilgisi C# içinde sunulan [sözcük analizi](lexical-structure.md#lexical-analysis), [belirteçleri](lexical-structure.md#tokens), ve [yönergeleri ön işleme](lexical-structure.md#pre-processing-directives). Sözcük dilbilgisi terminal simgelerini Unicode karakter kümesinin karakterlerdir ve karakter form belirteçleri nasıl birleştirildiğini sözcük dilbilgisi belirtir ([belirteçleri](lexical-structure.md#tokens)), boşluk ([boşluk](lexical-structure.md#white-space)), açıklamalar ([açıklamaları](lexical-structure.md#comments)) ve ön işleme yönergeleri ([yönergeleri ön işleme](lexical-structure.md#pre-processing-directives)).
+Sözcük temelli C# dilbilgisi, [sözcük temelli analiz](lexical-structure.md#lexical-analysis), [belirteçler](lexical-structure.md#tokens)ve [önceden işleme yönergeleriyle](lexical-structure.md#pre-processing-directives)sunulmaktadır. Sözlü dilbilgisinin Terminal sembolleri Unicode karakter kümesinin karakterleridir ve sözlü dilbilgisi karakterleri, belirteçlerin ([belirteçler](lexical-structure.md#tokens)), boşluk ([beyaz boşluk](lexical-structure.md#white-space)), yorumların ([açıklamaların](lexical-structure.md#comments)) ve ön işleme yönergeleri ([ön işleme yönergeleri](lexical-structure.md#pre-processing-directives)).
 
-Her kaynak dosyası bir C# programında uymalıdır *giriş* üretimi sözcük dilbilgisi ([sözcük analizi](lexical-structure.md#lexical-analysis)).
+Bir C# programdaki her kaynak dosya, sözlü dilbilgisinde ([sözlü analiz](lexical-structure.md#lexical-analysis)) gelen *giriş* üretimine uygun olmalıdır.
 
-### <a name="syntactic-grammar"></a>Söz dizimi dilbilgisi
+### <a name="syntactic-grammar"></a>Sözdizimsel dilbilgisi
 
-C# sözdizimi dilbilgisi bölümleri ve bu bölümün aşağıdaki ek sunulur. Söz dizimi dilbilgisi terminal simgelerini sözcük dilbilgisi tarafından tanımlanan belirteçleridir ve belirteçleri form C# programları nasıl birleştirildiğini söz dizimsel dilbilgisi belirtir.
+' Nin C# sözdizimsel dilbilgisi, bu bölümü izleyen bölümlerde ve appendıces ' de sunulur. Sözdizimsel dilbilgisinde Terminal sembolleri, sözlü dilbilgisi tarafından tanımlanan belirteçlerdir ve sözdizimsel dilbilgisi belirteçleri, belirteçlerin form C# programlarına nasıl birleştirildiğini belirtir.
 
-Her kaynak dosyada bir C# programı için uygun olmalıdır *compilation_unit* söz dizimsel dilbilgisi üretimini ([derleme biriminden](namespaces.md#compilation-units)).
+Bir C# programdaki her kaynak dosya, sözdizimi dilbilgisinde ([derleme birimleri](namespaces.md#compilation-units)) *compilation_unit* üretimine uygun olmalıdır.
 
-## <a name="lexical-analysis"></a>Sözcük analizi
+## <a name="lexical-analysis"></a>Sözcük temelli analiz
 
-*Giriş* üretim bir C# kaynak dosyası sözcük yapısını tanımlar. Her kaynak dosyasının bir C# programında, bu sözcük dilbilgisi üretim için uygun olmalıdır.
+*Giriş* üretimi, C# kaynak dosyanın sözlü yapısını tanımlar. Bir C# programdaki her kaynak dosya, bu sözcük temelli dilbilgisi üretimine uygun olmalıdır.
 
 ```antlr
 input
@@ -63,17 +63,17 @@ input_element
     ;
 ```
 
-Beş temel öğeleri olun sözcük yapısı, bir C# kaynak dosyası: Satır sonlandırıcılar ([satır sonlandırıcılar](lexical-structure.md#line-terminators)), boşluk ([boşluk](lexical-structure.md#white-space)), açıklamalar ([açıklamaları](lexical-structure.md#comments)), belirteçleri ([belirteçleri](lexical-structure.md#tokens)), ve yönergeleri ön işleme ([yönergeleri ön işleme](lexical-structure.md#pre-processing-directives)). Bu temel öğeleri, yalnızca belirteçleri söz dizimi bir C# programı dilbilgisi içinde önemli ([söz Dizimsel Dilbilgisi](lexical-structure.md#syntactic-grammar)).
+Beş temel öğe, C# kaynak dosyanın sözlü yapısını yapar: Satır sonlandırıcılar ([satır sonlandırıcılar](lexical-structure.md#line-terminators)), boşluk ([beyaz boşluk](lexical-structure.md#white-space)), açıklamalar ([açıklamalar](lexical-structure.md#comments)), belirteçler ([belirteçler](lexical-structure.md#tokens)) ve önceden işleme yönergeleri ([ön işleme yönergeleri](lexical-structure.md#pre-processing-directives)). Bu temel öğelerin yalnızca belirteçleri, bir C# programın sözdizimsel dilbilgisinde ([sözdizimsel dilbilgisi](lexical-structure.md#syntactic-grammar)) önemlidir.
 
-Dosya, söz dizimi analizi giriş dönüşen belirteçleri dizisini azaltma C# kaynak dosyası sözcük işlenmesini oluşur. Satır sonlandırıcılar, boşluk ve yorum belirteçleri, ayırmak için görebilir ve ön işleme yönergeleri atlanacak kaynak dosyasının bölümlerini neden olabilir, ancak Aksi halde bu sözcük temelli öğeler söz dizimi bir C# programı yapısını üzerinde hiçbir etkiye sahip.
+Bir C# kaynak dosyanın sözcük işleme, dosyayı sözdizimsel Analize Giriş haline gelen bir belirteç dizisine düşürmektir. Satır sonlandırıcılar, boşluk ve açıklamalar ayrı belirteçlere sunabilir ve önceden işleme yönergeleri kaynak dosyanın bölümlerinin atlanmasına neden olabilir, ancak bu sözcük temelli öğelerin C# programın sözdizimsel yapısını etkilemez.
 
-İlişkilendirilmiş dize değişmez değerleri söz konusu olduğunda ([ilişkilendirilmiş dize değişmez değerleri](lexical-structure.md#interpolated-string-literals)) tek bir belirteç başlangıçta sözcük analizi tarafından oluşturulur ancak sürekli olarak sözcük temelli analize bağlı birkaç giriş öğelerine bozuk tüm ilişkilendirilmiş dize değişmez değerleri Çözüldü kadar. Sonuçta elde edilen belirteçleri sonra söz dizimi analizi giriş olarak sunar.
+Enterpolasyonlu dize sabit değerleri ([enterpolasyonlu dize sabit değerleri](lexical-structure.md#interpolated-string-literals)), ilk olarak tek bir belirteç, sözcük temelli analiz tarafından üretilir, ancak her türlü dize sabit değerleri çözüldü. Elde edilen belirteçler daha sonra sözdizimsel Analize giriş olarak görev yapar.
 
-Kaynak dosyada bir karakter dizisi birkaç sözcük dilbilgisi üretim eşleşen sözcük işleme her zaman olası en uzun sözcük öğesi oluşturur. Örneğin, karakter dizisi `//` sözcük o öğenin tek bir uzun olduğu için tek satır açıklama başlangıcı olarak işlenir `/` belirteci.
+Birçok sözlü dilbilgisi üretimi, bir kaynak dosyadaki bir karakter dizisiyle eşleşiyorsa, sözcük işleme her zaman mümkün olan en uzun sözlü öğeyi oluşturur. Örneğin, sözcük sırası `//` tek satırlık açıklamanın başlangıcında işlenir çünkü bu, sözlü öğe tek `/` bir belirteçten daha uzun.
 
 ### <a name="line-terminators"></a>Satır sonlandırıcılar
 
-Satır sonlandırıcılar bir C# kaynak dosyası karakterlerini çizgiye bölün.
+Satır sonlandırıcılar, bir C# kaynak dosyanın karakterlerini çizgilere böler.
 
 ```antlr
 new_line
@@ -86,14 +86,14 @@ new_line
     ;
 ```
 
-Kaynak ile uyumluluk kod dosya sonu işaretleyicileri ekleyin düzenleme araçlarını ve bir kaynağı etkinleştirmek için bir dizi düzgün görüntülenmesi için dosya satırları sona için her kaynak dosyasının bir C# programı içinde sırayla aşağıdaki dönüştürmeleri uygulanır:
+Dosya sonu işaretçileri ekleyen kaynak kodu düzenlemeyle uyumluluk için ve kaynak dosyanın düzgün bir şekilde sonlandırılmış satırlar halinde görüntülenmesini sağlamak için, aşağıdaki dönüşümler bir C# programdaki her kaynak dosyasına sırayla uygulanır:
 
-*  Kaynak dosyasının son karakterin bir denetim Z karakterini olup olmadığını (`U+001A`), bu karakter silinir.
-*  Bir satır başı karakteri (`U+000D`), kaynak dosyası boş ise ve kaynak dosyasının son karakter bir satır başı değilse kaynak dosyasının sonuna eklenir (`U+000D`), satır besleme (`U+000A`), satır ayırıcı (`U+2028`), veya bir paragraf ayracı (`U+2029`).
+*  Kaynak dosyanın son karakteri bir Control-Z karakteri (`U+001A`) ise, bu karakter silinir.
+*  Kaynak dosya boş değilse ve kaynak`U+000D`dosyanın son karakteri bir satır başı (`U+000D`), bir satır akışı (`U+000A`), satır ayırıcı`U+2028`()değilse,kaynakdosyanınsonunabirsatırbaşıkarakteri()eklenir.) ya da bir paragraf ayırıcı (`U+2029`).
 
 ### <a name="comments"></a>Açıklamalar
 
-İki tür açıklamaları desteklenir: tek satırlı yorumlar ve sınırlandırılmış yorumlar. ***Tek satırlı yorumlar*** karakterleri ile Başlat `//` ve kaynak satır sonuna kadar genişletin. ***Ayrılmış açıklama*** karakterleri ile Başlat `/*` ve son karakterler `*/`. Ayrılmış açıklama birden fazla satırı kapsayabilir.
+İki yorum biçimi desteklenir: tek satırlık açıklamalar ve sınırlandırılmış açıklamalar. ***Tek satır açıklamaları*** karakterlerle `//` başlar ve kaynak satırın sonuna kadar genişler. ***Sınırlandırılmış açıklamalar*** karakterlerle `/*` başlar ve karakterlerle `*/`biter. Sınırlandırılmış açıklamalar birden çok satıra yayılabilir.
 
 ```antlr
 comment
@@ -135,9 +135,9 @@ not_slash_or_asterisk
     ;
 ```
 
-Açıklamalar iç içe kullanmayın. Karakter sıraları `/*` ve `*/` içinde özel bir anlamı yoktur bir `//` yorum ve karakter sıraları `//` ve `/*` ayrılmış bir yorum içinde özel bir anlamı yoktur.
+Açıklamalar iç içe değildir. `/*` Karakter dizileri `*/` ve bir `//` `/*` yorum içinde özel anlamı yoktur ve karakter dizileri ve ayrılmış bir açıklama içinde özel bir anlamı yoktur. `//`
 
-Yorumlar, karakter ve dize değişmez değerleri içinde işlenir.
+Açıklamalar karakter ve dize değişmez değerleri içinde işlenmez.
 
 Örnek
 ```csharp
@@ -165,11 +165,11 @@ class Hello // any name will do for this class
     }
 }
 ```
-birkaç tek satırlık açıklamaları gösterilmektedir.
+Birkaç tek satırlık açıklama gösterir.
 
 ### <a name="white-space"></a>Boşluk
 
-Boşluk karakterleri (boşluk karakteri içeren) Zs Unicode sınıfıyla yanı sıra yatay sekme karakterinin, dikey sekme karakteri ve form besleme karakteri gibi tanımlanır.
+Boşluk karakteri, yatay sekme karakteri, dikey sekme karakteri ve form besleme karakteri olan Unicode sınıf ZS (boşluk karakterini de içerir) ile herhangi bir karakter olarak tanımlanır.
 
 ```antlr
 whitespace
@@ -182,7 +182,7 @@ whitespace
 
 ## <a name="tokens"></a>Belirteçler
 
-Belirteçlerin birkaç türü vardır: tanımlayıcılar, anahtar sözcükler, değişmez değerler, işleçler ve noktalama işaretçileri. Ayırıcılar belirteçleri görür ancak boşluk ve yorum belirteçleri, değildir.
+Birkaç tür belirteç vardır: tanımlayıcılar, anahtar sözcükler, sabit değerler, işleçler ve noktalama işaretleri. Boşluk ve açıklamalar belirteçler değildir, ancak belirteçler için ayırıcılar işlevi görür.
 
 ```antlr
 token
@@ -199,7 +199,7 @@ token
 
 ### <a name="unicode-character-escape-sequences"></a>Unicode karakter kaçış dizileri
 
-Bir Unicode karakter kaçış dizisi, bir Unicode karakteri temsil eder. Unicode karakter kaçış dizileri tanımlayıcıları olarak işlenir ([tanımlayıcıları](lexical-structure.md#identifiers)), karakter değişmez değerleri ([karakter değişmez değerleri](lexical-structure.md#character-literals)) ve normal dize değişmez değerleri ([dize değişmez değerleri](lexical-structure.md#string-literals)). Bir Unicode karakter kaçış başka bir konuma (örneğin, bir işleç, noktalama işaretçisi veya anahtar oluşturmak için) işlenmiyor.
+Unicode karakter kaçış dizisi bir Unicode karakteri temsil eder. Unicode karakter kaçış dizileri tanımlayıcılarda ([tanımlayıcılar](lexical-structure.md#identifiers)), karakter sabit değerlerinde ([karakter sabit](lexical-structure.md#character-literals)değerleri) ve normal dize değişmez değerlerinde ([dize sabit değerleri](lexical-structure.md#string-literals)) işlenir. Unicode karakter kaçış başka bir konumda işlenmez (örneğin, bir işleç, noktalama veya anahtar sözcük oluşturmak için).
 
 ```antlr
 unicode_escape_sequence
@@ -208,9 +208,9 @@ unicode_escape_sequence
     ;
 ```
 
-Unicode çıkış dizisi onaltılık sayı aşağıdaki tarafından oluşturulmuş tek Unicode karakteri temsil eder "`\u`"veya"`\U`" karakter. C# bir 16 bitlik Unicode kod noktaları karakter ve dize değerlerini kodlamasını kullandığından bir Unicode karakter ile U + 10FFFF U + 10000 aralık içinde bir karakter sabiti içinde izin verilmez ve bir dize sabit değeri bir Unicode vekil çifti kullanarak gösterilir. Unicode karakterler 0x10FFFF yukarıda kod noktası ile desteklenmez.
+Unicode kaçış sırası, "`\u`" veya "`\U`" karakterlerinden sonra onaltılık sayı tarafından oluşturulan tek Unicode karakteri temsil eder. , C# Karakter ve dize değerlerinde Unicode kod noktalarının 16 bitlik bir kodlamasını kullandığından, bir karakter sabit değerinde u + 10000-u + 10FFFF aralığındaki bir Unicode karaktere izin verilmez ve bir dize sabit değerinde Unicode vekil çifti kullanılarak temsil edilir. 0x10FFFF üzerinde kod noktaları olan Unicode karakterler desteklenmez.
 
-Birden çok çevirileri gerçekleştirilmez. Örneğin, dize sabit değeri "`\u005Cu005C`"değerine eşdeğer olan"`\u005C`"yerine"`\`". Unicode değerini `\u005C` karakter "`\`".
+Birden çok çeviri gerçekleştirilmez. Örneğin, "" dize değişmez değeri`\u005Cu005C`"" yerine`\`"`\u005C`" ile eşdeğerdir. Unicode değeri `\u005C` "`\`" karakteridir.
 
 Örnek
 ```csharp
@@ -223,7 +223,7 @@ class Class1
     }        
 }
 ```
-bazı kullanımlarını gösterir `\u0066`, harfi için kaçış sırası olduğu "`f`". Program eşdeğerdir
+`\u0066`"`f`" harfi için kaçış sırası olan, öğesinin birkaç kullanımını gösterir. Program şu şekilde eşdeğerdir
 ```csharp
 class Class1
 {
@@ -237,7 +237,7 @@ class Class1
 
 ### <a name="identifiers"></a>Tanımlayıcılar
 
-Alt çizgi (C programlama dilinde geleneksel olduğu gibi) ilk karakteri olarak Unicode kaçış dizileri izin dışında bu bölümde verilen tanımlayıcıları için kuralları tam olarak Unicode standart eki 31 tarafından önerilen karşılık gelir tanımlayıcılar, izin verilen ve "`@`" karakteri, tanımlayıcı olarak kullanılacak anahtar sözcükleri etkinleştirmek için önek olarak verilir.
+Bu bölümde verilen tanımlayıcılara yönelik kurallar tam olarak Unicode standart ek 31 tarafından Önerilenlere karşılık gelir, ancak alt çizgi bir başlangıç karakteri olarak izin verilir (C programlama dilinde geleneksel gibi), Unicode kaçış dizileri tanımlayıcılara izin verilir ve "`@`" karakterine, tanımlayıcı olarak kullanılacak anahtar kelimelerin etkinleştirilmesi için önek olarak izin verilir.
 
 ```antlr
 identifier
@@ -292,13 +292,13 @@ formatting_character
     ;
 ```
 
-Yukarıda belirtilen Unicode karakter sınıfları hakkında daha fazla bilgi için Unicode standardı, sürüm 3.0, 4.5 bölümüne bakın.
+Yukarıda belirtilen Unicode karakter sınıfları hakkında daha fazla bilgi için bkz. Unicode standart, sürüm 3,0, Bölüm 4,5.
 
-Geçerli tanımlayıcıları örnekler "`identifier1`","`_identifier2`", ve "`@if`".
+Geçerli tanımlayıcıların örnekleri şunlardır "`identifier1`", "`_identifier2`" ve "`@if`".
 
-Uyumlu bir program bir tanımlayıcıda Unicode standart eki 15 tarafından tanımlandığı şekilde, Unicode normalleştirme Form C tarafından tanımlanan kurallı biçimde olmalıdır. Uygulama tanımlı davranış normalleştirme formu C'de değil bir tanımlayıcı ile karşılaşıldığında; Ancak, bir tanılama gerekli değildir.
+Uyumlu bir programdaki tanımlayıcı, Unicode standart ek 15 tarafından tanımlanan, Unicode normalleştirme biçimi C tarafından tanımlanan kurallı biçimde olmalıdır. Normalleştirme biçimi C 'de olmayan bir tanımlayıcı ile karşılaştığın davranışı uygulama tanımlı; Ancak, bir tanılama gerekli değildir.
 
-Önek "`@`" diğer programlama dilleriyle arabirim zaman yararlı tanımlayıcı olarak anahtar sözcükler kullanılmasına olanak tanır. Karakter `@` tanımlayıcısı, diğer dillerde öneki olmadan normal bir tanımlayıcı olarak görülebilir şekilde tanımlayıcısı aslında bir parçası değil. Bir tanımlayıcıyla bir `@` önek çağrıldığında bir ***tam tanımlayıcı***. Kullanım `@` olmayan anahtar sözcükler tanımlayıcılar için önek izin, ancak stil sağlasa da kesinlikle önerilmez.
+"`@`" Ön eki, diğer programlama dilleriyle arabirim oluştururken yararlı olan tanımlayıcı olarak anahtar kelimelerin kullanılmasını sağlar. Karakter `@` aslında tanımlayıcının bir parçası değildir, bu nedenle tanımlayıcı, ön ek olmadan diğer dillerde normal tanımlayıcı olarak görülemeyebilir. `@` Ön eke sahip bir tanımlayıcıya, tam ***tanımlayıcı***denir. Anahtar sözcük olmayan tanımlayıcılar için önekkullanılmasınaizinverilir,ancakstilaçısındankesinlikleönerilmez.`@`
 
 Örnek:
 ```csharp
@@ -319,19 +319,19 @@ class Class1
     }
 }
 ```
-adlı bir sınıf tanımlar "`class`"adlı statik bir yöntem ile"`static`"adlı bir parametre alan"`bool`". Unicode çıkışları olduğundan, anahtar, belirteç izin verilmez Not "`cl\u0061ss`"bir tanımlayıcıdır ve aynı tanımlayıcı olarak"`@class`".
+"" adlı bir parametre`class``bool`alan ""`static`adlı statik bir yöntemle "" adlı bir sınıf tanımlar. Anahtar kelimelerinde Unicode kaçışlara izin verilmemesine, "`cl\u0061ss`" belirtecinin bir tanımlayıcı olduğuna ve "`@class`" ile aynı tanımlayıcıda olduğuna unutmayın.
 
-Bunlar aşağıdaki dönüştürmeleri, sırayla uygulanır sonra aynıysa iki tanımlayıcı aynı kabul edilir:
+İki tanımlayıcı, aşağıdaki dönüşümler uygulandıktan sonra aynı olursa, sırasıyla aynı kabul edilir:
 
-*  Önek "`@`", kullandıysanız kaldırılır.
-*  Her *unicode_escape_sequence* , karşılık gelen bir Unicode karakter dönüştürülür.
-*  Tüm *formatting_character*s kaldırılır.
+*  "`@`" Kullanılırsa, ' "öneki kaldırılır.
+*  Her *unicode_escape_sequence* karşılık gelen Unicode karakteriyle dönüştürülür.
+*  Herhangi bir *formatting_character*s kaldırılır.
 
-İki ardışık içeren tanımlayıcılar alt çizgi karakteri (`U+005F`) uygulama tarafından kullanım için ayrılmıştır. Örneğin, bir uygulama iki alt çizgi ile başlayan genişletilmiş anahtar sözcükleri sağlayabilir.
+Art arda iki alt çizgi karakteri (`U+005F`) içeren tanımlayıcılar, uygulama tarafından kullanılmak üzere ayrılmıştır. Örneğin, bir uygulama iki alt çizgi ile başlayan genişletilmiş anahtar sözcükler sağlayabilir.
 
 ### <a name="keywords"></a>anahtar sözcükler
 
-A ***anahtar sözcüğü*** ayrılmıştır ve tarafından zaman başında dışında bir tanımlayıcı olarak kullanılamaz, tanımlayıcı benzeri karakter dizisidir `@` karakter.
+***Anahtar sözcüğü*** , ayrılmış karakterlerin tanımlayıcı benzeri bir dizidir ve `@` karakter tarafından ön çıkması dışında bir tanımlayıcı olarak kullanılamaz.
 
 ```antlr
 keyword
@@ -354,11 +354,11 @@ keyword
     ;
 ```
 
-Belirli tanımlayıcıları, bazı yerlerde dilbilgisi içinde özel bir anlamı yoktur ancak anahtar sözcükler değildir. Tür tanımlayıcıları, bazen "bağlamsal anahtar sözcükler" da denir. Örneğin, bir özellik bildirimi içinde "`get`"ve"`set`" tanımlayıcıları specified ([erişimcileri](classes.md#accessors)). Dışında bir tanımlayıcı `get` veya `set` bu kullanım bu sözcükler tanımlayıcı olarak kullanımını ile çakışmaması bu konumda hiçbir zaman izin verilir. Diğer durumlarda, örneğin bir tanımlayıcıyla gibi "`var`" türü örtük olarak belirlenmiş yerel değişken bildirimlerinde ([yerel değişken bildirimlerini](statements.md#local-variable-declarations)), bağlamsal anahtar sözcüğü ile bildirilen adlar çakışabilir. Bu gibi durumlarda, bildirilen ad tanımlayıcısı olarak bağlamsal anahtar sözcük kullanmak önceliklidir.
+Dilbilgisinde bazı yerlerde, belirli tanımlayıcıların özel anlamları vardır ancak anahtar sözcük değildir. Bu tür tanımlayıcılar bazen "bağlamsal anahtar sözcükler" olarak adlandırılır. Örneğin, bir özellik bildiriminde, "`get`" ve "`set`" tanımlayıcıları özel anlamlara ([erişimciler](classes.md#accessors)) sahiptir. Bu konumlarda `get` veya `set` dışında bir tanımlayıcıya izin verilmez, bu nedenle bu kullanım bu sözcüklerin tanımlayıcı olarak kullanımıyla çakışmaz. Örneğin, örtük olarak yazılan yerel değişken bildirimlerinde (`var`[yerel değişken bildirimleri](statements.md#local-variable-declarations)) "" tanımlayıcısına sahip gibi, bir bağlamsal anahtar sözcük, belirtilen adlarla çakışabilir. Bu gibi durumlarda, belirtilen ad tanımlayıcı anahtar sözcük olarak tanımlayıcı kullanılarak önceliklidir.
 
 ### <a name="literals"></a>Sabit değerler
 
-A ***değişmez değer*** bir kaynak kodu bir değer gösterimidir.
+***Değişmez*** değer, bir değerin kaynak kod gösterimidir.
 
 ```antlr
 literal
@@ -373,7 +373,7 @@ literal
 
 #### <a name="boolean-literals"></a>Boole sabit değerleri
 
-İki boolean değişmez değer vardır: `true` ve `false`.
+İki Boolean değişmez değer vardır: `true` ve. `false`
 
 ```antlr
 boolean_literal
@@ -382,11 +382,11 @@ boolean_literal
     ;
 ```
 
-Türü bir *boolean_literal* olduğu `bool`.
+Bir *boolean_literal* `bool`türü.
 
 #### <a name="integer-literals"></a>Tamsayı sabit değerleri
 
-Tamsayı sabit değerlerinde türlerindeki değerleri yazmak için kullanılan `int`, `uint`, `long`, ve `ulong`. Tamsayı sabit değerlerinde sahip iki olası form: ondalık ve onaltılık.
+Tamsayı `int`sabit değerleri `uint` ,`long`, ve`ulong`türlerinin değerlerini yazmak için kullanılır. Tamsayı sabit değerlerinde iki olası biçim vardır: Decimal ve onaltılı.
 
 ```antlr
 integer_literal
@@ -416,25 +416,25 @@ hex_digit
     | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f';
 ```
 
-Değişmez değer bir tamsayı türü şu şekilde belirlenir:
+Bir tamsayı sabit değerinin türü aşağıdaki şekilde belirlenir:
 
-*  Değişmez değer sonek varsa, bu ilk hangi değeri gösterilebileceği bu tür vardır: `int`, `uint`, `long`, `ulong`.
-*  Tarafından değişmez değer olup olmadığını `U` veya `u`, ilk hangi değeri gösterilebileceği bu tür vardır: `uint`, `ulong`.
-*  Tarafından değişmez değer olup olmadığını `L` veya `l`, ilk hangi değeri gösterilebileceği bu tür vardır: `long`, `ulong`.
-*  Tarafından değişmez değer olup olmadığını `UL`, `Ul`, `uL`, `ul`, `LU`, `Lu`, `lU`, veya `lu`, türü `ulong`.
+*  Değişmez değerin soneki yoksa, bu türlerin değeri temsil edilebilir `int`:, `uint`, `long`, `ulong`.
+*  Sabit `U` değer veya `u`tarafından sonekli ise, değeri gösterilebileceği bu türlerin birincileriyle sahiptir: `uint`, `ulong`.
+*  Sabit `L` değer veya `l`tarafından sonekli ise, değeri gösterilebileceği bu türlerin birincileriyle sahiptir: `long`, `ulong`.
+*  `UL`Sabit değer ,`LU` `ulong`,,,,, veya`lu`tarafından sonekli ise, türüdür. `Ul` `uL` `ul` `Lu` `lU`
 
-Bir tamsayı sabit değeri tarafından temsil edilen değeri aralığının dışında ise `ulong` yazın, bir derleme zamanı hatası oluşur.
+Bir tamsayı değişmez değeri ile temsil edilen değer, `ulong` tür aralığının dışındaysa, bir derleme zamanı hatası oluşur.
 
-Birkaç stil önerilir, "`L`"kullanılabilir yerine"`l`" sabit değerleri türü yazarken `long`, harf karıştırılabilir kolay olduğundan "`l`"ile "basamak`1`".
+`L`Stil olarak "" harfine`1``l` `long`"`l`" basamağıyla karışmak kolay olduğundan "" yerine "" yerine "" kullanılması önerilir.
 
-En küçük olası izin vermek için `int` ve `long` yazılabilir ondalık tamsayı değişmez değer olarak şu iki kuralı mevcut değerleri:
+En küçük `int` ve `long` değerlerin ondalık tamsayı değişmez değer olarak yazılmasına izin vermek için aşağıdaki iki kural bulunur:
 
-* Olduğunda bir *decimal_integer_literal* 2147483648 değerle (2 ^ 31) ve hiçbir *integer_type_suffix* bir tekli işleç belirteci eksi hemen ardından belirteci olarak görünür ([birli eksi İşleç](expressions.md#unary-minus-operator)), sonuç türü bir sabittir `int` değeri -2147483648 ile (-2 ^ 31). Diğer durumlarda bu tür bir *decimal_integer_literal* türünde `uint`.
-* Olduğunda bir *decimal_integer_literal* 9223372036854775808 değerle (2 ^ 63) ve hiçbir *integer_type_suffix* veya *integer_type_suffix* `L` veya `l` bir tekli işleç belirteci eksi hemen ardından belirteci olarak görünür ([birli eksi işleci](expressions.md#unary-minus-operator)), sonuç türü bir sabittir `long` -9223372036854775808 değerle (-2 ^ 63). Diğer durumlarda bu tür bir *decimal_integer_literal* türünde `ulong`.
+* 2147483648 (2 ^ 31) değerine sahip bir *decimal_integer_literal* ve tek bir birli eksi işleç belirtecini ([birli eksi işleci](expressions.md#unary-minus-operator)) izleyen belirteç olarak hiçbir *integer_type_suffix* belirdiğinde, sonuç türünde `int`birsabittirdeğer-2147483648 (-2 ^ 31). Diğer tüm durumlarda, bu tür bir *decimal_integer_literal* türüdür `uint`.
+* 9223372036854775808 (2 ^ 63) değerine sahip bir *decimal_integer_literal* ve *integer_type_suffix* veya *integer_type_suffix* `L` olmadığında ya `l` da tek bir birli eksi sonrasında belirteç olarak göründüğünde işleç belirteci ([birli eksi işleci](expressions.md#unary-minus-operator)), sonuç,-9223372036854775808 (-2 `long` ^ 63) değerine sahip bir sabit değerdir. Diğer tüm durumlarda, bu tür bir *decimal_integer_literal* türüdür `ulong`.
 
-#### <a name="real-literals"></a>Gerçek değişmez değerleri
+#### <a name="real-literals"></a>Gerçek sabit değerler
 
-Türlerindeki değerleri yazmak için kullanılan gerçek değişmez değerleri `float`, `double`, ve `decimal`.
+Gerçek sabit değerler, `float` `double`ve `decimal`türlerinin değerlerini yazmak için kullanılır.
 
 ```antlr
 real_literal
@@ -459,23 +459,23 @@ real_type_suffix
     ;
 ```
 
-Hayır ise *real_type_suffix* belirtilirse, gerçek değişmez değer türü `double`. Aksi takdirde, gerçek tür soneki gerçek değişmez değer türü şu şekilde belirler:
+*Real_type_suffix* belirtilmemişse, gerçek değişmez değerin `double`türü. Aksi halde gerçek tür soneki gerçek değişmez değerin türünü aşağıdaki gibi belirler:
 
-*  Tarafından ve sonra gerçek değişmez değerin `F` veya `f` türünde `float`. Örneğin, değişmez değerler `1f`, `1.5f`, `1e10f`, ve `123.456F` türü tümü `float`.
-*  Tarafından ve sonra gerçek değişmez değerin `D` veya `d` türünde `double`. Örneğin, değişmez değerler `1d`, `1.5d`, `1e10d`, ve `123.456D` türü tümü `double`.
-*  Tarafından ve sonra gerçek değişmez değerin `M` veya `m` türünde `decimal`. Örneğin, değişmez değerler `1m`, `1.5m`, `1e10m`, ve `123.456M` türü tümü `decimal`. Bu sabit dönüştürülür bir `decimal` tam değer almak ve gerekirse, en yakın kullanarak gösterilebilir değere yuvarlama değer banker yuvarlama ([decimal türü](types.md#the-decimal-type)). Değişmez değer görünen herhangi bir ölçekte, değerin yuvarlanmış ya da değer sıfırdır (hangi ikinci durumda oturum ve ölçek 0 olacaktır) korunur. Bu nedenle, değişmez değer `2.900m` ondalık oturum oluşturmak için ayrıştırılacak `0`, katsayısı `2900`ve ölçek `3`.
+*  `F` Ya da`f` türünde`float`olan gerçek bir sabit değer. Örneğin,,, ve `1f` `1.5f` `1e10f`değişmezdeğerleritüm türündedir `float`. `123.456F`
+*  `D` Ya da`d` türünde`double`olan gerçek bir sabit değer. Örneğin,,, ve `1d` `1.5d` `1e10d`değişmezdeğerleritüm türündedir `double`. `123.456D`
+*  `M` Ya da`m` türünde`decimal`olan gerçek bir sabit değer. Örneğin,,, ve `1m` `1.5m` `1e10m`değişmezdeğerleritüm türündedir `decimal`. `123.456M` Bu değişmez değer, tam değer `decimal` alınarak bir değere dönüştürülür ve gerekirse, banker 'in yuvarlanması ([ondalık türü](types.md#the-decimal-type)) kullanılarak en yakın gösterilebilir tablo değerine yuvarlanır. Değer yuvarlanmamışsa veya değer sıfır değilse (ikinci durumda, işaret ve ölçek 0 olacak şekilde), sabit değerde görünen herhangi bir ölçek korunur. Bu nedenle, değişmez `2.900m` değer, işaret `0`, katsayı `2900`ve Ölçekle `3`ondalık değerini oluşturacak şekilde ayrıştırılacaktır.
 
-Belirtilen hazır değerin belirtilen türdeki temsil edilemiyorsa, bir derleme zamanı hatası oluşur.
+Belirtilen sabit değer belirtilen türde temsil edilemez, derleme zamanı hatası oluşur.
 
-Gerçek bir sabit değer türündeki değeri `float` veya `double` IEEE kullanılarak belirlenir "yuvarlak yakın için" modu.
+`float` Veya`double` türünde gerçek bir sabit değerin değeri, IEEE "en yakına yuvarla" modu kullanılarak belirlenir.
 
-Bir gerçek değişmez değerin ondalık basamak her zaman ondalık ayırıcıdan sonra gerekli olduğunu unutmayın. Örneğin, `1.3F` gerçek sabit değer ancak olan `1.F` değil.
+Gerçek bir sabit değerde, ondalık ayırıcıdan sonra her zaman ondalık basamakların gerekli olduğunu unutmayın. Örneğin, `1.3F` gerçek bir değişmez değerdir ancak `1.F` değildir.
 
-#### <a name="character-literals"></a>Karakter değişmez değerleri
+#### <a name="character-literals"></a>Karakter sabit değerleri
 
-Karakterin değişmez değeri tek bir karakteri temsil eder ve genellikle bir tırnak karakteri olarak oluşan `'a'`.
+Bir karakter sabiti tek bir karakteri temsil eder ve genellikle içinde `'a'`olduğu gibi tırnak içindeki bir karakterden oluşur.
 
-Not: ANTLR dilbilgisi gösterimi aşağıdaki karmaşık hale getirir! Siz yazarken ANTLR içinde `\'` için tek bir teklif anlaşıldığı `'`. Ve yazarken `\\` için tek bir ters eğik çizgi anlaşıldığı `\`. Bu nedenle tek tırnak işareti sonra bir karakter, sonra da tek bir tırnak işareti ile başlayan bir karakter sabiti için ilk kural anlamına gelir. Ve on olası basit çıkış sıraları `\'`, `\"`, `\\`, `\0`, `\a`, `\b`, `\f`, `\n`, `\r`, `\t`, `\v`.
+Not: ANTLR dilbilgisi gösterimi aşağıdaki kafa karıştırıcı! ANTLR 'de yazdığınızda `\'` , tek bir teklife `'`göre gelir. Yazdığınızda `\\` , tek bir ters eğik çizgi `\`için temsil eder. Bu nedenle, bir karakter sabit değeri için ilk kural tek bir teklifle, ardından bir karakterle ve tek bir teklifle başladığı anlamına gelir. Ve olası basit `\'`kaçış dizileri ,`\a` ,,`\b`,,, ,,`\n`, ,`\t`,,,,, `\r` `\f` `\"` `\\` `\0` `\v`.
 
 ```antlr
 character_literal
@@ -501,40 +501,40 @@ hexadecimal_escape_sequence
     : '\\x' hex_digit hex_digit? hex_digit? hex_digit?;
 ```
 
-Ters eğik çizgi karakterini izleyen bir karakter (`\`) içinde bir *karakter* şu karakterlerden biri olmalıdır: `'`, `"`, `\`, `0`, `a`, `b` , `f`, `n`, `r`, `t`, `u`, `U`, `x`, `v`. Aksi takdirde, bir derleme zamanı hatası oluşur.
+Bir karakter içindeki ters eğik çizgi karakteri (`\`) izleyen bir karakter şu karakterlerden biri olmalıdır `'` `0`:, `"`, `\`,, `a`,, `f` `b` , `n`, `r`, `t`, `u`, `U`, `x`, `v`. Aksi takdirde, bir derleme zamanı hatası oluşur.
 
-Onaltılık kaçış sırası onaltılık sayı aşağıdaki tarafından oluşturulmuş bir değerle tek bir Unicode karakterini temsil eder "`\x`".
+Onaltılı kaçış sırası, "`\x`" öğesinden sonra onaltılık sayı tarafından oluşturulan değeri Içeren tek bir Unicode karakteri temsil eder.
 
-Bir karakter sabiti temsil edilen değeri büyük olup olmadığını `U+FFFF`, bir derleme zamanı hatası oluşur.
+Bir karakter sabiti ile temsil edilen değer değerinden `U+FFFF`büyükse, bir derleme zamanı hatası oluşur.
 
-Bir Unicode karakter kaçış dizisi ([Unicode karakter kaçış dizileri](lexical-structure.md#unicode-character-escape-sequences)) aralığında bir karakter sabiti olmalıdır `U+0000` için `U+FFFF`.
+Bir karakter sabit değerinde Unicode karakter kaçış sırası ([Unicode karakter kaçış dizileri](lexical-structure.md#unicode-character-escape-sequences)), aralığında `U+0000` `U+FFFF`olmalıdır.
 
-Basit çıkış dizisi, bir Unicode karakter kodlamasını, aşağıdaki tabloda açıklandığı gibi temsil eder.
+Basit bir kaçış dizisi, aşağıdaki tabloda açıklandığı gibi bir Unicode karakter kodlamasını temsil eder.
 
 
-| __Kaçış sırası__ | __Karakter adı__ | __Unicode kodlama__ |
+| __Kaçış sırası__ | __Karakter adı__ | __Unicode kodlaması__ |
 |---------------------|--------------------|----------------------|
-| `\'`                | tek tırnak       | `0x0027`             | 
-| `\"`                | çift tırnak işareti       | `0x0022`             | 
-| `\\`                | Ters eğik çizgi          | `0x005C`             | 
+| `\'`                | Tek tırnak       | `0x0027`             | 
+| `\"`                | Çift tırnak       | `0x0022`             | 
+| `\\`| Ters eğik çizgi |`0x005C`             | 
 | `\0`                | Null               | `0x0000`             | 
 | `\a`                | Uyarı              | `0x0007`             | 
 | `\b`                | Geri Al tuşu          | `0x0008`             | 
-| `\f`                | form besleme          | `0x000C`             | 
+| `\f`                | Form akışı          | `0x000C`             | 
 | `\n`                | Yeni satır           | `0x000A`             | 
-| `\r`                | satır başı    | `0x000D`             | 
+| `\r`                | Satır başı    | `0x000D`             | 
 | `\t`                | Yatay sekme     | `0x0009`             | 
-| `\v`                | dikey sekme       | `0x000B`             | 
+| `\v`                | Dikey sekme       | `0x000B`             | 
 
-Türü bir *character_literal* olduğu `char`.
+Bir *character_literal* `char`türü.
 
 #### <a name="string-literals"></a>Dize sabit değerleri
 
-C# dize değişmez değerlerinin iki biçimini destekler: ***normal dize değişmez değerleri*** ve ***verbatim dize değişmez değerleri***.
+C#dize sabit değerlerinin iki biçimini destekler: ***normal dize sabit değerleri*** ve tam ***dize sabit değerleri***.
 
-Normal bir dize sabit değeri olarak çift tırnak içine alınmış sıfır veya daha fazla karakterden oluşur `"hello"`ve her iki basit çıkış sıraları içerebilir (gibi `\t` karakter için sekmesinde) ve Unicode kaçış dizileri ve onaltılık.
+Normal bir dize sabit değeri, içinde `"hello"`olduğu gibi çift tırnak içine alınmış sıfır veya daha fazla karakterden oluşur ve hem basit kaçış dizilerini ( `\t` tab karakteri için gibi), onaltılı ve Unicode kaçış dizilerini içerebilir.
 
-Verbatim dize sabit değeri oluşan bir `@` karakter çift tırnak karakteri, sıfır veya daha fazla karakter ve bir kapanış çift tırnak karakteri tarafından izlenen. Basit bir örnektir `@"hello"`. Bir harfi harfine dizede sabit değer, aynen, sınırlayıcılar arasındaki karakterleri yorumlanan yalnızca özel durum olan bir *quote_escape_sequence*. Özellikle, basit kaçış dizileri ve onaltılık ve Unicode kaçış dizileri verbatim dize değişmez değerlerine işlenmez. Verbatim dize değişmez değeri birden fazla satırı kapsayabilir.
+Tam dize değişmez değeri, bir `@` karakteri ve ardından çift tırnak karakteri, sıfır veya daha fazla karakter ve bir kapanış çift tırnak karakteriyle oluşur. Basit bir örnek vardır `@"hello"`. Tam bir dize sabit değerinde, sınırlayıcılar arasındaki karakterler tam olarak yorumlanır ve tek özel durum bir *quote_escape_sequence*. Özellikle, basit kaçış dizileri ve onaltılı ve Unicode kaçış dizileri, tam dize değişmez değerlerinde işlenmez. Tam dize değişmez değeri birden çok satıra yayılabilir.
 
 ```antlr
 string_literal
@@ -575,7 +575,7 @@ quote_escape_sequence
     ;
 ```
 
-Ters eğik çizgi karakterini izleyen bir karakter (`\`) içinde bir *regular_string_literal_character* şu karakterlerden biri olmalıdır: `'`, `"`, `\`, `0`, `a` , `b`, `f`, `n`, `r`, `t`, `u`, `U`, `x`, `v`. Aksi takdirde, bir derleme zamanı hatası oluşur.
+Bir regular_string_literal_character içinde ters eğik çizgi karakteri (`\`) izleyen bir karakter şu karakterlerden biri olmalıdır `'` `0`:, `"`, `\`,,, `b` `a` , `f`, `n`, `r`, `t`, `u`, `U`, `x`, `v`. Aksi takdirde, bir derleme zamanı hatası oluşur.
 
 Örnek
 ```csharp
@@ -596,13 +596,13 @@ string j = @"one
 two
 three";
 ```
-dize değişmez değerleri çeşitli gösterir. Son dize sabit değeri, `j`, birden fazla satır kapsayan bir verbatim dizesi sabit değeri. Boşluk gibi yeni satır karakterleri dahil olmak üzere tırnak işaretleri arasındaki karakterleri verbatim korunur.
+çeşitli dize sabit değerlerini gösterir. Son dize değişmez değeri `j`, birden çok satıra yayılan, tam bir dize sabit değeri. Yeni satır karakterleri gibi boşluk da dahil olmak üzere tırnak işaretleri arasındaki karakterler tam olarak korunur.
 
-Değişken sayıda onaltılık basamak, dize sabit değeri bir onaltılık kaçış sırası olabileceğinden `"\x123"` 123 onaltılık değer ile tek bir karakter içeriyor. Onaltılık değeri 3 ardından 12 karakter içeren bir dize oluşturmak için bir yazabilirsiniz `"\x00123"` veya `"\x12" + "3"` yerine.
+Bir onaltılık kaçış sırası, dizi onaltılık basamağa sahip olabilir, dize sabiti `"\x123"` 123 onaltılık değeri olan tek bir karakter içerir. Onaltılık değeri 12 ve ardından karakter 3 olan karakteri içeren bir dize oluşturmak için, bir tane yazabilir `"\x00123"` veya `"\x12" + "3"` bunun yerine.
 
-Türü bir *string_literal* olduğu `string`.
+Bir *string_literaL* `string`türü.
 
-Her dize sabit değeri yeni bir dize örneğinde sonuçlanmaz. İki veya daha fazla dize değişmez değerleri, olduğunda göre dize eşitlik işlecini eşdeğer ([dize eşitlik işleçleri](expressions.md#string-equality-operators)) görünmesini aynı programda, bu dize değişmez değerleri, aynı dize örneğine bakın. Örneğin, tarafından üretilen çıkış
+Her dize sabit değeri, yeni bir dize örneği ile sonuçlanır. Dize eşitlik işlecine ([dize eşitlik işleçleri](expressions.md#string-equality-operators)) göre eşdeğer olan iki veya daha fazla dize değişmez değeri aynı programda görünürse, bu dize değişmez değerleri aynı dize örneğine başvurur. Örneğin, tarafından oluşturulan çıkış
 ```csharp
 class Test
 {
@@ -613,15 +613,15 @@ class Test
     }
 }
 ```
-olan `True` iki değişmez değer için aynı dize örneğinde başvurduğundan.
+, `True` iki sabit değer aynı dize örneğine başvurduğundan.
 
-#### <a name="interpolated-string-literals"></a>İlişkilendirilmiş dize değişmez değerleri
+#### <a name="interpolated-string-literals"></a>Ara değerli dize sabit değerleri
 
-İlişkilendirilmiş dize değişmez değerleri, dize sabit değerleri için benzerdir, ancak tarafından ayrılmış açıkları içeren `{` ve `}`, burada görüntülerle deyimleri ortaya çıkabilir. Çalışma zamanında, metinsel formlarına delik gerçekleştiği yerde dizesine yerine sahip kullanılabilir olmasını sağlamak amacıyla ifadeler değerlendirilir. Sözdizimi ve semantiği dize ilişkilendirme bölümünde açıklanan ([Ara değerli dizeler](expressions.md#interpolated-strings)).
+Enterpolasyonlu dize sabit değerleri dize sabit değerlerine benzerdir, ancak deyimlerde `}`olduğu gibi `{` ve ile ayrılmış olan delikleri içerir. Çalışma zamanında, ifadeler, metin biçimlerinin, delik oluşması durumunda dize üzerinde yer aldığı amaçla değerlendirilir. Dize ilişkilendirtiğinin sözdizimi ve semantiği bölümünde açıklanmaktadır ([enterpolasyonlu dizeler](expressions.md#interpolated-strings)).
 
-Dize değişmez değerleri gibi normal veya verbatim ilişkilendirilmiş dize değişmez değerleri olabilir. Normal ilişkilendirilmiş dize değişmez değerleri ayrılmıştır `$"` ve `"`, ve verbatim ilişkilendirilmiş dize değişmez değerleri ayrılmıştır `$@"` ve `"`.
+Dize sabit değerleri gibi, enterpolasyonlu dize değişmez değerleri normal veya tam olabilir. Enterpolasyonlu normal dize sabit `$"` değerleri `"`ve ile sınırlandırılır ve enterpolasyonlu değişmez `$@"` dize `"`değerleri ve ile sınırlandırılmıştır.
 
-Diğer sabitler gibi sözcük temelli analiz ilişkilendirilmiş bir dize sabitinin aşağıdaki dilbilgisinde göre tek bir belirteç başlangıçta sonuçlanır. Ancak, söz dizimi analizi önce birkaç belirteç boşluklarını kapsayan dizesi bölümleri için ilişkilendirilmiş bir dize sabitinin tek belirteç bölünür ve açıklarına oluşan giriş öğelerini sözcüksel olarak yeniden analysed. Bu sırayla işlenmesi, ancak varsa sözcüksel olarak düzeltin, sonunda bir dizi belirteçleri işlemek söz dizimi analizi için neden, daha ilişkilendirilmiş dize değişmez değerlerine oluşturabilir.
+Diğer değişmez değerler gibi, bir enterpolasyonlu dize sabit değerinin sözcük analizi, aşağıdaki Dilbilgisine göre ilk olarak tek bir belirtece neden olur. Ancak, sözdizimsel Analize göre, bir ara değer dizesinin tek belirteci, delikleri kapsayan dizenin bölümleri için birkaç belirtece bölünmüştür ve deliklere gerçekleşen giriş öğeleri, sözcüksel olarak analiz edilir. Bu işlem, işlenmek üzere daha fazla enterpolasyonlu dize değişmezleri üretebilir. ancak, sözcüksel doğru olursa, sonunda sözdizimsel çözümlemenin işlemesi için bir dizi belirtece yol açacaktır.
 
 ```antlr
 interpolated_string_literal
@@ -780,17 +780,17 @@ single_verbatim_balanced_text_character
     ;
 ```
 
-Bir *interpolated_string_literal* belirteci birden çok belirteçleri ve diğer öğeleri aşağıdaki gibi oluşumunu sırasına göre giriş olarak düşürülen *interpolated_string_literal*:
+*İnterpolated_string_literal* belirteci, *interpolated_string_literal*içindeki oluşum sırasıyla birden fazla belirteç ve diğer girdi öğeleri olarak yeniden yorumlanır:
 
-* Aşağıdaki örneği ayrı ayrı belirteçlerin düşürülen: başında `$` işareti *interpolated_regular_string_whole*, *interpolated_regular_string_start*, *interpolated_regular_string_mid*, *interpolated_regular_string_end*, *interpolated_verbatim_string_whole*,  *interpolated_verbatim_string_start*, *interpolated_verbatim_string_mid* ve *interpolated_verbatim_string_end*.
-* Oluşumlarını *regular_balanced_text* ve *verbatim_balanced_text* olarak bunlar arasında işlenmiş bir *input_section* ([sözcük analizi ](lexical-structure.md#lexical-analysis)) ve sonuçta elde edilen giriş öğeleri dizisi olarak düşürülen. Bu sırayla ilişkilendirilmiş dize sabit değeri belirteçleri düşürülen için de içerebilir.
+* Aşağıdakilerin oluşumları ayrı ayrı belirteçler olarak yeniden yorumlanır `$` : önde gelen işareti, *interpolated_regular_string_whole*, *interpolated_regular_string_start*, *interpolated_regular_string_mid*, *interpolated_regular_string_end*, *interpolated_verbatim_string_whole*, *interpolated_verbatim_string_start*, *interpolated_verbatim_string_mid* ve *interpolated_verbatim_string_end*.
+* Bunlar arasındaki *regular_balanced_text* ve *verbatim_balanced_text* örnekleri, bir *input_section* ([sözcük temelli analiz](lexical-structure.md#lexical-analysis)) olarak yeniden işlenir ve giriş öğelerinin ortaya çıkan sırası olarak yeniden yorumlanır. Bunlar, yeniden yorumlanan enterpolasyonlu dize sabit belirteçlerini içerebilir.
 
-Söz dizimi analizi yeniden birleştirmek belirteçlere bir *interpolated_string_expression* ([Ara değerli dizeler](expressions.md#interpolated-strings)).
+Sözdizimsel analiz, belirteçleri bir *interpolated_string_expression* ([enterpolasyonlu dizeler](expressions.md#interpolated-strings)) olarak yeniden birleştirir.
 
-TODO örnekleri
+Örnek TODO
 
 
-#### <a name="the-null-literal"></a>Null sabiti
+#### <a name="the-null-literal"></a>Null değişmez değeri
 
 ```antlr
 null_literal
@@ -798,11 +798,11 @@ null_literal
     ;
 ```
 
-*Null_literal* örtük bir başvuru türüyle veya Null olabilen bir türle dönüştürülebilir.
+*Null_literal* örtük olarak bir başvuru türüne veya null yapılabilir türe dönüştürülebilir.
 
-### <a name="operators-and-punctuators"></a>İşleçler ve noktalama işaretçileri
+### <a name="operators-and-punctuators"></a>İşleçler ve noktaleyiciler
 
-İşleçler ve noktalama birkaç türü vardır. İşleçler, ifadelerde, bir veya daha fazla işlenen ilgili işlemler tanımlamak için kullanılır. Örneğin, ifade `a + b` kullanan `+` işleci iki işlenenleri eklemek için `a` ve `b`. Noktalama işaretçileri gruplama ve ayırma içindir.
+Birkaç tür işleç ve noktalama vardır. İşleçler, bir veya daha fazla işlenen ile ilgili işlemleri betimleyen ifadelerde kullanılır. Örneğin, ifadesi `a + b` iki `a` işleneni ve ' `+` `b`i eklemek için işlecini kullanır. Noktaleyiciler gruplandırma ve ayırma içindir.
 
 ```antlr
 operator_or_punctuator
@@ -822,11 +822,11 @@ right_shift_assignment
     ;
 ```
 
-İçinde dikey çubuk *right_shift* ve *right_shift_assignment* üretim, diğer üretim söz dizimsel dilbilgisi, herhangi bir türde hiçbir karakter içinde aksine (bile belirtmek için kullanılır boşluk) simgeleri arasında izin verilir. Bu üretim özel için doğru işlemeyi etkinleştirmek için kabul edilir *type_parameter_list*s ([tür parametrelerindeki](classes.md#type-parameters)).
+*Right_shift* ve *right_shift_assignment* üretimlerinin dikey çubuğu, sözdizimsel dilbilgisinde diğer üretimlerin aksine, belirteçler arasında herhangi bir türde (çift boşluk değil) bir karakter yapılmasına izin verilmediğini belirtmek için kullanılır. Bu üretimler, *type_parameter_list*s 'nin doğru işlemesini etkinleştirmek için özel olarak değerlendirilir ([tür parametreleri](classes.md#type-parameters)).
 
 ## <a name="pre-processing-directives"></a>Ön işleme yönergeleri
 
-Ön işleme yönergeleri koşullu olarak bölümlerde rapor hata ve uyarı koşulları için kaynak dosyalarının atlamak için ve kaynak kodunun farklı bölgeleri ayırmak için olanağı sunar. "Ön işleme yönergeleri" terimi, yalnızca C ve C++ programlama dilleriyle tutarlılık için kullanılır. C# ' ta ayrı hiçbir ön işleme adım yoktur; ön işleme yönergeleri sözcük analizi aşamasının bir parçası işlenir.
+Ön işleme yönergeleri, kaynak dosyalarının bölümlerini koşullu olarak atlama, hata ve uyarı koşullarını raporlama ve kaynak kodunun farklı bölgelerini ayırıcı yapma yeteneği sağlar. "Ön işleme yönergeleri" terimi yalnızca C ve C++ programlama dilleri ile tutarlılık için kullanılır. ' C#De, ayrı bir ön işleme adımı yoktur; ön işleme yönergeleri, sözcük temelli analiz aşamasının bir parçası olarak işlenir.
 
 ```antlr
 pp_directive
@@ -839,20 +839,20 @@ pp_directive
     ;
 ```
 
-Aşağıdaki ön işleme yönergeleri kullanılabilir:
+Aşağıdaki ön işleme yönergeleri mevcuttur:
 
-*  `#define` ve `#undef`, Kaldır, sırasıyla, koşullu derleme simgeleri ve tanımlamak için kullanılır ([bildirim yönergeleri](lexical-structure.md#declaration-directives)).
-*  `#if`, `#elif`, `#else`, ve `#endif`, kaynak kodun bölümlerini koşullu olarak atlamak için kullanılır ([koşullu derleme yönergeleri](lexical-structure.md#conditional-compilation-directives)).
-*  `#line`, hatalar ve Uyarılar için yayılan satır numaralarını denetlemek için kullanılan ([satır yönergeleri](lexical-structure.md#line-directives)).
-*  `#error` ve `#warning`, hatalar ve uyarılar sırasıyla vermek için kullanılır ([tanılama yönergeleri](lexical-structure.md#diagnostic-directives)).
-*  `#region` ve `#endregion`, açık kaynak kod bölümlerini işaretlemek için kullanılır ([bölge yönergeleri](lexical-structure.md#region-directives)).
-*  `#pragma`, isteğe bağlı bağlamsal bilgi derleyiciye belirtmek için kullanılır ([Pragma yönergeleri](lexical-structure.md#pragma-directives)).
+*  `#define`ve `#undef`sırasıyla, koşullu derleme sembollerini ([bildirim yönergeleri](lexical-structure.md#declaration-directives)) tanımlamak ve bunları kaldırmak için kullanılır.
+*  `#if`, `#elif`, ve`#endif`, kaynak kodu bölümlerini koşullu olarak atlamak için kullanılır ([koşullu derleme yönergeleri](lexical-structure.md#conditional-compilation-directives)). `#else`
+*  `#line`, hatalar ve uyarılar için oluşturulan satır numaralarını denetlemek için kullanılan ([satır yönergeleri](lexical-structure.md#line-directives)).
+*  `#error`ve `#warning`sırasıyla hata ve uyarı vermek için kullanılır ([tanı yönergeleri](lexical-structure.md#diagnostic-directives)).
+*  `#region`Kaynak kodun ([bölge yönergeleri](lexical-structure.md#region-directives)) bölümlerini açıkça işaretlemek için de kullanılır. `#endregion`
+*  `#pragma`derleyici için isteğe bağlı bağlamsal bilgileri belirtmek için kullanılan ([pragma yönergeleri](lexical-structure.md#pragma-directives)).
 
-Ön işleme yönergesi her zaman ayrı bir kaynak kod satırı kaplar ve her zaman ile başlayan bir `#` karakter ve bir ön işleme yönergesi adı. Boşluk önce oluşabilir `#` karakter ve arasında `#` karakter ve yönerge adı.
+Bir ön işleme yönergesi her zaman ayrı bir kaynak kod satırı kaplar ve her zaman bir karakter ve `#` bir ön işleme yönergesi adıyla başlar. `#` Karakterden önce boşluk, karakter ve yönerge adı `#` arasında boşluk oluşabilir.
 
-Kaynak satır içeren bir `#define`, `#undef`, `#if`, `#elif`, `#else`, `#endif`, `#line`, veya `#endregion` yönergesi ile tek satır açıklama sonu olabilecek. Ayrılmış Açıklama ( `/* */` açıklamaları stilini) ön işleme yönergeleri içeren kaynak satırları izin verilmez.
+`#define` `#else` `#elif` `#undef` ,,`#endif`,,,, ,Veya`#endregion` yönergesini içeren bir kaynak satırı, teksatırlıkbiraçıklamailesonabaşlayabilir.`#if` `#line` Önceden işleme yönergelerini içeren `/* */` kaynak satırlarda sınırlandırılmış açıklamalara (yorumların stili) izin verilmez.
 
-Ön işleme yönergeleri belirteçlerinin ve C# sözdizimi dilbilgisi parçası değildir. Ancak, ön işleme yönergeleri dahil etme veya belirteçleri dönüştürülmelerini dışlama için kullanılabilir ve bu şekilde bir C# programı anlamını etkileyebilir. Örneğin, derlendiğinde, program:
+Ön işleme yönergeleri belirteç değildir ve sözdizimi dilbilgisinde bir C#parçası değildir. Ancak, önceden işleme yönergeleri, belirteç dizilerini dahil etmek veya hariç tutmak için kullanılabilir ve bu şekilde bir C# programın anlamını etkileyebilir. Örneğin, derlendiğinde program:
 ```csharp
 #define A
 #undef B
@@ -872,7 +872,7 @@ class C
 #endif
 }
 ```
-Program belirteçleri tam aynı sırada sonuçları:
+program ile aynı belirteçlerin tam dizisiyle sonuçlanır:
 ```csharp
 class C
 {
@@ -881,11 +881,11 @@ class C
 }
 ```
 
-Bu nedenle, sözcük temelinde iki program sözdizimi kurallarına göre oldukça farklı ise, bunlar aynıdır.
+Bu nedenle, sözcüksel olarak iki program çok farklı, sözdizimsel olarak aynıdır.
 
-### <a name="conditional-compilation-symbols"></a>Koşullu derleme simgeleri
+### <a name="conditional-compilation-symbols"></a>Koşullu derleme sembolleri
 
-Koşullu derleme tarafından sağlanan işlevselliği `#if`, `#elif`, `#else`, ve `#endif` yönergeleri ifadeleri ön işleme aracılığıyla kontrol edilir ([ifadeleri ön işleme](lexical-structure.md#pre-processing-expressions)) ve koşullu derleme simgeleri.
+`#if`,, Ve `#else` `#elif` yönergeleri`#endif` tarafından sunulan koşullu derleme işlevselliği, ön işleme ifadeleri ([ön işleme ifadeleri](lexical-structure.md#pre-processing-expressions)) ve koşullu olarak denetlenir derleme sembolleri.
 
 ```antlr
 conditional_symbol
@@ -893,15 +893,15 @@ conditional_symbol
     ;
 ```
 
-Koşullu derleme sembol iki durumda olabilir: ***tanımlanan*** veya ***tanımlanmamış***. Dış mekanizmayı (örneğin, bir komut satırı derleyicisi seçeneği) tarafından açıkça tanımlanmadığı sürece sözcük işleme bir kaynak dosyasının başında, koşullu derleme sembol tanımlı değil. Olduğunda bir `#define` yönergesi işlenir, bu yönerge adlı koşullu derleme sembol, kaynak dosyasında tanımlanan olur. Kadar sembol kalacağı bir `#undef` aynı sembolün işlenir veya kaynak dosyasının sonuna ulaşılana kadar yönergesi. Bu bir olduğu çıkarımında olan `#define` ve `#undef` yönergeleri bir kaynak dosyasında diğer kaynak dosyaları aynı programda üzerinde hiçbir etkisi vardır.
+Koşullu derleme sembolünün iki olası durumu vardır: ***tanımlı*** veya ***tanımsız***. Bir kaynak dosyanın sözcük işleme başlangıcında, bir dış mekanizma (bir komut satırı derleyici seçeneği gibi) tarafından açıkça tanımlanmadığı sürece koşullu derleme simgesi tanımsızdır. Bir `#define` yönerge işlendiğinde, Bu yönergede adlı koşullu derleme sembolü bu kaynak dosyada tanımlanır. Sembol, aynı simgenin bir `#undef` yönergesi işlenene veya kaynak dosyanın sonuna ulaşılana kadar tanımlanmış olarak kalır. `#define` Bunun`#undef` bir etkisi, bir kaynak dosyasındaki yönergelerin aynı programdaki diğer kaynak dosyaları üzerinde hiçbir etkisi olmaması.
 
-Bir ön işleme ifadesinde başvurulduğunda tanımlanmış koşullu derleme sembol Boole değerine sahip `true`, ve bir tanımsız koşullu derleme sembol Boole değerine sahip `false`. Gereksinimi yoktur ifadeleri önceden işleme'de başvurulan önce bildirilen koşullu derleme simgeleri açıkça olabilir. Bunun yerine, bildirilmemiş simgeleri yalnızca tanımsız olur ve böylece değerine sahip `false`.
+Bir ön işleme ifadesinde başvurulmadığında, tanımlı bir koşullu derleme sembolünün Boole değeri `true`vardır ve tanımsız bir koşullu derleme sembolü Boolean değerine `false`sahiptir. Koşullu derleme simgelerinin, ön işleme ifadelerinde başvurulmadan önce açıkça bildirilmesini gerektiren bir gereksinim yoktur. Bunun yerine, bildirilmemiş semboller yalnızca tanımsız olur ve bu nedenle değeri `false`vardır.
 
-Koşullu derleme simgeleri için ad alanı diğer adlandırılmış varlıklar bir C# programında ayrıdır. Koşullu derleme simgeleri yalnızca başvurulabilir içinde `#define` ve `#undef` yönergeleri ve ifadeleri önceden işliyor.
+Koşullu derleme sembolleri için ad alanı farklıdır ve bir C# programdaki diğer tüm adlandırılmış varlıklardan ayrıdır. Koşullu derleme sembollerine yalnızca `#define` ve `#undef` yönergeleriyle ve önceden işleme ifadelerinde başvurulabilir.
 
 ### <a name="pre-processing-expressions"></a>Ön işleme ifadeleri
 
-İfadeleri ön işleme içinde gerçekleşebilir `#if` ve `#elif` yönergeleri. İşleçler `!`, `==`, `!=`, `&&` ve `||` ifadeleri, ön işleme izin verilir ve Gruplama için parantez kullanılabilir.
+Ön işleme ifadeleri, ve `#if` `#elif` yönergeleri içinde oluşabilir. ,, `!` `!=` `==` Ve`||` işleçlerine ön işleme ifadelerinde izin verilir ve gruplama için parantezler kullanılabilir. `&&`
 
 ```antlr
 pp_expression
@@ -937,13 +937,13 @@ pp_primary_expression
     ;
 ```
 
-Bir ön işleme ifadesinde başvurulduğunda tanımlanmış koşullu derleme sembol Boole değerine sahip `true`, ve bir tanımsız koşullu derleme sembol Boole değerine sahip `false`.
+Bir ön işleme ifadesinde başvurulmadığında, tanımlı bir koşullu derleme sembolünün Boole değeri `true`vardır ve tanımsız bir koşullu derleme sembolü Boolean değerine `false`sahiptir.
 
-Her zaman önceden işleme ifadesi değerlendirmesi bir Boole değeri verir. Ön işleme bir ifade değerlendirme kuralları için sabit bir ifade aynıdır ([sabit ifadeler](expressions.md#constant-expressions)), şeylerdir başvurulabilir yalnızca kullanıcı tarafından tanımlanan varlıkları koşullu derleme simgeleri .
+Bir ön işleme ifadesinin değerlendirmesi her zaman bir Boole değeri verir. Bir ön işleme ifadesi için değerlendirme kuralları bir sabit ifade ([sabit ifadeler](expressions.md#constant-expressions)) ile aynıdır, ancak başvurılabilen Kullanıcı tanımlı varlıkların koşullu derleme sembolleri vardır.
 
 ### <a name="declaration-directives"></a>Bildirim yönergeleri
 
-Bildirim yönergeleri, koşullu derleme simge tanımlarını Kaldır veya tanımlamak için kullanılır.
+Bildirim yönergeleri, koşullu derleme sembollerini tanımlamak veya tanımlamak için kullanılır.
 
 ```antlr
 pp_declaration
@@ -956,9 +956,9 @@ pp_new_line
     ;
 ```
 
-İşlenmesini bir `#define` yönergesi yönergesini izleyen kaynak satırıyla başlangıç tanımlı duruma, belirtilen koşullu derleme simge neden olur. Benzer şekilde, işlenmesini bir `#undef` yönergesi, yönergesini izleyen kaynak satırı ile başlayarak, tanımsız hale verilen koşullu derleme simge neden olur.
+Bir `#define` yönergeyi işleme, belirtilen koşullu derleme sembolünün, yönergeyi izleyen kaynak satırla başlayarak tanımlanmasını sağlar. Benzer şekilde, bir `#undef` yönergenin işlenmesi verilen koşullu derleme sembolünün, yönergeyi izleyen kaynak satırla başlayarak tanımsız hale gelmesine neden olur.
 
-Tüm `#define` ve `#undef` yönergeleri kaynak dosyasında ilk önce gerçekleşmelidir *belirteci* ([belirteçleri](lexical-structure.md#tokens)) kaynak dosyada; Aksi takdirde bir derleme zamanı hatası oluşur. Sezgisel koşullarında `#define` ve `#undef` yönergeleri, kaynak dosyadaki tüm "gerçek kod" gelmelidir.
+Kaynak `#define` dosyadaki `#undef` tüm ve yönergelerinin kaynak dosyadaki ilk *belirteçten* ([belirteçler](lexical-structure.md#tokens)) önce gerçekleşmesi gerekir; Aksi takdirde derleme zamanı hatası oluşur. Sezgisel koşullarda `#define` ve `#undef` yönergeler kaynak dosyadaki tüm "gerçek koddan" gelmelidir.
 
 Örnek:
 ```csharp
@@ -975,9 +975,9 @@ namespace Megacorp.Data
     #endif
 }
 ```
-geçerli olduğundan `#define` yönergeleri önünde ilk belirteç ( `namespace` anahtar sözcüğü) kaynak dosyadaki.
+, kaynak dosyadaki ilk `#define` belirteçten `namespace` (anahtar sözcüğü) önce gelen yönergeler için geçerlidir.
 
-Aşağıdaki örnek bir derleme zamanı hatası nedeniyle sonuçlanır bir `#define` gerçek kod izler:
+Aşağıdaki örnek, bir derleme zamanı hatasına neden olur çünkü bu, `#define` gerçek bir kod izler:
 ```csharp
 #define A
 namespace N
@@ -989,13 +989,13 @@ namespace N
 }
 ```
 
-A `#define` zaten, burada bir araya giren olan tanımlı bir koşullu derleme simge tanımlayabilir `#undef` , sembol. Aşağıdaki örnek bir koşullu derleme sembolünü tanımlar `A` ve yeniden tanımlar.
+, `#define` Zaten tanımlanmış olan bir koşullu derleme sembolünü tanımlayabilir, bu sembol için herhangi bir araya `#undef` girmeden emin olamaz. Aşağıdaki örnek bir koşullu derleme sembolünü `A` tanımlar ve sonra yeniden tanımlar.
 ```csharp
 #define A
 #define A
 ```
 
-A `#undef` "tanımlanmamış bir koşullu derleme sembolün tanımını". Aşağıdaki örnekte bir koşullu derleme sembolünü tanımlar `A` ve sonra bu iki kez; ancak tanımsızı ikinci `#undef` hiçbir etkisi yoktur, hala geçerlidir.
+`#undef` Tanımlı olmayan bir koşullu derleme sembolünü "tanımlayabilir". Aşağıdaki örnek bir koşullu derleme sembolünü `A` tanımlar ve iki kez tanımlamaz; ikincisi `#undef` hiçbir etkiye sahip olmasa da, hala geçerli olur.
 ```csharp
 #define A
 #undef A
@@ -1004,7 +1004,7 @@ A `#undef` "tanımlanmamış bir koşullu derleme sembolün tanımını". Aşağ
 
 ### <a name="conditional-compilation-directives"></a>Koşullu derleme yönergeleri
 
-Koşullu derleme yönergeleri koşullu olarak dahil etmek veya hariç bir kaynak dosyası bölümleri için kullanılır.
+Koşullu derleme yönergeleri, kaynak dosyanın bölümlerini koşullu olarak dahil etmek veya hariç tutmak için kullanılır.
 
 ```antlr
 pp_conditional
@@ -1050,19 +1050,19 @@ not_number_sign
     ;
 ```
 
-Sözdizimi tarafından belirtildiği gibi koşullu derleme yönergeleri oluşan, sırasıyla kümeleri olarak yazılmış olmalıdır bir `#if` yönergesi, sıfır veya daha fazla `#elif` yönergeleri, sıfır veya bir `#else` yönergesi ve bir `#endif` yönergesi. Kaynak kodu koşullu bölümler arasında yönergeleridir. Her bölümde hemen önceki yönergesi tarafından denetlenir. Bu yönergeler tam kümeleri form sağlanan koşullu bölüme kendi iç içe geçmiş koşullu derleme yönergeleri içeriyor olabilir.
+Sözdizimi tarafından gösterildiği gibi, koşullu derleme yönergeleri `#if` , sırasıyla, bir yönerge, sıfır veya daha fazla `#elif` yönerge, sıfır veya bir `#else` yönerge ve bir `#endif` yönerge olarak yazılmış şekilde yazılmalıdır. Yönergeler arasında kaynak kodunun koşullu bölümleri bulunur. Her bölüm hemen önceki yönerge tarafından denetlenir. Koşullu bir bölümün kendisi bu yönergeler için tüm kümeler için iç içe geçmiş koşullu derleme yönergeleri içerebilir.
 
-A *pp_conditional* kapsanan en fazla birini seçer *conditional_section*s sözcük normal işlenmesi için:
+Bir *pp_conditional* , normal sözcük işleme için kapsanan *conditional_section*s 'nin en çok birini seçer:
 
-*  *Pp_expression*sn `#if` ve `#elif` yönergeleri bir verir kadar sırayla değerlendirilir `true`. Bir ifade döndürürse `true`, *conditional_section* karşılık gelen yönergesi seçilir.
-*  Tüm *pp_expression*s yield `false`ve eğer bir `#else` yönergesi mevcutsa, *conditional_section* , `#else` yönergesi seçilidir.
-*  Aksi takdirde Hayır *conditional_section* seçilir.
+*  `#if` `true` Ve`#elif` yönergelerinin pp_expression s, bir alınana kadar sırayla değerlendirilir. Bir ifade `true`varsa, karşılık gelen yönergesinin *conditional_section* seçilidir.
+*  Tüm *pp_expression*s `false`yield varsa ve bir `#else` yönerge varsa, `#else` yönergesinin *conditional_section* seçilidir.
+*  Aksi takdirde, hiçbir *conditional_section* seçili değildir.
 
-Seçili *conditional_section*herhangi biri, işlenir, normal *input_section*: bölümünde yer alan kaynak kodu için sözcük dilbilgisi uyması gerekir; belirteçleri, kaynaktan oluşturulur kod bölümünde; ve ön işleme yönergeleri bölümünde önceden belirlenmiş etkileri vardır.
+Seçili *conditional_section*, varsa normal *input_section*olarak işlenir: bölümünde yer alan kaynak kodu, sözlü dilbilgisine uymalıdır; belirteçler, bölümündeki kaynak koddan oluşturulur; ve bölümündeki ön işleme yönergelerinin tanımlanmış etkileri vardır.
 
-Kalan *conditional_section*varsa s olarak işlenir *skipped_section*s: ön işleme yönergeleri dışında kaynak bölümünde olmayan esaslarına sözcük dilbilgisi; yok belirteçleri bölümünde kaynak kodundan oluşturulan; ve bölümünde ön işleme yönergeleri sözcüksel olarak doğru olması gerekir, ancak Aksi halde işlenmez. İçinde bir *conditional_section* olarak işleniyor bir *skipped_section*, tüm iç içe geçmiş *conditional_section*s (bulunan iç içe geçmiş `#if`... `#endif` ve `#region`... `#endregion` oluşturur) olarak işlenir *skipped_section*s.
+Kalan *conditional_section*s, varsa, *skipped_section*s olarak işlenir: ön işleme yönergeleri haricinde, bölümdeki kaynak kodu sözlü dilbilgisine bağlı kalmamalıdır; bölümünde kaynak koddan hiçbir belirteç oluşturulmaz; ve bölümündeki ön işleme yönergeleri, sözcüksel doğru olmalıdır ancak başka türlü işlenmemelidir. Bir *skipped_section*olarak işlenmekte olan bir *conditional_section* içinde, iç içe geçmiş *conditional_section*s (iç içe `#if`geçmiş... içinde bulunur. `#endif` ve`#region`... yapılar) de skipped_section s olarak işlenir. `#endregion`
 
-Aşağıdaki örnekte, koşullu derleme yönergelerinin iç içe yerleştirebilirsiniz gösterilmektedir:
+Aşağıdaki örnek, koşullu derleme yönergelerinin nasıl iç içe geçirebileceği gösterilmektedir:
 ```csharp
 #define Debug       // Debugging on
 #undef Trace        // Tracing off
@@ -1081,7 +1081,7 @@ class PurchaseTransaction
 }
 ```
 
-Ön işleme yönergeleri dışında Atlanan kaynak kodu tabi sözcük analizi değil. Örneğin, aşağıdaki Sonlandırılmamış açıklama rağmen geçerli `#else` bölümü:
+Ön işleme yönergeleri hariç, atlanan kaynak kodu sözcük temelli analize tabi değildir. Örneğin, aşağıdaki, `#else` bölümünde Sonlandırılmamış açıklamaya rağmen geçerlidir:
 ```csharp
 #define Debug        // Debugging on
 
@@ -1097,9 +1097,9 @@ class PurchaseTransaction
 }
 ```
 
-Ancak, ön işleme yönergeleri bile Atlanan bölümlerinde kaynak kodu sözcüksel olarak doğru olması için gerekli olduğunu unutmayın.
+Ancak, bu ön işleme yönergelerinin kaynak kodun atlanan bölümlerinde bile, sözcüksel olarak doğru olması gerektiğini unutmayın.
 
-Çok satırlı giriş öğelerini içinde görüntülendiğinde ön işleme yönergeleri işlenmez. Örneğin, program:
+Önceden işleme yönergeleri, çok satırlı giriş öğeleri içinde göründükleri zaman işlenmez. Örneğin, program:
 ```csharp
 class Hello
 {
@@ -1114,7 +1114,7 @@ class Hello
     }
 }
 ```
-Çıktı sonuçları:
+çıkışın sonucu:
 ```
 hello,
 #if Debug
@@ -1124,7 +1124,7 @@ hello,
 #endif
 ```
 
-Özgü durumlarda işlenen ön işleme yönergeleri kümesi üzerinde değerlendirmesi bağlı olabilir *pp_expression*. Örnek:
+Bu durumlarda, işlenen önceden işleme yönergelerinin kümesi, *pp_expression*değerlendirmesine bağlı olarak değişebilir. Örnek:
 ```csharp
 #if X
     /*
@@ -1132,11 +1132,11 @@ hello,
     /* */ class Q { }
 #endif
 ```
-her zaman aynı belirteç akışı üretir (`class` `Q` `{` `}`) isteyip istemediğinizi bakılmaksızın `X` tanımlanır. Varsa `X` olan tanımlanan, yalnızca işlenen yönergeleridir `#if` ve `#endif`nedeniyle çok satırlı açıklama. Varsa `X` olan tanımlanmamışsa, sonra üç yönergeleri (`#if`, `#else`, `#endif`) yönerge kümesinin bir parçasıdır.
+`class` , tanımlanmadığına `{` `}` `Q` bakılmaksızınherzamanaynıbelirteçakışını`X` () üretir. Tanımlı ise, çok satırlı yorum nedeniyle işlenen tek yönergeler `#endif`ve olur `#if`. `X` Tanımlanmamışsa, üç yönerge (`#if`, `#else`, `#endif`) yönerge kümesinin bir parçasıdır. `X`
 
 ### <a name="diagnostic-directives"></a>Tanılama yönergeleri
 
-Tanılama yönergeleri açıkça hata ve diğer derleme zamanı hataları ve Uyarıları aynı şekilde bildirilir uyarı iletilerini oluşturmak için kullanılır.
+Tanılama yönergeleri, diğer derleme zamanı hatalarıyla ve uyarılarla aynı şekilde bildirilen hata ve uyarı iletilerini açık bir şekilde oluşturmak için kullanılır.
 
 ```antlr
 pp_diagnostic
@@ -1160,11 +1160,11 @@ pp_message
 
 class Test {...}
 ```
-her zaman bir uyarı ("iadeden önce gereken kod İnceleme") oluşturur ve bir derleme zamanı hatası oluşturur ("bir derleme hem hata ayıklama hem de perakende bırakılamaz"), koşullu simgeleri `Debug` ve `Retail` tanımlanmış olan iki. Unutmayın bir *pp_message* rastgele metin içerebilir; özellikle, doğru biçimlendirilmiş belirteçleri, tek tırnak işareti Word gösterildiği içermesi gerekmez `can't`.
+her zaman bir uyarı üretir ("iade etmeden önce kod incelemesi gereklidir") ve koşullu semboller `Debug` ve `Retail` ikisi de tanımlanmışsa bir derleme zamanı hatası ("derleme hem hata ayıklama hem de perakende olamaz") oluşturur. Bir *pp_message* , rastgele metin içerebileceğini unutmayın; Özellikle, sözcükteki `can't`tek tırnak içinde gösterildiği gibi iyi biçimlendirilmiş belirteçler içermesi gerekmez.
 
 ### <a name="region-directives"></a>Bölge yönergeleri
 
-Bölge yönergeleri bölgeleri kaynak kodu açıkça işaretlemek için kullanılır.
+Bölge yönergeleri, kaynak kodu bölgelerini açıkça işaretlemek için kullanılır.
 
 ```antlr
 pp_region
@@ -1180,26 +1180,26 @@ pp_end_region
     ;
 ```
 
-Hiçbir anlam bir bölgeye eklenir; bölgeleri kullanmak için programcı veya otomatikleştirilmiş araçları tarafından kaynak kodun bir bölümünü işaretlemek için içindir. Belirtilen iletiyi bir `#region` veya `#endregion` yönergesi benzer şekilde, hiçbir anlam içeriyor; yalnızca bölge tanımlamak için kullanılır. Eşleşen `#region` ve `#endregion` yönergeleri farklı sahip *pp_message*s.
+Bir bölgeye hiçbir anlam anlamı eklenmez; bölgeler, programcı tarafından veya kaynak kodun bir bölümünü işaretlemek için otomatikleştirilmiş araçlar tarafından kullanılmak üzere tasarlanmıştır. Aynı şekilde `#region` veya `#endregion` yönergesinde belirtilen iletide anlam anlamı yoktur; yalnızca bölgeyi tanımlamak için kullanılır. Eşleştirme `#region` ve`#endregion` yönergelerin farklı *pp_message*s 'leri olabilir.
 
-Bir bölgenin sözcük işleme:
+Bir bölgenin sözcük işleme işlemi:
 ```csharp
 #region
 ...
 #endregion
 ```
-Koşullu derleme yönergesi formun sözcük işleme için tam olarak karşılık gelmektedir:
+formun koşullu bir derleme yönergesinin yalnızca sözcük işleme öğesine karşılık gelir:
 ```csharp
 #if true
 ...
 #endif
 ```
 
-### <a name="line-directives"></a>Satır yönergeleri
+### <a name="line-directives"></a>Çizgi yönergeleri
 
-Satır yönergeleri satır numaraları ve çıkışında uyarılar ve hatalar gibi derleyici tarafından bildirilen ve arayan bilgileri öznitelikleri tarafından kullanılan kaynak dosya adlarını değiştirmek için kullanılabilir ([arayan bilgileri öznitelikleri](attributes.md#caller-info-attributes)).
+Satır yönergeleri, uyarı ve hatalar gibi, derleyici tarafından raporlanan ve arayan bilgi öznitelikleri ([çağıran bilgi öznitelikleri](attributes.md#caller-info-attributes)) tarafından kullanılan satır numaralarını ve kaynak dosya adlarını değiştirmek için kullanılabilir.
 
-Satır yönergeleri, bazı diğer metin girişi C# kaynak kodu oluşturun meta programlama araçlarında en yaygın olarak kullanılır.
+Satır yönergeleri en yaygın olarak, diğer bir metin girişinden C# kaynak kodu oluşturan meta programlama araçlarında kullanılır.
 
 ```antlr
 pp_line
@@ -1222,17 +1222,17 @@ file_name_character
     ;
 ```
 
-Hiçbir `#line` yönergeleri, derleyici doğru satır numaraları ve kaynak dosya adlarında çıktısını bildirir. İşleme sırasında bir `#line` içeren yönergesi bir *line_indicator* olmayan `default`, derleyici belirtilen satır numarası (ve dosya adı belirtilmişse) sahip olarak yönergesi sonra satır değerlendirir.
+Hiçbir `#line` yönergesi yoksa, derleyici çıktıda gerçek satır numaralarını ve kaynak dosya adlarını raporlar. Olmayan `#line` bir`default` *line_indicator* içeren bir yönergeyi işlerken, derleyici, belirtilen satır numarası (ve belirtilmişse dosya adı) gibi yönergeden sonra satırı değerlendirir.
 
-A `#line default` yönergesi, tüm önceki #line direktifleri etkisini tersine çevirir. Tam olarak Hayır olarak ise sonraki satırları, doğru satır bilgilerini derleyici raporları `#line` yönergeleri işlenmemiş.
+Bir `#line default` yönerge, önceki tüm #line yönergelerinin etkisini tersine çevirir. Derleyici, kesin olmayan `#line` bir yönergeler gibi, izleyen satırlar için gerçek satır bilgilerini raporlar.
 
-A `#line hidden` yönergesi dosya üzerinde hiçbir etkisi ve satır numaraları hatası bildirdi iletileri, ancak kaynağı seviyesinde hata ayıklamayı etkilemez. Hata ayıklama sırasında arasındaki tüm satırları bir `#line hidden` yönergesi ve sonraki `#line` yönergesi (olmayan `#line hidden`) sahip satır numarası bilgisi. Kod hata ayıklayıcı ile Adımlama, bu satırları tamamen atlanacak.
+Bir `#line hidden` yönergenin hata iletilerinde bildirilen dosya ve satır numaraları üzerinde hiçbir etkisi yoktur, ancak kaynak düzeyinde hata ayıklamayı etkiler. Hata ayıklarken, bir `#line hidden` yönergeyle sonraki `#line` `#line hidden`yönerge (olmayan) arasındaki tüm satırlarda satır numarası bilgisi yoktur. Hata ayıklayıcıda kod üzerinden adımla, bu satırlar tamamen atlanır.
 
-Unutmayın bir *file_name* kaçış karakterleri işlenmez; normal dize sabit değeri farklıdır "`\`" karakter yalnızca içinde bir sıradan bir ters eğik çizgi karakteri atayan bir *file_name*.
+Bir *dosya_adı* , kaçış karakterlerinin işlenmediği normal bir dize sabit değerinden farklı olduğunu unutmayın; "`\`" karakteri, bir *dosya_adı*içindeki normal ters eğik çizgi karakterini belirtir.
 
 ### <a name="pragma-directives"></a>Pragma yönergeleri
 
-`#pragma` Ön işleme yönergesi, isteğe bağlı bağlamsal bilgi derleyiciye belirtmek için kullanılır. Bilgi sağlanan bir `#pragma` yönergesi hiçbir zaman programı semantiğini değiştirir.
+`#pragma` Ön işleme yönergesi, isteğe bağlı bağlamsal bilgileri derleyiciye belirtmek için kullanılır. Bir `#pragma` yönergede sağlanan bilgiler hiçbir şekilde program semantiğini değiştirmez.
 
 ```antlr
 pp_pragma
@@ -1244,11 +1244,11 @@ pragma_body
     ;
 ```
 
-C# sağlar `#pragma` Derleyici uyarılarını kontrol etmek için yönergeleri. Dil gelecek sürümlerinde ek dahil `#pragma` yönergeleri. Diğer C# Derleyicileri birlikte çalışabilirliği sağlamak için Microsoft C# derleyicisi için bilinmeyen derleme hatası kesmez `#pragma` yönergeleri; ancak uyarı oluşturma gibi yönergeleri yapın.
+C#derleyici `#pragma` uyarılarını denetlemek için yönergeler sağlar. Dilin gelecekteki sürümleri ek `#pragma` yönergeler içerebilir. Diğer C# derleyicilerle birlikte çalışabilirliği sağlamak için, Microsoft C# derleyicisi bilinmeyen `#pragma` yönergeler için derleme hataları vermez; bu yönergeler, ancak uyarılar oluşturur.
 
-#### <a name="pragma-warning"></a>Pragma Uyarısı
+#### <a name="pragma-warning"></a>pragma uyarısı
 
-`#pragma warning` Yönergesi devre dışı bırakın veya tümünü geri yüklemek için kullanılan veya belirli bir uyarı kümesini sonraki program metni bir derleme sırasında iletileri.
+`#pragma warning` Yönerge, sonraki program metninin derlenmesi sırasında tüm veya belirli bir uyarı iletisi kümesini devre dışı bırakmak veya geri yüklemek için kullanılır.
 
 ```antlr
 pragma_warning_body
@@ -1266,13 +1266,13 @@ warning_list
     ;
 ```
 
-A `#pragma warning` uyarı listesini atlayan yönergesi, tüm uyarıları etkiler. A `#pragma warning` yönergesini içeren bir uyarı listesi listesinde belirtilen uyarıları etkiler.
+Uyarı `#pragma warning` listesini atlayacak bir yönerge tüm uyarıları etkiler. Uyarı `#pragma warning` listesi içeren bir yönerge yalnızca listede belirtilen uyarıları etkiler.
 
-A `#pragma warning disable` yönerge devre dışı bırakır tüm veya belirli uyarıları kümesi.
+Bir `#pragma warning disable` yönerge, tüm veya verilen uyarı kümesini devre dışı bırakır.
 
-A `#pragma warning restore` tüm yönerge geri yükler veya derleme biriminde başında yürürlükte olan durumu uyarıları verilen kümesi. Belirli bir uyarı harici olarak devre dışı bırakılmışsa unutmayın, `#pragma warning restore` (olup tüm veya belirli uyarı), uyarı yeniden izin vermez.
+Bir `#pragma warning restore` yönerge, derleme biriminin başlangıcında geçerli olan durum kümesini veya verilen uyarıları geri yükler. Belirli bir uyarı dışarıdan devre dışı bırakılmışsa, bir (tümü `#pragma warning restore` veya belirli bir uyarı için) bu uyarıyı yeniden etkinleştiremeyeceğini unutmayın.
 
-Aşağıdaki örnek, kullanımını gösterir. `#pragma warning` geçici olarak uyarı devre dışı bırakmak için geçersiz zaman üyeleri başvuru, Microsoft C# derleyicisi uyarı numarasını kullanarak bildirilen.
+Aşağıdaki örnek, kullanım dışı bırakılmış `#pragma warning` üyelere, Microsoft C# derleyicisinden gelen uyarı numarasını kullanarak başvurulduğunu bildiren uyarıyı geçici olarak devre dışı bırakmak için öğesinin kullanımını gösterir.
 ```csharp
 using System;
 
