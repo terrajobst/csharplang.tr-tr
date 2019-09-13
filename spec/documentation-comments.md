@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: c9f8417dc68153f02ceb72bb1d51f3615f3c4961
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: adf81842e3c763c7bbdd3f10bb884dc1207b9099
+ms.sourcegitcommit: 0489cb64b7dfb328813d757f4d447a15b85a5851
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488913"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70912432"
 ---
-# <a name="documentation-comments"></a><span data-ttu-id="8ee92-101">Belge açıklamaları</span><span class="sxs-lookup"><span data-stu-id="8ee92-101">Documentation comments</span></span>
+# <a name="documentation-comments"></a><span data-ttu-id="fc36d-101">Belge açıklamaları</span><span class="sxs-lookup"><span data-stu-id="fc36d-101">Documentation comments</span></span>
 
-<span data-ttu-id="8ee92-102">C# programcıları kodlarını XML metni içeren bir özel açıklama sözdizimi kullanılarak belge için bir mekanizma sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-102">C# provides a mechanism for programmers to document their code using a special comment syntax that contains XML text.</span></span> <span data-ttu-id="8ee92-103">Kaynak kodu dosyalarında açıklamaları belirli bir biçime sahip bir aracı bu yorumlar ve bunlar önce kaynak kodu öğesi XML üretmek için yönlendirmek için kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-103">In source code files, comments having a certain form can be used to direct a tool to produce XML from those comments and the source code elements, which they precede.</span></span> <span data-ttu-id="8ee92-104">Bu söz dizimi çağrılır yorumları kullanarak ***belge açıklamaları***.</span><span class="sxs-lookup"><span data-stu-id="8ee92-104">Comments using such syntax are called ***documentation comments***.</span></span> <span data-ttu-id="8ee92-105">Hemen bir kullanıcı tanımlı türü (örneğin, bir sınıf, temsilci veya arabirimi) ya da bir üyesi (örneğin, bir alan, olay, özelliği veya yöntemi) gelmelidir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-105">They must immediately precede a user-defined type (such as a class, delegate, or interface) or a member (such as a field, event, property, or method).</span></span> <span data-ttu-id="8ee92-106">XML oluşturma aracı olarak adlandırılır ***belgeleri Oluşturucu***.</span><span class="sxs-lookup"><span data-stu-id="8ee92-106">The XML generation tool is called the ***documentation generator***.</span></span> <span data-ttu-id="8ee92-107">(Bu oluşturucunun olabilir, ancak olması gerekmez, C# derleyicisi kendisini.) Belgeleri Oluşturucu tarafından üretilen çıkış adlı ***soubor dokumentace***.</span><span class="sxs-lookup"><span data-stu-id="8ee92-107">(This generator could be, but need not be, the C# compiler itself.) The output produced by the documentation generator is called the ***documentation file***.</span></span> <span data-ttu-id="8ee92-108">Soubor dokumentace girdi olarak kullanılan bir ***belgeleri Görüntüleyicisi***; bir tür bilgilerini ve ilişkili belgelerini görünümünü çeşit üretmek için hedeflenen bir aracı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-108">A documentation file is used as input to a ***documentation viewer***; a tool intended to produce some sort of visual display of type information and its associated documentation.</span></span>
+<span data-ttu-id="fc36d-102">C#programcıların, XML metni içeren özel bir açıklama söz dizimini kullanarak kodlarını belgetabilmesi için bir mekanizma sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-102">C# provides a mechanism for programmers to document their code using a special comment syntax that contains XML text.</span></span> <span data-ttu-id="fc36d-103">Kaynak kodu dosyalarında, belirli bir biçime sahip olan Yorumlar, bir aracı bu açıklamalardan ve kaynak kodu öğelerinden önce XML oluşturacak şekilde yönlendirmek için kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-103">In source code files, comments having a certain form can be used to direct a tool to produce XML from those comments and the source code elements, which they precede.</span></span> <span data-ttu-id="fc36d-104">Bu söz dizimini kullanan açıklamalara ***belge açıklamaları***denir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-104">Comments using such syntax are called ***documentation comments***.</span></span> <span data-ttu-id="fc36d-105">Kullanıcı tanımlı bir türün (bir sınıf, temsilci veya arabirim gibi) ya da bir üyenin (alan, olay, özellik veya yöntem gibi) hemen önce gelmesi gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-105">They must immediately precede a user-defined type (such as a class, delegate, or interface) or a member (such as a field, event, property, or method).</span></span> <span data-ttu-id="fc36d-106">XML oluşturma aracına ***belge Oluşturucu***denir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-106">The XML generation tool is called the ***documentation generator***.</span></span> <span data-ttu-id="fc36d-107">(Bu Oluşturucu, C# derleyicinin kendisi olabilir, ancak olması gerekmez.) Belge Oluşturucu tarafından üretilen çıktıya ***belge dosyası***denir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-107">(This generator could be, but need not be, the C# compiler itself.) The output produced by the documentation generator is called the ***documentation file***.</span></span> <span data-ttu-id="fc36d-108">Belge dosyası bir ***belge görüntüleyicisine***giriş olarak kullanılır; tür bilgilerinin ve ilişkili belgelerinin bir dizi görsel görüntüsünü oluşturmak için tasarlanan bir araç.</span><span class="sxs-lookup"><span data-stu-id="fc36d-108">A documentation file is used as input to a ***documentation viewer***; a tool intended to produce some sort of visual display of type information and its associated documentation.</span></span>
 
-<span data-ttu-id="8ee92-109">Belge açıklamaları içinde kullanılacak etiketleri kümesi bu belirtim önerir ancak bu etiketleri kullanımı gerekli değildir ve uzun doğru biçimlendirilmiş XML kuralları ardından diğer etiketler isterseniz, kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-109">This specification suggests a set of tags to be used in documentation comments, but use of these tags is not required, and other tags may be used if desired, as long the rules of well-formed XML are followed.</span></span>
+<span data-ttu-id="fc36d-109">Bu belirtim belge açıklamalarında kullanılacak bir etiket kümesi önerir, ancak bu etiketlerin kullanımı gerekli değildir, ancak doğru biçimlendirilmiş XML kuralları izlenirken, istenirse diğer Etiketler de kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-109">This specification suggests a set of tags to be used in documentation comments, but use of these tags is not required, and other tags may be used if desired, as long the rules of well-formed XML are followed.</span></span>
 
-## <a name="introduction"></a><span data-ttu-id="8ee92-110">Giriş</span><span class="sxs-lookup"><span data-stu-id="8ee92-110">Introduction</span></span>
+## <a name="introduction"></a><span data-ttu-id="fc36d-110">Giriş</span><span class="sxs-lookup"><span data-stu-id="fc36d-110">Introduction</span></span>
 
-<span data-ttu-id="8ee92-111">Özel bir biçime sahip açıklamaları, XML, bu yorumlar ve bunlar önce kaynak kod öğeleri oluşturmak için bir araç yönlendirmek için kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-111">Comments having a special form can be used to direct a tool to produce XML from those comments and the source code elements, which they precede.</span></span> <span data-ttu-id="8ee92-112">Bu tür açıklamaları üç eğik çizgi ile başlayan tek satırlık açıklamaları bulunmaktadır (`///`), ya bir eğik çizgi ve iki yıldız ile başlayan açıklamaları ayrılmış (`/**`).</span><span class="sxs-lookup"><span data-stu-id="8ee92-112">Such comments are single-line comments that start with three slashes (`///`), or delimited comments that start with a slash and two stars (`/**`).</span></span> <span data-ttu-id="8ee92-113">Hemen bir kullanıcı tanımlı türü (örneğin, bir sınıf, temsilci veya arabirimi) ya da bunlar ek açıklama bir üye (örneğin, bir alan, olay, özelliği veya yöntemi) gelmelidir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-113">They must immediately precede a user-defined type (such as a class, delegate, or interface) or a member (such as a field, event, property, or method) that they annotate.</span></span> <span data-ttu-id="8ee92-114">Öznitelik bölümleri ([öznitelik belirtimi](attributes.md#attribute-specification)) belge yorumlarını bir türe veya üyeye uygulanan öznitelikleri gelmelidir için bildirimler, bir parçası olarak kabul edilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-114">Attribute sections ([Attribute specification](attributes.md#attribute-specification)) are considered part of declarations, so documentation comments must precede attributes applied to a type or member.</span></span>
+<span data-ttu-id="fc36d-111">Özel bir forma sahip olan Yorumlar, bir aracı bu açıklamalardan ve kaynak kod öğelerinden önce XML oluşturacak şekilde yönlendirmek için kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-111">Comments having a special form can be used to direct a tool to produce XML from those comments and the source code elements, which they precede.</span></span> <span data-ttu-id="fc36d-112">Bu yorumlar, üç eğik çizgi (`///`) ile başlayan tek satırlık açıklamalardır ve eğik çizgiyle ve iki yıldızlı (`/**`) ile başlayan sınırlandırılmış açıklamalardır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-112">Such comments are single-line comments that start with three slashes (`///`), or delimited comments that start with a slash and two stars (`/**`).</span></span> <span data-ttu-id="fc36d-113">Bunlar, bir Kullanıcı tanımlı türün (bir sınıf, temsilci veya arabirim gibi) ya da ek açıklama eklenen bir üyenin (bir alan, olay, özellik veya yöntem gibi) hemen önce gelmelidir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-113">They must immediately precede a user-defined type (such as a class, delegate, or interface) or a member (such as a field, event, property, or method) that they annotate.</span></span> <span data-ttu-id="fc36d-114">Öznitelik bölümleri ([öznitelik belirtimi](attributes.md#attribute-specification)) bildirimlerin bir parçası olarak değerlendirilir, bu nedenle belge açıklamalarının bir tür veya üyeye uygulanan özniteliklerin önünde olması gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-114">Attribute sections ([Attribute specification](attributes.md#attribute-specification)) are considered part of declarations, so documentation comments must precede attributes applied to a type or member.</span></span>
 
-<span data-ttu-id="8ee92-115">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-115">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-115">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-115">__Syntax:__</span></span>
 
 ```antlr
 single_line_doc_comment
@@ -28,11 +28,11 @@ delimited_doc_comment
     ;
 ```
 
-<span data-ttu-id="8ee92-116">İçinde bir *single_line_doc_comment*, yoksa bir *boşluk* karakter aşağıdaki `///` her bir karakter *single_line_doc_comment*bitişik s Geçerli *single_line_doc_comment*, ardından, *boşluk* XML çıkış karakteri dahil değildir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-116">In a *single_line_doc_comment*, if there is a *whitespace* character following the `///` characters on each of the *single_line_doc_comment*s adjacent to the current *single_line_doc_comment*, then that *whitespace* character is not included in the XML output.</span></span>
+<span data-ttu-id="fc36d-116">Bir *single_line_doc_comment*içinde, her bir *single_line_doc_comment*için geçerli *single_line_doc_comment*bitişik olan `///` karakterleri izleyen bir *boşluk* karakteri varsa, buXML çıktısına boşluk karakteri dahil değildir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-116">In a *single_line_doc_comment*, if there is a *whitespace* character following the `///` characters on each of the *single_line_doc_comment*s adjacent to the current *single_line_doc_comment*, then that *whitespace* character is not included in the XML output.</span></span>
 
-<span data-ttu-id="8ee92-117">İkinci satırdaki ilk boşluk olmayan karakter bir yıldız işareti ve aynı deseni isteğe bağlı boşluk karakterleri ve bir yıldız işareti ise sınırlı-doc-açıklama, her birinin sınırlı-doc-açıklama içindeki satır başında yinelenir, ardından karakterlerinden yinelenen desen XML çıktısında dahil edilmez.</span><span class="sxs-lookup"><span data-stu-id="8ee92-117">In a delimited-doc-comment, if the first non-whitespace character on the second line is an asterisk and the same pattern of optional whitespace characters and an asterisk character is repeated at the beginning of each of the line within the delimited-doc-comment, then the characters of the repeated pattern are not included in the XML output.</span></span> <span data-ttu-id="8ee92-118">Desen, sonra yanı sıra, yıldız işareti önce boşluk karakterleri içerebilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-118">The pattern may include whitespace characters after, as well as before, the asterisk character.</span></span>
+<span data-ttu-id="fc36d-117">Ayrılmış bir belge açıklamasında, ikinci satırdaki ilk boşluk olmayan karakter bir yıldız işareti ise ve isteğe bağlı boşluk karakterlerinden aynı desenli ve bir yıldız karakteri ayrılmış-belge-açıklama içindeki her satırın başlangıcında tekrarlanırsa, sonra yinelenen modelin karakterleri XML çıktısına dahil edilmez.</span><span class="sxs-lookup"><span data-stu-id="fc36d-117">In a delimited-doc-comment, if the first non-whitespace character on the second line is an asterisk and the same pattern of optional whitespace characters and an asterisk character is repeated at the beginning of each of the line within the delimited-doc-comment, then the characters of the repeated pattern are not included in the XML output.</span></span> <span data-ttu-id="fc36d-118">Bu düzende, sonra yıldız karakteri ve daha önce boşluk karakterleri bulunabilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-118">The pattern may include whitespace characters after, as well as before, the asterisk character.</span></span>
 
-<span data-ttu-id="8ee92-119">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-119">__Example:__</span></span>
+<span data-ttu-id="fc36d-119">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-119">__Example:__</span></span>
 
 ```csharp
 /// <summary>Class <c>Point</c> models a point in a two-dimensional
@@ -45,54 +45,54 @@ public class Point
 }
 ```
 
-<span data-ttu-id="8ee92-120">Kurallara göre XML belge açıklamaları içindeki metin iyi biçimlendirilmiş olmalıdır (https://www.w3.org/TR/REC-xml).</span><span class="sxs-lookup"><span data-stu-id="8ee92-120">The text within documentation comments must be well formed according to the rules of XML (https://www.w3.org/TR/REC-xml).</span></span> <span data-ttu-id="8ee92-121">Doğru biçimlendirilmiş XML olgu olması durumunda bir uyarı oluşturulur ve soubor dokumentace bir hatayla karşılaşıldı belirten bir açıklama içerir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-121">If the XML is ill formed, a warning is generated and the documentation file will contain a comment saying that an error was encountered.</span></span>
+<span data-ttu-id="fc36d-120">Belge açıklamalarındaki metin, XML kurallarına göre düzgün şekilde oluşturulmalıdır (https://www.w3.org/TR/REC-xml).</span><span class="sxs-lookup"><span data-stu-id="fc36d-120">The text within documentation comments must be well formed according to the rules of XML (https://www.w3.org/TR/REC-xml).</span></span> <span data-ttu-id="fc36d-121">XML hatalı biçimlendirilmişse bir uyarı oluşturulur ve belge dosyası bir hata ile karşılaşıldığını söyleyen bir açıklama içerir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-121">If the XML is ill formed, a warning is generated and the documentation file will contain a comment saying that an error was encountered.</span></span>
 
-<span data-ttu-id="8ee92-122">Geliştiriciler kendi kümesi etiketleri oluşturmak ücretsiz olsa da, önerilen kümesi tanımlanan [önerilen etiketler](documentation-comments.md#recommended-tags).</span><span class="sxs-lookup"><span data-stu-id="8ee92-122">Although developers are free to create their own set of tags, a recommended set is defined in [Recommended tags](documentation-comments.md#recommended-tags).</span></span> <span data-ttu-id="8ee92-123">Önerilen etiketler bazıları, özel anlamları vardır:</span><span class="sxs-lookup"><span data-stu-id="8ee92-123">Some of the recommended tags have special meanings:</span></span>
+<span data-ttu-id="fc36d-122">Geliştiriciler kendi etiket kümesini oluşturmak için ücretsiz olsa da önerilen [etiketlerde](documentation-comments.md#recommended-tags)önerilen bir küme tanımlanmıştır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-122">Although developers are free to create their own set of tags, a recommended set is defined in [Recommended tags](documentation-comments.md#recommended-tags).</span></span> <span data-ttu-id="fc36d-123">Önerilen etiketlerden bazılarının özel anlamları vardır:</span><span class="sxs-lookup"><span data-stu-id="fc36d-123">Some of the recommended tags have special meanings:</span></span>
 
-*  <span data-ttu-id="8ee92-124">`<param>` Etiketi parametreler tanımlamak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-124">The `<param>` tag is used to describe parameters.</span></span> <span data-ttu-id="8ee92-125">Böyle bir etiket kullandıysanız, belgeleri Oluşturucu belirtilen parametre var olduğundan ve tüm parametreleri belgeleri açıklamaları açıklanan doğrulamanız gerekir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-125">If such a tag is used, the documentation generator must verify that the specified parameter exists and that all parameters are described in documentation comments.</span></span> <span data-ttu-id="8ee92-126">Bu tür doğrulama başarısız olursa, belgeleri Oluşturucu bir uyarı verir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-126">If such verification fails, the documentation generator issues a warning.</span></span>
-*  <span data-ttu-id="8ee92-127">`cref` Öznitelik, bir kod öğesi başvuru sağlamak için herhangi bir etiket eklenebilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-127">The `cref` attribute can be attached to any tag to provide a reference to a code element.</span></span> <span data-ttu-id="8ee92-128">Belgeleri Oluşturucu, bu kod öğesi var olduğunu doğrulamanız gerekir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-128">The documentation generator must verify that this code element exists.</span></span> <span data-ttu-id="8ee92-129">Belgeleri Oluşturucu, doğrulama başarısız olursa bir uyarı verir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-129">If the verification fails, the documentation generator issues a warning.</span></span> <span data-ttu-id="8ee92-130">Bir ad açıklanan için aranırken bir `cref` özniteliği belgeleri Oluşturucu gerekir saygı göre ad alanı görünürlük `using` kaynak kodu içinde görünen deyimleri.</span><span class="sxs-lookup"><span data-stu-id="8ee92-130">When looking for a name described in a `cref` attribute, the documentation generator must respect namespace visibility according to `using` statements appearing within the source code.</span></span> <span data-ttu-id="8ee92-131">Genel, kod öğeleri normal genel sözdizimi için (diğer bir deyişle, "`List<T>`") kullanılamaz çünkü geçersiz XML üretir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-131">For code elements that are generic, the normal generic syntax (that is, "`List<T>`") cannot be used because it produces invalid XML.</span></span> <span data-ttu-id="8ee92-132">Kaşlı ayraçlar yerine kullanılabilir (diğer bir deyişle, "`List{T}`"), veya XML kaçış sözdiziminin kullanılabilir (diğer bir deyişle, "`List&lt;T&gt;`").</span><span class="sxs-lookup"><span data-stu-id="8ee92-132">Braces can be used instead of brackets (that is, "`List{T}`"), or the XML escape syntax can be used (that is, "`List&lt;T&gt;`").</span></span>
-*  <span data-ttu-id="8ee92-133">`<summary>` Etiketi bir tür veya üyeyle ilgili ek bilgileri görüntülemek için bir belge Görüntüleyici tarafından kullanılmak üzere tasarlanmıştır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-133">The `<summary>` tag is intended to be used by a documentation viewer to display additional information about a type or member.</span></span>
-*  <span data-ttu-id="8ee92-134">`<include>` Etiketi harici bir XML dosyasından bilgiler içerir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-134">The `<include>` tag includes information from an external XML file.</span></span>
+*  <span data-ttu-id="fc36d-124">Etiketi `<param>` , parametreleri tanımlamakta kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-124">The `<param>` tag is used to describe parameters.</span></span> <span data-ttu-id="fc36d-125">Bu tür bir etiket kullanılırsa, belge Oluşturucu belirtilen parametrenin var olduğunu ve tüm parametrelerin belge açıklamalarında açıklananlarının doğrulanması gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-125">If such a tag is used, the documentation generator must verify that the specified parameter exists and that all parameters are described in documentation comments.</span></span> <span data-ttu-id="fc36d-126">Bu doğrulama başarısız olursa, belge Oluşturucu bir uyarı verir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-126">If such verification fails, the documentation generator issues a warning.</span></span>
+*  <span data-ttu-id="fc36d-127">`cref` Özniteliği bir kod öğesine başvuru sağlamak için herhangi bir etikete iliştirilebilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-127">The `cref` attribute can be attached to any tag to provide a reference to a code element.</span></span> <span data-ttu-id="fc36d-128">Belge oluşturucunun Bu kod öğesinin var olduğunu doğrulaması gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-128">The documentation generator must verify that this code element exists.</span></span> <span data-ttu-id="fc36d-129">Doğrulama başarısız olursa, belge Oluşturucu bir uyarı verir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-129">If the verification fails, the documentation generator issues a warning.</span></span> <span data-ttu-id="fc36d-130">Bir `cref` öznitelikte açıklanan adı ararken belge oluşturucunun, kaynak kodu içinde görüntülenen `using` deyimlere göre ad alanı görünürlüğüne göre olması gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-130">When looking for a name described in a `cref` attribute, the documentation generator must respect namespace visibility according to `using` statements appearing within the source code.</span></span> <span data-ttu-id="fc36d-131">Genel olan kod öğeleri için, normal genel sözdizimi (yani, "`List<T>`") geçersiz XML oluşturduğundan kullanılamaz.</span><span class="sxs-lookup"><span data-stu-id="fc36d-131">For code elements that are generic, the normal generic syntax (that is, "`List<T>`") cannot be used because it produces invalid XML.</span></span> <span data-ttu-id="fc36d-132">Ayraçlar (`List{T}`Yani, "") veya XML kaçış söz dizimi (yani, "`List&lt;T&gt;`") yerine kullanılabilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-132">Braces can be used instead of brackets (that is, "`List{T}`"), or the XML escape syntax can be used (that is, "`List&lt;T&gt;`").</span></span>
+*  <span data-ttu-id="fc36d-133">Etiket `<summary>` , bir tür veya üyeyle ilgili ek bilgileri göstermek için bir belge Görüntüleyicisi tarafından kullanılmak üzere tasarlanmıştır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-133">The `<summary>` tag is intended to be used by a documentation viewer to display additional information about a type or member.</span></span>
+*  <span data-ttu-id="fc36d-134">Etiketi `<include>` , bir dış XML dosyasındaki bilgileri içerir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-134">The `<include>` tag includes information from an external XML file.</span></span>
 
-<span data-ttu-id="8ee92-135">Soubor dokumentace tür ve üyeler hakkında tam bilgi sağlamaz dikkatle unutmayın (örneğin, bunu herhangi bir tür bilgilerini içermiyor).</span><span class="sxs-lookup"><span data-stu-id="8ee92-135">Note carefully that the documentation file does not provide full information about the type and members (for example, it does not contain any type information).</span></span> <span data-ttu-id="8ee92-136">Böyle bir tür veya üye bilgilerini almak için soubor dokumentace gerçek türe veya üyeye yansıma ile birlikte kullanılmalıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-136">To get such information about a type or member, the documentation file must be used in conjunction with reflection on the actual type or member.</span></span>
+<span data-ttu-id="fc36d-135">Belge dosyasının tür ve Üyeler hakkında tam bilgi sağlamadığına ve (örneğin, herhangi bir tür bilgisi içermediğinden) emin olun.</span><span class="sxs-lookup"><span data-stu-id="fc36d-135">Note carefully that the documentation file does not provide full information about the type and members (for example, it does not contain any type information).</span></span> <span data-ttu-id="fc36d-136">Bir tür veya üye hakkında daha fazla bilgi almak için, belge dosyası gerçek tür veya üyede yansıma ile birlikte kullanılmalıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-136">To get such information about a type or member, the documentation file must be used in conjunction with reflection on the actual type or member.</span></span>
 
-## <a name="recommended-tags"></a><span data-ttu-id="8ee92-137">Önerilen etiketler</span><span class="sxs-lookup"><span data-stu-id="8ee92-137">Recommended tags</span></span>
+## <a name="recommended-tags"></a><span data-ttu-id="fc36d-137">Önerilen Etiketler</span><span class="sxs-lookup"><span data-stu-id="fc36d-137">Recommended tags</span></span>
 
-<span data-ttu-id="8ee92-138">Belgeleri Oluşturucu kabul et ve XML kurallarına göre geçerli herhangi bir etiket işleme gerekir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-138">The documentation generator must accept and process any tag that is valid according to the rules of XML.</span></span> <span data-ttu-id="8ee92-139">Aşağıdaki kullanıcı belgeleri, yaygın olarak kullanılan işlevler sunar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-139">The following tags provide commonly used functionality in user documentation.</span></span> <span data-ttu-id="8ee92-140">(Kuşkusuz, diğer etiketlerin mümkündür.)</span><span class="sxs-lookup"><span data-stu-id="8ee92-140">(Of course, other tags are possible.)</span></span>
+<span data-ttu-id="fc36d-138">Belge oluşturucunun, XML kurallarına göre geçerli olan herhangi bir etiketi kabul etmesi ve işlemesi gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-138">The documentation generator must accept and process any tag that is valid according to the rules of XML.</span></span> <span data-ttu-id="fc36d-139">Aşağıdaki Etiketler kullanıcı belgelerinde yaygın olarak kullanılan işlevleri sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-139">The following tags provide commonly used functionality in user documentation.</span></span> <span data-ttu-id="fc36d-140">(Kuşkusuz, diğer Etiketler mümkündür.)</span><span class="sxs-lookup"><span data-stu-id="fc36d-140">(Of course, other tags are possible.)</span></span>
 
 
-| <span data-ttu-id="8ee92-141">__Etiket__</span><span class="sxs-lookup"><span data-stu-id="8ee92-141">__Tag__</span></span>          | <span data-ttu-id="8ee92-142">__Bölüm__</span><span class="sxs-lookup"><span data-stu-id="8ee92-142">__Section__</span></span>                                            | <span data-ttu-id="8ee92-143">__Amaç__</span><span class="sxs-lookup"><span data-stu-id="8ee92-143">__Purpose__</span></span>                                            |
+| <span data-ttu-id="fc36d-141">__Etiket__</span><span class="sxs-lookup"><span data-stu-id="fc36d-141">__Tag__</span></span>          | <span data-ttu-id="fc36d-142">__Kısmı__</span><span class="sxs-lookup"><span data-stu-id="fc36d-142">__Section__</span></span>                                            | <span data-ttu-id="fc36d-143">__Amaç__</span><span class="sxs-lookup"><span data-stu-id="fc36d-143">__Purpose__</span></span>                                            |
 |------------------|--------------------------------------------------------|--------------------------------------------------------|
-| `<c>`            | [`<c>`](documentation-comments.md#c)                   | <span data-ttu-id="8ee92-144">Metin bir kod benzeri yazı tipini Ayarla</span><span class="sxs-lookup"><span data-stu-id="8ee92-144">Set text in a code-like font</span></span>                           | 
-| `<code>`         | [`<code>`](documentation-comments.md#code)             | <span data-ttu-id="8ee92-145">Bir veya daha fazla satır, kaynak kodu veya program çıktısı</span><span class="sxs-lookup"><span data-stu-id="8ee92-145">Set one or more lines of source code or program output</span></span> |
-| `<example>`      | [`<example>`](documentation-comments.md#example)       | <span data-ttu-id="8ee92-146">Bir örnek belirtin</span><span class="sxs-lookup"><span data-stu-id="8ee92-146">Indicate an example</span></span>                                    |
-| `<exception>`    | [`<exception>`](documentation-comments.md#exception)   | <span data-ttu-id="8ee92-147">Bir yöntem oluşturabilecek özel durumları tanımlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-147">Identifies the exceptions a method can throw</span></span>           |
-| `<include>`      | [`<include>`](documentation-comments.md#include)       | <span data-ttu-id="8ee92-148">Dış dosya XML'den içerir</span><span class="sxs-lookup"><span data-stu-id="8ee92-148">Includes XML from an external file</span></span>                     |
-| `<list>`         | [`<list>`](documentation-comments.md#list)             | <span data-ttu-id="8ee92-149">Bir liste veya tablo oluşturma</span><span class="sxs-lookup"><span data-stu-id="8ee92-149">Create a list or table</span></span>                                 |
-| `<para>`         | [`<para>`](documentation-comments.md#para)             | <span data-ttu-id="8ee92-150">İzin vermek için metin eklenecek yapısı</span><span class="sxs-lookup"><span data-stu-id="8ee92-150">Permit structure to be added to text</span></span>                   |
-| `<param>`        | [`<param>`](documentation-comments.md#param)           | <span data-ttu-id="8ee92-151">Yöntem veya oluşturucu için bir parametre açıklayın</span><span class="sxs-lookup"><span data-stu-id="8ee92-151">Describe a parameter for a method or constructor</span></span>       |
-| `<paramref>`     | [`<paramref>`](documentation-comments.md#paramref)     | <span data-ttu-id="8ee92-152">Bir Word'ün bir parametre adı olduğunu belirleyin</span><span class="sxs-lookup"><span data-stu-id="8ee92-152">Identify that a word is a parameter name</span></span>               |
-| `<permission>`   | [`<permission>`](documentation-comments.md#permission) | <span data-ttu-id="8ee92-153">Belge bir üye güvenlik erişilebilirliği</span><span class="sxs-lookup"><span data-stu-id="8ee92-153">Document the security accessibility of a member</span></span>        |
-| `<remark>`       | [`<remark>`](documentation-comments.md#remark)         | <span data-ttu-id="8ee92-154">Bir türü hakkında ek bilgiler açıklanmaktadır</span><span class="sxs-lookup"><span data-stu-id="8ee92-154">Describe additional information about a type</span></span>           |
-| `<returns>`      | [`<returns>`](documentation-comments.md#returns)       | <span data-ttu-id="8ee92-155">Bir yöntemin dönüş değerini açıklayın</span><span class="sxs-lookup"><span data-stu-id="8ee92-155">Describe the return value of a method</span></span>                  |
-| `<see>`          | [`<see>`](documentation-comments.md#see)               | <span data-ttu-id="8ee92-156">Bir bağlantı belirtme</span><span class="sxs-lookup"><span data-stu-id="8ee92-156">Specify a link</span></span>                                         |
-| `<seealso>`      | [`<seealso>`](documentation-comments.md#seealso)       | <span data-ttu-id="8ee92-157">Ayrıca bkz: girişi oluştur</span><span class="sxs-lookup"><span data-stu-id="8ee92-157">Generate a See Also entry</span></span>                              |
-| `<summary>`      | [`<summary>`](documentation-comments.md#summary)       | <span data-ttu-id="8ee92-158">Bir tür veya üye türü açıklar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-158">Describe a type or a member of a type</span></span>                  |
-| `<value>`        | [`<value>`](documentation-comments.md#value)           | <span data-ttu-id="8ee92-159">Bir özelliği açıklamaktadır</span><span class="sxs-lookup"><span data-stu-id="8ee92-159">Describe a property</span></span>                                    |
-| `<typeparam>`    |                                                        | <span data-ttu-id="8ee92-160">Genel tür parametresi açıklayın</span><span class="sxs-lookup"><span data-stu-id="8ee92-160">Describe a generic type parameter</span></span>                      |
-| `<typeparamref>` |                                                        | <span data-ttu-id="8ee92-161">Bir sözcük tür parametre adı olduğunu belirleyin</span><span class="sxs-lookup"><span data-stu-id="8ee92-161">Identify that a word is a type parameter name</span></span>          |
+| `<c>`            | [`<c>`](documentation-comments.md#c)                   | <span data-ttu-id="fc36d-144">Kod benzeri yazı tipinde metin ayarlama</span><span class="sxs-lookup"><span data-stu-id="fc36d-144">Set text in a code-like font</span></span>                           | 
+| `<code>`         | [`<code>`](documentation-comments.md#code)             | <span data-ttu-id="fc36d-145">Kaynak kodu veya program çıkışının bir veya daha fazla satırını ayarlama</span><span class="sxs-lookup"><span data-stu-id="fc36d-145">Set one or more lines of source code or program output</span></span> |
+| `<example>`      | [`<example>`](documentation-comments.md#example)       | <span data-ttu-id="fc36d-146">Bir örnek belirtin</span><span class="sxs-lookup"><span data-stu-id="fc36d-146">Indicate an example</span></span>                                    |
+| `<exception>`    | [`<exception>`](documentation-comments.md#exception)   | <span data-ttu-id="fc36d-147">Bir yöntemin oluşturabilecek özel durumları tanımlar</span><span class="sxs-lookup"><span data-stu-id="fc36d-147">Identifies the exceptions a method can throw</span></span>           |
+| `<include>`      | [`<include>`](documentation-comments.md#include)       | <span data-ttu-id="fc36d-148">Dış dosyadan XML içerir</span><span class="sxs-lookup"><span data-stu-id="fc36d-148">Includes XML from an external file</span></span>                     |
+| `<list>`         | [`<list>`](documentation-comments.md#list)             | <span data-ttu-id="fc36d-149">Liste veya tablo oluşturma</span><span class="sxs-lookup"><span data-stu-id="fc36d-149">Create a list or table</span></span>                                 |
+| `<para>`         | [`<para>`](documentation-comments.md#para)             | <span data-ttu-id="fc36d-150">Yapıya metin eklenmesine izin ver</span><span class="sxs-lookup"><span data-stu-id="fc36d-150">Permit structure to be added to text</span></span>                   |
+| `<param>`        | [`<param>`](documentation-comments.md#param)           | <span data-ttu-id="fc36d-151">Yöntem veya Oluşturucu için bir parametre tanımlama</span><span class="sxs-lookup"><span data-stu-id="fc36d-151">Describe a parameter for a method or constructor</span></span>       |
+| `<paramref>`     | [`<paramref>`](documentation-comments.md#paramref)     | <span data-ttu-id="fc36d-152">Bir sözcüğün parametre adı olduğunu belirler</span><span class="sxs-lookup"><span data-stu-id="fc36d-152">Identify that a word is a parameter name</span></span>               |
+| `<permission>`   | [`<permission>`](documentation-comments.md#permission) | <span data-ttu-id="fc36d-153">Üyenin güvenlik erişilebilirliğini belgeleme</span><span class="sxs-lookup"><span data-stu-id="fc36d-153">Document the security accessibility of a member</span></span>        |
+| `<remarks>`      | [`<remarks>`](documentation-comments.md#remarks)       | <span data-ttu-id="fc36d-154">Bir tür hakkındaki ek bilgileri açıkla</span><span class="sxs-lookup"><span data-stu-id="fc36d-154">Describe additional information about a type</span></span>           |
+| `<returns>`      | [`<returns>`](documentation-comments.md#returns)       | <span data-ttu-id="fc36d-155">Bir yöntemin dönüş değerini açıkla</span><span class="sxs-lookup"><span data-stu-id="fc36d-155">Describe the return value of a method</span></span>                  |
+| `<see>`          | [`<see>`](documentation-comments.md#see)               | <span data-ttu-id="fc36d-156">Bir bağlantı belirtin</span><span class="sxs-lookup"><span data-stu-id="fc36d-156">Specify a link</span></span>                                         |
+| `<seealso>`      | [`<seealso>`](documentation-comments.md#seealso)       | <span data-ttu-id="fc36d-157">Ayrıca bkz. bir girdi oluştur</span><span class="sxs-lookup"><span data-stu-id="fc36d-157">Generate a See Also entry</span></span>                              |
+| `<summary>`      | [`<summary>`](documentation-comments.md#summary)       | <span data-ttu-id="fc36d-158">Türü veya bir türün üyesini açıklama</span><span class="sxs-lookup"><span data-stu-id="fc36d-158">Describe a type or a member of a type</span></span>                  |
+| `<value>`        | [`<value>`](documentation-comments.md#value)           | <span data-ttu-id="fc36d-159">Bir özelliği açıkla</span><span class="sxs-lookup"><span data-stu-id="fc36d-159">Describe a property</span></span>                                    |
+| `<typeparam>`    |                                                        | <span data-ttu-id="fc36d-160">Genel tür parametresini açıkla</span><span class="sxs-lookup"><span data-stu-id="fc36d-160">Describe a generic type parameter</span></span>                      |
+| `<typeparamref>` |                                                        | <span data-ttu-id="fc36d-161">Bir sözcüğün tür parametre adı olduğunu belirler</span><span class="sxs-lookup"><span data-stu-id="fc36d-161">Identify that a word is a type parameter name</span></span>          |
 
 ### `<c>`
 
-<span data-ttu-id="8ee92-162">Bu etiket, açıklama içindeki metnin bir parçası gibi bir kod bloğu için kullanılan özel bir yazı tipi ayarlanmalıdır belirtmek için bir mekanizma sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-162">This tag provides a mechanism to indicate that a fragment of text within a description should be set in a special font such as that used for a block of code.</span></span> <span data-ttu-id="8ee92-163">Gerçek kod satırı için kullanarak `<code>` ([`<code>`](documentation-comments.md#code)).</span><span class="sxs-lookup"><span data-stu-id="8ee92-163">For lines of actual code, use `<code>` ([`<code>`](documentation-comments.md#code)).</span></span>
+<span data-ttu-id="fc36d-162">Bu etiket, bir açıklama içindeki bir metin parçasının bir kod bloğu için kullanılan gibi özel bir yazı tipinde ayarlanması gerektiğini belirten bir mekanizma sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-162">This tag provides a mechanism to indicate that a fragment of text within a description should be set in a special font such as that used for a block of code.</span></span> <span data-ttu-id="fc36d-163">Gerçek kod satırları için ( `<code>` [`<code>`](documentation-comments.md#code)) kullanın.</span><span class="sxs-lookup"><span data-stu-id="fc36d-163">For lines of actual code, use `<code>` ([`<code>`](documentation-comments.md#code)).</span></span>
 
-<span data-ttu-id="8ee92-164">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-164">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-164">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-164">__Syntax:__</span></span>
 
 ```xml
 <c>text</c>
 ```
 
-<span data-ttu-id="8ee92-165">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-165">__Example:__</span></span>
+<span data-ttu-id="fc36d-165">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-165">__Example:__</span></span>
 
 ```csharp
 /// <summary>Class <c>Point</c> models a point in a two-dimensional
@@ -106,15 +106,15 @@ public class Point
 
 ### `<code>`
 
-<span data-ttu-id="8ee92-166">Bu etiket, bir veya daha fazla kaynak kodu veya program çıkış satırlarını bazı özel bir yazı tipinde ayarlamak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-166">This tag is used to set one or more lines of source code or program output in some special font.</span></span> <span data-ttu-id="8ee92-167">Anlatımlı küçük kod parçaları için kullanmak `<c>` ([`<c>`](documentation-comments.md#c)).</span><span class="sxs-lookup"><span data-stu-id="8ee92-167">For small code fragments in narrative, use `<c>` ([`<c>`](documentation-comments.md#c)).</span></span>
+<span data-ttu-id="fc36d-166">Bu etiket, bazı özel yazı tiplerinde kaynak kodu veya program çıkışının bir veya daha fazla satırını ayarlamak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-166">This tag is used to set one or more lines of source code or program output in some special font.</span></span> <span data-ttu-id="fc36d-167">Anlatıcı olarak küçük kod parçaları için ( `<c>` [`<c>`](documentation-comments.md#c)) kullanın.</span><span class="sxs-lookup"><span data-stu-id="fc36d-167">For small code fragments in narrative, use `<c>` ([`<c>`](documentation-comments.md#c)).</span></span>
 
-<span data-ttu-id="8ee92-168">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-168">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-168">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-168">__Syntax:__</span></span>
 
 ```xml
 <code>source code or program output</code>
 ```
 
-<span data-ttu-id="8ee92-169">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-169">__Example:__</span></span>
+<span data-ttu-id="fc36d-169">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-169">__Example:__</span></span>
 
 ```csharp
 /// <summary>This method changes the point's location by
@@ -136,34 +136,34 @@ public void Translate(int xor, int yor) {
 
 ### `<example>`
 
-<span data-ttu-id="8ee92-170">Bu etiket, örnek kod içinde nasıl bir yöntem veya diğer kitaplık üyesini kullanılabilir belirtmek için bir açıklama sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-170">This tag allows example code within a comment, to specify how a method or other library member may be used.</span></span> <span data-ttu-id="8ee92-171">Normalde, bu da etiketinin kapsayacaktır `<code>` ([`<code>`](documentation-comments.md#code)) de.</span><span class="sxs-lookup"><span data-stu-id="8ee92-171">Ordinarily, this would also involve use of the tag `<code>` ([`<code>`](documentation-comments.md#code)) as well.</span></span>
+<span data-ttu-id="fc36d-170">Bu etiket, bir metodun veya diğer kitaplık üyesinin nasıl kullanılabileceğini belirtmek için bir açıklama içindeki örnek koda izin verir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-170">This tag allows example code within a comment, to specify how a method or other library member may be used.</span></span> <span data-ttu-id="fc36d-171">Normalde, bu da etiketin `<code>` ([`<code>`](documentation-comments.md#code)) kullanımını da kapsar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-171">Ordinarily, this would also involve use of the tag `<code>` ([`<code>`](documentation-comments.md#code)) as well.</span></span>
 
-<span data-ttu-id="8ee92-172">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-172">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-172">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-172">__Syntax:__</span></span>
 
 ```xml
 <example>description</example>
 ```
 
-<span data-ttu-id="8ee92-173">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-173">__Example:__</span></span>
+<span data-ttu-id="fc36d-173">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-173">__Example:__</span></span>
 
-<span data-ttu-id="8ee92-174">Bkz: `<code>` ([`<code>`](documentation-comments.md#code)) örneği.</span><span class="sxs-lookup"><span data-stu-id="8ee92-174">See `<code>` ([`<code>`](documentation-comments.md#code)) for an example.</span></span>
+<span data-ttu-id="fc36d-174">Bir `<code>` örnek[`<code>`](documentation-comments.md#code)için bkz. ().</span><span class="sxs-lookup"><span data-stu-id="fc36d-174">See `<code>` ([`<code>`](documentation-comments.md#code)) for an example.</span></span>
 
 ### `<exception>`
 
-<span data-ttu-id="8ee92-175">Bu etiket, bir yöntem oluşturabilecek özel durumları belge için bir yol sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-175">This tag provides a way to document the exceptions a method can throw.</span></span>
+<span data-ttu-id="fc36d-175">Bu etiket, bir yöntemin oluşturmakta olduğu özel durumları belgelemek için bir yol sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-175">This tag provides a way to document the exceptions a method can throw.</span></span>
 
-<span data-ttu-id="8ee92-176">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-176">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-176">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-176">__Syntax:__</span></span>
 
 ```xml
 <exception cref="member">description</exception>
 ```
 
-<span data-ttu-id="8ee92-177">Burada</span><span class="sxs-lookup"><span data-stu-id="8ee92-177">where</span></span>
+<span data-ttu-id="fc36d-177">Burada</span><span class="sxs-lookup"><span data-stu-id="fc36d-177">where</span></span>
 
-* <span data-ttu-id="8ee92-178">`member` bir üyenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-178">`member` is the name of a member.</span></span> <span data-ttu-id="8ee92-179">Belirtilen üyeyi var ve çevirir belgeleri Oluşturucu denetler `member` soubor dokumentace kurallı öğesi adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-179">The documentation generator checks that the given member exists and translates `member` to the canonical element name in the documentation file.</span></span>
-* <span data-ttu-id="8ee92-180">`description` özel durumun koşullar açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-180">`description` is a description of the circumstances in which the exception is thrown.</span></span>
+* <span data-ttu-id="fc36d-178">`member`üyenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-178">`member` is the name of a member.</span></span> <span data-ttu-id="fc36d-179">Belge Oluşturucu, belirtilen üyenin var olduğunu denetler ve belge dosyasında `member` kurallı öğe adına çevirir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-179">The documentation generator checks that the given member exists and translates `member` to the canonical element name in the documentation file.</span></span>
+* <span data-ttu-id="fc36d-180">`description`, özel durumun oluşturulduğu durumların açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-180">`description` is a description of the circumstances in which the exception is thrown.</span></span>
 
-<span data-ttu-id="8ee92-181">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-181">__Example:__</span></span>
+<span data-ttu-id="fc36d-181">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-181">__Example:__</span></span>
 
 ```csharp
 public class DataBaseOperations
@@ -182,29 +182,29 @@ public class DataBaseOperations
 
 ### `<include>`
 
-<span data-ttu-id="8ee92-182">Bu etiket için kaynak kod dosyası dışındaki bir XML belgesi bilgileri dahil olmak üzere sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-182">This tag allows including information from an XML document that is external to the source code file.</span></span> <span data-ttu-id="8ee92-183">Dış dosya doğru biçimlendirilmiş bir XML belgesi olmalıdır ve bir XPath ifadesi eklemek için bu belgede hangi XML'den belirtmek için bu belgeye uygulanır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-183">The external file must be a well-formed XML document, and an XPath expression is applied to that document to specify what XML from that document to include.</span></span> <span data-ttu-id="8ee92-184">`<include>` Etiketi dış belgedeki seçilen XML ile sonra değiştirilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-184">The `<include>` tag is then replaced with the selected XML from the external document.</span></span>
+<span data-ttu-id="fc36d-182">Bu etiket, kaynak kodu dosyasının dışında bir XML belgesinden bilgi dahil etmenizi sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-182">This tag allows including information from an XML document that is external to the source code file.</span></span> <span data-ttu-id="fc36d-183">Dış dosya iyi biçimlendirilmiş bir XML belgesi olmalıdır ve bu belgeye hangi XML ekleneceğini belirtmek için bu belgeye bir XPath ifadesi uygulanmış olması gerekir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-183">The external file must be a well-formed XML document, and an XPath expression is applied to that document to specify what XML from that document to include.</span></span> <span data-ttu-id="fc36d-184">Daha `<include>` sonra etiket, dış belgedeki seçili XML ile değiştirilmiştir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-184">The `<include>` tag is then replaced with the selected XML from the external document.</span></span>
 
-<span data-ttu-id="8ee92-185">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-185">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-185">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-185">__Syntax:__</span></span>
 
 ```
 <include file="filename" path="xpath" />
 ```
 
-<span data-ttu-id="8ee92-186">Burada</span><span class="sxs-lookup"><span data-stu-id="8ee92-186">where</span></span>
+<span data-ttu-id="fc36d-186">Burada</span><span class="sxs-lookup"><span data-stu-id="fc36d-186">where</span></span>
 
-* <span data-ttu-id="8ee92-187">`filename` Dış XML dosyasının dosya adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-187">`filename` is the file name of an external XML file.</span></span> <span data-ttu-id="8ee92-188">Dosya adı include etiketiyle içeren dosyayı göre yorumlanır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-188">The file name is interpreted relative to the file that contains the include tag.</span></span>
-* <span data-ttu-id="8ee92-189">`xpath` Dış XML dosyasında XML bazıları seçen bir XPath ifadesidir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-189">`xpath` is an XPath expression that selects some of the XML in the external XML file.</span></span>
+* <span data-ttu-id="fc36d-187">`filename`, harici bir XML dosyasının dosya adıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-187">`filename` is the file name of an external XML file.</span></span> <span data-ttu-id="fc36d-188">Dosya adı, içerme etiketini içeren dosyaya göre yorumlanır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-188">The file name is interpreted relative to the file that contains the include tag.</span></span>
+* <span data-ttu-id="fc36d-189">`xpath`Dış XML dosyasındaki XML 'den bazılarını seçen bir XPath ifadesidir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-189">`xpath` is an XPath expression that selects some of the XML in the external XML file.</span></span>
 
-<span data-ttu-id="8ee92-190">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-190">__Example:__</span></span>
+<span data-ttu-id="fc36d-190">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-190">__Example:__</span></span>
 
-<span data-ttu-id="8ee92-191">Kaynak kodu gibi bir bildirim içeriyorsa:</span><span class="sxs-lookup"><span data-stu-id="8ee92-191">If the source code contained a declaration like:</span></span>
+<span data-ttu-id="fc36d-191">Kaynak kodu şöyle bir bildirim içeriyorsa:</span><span class="sxs-lookup"><span data-stu-id="fc36d-191">If the source code contained a declaration like:</span></span>
 
 ```csharp
 /// <include file="docs.xml" path='extradoc/class[@name="IntList"]/*' />
 public class IntList { ... }
 ```
 
-<span data-ttu-id="8ee92-192">ve aşağıdaki içeriği dış dosya "docs.xml" sahipti:</span><span class="sxs-lookup"><span data-stu-id="8ee92-192">and the external file "docs.xml" had the following contents:</span></span>
+<span data-ttu-id="fc36d-192">"docs. xml" dış dosyası aşağıdaki içeriğe sahiptir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-192">and the external file "docs.xml" had the following contents:</span></span>
 
 ```xml
 <?xml version="1.0"?>
@@ -222,7 +222,7 @@ public class IntList { ... }
 </extradoc>
 ```
 
-<span data-ttu-id="8ee92-193">Kaynak kodu içeriyorsa gibi aynı belgeleri çıktı olacaktır:</span><span class="sxs-lookup"><span data-stu-id="8ee92-193">then the same documentation is output as if the source code contained:</span></span>
+<span data-ttu-id="fc36d-193">daha sonra aynı belgeler, kaynak kodu içeren çıktıdır:</span><span class="sxs-lookup"><span data-stu-id="fc36d-193">then the same documentation is output as if the source code contained:</span></span>
 
 ```csharp
 /// <summary>
@@ -233,11 +233,11 @@ public class IntList { ... }
 
 ### `<list>`
 
-<span data-ttu-id="8ee92-194">Bu etiket, liste veya Tablo öğesi oluşturmak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-194">This tag is used to create a list or table of items.</span></span> <span data-ttu-id="8ee92-195">İçerebilir bir `<listheader>` satırında bir tablo veya tanım listesi tanımlamak için blok.</span><span class="sxs-lookup"><span data-stu-id="8ee92-195">It may contain a `<listheader>` block to define the heading row of either a table or definition list.</span></span> <span data-ttu-id="8ee92-196">(Bir tablo için yalnızca bir giriş tanımlarken `term` başlıkta sağlanması.)</span><span class="sxs-lookup"><span data-stu-id="8ee92-196">(When defining a table, only an entry for `term` in the heading need be supplied.)</span></span>
+<span data-ttu-id="fc36d-194">Bu etiket bir liste veya öğe tablosu oluşturmak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-194">This tag is used to create a list or table of items.</span></span> <span data-ttu-id="fc36d-195">Bir tablo ya da `<listheader>` tanım listesinin başlık satırını tanımlamak için bir blok içerebilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-195">It may contain a `<listheader>` block to define the heading row of either a table or definition list.</span></span> <span data-ttu-id="fc36d-196">(Bir tablo tanımlarken, yalnızca başlık için `term` bir girdinin sağlanması gerekir.)</span><span class="sxs-lookup"><span data-stu-id="fc36d-196">(When defining a table, only an entry for `term` in the heading need be supplied.)</span></span>
 
-<span data-ttu-id="8ee92-197">Listedeki her bir öğe ile belirtilen bir `<item>` blok.</span><span class="sxs-lookup"><span data-stu-id="8ee92-197">Each item in the list is specified with an `<item>` block.</span></span> <span data-ttu-id="8ee92-198">Bir tanım listesi oluştururken hem de `term` ve `description` belirtilmesi gerekir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-198">When creating a definition list, both `term` and `description` must be specified.</span></span> <span data-ttu-id="8ee92-199">Ancak, bir tablo, madde işaretli liste veya numaralı liste, yalnızca için `description` belirtilmesi.</span><span class="sxs-lookup"><span data-stu-id="8ee92-199">However, for a table, bulleted list, or numbered list, only `description` need be specified.</span></span>
+<span data-ttu-id="fc36d-197">Listedeki her öğe bir `<item>` blokla belirtilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-197">Each item in the list is specified with an `<item>` block.</span></span> <span data-ttu-id="fc36d-198">Bir tanım listesi oluştururken, her ikisi `term` de `description` belirtilmelidir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-198">When creating a definition list, both `term` and `description` must be specified.</span></span> <span data-ttu-id="fc36d-199">Ancak, bir tablo, madde işaretli liste veya numaralandırılmış liste için yalnızca `description` gerekli olmalıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-199">However, for a table, bulleted list, or numbered list, only `description` need be specified.</span></span>
 
-<span data-ttu-id="8ee92-200">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-200">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-200">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-200">__Syntax:__</span></span>
 
 ```xml
 <list type="bullet" | "number" | "table">
@@ -257,12 +257,12 @@ public class IntList { ... }
 </list>
 ```
 
-<span data-ttu-id="8ee92-201">Burada</span><span class="sxs-lookup"><span data-stu-id="8ee92-201">where</span></span>
+<span data-ttu-id="fc36d-201">Burada</span><span class="sxs-lookup"><span data-stu-id="fc36d-201">where</span></span>
 
-* <span data-ttu-id="8ee92-202">`term` tanımları konusu tanımlamak için terimi `description`.</span><span class="sxs-lookup"><span data-stu-id="8ee92-202">`term` is the term to define, whose definition is in `description`.</span></span>
-* <span data-ttu-id="8ee92-203">`description` bir madde işareti veya numaralı liste bir öğeyi veya tanımı bir `term`.</span><span class="sxs-lookup"><span data-stu-id="8ee92-203">`description` is either an item in a bullet or numbered list, or the definition of a `term`.</span></span>
+* <span data-ttu-id="fc36d-202">`term`tanımı içinde `description`olan tanımlama terimi.</span><span class="sxs-lookup"><span data-stu-id="fc36d-202">`term` is the term to define, whose definition is in `description`.</span></span>
+* <span data-ttu-id="fc36d-203">`description`, bir madde işareti veya numaralandırılmış listedeki bir öğe ya da bir `term`tanımı.</span><span class="sxs-lookup"><span data-stu-id="fc36d-203">`description` is either an item in a bullet or numbered list, or the definition of a `term`.</span></span>
 
-<span data-ttu-id="8ee92-204">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-204">__Example:__</span></span>
+<span data-ttu-id="fc36d-204">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-204">__Example:__</span></span>
 
 ```csharp
 public class MyClass
@@ -285,17 +285,17 @@ public class MyClass
 
 ### `<para>`
 
-<span data-ttu-id="8ee92-205">Bu etiket diğer etiketler iç kullanım için olduğu gibi `<summary>` ([`<remark>`](documentation-comments.md#remark)) veya `<returns>` ([`<returns>`](documentation-comments.md#returns)) ve metin eklenecek yapısı izin verir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-205">This tag is for use inside other tags, such as `<summary>` ([`<remark>`](documentation-comments.md#remark)) or `<returns>` ([`<returns>`](documentation-comments.md#returns)), and permits structure to be added to text.</span></span>
+<span data-ttu-id="fc36d-205">Bu etiket, `<summary>` ([`<remarks>`](documentation-comments.md#remarks)) veya `<returns>` ([`<returns>`](documentation-comments.md#returns)) gibi diğer etiketlerin içinde kullanım içindir ve yapının metne eklenmesine izin verir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-205">This tag is for use inside other tags, such as `<summary>` ([`<remarks>`](documentation-comments.md#remarks)) or `<returns>` ([`<returns>`](documentation-comments.md#returns)), and permits structure to be added to text.</span></span>
 
-<span data-ttu-id="8ee92-206">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-206">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-206">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-206">__Syntax:__</span></span>
 
 ```xml
 <para>content</para>
 ```
 
-<span data-ttu-id="8ee92-207">Burada `content` metni paragraf görüntülenir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-207">where `content` is the text of the paragraph.</span></span>
+<span data-ttu-id="fc36d-207">paragrafın `content` metni nerede.</span><span class="sxs-lookup"><span data-stu-id="fc36d-207">where `content` is the text of the paragraph.</span></span>
 
-<span data-ttu-id="8ee92-208">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-208">__Example:__</span></span>
+<span data-ttu-id="fc36d-208">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-208">__Example:__</span></span>
 
 ```csharp
 /// <summary>This is the entry point of the Point class testing program.
@@ -309,20 +309,20 @@ public static void Main() {
 
 ### `<param>`
 
-<span data-ttu-id="8ee92-209">Bu etiket, yöntem, oluşturucu veya dizin oluşturucu için bir parametre tanımlamak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-209">This tag is used to describe a parameter for a method, constructor, or indexer.</span></span>
+<span data-ttu-id="fc36d-209">Bu etiket bir yöntem, Oluşturucu veya Dizin Oluşturucu için bir parametre belirtmek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-209">This tag is used to describe a parameter for a method, constructor, or indexer.</span></span>
 
-<span data-ttu-id="8ee92-210">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-210">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-210">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-210">__Syntax:__</span></span>
 
 ```xml
 <param name="name">description</param>
 ```
 
-<span data-ttu-id="8ee92-211">Burada</span><span class="sxs-lookup"><span data-stu-id="8ee92-211">where</span></span>
+<span data-ttu-id="fc36d-211">Burada</span><span class="sxs-lookup"><span data-stu-id="fc36d-211">where</span></span>
 
-* <span data-ttu-id="8ee92-212">`name` parametrenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-212">`name` is the name of the parameter.</span></span>
-* <span data-ttu-id="8ee92-213">`description` parametre açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-213">`description` is a description of the parameter.</span></span>
+* <span data-ttu-id="fc36d-212">`name`parametrenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-212">`name` is the name of the parameter.</span></span>
+* <span data-ttu-id="fc36d-213">`description`, parametresinin bir açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-213">`description` is a description of the parameter.</span></span>
 
-<span data-ttu-id="8ee92-214">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-214">__Example:__</span></span>
+<span data-ttu-id="fc36d-214">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-214">__Example:__</span></span>
 
 ```csharp
 /// <summary>This method changes the point's location to
@@ -337,17 +337,17 @@ public void Move(int xor, int yor) {
 
 ### `<paramref>`
 
-<span data-ttu-id="8ee92-215">Bu etiket, bir sözcüğün bir parametre olduğunu belirtmek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-215">This tag is used to indicate that a word is a parameter.</span></span> <span data-ttu-id="8ee92-216">Soubor dokumentace bu parametreyi belirgin bir şekilde biçimlendirmek için işlenebilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-216">The documentation file can be processed to format this parameter in some distinct way.</span></span>
+<span data-ttu-id="fc36d-215">Bu etiket bir sözcüğün bir parametre olduğunu göstermek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-215">This tag is used to indicate that a word is a parameter.</span></span> <span data-ttu-id="fc36d-216">Belge dosyası bu parametreyi farklı bir şekilde biçimlendirmek için işlenebilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-216">The documentation file can be processed to format this parameter in some distinct way.</span></span>
 
-<span data-ttu-id="8ee92-217">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-217">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-217">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-217">__Syntax:__</span></span>
 
 ```xml
 <paramref name="name"/>
 ```
 
-<span data-ttu-id="8ee92-218">Burada `name` parametrenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-218">where `name` is the name of the parameter.</span></span>
+<span data-ttu-id="fc36d-218">`name` parametresinin adı.</span><span class="sxs-lookup"><span data-stu-id="fc36d-218">where `name` is the name of the parameter.</span></span>
 
-<span data-ttu-id="8ee92-219">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-219">__Example:__</span></span>
+<span data-ttu-id="fc36d-219">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-219">__Example:__</span></span>
 
 ```csharp
 /// <summary>This constructor initializes the new Point to
@@ -363,20 +363,20 @@ public Point(int xor, int yor) {
 
 ### `<permission>`
 
-<span data-ttu-id="8ee92-220">Bu etiket belgelenecektir üye güvenlik erişilebilirliğini sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-220">This tag allows the security accessibility of a member to be documented.</span></span>
+<span data-ttu-id="fc36d-220">Bu etiket bir üyenin güvenlik erişilebilirliğinin belgelenme olanak sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-220">This tag allows the security accessibility of a member to be documented.</span></span>
 
-<span data-ttu-id="8ee92-221">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-221">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-221">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-221">__Syntax:__</span></span>
 
 ```xml
 <permission cref="member">description</permission>
 ```
 
-<span data-ttu-id="8ee92-222">Burada</span><span class="sxs-lookup"><span data-stu-id="8ee92-222">where</span></span>
+<span data-ttu-id="fc36d-222">Burada</span><span class="sxs-lookup"><span data-stu-id="fc36d-222">where</span></span>
 
-* <span data-ttu-id="8ee92-223">`member` bir üyenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-223">`member` is the name of a member.</span></span> <span data-ttu-id="8ee92-224">Belirli bir kod öğesi var ve çevirir belgeleri Oluşturucu denetler *üye* soubor dokumentace kurallı öğesi adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-224">The documentation generator checks that the given code element exists and translates *member* to the canonical element name in the documentation file.</span></span>
-* <span data-ttu-id="8ee92-225">`description` üye erişimi açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-225">`description` is a description of the access to the member.</span></span>
+* <span data-ttu-id="fc36d-223">`member`üyenin adıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-223">`member` is the name of a member.</span></span> <span data-ttu-id="fc36d-224">Belge Oluşturucu verilen kod öğesinin var olduğunu denetler ve belge *dosyasındaki öğeyi kurallı öğe adına çevirir.*</span><span class="sxs-lookup"><span data-stu-id="fc36d-224">The documentation generator checks that the given code element exists and translates *member* to the canonical element name in the documentation file.</span></span>
+* <span data-ttu-id="fc36d-225">`description`, üyeye erişimin bir açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-225">`description` is a description of the access to the member.</span></span>
 
-<span data-ttu-id="8ee92-226">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-226">__Example:__</span></span>
+<span data-ttu-id="fc36d-226">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-226">__Example:__</span></span>
 
 ```csharp
 /// <permission cref="System.Security.PermissionSet">Everyone can
@@ -387,24 +387,24 @@ public static void Test() {
 }
 ```
 
-### `<remark>`
+### `<remarks>`
 
-<span data-ttu-id="8ee92-227">Bu etiket, bir türle ilgili ek bilgileri belirtmek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-227">This tag is used to specify extra information about a type.</span></span> <span data-ttu-id="8ee92-228">(Kullanım `<summary>` ([`<summary>`](documentation-comments.md#summary)) türü ve bir türün üyelerini tanımlamak için.)</span><span class="sxs-lookup"><span data-stu-id="8ee92-228">(Use `<summary>` ([`<summary>`](documentation-comments.md#summary)) to describe the type itself and the members of a type.)</span></span>
+<span data-ttu-id="fc36d-227">Bu etiket, bir tür hakkındaki ek bilgileri belirtmek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-227">This tag is used to specify extra information about a type.</span></span> <span data-ttu-id="fc36d-228">(Türünün `<summary>` kendisini[`<summary>`](documentation-comments.md#summary)ve bir türün üyelerini anlatmak için () kullanın.)</span><span class="sxs-lookup"><span data-stu-id="fc36d-228">(Use `<summary>` ([`<summary>`](documentation-comments.md#summary)) to describe the type itself and the members of a type.)</span></span>
 
-<span data-ttu-id="8ee92-229">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-229">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-229">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-229">__Syntax:__</span></span>
 
 ```xml
-<remark>description</remark>
+<remarks>description</remarks>
 ```
 
-<span data-ttu-id="8ee92-230">Burada `description` açıklama metni.</span><span class="sxs-lookup"><span data-stu-id="8ee92-230">where `description` is the text of the remark.</span></span>
+<span data-ttu-id="fc36d-230">Burada `description` , açıklamanın metni bulunur.</span><span class="sxs-lookup"><span data-stu-id="fc36d-230">where `description` is the text of the remark.</span></span>
 
-<span data-ttu-id="8ee92-231">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-231">__Example:__</span></span>
+<span data-ttu-id="fc36d-231">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-231">__Example:__</span></span>
 
 ```csharp
 /// <summary>Class <c>Point</c> models a point in a 
 /// two-dimensional plane.</summary>
-/// <remark>Uses polar coordinates</remark>
+/// <remarks>Uses polar coordinates</remarks>
 public class Point 
 {
     // ...
@@ -413,17 +413,17 @@ public class Point
 
 ### `<returns>`
 
-<span data-ttu-id="8ee92-232">Bu etiket, bir yöntemin dönüş değerini tanımlamak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-232">This tag is used to describe the return value of a method.</span></span>
+<span data-ttu-id="fc36d-232">Bu etiket bir yöntemin dönüş değerini tanımlamakta kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-232">This tag is used to describe the return value of a method.</span></span>
 
-<span data-ttu-id="8ee92-233">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-233">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-233">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-233">__Syntax:__</span></span>
 
 ```xml
 <returns>description</returns>
 ```
 
-<span data-ttu-id="8ee92-234">Burada `description` dönüş değeri bir açıklaması verilmektedir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-234">where `description` is a description of the return value.</span></span>
+<span data-ttu-id="fc36d-234">`description` , dönüş değerinin bir açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-234">where `description` is a description of the return value.</span></span>
 
-<span data-ttu-id="8ee92-235">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-235">__Example:__</span></span>
+<span data-ttu-id="fc36d-235">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-235">__Example:__</span></span>
 
 ```csharp
 /// <summary>Report a point's location as a string.</summary>
@@ -436,17 +436,17 @@ public override string ToString() {
 
 ### `<see>`
 
-<span data-ttu-id="8ee92-236">Bu etiket metin içinde belirtilmesi için bir bağlantı sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-236">This tag allows a link to be specified within text.</span></span> <span data-ttu-id="8ee92-237">Kullanım `<seealso>` ([`<seealso>`](documentation-comments.md#seealso)) bir Ayrıca bkz. bölümünde görüntülenecek olan metin göstermek için.</span><span class="sxs-lookup"><span data-stu-id="8ee92-237">Use `<seealso>` ([`<seealso>`](documentation-comments.md#seealso)) to indicate text that is to appear in a See Also section.</span></span>
+<span data-ttu-id="fc36d-236">Bu etiket, bir bağlantının metin içinde belirtilmesini sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-236">This tag allows a link to be specified within text.</span></span> <span data-ttu-id="fc36d-237">Ayrıca `<seealso>` bkz[`<seealso>`](documentation-comments.md#seealso). bölümünde görünecek metni göstermek için () kullanın.</span><span class="sxs-lookup"><span data-stu-id="fc36d-237">Use `<seealso>` ([`<seealso>`](documentation-comments.md#seealso)) to indicate text that is to appear in a See Also section.</span></span>
 
-<span data-ttu-id="8ee92-238">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-238">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-238">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-238">__Syntax:__</span></span>
 
 ```xml
 <see cref="member"/>
 ```
 
-<span data-ttu-id="8ee92-239">Burada `member` üyesi adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-239">where `member` is the name of a member.</span></span> <span data-ttu-id="8ee92-240">Belirli bir kod öğesi var ve değişiklikleri belgeleri Oluşturucu denetler *üye* oluşturulan belgeleri dosyasındaki öğesi adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-240">The documentation generator checks that the given code element exists and changes *member* to the element name in the generated documentation file.</span></span>
+<span data-ttu-id="fc36d-239">`member` üyenin adı.</span><span class="sxs-lookup"><span data-stu-id="fc36d-239">where `member` is the name of a member.</span></span> <span data-ttu-id="fc36d-240">Belge Oluşturucu verilen kod öğesinin var olduğunu denetler ve oluşturulan belgeler dosyasındaki öğe adına *üye* olarak değişir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-240">The documentation generator checks that the given code element exists and changes *member* to the element name in the generated documentation file.</span></span>
 
-<span data-ttu-id="8ee92-241">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-241">__Example:__</span></span>
+<span data-ttu-id="fc36d-241">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-241">__Example:__</span></span>
 
 ```csharp
 /// <summary>This method changes the point's location to
@@ -469,17 +469,17 @@ public void Translate(int xor, int yor) {
 
 ### `<seealso>`
 
-<span data-ttu-id="8ee92-242">Bu etiket için Ayrıca bakınız bölümüne oluşturulması gereken bir giriş sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-242">This tag allows an entry to be generated for the See Also section.</span></span> <span data-ttu-id="8ee92-243">Kullanım `<see>` ([`<see>`](documentation-comments.md#see)) bağlantı metninde belirtmek için.</span><span class="sxs-lookup"><span data-stu-id="8ee92-243">Use `<see>` ([`<see>`](documentation-comments.md#see)) to specify a link from within text.</span></span>
+<span data-ttu-id="fc36d-242">Bu etiket, Ayrıca bkz. bölümü için bir girişin oluşturulmasına izin verir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-242">This tag allows an entry to be generated for the See Also section.</span></span> <span data-ttu-id="fc36d-243">Metin `<see>` içinden[`<see>`](documentation-comments.md#see)bir bağlantı belirtmek için () kullanın.</span><span class="sxs-lookup"><span data-stu-id="fc36d-243">Use `<see>` ([`<see>`](documentation-comments.md#see)) to specify a link from within text.</span></span>
 
-<span data-ttu-id="8ee92-244">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-244">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-244">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-244">__Syntax:__</span></span>
 
 ```xml
 <seealso cref="member"/>
 ```
 
-<span data-ttu-id="8ee92-245">Burada `member` üyesi adıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-245">where `member` is the name of a member.</span></span> <span data-ttu-id="8ee92-246">Belirli bir kod öğesi var ve değişiklikleri belgeleri Oluşturucu denetler *üye* oluşturulan belgeleri dosyasındaki öğesi adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-246">The documentation generator checks that the given code element exists and changes *member* to the element name in the generated documentation file.</span></span>
+<span data-ttu-id="fc36d-245">`member` üyenin adı.</span><span class="sxs-lookup"><span data-stu-id="fc36d-245">where `member` is the name of a member.</span></span> <span data-ttu-id="fc36d-246">Belge Oluşturucu verilen kod öğesinin var olduğunu denetler ve oluşturulan belgeler dosyasındaki öğe adına *üye* olarak değişir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-246">The documentation generator checks that the given code element exists and changes *member* to the element name in the generated documentation file.</span></span>
 
-<span data-ttu-id="8ee92-247">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-247">__Example:__</span></span>
+<span data-ttu-id="fc36d-247">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-247">__Example:__</span></span>
 
 ```csharp
 /// <summary>This method determines whether two Points have the same
@@ -493,17 +493,17 @@ public override bool Equals(object o) {
 
 ### `<summary>`
 
-Bu etiket, bir tür veya üye türü tanımlamak için kullanılabilir. <span data-ttu-id="8ee92-249">Kullanım `<remark>` ([`<remark>`](documentation-comments.md#remark)) türünü belirtmek için.</span><span class="sxs-lookup"><span data-stu-id="8ee92-249">Use `<remark>` ([`<remark>`](documentation-comments.md#remark)) to describe the type itself.</span></span>
+Bu etiket, bir türü veya bir türün bir üyesini anlatmak için kullanılabilir. <span data-ttu-id="fc36d-249">Türün `<remarks>` kendisini[`<remarks>`](documentation-comments.md#remarks)anlatmak için () kullanın.</span><span class="sxs-lookup"><span data-stu-id="fc36d-249">Use `<remarks>` ([`<remarks>`](documentation-comments.md#remarks)) to describe the type itself.</span></span>
 
-<span data-ttu-id="8ee92-250">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-250">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-250">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-250">__Syntax:__</span></span>
 
 ```xml
 <summary>description</summary>
 ```
 
-<span data-ttu-id="8ee92-251">Burada `description` bir türe veya üyeye özetidir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-251">where `description` is a summary of the type or member.</span></span>
+<span data-ttu-id="fc36d-251">`description` , türün veya üyenin bir özetidir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-251">where `description` is a summary of the type or member.</span></span>
 
-<span data-ttu-id="8ee92-252">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-252">__Example:__</span></span>
+<span data-ttu-id="fc36d-252">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-252">__Example:__</span></span>
 
 ```csharp
 /// <summary>This constructor initializes the new Point to (0,0).</summary>
@@ -513,17 +513,17 @@ public Point() : this(0,0) {
 
 ### `<value>`
 
-<span data-ttu-id="8ee92-253">Bu etiket tanımlanmış bir özellik sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-253">This tag allows a property to be described.</span></span>
+<span data-ttu-id="fc36d-253">Bu etiket, bir özelliğin açıklanalmasına izin verir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-253">This tag allows a property to be described.</span></span>
 
-<span data-ttu-id="8ee92-254">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-254">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-254">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-254">__Syntax:__</span></span>
 
 ```xml
 <value>property description</value>
 ```
 
-<span data-ttu-id="8ee92-255">Burada `property description` özelliği için bir açıklama.</span><span class="sxs-lookup"><span data-stu-id="8ee92-255">where `property description` is a description for the property.</span></span>
+<span data-ttu-id="fc36d-255">`property description` , özelliği için bir açıklamadır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-255">where `property description` is a description for the property.</span></span>
 
-<span data-ttu-id="8ee92-256">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-256">__Example:__</span></span>
+<span data-ttu-id="fc36d-256">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-256">__Example:__</span></span>
 
 ```csharp
 /// <value>Property <c>X</c> represents the point's x-coordinate.</value>
@@ -536,17 +536,17 @@ public int X
 
 ### `<typeparam>`
 
-<span data-ttu-id="8ee92-257">Bu etiket, genel tür parametresi için bir sınıf, yapı, arabirim, temsilci veya yöntemi tanımlamak için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-257">This tag is used to describe a generic type parameter for a class, struct, interface, delegate, or method.</span></span>
+<span data-ttu-id="fc36d-257">Bu etiket, bir sınıf, yapı, arabirim, temsilci veya yöntem için genel bir tür parametresi tanımlamakta kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-257">This tag is used to describe a generic type parameter for a class, struct, interface, delegate, or method.</span></span>
 
-<span data-ttu-id="8ee92-258">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-258">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-258">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-258">__Syntax:__</span></span>
 
 ```xml
 <typeparam name="name">description</typeparam>
 ```
 
-<span data-ttu-id="8ee92-259">Burada `name` tür parametresi adıdır ve `description` kendi açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-259">where `name` is the name of the type parameter, and `description` is its description.</span></span>
+<span data-ttu-id="fc36d-259">Burada `name` tür parametresinin adıdır ve `description` açıklamasıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-259">where `name` is the name of the type parameter, and `description` is its description.</span></span>
 
-<span data-ttu-id="8ee92-260">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-260">__Example:__</span></span>
+<span data-ttu-id="fc36d-260">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-260">__Example:__</span></span>
 
 ```csharp
 /// <summary>A generic list class.</summary>
@@ -558,17 +558,17 @@ public class MyList<T> {
 
 ### `<typeparamref>`
 
-<span data-ttu-id="8ee92-261">Bu etiket, bir sözcüğün bir tür parametresi olduğunu belirtmek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-261">This tag is used to indicate that a word is a type parameter.</span></span> <span data-ttu-id="8ee92-262">Soubor dokumentace, bu tür parametresi farklı şekilde biçimlendirmek için işlenebilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-262">The documentation file can be processed to format this type parameter in some distinct way.</span></span>
+<span data-ttu-id="fc36d-261">Bu etiket, bir sözcüğün bir tür parametresi olduğunu göstermek için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-261">This tag is used to indicate that a word is a type parameter.</span></span> <span data-ttu-id="fc36d-262">Belge dosyası bu tür parametresini farklı bir şekilde biçimlendirmek için işlenebilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-262">The documentation file can be processed to format this type parameter in some distinct way.</span></span>
 
-<span data-ttu-id="8ee92-263">__Sözdizimi:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-263">__Syntax:__</span></span>
+<span data-ttu-id="fc36d-263">__Sözdizimi__</span><span class="sxs-lookup"><span data-stu-id="fc36d-263">__Syntax:__</span></span>
 
 ```xml
 <typeparamref name="name"/>
 ```
 
-<span data-ttu-id="8ee92-264">Burada `name` tür parametresinin adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-264">where `name` is the name of the type parameter.</span></span>
+<span data-ttu-id="fc36d-264">Burada `name` tür parametresinin adıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-264">where `name` is the name of the type parameter.</span></span>
 
-<span data-ttu-id="8ee92-265">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="8ee92-265">__Example:__</span></span>
+<span data-ttu-id="fc36d-265">__Örnek:__</span><span class="sxs-lookup"><span data-stu-id="fc36d-265">__Example:__</span></span>
 
 ```csharp
 /// <summary>This method fetches data and returns a list of <typeparamref name="T"/>.</summary>
@@ -578,46 +578,46 @@ public List<T> FetchData<T>(string query) {
 }
 ```
 
-## <a name="processing-the-documentation-file"></a><span data-ttu-id="8ee92-266">Soubor dokumentace işleme</span><span class="sxs-lookup"><span data-stu-id="8ee92-266">Processing the documentation file</span></span>
+## <a name="processing-the-documentation-file"></a><span data-ttu-id="fc36d-266">Belge dosyası işleniyor</span><span class="sxs-lookup"><span data-stu-id="fc36d-266">Processing the documentation file</span></span>
 
-<span data-ttu-id="8ee92-267">Belgeleri Oluşturucu bir belge açıklaması ile etiketlenir kaynak kod içindeki her öğe için bir kimlik dizesi oluşturur.</span><span class="sxs-lookup"><span data-stu-id="8ee92-267">The documentation generator generates an ID string for each element in the source code that is tagged with a documentation comment.</span></span> <span data-ttu-id="8ee92-268">Bu kimlik dizesi, bir kaynak öğesi benzersiz olarak tanımlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-268">This ID string uniquely identifies a source element.</span></span> <span data-ttu-id="8ee92-269">Bir belge Görüntüleyici, bir kimlik dizesi belgeleri uygulandığı ilgili meta verileri/yansıma öğeyi tanımlamak için kullanabilirsiniz.</span><span class="sxs-lookup"><span data-stu-id="8ee92-269">A documentation viewer can use an ID string to identify the corresponding metadata/reflection item to which the documentation applies.</span></span>
+<span data-ttu-id="fc36d-267">Belge Oluşturucu bir belge açıklamasıyla etiketlenmiş kaynak kodundaki her öğe için bir KIMLIK dizesi oluşturur.</span><span class="sxs-lookup"><span data-stu-id="fc36d-267">The documentation generator generates an ID string for each element in the source code that is tagged with a documentation comment.</span></span> <span data-ttu-id="fc36d-268">Bu KIMLIK dizesi bir kaynak öğeyi benzersiz şekilde tanımlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-268">This ID string uniquely identifies a source element.</span></span> <span data-ttu-id="fc36d-269">Belge Görüntüleyicisi, belgelerin uygulandığı karşılık gelen meta veri/yansıma öğesini tanımlamak için bir KIMLIK dizesi kullanabilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-269">A documentation viewer can use an ID string to identify the corresponding metadata/reflection item to which the documentation applies.</span></span>
 
-<span data-ttu-id="8ee92-270">Soubor dokumentace kaynak kodunu hiyerarşik temsili değildir; Bunun yerine, her öğe için oluşturulan bir kimlik dizesi ile düz bir liste olduğu.</span><span class="sxs-lookup"><span data-stu-id="8ee92-270">The documentation file is not a hierarchical representation of the source code; rather, it is a flat list with a generated ID string for each element.</span></span>
+<span data-ttu-id="fc36d-270">Belge dosyası kaynak kodun hiyerarşik bir temsili değildir; Bunun yerine, her öğe için oluşturulmuş bir KIMLIK dizesi olan düz bir liste olur.</span><span class="sxs-lookup"><span data-stu-id="fc36d-270">The documentation file is not a hierarchical representation of the source code; rather, it is a flat list with a generated ID string for each element.</span></span>
 
-### <a name="id-string-format"></a><span data-ttu-id="8ee92-271">Kimlik dizesi biçimi</span><span class="sxs-lookup"><span data-stu-id="8ee92-271">ID string format</span></span>
+### <a name="id-string-format"></a><span data-ttu-id="fc36d-271">KIMLIK dize biçimi</span><span class="sxs-lookup"><span data-stu-id="fc36d-271">ID string format</span></span>
 
-<span data-ttu-id="8ee92-272">Kimliği dizesi oluştururken aşağıdaki kuralları belgeleri Oluşturucu gözlemler:</span><span class="sxs-lookup"><span data-stu-id="8ee92-272">The documentation generator observes the following rules when it generates the ID strings:</span></span>
+<span data-ttu-id="fc36d-272">Belge Oluşturucu, KIMLIK dizelerini oluşturduğunda aşağıdaki kuralları sunar:</span><span class="sxs-lookup"><span data-stu-id="fc36d-272">The documentation generator observes the following rules when it generates the ID strings:</span></span>
 
-*  <span data-ttu-id="8ee92-273">Hiçbir boşluk dizesinde yerleştirilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-273">No white space is placed in the string.</span></span>
+*  <span data-ttu-id="fc36d-273">Dizeye boşluk yerleştirilmez.</span><span class="sxs-lookup"><span data-stu-id="fc36d-273">No white space is placed in the string.</span></span>
 
-*  <span data-ttu-id="8ee92-274">Dizenin ilk bölümü, tek bir karakter üste aracılığıyla belgelenmiş üye türünü tanımlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-274">The first part of the string identifies the kind of member being documented, via a single character followed by a colon.</span></span> <span data-ttu-id="8ee92-275">Aşağıdaki türde üye tanımlanır:</span><span class="sxs-lookup"><span data-stu-id="8ee92-275">The following kinds of members are defined:</span></span>
+*  <span data-ttu-id="fc36d-274">Dizenin ilk bölümü, belgelendirilmiş üye türünü, tek bir karakter ve ardından iki nokta üst üste ile tanımlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-274">The first part of the string identifies the kind of member being documented, via a single character followed by a colon.</span></span> <span data-ttu-id="fc36d-275">Aşağıdaki üye türleri tanımlanmıştır:</span><span class="sxs-lookup"><span data-stu-id="fc36d-275">The following kinds of members are defined:</span></span>
 
-   | <span data-ttu-id="8ee92-276">__Karakter__</span><span class="sxs-lookup"><span data-stu-id="8ee92-276">__Character__</span></span> | <span data-ttu-id="8ee92-277">__Açıklama__</span><span class="sxs-lookup"><span data-stu-id="8ee92-277">__Description__</span></span>                                             |
+   | <span data-ttu-id="fc36d-276">__İnde__</span><span class="sxs-lookup"><span data-stu-id="fc36d-276">__Character__</span></span> | <span data-ttu-id="fc36d-277">__Açıklama__</span><span class="sxs-lookup"><span data-stu-id="fc36d-277">__Description__</span></span>                                             |
    |---------------|-------------------------------------------------------------|
-   | <span data-ttu-id="8ee92-278">E</span><span class="sxs-lookup"><span data-stu-id="8ee92-278">E</span></span>             | <span data-ttu-id="8ee92-279">Olay</span><span class="sxs-lookup"><span data-stu-id="8ee92-279">Event</span></span>                                                       |
-   | <span data-ttu-id="8ee92-280">F</span><span class="sxs-lookup"><span data-stu-id="8ee92-280">F</span></span>             | <span data-ttu-id="8ee92-281">Alan</span><span class="sxs-lookup"><span data-stu-id="8ee92-281">Field</span></span>                                                       |
-   | <span data-ttu-id="8ee92-282">M</span><span class="sxs-lookup"><span data-stu-id="8ee92-282">M</span></span>             | <span data-ttu-id="8ee92-283">(Oluşturucular, Yıkıcılar ve işleçler dahil) yöntemi</span><span class="sxs-lookup"><span data-stu-id="8ee92-283">Method (including constructors, destructors, and operators)</span></span> |
-   | <span data-ttu-id="8ee92-284">N</span><span class="sxs-lookup"><span data-stu-id="8ee92-284">N</span></span>             | <span data-ttu-id="8ee92-285">Ad Alanı</span><span class="sxs-lookup"><span data-stu-id="8ee92-285">Namespace</span></span>                                                   |
-   | <span data-ttu-id="8ee92-286">P</span><span class="sxs-lookup"><span data-stu-id="8ee92-286">P</span></span>             | <span data-ttu-id="8ee92-287">Özellik (dizin oluşturucular dahil)</span><span class="sxs-lookup"><span data-stu-id="8ee92-287">Property (including indexers)</span></span>                               |
-   | <span data-ttu-id="8ee92-288">T</span><span class="sxs-lookup"><span data-stu-id="8ee92-288">T</span></span>             | <span data-ttu-id="8ee92-289">(Sınıfı, temsilci, enum, arabirimi ve yapı gibi) yazın</span><span class="sxs-lookup"><span data-stu-id="8ee92-289">Type (such as class, delegate, enum, interface, and struct)</span></span> |
-   | <span data-ttu-id="8ee92-290">!</span><span class="sxs-lookup"><span data-stu-id="8ee92-290">!</span></span>             | <span data-ttu-id="8ee92-291">Hata dizesi; dizenin geri kalanı, hata hakkında bilgi sağlar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-291">Error string; the rest of the string provides information about the error.</span></span> <span data-ttu-id="8ee92-292">Örneğin, belgeleri Oluşturucu çözümlenemeyen bağlantılar için hata bilgisi oluşturur.</span><span class="sxs-lookup"><span data-stu-id="8ee92-292">For example, the documentation generator generates error information for links that cannot be resolved.</span></span> |
+   | <span data-ttu-id="fc36d-278">E</span><span class="sxs-lookup"><span data-stu-id="fc36d-278">E</span></span>             | <span data-ttu-id="fc36d-279">Olay</span><span class="sxs-lookup"><span data-stu-id="fc36d-279">Event</span></span>                                                       |
+   | <span data-ttu-id="fc36d-280">F</span><span class="sxs-lookup"><span data-stu-id="fc36d-280">F</span></span>             | <span data-ttu-id="fc36d-281">Alan</span><span class="sxs-lookup"><span data-stu-id="fc36d-281">Field</span></span>                                                       |
+   | <span data-ttu-id="fc36d-282">M</span><span class="sxs-lookup"><span data-stu-id="fc36d-282">M</span></span>             | <span data-ttu-id="fc36d-283">Yöntem (oluşturucular, Yıkıcılar ve işleçler dahil)</span><span class="sxs-lookup"><span data-stu-id="fc36d-283">Method (including constructors, destructors, and operators)</span></span> |
+   | <span data-ttu-id="fc36d-284">N</span><span class="sxs-lookup"><span data-stu-id="fc36d-284">N</span></span>             | <span data-ttu-id="fc36d-285">Ad Alanı</span><span class="sxs-lookup"><span data-stu-id="fc36d-285">Namespace</span></span>                                                   |
+   | <span data-ttu-id="fc36d-286">P</span><span class="sxs-lookup"><span data-stu-id="fc36d-286">P</span></span>             | <span data-ttu-id="fc36d-287">Özellik (Dizin oluşturucular dahil)</span><span class="sxs-lookup"><span data-stu-id="fc36d-287">Property (including indexers)</span></span>                               |
+   | <span data-ttu-id="fc36d-288">T</span><span class="sxs-lookup"><span data-stu-id="fc36d-288">T</span></span>             | <span data-ttu-id="fc36d-289">Tür (class, Delegate, Enum, Interface ve struct gibi)</span><span class="sxs-lookup"><span data-stu-id="fc36d-289">Type (such as class, delegate, enum, interface, and struct)</span></span> |
+   | <span data-ttu-id="fc36d-290">!</span><span class="sxs-lookup"><span data-stu-id="fc36d-290">!</span></span>             | <span data-ttu-id="fc36d-291">Hata dizesi; dizenin geri kalanı hata hakkında bilgi sağlar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-291">Error string; the rest of the string provides information about the error.</span></span> <span data-ttu-id="fc36d-292">Örneğin, belge Oluşturucu çözülemeyen bağlantılar için hata bilgileri oluşturur.</span><span class="sxs-lookup"><span data-stu-id="fc36d-292">For example, the documentation generator generates error information for links that cannot be resolved.</span></span> |
 
-*  <span data-ttu-id="8ee92-293">İkinci dize ad alanı kökünde başlangıç öğesi tam olarak nitelenmiş adını parçasıdır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-293">The second part of the string is the fully qualified name of the element, starting at the root of the namespace.</span></span> <span data-ttu-id="8ee92-294">Öğe, kapsayan türleri ve ad alanı adı noktalarla ayrılmış.</span><span class="sxs-lookup"><span data-stu-id="8ee92-294">The name of the element, its enclosing type(s), and namespace are separated by periods.</span></span> <span data-ttu-id="8ee92-295">Öğenin adını nokta varsa, bunlar tarafından değiştirilir `#(U+0023)` karakter.</span><span class="sxs-lookup"><span data-stu-id="8ee92-295">If the name of the item itself has periods, they are replaced by `#(U+0023)` characters.</span></span> <span data-ttu-id="8ee92-296">(Hiçbir öğe adını bu karakteri olduğunu varsayılır.)</span><span class="sxs-lookup"><span data-stu-id="8ee92-296">(It is assumed that no element has this character in its name.)</span></span>
-*  <span data-ttu-id="8ee92-297">Yöntemleri ve özellikleri parantez içindeki bağımsız değişken, bağımsız değişken listesi aşağıdadır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-297">For methods and properties with arguments, the argument list follows, enclosed in parentheses.</span></span> <span data-ttu-id="8ee92-298">Bu bağımsız değişkenler olmadan parantezler göz ardı edilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-298">For those without arguments, the parentheses are omitted.</span></span> <span data-ttu-id="8ee92-299">Bağımsız değişkenlerin virgülle ayrılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-299">The arguments are separated by commas.</span></span> <span data-ttu-id="8ee92-300">Kodlama her bağımsız değişkeni bir CLI imza aynı şu şekildedir:</span><span class="sxs-lookup"><span data-stu-id="8ee92-300">The encoding of each argument is the same as a CLI signature, as follows:</span></span>
-   *  <span data-ttu-id="8ee92-301">Bağımsız değişkenler şu şekilde değiştirilmiş kendi tam adına göre kendi belgesi adı tarafından temsil edilir:</span><span class="sxs-lookup"><span data-stu-id="8ee92-301">Arguments are represented by their documentation name, which is based on their fully qualified name, modified as follows:</span></span>
-      * <span data-ttu-id="8ee92-302">Genel türleri temsil eden bağımsız değişkenlere sahip bir eklenmiş `` ` `` (vurgulamasını belirtir) karakteri ve ardından tür parametrelerinin sayısı</span><span class="sxs-lookup"><span data-stu-id="8ee92-302">Arguments that represent generic types have an appended `` ` `` (backtick) character followed by the number of type parameters</span></span>
-      * <span data-ttu-id="8ee92-303">Bağımsız değişkenleri olan `out` veya `ref` değiştiricisine sahip bir `@` izleyerek kendi tür adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-303">Arguments having the `out` or `ref` modifier have an `@` following their type name.</span></span> <span data-ttu-id="8ee92-304">Geçirilen bağımsız değişkenleri değere veya aracılığıyla `params` hiçbir özel gösterimi vardır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-304">Arguments passed by value or via `params` have no special notation.</span></span>
-      * <span data-ttu-id="8ee92-305">Dizileri bağımsız değişkenleri olarak temsil edilir `[lowerbound:size, ... , lowerbound:size]` burada virgüllerle küçük bir boyut sayısıdır ve her boyut, boyutu ve alt sınırlarını biliniyorsa, ondalık olarak gösterilir.</span><span class="sxs-lookup"><span data-stu-id="8ee92-305">Arguments that are arrays are represented as `[lowerbound:size, ... , lowerbound:size]` where the number of commas is the rank less one, and the lower bounds and size of each dimension, if known, are represented in decimal.</span></span> <span data-ttu-id="8ee92-306">Alt sınır veya boyutu belirtilmezse atlanır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-306">If a lower bound or size is not specified, it is omitted.</span></span> <span data-ttu-id="8ee92-307">Belirli bir boyut için boyut ve alt sınır atlanırsa, `:` de atlanır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-307">If the lower bound and size for a particular dimension are omitted, the `:` is omitted as well.</span></span> <span data-ttu-id="8ee92-308">Basit diziler tarafından temsil edilir `[]` düzeyi başına.</span><span class="sxs-lookup"><span data-stu-id="8ee92-308">Jagged arrays are represented by one `[]` per level.</span></span>
-      * <span data-ttu-id="8ee92-309">İşaretçi türleri void dışında olan bağımsız değişkenler kullanılarak temsil edilir bir `*` aşağıdaki tür adı.</span><span class="sxs-lookup"><span data-stu-id="8ee92-309">Arguments that have pointer types other than void are represented using a `*` following the type name.</span></span> <span data-ttu-id="8ee92-310">Void bir işaretçi türü adını kullanılarak temsil edilir `System.Void`.</span><span class="sxs-lookup"><span data-stu-id="8ee92-310">A void pointer is represented using a type name of `System.Void`.</span></span>
-      * <span data-ttu-id="8ee92-311">Genel tür parametreleri türlerinde tanımlanan başvuran bağımsız değişkenler kullanılarak kodlanır `` ` `` (vurgulamasını belirtir) karakteri ve ardından tür parametresi sıfır tabanlı dizini.</span><span class="sxs-lookup"><span data-stu-id="8ee92-311">Arguments that refer to generic type parameters defined on types are encoded using the `` ` `` (backtick) character followed by the zero-based index of the type parameter.</span></span>
-      * <span data-ttu-id="8ee92-312">Yöntemleri tanımlanan genel tür parametrelerini kullanan bağımsız değişkenleri kullanma double-vurgulamasını belirtir ``` `` ``` yerine `` ` `` türleri için kullanılır.</span><span class="sxs-lookup"><span data-stu-id="8ee92-312">Arguments that use generic type parameters defined in methods use a double-backtick ``` `` ``` instead of the `` ` `` used for types.</span></span>
-      * <span data-ttu-id="8ee92-313">Oluşturulan genel türler için başvuru bağımsız değişkenleri, ardından genel türü kullanılarak kodlanır `{`, tür bağımsız değişkenleri virgülle ayrılmış listesi tarafından izlenen, ardından `}`.</span><span class="sxs-lookup"><span data-stu-id="8ee92-313">Arguments that refer to constructed generic types are encoded using the generic type, followed by `{`, followed by a comma-separated list of type arguments, followed by `}`.</span></span>
+*  <span data-ttu-id="fc36d-293">Dizenin ikinci bölümü, ad alanının köküden başlayarak öğesinin tam nitelikli adıdır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-293">The second part of the string is the fully qualified name of the element, starting at the root of the namespace.</span></span> <span data-ttu-id="fc36d-294">Öğenin adı, kapsayan tür (ler) ve ad alanı noktalarla ayrılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-294">The name of the element, its enclosing type(s), and namespace are separated by periods.</span></span> <span data-ttu-id="fc36d-295">Öğenin adında nokta varsa, bunlar karakter olarak `#(U+0023)` değiştirilirler.</span><span class="sxs-lookup"><span data-stu-id="fc36d-295">If the name of the item itself has periods, they are replaced by `#(U+0023)` characters.</span></span> <span data-ttu-id="fc36d-296">(Bir öğe adında bu karakterin olmadığı varsayılır.)</span><span class="sxs-lookup"><span data-stu-id="fc36d-296">(It is assumed that no element has this character in its name.)</span></span>
+*  <span data-ttu-id="fc36d-297">Bağımsız değişkenlerle Yöntemler ve özellikler için bağımsız değişken listesi, parantez içine alınmıştır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-297">For methods and properties with arguments, the argument list follows, enclosed in parentheses.</span></span> <span data-ttu-id="fc36d-298">Bağımsız değişkenler olmadan, parantezler atlanır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-298">For those without arguments, the parentheses are omitted.</span></span> <span data-ttu-id="fc36d-299">Bağımsız değişkenler virgülle ayrılır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-299">The arguments are separated by commas.</span></span> <span data-ttu-id="fc36d-300">Her bağımsız değişkenin kodlaması, aşağıdaki gibi bir CLı imzasıyla aynıdır:</span><span class="sxs-lookup"><span data-stu-id="fc36d-300">The encoding of each argument is the same as a CLI signature, as follows:</span></span>
+   *  <span data-ttu-id="fc36d-301">Bağımsız değişkenler, tam adına göre, aşağıdaki şekilde değiştirilen belge adlarıyla temsil edilir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-301">Arguments are represented by their documentation name, which is based on their fully qualified name, modified as follows:</span></span>
+      * <span data-ttu-id="fc36d-302">Genel türleri temsil eden bağımsız değişkenler bir eklenmiş `` ` `` (backtick) karaktere ve ardından tür parametrelerinin sayısına sahiptir</span><span class="sxs-lookup"><span data-stu-id="fc36d-302">Arguments that represent generic types have an appended `` ` `` (backtick) character followed by the number of type parameters</span></span>
+      * <span data-ttu-id="fc36d-303">`out` `@` Veya değiştiricisinesahipbağımsızdeğişkenler,türadlarınıtakipedenbir.`ref`</span><span class="sxs-lookup"><span data-stu-id="fc36d-303">Arguments having the `out` or `ref` modifier have an `@` following their type name.</span></span> <span data-ttu-id="fc36d-304">Değer veya aracılığıyla `params` geçirilen bağımsız değişkenlerin özel bir gösterimi yoktur.</span><span class="sxs-lookup"><span data-stu-id="fc36d-304">Arguments passed by value or via `params` have no special notation.</span></span>
+      * <span data-ttu-id="fc36d-305">Diziler olan bağımsız değişkenler, virgül sayısının `[lowerbound:size, ... , lowerbound:size]` derece daha az bir olduğu ve bilinen her boyutun alt sınırları ve boyutunun ondalık olarak temsil edildiği şekilde temsil edilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-305">Arguments that are arrays are represented as `[lowerbound:size, ... , lowerbound:size]` where the number of commas is the rank less one, and the lower bounds and size of each dimension, if known, are represented in decimal.</span></span> <span data-ttu-id="fc36d-306">Daha düşük bir sınır veya boyut belirtilmemişse, atlanır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-306">If a lower bound or size is not specified, it is omitted.</span></span> <span data-ttu-id="fc36d-307">Belirli bir boyutun alt sınırı ve boyutu atlanmışsa `:` , de atlanır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-307">If the lower bound and size for a particular dimension are omitted, the `:` is omitted as well.</span></span> <span data-ttu-id="fc36d-308">Pürüzlü Diziler, düzey başına bir `[]` ile temsil edilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-308">Jagged arrays are represented by one `[]` per level.</span></span>
+      * <span data-ttu-id="fc36d-309">Void dışındaki işaretçi türlerine sahip bağımsız değişkenler, `*` aşağıdaki tür adı kullanılarak temsil edilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-309">Arguments that have pointer types other than void are represented using a `*` following the type name.</span></span> <span data-ttu-id="fc36d-310">Void işaretçisi, bir tür adı `System.Void`kullanılarak temsil edilir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-310">A void pointer is represented using a type name of `System.Void`.</span></span>
+      * <span data-ttu-id="fc36d-311">Türler üzerinde tanımlanan genel tür parametrelerine başvuran bağımsız değişkenler, `` ` `` (backtick) karakteri ve ardından tür parametresinin sıfır tabanlı dizini kullanılarak kodlanır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-311">Arguments that refer to generic type parameters defined on types are encoded using the `` ` `` (backtick) character followed by the zero-based index of the type parameter.</span></span>
+      * <span data-ttu-id="fc36d-312">Metotlarda tanımlanan genel tür parametrelerini kullanan bağımsız değişkenler türler için ``` `` ``` `` ` `` kullanılan bir çift yönlü kullanır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-312">Arguments that use generic type parameters defined in methods use a double-backtick ``` `` ``` instead of the `` ` `` used for types.</span></span>
+      * <span data-ttu-id="fc36d-313">Oluşturulan Genel türlere başvuran bağımsız değişkenler genel türü `{`kullanılarak kodlanır, ardından, ve ardından bir tür bağımsız değişken `}`türü ve sonra gelen virgülle ayrılmış bir liste gelir.</span><span class="sxs-lookup"><span data-stu-id="fc36d-313">Arguments that refer to constructed generic types are encoded using the generic type, followed by `{`, followed by a comma-separated list of type arguments, followed by `}`.</span></span>
 
-### <a name="id-string-examples"></a><span data-ttu-id="8ee92-314">Kimlik dizesi örnekleri</span><span class="sxs-lookup"><span data-stu-id="8ee92-314">ID string examples</span></span>
+### <a name="id-string-examples"></a><span data-ttu-id="fc36d-314">KIMLIK dizesi örnekleri</span><span class="sxs-lookup"><span data-stu-id="fc36d-314">ID string examples</span></span>
 
-<span data-ttu-id="8ee92-315">Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belge açıklaması kilitlenmelerinden üretilen kimliği dizesi ile birlikte bir parçasını gösterir:</span><span class="sxs-lookup"><span data-stu-id="8ee92-315">The following examples each show a fragment of C# code, along with the ID string produced from each source element capable of having a documentation comment:</span></span>
+<span data-ttu-id="fc36d-315">Aşağıdaki örneklerde her biri bir C# kod parçasını ve bir belge yorumu olan her bir kaynak ÖĞEDEN üretilen kimlik dizesiyle birlikte gösterilmektedir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-315">The following examples each show a fragment of C# code, along with the ID string produced from each source element capable of having a documentation comment:</span></span>
 
-*  <span data-ttu-id="8ee92-316">Türleri, genel bilgiler ile genişletilmiş kendi tam adı kullanılarak temsil edilir:</span><span class="sxs-lookup"><span data-stu-id="8ee92-316">Types are represented using their fully qualified name, augmented with generic information:</span></span>
+*  <span data-ttu-id="fc36d-316">Türler, tam nitelikli adı kullanılarak temsil edilir ve genel bilgilerle Genişletilebilir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-316">Types are represented using their fully qualified name, augmented with generic information:</span></span>
 
    ```csharp
    enum Color { Red, Blue, Green }
@@ -654,7 +654,7 @@ public List<T> FetchData<T>(string query) {
    "T:Acme.MyList`1.Helper`2"
    ```
 
-*  <span data-ttu-id="8ee92-317">Alanları tam adına göre temsil edilir:</span><span class="sxs-lookup"><span data-stu-id="8ee92-317">Fields are represented by their fully qualified name:</span></span>
+*  <span data-ttu-id="fc36d-317">Alanlar, tam adlarıyla temsil edilir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-317">Fields are represented by their fully qualified name:</span></span>
 
    ```csharp
    namespace Acme
@@ -694,7 +694,7 @@ public List<T> FetchData<T>(string query) {
    "F:Acme.Widget.ppValues"
    ```
 
-*  <span data-ttu-id="8ee92-318">Oluşturucular.</span><span class="sxs-lookup"><span data-stu-id="8ee92-318">Constructors.</span></span>
+*  <span data-ttu-id="fc36d-318">Kurucu.</span><span class="sxs-lookup"><span data-stu-id="fc36d-318">Constructors.</span></span>
 
    ```csharp
    namespace Acme
@@ -712,7 +712,7 @@ public List<T> FetchData<T>(string query) {
    "M:Acme.Widget.#ctor(System.String)"
    ```
 
-*  <span data-ttu-id="8ee92-319">Yok ediciler.</span><span class="sxs-lookup"><span data-stu-id="8ee92-319">Destructors.</span></span>
+*  <span data-ttu-id="fc36d-319">Yıkıcılar.</span><span class="sxs-lookup"><span data-stu-id="fc36d-319">Destructors.</span></span>
 
    ```csharp
    namespace Acme
@@ -726,7 +726,7 @@ public List<T> FetchData<T>(string query) {
    "M:Acme.Widget.Finalize"
    ```
 
-*  <span data-ttu-id="8ee92-320">Yöntemleri.</span><span class="sxs-lookup"><span data-stu-id="8ee92-320">Methods.</span></span>
+*  <span data-ttu-id="fc36d-320">Yöntem.</span><span class="sxs-lookup"><span data-stu-id="fc36d-320">Methods.</span></span>
 
    ```csharp
    namespace Acme
@@ -778,7 +778,7 @@ public List<T> FetchData<T>(string query) {
    "M:Acme.UseList.GetValues``(``0)"
    ```
 
-*  <span data-ttu-id="8ee92-321">Özellikler ve dizin oluşturucular.</span><span class="sxs-lookup"><span data-stu-id="8ee92-321">Properties and indexers.</span></span>
+*  <span data-ttu-id="fc36d-321">Özellikler ve Dizin oluşturucular.</span><span class="sxs-lookup"><span data-stu-id="fc36d-321">Properties and indexers.</span></span>
 
    ```csharp
    namespace Acme
@@ -796,7 +796,7 @@ public List<T> FetchData<T>(string query) {
    "P:Acme.Widget.Item(System.String,System.Int32)"
    ```
 
-*  <span data-ttu-id="8ee92-322">olaylar.</span><span class="sxs-lookup"><span data-stu-id="8ee92-322">Events.</span></span>
+*  <span data-ttu-id="fc36d-322">Olayları.</span><span class="sxs-lookup"><span data-stu-id="fc36d-322">Events.</span></span>
 
    ```csharp
    namespace Acme
@@ -810,7 +810,7 @@ public List<T> FetchData<T>(string query) {
    "E:Acme.Widget.AnEvent"
    ```
 
-*  <span data-ttu-id="8ee92-323">Birli işleçler.</span><span class="sxs-lookup"><span data-stu-id="8ee92-323">Unary operators.</span></span>
+*  <span data-ttu-id="fc36d-323">Birli İşleçler.</span><span class="sxs-lookup"><span data-stu-id="fc36d-323">Unary operators.</span></span>
 
    ```csharp
    namespace Acme
@@ -824,9 +824,9 @@ public List<T> FetchData<T>(string query) {
    "M:Acme.Widget.op_UnaryPlus(Acme.Widget)"
    ```
 
-   <span data-ttu-id="8ee92-324">Birli işleç işlev adlarını kullanılan kümesinin tamamını aşağıdaki gibidir: `op_UnaryPlus`, `op_UnaryNegation`, `op_LogicalNot`, `op_OnesComplement`, `op_Increment`, `op_Decrement`, `op_True`, ve `op_False`.</span><span class="sxs-lookup"><span data-stu-id="8ee92-324">The complete set of unary operator function names used is as follows: `op_UnaryPlus`, `op_UnaryNegation`, `op_LogicalNot`, `op_OnesComplement`, `op_Increment`, `op_Decrement`, `op_True`, and `op_False`.</span></span>
+   <span data-ttu-id="fc36d-324">Kullanılan birli işleç işlev adlarının tamamı aşağıdaki gibidir: `op_UnaryPlus`, `op_UnaryNegation`, `op_Increment` `op_OnesComplement` `op_LogicalNot`,,, `op_Decrement`, `op_True`ve `op_False`.</span><span class="sxs-lookup"><span data-stu-id="fc36d-324">The complete set of unary operator function names used is as follows: `op_UnaryPlus`, `op_UnaryNegation`, `op_LogicalNot`, `op_OnesComplement`, `op_Increment`, `op_Decrement`, `op_True`, and `op_False`.</span></span>
 
-*  <span data-ttu-id="8ee92-325">İkili işleçler.</span><span class="sxs-lookup"><span data-stu-id="8ee92-325">Binary operators.</span></span>
+*  <span data-ttu-id="fc36d-325">İkili işleçler.</span><span class="sxs-lookup"><span data-stu-id="fc36d-325">Binary operators.</span></span>
 
    ```csharp
    namespace Acme
@@ -840,9 +840,9 @@ public List<T> FetchData<T>(string query) {
    "M:Acme.Widget.op_Addition(Acme.Widget,Acme.Widget)"
    ```
 
-   <span data-ttu-id="8ee92-326">Kullanılan ikili işleç işlev adları tüm kümesini aşağıdaki gibidir: `op_Addition`, `op_Subtraction`, `op_Multiply`, `op_Division`, `op_Modulus`, `op_BitwiseAnd`, `op_BitwiseOr`, `op_ExclusiveOr`, `op_LeftShift`, `op_RightShift`, `op_Equality`, `op_Inequality`, `op_LessThan`, `op_LessThanOrEqual`, `op_GreaterThan`, ve `op_GreaterThanOrEqual`.</span><span class="sxs-lookup"><span data-stu-id="8ee92-326">The complete set of binary operator function names used is as follows: `op_Addition`, `op_Subtraction`, `op_Multiply`, `op_Division`, `op_Modulus`, `op_BitwiseAnd`, `op_BitwiseOr`, `op_ExclusiveOr`, `op_LeftShift`, `op_RightShift`, `op_Equality`, `op_Inequality`, `op_LessThan`, `op_LessThanOrEqual`, `op_GreaterThan`, and `op_GreaterThanOrEqual`.</span></span>
+   <span data-ttu-id="fc36d-326">`op_Addition`Kullanılan ikili işleç işlev adlarının tamamen kümesi aşağıdaki gibidir:, `op_BitwiseOr` `op_ExclusiveOr` `op_BitwiseAnd` `op_Subtraction`, `op_Multiply` `op_Modulus` `op_Division`,,,,,, `op_LeftShift`, `op_RightShift`, `op_Equality`, `op_Inequality`, ,,`op_LessThan`ve .`op_GreaterThanOrEqual` `op_LessThanOrEqual` `op_GreaterThan`</span><span class="sxs-lookup"><span data-stu-id="fc36d-326">The complete set of binary operator function names used is as follows: `op_Addition`, `op_Subtraction`, `op_Multiply`, `op_Division`, `op_Modulus`, `op_BitwiseAnd`, `op_BitwiseOr`, `op_ExclusiveOr`, `op_LeftShift`, `op_RightShift`, `op_Equality`, `op_Inequality`, `op_LessThan`, `op_LessThanOrEqual`, `op_GreaterThan`, and `op_GreaterThanOrEqual`.</span></span>
 
-*  <span data-ttu-id="8ee92-327">Dönüştürme işleçleri sahip bir sondaki "`~`" dönüş türü tarafından izlenen.</span><span class="sxs-lookup"><span data-stu-id="8ee92-327">Conversion operators have a trailing "`~`" followed by the return type.</span></span>
+*  <span data-ttu-id="fc36d-327">Dönüştürme işleçleri sonunda bir "`~`" ve ardından dönüş türü vardır.</span><span class="sxs-lookup"><span data-stu-id="fc36d-327">Conversion operators have a trailing "`~`" followed by the return type.</span></span>
 
    ```csharp
    namespace Acme
@@ -858,11 +858,11 @@ public List<T> FetchData<T>(string query) {
    "M:Acme.Widget.op_Implicit(Acme.Widget)~System.Int64"
    ```
 
-## <a name="an-example"></a><span data-ttu-id="8ee92-328">Bir örnek</span><span class="sxs-lookup"><span data-stu-id="8ee92-328">An example</span></span>
+## <a name="an-example"></a><span data-ttu-id="fc36d-328">Örnek</span><span class="sxs-lookup"><span data-stu-id="fc36d-328">An example</span></span>
 
-### <a name="c-source-code"></a><span data-ttu-id="8ee92-329">C# kaynak kodu</span><span class="sxs-lookup"><span data-stu-id="8ee92-329">C# source code</span></span>
+### <a name="c-source-code"></a><span data-ttu-id="fc36d-329">C#kaynak kodu</span><span class="sxs-lookup"><span data-stu-id="fc36d-329">C# source code</span></span>
 
-<span data-ttu-id="8ee92-330">Aşağıdaki örnekte kaynak kodunu gösteren bir `Point` sınıfı:</span><span class="sxs-lookup"><span data-stu-id="8ee92-330">The following example shows the source code of a `Point` class:</span></span>
+<span data-ttu-id="fc36d-330">Aşağıdaki örnekte bir `Point` sınıfın kaynak kodu gösterilmektedir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-330">The following example shows the source code of a `Point` class:</span></span>
 
 ```csharp
 namespace Graphics
@@ -1011,9 +1011,9 @@ public class Point
 }
 ```
 
-### <a name="resulting-xml"></a><span data-ttu-id="8ee92-331">Elde edilen XML</span><span class="sxs-lookup"><span data-stu-id="8ee92-331">Resulting XML</span></span>
+### <a name="resulting-xml"></a><span data-ttu-id="fc36d-331">Elde edilen XML</span><span class="sxs-lookup"><span data-stu-id="fc36d-331">Resulting XML</span></span>
 
-<span data-ttu-id="8ee92-332">Kaynak kodu için sınıf verildiğinde bir belge Oluşturucu tarafından oluşturulan çıktı şu şekildedir `Point`yukarıda gösterilen:</span><span class="sxs-lookup"><span data-stu-id="8ee92-332">Here is the output produced by one documentation generator when given the source code for class `Point`, shown above:</span></span>
+<span data-ttu-id="fc36d-332">Aşağıda gösterildiği gibi, sınıf `Point`için kaynak kodu verildiğinde bir belge Oluşturucu tarafından oluşturulan çıktı aşağıda verilmiştir:</span><span class="sxs-lookup"><span data-stu-id="fc36d-332">Here is the output produced by one documentation generator when given the source code for class `Point`, shown above:</span></span>
 
 ```xml
 <?xml version="1.0"?>
