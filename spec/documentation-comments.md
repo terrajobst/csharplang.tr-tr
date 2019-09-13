@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: c9f8417dc68153f02ceb72bb1d51f3615f3c4961
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: adf81842e3c763c7bbdd3f10bb884dc1207b9099
+ms.sourcegitcommit: 0489cb64b7dfb328813d757f4d447a15b85a5851
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488913"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70912432"
 ---
 # <a name="documentation-comments"></a>Belge açıklamaları
 
-C# programcıları kodlarını XML metni içeren bir özel açıklama sözdizimi kullanılarak belge için bir mekanizma sağlar. Kaynak kodu dosyalarında açıklamaları belirli bir biçime sahip bir aracı bu yorumlar ve bunlar önce kaynak kodu öğesi XML üretmek için yönlendirmek için kullanılabilir. Bu söz dizimi çağrılır yorumları kullanarak ***belge açıklamaları***. Hemen bir kullanıcı tanımlı türü (örneğin, bir sınıf, temsilci veya arabirimi) ya da bir üyesi (örneğin, bir alan, olay, özelliği veya yöntemi) gelmelidir. XML oluşturma aracı olarak adlandırılır ***belgeleri Oluşturucu***. (Bu oluşturucunun olabilir, ancak olması gerekmez, C# derleyicisi kendisini.) Belgeleri Oluşturucu tarafından üretilen çıkış adlı ***soubor dokumentace***. Soubor dokumentace girdi olarak kullanılan bir ***belgeleri Görüntüleyicisi***; bir tür bilgilerini ve ilişkili belgelerini görünümünü çeşit üretmek için hedeflenen bir aracı.
+C#programcıların, XML metni içeren özel bir açıklama söz dizimini kullanarak kodlarını belgetabilmesi için bir mekanizma sağlar. Kaynak kodu dosyalarında, belirli bir biçime sahip olan Yorumlar, bir aracı bu açıklamalardan ve kaynak kodu öğelerinden önce XML oluşturacak şekilde yönlendirmek için kullanılabilir. Bu söz dizimini kullanan açıklamalara ***belge açıklamaları***denir. Kullanıcı tanımlı bir türün (bir sınıf, temsilci veya arabirim gibi) ya da bir üyenin (alan, olay, özellik veya yöntem gibi) hemen önce gelmesi gerekir. XML oluşturma aracına ***belge Oluşturucu***denir. (Bu Oluşturucu, C# derleyicinin kendisi olabilir, ancak olması gerekmez.) Belge Oluşturucu tarafından üretilen çıktıya ***belge dosyası***denir. Belge dosyası bir ***belge görüntüleyicisine***giriş olarak kullanılır; tür bilgilerinin ve ilişkili belgelerinin bir dizi görsel görüntüsünü oluşturmak için tasarlanan bir araç.
 
-Belge açıklamaları içinde kullanılacak etiketleri kümesi bu belirtim önerir ancak bu etiketleri kullanımı gerekli değildir ve uzun doğru biçimlendirilmiş XML kuralları ardından diğer etiketler isterseniz, kullanılabilir.
+Bu belirtim belge açıklamalarında kullanılacak bir etiket kümesi önerir, ancak bu etiketlerin kullanımı gerekli değildir, ancak doğru biçimlendirilmiş XML kuralları izlenirken, istenirse diğer Etiketler de kullanılabilir.
 
 ## <a name="introduction"></a>Giriş
 
-Özel bir biçime sahip açıklamaları, XML, bu yorumlar ve bunlar önce kaynak kod öğeleri oluşturmak için bir araç yönlendirmek için kullanılabilir. Bu tür açıklamaları üç eğik çizgi ile başlayan tek satırlık açıklamaları bulunmaktadır (`///`), ya bir eğik çizgi ve iki yıldız ile başlayan açıklamaları ayrılmış (`/**`). Hemen bir kullanıcı tanımlı türü (örneğin, bir sınıf, temsilci veya arabirimi) ya da bunlar ek açıklama bir üye (örneğin, bir alan, olay, özelliği veya yöntemi) gelmelidir. Öznitelik bölümleri ([öznitelik belirtimi](attributes.md#attribute-specification)) belge yorumlarını bir türe veya üyeye uygulanan öznitelikleri gelmelidir için bildirimler, bir parçası olarak kabul edilir.
+Özel bir forma sahip olan Yorumlar, bir aracı bu açıklamalardan ve kaynak kod öğelerinden önce XML oluşturacak şekilde yönlendirmek için kullanılabilir. Bu yorumlar, üç eğik çizgi (`///`) ile başlayan tek satırlık açıklamalardır ve eğik çizgiyle ve iki yıldızlı (`/**`) ile başlayan sınırlandırılmış açıklamalardır. Bunlar, bir Kullanıcı tanımlı türün (bir sınıf, temsilci veya arabirim gibi) ya da ek açıklama eklenen bir üyenin (bir alan, olay, özellik veya yöntem gibi) hemen önce gelmelidir. Öznitelik bölümleri ([öznitelik belirtimi](attributes.md#attribute-specification)) bildirimlerin bir parçası olarak değerlendirilir, bu nedenle belge açıklamalarının bir tür veya üyeye uygulanan özniteliklerin önünde olması gerekir.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```antlr
 single_line_doc_comment
@@ -28,9 +28,9 @@ delimited_doc_comment
     ;
 ```
 
-İçinde bir *single_line_doc_comment*, yoksa bir *boşluk* karakter aşağıdaki `///` her bir karakter *single_line_doc_comment*bitişik s Geçerli *single_line_doc_comment*, ardından, *boşluk* XML çıkış karakteri dahil değildir.
+Bir *single_line_doc_comment*içinde, her bir *single_line_doc_comment*için geçerli *single_line_doc_comment*bitişik olan `///` karakterleri izleyen bir *boşluk* karakteri varsa, buXML çıktısına boşluk karakteri dahil değildir.
 
-İkinci satırdaki ilk boşluk olmayan karakter bir yıldız işareti ve aynı deseni isteğe bağlı boşluk karakterleri ve bir yıldız işareti ise sınırlı-doc-açıklama, her birinin sınırlı-doc-açıklama içindeki satır başında yinelenir, ardından karakterlerinden yinelenen desen XML çıktısında dahil edilmez. Desen, sonra yanı sıra, yıldız işareti önce boşluk karakterleri içerebilir.
+Ayrılmış bir belge açıklamasında, ikinci satırdaki ilk boşluk olmayan karakter bir yıldız işareti ise ve isteğe bağlı boşluk karakterlerinden aynı desenli ve bir yıldız karakteri ayrılmış-belge-açıklama içindeki her satırın başlangıcında tekrarlanırsa, sonra yinelenen modelin karakterleri XML çıktısına dahil edilmez. Bu düzende, sonra yıldız karakteri ve daha önce boşluk karakterleri bulunabilir.
 
 __Örnek:__
 
@@ -45,48 +45,48 @@ public class Point
 }
 ```
 
-Kurallara göre XML belge açıklamaları içindeki metin iyi biçimlendirilmiş olmalıdır (https://www.w3.org/TR/REC-xml). Doğru biçimlendirilmiş XML olgu olması durumunda bir uyarı oluşturulur ve soubor dokumentace bir hatayla karşılaşıldı belirten bir açıklama içerir.
+Belge açıklamalarındaki metin, XML kurallarına göre düzgün şekilde oluşturulmalıdır (https://www.w3.org/TR/REC-xml). XML hatalı biçimlendirilmişse bir uyarı oluşturulur ve belge dosyası bir hata ile karşılaşıldığını söyleyen bir açıklama içerir.
 
-Geliştiriciler kendi kümesi etiketleri oluşturmak ücretsiz olsa da, önerilen kümesi tanımlanan [önerilen etiketler](documentation-comments.md#recommended-tags). Önerilen etiketler bazıları, özel anlamları vardır:
+Geliştiriciler kendi etiket kümesini oluşturmak için ücretsiz olsa da önerilen [etiketlerde](documentation-comments.md#recommended-tags)önerilen bir küme tanımlanmıştır. Önerilen etiketlerden bazılarının özel anlamları vardır:
 
-*  `<param>` Etiketi parametreler tanımlamak için kullanılır. Böyle bir etiket kullandıysanız, belgeleri Oluşturucu belirtilen parametre var olduğundan ve tüm parametreleri belgeleri açıklamaları açıklanan doğrulamanız gerekir. Bu tür doğrulama başarısız olursa, belgeleri Oluşturucu bir uyarı verir.
-*  `cref` Öznitelik, bir kod öğesi başvuru sağlamak için herhangi bir etiket eklenebilir. Belgeleri Oluşturucu, bu kod öğesi var olduğunu doğrulamanız gerekir. Belgeleri Oluşturucu, doğrulama başarısız olursa bir uyarı verir. Bir ad açıklanan için aranırken bir `cref` özniteliği belgeleri Oluşturucu gerekir saygı göre ad alanı görünürlük `using` kaynak kodu içinde görünen deyimleri. Genel, kod öğeleri normal genel sözdizimi için (diğer bir deyişle, "`List<T>`") kullanılamaz çünkü geçersiz XML üretir. Kaşlı ayraçlar yerine kullanılabilir (diğer bir deyişle, "`List{T}`"), veya XML kaçış sözdiziminin kullanılabilir (diğer bir deyişle, "`List&lt;T&gt;`").
-*  `<summary>` Etiketi bir tür veya üyeyle ilgili ek bilgileri görüntülemek için bir belge Görüntüleyici tarafından kullanılmak üzere tasarlanmıştır.
-*  `<include>` Etiketi harici bir XML dosyasından bilgiler içerir.
+*  Etiketi `<param>` , parametreleri tanımlamakta kullanılır. Bu tür bir etiket kullanılırsa, belge Oluşturucu belirtilen parametrenin var olduğunu ve tüm parametrelerin belge açıklamalarında açıklananlarının doğrulanması gerekir. Bu doğrulama başarısız olursa, belge Oluşturucu bir uyarı verir.
+*  `cref` Özniteliği bir kod öğesine başvuru sağlamak için herhangi bir etikete iliştirilebilir. Belge oluşturucunun Bu kod öğesinin var olduğunu doğrulaması gerekir. Doğrulama başarısız olursa, belge Oluşturucu bir uyarı verir. Bir `cref` öznitelikte açıklanan adı ararken belge oluşturucunun, kaynak kodu içinde görüntülenen `using` deyimlere göre ad alanı görünürlüğüne göre olması gerekir. Genel olan kod öğeleri için, normal genel sözdizimi (yani, "`List<T>`") geçersiz XML oluşturduğundan kullanılamaz. Ayraçlar (`List{T}`Yani, "") veya XML kaçış söz dizimi (yani, "`List&lt;T&gt;`") yerine kullanılabilir.
+*  Etiket `<summary>` , bir tür veya üyeyle ilgili ek bilgileri göstermek için bir belge Görüntüleyicisi tarafından kullanılmak üzere tasarlanmıştır.
+*  Etiketi `<include>` , bir dış XML dosyasındaki bilgileri içerir.
 
-Soubor dokumentace tür ve üyeler hakkında tam bilgi sağlamaz dikkatle unutmayın (örneğin, bunu herhangi bir tür bilgilerini içermiyor). Böyle bir tür veya üye bilgilerini almak için soubor dokumentace gerçek türe veya üyeye yansıma ile birlikte kullanılmalıdır.
+Belge dosyasının tür ve Üyeler hakkında tam bilgi sağlamadığına ve (örneğin, herhangi bir tür bilgisi içermediğinden) emin olun. Bir tür veya üye hakkında daha fazla bilgi almak için, belge dosyası gerçek tür veya üyede yansıma ile birlikte kullanılmalıdır.
 
-## <a name="recommended-tags"></a>Önerilen etiketler
+## <a name="recommended-tags"></a>Önerilen Etiketler
 
-Belgeleri Oluşturucu kabul et ve XML kurallarına göre geçerli herhangi bir etiket işleme gerekir. Aşağıdaki kullanıcı belgeleri, yaygın olarak kullanılan işlevler sunar. (Kuşkusuz, diğer etiketlerin mümkündür.)
+Belge oluşturucunun, XML kurallarına göre geçerli olan herhangi bir etiketi kabul etmesi ve işlemesi gerekir. Aşağıdaki Etiketler kullanıcı belgelerinde yaygın olarak kullanılan işlevleri sağlar. (Kuşkusuz, diğer Etiketler mümkündür.)
 
 
-| __Etiket__          | __Bölüm__                                            | __Amaç__                                            |
+| __Etiket__          | __Kısmı__                                            | __Amaç__                                            |
 |------------------|--------------------------------------------------------|--------------------------------------------------------|
-| `<c>`            | [`<c>`](documentation-comments.md#c)                   | Metin bir kod benzeri yazı tipini Ayarla                           | 
-| `<code>`         | [`<code>`](documentation-comments.md#code)             | Bir veya daha fazla satır, kaynak kodu veya program çıktısı |
+| `<c>`            | [`<c>`](documentation-comments.md#c)                   | Kod benzeri yazı tipinde metin ayarlama                           | 
+| `<code>`         | [`<code>`](documentation-comments.md#code)             | Kaynak kodu veya program çıkışının bir veya daha fazla satırını ayarlama |
 | `<example>`      | [`<example>`](documentation-comments.md#example)       | Bir örnek belirtin                                    |
-| `<exception>`    | [`<exception>`](documentation-comments.md#exception)   | Bir yöntem oluşturabilecek özel durumları tanımlar.           |
-| `<include>`      | [`<include>`](documentation-comments.md#include)       | Dış dosya XML'den içerir                     |
-| `<list>`         | [`<list>`](documentation-comments.md#list)             | Bir liste veya tablo oluşturma                                 |
-| `<para>`         | [`<para>`](documentation-comments.md#para)             | İzin vermek için metin eklenecek yapısı                   |
-| `<param>`        | [`<param>`](documentation-comments.md#param)           | Yöntem veya oluşturucu için bir parametre açıklayın       |
-| `<paramref>`     | [`<paramref>`](documentation-comments.md#paramref)     | Bir Word'ün bir parametre adı olduğunu belirleyin               |
-| `<permission>`   | [`<permission>`](documentation-comments.md#permission) | Belge bir üye güvenlik erişilebilirliği        |
-| `<remark>`       | [`<remark>`](documentation-comments.md#remark)         | Bir türü hakkında ek bilgiler açıklanmaktadır           |
-| `<returns>`      | [`<returns>`](documentation-comments.md#returns)       | Bir yöntemin dönüş değerini açıklayın                  |
-| `<see>`          | [`<see>`](documentation-comments.md#see)               | Bir bağlantı belirtme                                         |
-| `<seealso>`      | [`<seealso>`](documentation-comments.md#seealso)       | Ayrıca bkz: girişi oluştur                              |
-| `<summary>`      | [`<summary>`](documentation-comments.md#summary)       | Bir tür veya üye türü açıklar.                  |
-| `<value>`        | [`<value>`](documentation-comments.md#value)           | Bir özelliği açıklamaktadır                                    |
-| `<typeparam>`    |                                                        | Genel tür parametresi açıklayın                      |
-| `<typeparamref>` |                                                        | Bir sözcük tür parametre adı olduğunu belirleyin          |
+| `<exception>`    | [`<exception>`](documentation-comments.md#exception)   | Bir yöntemin oluşturabilecek özel durumları tanımlar           |
+| `<include>`      | [`<include>`](documentation-comments.md#include)       | Dış dosyadan XML içerir                     |
+| `<list>`         | [`<list>`](documentation-comments.md#list)             | Liste veya tablo oluşturma                                 |
+| `<para>`         | [`<para>`](documentation-comments.md#para)             | Yapıya metin eklenmesine izin ver                   |
+| `<param>`        | [`<param>`](documentation-comments.md#param)           | Yöntem veya Oluşturucu için bir parametre tanımlama       |
+| `<paramref>`     | [`<paramref>`](documentation-comments.md#paramref)     | Bir sözcüğün parametre adı olduğunu belirler               |
+| `<permission>`   | [`<permission>`](documentation-comments.md#permission) | Üyenin güvenlik erişilebilirliğini belgeleme        |
+| `<remarks>`      | [`<remarks>`](documentation-comments.md#remarks)       | Bir tür hakkındaki ek bilgileri açıkla           |
+| `<returns>`      | [`<returns>`](documentation-comments.md#returns)       | Bir yöntemin dönüş değerini açıkla                  |
+| `<see>`          | [`<see>`](documentation-comments.md#see)               | Bir bağlantı belirtin                                         |
+| `<seealso>`      | [`<seealso>`](documentation-comments.md#seealso)       | Ayrıca bkz. bir girdi oluştur                              |
+| `<summary>`      | [`<summary>`](documentation-comments.md#summary)       | Türü veya bir türün üyesini açıklama                  |
+| `<value>`        | [`<value>`](documentation-comments.md#value)           | Bir özelliği açıkla                                    |
+| `<typeparam>`    |                                                        | Genel tür parametresini açıkla                      |
+| `<typeparamref>` |                                                        | Bir sözcüğün tür parametre adı olduğunu belirler          |
 
 ### `<c>`
 
-Bu etiket, açıklama içindeki metnin bir parçası gibi bir kod bloğu için kullanılan özel bir yazı tipi ayarlanmalıdır belirtmek için bir mekanizma sağlar. Gerçek kod satırı için kullanarak `<code>` ([`<code>`](documentation-comments.md#code)).
+Bu etiket, bir açıklama içindeki bir metin parçasının bir kod bloğu için kullanılan gibi özel bir yazı tipinde ayarlanması gerektiğini belirten bir mekanizma sağlar. Gerçek kod satırları için ( `<code>` [`<code>`](documentation-comments.md#code)) kullanın.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <c>text</c>
@@ -106,9 +106,9 @@ public class Point
 
 ### `<code>`
 
-Bu etiket, bir veya daha fazla kaynak kodu veya program çıkış satırlarını bazı özel bir yazı tipinde ayarlamak için kullanılır. Anlatımlı küçük kod parçaları için kullanmak `<c>` ([`<c>`](documentation-comments.md#c)).
+Bu etiket, bazı özel yazı tiplerinde kaynak kodu veya program çıkışının bir veya daha fazla satırını ayarlamak için kullanılır. Anlatıcı olarak küçük kod parçaları için ( `<c>` [`<c>`](documentation-comments.md#c)) kullanın.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <code>source code or program output</code>
@@ -136,9 +136,9 @@ public void Translate(int xor, int yor) {
 
 ### `<example>`
 
-Bu etiket, örnek kod içinde nasıl bir yöntem veya diğer kitaplık üyesini kullanılabilir belirtmek için bir açıklama sağlar. Normalde, bu da etiketinin kapsayacaktır `<code>` ([`<code>`](documentation-comments.md#code)) de.
+Bu etiket, bir metodun veya diğer kitaplık üyesinin nasıl kullanılabileceğini belirtmek için bir açıklama içindeki örnek koda izin verir. Normalde, bu da etiketin `<code>` ([`<code>`](documentation-comments.md#code)) kullanımını da kapsar.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <example>description</example>
@@ -146,13 +146,13 @@ __Sözdizimi:__
 
 __Örnek:__
 
-Bkz: `<code>` ([`<code>`](documentation-comments.md#code)) örneği.
+Bir `<code>` örnek[`<code>`](documentation-comments.md#code)için bkz. ().
 
 ### `<exception>`
 
-Bu etiket, bir yöntem oluşturabilecek özel durumları belge için bir yol sağlar.
+Bu etiket, bir yöntemin oluşturmakta olduğu özel durumları belgelemek için bir yol sağlar.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <exception cref="member">description</exception>
@@ -160,8 +160,8 @@ __Sözdizimi:__
 
 Burada
 
-* `member` bir üyenin adıdır. Belirtilen üyeyi var ve çevirir belgeleri Oluşturucu denetler `member` soubor dokumentace kurallı öğesi adı.
-* `description` özel durumun koşullar açıklamasıdır.
+* `member`üyenin adıdır. Belge Oluşturucu, belirtilen üyenin var olduğunu denetler ve belge dosyasında `member` kurallı öğe adına çevirir.
+* `description`, özel durumun oluşturulduğu durumların açıklamasıdır.
 
 __Örnek:__
 
@@ -182,9 +182,9 @@ public class DataBaseOperations
 
 ### `<include>`
 
-Bu etiket için kaynak kod dosyası dışındaki bir XML belgesi bilgileri dahil olmak üzere sağlar. Dış dosya doğru biçimlendirilmiş bir XML belgesi olmalıdır ve bir XPath ifadesi eklemek için bu belgede hangi XML'den belirtmek için bu belgeye uygulanır. `<include>` Etiketi dış belgedeki seçilen XML ile sonra değiştirilir.
+Bu etiket, kaynak kodu dosyasının dışında bir XML belgesinden bilgi dahil etmenizi sağlar. Dış dosya iyi biçimlendirilmiş bir XML belgesi olmalıdır ve bu belgeye hangi XML ekleneceğini belirtmek için bu belgeye bir XPath ifadesi uygulanmış olması gerekir. Daha `<include>` sonra etiket, dış belgedeki seçili XML ile değiştirilmiştir.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```
 <include file="filename" path="xpath" />
@@ -192,19 +192,19 @@ __Sözdizimi:__
 
 Burada
 
-* `filename` Dış XML dosyasının dosya adıdır. Dosya adı include etiketiyle içeren dosyayı göre yorumlanır.
-* `xpath` Dış XML dosyasında XML bazıları seçen bir XPath ifadesidir.
+* `filename`, harici bir XML dosyasının dosya adıdır. Dosya adı, içerme etiketini içeren dosyaya göre yorumlanır.
+* `xpath`Dış XML dosyasındaki XML 'den bazılarını seçen bir XPath ifadesidir.
 
 __Örnek:__
 
-Kaynak kodu gibi bir bildirim içeriyorsa:
+Kaynak kodu şöyle bir bildirim içeriyorsa:
 
 ```csharp
 /// <include file="docs.xml" path='extradoc/class[@name="IntList"]/*' />
 public class IntList { ... }
 ```
 
-ve aşağıdaki içeriği dış dosya "docs.xml" sahipti:
+"docs. xml" dış dosyası aşağıdaki içeriğe sahiptir:
 
 ```xml
 <?xml version="1.0"?>
@@ -222,7 +222,7 @@ ve aşağıdaki içeriği dış dosya "docs.xml" sahipti:
 </extradoc>
 ```
 
-Kaynak kodu içeriyorsa gibi aynı belgeleri çıktı olacaktır:
+daha sonra aynı belgeler, kaynak kodu içeren çıktıdır:
 
 ```csharp
 /// <summary>
@@ -233,11 +233,11 @@ public class IntList { ... }
 
 ### `<list>`
 
-Bu etiket, liste veya Tablo öğesi oluşturmak için kullanılır. İçerebilir bir `<listheader>` satırında bir tablo veya tanım listesi tanımlamak için blok. (Bir tablo için yalnızca bir giriş tanımlarken `term` başlıkta sağlanması.)
+Bu etiket bir liste veya öğe tablosu oluşturmak için kullanılır. Bir tablo ya da `<listheader>` tanım listesinin başlık satırını tanımlamak için bir blok içerebilir. (Bir tablo tanımlarken, yalnızca başlık için `term` bir girdinin sağlanması gerekir.)
 
-Listedeki her bir öğe ile belirtilen bir `<item>` blok. Bir tanım listesi oluştururken hem de `term` ve `description` belirtilmesi gerekir. Ancak, bir tablo, madde işaretli liste veya numaralı liste, yalnızca için `description` belirtilmesi.
+Listedeki her öğe bir `<item>` blokla belirtilir. Bir tanım listesi oluştururken, her ikisi `term` de `description` belirtilmelidir. Ancak, bir tablo, madde işaretli liste veya numaralandırılmış liste için yalnızca `description` gerekli olmalıdır.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <list type="bullet" | "number" | "table">
@@ -259,8 +259,8 @@ __Sözdizimi:__
 
 Burada
 
-* `term` tanımları konusu tanımlamak için terimi `description`.
-* `description` bir madde işareti veya numaralı liste bir öğeyi veya tanımı bir `term`.
+* `term`tanımı içinde `description`olan tanımlama terimi.
+* `description`, bir madde işareti veya numaralandırılmış listedeki bir öğe ya da bir `term`tanımı.
 
 __Örnek:__
 
@@ -285,15 +285,15 @@ public class MyClass
 
 ### `<para>`
 
-Bu etiket diğer etiketler iç kullanım için olduğu gibi `<summary>` ([`<remark>`](documentation-comments.md#remark)) veya `<returns>` ([`<returns>`](documentation-comments.md#returns)) ve metin eklenecek yapısı izin verir.
+Bu etiket, `<summary>` ([`<remarks>`](documentation-comments.md#remarks)) veya `<returns>` ([`<returns>`](documentation-comments.md#returns)) gibi diğer etiketlerin içinde kullanım içindir ve yapının metne eklenmesine izin verir.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <para>content</para>
 ```
 
-Burada `content` metni paragraf görüntülenir.
+paragrafın `content` metni nerede.
 
 __Örnek:__
 
@@ -309,9 +309,9 @@ public static void Main() {
 
 ### `<param>`
 
-Bu etiket, yöntem, oluşturucu veya dizin oluşturucu için bir parametre tanımlamak için kullanılır.
+Bu etiket bir yöntem, Oluşturucu veya Dizin Oluşturucu için bir parametre belirtmek için kullanılır.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <param name="name">description</param>
@@ -319,8 +319,8 @@ __Sözdizimi:__
 
 Burada
 
-* `name` parametrenin adıdır.
-* `description` parametre açıklamasıdır.
+* `name`parametrenin adıdır.
+* `description`, parametresinin bir açıklamasıdır.
 
 __Örnek:__
 
@@ -337,15 +337,15 @@ public void Move(int xor, int yor) {
 
 ### `<paramref>`
 
-Bu etiket, bir sözcüğün bir parametre olduğunu belirtmek için kullanılır. Soubor dokumentace bu parametreyi belirgin bir şekilde biçimlendirmek için işlenebilir.
+Bu etiket bir sözcüğün bir parametre olduğunu göstermek için kullanılır. Belge dosyası bu parametreyi farklı bir şekilde biçimlendirmek için işlenebilir.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <paramref name="name"/>
 ```
 
-Burada `name` parametrenin adıdır.
+`name` parametresinin adı.
 
 __Örnek:__
 
@@ -363,9 +363,9 @@ public Point(int xor, int yor) {
 
 ### `<permission>`
 
-Bu etiket belgelenecektir üye güvenlik erişilebilirliğini sağlar.
+Bu etiket bir üyenin güvenlik erişilebilirliğinin belgelenme olanak sağlar.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <permission cref="member">description</permission>
@@ -373,8 +373,8 @@ __Sözdizimi:__
 
 Burada
 
-* `member` bir üyenin adıdır. Belirli bir kod öğesi var ve çevirir belgeleri Oluşturucu denetler *üye* soubor dokumentace kurallı öğesi adı.
-* `description` üye erişimi açıklamasıdır.
+* `member`üyenin adıdır. Belge Oluşturucu verilen kod öğesinin var olduğunu denetler ve belge *dosyasındaki öğeyi kurallı öğe adına çevirir.*
+* `description`, üyeye erişimin bir açıklamasıdır.
 
 __Örnek:__
 
@@ -387,24 +387,24 @@ public static void Test() {
 }
 ```
 
-### `<remark>`
+### `<remarks>`
 
-Bu etiket, bir türle ilgili ek bilgileri belirtmek için kullanılır. (Kullanım `<summary>` ([`<summary>`](documentation-comments.md#summary)) türü ve bir türün üyelerini tanımlamak için.)
+Bu etiket, bir tür hakkındaki ek bilgileri belirtmek için kullanılır. (Türünün `<summary>` kendisini[`<summary>`](documentation-comments.md#summary)ve bir türün üyelerini anlatmak için () kullanın.)
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
-<remark>description</remark>
+<remarks>description</remarks>
 ```
 
-Burada `description` açıklama metni.
+Burada `description` , açıklamanın metni bulunur.
 
 __Örnek:__
 
 ```csharp
 /// <summary>Class <c>Point</c> models a point in a 
 /// two-dimensional plane.</summary>
-/// <remark>Uses polar coordinates</remark>
+/// <remarks>Uses polar coordinates</remarks>
 public class Point 
 {
     // ...
@@ -413,15 +413,15 @@ public class Point
 
 ### `<returns>`
 
-Bu etiket, bir yöntemin dönüş değerini tanımlamak için kullanılır.
+Bu etiket bir yöntemin dönüş değerini tanımlamakta kullanılır.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <returns>description</returns>
 ```
 
-Burada `description` dönüş değeri bir açıklaması verilmektedir.
+`description` , dönüş değerinin bir açıklamasıdır.
 
 __Örnek:__
 
@@ -436,15 +436,15 @@ public override string ToString() {
 
 ### `<see>`
 
-Bu etiket metin içinde belirtilmesi için bir bağlantı sağlar. Kullanım `<seealso>` ([`<seealso>`](documentation-comments.md#seealso)) bir Ayrıca bkz. bölümünde görüntülenecek olan metin göstermek için.
+Bu etiket, bir bağlantının metin içinde belirtilmesini sağlar. Ayrıca `<seealso>` bkz[`<seealso>`](documentation-comments.md#seealso). bölümünde görünecek metni göstermek için () kullanın.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <see cref="member"/>
 ```
 
-Burada `member` üyesi adıdır. Belirli bir kod öğesi var ve değişiklikleri belgeleri Oluşturucu denetler *üye* oluşturulan belgeleri dosyasındaki öğesi adı.
+`member` üyenin adı. Belge Oluşturucu verilen kod öğesinin var olduğunu denetler ve oluşturulan belgeler dosyasındaki öğe adına *üye* olarak değişir.
 
 __Örnek:__
 
@@ -469,15 +469,15 @@ public void Translate(int xor, int yor) {
 
 ### `<seealso>`
 
-Bu etiket için Ayrıca bakınız bölümüne oluşturulması gereken bir giriş sağlar. Kullanım `<see>` ([`<see>`](documentation-comments.md#see)) bağlantı metninde belirtmek için.
+Bu etiket, Ayrıca bkz. bölümü için bir girişin oluşturulmasına izin verir. Metin `<see>` içinden[`<see>`](documentation-comments.md#see)bir bağlantı belirtmek için () kullanın.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <seealso cref="member"/>
 ```
 
-Burada `member` üyesi adıdır. Belirli bir kod öğesi var ve değişiklikleri belgeleri Oluşturucu denetler *üye* oluşturulan belgeleri dosyasındaki öğesi adı.
+`member` üyenin adı. Belge Oluşturucu verilen kod öğesinin var olduğunu denetler ve oluşturulan belgeler dosyasındaki öğe adına *üye* olarak değişir.
 
 __Örnek:__
 
@@ -493,15 +493,15 @@ public override bool Equals(object o) {
 
 ### `<summary>`
 
-Bu etiket, bir tür veya üye türü tanımlamak için kullanılabilir. Kullanım `<remark>` ([`<remark>`](documentation-comments.md#remark)) türünü belirtmek için.
+Bu etiket, bir türü veya bir türün bir üyesini anlatmak için kullanılabilir. Türün `<remarks>` kendisini[`<remarks>`](documentation-comments.md#remarks)anlatmak için () kullanın.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <summary>description</summary>
 ```
 
-Burada `description` bir türe veya üyeye özetidir.
+`description` , türün veya üyenin bir özetidir.
 
 __Örnek:__
 
@@ -513,15 +513,15 @@ public Point() : this(0,0) {
 
 ### `<value>`
 
-Bu etiket tanımlanmış bir özellik sağlar.
+Bu etiket, bir özelliğin açıklanalmasına izin verir.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <value>property description</value>
 ```
 
-Burada `property description` özelliği için bir açıklama.
+`property description` , özelliği için bir açıklamadır.
 
 __Örnek:__
 
@@ -536,15 +536,15 @@ public int X
 
 ### `<typeparam>`
 
-Bu etiket, genel tür parametresi için bir sınıf, yapı, arabirim, temsilci veya yöntemi tanımlamak için kullanılır.
+Bu etiket, bir sınıf, yapı, arabirim, temsilci veya yöntem için genel bir tür parametresi tanımlamakta kullanılır.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <typeparam name="name">description</typeparam>
 ```
 
-Burada `name` tür parametresi adıdır ve `description` kendi açıklamasıdır.
+Burada `name` tür parametresinin adıdır ve `description` açıklamasıdır.
 
 __Örnek:__
 
@@ -558,15 +558,15 @@ public class MyList<T> {
 
 ### `<typeparamref>`
 
-Bu etiket, bir sözcüğün bir tür parametresi olduğunu belirtmek için kullanılır. Soubor dokumentace, bu tür parametresi farklı şekilde biçimlendirmek için işlenebilir.
+Bu etiket, bir sözcüğün bir tür parametresi olduğunu göstermek için kullanılır. Belge dosyası bu tür parametresini farklı bir şekilde biçimlendirmek için işlenebilir.
 
-__Sözdizimi:__
+__Sözdizimi__
 
 ```xml
 <typeparamref name="name"/>
 ```
 
-Burada `name` tür parametresinin adı.
+Burada `name` tür parametresinin adıdır.
 
 __Örnek:__
 
@@ -578,46 +578,46 @@ public List<T> FetchData<T>(string query) {
 }
 ```
 
-## <a name="processing-the-documentation-file"></a>Soubor dokumentace işleme
+## <a name="processing-the-documentation-file"></a>Belge dosyası işleniyor
 
-Belgeleri Oluşturucu bir belge açıklaması ile etiketlenir kaynak kod içindeki her öğe için bir kimlik dizesi oluşturur. Bu kimlik dizesi, bir kaynak öğesi benzersiz olarak tanımlar. Bir belge Görüntüleyici, bir kimlik dizesi belgeleri uygulandığı ilgili meta verileri/yansıma öğeyi tanımlamak için kullanabilirsiniz.
+Belge Oluşturucu bir belge açıklamasıyla etiketlenmiş kaynak kodundaki her öğe için bir KIMLIK dizesi oluşturur. Bu KIMLIK dizesi bir kaynak öğeyi benzersiz şekilde tanımlar. Belge Görüntüleyicisi, belgelerin uygulandığı karşılık gelen meta veri/yansıma öğesini tanımlamak için bir KIMLIK dizesi kullanabilir.
 
-Soubor dokumentace kaynak kodunu hiyerarşik temsili değildir; Bunun yerine, her öğe için oluşturulan bir kimlik dizesi ile düz bir liste olduğu.
+Belge dosyası kaynak kodun hiyerarşik bir temsili değildir; Bunun yerine, her öğe için oluşturulmuş bir KIMLIK dizesi olan düz bir liste olur.
 
-### <a name="id-string-format"></a>Kimlik dizesi biçimi
+### <a name="id-string-format"></a>KIMLIK dize biçimi
 
-Kimliği dizesi oluştururken aşağıdaki kuralları belgeleri Oluşturucu gözlemler:
+Belge Oluşturucu, KIMLIK dizelerini oluşturduğunda aşağıdaki kuralları sunar:
 
-*  Hiçbir boşluk dizesinde yerleştirilir.
+*  Dizeye boşluk yerleştirilmez.
 
-*  Dizenin ilk bölümü, tek bir karakter üste aracılığıyla belgelenmiş üye türünü tanımlar. Aşağıdaki türde üye tanımlanır:
+*  Dizenin ilk bölümü, belgelendirilmiş üye türünü, tek bir karakter ve ardından iki nokta üst üste ile tanımlar. Aşağıdaki üye türleri tanımlanmıştır:
 
-   | __Karakter__ | __Açıklama__                                             |
+   | __İnde__ | __Açıklama__                                             |
    |---------------|-------------------------------------------------------------|
    | E             | Olay                                                       |
    | F             | Alan                                                       |
-   | M             | (Oluşturucular, Yıkıcılar ve işleçler dahil) yöntemi |
+   | M             | Yöntem (oluşturucular, Yıkıcılar ve işleçler dahil) |
    | N             | Ad Alanı                                                   |
-   | P             | Özellik (dizin oluşturucular dahil)                               |
-   | T             | (Sınıfı, temsilci, enum, arabirimi ve yapı gibi) yazın |
-   | !             | Hata dizesi; dizenin geri kalanı, hata hakkında bilgi sağlar. Örneğin, belgeleri Oluşturucu çözümlenemeyen bağlantılar için hata bilgisi oluşturur. |
+   | P             | Özellik (Dizin oluşturucular dahil)                               |
+   | T             | Tür (class, Delegate, Enum, Interface ve struct gibi) |
+   | !             | Hata dizesi; dizenin geri kalanı hata hakkında bilgi sağlar. Örneğin, belge Oluşturucu çözülemeyen bağlantılar için hata bilgileri oluşturur. |
 
-*  İkinci dize ad alanı kökünde başlangıç öğesi tam olarak nitelenmiş adını parçasıdır. Öğe, kapsayan türleri ve ad alanı adı noktalarla ayrılmış. Öğenin adını nokta varsa, bunlar tarafından değiştirilir `#(U+0023)` karakter. (Hiçbir öğe adını bu karakteri olduğunu varsayılır.)
-*  Yöntemleri ve özellikleri parantez içindeki bağımsız değişken, bağımsız değişken listesi aşağıdadır. Bu bağımsız değişkenler olmadan parantezler göz ardı edilir. Bağımsız değişkenlerin virgülle ayrılır. Kodlama her bağımsız değişkeni bir CLI imza aynı şu şekildedir:
-   *  Bağımsız değişkenler şu şekilde değiştirilmiş kendi tam adına göre kendi belgesi adı tarafından temsil edilir:
-      * Genel türleri temsil eden bağımsız değişkenlere sahip bir eklenmiş `` ` `` (vurgulamasını belirtir) karakteri ve ardından tür parametrelerinin sayısı
-      * Bağımsız değişkenleri olan `out` veya `ref` değiştiricisine sahip bir `@` izleyerek kendi tür adı. Geçirilen bağımsız değişkenleri değere veya aracılığıyla `params` hiçbir özel gösterimi vardır.
-      * Dizileri bağımsız değişkenleri olarak temsil edilir `[lowerbound:size, ... , lowerbound:size]` burada virgüllerle küçük bir boyut sayısıdır ve her boyut, boyutu ve alt sınırlarını biliniyorsa, ondalık olarak gösterilir. Alt sınır veya boyutu belirtilmezse atlanır. Belirli bir boyut için boyut ve alt sınır atlanırsa, `:` de atlanır. Basit diziler tarafından temsil edilir `[]` düzeyi başına.
-      * İşaretçi türleri void dışında olan bağımsız değişkenler kullanılarak temsil edilir bir `*` aşağıdaki tür adı. Void bir işaretçi türü adını kullanılarak temsil edilir `System.Void`.
-      * Genel tür parametreleri türlerinde tanımlanan başvuran bağımsız değişkenler kullanılarak kodlanır `` ` `` (vurgulamasını belirtir) karakteri ve ardından tür parametresi sıfır tabanlı dizini.
-      * Yöntemleri tanımlanan genel tür parametrelerini kullanan bağımsız değişkenleri kullanma double-vurgulamasını belirtir ``` `` ``` yerine `` ` `` türleri için kullanılır.
-      * Oluşturulan genel türler için başvuru bağımsız değişkenleri, ardından genel türü kullanılarak kodlanır `{`, tür bağımsız değişkenleri virgülle ayrılmış listesi tarafından izlenen, ardından `}`.
+*  Dizenin ikinci bölümü, ad alanının köküden başlayarak öğesinin tam nitelikli adıdır. Öğenin adı, kapsayan tür (ler) ve ad alanı noktalarla ayrılır. Öğenin adında nokta varsa, bunlar karakter olarak `#(U+0023)` değiştirilirler. (Bir öğe adında bu karakterin olmadığı varsayılır.)
+*  Bağımsız değişkenlerle Yöntemler ve özellikler için bağımsız değişken listesi, parantez içine alınmıştır. Bağımsız değişkenler olmadan, parantezler atlanır. Bağımsız değişkenler virgülle ayrılır. Her bağımsız değişkenin kodlaması, aşağıdaki gibi bir CLı imzasıyla aynıdır:
+   *  Bağımsız değişkenler, tam adına göre, aşağıdaki şekilde değiştirilen belge adlarıyla temsil edilir:
+      * Genel türleri temsil eden bağımsız değişkenler bir eklenmiş `` ` `` (backtick) karaktere ve ardından tür parametrelerinin sayısına sahiptir
+      * `out` `@` Veya değiştiricisinesahipbağımsızdeğişkenler,türadlarınıtakipedenbir.`ref` Değer veya aracılığıyla `params` geçirilen bağımsız değişkenlerin özel bir gösterimi yoktur.
+      * Diziler olan bağımsız değişkenler, virgül sayısının `[lowerbound:size, ... , lowerbound:size]` derece daha az bir olduğu ve bilinen her boyutun alt sınırları ve boyutunun ondalık olarak temsil edildiği şekilde temsil edilir. Daha düşük bir sınır veya boyut belirtilmemişse, atlanır. Belirli bir boyutun alt sınırı ve boyutu atlanmışsa `:` , de atlanır. Pürüzlü Diziler, düzey başına bir `[]` ile temsil edilir.
+      * Void dışındaki işaretçi türlerine sahip bağımsız değişkenler, `*` aşağıdaki tür adı kullanılarak temsil edilir. Void işaretçisi, bir tür adı `System.Void`kullanılarak temsil edilir.
+      * Türler üzerinde tanımlanan genel tür parametrelerine başvuran bağımsız değişkenler, `` ` `` (backtick) karakteri ve ardından tür parametresinin sıfır tabanlı dizini kullanılarak kodlanır.
+      * Metotlarda tanımlanan genel tür parametrelerini kullanan bağımsız değişkenler türler için ``` `` ``` `` ` `` kullanılan bir çift yönlü kullanır.
+      * Oluşturulan Genel türlere başvuran bağımsız değişkenler genel türü `{`kullanılarak kodlanır, ardından, ve ardından bir tür bağımsız değişken `}`türü ve sonra gelen virgülle ayrılmış bir liste gelir.
 
-### <a name="id-string-examples"></a>Kimlik dizesi örnekleri
+### <a name="id-string-examples"></a>KIMLIK dizesi örnekleri
 
-Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belge açıklaması kilitlenmelerinden üretilen kimliği dizesi ile birlikte bir parçasını gösterir:
+Aşağıdaki örneklerde her biri bir C# kod parçasını ve bir belge yorumu olan her bir kaynak ÖĞEDEN üretilen kimlik dizesiyle birlikte gösterilmektedir:
 
-*  Türleri, genel bilgiler ile genişletilmiş kendi tam adı kullanılarak temsil edilir:
+*  Türler, tam nitelikli adı kullanılarak temsil edilir ve genel bilgilerle Genişletilebilir:
 
    ```csharp
    enum Color { Red, Blue, Green }
@@ -654,7 +654,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "T:Acme.MyList`1.Helper`2"
    ```
 
-*  Alanları tam adına göre temsil edilir:
+*  Alanlar, tam adlarıyla temsil edilir:
 
    ```csharp
    namespace Acme
@@ -694,7 +694,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "F:Acme.Widget.ppValues"
    ```
 
-*  Oluşturucular.
+*  Kurucu.
 
    ```csharp
    namespace Acme
@@ -712,7 +712,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "M:Acme.Widget.#ctor(System.String)"
    ```
 
-*  Yok ediciler.
+*  Yıkıcılar.
 
    ```csharp
    namespace Acme
@@ -726,7 +726,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "M:Acme.Widget.Finalize"
    ```
 
-*  Yöntemleri.
+*  Yöntem.
 
    ```csharp
    namespace Acme
@@ -778,7 +778,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "M:Acme.UseList.GetValues``(``0)"
    ```
 
-*  Özellikler ve dizin oluşturucular.
+*  Özellikler ve Dizin oluşturucular.
 
    ```csharp
    namespace Acme
@@ -796,7 +796,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "P:Acme.Widget.Item(System.String,System.Int32)"
    ```
 
-*  olaylar.
+*  Olayları.
 
    ```csharp
    namespace Acme
@@ -810,7 +810,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "E:Acme.Widget.AnEvent"
    ```
 
-*  Birli işleçler.
+*  Birli İşleçler.
 
    ```csharp
    namespace Acme
@@ -824,7 +824,7 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "M:Acme.Widget.op_UnaryPlus(Acme.Widget)"
    ```
 
-   Birli işleç işlev adlarını kullanılan kümesinin tamamını aşağıdaki gibidir: `op_UnaryPlus`, `op_UnaryNegation`, `op_LogicalNot`, `op_OnesComplement`, `op_Increment`, `op_Decrement`, `op_True`, ve `op_False`.
+   Kullanılan birli işleç işlev adlarının tamamı aşağıdaki gibidir: `op_UnaryPlus`, `op_UnaryNegation`, `op_Increment` `op_OnesComplement` `op_LogicalNot`,,, `op_Decrement`, `op_True`ve `op_False`.
 
 *  İkili işleçler.
 
@@ -840,9 +840,9 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "M:Acme.Widget.op_Addition(Acme.Widget,Acme.Widget)"
    ```
 
-   Kullanılan ikili işleç işlev adları tüm kümesini aşağıdaki gibidir: `op_Addition`, `op_Subtraction`, `op_Multiply`, `op_Division`, `op_Modulus`, `op_BitwiseAnd`, `op_BitwiseOr`, `op_ExclusiveOr`, `op_LeftShift`, `op_RightShift`, `op_Equality`, `op_Inequality`, `op_LessThan`, `op_LessThanOrEqual`, `op_GreaterThan`, ve `op_GreaterThanOrEqual`.
+   `op_Addition`Kullanılan ikili işleç işlev adlarının tamamen kümesi aşağıdaki gibidir:, `op_BitwiseOr` `op_ExclusiveOr` `op_BitwiseAnd` `op_Subtraction`, `op_Multiply` `op_Modulus` `op_Division`,,,,,, `op_LeftShift`, `op_RightShift`, `op_Equality`, `op_Inequality`, ,,`op_LessThan`ve .`op_GreaterThanOrEqual` `op_LessThanOrEqual` `op_GreaterThan`
 
-*  Dönüştürme işleçleri sahip bir sondaki "`~`" dönüş türü tarafından izlenen.
+*  Dönüştürme işleçleri sonunda bir "`~`" ve ardından dönüş türü vardır.
 
    ```csharp
    namespace Acme
@@ -858,11 +858,11 @@ Aşağıdaki örnekler her C# kod, her kaynak öğesi yeteneğine sahip bir belg
    "M:Acme.Widget.op_Implicit(Acme.Widget)~System.Int64"
    ```
 
-## <a name="an-example"></a>Bir örnek
+## <a name="an-example"></a>Örnek
 
-### <a name="c-source-code"></a>C# kaynak kodu
+### <a name="c-source-code"></a>C#kaynak kodu
 
-Aşağıdaki örnekte kaynak kodunu gösteren bir `Point` sınıfı:
+Aşağıdaki örnekte bir `Point` sınıfın kaynak kodu gösterilmektedir:
 
 ```csharp
 namespace Graphics
@@ -1013,7 +1013,7 @@ public class Point
 
 ### <a name="resulting-xml"></a>Elde edilen XML
 
-Kaynak kodu için sınıf verildiğinde bir belge Oluşturucu tarafından oluşturulan çıktı şu şekildedir `Point`yukarıda gösterilen:
+Aşağıda gösterildiği gibi, sınıf `Point`için kaynak kodu verildiğinde bir belge Oluşturucu tarafından oluşturulan çıktı aşağıda verilmiştir:
 
 ```xml
 <?xml version="1.0"?>
