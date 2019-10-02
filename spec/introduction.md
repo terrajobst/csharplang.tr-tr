@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 8bc4bf6310fb8a8457beee167f18d30aaca10a8e
-ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.openlocfilehash: 300d5fc2a2fadd98472d73c122226146605b01dd
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876905"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703991"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -36,11 +36,11 @@ class Hello
 ```
 
 C#Kaynak dosyalar genellikle dosya uzantısına `.cs`sahiptir. "Hello, World" programının dosyada `hello.cs`depolandığını varsayarak, program komut satırı kullanılarak Microsoft C# derleyicisi ile derlenebilir
-```
+```console
 csc hello.cs
 ```
 adında `hello.exe`bir çalıştırılabilir derleme üreten. Bu uygulama tarafından çalıştırıldığında üretilen çıkış,
-```
+```console
 Hello, World
 ```
 
@@ -91,7 +91,7 @@ namespace Acme.Collections
 ```
 adlı bir `Stack` `Acme.Collections`ad alanında adında bir sınıf bildirir. Bu sınıfın `Acme.Collections.Stack`tam adı. Sınıf birçok `top`üye içerir: adlı bir alan, `Push` ve `Pop`adlı iki yöntem ve adlı `Entry`bir iç içe sınıf. Sınıf daha fazla üç üye içerir: adlı `next`alan, adlı `data`alan ve Oluşturucu. `Entry` Örneğin kaynak kodunun dosyada `acme.cs`depolandığını varsayarak, komut satırı
 
-```
+```console
 csc /t:library acme.cs
 ```
 örneği bir kitaplık (bir `Main` giriş noktası olmayan kod) olarak derler ve adında `acme.dll`bir derleme oluşturur.
@@ -119,12 +119,12 @@ class Test
 ```
 Program dosyada `test.cs`depolanıyorsa `test.cs` , derlendikten sonra `acme.dll` `/r` derlemeye derleyicinin seçeneği kullanılarak başvurulabilir:
 
-```
+```console
 csc /r:acme.dll test.cs
 ```
 Bu, çalıştırıldığında bir çalıştırılabilir derleme `test.exe`oluşturur; Bu, çalıştırıldığında çıktıyı üretir:
 
-```
+```console
 100
 10
 1
@@ -182,7 +182,7 @@ Aşağıdaki tabloda sayısal türler C#özetlenmektedir.
 |                   | 64       | `ulong`   | 0... 18, 446,, 073, 709, 551, 615 |
 | Kayan nokta    | 32       | `float`   | 1,5 × 10 ^ − 45 ila 3,4 × 10 ^ 38, 7 basamaklı duyarlık |
 |                   | 64       | `double`  | 5,0 × 10 ^ − 324 ila 1,7 × 10 ^ 308, 15 basamaklı duyarlık |
-| Ondalık           | 128      | `decimal` | 1,0 × 10 ^ − 28 ila 7,9 × 10 ^ 28, 28 basamaklı duyarlık |
+| Decimal           | 128      | `decimal` | 1,0 × 10 ^ − 28 ila 7,9 × 10 ^ 28, 28 basamaklı duyarlık |
 
 C#programlar yeni türler oluşturmak için ***tür bildirimleri*** kullanır. Tür bildiriminde yeni türün adı ve üyeleri belirtilir. C#Türlerin beş kategorisi Kullanıcı tarafından tanımlanabilir: sınıf türleri, yapı türleri, arabirim türleri, sabit listesi türleri ve temsilci türleri.
 
@@ -595,7 +595,7 @@ Point p2 = new Point(10, 20);
 ```
 Nesne artık kullanımda olmadığında bir nesnenin kapladığı bellek otomatik olarak geri kazanılır. Üzerinde C#nesneleri açıkça serbest bırakmak gerekli değildir veya mümkün değildir.
 
-### <a name="members"></a>Üyeler
+### <a name="members"></a>Members
 
 Bir sınıfın üyeleri ***statik Üyeler*** veya ***örnek üyeleridir***. Statik Üyeler sınıflara aittir ve örnek üyeleri nesnelere aittir (sınıf örnekleri).
 
@@ -607,9 +607,9 @@ Aşağıdaki tabloda bir sınıfın içerebileceği üye türlerine genel bakı�
 | Sabitler    | Sınıfla ilişkili sabit değerler |
 | Alanlar       | Sınıfın değişkenleri |
 | Yöntemler      | Sınıfı tarafından gerçekleştirilebilecek hesaplamalar ve eylemler |
-| Özellikler   | Sınıfın adlandırılmış özelliklerini okuma ve yazma ile ilişkili eylemler |
+| properties   | Sınıfın adlandırılmış özelliklerini okuma ve yazma ile ilişkili eylemler |
 | Dizin Oluşturucular     | Bir dizi gibi sınıfın dizin oluşturma örnekleri ile ilişkili eylemler |
-| Olaylar       | Sınıfı tarafından oluşturulabilecek bildirimler |
+| Events       | Sınıfı tarafından oluşturulabilecek bildirimler |
 | İşleçler    | Sınıf tarafından desteklenen dönüşümler ve ifade işleçleri |
 | Oluşturucular | Sınıfın veya sınıfın örneklerinin örneğini başlatmak için gereken eylemler |
 | Yıkıcılar  | Sınıfın örneklerinden önce gerçekleştirilecek eylemler kalıcı olarak atılır |
@@ -1138,7 +1138,7 @@ List<string> list2 = new List<string>(10);
 ```
 Diğer üyelerin aksine, örnek oluşturucular devralınmaz ve bir sınıfın sınıfta tanımlananlardan farklı örnek oluşturucuları yoktur. Bir sınıf için örnek Oluşturucu sağlanmazsa, parametresi olmayan boş bir değer otomatik olarak sağlanır.
 
-#### <a name="properties"></a>Özellikler
+#### <a name="properties"></a>properties
 
 ***Özellikler*** , alanlar için doğal bir uzantıdır. Her ikisi de ilişkili türlerin bulunduğu isimlerdir ve alanlara ve özelliklere erişim için sözdizimi aynıdır. Ancak, alanların aksine, Özellikler depolama konumlarını göstermiyor. Bunun yerine, özellikler, değerleri okunmak veya yazıldığında yürütülecek deyimleri belirten ***erişimcileri*** vardır.
 
@@ -1178,7 +1178,7 @@ for (int i = 0; i < names.Count; i++) {
 ```
 Dizin oluşturucular aşırı yüklenebilir, yani parametrelerinin sayısı veya türleri farklı olduğu sürece bir sınıfın birden çok dizin kümesini bildirebileceği anlamına gelir.
 
-#### <a name="events"></a>Olaylar
+#### <a name="events"></a>Events
 
 Bir ***olay*** , bir sınıf veya nesnenin bildirimler sağlamasını sağlayan bir üyedir. Bildirimin bir `event` anahtar sözcük içermesi ve türün bir temsilci türü olması dışında bir olay, bir alan gibi bildirilmiştir.
 

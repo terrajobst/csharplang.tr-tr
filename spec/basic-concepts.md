@@ -1,20 +1,20 @@
 ---
-ms.openlocfilehash: 1c3d05674f8f7b69e70e0d9e06021537fc45f7ed
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: ff31585520c9090ad92893a930327112743c8e77
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488483"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703999"
 ---
 # <a name="basic-concepts"></a>Temel kavramlar
 
 ## <a name="application-startup"></a>Uygulama başlatma
 
-Bir derlemeye bir ***giriş noktası*** çağrılır bir ***uygulama***. Bir uygulama olduğunda çalıştırın, yeni bir ***uygulama etki alanı*** oluşturulur. Bir uygulamayı birkaç farklı örneklemeleri aynı makinede aynı anda mevcut olabilir ve her biri kendi uygulama etki alanı vardır.
+***Giriş noktası*** olan bir derlemeye ***uygulama***denir. Bir uygulama çalıştırıldığında yeni bir ***uygulama etki alanı*** oluşturulur. Bir uygulamanın birçok farklı örneği aynı anda aynı makinede bulunabilir ve her birinin kendi uygulama etki alanına sahip olabilir.
 
-Uygulama etki alanı, uygulama durumu için kapsayıcı olarak çalışan tarafından uygulama yalıtımı sağlar. Uygulama etki alanı, bir kapsayıcı ve uygulama ve kullandığı sınıf kitaplıkları içinde tanımlanan türler için sınır olarak görev yapar. Aynı türden başka bir uygulama etki alanına yüklenen bir uygulama etki alanına yüklenen türleri farklıdır ve nesnelerin örneklerini uygulama etki alanları arasında doğrudan paylaşılmaz. Örneğin, her uygulama etki alanı statik değişkenler bu türleri için kendi kopyasına sahip ve bir tür için bir statik Oluşturucu uygulama etki alanı başına en fazla bir kez çalıştırılır. Uygulamaları oluşturma ve yok edilmesini uygulama etki alanları için uygulamaya özel ilke veya mekanizmaları sağlamak ücretsizdir.
+Uygulama etki alanı, uygulama durumu için kapsayıcı görevi gören uygulama yalıtımına izin veriyor. Uygulama etki alanı, uygulamada tanımlanan türler ve kullandığı sınıf kitaplıklarında bir kapsayıcı ve sınır görevi görür. Bir uygulama etki alanına yüklenen türler, başka bir uygulama etki alanına yüklenen aynı türden farklıdır ve nesne örnekleri uygulama etki alanları arasında doğrudan paylaşılmaz. Örneğin, her bir uygulama etki alanının bu türler için kendi statik değişkenlerinin kopyası vardır ve bir tür için statik bir Oluşturucu uygulama etki alanı başına en çok bir kez çalıştırılır. Uygulamalar, uygulama etki alanlarının oluşturulması ve yok edilmesi için uygulamaya özgü ilke veya mekanizmalar sağlamak üzere ücretsizdir.
 
-***Uygulama başlatma*** yürütme ortamı uygulamanın giriş noktası olarak adlandırılan belirlenen bir yöntemi çağırdığında gerçekleşir. Bu giriş noktası yönteminin her zaman adlı `Main`ve aşağıdaki imzalara sahip olabilir:
+***Uygulama başlatma*** , yürütme ortamı, uygulamanın giriş noktası olarak adlandırılan belirlenmiş bir yöntemi çağırdığında oluşur. Bu giriş noktası yöntemi her zaman `Main` olarak adlandırılır ve aşağıdaki imzalardan birine sahip olabilir:
 
 ```csharp
 static void Main() {...}
@@ -26,54 +26,54 @@ static int Main() {...}
 static int Main(string[] args) {...}
 ```
 
-Gösterildiği gibi giriş noktası isteğe bağlı olarak döndürebilir bir `int` değeri. Bu dönüş değeri, uygulama sonlandırılmasıyla kullanılır ([uygulama sonlandırma](basic-concepts.md#application-termination)).
+Gösterildiği gibi, giriş noktası isteğe bağlı olarak bir `int` değeri döndürebilir. Bu dönüş değeri uygulama sonlandırmada ([Uygulama sonlandırma](basic-concepts.md#application-termination)) kullanılır.
 
-Giriş noktası isteğe bağlı olarak bir biçimsel parametreye sahip olabilir. Parametresi, herhangi bir ad olabilir, ancak parametresinin türü olmalıdır `string[]`. Biçimsel parametre varsa, yürütme ortamı oluşturur ve başarılı bir `string[]` olan komut satırı bağımsız değişkenleri içeren değişken belirtilen uygulama başlatıldığı. `string[]` Bağımsız değişken NULL'dur hiçbir zaman, ancak hiçbir komut satırı bağımsız değişkenleri belirtilmişse sıfır uzunluğuna sahip olabilir.
+Giriş noktası, isteğe bağlı olarak bir biçimsel parametreye sahip olabilir. Parametre herhangi bir ada sahip olabilir, ancak parametrenin türü `string[]` olmalıdır. Biçimsel parametre varsa, yürütme ortamı, uygulama başlatıldığında belirtilen komut satırı bağımsız değişkenlerini içeren `string[]` bağımsız değişkenini oluşturur ve geçirir. @No__t-0 bağımsız değişkeni hiçbir şekilde null değildir, ancak komut satırı bağımsız değişkenleri belirtilmemişse sıfır uzunluğuna sahip olabilir.
 
-C# yöntemi aşırı yüklemesi desteklediğinden, sağlanan her farklı bir imzaya sahip bir sınıfın veya yapının bazı yöntemi birden çok tanımları içerebilir. Ancak, tek bir program içindeki herhangi bir sınıf veya yapı adında birden fazla yöntem içerebilir `Main` tanımında bu uygulaması giriş noktası olarak kullanılacak niteliği taşır. Diğer aşırı yüklenmiş sürümleri `Main` , ancak birden fazla parametre sahip oldukları ya da yalnızca kendi parametre türüdür dışında sağlanan izin verilen `string[]`.
+Yöntem C# aşırı yüklemesini desteklediğinden, bir sınıf veya yapı, her yöntemin farklı bir imzaya sahip olan birden çok tanımını içerebilir. Ancak, tek bir program içinde, hiçbir sınıf veya yapı, tanımı bir uygulama giriş noktası olarak kullanılmak üzere niteleyen `Main` adlı birden fazla yöntem içerebilir. @No__t-0 ' ın diğer aşırı yüklenmiş sürümlerine izin verilir, ancak birden fazla parametreye sahip olmaları veya yalnızca parametresi `string[]` türünden farklı olabilir.
 
-Bir uygulamanın birden fazla sınıflar veya yapılar oluşur. Adlı yöntemi içeren birden fazla bu sınıflar veya yapılar için mümkün olduğu `Main` tanımında bu uygulaması giriş noktası olarak kullanılacak niteliği taşır. Böyle durumlarda (örneğin, bir komut satırı derleyicisi seçeneği) veren dış mekanizmayı bunlardan birini seçmek için kullanılmalıdır `Main` giriş noktası olarak yöntemler.
+Bir uygulama birden fazla sınıftan veya yapıların üzerinde oluşturulabilir. Tanımı bir uygulama giriş noktası olarak kullanılmak üzere niteleyen `Main` adlı bir yöntem içeren bu sınıfların veya yapıların birden fazla olması mümkündür. Bu gibi durumlarda, giriş noktası olarak bu `Main` yöntemlerinden birini seçmek için bir dış mekanizmanın (bir komut satırı derleyici seçeneği gibi) kullanılması gerekir.
 
-C# ' ta her yöntemi bir sınıf veya yapı üyesi olarak tanımlanmalıdır. Normalde, bildirilen erişilebilirliği ([erişilebilirlik bildirilen](basic-concepts.md#declared-accessibility)) yöntemi tarafından erişim değiştiricileri belirlenir ([erişim değiştiricilerine](classes.md#access-modifiers)) bildiriminden ve benzer şekilde bildirilen belirtilen bir türün erişilebilirlik bildiriminde belirtilen erişim değiştiricileri tarafından belirlenir. Çağrılabilir olması için sırada belirli bir yöntemin belirli bir türün, tür ve üye hem erişilebilir olması gerekir. Ancak, uygulama giriş noktası bir özel durumdur. Özellikle, yürütme ortamı, uygulamanın giriş noktasını bakılmaksızın kendi bildirilen erişilebilirliği ve öğesinin bildirilen erişilebilirliği kapsayan kendi tür bildirimleri bağımsız olarak erişebilirsiniz.
+' C#De, her yöntemin bir sınıfın veya yapının üyesi olarak tanımlanması gerekir. Genellikle, bir yöntemin tanımlanmış erişilebilirliği (belirtilen[Erişilebilirlik](basic-concepts.md#declared-accessibility)), bildiriminde belirtilen erişim değiştiricilerine ([erişim değiştiricilerine](classes.md#access-modifiers)) göre belirlenir ve benzer şekilde, bir türün tanımlanan erişilebilirliği tarafından belirlenir bildiriminde belirtilen erişim değiştiricileri. Verilen bir türün belirli bir yönteminin çağrılabilir olması için, hem tür hem de üyenin erişilebilir olması gerekir. Ancak, uygulama giriş noktası özel bir durumdur. Özellikle, yürütme ortamı uygulamanın giriş noktasına, kendisine ait erişilebilirliği ve kapsayan tür bildirimlerinin belirtilen erişilebilirliğinden bağımsız olarak erişebilir.
 
-Uygulama giriş noktası yöntemi, bir genel sınıf bildiriminde olmayabilir.
+Uygulama giriş noktası yöntemi bir genel sınıf bildiriminde bulunmayabilir.
 
-Diğer tüm yönden girdi noktası yöntemleri giriş noktası olmayan olanlar gibi davranır.
+Diğer tüm anlarda giriş noktası yöntemleri giriş noktaları olmayan gibi davranır.
 
-## <a name="application-termination"></a>Uygulamayı sonlandırma
+## <a name="application-termination"></a>Uygulama sonlandırma
 
-***Uygulama sonlandırma*** yürütme ortamı denetimini döndürür.
+***Uygulama sonlandırması*** denetim yürütme ortamına geri döndürür.
 
-Uygulamanın, dönüş türü ***giriş noktası*** yöntemi `int`, döndürülen değer uygulamanın hizmet veren ***sonlandırma durum kodu***. Bu kodun amacı, başarı veya başarısızlık yürütme ortamı için iletişime izin vermektir.
+Uygulamanın ***giriş noktası*** yönteminin dönüş türü `int` ise, döndürülen değer uygulamanın ***sonlandırma durum kodu***olarak işlev görür. Bu kodun amacı, yürütme ortamında başarı veya başarısızlık iletişimine iletişim sağlamaktır.
 
-Giriş noktası yönteminin dönüş türü ise `void`, sağ ayraç ulaşmasını (`}`), sonlandıran yöntemi veya yürütülürken bir `return` olan herhangi bir ifade deyimi sonlandırma durum koduna sonuçları `0`.
+Giriş noktası yönteminin dönüş türü `void` ise, bu yöntemi sonlandıran sağ küme ayracı (`}`) elde edilir veya ifadesi olmayan bir `return` ifadesi yürütülerek, `0` sonlandırma durum koduna neden olur.
 
-Bu tür temizleme atlanmadıkları sürece uygulamanın sonlanması öncesinde yok ediciler için tüm henüz çöp olarak toplanacak olan nesneleri, çağrılır (kitaplık yöntemine bir çağrıyla `GC.SuppressFinalize`, örneğin).
+Bir uygulamanın sonlandırmasından önce, daha önce atık olarak toplanmamış tüm nesneleri için yok ediciler, temizleme gizlenmediği (örneğin, `GC.SuppressFinalize` kitaplık yöntemine yapılan bir çağrı tarafından) çağrılır.
 
 ## <a name="declarations"></a>Bildirimler
 
-Bildirimleri bir C# programında, programın şekli oluşturan öğeler tanımlayın. C# programları, ad alanlarını kullanarak düzenlenir ([ad alanları](namespaces.md)), türü içerebilecek bildirimler ve iç içe geçmiş ad alanı bildirimi. Tür bildirimleri ([tür bildirimleri](namespaces.md#type-declarations)) sınıflarını tanımlamak için kullanılır ([sınıfları](classes.md)), yapılar ([yapılar](structs.md)), arabirimleri ([arabirimleri](interfaces.md) ), sabit listeleri ([numaralandırmalar](enums.md)) ve temsilciler ([Temsilciler](delegates.md)). Türde üye türü bildiriminde izin türü bildirimi formunda bağlıdır. Örneğin, sınıf bildirimleri sabitleri için bildirimi içerebilir ([sabitleri](classes.md#constants)), alanlar ([alanları](classes.md#fields)), yöntemleri ([yöntemleri](classes.md#methods)), özellikleri ([ Özellikleri](classes.md#properties)), olaylar ([olayları](classes.md#events)), dizin oluşturucular ([dizin oluşturucular](classes.md#indexers)), işleçler ([işleçleri](classes.md#operators)), örnek oluşturucuları ([ Örnek oluşturucuları](classes.md#instance-constructors)), statik oluşturucular ([statik oluşturucular](classes.md#static-constructors)), Yıkıcılar ([yok ediciler](classes.md#destructors)) ve iç içe geçmiş türler ([iç içe türler](classes.md#nested-types)).
+Bir C# programdaki bildirimler programın yapısal öğelerini tanımlar. C#Programlar, tür bildirimleri ve iç içe ad alanı bildirimleri içerebilen ad alanları ([ad alanları](namespaces.md)) kullanılarak düzenlenir. Tür bildirimleri ([tür bildirimleri](namespaces.md#type-declarations)), sınıfları ([sınıflar](classes.md)), yapıları ([yapılar](structs.md)), arabirimleri ([arabirimleri](interfaces.md)), numaralandırmalar ([numaralandırmalar](enums.md)) ve temsilcileri ([Temsilciler](delegates.md)) tanımlamak için kullanılır. Tür bildiriminde izin verilen üye türleri tür bildiriminin biçimine bağlıdır. Örneğin, sınıf bildirimleri sabitler ([sabitler](classes.md#constants)), alanlar ([alanlar](classes.md#fields)), Yöntemler ([Yöntemler](classes.md#methods)), Özellikler ([Özellikler](classes.md#properties)), Olaylar ([Olaylar](classes.md#events)), Dizin oluşturucular ([Dizin oluşturucular](classes.md#indexers)) için bildirimler içerebilir. Operators ([işleçler](classes.md#operators)), örnek oluşturucular ([örnek oluşturucular](classes.md#instance-constructors)), statik oluşturucular ([statik oluşturucular](classes.md#static-constructors)), Yıkıcılar ([Yıkıcılar](classes.md#destructors)) ve iç içe türler ([iç içe türler](classes.md#nested-types)).
 
-Bir bildirimi bir ad tanımlar ***bildirim alanı*** bildirimi ait olduğu. Hariç üyeler aşırı ([imzalar ve aşırı yükleme](basic-concepts.md#signatures-and-overloading)), bir bildirim alanında aynı ada sahip üye tanıtan iki veya daha fazla bildirimleri sağlamak için bir derleme zamanı hata. Aynı ada sahip üyelerinin farklı türleri içeren bir bildirim alanı için hiçbir zaman mümkündür. Örneğin, bir bildirim alanı hiçbir zaman alan ve bir yöntem aynı adla içerebilir.
+Bildirim, bildirimin ait olduğu ***bildirim alanında*** bir ad tanımlar. Aşırı yüklenmiş Üyeler hariç ([imzalar ve aşırı yükleme](basic-concepts.md#signatures-and-overloading)), bir bildirim alanında aynı ada sahip üyeleri tanıtan iki veya daha fazla bildirime sahip bir derleme zamanı hatasıdır. Bir bildirim alanının aynı ada sahip farklı üye türleri içermesi hiçbir şekilde mümkün değildir. Örneğin, bir bildirim alanı hiçbir şekilde bir alanı ve aynı ada sahip bir yöntemi içeremez.
 
-Aşağıda açıklandığı gibi birkaç farklı türde bildirimi alanları vardır.
+Aşağıda açıklandığı gibi birkaç farklı türde bildirim alanı vardır.
 
-*  Bir programın tüm kaynak dosyaları içinde *namespace_member_declaration*hiçbir kapsayan ile s *namespace_declaration* adlı tek bir birleştirilmiş bildirimi boşluk üyeleri ***genel Bildirim alanı***.
-*  Bir programın tüm kaynak dosyaları içinde *namespace_member_declaration*ürününe *namespace_declaration*tam ad alanı ile aynı ada sahip s olan tek bir birleştirilmiş bildirimine üyeleri boşluk.
-*  Yeni bir bildirim alanı her sınıf, yapı veya arabirim bildirimi oluşturur. Adları kullanıma sunulan bu bildirim alanına *class_member_declaration*s, *struct_member_declaration*s, *interface_member_declaration*s, veya *type_parameter*s. Aşırı yüklenmiş bir örnek oluşturucusu hariç, bildirimler ve statik Oluşturucu bildirimi, bir sınıfın veya yapının sınıfın veya yapının aynı ada sahip bir üye bildirimi içeremez. Bir sınıf, yapı veya arabirim aşırı yüklenmiş yöntemler ve dizin oluşturucular bildirimi izin verir. Ayrıca, bir sınıf veya yapı bildirimi aşırı yüklenmiş örnek oluşturucuları ve işleçleri izin verir. Bu yöntem bildirimleri kendi imzasında farklı sağlanan Örneğin, bir sınıf, yapı veya arabirim aynı ada sahip birden çok yöntem bildirimleri içerebilir ([imzalar ve aşırı yükleme](basic-concepts.md#signatures-and-overloading)). Temel sınıflar bir sınıfın bildiriminin alanına katkıda bulunan değil ve temel arabirimleri bildirim alanına bir arabirimin katkıda bulunmuyor unutmayın. Bu nedenle, türetilen bir sınıfta veya arabirimde aynı ada sahip bir üyesi devralınmış bir üyeyi olarak bildirin izin verilmez. Böyle bir üyesi edilir ***Gizle*** devralınan üye.
-*  Yeni bir bildirim alanı her temsilci bildirimi oluşturur. Adları bu bildirim alanına biçimsel parametreler aracılığıyla kullanıma sunulmuştur (*fixed_parameter*s ve *parameter_array*s) ve *type_parameter*s.
-*  Yeni bir bildirim alanı her numaralandırma bildirimi oluşturur. Adları kullanıma sunulan bu bildirim alanına *enum_member_declarations*.
-*  Her yöntem bildiriminde, dizin oluşturucu bildirimi, işleç bildirimi, kopya Oluşturucusu bildirimi ve anonim işlev adı verilen yeni bir bildirim alanı oluşturur bir ***yerel değişken bildiriminde yer***. Adları bu bildirim alanına biçimsel parametreler aracılığıyla kullanıma sunulmuştur (*fixed_parameter*s ve *parameter_array*s) ve *type_parameter*s. İşlev üyesi veya anonim işlev gövdesinin varsa, yerel değişken bildiriminde alanı içinde iç içe geçmiş kabul edilir. Bir yerel değişken bildiriminde alan ve aynı ada sahip öğeleri içeren bir iç içe yerel değişken bildiriminde alan için bir hatadır. Bu nedenle, bir iç içe geçmiş bir bildirim alanı içinde yerel bir değişken veya yerel bir değişken olarak aynı ada sahip sabit veya sabit kapsayan bir bildirim alanı bildirmek mümkün değildir. Diğer bildirim boşluk içerdiği sürece aynı ada sahip öğeleri içeren iki bildirimi boşluk mümkündür.
-*  Her *blok* veya *switch_block* , hem de bir *için*, *foreach* ve *kullanarak* deyimi, oluşturur bir yerel değişken bildiriminde yer yerel değişkenleri ve yerel sabitleri için. Adları kullanıma sunulan bu bildirim alanına *local_variable_declaration*s ve *local_constant_declaration*s. İçinde kendi parametrelerini için bu işlevleri tarafından bildirilen yerel değişken bildiriminde yer olarak veya bir üye işlev veya anonim işlev gövdesi içinde oluşan bloklar yerleştirilir unutmayın. Bu nedenle, örneğin bir yerel değişken ve aynı ada sahip bir parametre ile bir yöntem sağlamak için bir hatadır.
-*  Her *blok* veya *switch_block* etiketleri için ayrı bildirim boşluk oluşturur. Adları kullanıma sunulan bu bildirim alanına *labeled_statement*s yanı sıra, adları başvuru aracılığıyla *goto_statement*s. ***Etiket bildirim alanı*** bloğu tüm iç içe geçmiş blokları içerir. Bu nedenle, iç içe geçmiş bir bloğu içinde kapsayan bir blok içinde bir etiket olarak aynı ada sahip bir etiket bildirmek mümkün değildir.
+*  Bir programın tüm kaynak dosyalarında, kapsayan *namespace_declaration* içermeyen *namespace_member_declaration*s, ***genel bildirim alanı***olarak adlandırılan tek bir Birleşik bildirim alanının üyeleridir.
+*  Bir programın tüm kaynak dosyaları içinde, aynı tam ad alanı adına sahip olan *namespace_declaration*s içindeki *namespace_member_declaration*s tek bir Birleşik bildirim alanının üyeleridir.
+*  Her sınıf, yapı veya arabirim bildirimi yeni bir bildirim alanı oluşturur. Adlar, bu bildirim alanına *class_member_declaration*s, *struct_member_declaration*s, *interface_member_declaration*s veya *type_parameter*s aracılığıyla tanıtılmıştır. Aşırı yüklenmiş örnek Oluşturucu bildirimleri ve statik Oluşturucu bildirimleri dışında, bir sınıf veya yapı sınıfı veya struct ile aynı ada sahip bir üye bildirimi içeremez. Bir sınıf, yapı veya arabirim, aşırı yüklenmiş yöntemlerin ve Dizin oluşturucuların bildirimine izin verir. Ayrıca, bir sınıf veya yapı, aşırı yüklenmiş örnek oluşturucuların ve işleçlerin bildirimine izin verir. Örneğin, bir sınıf, yapı veya arabirim aynı ada sahip birden çok yöntem bildirimi içerebilir, bu yöntem bildirimleri imzasında ([imzalar ve aşırı yükleme](basic-concepts.md#signatures-and-overloading)) farklı olabilir. Temel sınıfların bir sınıfın bildirim alanına katkıda bulunmadığını ve temel arabirimlerin bir arabirimin bildirim alanına katkıda bulunmayacağını unutmayın. Bu nedenle, türetilmiş bir sınıfın veya arabirimin devralınan üye ile aynı ada sahip bir üyeyi bildirmesine izin verilir. Bu tür bir üye devralınan üyeyi ***gizleyecek*** şekilde kabul edilir.
+*  Her temsilci bildirimi yeni bir bildirim alanı oluşturur. Adlar, bu bildirim alanına biçimsel parametreler (*fixed_parameter*s ve *parameter_array*s) ve *type_parameter*s aracılığıyla tanıtılmıştır.
+*  Her numaralandırma bildirimi yeni bir bildirim alanı oluşturur. Adlar bu bildirim alanına *enum_member_declarations*aracılığıyla tanıtılmıştır.
+*  Her yöntem bildirimi, Dizin Oluşturucu bildirimi, işleç bildirimi, örnek Oluşturucu bildirimi ve anonim işlev, ***yerel değişken bildirim alanı***olarak adlandırılan yeni bir bildirim alanı oluşturur. Adlar, bu bildirim alanına biçimsel parametreler (*fixed_parameter*s ve *parameter_array*s) ve *type_parameter*s aracılığıyla tanıtılmıştır. İşlev üyesi veya anonim işlevin gövdesi, varsa, yerel değişken bildirim alanı içinde iç içe olarak kabul edilir. Yerel bir değişken bildirim alanı ve aynı ada sahip öğeleri içermesi için iç içe geçmiş yerel değişken bildirim alanı için bir hatadır. Bu nedenle, iç içe geçmiş bir bildirim alanı içinde, bir yerel değişken veya sabit değeri, kapsayan bir bildirim alanında yerel bir değişkenle veya sabitle aynı ada sahip olabilir. İki bildirim alanı, hiçbir bildirim alanı diğeri içermediği sürece aynı ada sahip öğeleri içermesi için mümkündür.
+*  Her *blok* veya *switch_block* , ayrıca bir *for* *foreach* ve *using* ifadesi yerel değişkenler ve yerel sabitler için yerel bir değişken bildirim alanı oluşturur. Adlar, bu bildirim alanına *local_variable_declaration*s ve *local_constant_declaration*s aracılığıyla tanıtılmıştır. Bir işlev üyesinin veya anonim işlevin gövdesi içinde veya içinde oluşan blokların, parametreleri için bu işlevler tarafından tanımlanan yerel değişken bildirim alanı içinde iç içe geçmiş olduğunu unutmayın. Bu nedenle, örneğin bir yerel değişkene ve aynı ada sahip bir parametreye sahip bir yöntem olması hatadır.
+*  Her *blok* veya *switch_block* , Etiketler için ayrı bir bildirim alanı oluşturur. Adlar, bu bildirim alanına *labeled_statement*s aracılığıyla tanıtılmıştır ve adlara *goto_statement*s aracılığıyla başvurulur. Bir bloğun ***etiket bildirim alanı*** , iç içe geçmiş blokları içerir. Bu nedenle, iç içe bir blok içinde, kapsayan bir blok içindeki bir etiketle aynı ada sahip bir etiketi bildirmek mümkün değildir.
 
-Adları bildirilen metinsel genellikle hiçbir önemini sırasıdır. Özellikle, metinsel sırası önemli bildirimler ve ad alanları, sabitleri, yöntemleri, özellikleri, olayları, Dizinleyicileri, işleçleri, örnek oluşturucuları, yok ediciler, statik oluşturucular ve türleri kullanımı için değildir. Aşağıdaki yollarla bildirim sırası önemlidir:
+Adların bildirildiği metin sırası genellikle anlamlı değildir. Özellikle, metinsel sıralama, ad alanları, sabitler, Yöntemler, özellikler, olaylar, Dizin oluşturucular, işleçler, örnek oluşturucular, Yıkıcılar, statik oluşturucular ve türler için önemli değildir. Bildirim sırası aşağıdaki yollarla önemlidir:
 
-*  Alan bildirimleri ve yerel değişken bildirimleri için bildirim sırasında kendi başlatıcıları (varsa) yürütüldüğü sırasını belirler.
-*  Yerel değişkenler, kullanılmadan önce tanımlanmalıdır ([kapsamları](basic-concepts.md#scopes)).
-*  Sabit listesi üye bildirimleri için bildirim sırasında ([numaralandırma üyeleri](enums.md#enum-members)) önemli olduğunda *constant_expression* değerleri atlanmış.
+*  Alan bildirimleri ve yerel değişken bildirimleri için bildirim sırası, başlatıcılarının (varsa) yürütülme sırasını belirler.
+*  Yerel değişkenlerin kullanılmadan önce tanımlanması gerekir ([kapsamlar](basic-concepts.md#scopes)).
+*  *Constant_expression* değerleri atlandığında enum üye bildirimleri ([enum üyeleri](enums.md#enum-members)) için bildirim sırası önemlidir.
 
-Bildirimi bir ad alanının "Bitti" açık"ve iki ad alanı bildirimleri aynı tam ada sahip aynı bildirim alanına katkıda bulunan bir alandır. Örneğin:
+Bir ad alanının bildirim alanı "açık sona erdi" ve aynı tam ada sahip iki ad alanı bildirimi aynı bildirim alanına katkıda bulunur. Örneğin:
 ```csharp
 namespace Megacorp.Data
 {
@@ -92,9 +92,9 @@ namespace Megacorp.Data
 }
 ```
 
-Bu durumda tam olarak nitelenmiş ada sahip iki sınıfları bildirme aynı bildirim alanına, yukarıdaki iki ad alanı bildirimi katkıda `Megacorp.Data.Customer` ve `Megacorp.Data.Order`. İki bildirimi aynı bildirim alanına katkıda bulunan, her aynı ada sahip bir sınıf bildirimi içeriyorsa, bir derleme zamanı hatası nedeni.
+Yukarıdaki iki ad alanı bildirimi aynı bildirim alanına katkıda bulunur, bu durumda iki sınıfı `Megacorp.Data.Customer` ve `Megacorp.Data.Order` olarak tam adlarla bildirme. İki bildirim aynı bildirim alanına katkıda bulunduğundan, her biri aynı ada sahip bir sınıfın bildirimini içeriyorsa, derleme zamanı hatasına neden olur.
 
-Bildirim alanı bir blok olarak yukarıda belirtilen, herhangi bir iç içe geçmiş bloğu içerir. Bu nedenle, aşağıdaki örnekte, `F` ve `G` yöntemleri, çünkü bir derleme zamanı hatası neden adı `i` dış blokta bildirilen ve iç bloğu içinde bildirilemez. Ancak, `H` ve `I` yöntemleri iki itibaren geçerlidir `i`ait ayrı iç içe olmayan bloklar olarak bildirilir.
+Yukarıda belirtildiği gibi, bir bloğun bildirim alanı, iç içe geçmiş blokları içerir. Bu nedenle, aşağıdaki örnekte, `F` ve `G` yöntemleri derleme zamanı hatasına neden olur çünkü `i` adı dış blokta bildirildiği ve iç blokta yeniden bildirilemez. Ancak, iki `i` ' nin ayrı iç içe olmayan bloklar halinde bildirildiği için `H` ve `I` yöntemleri geçerlidir.
 
 ```csharp
 class A
@@ -131,126 +131,126 @@ class A
 }
 ```
 
-## <a name="members"></a>Üyeler
+## <a name="members"></a>Members
 
-Ad alanları ve türler sahip ***üyeleri***. Bir varlık üyeleri ve ardından varlığa bir başvuru ile başlayan bir tam adı kullanılarak genel kullanıma sunulmuştur bir "`.`" belirteci, takip eden üyenin adı.
+Ad alanları ve türlerin ***üyeleri***vardır. Bir varlığın üyeleri, varlığa yönelik bir başvuruya ve ardından bir "`.`" belirteci ve sonra üyenin adı ile başlayan nitelenmiş bir ad kullanılarak kullanılabilir.
 
-Bir türün üyeleri ya da tür bildiriminde bildirilen veya ***devralınan*** türü temel sınıftan. Bir tür bir temel sınıftan örnek Oluşturucular, Yıkıcılar ve statik oluşturucular dışında temel sınıfın tüm üyeleri devralan üyeler türetilmiş bir türde olur. Bir temel sınıf üyenin bildirilen erişilebilirliği, üye devralınan olup olmadığını denetlemez; devralma bir örnek oluşturucusu, statik oluşturucu veya yıkıcı olmayan herhangi bir üyeye genişletir. Ancak, devralınan bir üyeyi bir türetilmiş türde, ya da bildirilen erişilebilirliğini nedeniyle erişilemiyor olabilir ([erişilebilirlik bildirilen](basic-concepts.md#declared-accessibility)) veya bir tür bildiriminde tarafından gizlendiği ([aracılığıyla gizleme Devralma](basic-concepts.md#hiding-through-inheritance)).
+Bir türün üyeleri tür bildiriminde bildirilmiştir veya türün temel sınıfından ***devralınır*** . Bir tür taban sınıftan devralırsa, örnek oluşturucular, Yıkıcılar ve statik oluşturucular hariç olmak üzere temel sınıfın tüm üyeleri türetilmiş türün üyesi olur. Bir temel sınıf üyesinin tanımlanmış erişilebilirliği üyenin devralınıp alınmayacağını denetlemez — devralma, örnek Oluşturucu, statik oluşturucu veya yıkıcı olmayan herhangi bir üyeye genişletilir. Ancak, devralınan bir üye, bildirildiği Erişilebilirlik (tarafından[tanımlanan erişilebilirlik](basic-concepts.md#declared-accessibility)) veya türün kendisindeki bir bildirim tarafından gizlendiği için türetilmiş bir tür içinde erişilebilir olmayabilir ([Devralma yoluyla gizleme](basic-concepts.md#hiding-through-inheritance)).
 
-### <a name="namespace-members"></a>Namespace üyelerini
+### <a name="namespace-members"></a>Ad alanı üyeleri
 
-Ad alanları ve kapsayan ad uzayı olmayan türleri olan üyeleri ***genel ad alanı***. Bu doğrudan genel bildirim alanında bildirilen adların karşılık gelir.
+Kapsanan ad alanı olmayan ad alanları ve türler, ***genel ad***alanının üyeleridir. Bu, doğrudan genel bildirim alanında belirtilen adlara karşılık gelir.
 
-Bu ad, ad alanları ve ad alanı içinde bildirilen türler üyeleridir. Bu doğrudan ad alanı bildirimi alana bildirilen adların karşılık gelir.
+Ad alanı içinde belirtilen ad alanları ve türler, bu ad alanının üyeleridir. Bu, doğrudan ad alanının bildirim alanında belirtilen adlara karşılık gelir.
 
-Ad alanları, hiçbir erişim kısıtlamasına sahip. Özel, korumalı veya iç ad alanı bildirmek mümkün değildir ve ad alanı adları her zaman genel olarak erişilebilir.
+Ad alanlarının erişim kısıtlamaları yoktur. Özel, korumalı veya iç ad alanları bildirmek mümkün değildir ve ad alanı adları her zaman herkese açıktır.
 
 ### <a name="struct-members"></a>Yapı üyeleri
 
-Yapı üyeleri struct bildirilen üyeler ve yapının doğrudan temel sınıftan devralınan üyeleri olan `System.ValueType` ve dolaylı temel sınıfı `object`.
+Bir yapının üyeleri, yapı biriminde ve yapının doğrudan taban sınıfından devralınan üyelere `System.ValueType` ve dolaylı temel sınıf `object` ' dir.
 
-Basit bir tür üyelerini doğrudan yapı türü diğer adlı basit bir tür tarafından üyelerinin karşılık gelir:
+Basit bir türün üyeleri, basit türün diğer adı olan yapı türünün üyelerine karşılık gelir:
 
-*  Üyeleri `sbyte` üyeleri `System.SByte` yapısı.
-*  Üyeleri `byte` üyeleri `System.Byte` yapısı.
-*  Üyeleri `short` üyeleri `System.Int16` yapısı.
-*  Üyeleri `ushort` üyeleri `System.UInt16` yapısı.
-*  Üyeleri `int` üyeleri `System.Int32` yapısı.
-*  Üyeleri `uint` üyeleri `System.UInt32` yapısı.
-*  Üyeleri `long` üyeleri `System.Int64` yapısı.
-*  Üyeleri `ulong` üyeleri `System.UInt64` yapısı.
-*  Üyeleri `char` üyeleri `System.Char` yapısı.
-*  Üyeleri `float` üyeleri `System.Single` yapısı.
-*  Üyeleri `double` üyeleri `System.Double` yapısı.
-*  Üyeleri `decimal` üyeleri `System.Decimal` yapısı.
-*  Üyeleri `bool` üyeleri `System.Boolean` yapısı.
+*  @No__t-0 üyeleri, `System.SByte` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Byte` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Int16` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.UInt16` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Int32` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.UInt32` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Int64` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.UInt64` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Char` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Single` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Double` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Decimal` yapısının üyeleridir.
+*  @No__t-0 üyeleri, `System.Boolean` yapısının üyeleridir.
 
-### <a name="enumeration-members"></a>Numaralandırma üyeleri
+### <a name="enumeration-members"></a>Listeleme üyeleri
 
-Bir numaralandırma sabit listesinde bildirilen sabitler ve sabit listesinin doğrudan temel sınıftan devralınan üyeleri üyeleri `System.Enum` ve dolaylı temel sınıfların `System.ValueType` ve `object`.
+Bir numaralandırmanın üyeleri, numaralandırmada ve numaralandırmanın doğrudan taban @no__t sınıfından devralınan ve `System.ValueType` ve `object` ' nin dolaylı taban sınıflarından devralan olan sabitlerdir.
 
 ### <a name="class-members"></a>Sınıf üyeleri
 
-Bir sınıfın üyeleri sınıfta bildirilen üyeleri ve temel sınıftan devralınan üyeleri olan (sınıf dışında `object` temel sınıfa sahip). Temel sınıftan devralınan üyeleri, sabitleri, alanları, yöntemleri, özellikleri, olayları, dizin oluşturucular, işleçler ve tür temel sınıfı, ancak örnek Oluşturucular, Yıkıcılar ve temel sınıfın statik oluşturucular içerir. Temel sınıf üyelerinin bakılmaksızın kendi erişilebilirlik devralınır.
+Bir sınıfın üyeleri, sınıfında ve temel sınıftan devralınan üyelere (taban sınıfına sahip olmayan `object` sınıfı dışında) ait Üyeler. Temel sınıftan devralınan Üyeler, taban sınıfının sabitler, alanları, yöntemleri, özellikleri, olayları, Dizin oluşturucular, işleçler ve türleri ve temel sınıfın statik oluşturucuları değil, temel sınıfın türlerini içerir. Temel sınıf üyeleri, erişilebilirliğine göre devralınmaz.
 
-Bir sınıf bildirimi bildirimlerini sabitleri, alanları, yöntemler, özellikler, olaylar, Dizinleyicileri, işleçleri, örnek oluşturucuları, yok ediciler, statik oluşturucular ve türleri içerebilir.
+Bir sınıf bildirimi, sabitler, alanlar, Yöntemler, özellikler, olaylar, Dizin oluşturucular, işleçler, örnek oluşturucular, Yıkıcılar, statik oluşturucular ve türler için bildirimler içerebilir.
 
-Üyeleri `object` ve `string` karşılık gelen sınıf türü üyeleri doğrudan bunlar diğer adı:
+@No__t-0 ve `string` üyeleri, diğer adı olan sınıf türlerinin üyelerine doğrudan karşılık gelir:
 
-*  Üyeleri `object` üyeleri `System.Object` sınıfı.
-*  Üyeleri `string` üyeleri `System.String` sınıfı.
+*  @No__t-0 üyeleri, `System.Object` sınıfının üyeleridir.
+*  @No__t-0 üyeleri, `System.String` sınıfının üyeleridir.
 
 ### <a name="interface-members"></a>Arabirim üyeleri
 
-Bir arabirim üyelerinin arabirimi ve tüm temel arabirimleri arabiriminin bildirilen üyeleridir. Sınıf üyeleri `object` kesinlikle anlamda, herhangi bir arabirim üyesi değilseniz, ([arabirim üyeleri](interfaces.md#interface-members)). Ancak, sınıf üyeleri `object` herhangi bir arabirim türüne içinde'üye araması aracılığıyla kullanılabilir ([üye araması](expressions.md#member-lookup)).
+Bir arabirimin üyeleri, arabirimde ve arabirimin tüm temel arabirimlerinde belirtilen üyelerdir. @No__t-0 sınıfındaki Üyeler, herhangi bir arabirimin ([arabirim üyesi](interfaces.md#interface-members)) üyesi değil, kesinlikle konuşuyor. Ancak, `object` sınıfındaki Üyeler herhangi bir arabirim türünde ([üye arama](expressions.md#member-lookup)) üye arama yoluyla kullanılabilir.
 
 ### <a name="array-members"></a>Dizi üyeleri
 
-Dizi üyelerinin sınıftan devralınan üyeleri `System.Array`.
+Bir dizinin üyeleri, `System.Array` sınıfından devralınan üyelerdir.
 
-### <a name="delegate-members"></a>Temsilci üye
+### <a name="delegate-members"></a>Temsilci üyeleri
 
-Bir temsilci sınıftan devralınan üyeleri üyeleri `System.Delegate`.
+Bir temsilcinin üyeleri, `System.Delegate` sınıfından devralınan üyelerdir.
 
 ## <a name="member-access"></a>Üye erişimi
 
-Üye bildirimlerini üye erişimi denetlemenizi sağlar. Bir üyenin erişilebilirliğini tarafından bildirilen erişilebilirliği kurulur ([erişilebilirlik bildirilen](basic-concepts.md#declared-accessibility)) üyesi varsa hemen içeren türün erişilebilirlik ile birleştirilmiş.
+Üyelerin bildirimleri üye erişimi üzerinde denetime izin verir. Bir üyenin erişilebilirliği, varsa, hemen kapsayan türün erişilebilirliği ile birleştirilmiş üyenin tanımlanmış erişilebilirliği ([belirtilen erişilebilirlik](basic-concepts.md#declared-accessibility)) tarafından belirlenir.
 
-Belirli bir üye erişimine izin verileceğini, üyesi olduğu söylenir ***erişilebilir***. Belirli bir üyeye erişim izni, buna karşılık, üyesi olduğu söylenir ***erişilemez***. Metinsel konumun erişim yer alan erişilebilirlik etki alanında eklendiğinde bir üye erişim izin verilir ([erişilebilirlik etki alanları](basic-concepts.md#accessibility-domains)) üyesi.
+Belirli bir üyeye erişime izin verildiğinde, üyeye ***erişilebilir***olduğu söylenir. Buna karşılık, belirli bir üyeye erişime izin verilmediğinde, üyenin ***erişilemez***olduğu söylenir. Bir üyeye erişim, erişimin gerçekleştiği metin konumu üyenin erişilebilirlik etki alanına ([erişilebilirlik etki alanları](basic-concepts.md#accessibility-domains)) dahil edildiğinde izin verilir.
 
-### <a name="declared-accessibility"></a>Bildirilen erişilebilirliği
+### <a name="declared-accessibility"></a>Tanımlanan erişilebilirlik
 
-***Erişilebilirlik bildirilen*** üyesi aşağıdakilerden biri olabilir:
+Bir üyenin ***tanımlanmış erişilebilirliği*** aşağıdakilerden biri olabilir:
 
-*  Dahil ederek seçtiğiniz ortak bir `public` değiştiricisi üye bildirimi. Sezgisel anlamını `public` "olmayan sınırlı erişim".
-*  Korumalı, seçili dahil ederek bir `protected` değiştiricisi üye bildirimi. Sezgisel anlamını `protected` "içeren sınıfı veya türleri sınırlı erişim içeren sınıfından türetilir".
-*  Dahil ederek seçilen dahili bir `internal` değiştiricisi üye bildirimi. Sezgisel anlamını `internal` "Bu program için sınırlı erişim".
-*  İç (korumalı veya iç anlamına gelir), korumalı, seçili her ikisi de dahil ederek bir `protected` ve `internal` değiştiricisi üye bildirimi. Sezgisel anlamını `protected internal` "Bu program için sınırlı erişim veya içeren sınıfından türetilen türler".
-*  Dahil ederek seçildiğinden özel, bir `private` değiştiricisi üye bildirimi. Sezgisel anlamını `private` "kapsadığı tür için sınırlı erişim".
+*  Public, üye bildiriminde `public` değiştiricisi eklenerek seçilidir. @No__t-0 ' nın sezgisel anlamı "erişim sınırlı değildir".
+*  Korumalı, üye bildiriminde `protected` değiştiricisi eklenerek seçilir. @No__t-0 ' ı ' nin sezgisel anlamı, "Access 'in kapsayan sınıf veya içeren bir sınıftan türetilmiş türler" ile sınırlıdır.
+*  İç, üye bildiriminde `internal` değiştiricisi eklenerek seçilir. @No__t-0 ' nın sezgisel anlamı "Bu programla sınırlı erişim" dir.
+*  Üye bildiriminde hem `protected` hem de `internal` değiştiricisi eklenerek seçilen, korunan dahili (yani protected veya internal). @No__t-0 ' nın sezgisel anlamı, "Bu program ile sınırlı erişim veya içeren sınıftan türetilmiş türler" dir.
+*  Özel, üye bildiriminde `private` değiştiricisi eklenerek seçilidir. @No__t-0 ' nın sezgisel anlamı "içerilen türle sınırlı" ' dır.
 
-Bağlama bağlı olarak bir üye bildirim aldığı yerleştirin, yalnızca belirli türlerdeki bildirilen erişilebilirliği izin verilir. Ayrıca, üye bildirimi herhangi bir erişim değiştiricileri içermez, bildirimi yer aldığı içerik erişilebilirlik bildirilen varsayılan belirler.
+Bir üye bildiriminin gerçekleştiği içeriğe bağlı olarak, yalnızca belirli bir tanımlı erişilebilirlik türlerine izin verilir. Ayrıca, bir üye bildirimi herhangi bir erişim değiştiricisi içermiyorsa, bildirimin gerçekleştiği bağlam, varsayılan olarak belirtilen erişilebilirliği belirler.
 
-*  Örtük olarak ad sahip `public` erişilebilirlik bildirilir. Ad alanı bildirimi üzerinde hiçbir erişim değiştiricisine izin verilir.
-*  Türleri derleme biriminden veya ad alanı bildirimi olabilir `public` veya `internal` erişilebilirlik ve varsayılan olarak bildirilen `internal` erişilebilirlik bildirilir.
-*  Sınıf üyeleri bildirilen erişilebilirliği beş tür hiçbirini ve varsayılan `private` erişilebilirlik bildirilir. (Bir türü bir ad alanının bir üyesi yalnızca olabilir olarak bildirilmiş ancak bildirilen erişilebilirliği beş türde herhangi bir sınıfın üyesi olabildiği gibi bir türü bildirilen Not `public` veya `internal` erişilebilirlik bildirildi.)
-*  Yapı üyeleri olabilir `public`, `internal`, veya `private` erişilebilirlik ve varsayılan olarak bildirilen `private` yapılardan türetme çünkü erişilebilirlik bildirilir. (Bu, bu yapı tarafından devralınan değil) yapı sürümünde Struct üyelerinin olamaz `protected` veya `protected internal` erişilebilirlik bildirilir. (Yapı üyesi olabildiği gibi bir türü bildirilen unutmayın `public`, `internal`, veya `private` erişilebilirlik, türü bir ad alanının bir üyesi yalnızca olabilir olarak bildirilmiş ancak bildirilen `public` veya `internal` erişilebilirlik bildirildi.)
-*  Arabirim üyeleri örtük olarak sahip `public` erişilebilirlik bildirilir. Arabirim üye bildirimlerinde hiçbir erişim değiştiricisine izin verilir.
-*  Numaralandırma üyelerini örtük olarak sahip `public` erişilebilirlik bildirilir. Hiçbir erişim değiştiricisine sabit listesi üye bildirimlerinde izin verilir.
+*  Ad alanlarında örtülü olarak `public` erişilebilirliği vardır. Ad alanı bildirimlerinde erişim değiştiricilerine izin verilmez.
+*  Derleme birimleri veya ad alanlarında belirtilen türlerin `public` veya `internal` ' i @no__t tarafından belirtilen erişilebilirliği ve varsayılan olarak
+*  Sınıf üyeleri beş tür tanımlanmış erişilebilirliği ve varsayılan olarak `private` tarafından tanımlanan erişilebilirliği içerebilir. (Bir sınıfın üyesi olarak belirtilen bir türün beş tür tanımlanmış erişilebilirliği olabilir, ancak bir ad alanının üyesi olarak bildirildiği bir tür yalnızca `public` veya `internal` ile tanımlanmış erişilebilirliği içerebilir.)
+*  Yapı üyeleri, `public`, `internal` veya `private` ' den fazla tanımlı erişilebilirliği ve varsayılan olarak, yapılar örtük olarak mühürlenmiş olan erişilebilirliği @no__t. Bir yapıda tanıtılan (yani, bu yapı tarafından devralınmayan) yapı üyelerinin `protected` veya `protected internal` ile tanımlanmış erişilebilirliği olamaz. (Bir yapının üyesi olarak belirtilen bir türün `public`, `internal` veya `private` tarafından tanımlanan erişilebilirliği olabileceğini, ancak bir ad alanının üyesi olarak bildirildiği bir türün yalnızca `public` veya `internal` tarafından tanımlanan erişilebilirliği olabileceğini unutmayın.)
+*  Arabirim üyeleri örtük olarak `public` olarak tanımlanmış erişilebilirliği vardır. Arabirim üye bildirimlerinde erişim değiştiricilerine izin verilmez.
+*  Numaralandırma üyeleri örtük olarak `public` olarak tanımlanmış erişilebilirliği vardır. Numaralandırma üye bildirimlerinde erişim değiştiricilerine izin verilmez.
 
 ### <a name="accessibility-domains"></a>Erişilebilirlik etki alanları
 
-***Erişilebilirlik etki alanı*** program metni üyesine erişim verilir (büyük olasılıkla ayrık) bölümlerini üyesi oluşur. Erişilebilirlik etki alanı üyesi tanımlama amacıyla, üyesi olduğu söylenir ***en üst düzey*** bir tür içinde bildirilmedi ve üyesi olduğu söylenir ***iç içe geçmiş*** başka bir tür içinde bildirilirse. Ayrıca, ***program metni*** bir programı tüm program tüm kaynak dosyalarında bulunan metin program ve tüm bulunan metin programı gibi bir tür öğesinin program metni tanımlanır tanımlanan *type_declaration*s (büyük olasılıkla, tür içinde iç içe geçmiş türler dahil) türü.
+Bir üyenin ***erişilebilirlik etki alanı*** , üyeye erişime izin verilen program metninin (muhtemelen ayrık) bölümlerinden oluşur. Bir üyenin erişilebilirlik etki alanını tanımlama amacıyla bir üyenin bir tür içinde ***bildirilmemiş olması ve*** bir üyenin başka bir tür içinde bildirildiği durumlarda ***iç içe*** olduğu söylenir. Ayrıca, programın ***Program metni*** programın tüm kaynak dosyalarında yer alan tüm program metinleri olarak tanımlanır ve bir türün program metni, bu türün *type_declaration*s (dahil) içindeki tüm program metinleri olarak tanımlanır ( büyük olasılıkla, tür içinde iç içe geçmiş türler).
 
-Önceden tanımlanmış bir tür erişilebilirlik etki alanı (gibi `object`, `int`, veya `double`) sınırsızdır.
+Önceden tanımlanmış bir türün erişilebilirlik etki alanı (örneğin `object`, `int` veya `double`) sınırsızdır.
 
-Erişilebilirlik etki alanı bir üst düzey ilişkisiz türü `T` ([bağlı ve türleri ilişkisiz](types.md#bound-and-unbound-types)) bildirilen bir programda `P` şu şekilde tanımlanır:
+@No__t-2 ' de bir programda bildirildiği `T` ([bağlı ve ilişkisiz türler](types.md#bound-and-unbound-types)) üst düzey ilişkisiz türün erişilebilirlik etki alanı aşağıdaki gibi tanımlanır:
 
-*  Varsa öğesinin bildirilen erişilebilirliği `T` olduğu `public`, Erişilebilirlik etki alanı `T` öğesinin program metnidir `P` ve başvuran herhangi bir programı `P`.
-*  Varsa öğesinin bildirilen erişilebilirliği `T` olduğu `internal`, Erişilebilirlik etki alanı `T` öğesinin program metnidir `P`.
+*  @No__t-0 ' nin belirtilen erişilebilirliği `public` ise, `T` ' nin erişilebilirlik etki alanı `P` ' ün ve `P` ' ün başvurduğu tüm programlar için program metni olur.
+*  @No__t-0 ' nin belirtilen erişilebilirliği `internal` ise, `T` ' nin erişilebilirlik etki alanı `P` ' ün program metni olur.
 
-Üst düzey bir bağlanmamış tür erişilebilirlik etki alanı her zaman en az olduğunu izleyen bu tanımları yazın, program öğesinin program metni bildirilir.
+Bu tanımlardan, üst düzey ilişkisiz türdeki erişilebilirlik etki alanının her zaman en azından bu türün bildirildiği programın program metni olduğunu takip eder.
 
-Erişilebilirlik etki alanı için oluşturulan tür `T<A1, ..., An>` ilişkisiz genel bir türün erişilebilirlik etki alanının kesişimidir `T` ve tür bağımsız değişkenlerini erişilebilirlik etki alanları `A1, ..., An`.
+Oluşturulmuş bir tür için erişilebilirlik etki alanı `T<A1, ..., An>`, ilişkisiz genel türdeki `T` ' in erişilebilirlik etki alanının kesişimi ve tür bağımsız değişkenlerinin erişilebilirlik etki alanları `A1, ..., An` ' dir.
 
-Erişilebilirlik etki alanı iç içe üyenin `M` bir türde bildirilen `T` bir programın `P` şu şekilde tanımlanır (dikkate alınarak `M` kendisini büyük olasılıkla bir türü olabilir):
+@No__t-2 bir programda `T` türünde tanımlanan iç içe üye `M` ' ın erişilebilirlik etki alanı, aşağıdaki gibi tanımlanır (`M` ' ün büyük olasılıkla bir tür olabileceğini gösteren):
 
-*  Varsa öğesinin bildirilen erişilebilirliği `M` olduğu `public`, Erişilebilirlik etki alanı `M` erişilebilirlik etki alanıdır `T`.
-*  Varsa öğesinin bildirilen erişilebilirliği `M` olduğu `protected internal`, let `D` öğesinin program metni birleşimi olabilir `P` ve türetilen her türlü program metni `T`, dışında bildirilen `P`. Erişilebilirlik etki alanı `M` erişilebilirlik etki alanının kesişimidir `T` ile `D`.
-*  Varsa öğesinin bildirilen erişilebilirliği `M` olduğu `protected`, let `D` öğesinin program metni birleşimi olabilir `T` ve türetilen her türlü program metni `T`. Erişilebilirlik etki alanı `M` erişilebilirlik etki alanının kesişimidir `T` ile `D`.
-*  Varsa öğesinin bildirilen erişilebilirliği `M` olduğu `internal`, Erişilebilirlik etki alanı `M` erişilebilirlik etki alanının kesişimidir `T` öğesinin program metni ile `P`.
-*  Varsa öğesinin bildirilen erişilebilirliği `M` olduğu `private`, Erişilebilirlik etki alanı `M` öğesinin program metnidir `T`.
+*  @No__t-0 ' nin belirtilen erişilebilirliği `public` ise, `M` ' nin erişilebilirlik etki alanı `T` ' ün erişilebilirlik etki alanıdır.
+*  @No__t-0 ' ı ' nin belirtilen erişilebilirliği `protected internal` ise, `D` ' nin `P` ' ün program metninin birleşimi ve `T` ' ten türetilmiş herhangi bir türün program metni `P` dışında bir şekilde bildirilmiştir. @No__t-0 ' a ait erişilebilirlik etki alanı, `D` ile `T` erişilebilirlik etki alanının kesişimidir.
+*  @No__t-0 ' nin belirtilen erişilebilirliği `protected` ise, `D` ' nin `T` ' ün program metninin birleşimi ve `T` ' ten türetilmiş herhangi bir türün program metni olması gerekir. @No__t-0 ' a ait erişilebilirlik etki alanı, `D` ile `T` erişilebilirlik etki alanının kesişimidir.
+*  @No__t-0 ' nin belirtilen erişilebilirliği `internal` ise, `M` ' nin erişilebilirlik etki alanı, `T` ' ün erişilebilirlik etki alanının `P` program metniyle kesişmesi olur.
+*  @No__t-0 ' nin belirtilen erişilebilirliği `private` ise, `M` ' nin erişilebilirlik etki alanı `T` ' ün program metni olur.
 
-Bu tanımlarından iç içe üyenin erişilebilirlik etki alanı her zaman en az olduğunu izleyen program metni türündeki üye bildirilir. Ayrıca, Erişilebilirlik etki alanı üyesi hiç üyesi bildirildiği türün erişilebilirlik etki daha kapsamlı olduğunu izler.
+Bu tanımlardan, iç içe bir üyenin erişilebilirlik etki alanının her zaman en azından üyenin bildirildiği türdeki program metni olduğunu takip eder. Ayrıca, bir üyenin erişilebilirlik etki alanının, üyenin bildirildiği türün erişilebilirlik etki alanından daha da hiç olmadığı anlamına gelir.
 
-Sezgisel koşullarında bir tür veya üye `M` olan erişim, aşağıdaki adımları erişim izin verildiğinden emin olmak için değerlendirilir:
+Sezgisel koşullarda, bir tür veya üye `M` ' a erişildiğinde, erişime izin verildiğinden emin olmak için aşağıdaki adımlar değerlendirilir:
 
-*  İlk olarak, eğer `M` (olarak karşılıklı derleme biriminde veya bir ad alanı), bir tür içindeki bir derleme zamanı hatası oluşur türü erişilebilir durumda değilse bildirilir.
-*  Ardından, eğer `M` olduğu `public`, erişime izin verilir.
-*  Aksi takdirde `M` olduğu `protected internal`, programda içinde ortaya çıkarsa erişimine izin verilen `M` bildirilen veya bir sınıf içinde oluşursa türetilen sınıfta `M` bildirilir ve türetilmiş üzerinden gerçekleşir sınıf türü ([korumalı üyeleri örneği için erişim](basic-concepts.md#protected-access-for-instance-members)).
-*  Aksi takdirde `M` olduğu `protected`, sınıfta içinde ortaya çıkarsa erişimine izin verilen `M` bildirilen veya bir sınıf içinde oluşursa türetilen sınıfta `M` bildirilir ve türetilmiş üzerinden gerçekleşir sınıf türü ([korumalı üyeleri örneği için erişim](basic-concepts.md#protected-access-for-instance-members)).
-*  Aksi takdirde `M` olduğu `internal`, programda içinde ortaya çıkarsa erişimine izin verilen `M` bildirilir.
-*  Aksi takdirde `M` olduğu `private`, hangi tür içinde ortaya çıkarsa erişimine izin verilen `M` bildirilir.
-*  Aksi takdirde, türe veya üyeye erişilemiyor ve bir derleme zamanı hatası oluşur.
+*  İlk olarak, `M` bir tür içinde bildirilirse (bir derleme birimi veya ad alanı aksine), bu tür erişilebilir değilse bir derleme zamanı hatası oluşur.
+*  @No__t-0 `public` ise erişime izin verilir.
+*  Aksi takdirde, `M` `protected internal` ise, erişim `M` ' nin bildirildiği programda meydana gelirse veya `M` ' ün bildirildiği ve türetilmiş sınıf türü aracılığıyla gerçekleştiği sınıftan türetilmiş bir sınıf içinde gerçekleşirse erişime izin verilir ([korumalı örnek üyelerine erişim](basic-concepts.md#protected-access-for-instance-members)).
+*  Aksi takdirde, `M` `protected` ise, erişim `M` ' nin bildirildiği sınıfta ortaya çıkarsa veya `M` ' ün bildirildiği ve türetilmiş sınıf türü aracılığıyla gerçekleştiği sınıftan türetilmiş bir sınıf içinde gerçekleşirse erişime izin verilir ([korumalı örnek üyelerine erişim](basic-concepts.md#protected-access-for-instance-members)).
+*  Aksi takdirde, `M` `internal` ise, `M` ' nin bildirildiği program içinde meydana gelirse erişime izin verilir.
+*  Aksi takdirde, `M` `private` ise, `M` ' nin bildirildiği tür içinde oluşması durumunda erişime izin verilir.
+*  Aksi takdirde, tür veya üyeye erişilemez ve derleme zamanı hatası oluşur.
 
 Örnekte
 ```csharp
@@ -282,19 +282,19 @@ internal class B
     }
 }
 ```
-Aşağıdaki erişilebilirlik etki alanları, sınıflar ve üyeler vardır:
+sınıflar ve Üyeler aşağıdaki erişilebilirlik etki alanlarına sahiptir:
 
-*  Erişilebilirlik etki alanı `A` ve `A.X` sınırsızdır.
-*  Erişilebilirlik etki alanı `A.Y`, `B`, `B.X`, `B.Y`, `B.C`, `B.C.X`, ve `B.C.Y` içeren program öğesinin program metnidir.
-*  Erişilebilirlik etki alanı `A.Z` öğesinin program metnidir `A`.
-*  Erişilebilirlik etki alanı `B.Z` ve `B.D` öğesinin program metnidir `B`, öğesinin program metni dahil olmak üzere `B.C` ve `B.D`.
-*  Erişilebilirlik etki alanı `B.C.Z` öğesinin program metnidir `B.C`.
-*  Erişilebilirlik etki alanı `B.D.X` ve `B.D.Y` öğesinin program metnidir `B`, öğesinin program metni dahil olmak üzere `B.C` ve `B.D`.
-*  Erişilebilirlik etki alanı `B.D.Z` öğesinin program metnidir `B.D`.
+*  @No__t-0 ve `A.X` ' in erişilebilirlik etki alanı sınırsızdır.
+*  @No__t-0, `B`, `B.X`, `B.Y`, `B.C`, `B.C.X` ve `B.C.Y` erişilebilirlik etki alanı, içeren programın program metintir.
+*  @No__t-0 ' ın erişilebilirlik etki alanı, `A` ' in program metni.
+*  @No__t-0 ve `B.D` ' in erişilebilirlik etki alanı, `B.C` ve `B.D` program metni de dahil olmak üzere `B` ' nin program metni.
+*  @No__t-0 ' ın erişilebilirlik etki alanı, `B.C` ' in program metni.
+*  @No__t-0 ve `B.D.Y` ' in erişilebilirlik etki alanı, `B.C` ve `B.D` program metni de dahil olmak üzere `B` ' nin program metni.
+*  @No__t-0 ' ın erişilebilirlik etki alanı, `B.D` ' in program metni.
 
-Erişilebilirlik etki alanı üyesi hiçbir zaman örnekte gösterildiği gibi bir kapsayan tür daha büyük. Örneğin, olsa bile tüm `X` üyelere sahip genel bildirilen erişilebilirliği dışındaki tüm `A.X` içeren bir tür tarafından kısıtlanmış erişilebilirlik etki alanınız.
+Örnekte gösterildiği gibi, bir üyenin erişilebilirlik etki alanı, kapsayan türden hiçbir şekilde daha büyük değildir. Örneğin, tüm `X` üyelerinin ortak olarak tanımlanmış erişilebilirliği olsa da, tüm `A.X`, kapsayan bir tür tarafından kısıtlanan erişilebilirlik etki alanlarına sahiptir.
 
-Bölümünde anlatıldığı gibi [üyeleri](basic-concepts.md#members), örneğin Oluşturucular, Yıkıcılar ve statik oluşturucular dışında bir taban sınıfın tüm üyeleri türetilen türler tarafından devralınır. Bu, bir taban sınıfın bile özel üyeler içerir. Ancak, özel üye erişilebilirlik etki alanı üyesi bildirildiği türü yalnızca program metni içerir. Örnekte
+[Üyeler](basic-concepts.md#members)bölümünde açıklandığı gibi, bir temel sınıfın, örnek oluşturucular, Yıkıcılar ve statik oluşturucular hariç tüm üyeleri türetilmiş türler tarafından devralınır. Bu, bir temel sınıfın hatta özel üyelerini içerir. Ancak, özel bir üyenin erişilebilirlik etki alanı yalnızca üyenin bildirildiği türün program metnini içerir. Örnekte
 ```csharp
 class A
 {
@@ -312,19 +312,19 @@ class B: A
     }
 }
 ```
-`B` sınıfından devralan bir özel üye `x` gelen `A` sınıfı. Özel üye olduğundan, yalnızca içinde erişilebilir *class_body* , `A`. Bu nedenle, erişim izni `b.x` içinde başarılı `A.F` yöntemi, ancak başarısız olursa `B.F` yöntemi.
+`B` sınıfı, `A` sınıfından `x` özel üyesini devralır. Üye özel olduğundan, yalnızca `A` ' in *class_body* içinde erişilebilir. Bu nedenle, `b.x` ' a erişim `A.F` yönteminde başarılı olur, ancak `B.F` yönteminde başarısız olur.
 
-### <a name="protected-access-for-instance-members"></a>Örnek üyeleri için Korumalı Erişim
+### <a name="protected-access-for-instance-members"></a>Örnek üyeleri için korumalı erişim
 
-Olduğunda bir `protected` örnek üyesi içinde bildirildiğinde, sınıf öğesinin program metni dışında erişilebilir ve ne zaman bir `protected internal` erişim içinde gerçekleşmesi gerekir, örnek üyesi, bildirilen program öğesinin program metni dışında erişilebilir bir sınıf bildirimi içinde bildirildiği sınıfından türetilir. Ayrıca, erişim, türetilmiş sınıf türü ya da ondan oluşturulan sınıf türünde bir örnek üzerinden gerçekleşmesi için gerekli değildir. Bu kısıtlama, bir türetilmiş sınıf bile aynı temel sınıftan devralınan üyeleri, türetilen diğer sınıflar korumalı üyelerine erişmesini engeller.
+@No__t-0 örnek üyesine, bildirildiği sınıfın program metni dışında erişildiğinde ve `protected internal` örnek üyesine, bildirildiği programın program metni dışında erişildiğinde, erişim bir sınıf içinde gerçekleşmelidir içinde bildirildiği sınıftan türetilen bildirim. Ayrıca, bu türetilmiş sınıf türünün bir örneği veya ondan oluşturulan bir sınıf türü üzerinden gerçekleşmesi için erişim gerekir. Bu kısıtlama, bir türetilen sınıfın, Üyeler aynı temel sınıftan devralınsa bile, diğer türetilmiş sınıfların korunan üyelerine erişmesini önler.
 
-İzin `B` bir korumalı örnek üye bildirir bir taban sınıfı olarak `M`ve `D` türetildiği bir sınıf olması `B`. İçinde *class_body* , `D`, erişim `M` aşağıdaki biçimlerden birini alabilir:
+@No__t-0 ' ın korunan bir örnek üyesini bildiren bir temel sınıf olmasına izin verin `M` ve `B` ' ten türetilen bir sınıf @no__t 2 ' dir. @No__t-1 *' in içinde, @no__t* -2 ' ye erişim aşağıdaki formlardan birini gerçekleştirebilir:
 
-*  Nitelenmemiş bir *type_name* veya *primary_expression* formun `M`.
-*  A *primary_expression* formun `E.M`, türü sağlanan `E` olduğu `T` veya türetilmiş bir sınıf `T`burada `T` sınıf türüdür `D`, veya bir sınıf türü oluşturulan `D`
-*  A *primary_expression* formun `base.M`.
+*  @No__t-2 biçiminde nitelenmemiş bir *type_name* veya *primary_expression* .
+*  @No__t-1 `E` türü `T` ' ten *türetilmiş bir sınıf* veya `T` ' ten türetilen bir sınıf,  ' in sınıf türü `D` veya `D` ' den oluşturulan bir sınıf türü.
+*  @No__t-1 biçiminde bir *primary_expression* .
 
-Bu erişim forms ek olarak, bir korumalı örnek oluşturucusu içinde temel sınıfın türetilmiş bir sınıf erişebilirsiniz bir *constructor_initializer* ([Oluşturucu başlatıcıları](classes.md#constructor-initializers)).
+Bu erişim formlarına ek olarak, türetilmiş bir sınıf bir *constructor_initializer* ([Oluşturucu başlatıcıları](classes.md#constructor-initializers)) içindeki bir temel sınıfın korumalı örnek oluşturucusuna erişebilir.
 
 Örnekte
 ```csharp
@@ -346,7 +346,7 @@ public class B: A
     }
 }
 ```
-içinde `A`, erişim mümkündür `x` örnekleri her ikisi de aracılığıyla `A` ve `B`, her iki durumda da yer örneği üzerinden erişim gerektirdiğinden `A` veya türetilmiş bir sınıf `A`. Bununla birlikte, içinde `B`, erişmek mümkün değildir `x` örneği üzerinden `A`, bu yana `A` türünden türemez `B`.
+`A` ' da, erişim `A` ' ün bir örneğinden veya `A` ' ten türetilmiş bir sınıftan gerçekleştiği için, her iki `A` ve `B` ' ün örnekleri aracılığıyla `x` ' e erişmek mümkündür. Ancak, `B` ' ın içinde, `A` `B` ' ten türetilmediğinden, `x` `A` ' nin bir örneği aracılığıyla erişmek mümkün değildir.
 
 Örnekte
 ```csharp
@@ -367,25 +367,25 @@ class D<T>: C<T>
     }
 }
 ```
-üç atamaları `x` genel türünden oluşturulduğu sınıf türleri örnekleri aracılığıyla tüm gerçekleşmesi için izin verilir.
+`x` ' a yönelik üç atama, tümü genel türden oluşturulan sınıf türleri örnekleri aracılığıyla gerçekleştiğinden izin verilir.
 
 ### <a name="accessibility-constraints"></a>Erişilebilirlik kısıtlamaları
 
-C# dilinde çeşitli yapıları türünün olmasını gerektiren ***en az olarak erişilebilir olarak*** üyesi veya başka bir tür. Bir tür `T` üyenin veya türün en az olarak erişilebilir olduğu söylenir `M` , Erişilebilirlik etki alanı `T` erişilebilirlik etki alanının bir üst kümesidir `M`. Diğer bir deyişle, `T` en az olarak erişilebilir olarak `M` varsa `T` tüm bağlamlarda erişilebilir `M` erişilebilir.
+Dildeki çeşitli yapılar, C# bir türün en az bir üye veya başka bir tür ***olarak erişilebilir*** olmasını gerektirir. @No__t-0 ' @no__t ın erişilebilirlik etki alanı, `M` ' e ait erişilebilirlik etki alanının bir üst kümesi ise, bir üye olarak en az bir üye olarak erişilebilir veya `M` yazın. Diğer bir deyişle, `M` ' ün erişilebilir olduğu tüm bağlamlarda `T` erişilebilir ise `T` en az `M` olarak erişilebilir olur.
 
-Aşağıdaki erişilebilirlik kısıtlamaları mevcuttur:
+Aşağıdaki erişilebilirlik kısıtlamaları vardır:
 
-*  Bir sınıf türünün doğrudan temel sınıf en az sınıf türü kendisini olarak erişilebilir olması gerekir.
-*  Açık bir arabirim türü temel arabirimleri en az arabirim türü kendisini olarak erişilebilir olması gerekir.
-*  Bir temsilci türü parametre türleri ve dönüş türü, en az temsilci türü kendisini olarak erişilebilir olması gerekir.
-*  Bir sabit değer türü en az sabit olarak olarak erişilebilir olması gerekir.
-*  Bir alan türü en az alan olarak olarak erişilebilir olması gerekir.
-*  Bir yöntemin parametre türleri ve dönüş türü, en az yöntemi olarak olarak erişilebilir olması gerekir.
-*  Bir özelliğin türünü en az özelliği olarak olarak erişilebilir olması gerekir.
-*  Bir olay türü en az olay olarak olarak erişilebilir olması gerekir.
-*  Bir dizin oluşturucu türü ve parametre türleri, en az Indexer olarak erişilebilir olması gerekir.
-*  Operatör için parametre türleri ve dönüş türü, en azından operatör olarak olarak erişilebilir olması gerekir.
-*  Bir örnek oluşturucusunda parametre türleri, en az örnek oluşturucusu kendisini olarak erişilebilir olması gerekir.
+*  Bir sınıf türünün doğrudan temel sınıfı en azından sınıf türünün kendisi kadar erişilebilir olmalıdır.
+*  Arabirim türünün açık temel arabirimleri en az arabirim türünün kendisi kadar erişilebilir olmalıdır.
+*  Bir temsilci türünün dönüş türü ve parametre türleri en azından temsilci türünün kendisi kadar erişilebilir olmalıdır.
+*  Bir sabit türü en az sabit değer olarak erişilebilir olmalıdır.
+*  Alanın türü en azından alanın kendisi kadar erişilebilir olmalıdır.
+*  Bir yöntemin dönüş türü ve parametre türleri en az yöntemin kendisi olarak erişilebilir olmalıdır.
+*  Özelliğin türü en az özelliğin kendisi olarak erişilebilir olmalıdır.
+*  Bir olayın türü en az olayın kendisi olarak erişilebilir olmalıdır.
+*  Bir dizin oluşturucunun türü ve parametre türleri en azından dizin oluşturucunun kendisi olarak erişilebilir olmalıdır.
+*  Bir işlecin dönüş türü ve parametre türleri en az işlecin kendisi olarak erişilebilir olmalıdır.
+*  Örnek oluşturucusunun parametre türleri en azından örnek oluşturucusunun kendisi kadar erişilebilir olmalıdır.
 
 Örnekte
 ```csharp
@@ -393,7 +393,7 @@ class A {...}
 
 public class B: A {...}
 ```
-`B` sınıfı sonuçları bir derleme zamanı hatası nedeniyle `A` en az olarak erişilebilir olarak değil `B`.
+`A` en az `B` olarak erişilebilir olmadığından, `B` sınıfı derleme zamanı hatasına neden olur.
 
 Benzer şekilde, örnekte
 ```csharp
@@ -408,29 +408,29 @@ public class B
     public A H() {...}
 }
 ```
-`H` yönteminde `B` çünkü dönüş türü bir derleme zamanı hatası oluşur `A` en az yöntemi olarak olarak erişilebilir değil.
+`B` ' deki `H` yöntemi derleme zamanı hatası ile sonuçlanır, çünkü dönüş türü `A` en az Yöntem olarak erişilebilir değildir.
 
 ## <a name="signatures-and-overloading"></a>İmzalar ve aşırı yükleme
 
-Yöntemleri, örnek oluşturucuları, dizin oluşturucular ve işleçleri göre nitelenen kendi ***imzaları***:
+Yöntemler, örnek oluşturucular, Dizin oluşturucular ve işleçler, ***imzalarına***göre belirlenir:
 
-*  Yöntemi, tür parametreleri sayısı ve türü ve tür (değer, başvuru veya çıkış) her birini sırayla soldan sağa kabul biçimsel parametrelerinin adı, yöntemin imzası oluşur. Bu amaçlar için oluşan bir biçimsel parametre türü yöntemin herhangi bir tür parametre adına göre değil, ancak türü bağımsız değişken listesindeki sıralı konumuna yöntem tarafından tanımlanır. Yöntemin imzası dönüş türü, özellikle içermez `params` en sağdaki parametresi ya da isteğe bağlı tür parametresi kısıtlamaları için belirtilen değiştiricisi.
-*  Tür ve tür (değer, başvuru veya çıkış) sırayla soldan sağa kabul kendi biçimsel parametrelerinin her biri bir örnek oluşturucusu imzası oluşur. Bir örnek oluşturucusunda imzası özellikle içermemesi `params` en sağdaki parametresi için belirtilen değiştiricisi.
-*  Bir dizin oluşturucu imzasının her birini sırayla soldan sağa kabul biçimsel parametrelerinin türünü oluşur. Bir dizin oluşturucu imzası özel öğe türü içermiyor ya da içeriyor mu `params` en sağdaki parametresi için belirtilen değiştiricisi.
-*  Bir işleç imzası adını işleci ve her birini sırayla soldan sağa kabul biçimsel parametrelerinin türünü oluşur. Bir işleç imzası, özellikle sonuç türü içermez.
+*  Bir yöntemin imzası, yöntemin adından, tür parametrelerinin sayısına ve her bir biçimsel parametrenin her birinin tür ve türü (değer, başvuru veya çıkış) soldan sağa doğru olarak değerlendirilir. Bu amaçlar için, bir biçimsel parametre türünde oluşan yöntemin tür parametresi, kendi adı tarafından değil, yönteminin tür bağımsız değişkeni listesindeki sıra konumuna göre tanımlanır. Bir yöntemin imzası, dönüş türünü, en sağdaki parametre için belirtilemeyen `params` değiştiricisini veya isteğe bağlı tür parametresi kısıtlamalarını içermez.
+*  Bir örnek oluşturucusunun imzası, her bir biçimsel parametrenin türü ve türü (değer, başvuru veya çıkış), soldan sağa doğru olarak değerlendirilir. Örnek oluşturucunun imzası, özellikle de en sağdaki parametre için belirtilemeyen `params` değiştiricisini içermez.
+*  Bir dizin oluşturucunun imzası, soldan sağa doğru olarak kabul edilen her bir biçimsel parametre türünden oluşur. Bir dizin oluşturucunun imzası özellikle öğe türünü içermez veya en sağdaki parametre için belirtilemeyen `params` değiştiricisini içermez.
+*  Bir işlecin imzası, işlecin adından ve her bir biçimsel parametrelerinin, soldan sağa doğru olarak kabul edilen türünden oluşur. Bir işlecin imzası özellikle sonuç türünü içermez.
 
-İmzalar, etkinleştirme mekanizması ***aşırı yükleme*** sınıflar, yapılar ve arabirimler üyelerin:
+İmzalar, sınıflarda, yapılarda ve arabirimlerde üyelerin ***aşırı*** yüklenmesine yönelik etkinleştirme mekanizmasıdır:
 
-*  Yöntemlerinin aşırı yükleme, bir sınıf, yapı veya arabirim bunların imzalarını sağlanan aynı ada sahip birden çok yöntem, sınıf, yapı veya arabirim içinde benzersiz bildirmek için izin verir.
-*  İmzaları, sınıf veya yapı içinde benzersiz olması koşuluyla örnek oluşturucuları aşırı yüklemesi bir sınıfın veya yapının birden çok örnek oluşturucuları bildirmek için verir.
-*  Bunların imzalarını Bu sınıf, yapı veya arabirim içinde benzersiz olması koşuluyla dizin oluşturucu aşırı yüklemesi bir sınıf, yapı veya arabirim birden çok dizin oluşturucu bildirmek için verir.
-*  Operatörleri aşırı yükleme, bir sınıf veya yapı bunların imzalarını sağlanan aynı ada sahip birden çok işleç, sınıf veya yapı içinde benzersiz bildirmek için izin verir.
+*  Yöntemlerin aşırı yüklemesi, bir sınıf, yapı veya arabirimin aynı ada sahip birden çok yöntem bildirmesine izin verdiğinden, imzaları bu sınıf, yapı veya arabirim içinde benzersizdir.
+*  Örnek oluşturucuların aşırı yüklenmesi, bir sınıfın veya yapının birden çok örnek Oluşturucu tanımlamasına izin verdiğinden, imzaları bu sınıf veya yapı içinde benzersiz olarak belirtilmelidir.
+*  Dizin oluşturucularının aşırı yüklemesi, bir sınıf, yapı veya arabirimin birden çok dizin oluşturma kullanılmasına izin verir, ancak imzaları bu sınıf, yapı veya arabirim içinde benzersizdir.
+*  İşleçlerin aşırı yüklemesi, bir sınıf veya yapının aynı ada sahip birden çok işleç tanımlamasına izin verdiğinden, imzaları bu sınıf veya yapı içinde benzersizdir.
 
-Ancak `out` ve `ref` parametre değiştiriciler imzasının bir parçası olarak kabul edilir, tek bir türde bildirilen üyeler olamaz farklı imzasında sadece onun tarafından `ref` ve `out`. İki üye aynı ise olacaktır imzalarla aynı türdeki her iki yöntemde de tüm parametrelerinde bildirilir, bir derleme zamanı hatası meydana gelir `out` değiştiriciler değiştirildi `ref` değiştiriciler. İmza eşleşen diğer amaçlar için (örneğin, gizleme veya geçersiz kılma), `ref` ve `out` imzasının bir parçası olarak kabul edilir ve birbirlerine eşleşmiyor. (Bu kısıtlama izin vermektir C# programları, ortak dil altyapısı (yalnızca içinde farklı yöntemleri tanımlamak için bir yol sağlamaz, CLI üzerinde), çalıştırılacak kolayca çevrilemeyen `ref` ve `out`.)
+@No__t-0 ve `ref` parametre değiştiricilerin bir imzanın parçası olarak kabul edilse de, tek bir tür içinde belirtilen Üyeler yalnızca `ref` ve `out` ile imzasında farklı olamaz. İki üye, `out` değiştiricilerine sahip her iki yöntemde de `ref` değiştiricilere değiştirilmişse aynı türde olan imzalara sahip aynı türde bir derleme zamanı hatası oluşur. İmza eşleştirmesinin diğer amaçları (örn. gizleme veya geçersiz kılma) için `ref` ve `out`, imzanın bir parçası olarak değerlendirilir ve birbirleriyle eşleşmez. (Bu kısıtlama, programların yalnızca C# `ref` ve `out` ' de farklı yöntemler tanımlamak için bir yol sağlamayan ortak dil ALTYAPıSıNDA (CLI) çalışmaya kolayca çevrilmesine izin versağlamaktır.)
 
-İmzaların türleri amacıyla `object` ve `dynamic` aynı olarak kabul edilir. Tek bir türde bildirilen üyeler bu nedenle farklı imzasında sadece onun tarafından `object` ve `dynamic`.
+İmzaların amaçları doğrultusunda `object` ve `dynamic` türleri aynı kabul edilir. Bu nedenle, tek bir türde tanımlanan Üyeler yalnızca `object` ve `dynamic` ile İmzada farklı değildir.
 
-Aşağıdaki örnek, aşırı yüklenmiş yöntem bildirimleri bunların imzalarını birlikte bir dizi gösterir.
+Aşağıdaki örnek, imzaları ile birlikte aşırı yüklenmiş yöntem bildirimlerinin bir kümesini gösterir.
 ```csharp
 interface ITest
 {
@@ -454,37 +454,37 @@ interface ITest
 }
 ```
 
-Herhangi bir Not `ref` ve `out` parametre değiştiriciler ([yöntem parametreleri](classes.md#method-parameters)) bir imza bir parçasıdır. Bu nedenle, `F(int)` ve `F(ref int)` benzersiz imzalar. Ancak, `F(ref int)` ve `F(out int)` sadece onun tarafından imzalarının farklı olduğundan, aynı arabirimi içinde bildirilemez `ref` ve `out`. Ayrıca, dönüş türü Not ve `params` değiştiricisi parçası değildir, imza dönüş türü veya ekleme veya çıkarma, yalnızca temel aşırı mümkün olmadığından `params` değiştiricisi. Şekilde yöntemleri bildirimlerini `F(int)` ve `F(params string[])` bir derleme zamanı hatası sonucunda yukarıda tanımlanan.
+@No__t-0 ve `out` parametre değiştiricilerin ([Yöntem parametreleri](classes.md#method-parameters)) bir imzanın parçası olduğunu unutmayın. Bu nedenle, `F(int)` ve `F(ref int)` benzersiz imzalardır. Ancak, `F(ref int)` ve `F(out int)`, imzaları yalnızca `ref` ve `out` farklı olduğundan aynı arabirim içinde bildirilemez. Ayrıca, dönüş türü ve `params` değiştiricisinin bir imzanın parçası olmadığına ve bu nedenle yalnızca dönüş türüne göre veya `params` değiştiricisinin dahil edilmesi veya dışlamasına göre aşırı yüklenmesi mümkün değildir. Bu nedenle, yukarıda tanımlanan `F(int)` ve `F(params string[])` yöntemlerinin bildirimleri derleme zamanı hatası ile sonuçlanır.
 
 ## <a name="scopes"></a>Kapsamları
 
-***Kapsam*** bir bölge içinde mümkündür nitelik adı olmadan yalnızca adla bildirilen bir varlığa başvurmak program metni adıdır. Kapsamları olabilir ***iç içe geçmiş***, ve bir iç kapsamı anlamı, bir dış kapsam adı yeniden bildirmek (Bu ancak tarafından uygulanan kısıtlama kaldırmaz, [bildirimleri](basic-concepts.md#declarations) iç içe geçmiş bir bloğu içinde olmadığını olası) kapsayan bir blok içinde yerel bir değişken olarak aynı ada sahip yerel bir değişken bildirmek için kullanılır. Dış kapsamdaki adından sonra denen moddadır ***gizli*** programının bölgede metin iç kapsamı tarafından ele ve dış adına erişim, yalnızca olası Adın niteleme tarafından.
+Bir adın ***kapsamı*** , adı nitelemeden ad tarafından tanımlanan varlığa başvuruda bulunmak mümkün olduğu program metninin bölgesidir. Kapsamlar ***iç içe***olabilir ve bir iç kapsam bir dış kapsamdan bir adın anlamını yeniden bildirebilir (Bu, ancak, iç içe bir blok içindeki [Bildirimler](basic-concepts.md#declarations) tarafından uygulanan kısıtlamayı kaldırma, bir yerel değişken ile kapsayan bir blok içindeki yerel değişkenle aynı ad. Daha sonra dış kapsamdaki ad, iç kapsamın kapsadığı program metni bölgesinde ***gizli*** olarak belirlenir ve dış ada erişim yalnızca adı niteleyerek mümkündür.
 
-*  Ad alanı üyesi kapsamı tarafından bildirilen bir *namespace_member_declaration* ([Namespace üyelerini](namespaces.md#namespace-members)) ile hiçbir kapsayan *namespace_declaration* tüm program metin.
-*  Ad alanı üyesi kapsamı tarafından bildirilen bir *namespace_member_declaration* içinde bir *namespace_declaration* tam adı olan `N` olduğu *namespace_body*  , her *namespace_declaration* tam adı olan `N` veya ile başlayan `N`ve ardından bir nokta.
-*  Tarafından tanımlanan ad kapsamı bir *extern_alias_directive* üzerinden genişletir *using_directive*s, *global_attributes* ve *namespace_member_ bildirimi*hemen içeren derleme birimi veya ad alanı gövdesinde, s. Bir *extern_alias_directive* tüm yeni üyeleri temel alınan bildirim alanına gereksinimdir. Diğer bir deyişle, bir *extern_alias_directive* geçişli değildir ancak bunun yerine oluştuğu yalnızca derleme birimi veya ad alanı gövdesi etkiler.
-*  Kapsam adı tanımlı ya da içeri aktaran bir *using_directive* ([yönergeleri kullanarak](namespaces.md#using-directives)) üzerinden genişletir *namespace_member_declaration*sn  *compilation_unit* veya *namespace_body* hangi *using_directive* gerçekleşir. A *using_directive* sıfır veya daha fazla ad alanı, tür veya üye adları belirli bir içinde kullanılabilir hale *compilation_unit* veya *namespace_body*, ancak yok tüm yeni üyeleri temel alınan bildirim alanına katkıda bulunur. Diğer bir deyişle, bir *using_directive* geçişli değildir ancak bunun yerine yalnızca etkiler *compilation_unit* veya *namespace_body* içinde hangi gerçekleşir.
-*  Bir tür parametresi kapsamı tarafından bildirilen bir *type_parameter_list* üzerinde bir *class_declaration* ([sınıf bildirimleri](classes.md#class-declarations)) olan *class_base*, *type_parameter_constraints_clause*s ve *class_body* , söz konusu *class_declaration*.
-*  Bir tür parametresi kapsamı tarafından bildirilen bir *type_parameter_list* üzerinde bir *struct_declaration* ([yapı bildirimleri](structs.md#struct-declarations)) olan *struct_interfaces* , *type_parameter_constraints_clause*s ve *struct_body* , söz konusu *struct_declaration*.
-*  Bir tür parametresi kapsamı tarafından bildirilen bir *type_parameter_list* üzerinde bir *interface_declaration* ([arabirim bildirimleri](interfaces.md#interface-declarations)) olan *interface_base* , *type_parameter_constraints_clause*s ve *interface_body* , söz konusu *interface_declaration*.
-*  Bir tür parametresi kapsamı tarafından bildirilen bir *type_parameter_list* üzerinde bir *delegate_declaration* ([temsilci bildirimi](delegates.md#delegate-declarations)) olan *Döndür_tür*, *formal_parameter_list*, ve *type_parameter_constraints_clause*s, söz konusu *delegate_declaration*.
-*  Tarafından bildirilen bir üye kapsamını bir *class_member_declaration* ([sınıfı gövdesi](classes.md#class-body)) olan *class_body* bildirimi oluştuğu içinde. Ayrıca, için bir sınıf üyesinin kapsamını genişletir *class_body* içeriğiyle erişilebilirlik etki alanında bulunan sınıflar türetilmiş ([erişilebilirlik etki alanı](basic-concepts.md#accessibility-domains)) üyesinin.
-*  Tarafından bildirilen bir üye kapsamını bir *struct_member_declaration* ([Yapı üyeleri](structs.md#struct-members)) olan *struct_body* bildirimi oluştuğu içinde.
-*  Tarafından bildirilen bir üye kapsamını bir *enum_member_declaration* ([numaralandırma üyeleri](enums.md#enum-members)) olan *enum_body* bildirimi oluştuğu içinde.
-*  Bir parametre kapsamı içinde bildirilen bir *method_declaration* ([yöntemleri](classes.md#methods)) olan *method_body* , söz konusu *method_declaration*.
-*  Bir parametre kapsamı içinde bildirilen bir *indexer_declaration* ([dizin oluşturucular](classes.md#indexers)) olan *accessor_declarations* , söz konusu *indexer_declaration*.
-*  Bir parametre kapsamı içinde bildirilen bir *operator_declaration* ([işleçleri](classes.md#operators)) olan *blok* , söz konusu *operator_declaration*.
-*  Bir parametre kapsamı içinde bildirilen bir *constructor_declaration* ([örnek oluşturucular](classes.md#instance-constructors)) olan *constructor_initializer* ve *blok* , söz konusu *constructor_declaration*.
-*  Bir parametre kapsamı içinde bildirilen bir *lambda_expression* ([anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)) olan *anonymous_function_body* , söz konusu *lambda_ ifade*
-*  Bir parametre kapsamı içinde bildirilen bir *anonymous_method_expression* ([anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)) olan *blok* , söz konusu *anonymous_method _expression*.
-*  Etiket kapsamı içinde bildirilen bir *labeled_statement* ([etiketli deyimler](statements.md#labeled-statements)) olan *blok* bildirimi oluştuğu içinde.
-*  Bildirilen yerel değişken kapsamını bir *local_variable_declaration* ([yerel değişken bildirimlerini](statements.md#local-variable-declarations)) blok bildirimi oluştuğu içinde.
-*  Bildirilen yerel değişken kapsamını bir *switch_block* , bir `switch` deyimi ([switch deyimi](statements.md#the-switch-statement)) olan *switch_block*.
-*  Bildirilen yerel değişken kapsamını bir *for_initializer* , bir `for` deyimi ([deyimi için](statements.md#the-for-statement)) olan *for_initializer*,  *for_condition*, *for_iterator*ve kapsanan *deyimi* , `for` deyimi.
-*  Bir yerel sabit kapsamı içinde bildirilen bir *local_constant_declaration* ([yerel sabit bildirimleri](statements.md#local-constant-declarations)) blok bildirimi oluştuğu içinde. Önündeki değerinin metinsel bir konumda yerel bir sabit belirtmek için bir derleme zamanı hata kendi *constant_declarator*.
-*  Bir değişkenin kapsamını bir parçası olarak bildirilen bir *foreach_statement*, *using_statement*, *lock_statement* veya *query_expression* olduğu verilen yapısının genişletme tarafından belirlenir.
+*  Kapsayan *namespace_declaration* içermeyen bir *namespace_member_declaration* ([Namespace üyeleri](namespaces.md#namespace-members)) tarafından belirtilen bir ad alanı üyesinin kapsamı, tüm program metindir.
+*  Tam adı `N` olan bir *namespace_declaration* içinde bir *namespace_member_declaration* tarafından belirtilen bir ad alanı üyesinin kapsamı, tamamı olan her *namespace_declaration* *namespace_body* nitelenmiş ad `N` ' tir veya `N` ve sonrasında bir noktayla başlar.
+*  Bir *extern_alias_directive* tarafından tanımlanan ad kapsamı, derleme birimi veya ad alanı gövdesinin hemen bulunduğu *using_directive*s, *global_attributes* ve *namespace_member_declaration*öğelerinin üzerinde genişletilir. Bir *extern_alias_directive* , temel alınan bildirim alanına yeni üye katkıda bulunmaz. Diğer bir deyişle, *extern_alias_directive* geçişli değildir, ancak bunun yerine yalnızca, oluştuğu derleme birimini veya ad alanı gövdesini etkiler.
+*  Bir *using_directive* tarafından tanımlanan veya içeri aktarılan bir ad kapsamı ([yönergeler kullanılarak](namespaces.md#using-directives)), using_directive *compilation_unit* veya *namespace_body* içindeki *namespace_member_declaration*sgerçekleşir. Bir *using_directive* , belirli bir *compilation_unit* veya *namespace_body*içinde kullanılabilir bir veya daha fazla ad alanı, tür veya üye adı oluşturabilir, ancak temel alınan bildirim alanına hiçbir yeni üye katkıda bulunmaz. Diğer bir deyişle, *using_directive* geçişli değildir, ancak bunun gerçekleştiği *compilation_unit* veya *namespace_body* etkiler.
+*  *Class_declaration* ([sınıf bildirimleri](classes.md#class-declarations)) üzerinde bir *type_parameter_list* tarafından tanımlanan bir tür parametresinin kapsamı, *class_base*, *type_parameter_constraints_clause*s ve *class_body*  *class_declaration*.
+*  *Struct_declaration* ([struct bildirimleri](structs.md#struct-declarations)) üzerinde bir *type_parameter_list* tarafından tanımlanan bir tür parametresinin kapsamı, *struct_interfaces*, *type_parameter_constraints_clause*s ve *struct_body* Bu *struct_declaration*.
+*  Bir *interface_declaration* ([arabirim bildirimleri](interfaces.md#interface-declarations)) üzerinde bir *type_parameter_list* tarafından tanımlanan tür parametresinin kapsamı *interface_base*, *type_parameter_constraints_clause*s ve *interface_body* bu *interface_declaration*.
+*  Bir *delegate_declaration* ([Delegate bildirimleri](delegates.md#delegate-declarations)) üzerinde bir *type_parameter_list* tarafından tanımlanan bir tür parametresinin kapsamı, *Sbayrak*, *formal_parameter_list*ve *type_parameter_constraints_clause* bu *delegate_declaration*.
+*  Bir *class_member_declaration* ([sınıf gövdesi](classes.md#class-body)) tarafından belirtilen üyenin kapsamı, bildirimin gerçekleştiği *class_body* . Ayrıca, bir sınıf üyesinin kapsamı, üyenin erişilebilirlik etki alanına ([erişilebilirlik etki alanları](basic-concepts.md#accessibility-domains)) dahil edilen türetilmiş sınıfların *class_body* genişletir.
+*  Bir *struct_member_declaration* ([struct Members](structs.md#struct-members)) tarafından belirtilen bir üyenin kapsamı, bildirimin gerçekleştiği *struct_body* .
+*  Bir *enum_member_declaration* ([enum üyeleri](enums.md#enum-members)) tarafından belirtilen bir üyenin kapsamı, bildirimin gerçekleştiği *enum_body* .
+*  Bir *method_declaration* ([Methods](classes.md#methods)) içinde belirtilen parametrenin kapsamı, *method_declaration* *method_body* .
+*  Bir *indexer_declaration* ([Dizin oluşturucular](classes.md#indexers)) içinde belirtilen parametrenin kapsamı, *indexer_declaration* *accessor_declarations* .
+*  Bir *operator_declaration* ([Operators](classes.md#operators)) içinde belirtilen parametrenin kapsamı, bu *operator_declaration*'in *bloğudur* .
+*  Bir *constructor_declaration* ([örnek oluşturucular](classes.md#instance-constructors)) içinde belirtilen parametrenin kapsamı, *constructor_declaration* *constructor_initializer* ve *bloğudur* .
+*  Bir *lambda_expression* ([anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)) içinde belirtilen parametrenin kapsamı, *lambda_expression* *anonymous_function_body*
+*  Bir *anonymous_method_expression* ([anonim işlev ifadelerinde](expressions.md#anonymous-function-expressions)) içinde belirtilen bir parametrenin kapsamı, bu *anonymous_method_expression*'in *bloğudur* .
+*  Bir *labeled_statement* ([etiketli deyimler](statements.md#labeled-statements)) içinde belirtilen etiketin kapsamı, bildirimin gerçekleştiği *bloğudur* .
+*  Bir *local_variable_declaration* ([yerel değişken bildirimlerinde](statements.md#local-variable-declarations)) içinde belirtilen yerel bir değişkenin kapsamı, bildirimin gerçekleştiği bloğudur.
+*  Bir `switch` ifadesinde ([switch ifadesinin](statements.md#the-switch-statement)) bir *switch_block* içinde belirtilen yerel bir değişkenin kapsamı *switch_block*.
+*  @No__t-1 ifadesinin bir *for_initializer* içinde ([for ifadesinin](statements.md#the-for-statement)) belirtilen bir yerel değişkenin kapsamı, *for_initializer*, *for_condition*, *for_iterator* *ve içindeki* `for` ekstresi.
+*  Bir *local_constant_declaration* ([yerel sabit bildirimlerinde](statements.md#local-constant-declarations)) içinde belirtilen yerel bir sabit kapsam, bildirimin gerçekleştiği bloğudur. Bu, *constant_declarator*' den önceki bir metinsel konumda yerel bir sabite başvuruda bulunmak için derleme zamanı hatasıdır.
+*  Bir *foreach_statement*, *using_statement*, *lock_statement* veya *query_expression* 'nin bir parçası olarak belirtilen bir değişkenin kapsamı verilen yapının genişlemesiyle belirlenir.
 
-Ad alanı, sınıf, yapı veya sabit listesi üyesi kapsamında üyesi bildirimi önündeki bir metinsel konumu üye başvurmak mümkündür. Örneğin:
+Bir ad alanı, sınıf, yapı veya numaralandırma üyesi kapsamında, üyeye üye bildiriminden önce gelen metinsel bir konumda başvurmak mümkündür. Örneğin:
 ```csharp
 class A
 {
@@ -495,9 +495,9 @@ class A
     int i = 0;
 }
 ```
-Burada, geçerli `F` başvurmak için `i` bildirilmeden önce.
+Burada, `F` ' ı, bildirilmeden önce `i` ' e başvuracak şekilde geçerlidir.
 
-İsteğe bağlı olarak yerel bir değişken kapsamında önündeki değerinin metinsel bir konumda yerel değişkene başvurmak için bir derleme zamanı hatası olmayan *local_variable_declarator* yerel değişkenin. Örneğin:
+Yerel değişken kapsamında, yerel değişkene *local_variable_declarator* önünde bulunan bir metinsel konumdaki yerel değişkene başvurabileceğiniz bir derleme zamanı hatasıdır. Örneğin:
 ```csharp
 class A
 {
@@ -519,11 +519,11 @@ class A
 }
 ```
 
-İçinde `F` yukarıdaki yöntemi, ilk atamaya `i` dış kapsamda bildirilen alan özellikle başvurmuyor. Bunun yerine yerel bir değişkene başvuruyor ve metin içeriğini eklemek değişkenin bildirimi kendisinden nedeniyle, bir derleme zamanı hatası oluşur. İçinde `G` yöntemi, kullanımını `j` başlatıcıda bildirimi için `j` geçersiz kullanımı önünde değil çünkü *local_variable_declarator*. İçinde `H` yöntemi, bir sonraki *local_variable_declarator* daha önceki bir bildirilen yerel değişken doğru başvurduğu *local_variable_declarator* aynı  *local_variable_declaration*.
+Yukarıdaki `F` yönteminde, `i` ' e ilk atama, özellikle dış kapsamda belirtilen alana başvurmaz. Bunun yerine, yerel değişkene başvurur ve değişkenin bildiriminden önce metin içeriğini eklemek bir derleme zamanı hatasına neden olur. @No__t-0 yönteminde, kullanım *local_variable_declarator*önünde olmadığından, `j` bildirimi başlatıcısında `j` kullanımı geçerlidir. @No__t-0 yönteminde, sonraki *local_variable_declarator* doğru bir şekilde, aynı *local_variable_declaration*içindeki önceki bir *local_variable_declarator* içinde belirtilen yerel bir değişkene başvurur.
 
-Yerel değişkenler için içeriğin kapsamını belirleyen kuralları anlamı bir ifade bağlamda kullanılan bir ad, her zaman bir blok içindeki aynı olacağını garanti etmek için tasarlanmıştır. Yerel bir değişkenin kapsamını, yalnızca kendi bildirimden bloğun sonuna kadar genişletmek için olsaydı, ardından yukarıdaki örnekte, örnek değişkeni ilk atama atadığınız ve ikinci atama, büyük olasılıkla için önde gelen bir yerel değişkene atadığınız Blok ifadeleri yeniden düzenlenecek için daha sonra, derleme zamanı hataları.
+Yerel değişkenlerin kapsam kuralları, bir ifade bağlamında kullanılan bir adın anlamını her zaman bir blok içinde aynı olduğundan emin olmak için tasarlanmıştır. Yerel bir değişkenin kapsamı yalnızca bildiriminden bloğunun sonuna genişletirse, yukarıdaki örnekte, ilk atama örnek değişkenine atanır ve ikinci atama yerel değişkene atanır, büyük olasılıkla şu şekilde önde gelen bloğun deyimlerinin daha sonra yeniden düzenlenme durumunda derleme zamanı hataları.
 
-Bir blok içinde bir ad anlamını adı kullanıldığı bağlamı göre farklılık gösterebilir. Örnekte
+Bir blok içindeki bir adın anlamı, adının kullanıldığı bağlama göre farklılık gösterebilir. Örnekte
 ```csharp
 using System;
 
@@ -542,17 +542,17 @@ class Test
     }
 }
 ```
-adı `A` yerel bir değişkene başvurmak için kullanılan bir ifade bağlamda `A` ve sınıfa başvurmak için bir tür bağlamında `A`.
+`A` adı, `A` yerel değişkenine ve bir tür bağlamında `A` sınıfına başvuracak şekilde bir ifade bağlamında kullanılır.
 
 ### <a name="name-hiding"></a>Ad gizleme
 
-Kapsam, bir varlığın varlık bildirimi alandan daha fazla program metni genellikle kapsar. Özellikle, bir varlığın kapsamı aynı ada sahip bir varlık içeren yeni bir bildirim alanları tanıtan bildirimler içerebilir. Bu tür bildirimleri neden olacak orijinal varlık ***gizli***. Buna karşılık, bir varlık olarak kabul edilir ***görünür*** değil gizlenen.
+Bir varlığın kapsamı genellikle varlığın bildirim alanından daha fazla program metnini kapsar. Özellikle, bir varlığın kapsamı, aynı ada sahip varlıkları içeren yeni bildirim alanları sunan bildirimler içerebilir. Bu tür bildirimler orijinal varlığın ***gizli***hale gelmesine neden olur. Buna karşılık, bir varlık gizlenmediği zaman ***görünür*** olarak kabul edilir.
 
-İç içe geçirme ve ne zaman devralma yoluyla kapsamları çakışan aracılığıyla kapsamları çakışan ad gizleme gerçekleşir. Gizleme iki tür özellikleri aşağıdaki bölümlerde açıklanmıştır.
+Ad gizleme kapsamları, iç içe geçme yoluyla çakıştığında ve kapsamlar devralma yoluyla çakıştığında oluşur. İki tür gizleme özelliği aşağıdaki bölümlerde açıklanmıştır.
 
-#### <a name="hiding-through-nesting"></a>İç içe geçme aracılığıyla gizleme
+#### <a name="hiding-through-nesting"></a>İç içe geçme yoluyla gizleme
 
-Ad gizleme aracılığıyla iç içe geçme, iç içe geçmiş ad alanlarından veya türlerinden içinde iç içe türleri sınıflar veya yapılar ve parametre ve yerel değişken bildirimleri sonucunda sonucu olarak ad alanları, sonucu olarak ortaya çıkabilir.
+İç içe geçme yoluyla ad alanları veya türler, sınıfların veya yapıların içinde iç içe geçme, parametre ve yerel değişken bildirimlerinin sonucu olarak, ad alanları içinde iç içe geçme işleminin sonucu olarak ortaya çıkabilir.
 
 Örnekte
 ```csharp
@@ -569,9 +569,9 @@ class A
     }
 }
 ```
-içinde `F` yöntemi, bir örnek değişkeni `i` yerel değişkeni tarafından gizleniyor `i`, ancak içinde `G` yöntemi `i` hala örneği değişkenine başvuruyor.
+`F` yönteminde, `i` örnek değişkeni `i` yerel değişkeni tarafından gizlenir, ancak `G` yönteminde `i`, hala örnek değişkenine başvurur.
 
-Bir iç kapsamda bir ada bir adı bir dış kapsamdaki gizler, bu adı aşırı yüklenmiş tüm oluşumlarını gizler. Örnekte
+Bir iç kapsamdaki bir ad, dış kapsamdaki bir adı gizliyor, bu ada ait tüm aşırı yüklenmiş oluşumları gizler. Örnekte
 ```csharp
 class Outer
 {
@@ -590,19 +590,19 @@ class Outer
     }
 }
 ```
-çağrı `F(1)` çağırır `F` bildirilen `Inner` çünkü dış tüm oluşumlarını `F` iç bildirim tarafından gizlenmiş. Aynı nedenle, arama `F("Hello")` bir derleme zamanı hatası oluşur.
+`F(1)` çağrısı, `F` ' ün tüm dış oluşumları iç bildirim tarafından gizlendiğinden `Inner` ' de belirtilen `F` ' i çağırır. Aynı nedenden dolayı, `F("Hello")` çağrısı derleme zamanı hatası ile sonuçlanır.
 
 #### <a name="hiding-through-inheritance"></a>Devralma yoluyla gizleme
 
-Devralma üzerinden ad gizleme sınıflarını veya yapılarını temel sınıftan devralınan adı yeniden bildirmek oluşur. Bu tür bir ad gizleme aşağıdaki biçimlerden birini alır:
+Devralma yoluyla ad gizleme, sınıflar veya yapılar temel sınıflardan devralınan adları yeniden bildirdikleri zaman oluşur. Bu tür bir ad gizleme aşağıdaki biçimlerden birini alır:
 
-*  Bir sabit, alan, özelliği, olay veya bir sınıf ya da yapı birimine türü aynı ada sahip tüm taban sınıfı üyelerini gizler.
-*  Bir sınıf ya da struct'a dahil edilen bir yöntem, yöntem olmayan taban sınıf üyelerinin tamamı aynı ada sahip ve (yöntem adı ve parametre sayısı, değiştiriciler ve türleri) aynı imzaya sahip tüm taban sınıfı yöntemlerini gizler.
-*  Bir sınıf veya yapı içinde tanıtılan bir dizin oluşturucu (parametre sayısı ve türleri) aynı imzaya sahip tüm taban sınıfı dizin oluşturucularını gizler.
+*  Bir sınıf veya yapı içinde tanıtılan bir sabit, alan, özellik, olay veya tür, aynı ada sahip tüm temel sınıf üyelerini gizler.
+*  Bir sınıf veya yapı içinde tanıtılan bir yöntem, aynı ada sahip tüm yöntem olmayan taban sınıf üyelerini ve aynı imzaya sahip tüm temel sınıf yöntemlerini (Yöntem adı ve parametre sayısı, değiştiriciler ve türler) gizler.
+*  Bir sınıf veya yapı içinde tanıtılan bir Dizin Oluşturucu, aynı imzaya sahip tüm temel sınıf dizin oluşturucularının (parametre sayısı ve türleri) tümünü gizler.
 
-İşleç bildirimi kuralları ([işleçleri](classes.md#operators)) temel sınıfta operatör olarak aynı imzaya sahip bir işleç bildirmek üzere bir türetilmiş sınıfta imkansız hale. Bu nedenle, işleçleri asla birbirleriyle gizleyin.
+İşleç bildirimlerini ([işleçler](classes.md#operators)) yöneten kurallar, türetilmiş bir sınıfın bir taban sınıftaki işleçle aynı imzaya sahip bir işleç tanımlamasına olanak sağlar. Bu nedenle, işleçler hiçbir şekilde bir tane gizlemez.
 
-Bir dış kapsam adı gizleme aykırı devralınan bir kapsamdan erişilebilir bir adı gizleyerek bildirilmesini uyarı neden olur. Örnekte
+Bir dış kapsamdan bir adı gizlemenin aksine, devralınan bir kapsamdaki erişilebilir bir adı gizlemek bir uyarının raporlanmasına neden olur. Örnekte
 ```csharp
 class Base
 {
@@ -614,9 +614,9 @@ class Derived: Base
     public void F() {}        // Warning, hiding an inherited name
 }
 ```
-bildirimi `F` içinde `Derived` bildirilmesini bir uyarısına neden olur. Temel sınıflar ayrı evrimi engelleyen, devralınan bir adı gizleyerek bir hata değildir özellikle. Örneğin, yukarıdaki durumda çünkü gelmiş olabilir daha sonraki bir sürümünü `Base` sunulan bir `F` sınıfı önceki bir sürümde bulunmamıştır yöntemi. Yukarıdaki durumu hata olsaydı, sonra ayrı ayrı tutulan Sınıf Kitaplığı'nda bir temel sınıf için yapılan herhangi bir değişiklik potansiyel olarak türetilmiş sınıfları geçersiz olmasına neden olabilir.
+`Derived` ' deki `F` bildirimi, bir uyarının bildirilmesine neden olur. Devralınan bir adın gizlenmesi, temel sınıfların ayrı bir evrimden daha fazla gelişmesinden dolayı özellikle bir hata değildir. Örneğin, yukarıdaki durum yaklaşık bir `Base` sürümü, sınıfının önceki bir sürümünde mevcut olmayan bir `F` yöntemi kullanıma sunduğundan daha fazla gelmiş olabilir. Yukarıdaki durum bir hata olduğundan, ayrı sürümlü Sınıf kitaplığındaki temel sınıfta yapılan herhangi bir değişiklik, türetilmiş sınıfların geçersiz olmasına neden olabilir.
 
-Devralınan bir adı gizleyerek neden uyarı aracılığıyla kaldırılabilir `new` değiştiricisi:
+Devralınan bir adı gizlemenin neden olduğu uyarı `new` değiştiricisi kullanılarak ortadan kaldırılabilir:
 ```csharp
 class Base
 {
@@ -629,9 +629,9 @@ class Derived: Base
 }
 ```
 
-`new` Değiştiricisi gösterir `F` içinde `Derived` "Yeni" ve bu gerçekten de devralınan bir üyeyi gizlemek üzere tasarlanmış olduğunu.
+@No__t-0 değiştiricisi, `Derived` ' deki `F` ' in "yeni" olduğunu ve gerçekten devralınmış üyeyi gizleyebileceğini belirtir.
 
-Yeni üye bildirimi yalnızca yeni üye kapsamında devralınmış bir üyeyi gizler.
+Yeni bir üyenin bildirimi, devralınan bir üyeyi yalnızca yeni üyenin kapsamı içinde gizler.
 
 ```csharp
 class Base
@@ -650,11 +650,11 @@ class MoreDerived: Derived
 }
 ```
 
-Bildirimi yukarıdaki örnekte `F` içinde `Derived` gizler `F` , öğesinden devralınan `Base`, ancak bu yana yeni `F` içinde `Derived` özel erişimi olduğunu kapsamı kapsamaz `MoreDerived` . Bu nedenle, arama `F()` içinde `MoreDerived.G` geçerli olduğundan ve çağıracağı `Base.F`.
+Yukarıdaki örnekte, `Derived` ' deki `F` ' ın bildirimi `Base` ' ten devralınmış `F` ' yi gizliyor, ancak `Derived` ' teki yeni `F` ' ün özel erişimi olduğundan, kapsamı `MoreDerived` ' a genişlemez. Bu nedenle, `MoreDerived.G` ' deki `F()` çağrısı geçerli olur ve `Base.F` ' i çağırır.
 
-## <a name="namespace-and-type-names"></a>Namespace ve tür adları
+## <a name="namespace-and-type-names"></a>Ad alanı ve tür adları
 
-Çeşitli bağlamlarda bir C# programını gerektiren bir *namespace_name* veya *type_name* belirtilmelidir.
+Bir C# programdaki birkaç bağlam, *namespace_name* veya *type_name* gerektirir.
 
 ```antlr
 namespace_name
@@ -672,59 +672,59 @@ namespace_or_type_name
     ;
 ```
 
-A *namespace_name* olduğu bir *namespace_or_type_name* ad alanına başvuruyor. Çözüm, aşağıda açıklandığı gibi aşağıdaki *namespace_or_type_name* , bir *namespace_name* bir ad alanına başvurmalıdır veya aksi halde bir derleme zamanı hatası oluşur. Hiçbir tür bağımsız değişkenleri ([tür bağımsız değişkenleri](types.md#type-arguments)) içinde mevcut olabilen bir *namespace_name* (türler tür bağımsız değişkenleri olabilir yalnızca).
+Bir *namespace_name* , bir ad alanına başvuran bir *namespace_or_type_name* . Aşağıda açıklandığı gibi, bir *namespace_name* öğesinin *namespace_or_type_name* bir ad alanına başvurması gerekir, aksi takdirde derleme zamanı hatası oluşur. Bir *namespace_name* içinde hiçbir tür bağımsız değişkeni ([tür bağımsız değişkeni](types.md#type-arguments)) mevcut olamaz (yalnızca türler tür bağımsız değişkenlerine sahip olabilir).
 
-A *type_name* olduğu bir *namespace_or_type_name* bir türe başvuruyor. Çözüm, aşağıda açıklandığı gibi aşağıdaki *namespace_or_type_name* , bir *type_name* bir türe başvurmalıdır veya aksi halde bir derleme zamanı hatası oluşur.
+Bir *type_name* , bir türe başvuran bir *namespace_or_type_name* . Aşağıda açıklandığı gibi, bir *type_name* öğesinin *namespace_or_type_name* bir türe başvurması gerekir, aksi takdirde derleme zamanı hatası oluşur.
 
-Varsa *namespace_or_type_name* tam-diğer ad-anlamını olan açıklandığı gibi üye [Namespace diğer adı niteleyicileri](namespaces.md#namespace-alias-qualifiers). Aksi takdirde, bir *namespace_or_type_name* dört forms birine sahiptir:
+*Namespace_or_type_name* nitelikli bir diğer ad üyesiyse, anlamı [ad alanı diğer ad niteleyicileri](namespaces.md#namespace-alias-qualifiers)bölümünde açıklanacaktır. Aksi halde, bir *namespace_or_type_name* dört formdan birine sahiptir:
 
 *  `I`
 *  `I<A1, ..., Ak>`
 *  `N.I`
 *  `N.I<A1, ..., Ak>`
 
-Burada `I` tek bir tanımlayıcı `N` olduğu bir *namespace_or_type_name* ve `<A1, ..., Ak>` isteğe bağlıdır *type_argument_list*. Hiçbir *type_argument_list* olduğundan belirtilen göz önünde bulundurun `k` sıfır olmalıdır.
+`I` tek bir tanımlayıcıdır, `N` bir *namespace_or_type_name* ve `<A1, ..., Ak>` isteğe bağlı bir *type_argument_list*. *Type_argument_list* belirtilmediğinde `k` ' i sıfır olacak şekilde düşünün.
 
-Anlamı bir *namespace_or_type_name* şu şekilde belirlenir:
+Bir *namespace_or_type_name* anlamı aşağıdaki şekilde belirlenir:
 
-*   Varsa *namespace_or_type_name* biçimindedir `I` veya formun `I<A1, ..., Ak>`:
-    * Varsa `K` sıfırdır ve *namespace_or_type_name* genel yöntem bildiriminde içinde görünür ([yöntemleri](classes.md#methods)) ve bu bildirimi bir tür parametresi içeriyorsa ([türü parametreleri](classes.md#type-parameters)) adıyla `I`, ardından *namespace_or_type_name* bu tür parametresine başvuruyor.
-    * Aksi takdirde *namespace_or_type_name* türü bildiriminden sonra her örnek türü için görüntülenen `T` ([örnek türü](classes.md#the-instance-type)) itibaren bu türdeki örnek türü bildirim ve (varsa) her kapsayan bir class veya struct bildiriminde örneği türü ile devam etmeden:
-        * Varsa `K` sıfır ve bildirimi `T` ada sahip bir tür parametresi içeren `I`, ardından *namespace_or_type_name* bu tür parametresine başvuran.
-        * Aksi takdirde *namespace_or_type_name* türü bildirimi gövdesi içinde görünür ve `T` veya temel türlerinden birinin adına sahip iç içe erişilebilir türü içeren `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder. Birden fazla tür ise daha türetilmiş türde bildirilen türü seçilir. Tür olmayan üyeler (sabitleri, alanları, yöntemleri, özellikleri, Dizinleyicileri, işleçleri, örnek oluşturucuları, yok ediciler ve statik oluşturucular) ve tür üyelerinin farklı sayıda tür parametreleri ile anlamını belirlenirken yoksayılacak olduğunu unutmayın. *namespace_or_type_name*.
-    * Önceki adımları her ad alanı için daha sonra başarısız olursa `N`, ad alanı ile başlayan *namespace_or_type_name* her kapsayan ad uzayı ile (eğer varsa) devam etmeden ve ile biten gerçekleşir Genel ad alanı, aşağıdaki adımları bir varlığı bulunana kadar değerlendirilir:
-        * Varsa `K` sıfırdır ve `I` bir ad alanındaki adı `N`, ardından:
-            * Varsa konumu burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *namespace_or_type_name* belirsiz ve bir derleme zamanı hatası oluşur.
-            * Aksi takdirde, *namespace_or_type_name* adlı isim uzayına başvuruyor `I` içinde `N`.
-        * Aksi takdirde `N` adına sahip bir erişilebilir türü içeren `I` ve `K`  tür parametreleri:
-            * Varsa `K` sıfır ve konumun burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive*  veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *namespace_or_type_name* belirsiz ve derleme zamanı hata oluşur.
-            * Aksi takdirde, *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
-        * Aksi halde, konum burada *namespace_or_type_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N`:
-            * Varsa `K` sıfırdır ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` bir içeri aktarılan ad alanıyla veya tür, ardından *namespace_or_type_name* bu ad alanı veya tür ifade eder.
-            * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_alias_directive*ad alanı bildiriminin bir s içeren tam olarak bir erişilebilir türü adına sahip `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
-            * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_alias_directive*ad alanı bildiriminin bir s erişilebilir birden fazla tür içeriyor adına sahip `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* belirsiz ve hata oluşur.
-    * Aksi takdirde, *namespace_or_type_name* olup tanımsız ve bir derleme zamanı hatası oluşur.
-*  Aksi takdirde, *namespace_or_type_name* biçimindedir `N.I` veya formun `N.I<A1, ..., Ak>`. `N` ilk olarak çözümlenen bir *namespace_or_type_name*. Varsa çözünürlüğünü `N` bir derleme zamanı hatası oluşur başarılı değil. Aksi takdirde, `N.I` veya `N.I<A1, ..., Ak>` gibi çözümlenir:
-    * Varsa `K` sıfır ve `N` bir isim uzayına başvuruyor ve `N` ada sahip iç içe geçmiş bir ad alanı içeren `I`, ardından *namespace_or_type_name* , iç içe geçmiş ad alanına başvuruyor.
-    * Aksi takdirde `N` bir isim uzayına başvuruyor ve `N` adına sahip bir erişilebilir türü içeren `I` ve `K`  tür parametrelerindeki, ardından *namespace_or_type_name* başvurur Bu türe belirli tür bağımsız değişkenleri ile oluşturulmuş.
-    * Aksi takdirde `N` (büyük olasılıkla yapılandırılmış) bir sınıf veya yapı türe başvuruyor ve `N` veya iç içe bir erişilebilir tür adına sahip tüm temel sınıflarını içeren `I` ve `K`  parametreleri, ardından yazın*namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder. Birden fazla tür ise daha türetilmiş türde bildirilen türü seçilir. Anlamını unutmayın `N.I` temel sınıf belirtimi çözümünün bir parçası belirlenen `N` sonra doğrudan temel sınıfını `N` nesne olarak kabul edilir ([temel sınıflar](classes.md#base-classes)).
-    * Aksi takdirde, `N.I` geçersiz bir *namespace_or_type_name*, ve bir derleme zamanı hatası oluşur.
+*   *Namespace_or_type_name* , `I` veya `I<A1, ..., Ak>` biçiminde ise:
+    * @No__t-0 sıfırsa ve *namespace_or_type_name* bir genel yöntem bildiriminde ([metotlar](classes.md#methods)) görünüyorsa ve bu bildirimde @ no__t-4 adı ile bir tür parametresi ([tür parametreleri](classes.md#type-parameters)) varsa, *namespace_or_type_ ad* bu tür parametresine başvuruyor.
+    * Aksi takdirde, *namespace_or_type_name* bir tür bildiriminde görüntüleniyorsa, her bir örnek türü için, bu tür bildiriminin örnek türüyle başlayıp ve her birinin örnek türüyle devam eden her bir örnek türü için @ no__t-1 ([örnek türü](classes.md#the-instance-type)). kapsayan sınıf veya yapı bildirimi (varsa):
+        * @No__t-0 ise ve `T` bildirimi, @ no__t-2 adlı bir tür parametresi içeriyorsa, *namespace_or_type_name* bu tür parametresine başvurur.
+        * Aksi takdirde, *namespace_or_type_name* tür bildiriminin gövdesinde görüntüleniyorsa ve `T` veya temel türlerinden herhangi biri, @ no__t-2 ve `K` @ no__t-4type Parameters adına sahip iç içe erişilebilen bir tür içeriyorsa *namespace_or_type _Adı* , verilen tür bağımsız değişkenleriyle oluşturulan bu türe başvurur. Böyle birden fazla tür varsa, daha fazla türetilmiş tür içinde belirtilen tür seçilidir. Tür olmayan üyelerin (sabitler, alanlar, Yöntemler, özellikler, Dizin oluşturucular, işleçler, örnek oluşturucular, Yıkıcılar ve statik oluşturucular) ve farklı sayıda tür parametrelerine sahip tür üyelerinin yok sayıldığını unutmayın. *namespace_or_type_name*.
+    * Önceki adımlar başarısız olduysa, her bir @ no__t-0 ad alanı için *namespace_or_type_name* gerçekleştiği ad alanından başlayarak, kapsayan her ad alanıyla (varsa) devam eder ve genel ad alanıyla sona eriyor, aşağıdaki bir varlık bulunana kadar adımlar değerlendirilir:
+        * @No__t-0 sıfırsa ve `I`, @ no__t-2 içindeki bir ad alanının adı ise:
+            * *Namespace_or_type_name* 'in gerçekleştiği konum `N` için bir ad alanı bildirimiyle çevrelenmiş ve ad alanı bildirimi, @ No adını ilişkilendiren bir *extern_alias_directive* veya *using_alias_directive* içeriyorsa __T-4 bir ad alanı veya tür ile, *namespace_or_type_name* belirsizdir ve derleme zamanı hatası oluşur.
+            * Aksi takdirde *namespace_or_type_name* , `I` adlı ad alanını `N` ' de belirtir.
+        * Aksi takdirde, `N` adı @ no__t-1 ve `K` @ no__t-3type parametrelerine sahip erişilebilir bir tür içeriyorsa:
+            * @No__t-0 sıfırsa ve *namespace_or_type_name* 'in gerçekleştiği konum `N` için bir ad alanı bildirimi ile çevrelenmiş ve ad alanı bildirimi bir *extern_alias_directive* ya da *using_alias_directive* içeriyorsa @ no__t-5 adını bir ad alanı veya türle ilişkilendirir, sonra *namespace_or_type_name* belirsizdir ve bir derleme zamanı hatası oluşur.
+            * Aksi takdirde, *namespace_or_type_name* verilen tür bağımsız değişkenleriyle oluşturulan türe başvurur.
+        * Aksi takdirde, *namespace_or_type_name* 'in gerçekleştiği konum `N` için bir ad alanı bildirimi içine alınır:
+            * @No__t-0 sıfırsa ve ad alanı bildirimi, @ no__t-3 adını içeri aktarılan bir ad alanı veya türle ilişkilendiren bir *extern_alias_directive* veya *using_alias_directive* içeriyorsa, *namespace_or_type_name* bu ad alanı veya türü.
+            * Aksi halde, ad alanı bildiriminin *using_namespace_directive*s ve *using_alias_directive*s tarafından içeri aktarılan ad alanları ve tür bildirimleri, @ no__t-2 ve `K` @ no__t-4type adında tam olarak bir erişilebilir tür içeriyorsa Parametreler, ardından *namespace_or_type_name* verilen tür bağımsız değişkenleriyle oluşturulan bu türe başvurur.
+            * Aksi halde, ad alanı bildiriminin *using_namespace_directive*s ve *using_alias_directive*s tarafından içeri aktarılan ad alanları ve tür bildirimleri @ no__t-2 ve `K` @ no__t-4type adlı birden fazla erişilebilir tür içeriyorsa Parametreler, sonra *namespace_or_type_name* belirsizdir ve bir hata oluşur.
+    * Aksi takdirde, *namespace_or_type_name* tanımsızdır ve bir derleme zamanı hatası oluşur.
+*  Aksi takdirde, *namespace_or_type_name* `N.I` veya `N.I<A1, ..., Ak>` biçiminde olur. `N` ilk önce bir *namespace_or_type_name*olarak çözümlenir. @No__t-0 çözümlemesi başarılı olmazsa, bir derleme zamanı hatası oluşur. Aksi takdirde, `N.I` veya `N.I<A1, ..., Ak>` aşağıdaki gibi çözümlenir:
+    * @No__t-0 ise ve `N` bir ad alanına başvuruyorsa ve `N` `I` adında iç içe bir ad alanı içeriyorsa, *namespace_or_type_name* bu iç içe ad alanına başvurur.
+    * Aksi takdirde, `N` bir ad alanına başvuruyorsa ve `N` adı @ no__t-2 ve `K` @ no__t-4type parametrelerine sahip erişilebilir bir tür içeriyorsa, *namespace_or_type_name* , verilen tür bağımsız değişkenleriyle oluşturulan bu türe başvurur.
+    * Aksi takdirde, `N` ' a (büyük olasılıkla oluşturulmuş) bir sınıf veya yapı türü veya `N` ya da temel sınıflarından birinin adı @ no__t-2 ve `K` @ no__t-4tür parametreleri olan iç içe erişilebilen bir tür içeriyorsa, *namespace_or_type_name* başvurur Bu tür, verilen tür bağımsız değişkenleriyle oluşturulur. Böyle birden fazla tür varsa, daha fazla türetilmiş tür içinde belirtilen tür seçilidir. @No__t-0 ' ın temel sınıf @no__t belirtimini çözmenin parçası olarak belirleniyorsa, `N` ' nin doğrudan taban sınıfının Object ([temel sınıflar](classes.md#base-classes)) olarak kabul edileceğini unutmayın.
+    * Aksi takdirde, `N.I` geçersiz bir *namespace_or_type_name*ve derleme zamanı hatası oluşur.
 
-A *namespace_or_type_name* statik sınıf başvurmak için izin verilir ([statik sınıflar](classes.md#static-classes)) yalnızca
+Bir *namespace_or_type_name* , yalnızca şu durumlarda bir statik sınıfa ([statik sınıflar](classes.md#static-classes)) başvuruda bulunmasına izin verilir
 
-*  *Namespace_or_type_name* olduğu `T` içinde bir *namespace_or_type_name* formun `T.I`, veya
-*  *Namespace_or_type_name* olduğu `T` içinde bir *typeof_expression* ([bağımsız değişken listeleri](expressions.md#argument-lists)1) biçiminde `typeof(T)`.
+*  *Namespace_or_type_name* , `T` `T.I` biçiminde bir *namespace_or_type_name* veya
+*  *Namespace_or_type_name* , `T` ' in ([bağımsız değişken listeleri](expressions.md#argument-lists)1), `typeof(T)` biçiminde bir *typeof_expression* .
 
-### <a name="fully-qualified-names"></a>Tam olarak nitelenmiş adlar
+### <a name="fully-qualified-names"></a>Tam nitelikli adlar
 
-Her ad alanı ve türü olan bir ***tam nitelikli ad***, hangi benzersiz olarak tanımlayan ad alanı veya tür diğerleri arasından. Tam adı ad alanı veya tür `N` şu şekilde belirlenir:
+Her ad alanı ve türün, tüm diğerleri arasından ad alanını veya türü benzersiz bir şekilde tanımlayan ***tam bir adı***vardır. Bir ad alanının tam adı veya `N` türü aşağıdaki şekilde belirlenir:
 
-*  Varsa `N` üye tam adı genel ad alanı olan `N`.
-*  Aksi halde, tam adı olduğunu `S.N`burada `S` tam adı ad alanı veya tür, `N` bildirilir.
+*  @No__t-0 genel ad alanının üyesiyse, tam adı `N` ' dir.
+*  Aksi halde, tam adı `S.N` ' dır; burada `S`, `N` ' nin bildirildiği ad alanının veya türün tam adıdır.
 
-Diğer bir deyişle, tam olarak nitelenmiş adını `N` neden tanımlayıcıları tam hiyerarşik yolu `N`genel ad alanından başlayan. Her bir ad alanı veya tür üyesinin benzersiz bir adı olması gerektiğinden tam adı ad alanı veya tür her zaman benzersiz olduğunu izler.
+Diğer bir deyişle `N` tam adı, genel ad alanından başlayarak `N` ' e yol açabilecek tanımlayıcıların tam hiyerarşik yoludur. Bir ad alanının veya türün her üyesinin benzersiz bir adı olması gerektiğinden, bir ad alanının veya türün tam nitelikli adının her zaman benzersiz olması gerekir.
 
-Aşağıdaki örnekte, birden fazla ad alanı ve tür bildirimleri ilişkili tam adları ile birlikte gösterilir.
+Aşağıdaki örnekte, ilişkili tam adlarıyla birlikte çeşitli ad alanı ve tür bildirimleri gösterilmektedir.
 ```csharp
 class A {}                // A
 
@@ -749,21 +749,21 @@ namespace X.Y             // X.Y
 
 ## <a name="automatic-memory-management"></a>Otomatik bellek yönetimi
 
-C# geliştiricilerin el ile ayırarak ve nesnelerin kapladığı bellek serbest bırakma döngüsünü boşaltır otomatik bellek yönetimi kullanır. Otomatik bellek yönetimi ilkeleri tarafından uygulanır bir ***çöp toplayıcı***. Bir nesnenin bellek yönetimi yaşam döngüsü aşağıdaki gibidir:
+C#geliştiricilerin nesnelere göre kapladığı belleği el ile ayırmayı ve boşaltmasını sağlayan otomatik bellek yönetimini kullanır. Otomatik bellek yönetimi ilkeleri bir ***çöp toplayıcısı***tarafından uygulanır. Bir nesnenin bellek yönetimi yaşam döngüsü aşağıdaki gibidir:
 
-1. Nesne oluşturulduğunda bellek de ayrılır, oluşturucu çalıştırın ve nesne canlı olarak kabul edilir.
-2. Nesne veya herhangi bir bölümünü tüm olası yürütme devamını tarafından erişilemez, Yıkıcılar çalışması dışında nesne artık kullanımda olarak kabul edilir ve yok etme için uygun hale gelir. C# derleyicisi ve atık toplayıcı bir nesneye başvuran gelecekte kullanılabilir belirlemek için kod çözümleme tercih edebilirsiniz. Örneği için kapsamda olan yerel bir değişken yalnızca var olan bir nesneye başvuru olduğu halde bu yerel değişkeni hiçbir zaman tüm olası devamı olarak, geçerli yürütme yürütme yordamda işaret edecek şekilde adlandırılır, çöp toplayıcı olabilir (ancak değil için gerekli) nesne olarak artık kullanımda değerlendir.
-3. Nesne yok etme için uygun olduğunda, daha sonra belirtilmeyen bir saat yok Edicisi ([yok ediciler](classes.md#destructors)) (varsa) nesne çalıştırın. Normal koşullar altında nesnenin yok Edicisi, uygulamaya özel API'leri bu davranışı geçersiz kılınmasına izin verebilir ancak yalnızca bir kez çalıştırılır.
-4. Nesnenin yok Edicisi çalıştırıldığında, nesne veya herhangi bir bölümünü tarafından yürütme yıkıcı, çalıştırılmasını da dahil olmak üzere, tüm olası devamlılık erişilemiyorsa nesne erişilemez olarak kabul edilir ve nesne koleksiyonu için uygun hale gelir.
-5. Son olarak, nesne koleksiyonu için uygun hale geldikten sonra bir süre sonra atık toplayıcı o nesne ile ilişkili bellek kazandırır.
+1. Nesne oluşturulduğunda, için bellek ayrılır, Oluşturucu çalıştırılır ve nesne canlı olarak değerlendirilir.
+2. Nesneye veya herhangi bir kısmına, yok edicilerin çalışması dışında, yürütmenin olası devamlılığı tarafından erişilemez, nesne artık kullanımda değildir ve yok etme için uygun hale gelir. C# Derleyici ve çöp toplayıcı, bir nesneye yapılan başvuruların gelecekte kullanılabileceğini belirlemek için kodu analiz etmeyi tercih edebilir. Örneğin, kapsamdaki bir yerel değişken bir nesneye yönelik tek başvuru ise, ancak bu yerel değişken, yordamda geçerli yürütme noktasından yürütmenin olası devamlılığı hiçbir şekilde hiçbir şekilde başvurulmadıysa, çöp toplayıcı olabilir (ancak için gereklidir) nesneyi artık kullanımda değil olarak değerlendirin.
+3. Nesne yok etme için uygun olduğunda, bazı belirtilmemişse nesne için yıkıcı (yok[ediciler](classes.md#destructors)) (varsa) çalıştırılır. Normal koşullarda nesnenin yıkıcısı yalnızca bir kez çalıştırılır, ancak uygulamaya özgü API 'Ler bu davranışın geçersiz kılınmasına izin verebilir.
+4. Bir nesnenin yıkıcısı çalıştırıldığında, bu nesneye veya bunun herhangi bir kısmına, yok edicinin çalıştırılması dahil olmak üzere herhangi bir olası yürütme devamlılığı tarafından erişilemez, nesnenin erişilemez olduğu kabul edilir ve nesne koleksiyona uygun hale gelir.
+5. Son olarak, nesne koleksiyon için uygun olduktan sonra çöp toplayıcı bu nesneyle ilişkili belleği serbest bırakır.
 
-Atık toplayıcı nesne kullanımı hakkında bilgi tutar ve bellek yönetimi ve bir nesneye bir nesne dışında yeniden konumlandırmakta artık kullanımda veya erişilemez durumda olduğunda, yeni oluşturulan bir nesne bulmak için bellek nerede gibi kararları almak için bu bilgileri kullanır.
+Çöp toplayıcı, nesne kullanımı hakkındaki bilgileri tutar ve bu bilgileri kullanarak yeni oluşturulan bir nesneyi bulma, bir nesnenin konumunu değiştirme ve bir nesnenin artık ne zaman ne zaman kullanıldığı veya erişilemeyen gibi bellek yönetimi kararları almak için kullanılır.
 
-Çöp toplayıcı var olup olmadığını varsayar gibi diğer diller, C# atık toplayıcı çok çeşitli bellek yönetimi ilkeleri uygulayabilir şekilde tasarlanmıştır. Örneğin, C# yok ediciler çalıştırılması veya uygun oldukları hemen sonra nesnelerin toplandığını veya yıkıcıları herhangi belirli bir iş parçacığı veya herhangi bir sırada çalıştırılması gerektirmez.
+Çöp toplayıcısının varlığını varsaymış diğer diller gibi, C# çöp toplayıcı çok çeşitli bellek yönetimi ilkeleri uygulayabilmesi için tasarlanmıştır. Örneğin, C# yok edicilerin çalıştırılmasını gerektirmez veya uygun olan veya yok edicilerin belirli bir sırada veya belirli bir iş parçacığında çalıştırılması için nesnelerin toplanıp toplanmasına gerek yoktur.
 
-Atık toplayıcının davranışı, sınıfında statik yöntemler aracılığıyla belirli bir ölçüde denetlenebilir `System.GC`. Bu sınıf, bir koleksiyon gerçekleşmesi için çalıştırın (veya çalıştırma için), Yıkıcılar istemek için kullanılan ve VS.
+Çöp toplayıcısının davranışı, `System.GC` sınıfındaki statik yöntemler aracılığıyla bir dereceye kadar denetlenebilir. Bu sınıf, bir koleksiyon oluşmasına, çalıştırılacak yok edicilere (veya çalıştırılmayan), vb. istemek için kullanılabilir.
 
-Çöp Toplayıcısı nesneleri toplar ve Yıkıcılar çalıştırmak ne zaman karar içinde geniş enlem izin verildiğinden, uyumlu bir uygulaması aşağıdaki kodda gösterilen farklıdır çıktıları üretebilir. Program
+Çöp toplayıcısının nesnelerin ne zaman toplanmaya karar verirken ve yıkıcıları çalıştırmanın yanı sıra, uygun bir uygulama aşağıdaki kodla gösterilenden farklı bir çıktı üretebilir. Program
 ```csharp
 using System;
 
@@ -797,19 +797,20 @@ class Test
     }
 }
 ```
-sınıfının bir örneğini oluşturur `A` ve sınıf örneği `B`. Bu nesneler çöp toplama işlemi için uygun hale olduğunda değişkeni `b` değeri atanır `null`, bu yana bu tarihten sonra bunlara erişmek kullanıcı tarafından yazılan kodlar için mümkün değildir. Çıkış şunlardan biri olabilir.
-```
-Destruct instance of A
-Destruct instance of B
-```
-veya
-```
-Destruct instance of B
-Destruct instance of A
-```
-hangi nesneler çöp olarak toplanacak olduklarından dil hiçbir sırası kısıtlamaları getirir.
+`A` sınıfının bir örneğini ve `B` sınıfının bir örneğini oluşturur. Bu nesneler, `b` değişkenine `null` değeri atandığında, bu süreden sonra herhangi bir kullanıcı tarafından yazılan kodun bunlara erişebilmesi olanaksız olduğundan çöp toplama için uygun hale gelir. Çıktı şunlardan biri olabilir
 
-Zarif durumda "yok etme için uygun" ve "koleksiyonu için uygun" arasındaki fark önemli olabilir. Örneğin,
+```console
+Destruct instance of A
+Destruct instance of B
+```
+or
+```console
+Destruct instance of B
+Destruct instance of A
+```
+dil, nesnelerin atık olarak toplandığı sıraya göre hiçbir kısıtlama yapmadığından.
+
+Hafif durumlarda, "yok etme için uygun" ve "koleksiyon için uygun" arasındaki ayrım önemli olabilir. Örneğin,
 ```csharp
 using System;
 
@@ -858,24 +859,24 @@ class Test
 }
 ```
 
-Yukarıdaki programında çöp toplayıcı yok edicisinde seçerse `A` yıkıcısı önce `B`, bu programın çıkışı gelebilir:
-```
+Yukarıdaki programda, çöp toplayıcı `B` ' i yok edicinin önüne `A` yok ediciyi çalıştırmayı seçerse, bu programın çıktısı şu olabilir:
+```console
 Destruct instance of A
 Destruct instance of B
 A.F
 RefA is not null
 ```
 
-Olsa da unutmayın örneğini `A` kullanımda olmadığı ve `A`'s yok Edicisi çalıştırıldığı, yöntemleri için yine de mümkündür `A` (Bu durumda, `F`) başka bir yok ediciden çağrılabilir. Ayrıca, yok edicinin çalışan bir nesneyi yeniden ana hat programından kullanılabilir duruma neden olabileceğini unutmayın. Bu durumda, çalışmasını `B`yok Edicisi örneğini neden kullanıcının `A` olduğu daha önce de kullanan dinamik başvuru tarafından erişilebilir duruma gelmesi `Test.RefA`. Çağrısından sonra `WaitForPendingFinalizers`, örneğini `B` koleksiyonu, ancak örneği için uygun `A` başvurusu nedeniyle değil, `Test.RefA`.
+@No__t-0 örneği kullanımda olmasa ve `A` ' in yıkıcısı çalıştırılsa da, başka bir yıkıcıdan `A` (Bu örnekte, `F`) yöntemleri için yine de mümkündür. Ayrıca, bir yıkıcı çalıştırmanın bir nesnenin ana hat programından yeniden kullanılabilir hale gelmesine neden olabileceğini unutmayın. Bu durumda, `B` ' ın yıkıcının çalıştırılması, daha önce kullanımda olan `A` ' in `Test.RefA` canlı başvurusuyla erişilebilir hale gelmesine neden oldu. @No__t-0 ' a çağrıdan sonra, `B` ' in örneği koleksiyona uygundur, ancak `Test.RefA` başvurusu nedeniyle `A` örneği değildir.
 
-Karışıklık ve beklenmeyen davranışları önlemek için genellikle bir yok ediciler için yalnızca kendi nesnenin kendi alanlarında depolanan veriler üzerinde temizleme işlemini yapmak için ve tüm Eylemler, başvurulan nesneler veya static alanlar gerçekleştirmemeye fikirdir.
+Karışıklıkları ve beklenmedik davranışları önlemek için, yok edicilerin yalnızca kendi nesnelerinde depolanan verilerde temizlik yapması ve başvurulan nesneler veya statik alanlar üzerinde herhangi bir eylem gerçekleştirmemek için iyi bir fikir vardır.
 
-Yıkıcıları kullanma uygulayan bir sınıf olanak alternatiftir `System.IDisposable` arabirimi. Böylece, bir kaynak olarak nesne erişerek nesne kaynaklarını genellikle serbest bırakmak ne zaman belirlemek istemci nesne bir `using` deyimi ([using deyimi](statements.md#the-using-statement)).
+Yıkıcıları kullanmanın bir alternatifi, bir sınıfın `System.IDisposable` arabirimini uygulamasına olanak tanır. Bu, nesne istemcisinin, genellikle nesnesine bir `using` ifadesinde ([using ifadesiyle](statements.md#the-using-statement)) bir kaynak olarak erişerek nesne kaynaklarının ne zaman yayınlanarak belirlenmesini sağlar.
 
 ## <a name="execution-order"></a>Yürütme sırası
 
-Yan etkilerini çalışan her bir iş parçacığı, kritik yürütme noktalarda korunur, C# programının yürütme devam eder. A ***yan etkisi*** bir okuma veya yazma geçici bir alan, geçici olmayan değişkenine yazma, yazma için bir dış kaynağa ve bir özel durum olarak tanımlanır. Volatile alanlara başvurular, bu yan etkileri sırasını gerekir muhafaza edilir kritik yürütme noktaları olan ([geçici alanları](classes.md#volatile-fields)), `lock` deyimleri ([lock deyiminin](statements.md#the-lock-statement)), ve iş parçacığı oluşturma ve sonlandırma. C# programının, aşağıdaki kısıtlamalara tabi yürütme sırasını değiştirmek yürütme ortamı ücretsizdir:
+Bir C# programın yürütülmesi, yürütülen her iş parçacığının yan etkileri kritik yürütme noktalarında korunacağından devam eder. Bir ***yan etkisi*** , geçici bir alan okuma veya yazma, geçici olmayan bir değişkene yazma, bir dış kaynağa yazma ve özel durum atma olarak tanımlanır. Bu yan etkileri sırasının korunması gereken kritik yürütme noktaları, geçici alanlar ([geçici alanlar](classes.md#volatile-fields)), `lock` deyimlerinin ([kilit deyimi](statements.md#the-lock-statement)) ve iş parçacığı oluşturma ve sonlandırma için referanslardır. Yürütme ortamı, bir C# programın yürütme sırasını değiştirmek için ücretsizdir ve aşağıdaki kısıtlamalara tabidir:
 
-*  Veri bağımlılığı yürütme iş parçacığının içinden korunur. Diğer bir deyişle, tüm iş parçacığı deyimlerinde özgün program sırasıyla yürütüldü gibi her değişkenin değeri olarak hesaplanır.
-*  Kuralları korunur başlatma sıralaması ([alan başlatma](classes.md#field-initialization) ve [değişken başlatıcılar](classes.md#variable-initializers)).
-*  Geçici okuma ve yazma işlemleri göre sıralama yan etkilerini korunur ([geçici alanları](classes.md#volatile-fields)). Bu ifadenin değeri kullanılmaz ve gerekli yan etkileri (herhangi bir yöntemi çağırmak veya geçici bir alan erişerek neden dahil) üretilir çıkarabilir ek olarak, yürütme ortamı bir ifade parçası değerlendirme değil. Program yürütme (örneğin, başka bir iş parçacığı tarafından oluşturulan bir özel) zaman uyumsuz bir olay tarafından kesildiğinde, gözlemlenebilir bir yan etkileri özgün program sırasıyla görünür olduğunu garanti edilmez.
+*  Veri bağımlılığı, yürütme iş parçacığı içinde korunur. Diğer bir deyişle, her değişkenin değeri iş parçacığındaki tüm deyimler orijinal program sırasıyla yürütülürse olarak hesaplanır.
+*  Başlatma sırası kuralları korunur ([alan başlatma](classes.md#field-initialization) ve [değişken başlatıcıları](classes.md#variable-initializers)).
+*  Yan etkileri sıralaması, geçici okuma ve yazma işlemleri ([geçici alanlar](classes.md#volatile-fields)) açısından korunur. Ayrıca, bu ifadenin değerinin kullanılmadığını ve gerekli yan etkileri üretilmez (bir yöntemi çağırarak veya geçici bir alana erişim nedeniyle oluşan herhangi biri dahil), yürütme ortamı bir ifadenin bir kısmını değerlendirmemelidir. Program yürütme zaman uyumsuz bir olay (örneğin, başka bir iş parçacığı tarafından oluşturulan bir özel durum) tarafından kesintiye uğradığında, observable yan etkilerinin orijinal program sırasıyla görünür olması garanti edilmez.

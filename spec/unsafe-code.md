@@ -1,30 +1,30 @@
 ---
-ms.openlocfilehash: 90001cf3d48f216787fc65e59166ec57c5d0ca34
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 4faef9a12bdff54fa59a55a0206fa72bda4ea585
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488794"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704057"
 ---
 # <a name="unsafe-code"></a>Güvenli olmayan kod
 
-C# dili, çekirdek önceki bölümde tanımlanan özellikle C ve C++ içindeki veri türü olarak işaretçiler, atlama farklıdır. Bunun yerine, C# başvurular ve atık toplayıcısı tarafından yönetilen nesneleri oluşturma yeteneği sağlar. Diğer özelliklerle birlikte bu tasarım, C# C veya C++ daha çok daha güvenli dil sağlar. Çekirdek C# dilinde, yalnızca başlatılmayan bir değişken, "Sallantıdaki" bir işaretçi veya dizi sınırlarının ötesine dizinler bir ifade olması mümkün değildir. Tüm kategoriler hataların C düzenli olarak bu tehdit ve bu nedenle C++ programları ortadan kalkar.
+Önceki bölümlerde C# tanımlandığı gibi çekirdek dil, C 'den ve C++ veri türü olarak işaretçilerin atlanından farklıdır. Bunun yerine C# , başvuruları ve çöp toplayıcı tarafından yönetilen nesneler oluşturma özelliğini sağlar. Diğer özelliklerle bağlanmış bu tasarım, C veya C# C++' den çok daha güvenli bir dil sağlar. Çekirdek C# dilde, başlatılmamış bir değişkene, "Dangling" işaretçisine veya bir diziyi, sınırlarının ötesinde dizinleyen bir ifadeye sahip olmak mümkün değildir. C ve programları düzenli olarak oluşturan hataların tüm kategorileri bundan C++ sonra ortadan kaldırılır.
 
-Neredeyse her işaretçi türü yapısı C veya C++ içinde bir başvuru türü karşılığı C# ' de olsa da yine de, burada seçeneği işaretçi türlerine erişimi olur durumlar vardır. Örneğin, temel işletim sistemi ile arabirim, bellekle eşlenen bir cihaza erişmek ve zaman açısından kritik bir algoritma uygulayan mümkün ve pratik işaretçileri erişimi olmadan olmayabilir. Bu ihtiyacı karşılamak için C# yazma olanağı sağlar ***güvenli olmayan kod***.
+Neredeyse her işaretçi türü yapısını C 'de veya C++ içinde C#bir başvuru türüne sahip olsa da, işaretçi türlerine erişimin bir zorunludur hale geldiği durumlar vardır. Örneğin, temel alınan işletim sistemiyle arabirim oluşturma, bellek eşlemeli cihaza erişme veya zaman açısından kritik bir algoritma uygulama, işaretçilere erişim olmadan mümkün veya pratik olmayabilir. Bu gereksinimi karşılamak için C# ***güvenli olmayan kod***yazma özelliği sağlar.
 
-Güvenli olmayan kod bildirmek ve işaretçileri ve değişkenleri adresini almak için tam sayı türleri arasında dönüştürmeler gerçekleştirmek için işaretçiler üzerinde çalışacağı vb. mümkündür. Bir anlamda, güvenli olmayan kod yazma C kodu bir C# programı içinde yazma gibi olduğu kadar.
+Güvenli olmayan kodda, işaretçiler ve integral türleri arasında dönüştürmeler gerçekleştirmek, değişkenlerin adresini almak için ve benzeri işlemleri yapmak üzere işaretçiler üzerinde bildirmek ve çalıştırmak mümkündür. Bir anlamda, güvenli olmayan kod yazmak bir C# program içinde C kodu yazma gibidir.
 
-Güvenli olmayan kod aslında bir "güvenli" hem geliştiriciler hem de kullanıcılar açısından özelliğidir. Güvenli olmayan kod değiştiriciyle açıkça da işaretlenmelidir `unsafe`, böylece geliştiriciler büyük olasılıkla kullanamaz güvenli olmayan özellikler yanlışlıkla ve yürütme altyapısı, güvenli olmayan kod güvenilmeyen bir ortamda çalıştırılamayacağından emin olmak için çalışır.
+Güvenli olmayan kod, geliştiricilerin ve kullanıcıların perspektifinden "güvenli" bir özelliktir. Güvenli olmayan kod `unsafe` değiştiricisiyle açıkça işaretlenmemelidir, bu nedenle geliştiriciler yanlışlıkla güvenli olmayan özellikleri kullanamaz ve yürütme altyapısı, güvenli olmayan kodun güvenilmeyen bir ortamda yürütülmemesini sağlamak için çalışmaktadır.
 
-## <a name="unsafe-contexts"></a>Güvenli olmayan bağlamları
+## <a name="unsafe-contexts"></a>Güvenli olmayan bağlamlar
 
-C# güvenli olmayan özellikler yalnızca güvenli olmayan bağlamda kullanılabilir. Güvenli olmayan bir bağlam dahil ederek sunulan bir `unsafe` değiştiricisi bildiriminde tür veya üye veya kullanan bir *unsafe_statement*:
+Güvenli olmayan özellikleri C# yalnızca güvenli olmayan bağlamlarda kullanılabilir. Güvenli olmayan bir bağlam, bir tür veya üyenin bildiriminde `unsafe` değiştiricisi eklenerek veya bir *unsafe_statement*kullanarak ortaya çıkartılır:
 
-*  Bir sınıf, yapı, arabirim veya temsilci bildirimi içerebilir bir `unsafe` değiştiricisi, güvenli olmayan bir bağlam çalışması (sınıf, yapı veya arabirim gövdesinin dahil) bu tür bildirimi tüm metinsel kapsamını değerlendirilir.
-*  Alan, yöntemi, özelliği, olay, dizin oluşturucu, işleci, örnek oluşturucusu, yok Edicisi veya statik Oluşturucu bildirimi içerebilir bir `unsafe` içinde bu üye bildirimi tüm metinsel kapsamını çalışması olarak kabul edilir güvenli olmayan bir değiştiricisi bağlamı.
-*  Bir *unsafe_statement* güvenli olmayan bir bağlam içinde kullanımını sağlayan bir *blok*. Metinsel ilişkili tüm kapsamı *blok* güvenli olmayan bir bağlam kabul edilir.
+*  Bir sınıf, yapı, arabirim veya temsilcinin bir bildirimi `unsafe` değiştiricisi içerebilir; bu durumda, bu tür bildiriminin tüm metinsel uzantısı (sınıf, yapı veya arabirim gövdesi dahil) güvenli olmayan bir bağlam olarak kabul edilir.
+*  Bir alan, yöntem, özellik, olay, Dizin Oluşturucu, işleç, örnek Oluşturucu, yıkıcı veya statik oluşturucunun bildirimi `unsafe` değiştiricisi içerebilir; bu durumda, bu üye bildiriminin tüm metin kapsamı güvenli olmayan bir bağlam olarak kabul edilir.
+*  Bir *unsafe_statement* , *blok*içinde güvenli olmayan bir bağlam kullanılmasına izin vermez. İlişkili *bloğun* tüm metinsel uzantısı güvenli olmayan bir bağlam olarak kabul edilir.
 
-İlişkili dilbilgisi üretim aşağıda gösterilmektedir.
+İlişkili dilbilgisi üretimleri aşağıda gösterilmiştir.
 
 ```antlr
 class_modifier_unsafe
@@ -106,7 +106,7 @@ public unsafe struct Node
 }
 ```
 
-`unsafe` struct bildiriminde belirtilen değiştirici güvenli olmayan bir bağlam olmasını yapı bildirimi tüm metinsel kapsamını neden olur. Bu nedenle, bildirmek olası `Left` ve `Right` işaretçi türünde alanlar. Yukarıdaki örnekte ayrıca yazılabilir
+struct bildiriminde belirtilen `unsafe` değiştiricisi, struct bildiriminin tüm metinsel kapsamının güvenli olmayan bir bağlam haline gelmesine neden olur. Bu nedenle, `Left` ve `Right` alanlarını bir işaretçi türü olarak bildirmek mümkündür. Yukarıdaki örnek de yazılabilir
 
 ```csharp
 public struct Node
@@ -117,9 +117,9 @@ public struct Node
 }
 ```
 
-Burada, `unsafe` alanın bildiriminde değiştiriciler neden güvensiz bir bağlamı olarak kabul edilmesi bu bildirimleri.
+Burada, alan bildirimlerinde `unsafe` değiştiriciler, bu bildirimlerin güvenli olmayan bağlamlar olarak kabul edilmesine neden olur.
 
-Bu nedenle işaretçi türleri kullanımına izin veren bir güvenli olmayan bir bağlam oluşturma dışında `unsafe` değiştiricisi bir tür veya üye üzerinde hiçbir etkisi. Örnekte
+Güvenli olmayan bir bağlam oluşturma dışında, işaretçi türlerinin kullanılmasına izin veren `unsafe` değiştiricisinin bir tür veya üye üzerinde hiçbir etkisi yoktur. Örnekte
 
 ```csharp
 public class A
@@ -139,9 +139,9 @@ public class B: A
 }
 ```
 
-`unsafe` değiştiricisi `F` yönteminde `A` metinsel kapsamını yalnızca neden `F` güvenli olmayan dil özelliklerinin kullanılabilecek güvenli olmayan bir bağlam olacak. Geçersiz kılmasını içinde `F` içinde `B`, yeniden belirtmek için gerek yoktur `unsafe` değiştiricisi--sürece, Elbette `F` yönteminde `B` kendisini güvensiz özellikleri erişmesi gerekiyor.
+`A` ' deki `F` yönteminde `unsafe` değiştiricisi, `F` ' in metinsel kapsamının, dilin güvenli olmayan özelliklerinin kullanılabileceği güvenli olmayan bir bağlam haline gelmesine neden olur. @No__t-0 ' ı `B` ' de geçersiz kılmada, `unsafe` değiştiricisini yeniden belirtmeniz gerekmez--kuşkusuz, `B` ' teki `F` yönteminin güvenli olmayan özelliklere erişmesi gerekir.
 
-Bir işaretçi türü yöntemin imzasını bir parçası olduğunda durumu biraz farklıdır
+İşaretçi türü metodun imzasının bir parçası olduğunda durum biraz farklıdır
 
 ```csharp
 public unsafe class A
@@ -155,11 +155,11 @@ public class B: A
 }
 ```
 
-Burada, çünkü `F`'s imzası içerir bir işaretçi türü, onu yalnızca güvenli olmayan bir bağlamda yazılabilir. Ancak, güvenli olmayan bir bağlam içinde olduğu gibi ya da sınıfın tamamı güvenli değildir, yaparak tanıtılabilir `A`, ya da dahil olmak üzere bir `unsafe` değiştirici yöntem bildiriminde içinde olduğu gibi `B`.
+Burada, `F` ' ın imzası bir işaretçi türü içerdiğinden, yalnızca güvenli olmayan bir bağlamda yazılabilir. Bununla birlikte, güvenli olmayan bağlam, `A` ' da olduğu gibi, ya da yöntem bildiriminde bir `unsafe` değiştiricisi ekleyerek veya `B` ' de olduğu gibi, tüm sınıfı güvenli hale getirerek eklenebilir.
 
 ## <a name="pointer-types"></a>İşaretçi türleri
 
-Güvenli olmayan bir bağlamda bir *türü* ([türleri](types.md)) olabilir bir *pointer_type* yanı *value_type* veya *reference_type* . Ancak, bir *pointer_type* içinde de kullanılabilir bir `typeof` ifade ([anonim nesne oluşturma ifadeleri](expressions.md#anonymous-object-creation-expressions)) dışında güvenli olmayan bir bağlam nedenle kullanım güvenli değildir.
+Güvenli olmayan bir bağlamda, bir *tür* ([Types](types.md)) bir *pointer_type* ve *value_type* ya da *reference_type*olabilir. Ancak, bir *pointer_type* `typeof` Ifadesinde ([anonim nesne oluşturma ifadelerinde](expressions.md#anonymous-object-creation-expressions)), bu kullanım güvenli olmadığı için güvenli olmayan bir bağlam dışında da kullanılabilir.
 
 ```antlr
 type_unsafe
@@ -167,7 +167,7 @@ type_unsafe
     ;
 ```
 
-A *pointer_type* olarak yazılmış bir *unmanaged_type* veya anahtar sözcüğü `void`ve ardından bir `*` belirteci:
+Bir *pointer_type* , bir *unmanaged_type* ya da `void` anahtar sözcüğü ve ardından `*` belirteci ile yazılır:
 
 ```antlr
 pointer_type
@@ -180,50 +180,50 @@ unmanaged_type
     ;
 ```
 
-Önce belirtilen tür `*` bir işaretçi türü olarak adlandırılır ***başvurulan türü*** işaretçi türü. Bu değişkenin işaret ettiği işaretçi türünde bir değer türünü temsil eder.
+İşaretçi türünde `*` ' dan önce belirtilen tür, işaretçi türünün ***başvurulan türü*** olarak adlandırılır. İşaretçi türündeki bir değerin işaret ettiği değişkenin türünü temsil eder.
 
-Başvuruları (başvuru türleri değerlerinin), farklı işaretçiler çöp toplayıcı tarafından izlenmez--çöp toplayıcı işaretçiler ve bunların işaret veri olanağıyla sahiptir. Bu nedenle bir işaretçi, başvuru noktası izin verilmiyor veya bir yapı için başvuruları içeren ve grup türü bir işaretçi olmalıdır bir *unmanaged_type*.
+Başvuruların aksine (başvuru türlerinin değerleri), işaretçiler çöp toplayıcı tarafından izlenmez. çöp toplayıcı, hiçbir işaretçi bilgisine ve işaret ettikleri verilere sahip değildir. Bu nedenle, bir işaretçiye başvuruya veya başvuruları içeren bir yapıya işaret eden bir işaretçi için bir *unmanaged_type*olması gerekir.
 
-Bir *unmanaged_type* olmayan herhangi bir tür bir *reference_type* veya türü oluşturulur ve içermiyor *reference_type* veya oluşturulan tüm düzeylerindeki tür alanları iç içe geçirme. Diğer bir deyişle, bir *unmanaged_type* aşağıdakilerden biridir:
+*Unmanaged_type* , *reference_type* veya oluşturulmuş bir tür olmayan herhangi bir türdür ve herhangi bir iç içe geçme düzeyinde *reference_type* veya oluşturulmuş tür alanları içermez. Diğer bir deyişle, *unmanaged_type* aşağıdakilerden biridir:
 
-*  `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, `decimal`, veya `bool`.
-*  Tüm *enum_type*.
-*  Tüm *pointer_type*.
-*  Tüm kullanıcı tanımlı *struct_type* oluşturulan bir tür değil ve alanlarını içerir *unmanaged_type*yalnızca s.
+*  `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, 0, 1 veya 2.
+*  Herhangi bir *enum_type*.
+*  Herhangi bir *pointer_type*.
+*  Oluşturulmuş bir tür olmayan ve yalnızca *unmanaged_type*s alanlarını içeren Kullanıcı tanımlı *struct_type* .
 
-İşaretçiler ve başvurular karıştırmak için sezgisel referents başvuruları (nesneler) işaretçiler içeren izin verilir, ancak referents işaretçiler, başvurular izin verilmeyen kuralıdır.
+İşaretçilerin ve başvuruların karıştırılmasına yönelik sezgisel kural, başvuru (nesneler) başvurularının, işaretçiler içermesine izin vermelerdir, ancak işaretçilerin başvurularının başvuru içermesine izin verilmez.
 
-İşaretçi türlerinin bazı örnekler, aşağıdaki tabloda verilmiştir:
+Aşağıdaki tabloda işaretçi türlerine bazı örnekler verilmiştir:
 
 | __Örnek__ | __Açıklama__                               |
 |-------------|-----------------------------------------------|
-| `byte*`     | İşaretçi `byte`                             |
-| `char*`     | İşaretçi `char`                             |
-| `int**`     | İşaretçi işaretçisi `int`                   |
-| `int*[]`    | Tek boyutlu dizi işaretçileri `int` |
+| `byte*`     | @No__t işaretçisi-0                             |
+| `char*`     | @No__t işaretçisi-0                             |
+| `int**`     | @No__t işaretçisinin işaretçisi-0                   |
+| `int*[]`    | @No__t işaretçilerin tek boyutlu dizisi-0 |
 | `void*`     | Bilinmeyen tür işaretçisi                       |
 
-Belirli bir uygulama için tüm işaretçi türleri aynı büyüklük ve gösterimi olmalıdır.
+Belirli bir uygulama için, tüm işaretçi türleri aynı boyuta ve gösterimine sahip olmalıdır.
 
-C ve C++, C# ' de aynı bildirimde birden çok işaretçi bildirildiğinde aksine `*` yalnızca, temel alınan türü ile birlikte, her bir işaretçi adı bir önek noktalama işaretçisi olarak yazılır. Örneğin:
+C ve C++' nin aksine, aynı bildirimde birden çok işaretçi bildirildiğinde, C# `*`, her işaretçi adında ön ek noktalama işareti olarak değil, yalnızca temel alınan türle birlikte yazılır. Örneğin:
 
 ```csharp
 int* pi, pj;    // NOT as int *pi, *pj;
 ```
 
-Türü olan bir işaretçi değeri `T*` türünde bir değişkenin adresini temsil eden `T`. İşaretçi yöneltme işleci `*` ([işaretçi yöneltmesi](unsafe-code.md#pointer-indirection)) Bu değişken erişmek için kullanılabilir. Örneğin, bir değişken verilen `P` türü `int*`, ifade `*P` gösterir `int` yer alan adreste bulunan değişkeni `P`.
+@No__t-0 türüne sahip bir işaretçinin değeri, `T` türünde bir değişkenin adresini temsil eder. Bu değişkene erişmek için, işaretçi yöneltme işleci `*` ([işaretçi yöneltme](unsafe-code.md#pointer-indirection)) kullanılabilir. Örneğin, `int*` türünde `P` değişkeni verildiğinde, `*P` ifadesi `P` ' te bulunan adreste bulunan `int` değişkenini gösterir.
 
-Bir nesne başvurusu gibi bir işaretçi olabilir `null`. İçin yöneltme işlecini bir `null` işaretçi uygulama tanımlı davranış sonuçlanır. Bir işaretçi değeri `null` BITS tüm sıfır tarafından temsil edilir.
+Bir nesne başvurusu gibi bir işaretçi `null` olabilir. @No__t-0 işaretçisine yöneltme işlecini uygulamak, uygulama tanımlı davranışa neden olur. @No__t-0 değeri olan bir işaretçi, All-bit-Zero ile temsil edilir.
 
-`void*` Türünü temsil eden bir işaretçi türü bilinmiyor. Grup türü bilinmediğinden, türünde bir işaretçi yöneltme işleci uygulanamaz `void*`, ya da herhangi bir aritmetik tür bir işaretçi üzerinde gerçekleştirilebilir. Ancak, bir işaretçi türü `void*` herhangi bir işaretçi türü (ve tersi) dönüştürme olabilir.
+@No__t-0 türü, bilinmeyen bir türe yönelik bir işaretçi temsil eder. Başvurulan tür bilinmediği için, yöneltme işleci `void*` türünde bir işaretçiye uygulanamaz, ne de bu tür bir işaretçi üzerinde herhangi bir aritmetik işlem yapılabilir. Ancak, `void*` türünde bir işaretçi diğer işaretçi türlerine (ve tam tersi) dönüşebilir.
 
-İşaretçi türleri için ayrı bir kategori türleridir. İşaretçi türleri seçeneğinden devralmamanızı başvuru türleri ve değer türlerinin aksine, `object` ve işaretçi türleri arasında dönüştürme işlemi yok var ve `object`. Özellikle, kutulama ve kutudan çıkarma ([kutulama ve kutudan çıkarma](types.md#boxing-and-unboxing)) işaretçiler için desteklenmez. Ancak, farklı işaretçi türleri ve işaretçi türleri ve tamsayı türleri arasında dönüştürmeler izin verilir. Bu açıklanan [işaretçi dönüşümleri](unsafe-code.md#pointer-conversions).
+İşaretçi türleri ayrı bir tür kategorisidir. Başvuru türleri ve değer türlerinin aksine, işaretçi türleri `object` ' dan aktarılmaz ve işaretçi türleri ve `object` arasında dönüştürme yok. Özellikle, kutulama ve kutudan çıkarma ([kutulama ve kutudan](types.md#boxing-and-unboxing)çıkarma) işaretçiler için desteklenmez. Ancak, farklı işaretçi türleri arasında ve işaretçi türleri ile integral türleri arasında dönüştürmeye izin verilir. Bu, [işaretçi dönüştürmelerinde](unsafe-code.md#pointer-conversions)açıklanır.
 
-A *pointer_type* tür bağımsız değişkeni kullanılamaz ([oluşturulan türler](types.md#constructed-types)) ve anlam çıkarma ([anlam çıkarma](expressions.md#type-inference)) algılanan genel yöntem çağrıları başarısız bir tür bağımsız değişkeni, bir işaretçi türü.
+Bir *pointer_type* , tür bağımsız değişkeni olarak kullanılamaz ([oluşturulmuş türler](types.md#constructed-types)) ve tür çıkarımı ([tür çıkarımı](expressions.md#type-inference)), bir tür bağımsız değişkenini bir işaretçi türü olacak şekilde çıkartılan genel yöntem çağrılarında başarısız olur.
 
-A *pointer_type* geçici bir alan türü olarak kullanılabilir ([geçici alanları](classes.md#volatile-fields)).
+Bir *pointer_type* , geçici bir alanın türü olarak kullanılabilir ([geçici alanlar](classes.md#volatile-fields)).
 
-İşaretçileri olarak geçirilebilir ancak `ref` veya `out` parametreleri, işaretçi yanı sıra beri tanımsız davranışa neden olabilir, böylece çağrılan yöntem döndürüldüğünde, artık var olmayan bir yerel değişken veya sabit hangi BT nesneye işaret edecek şekilde ayarlanması işaret etmek için kullanılan, artık düzeltildi. Örneğin:
+İşaretçiler `ref` veya `out` parametresi olarak geçirilebilse de, işaretçi, çağrılan yöntemin döndürdüğü zaman mevcut olmayan bir yerel değişkene işaret etmek üzere ayarlanmış olabileceği veya işaret etmek için kullandığı sabit nesne olduğu için tanımsız davranışa neden olabilir. , artık düzeltilmedi. Örneğin:
 
 ```csharp
 using System;
@@ -257,7 +257,7 @@ class Test
 }
 ```
 
-Bir yöntem bazı türünde bir değer döndürebilir ve bu tür bir işaretçi olabilir. Örneğin, bir işaretçi bitişik dizisi ile verildiğinde `int`s, bu sırasının öğe sayısı ve bazı diğer `int` değeri, aşağıdaki yöntemi bir eşleşme olursa o sırada değeri adresini döndürür; Aksi halde döndürür`null`:
+Bir yöntem bir tür değeri döndürebilir ve bu tür bir işaretçi olabilir. Örneğin, `int`s ardışık dizisine, bu dizinin öğe sayısına ve diğer `int` değerine bir işaretçi verildiğinde, bir eşleşme meydana gelirse, aşağıdaki yöntem o dizideki bu değerin adresini döndürür; Aksi takdirde, `null` döndürür:
 
 ```csharp
 unsafe static int* Find(int* pi, int size, int value) {
@@ -270,58 +270,58 @@ unsafe static int* Find(int* pi, int size, int value) {
 }
 ```
 
-Güvenli olmayan bir bağlamda işaretçiler üzerinde çalışan için çeşitli yapıları kullanılabilir:
+Güvenli olmayan bir bağlamda, işaretçilerde çalıştırmak için birkaç yapı mevcuttur:
 
-*  `*` İşleç, işaretçi yöneltmesi gerçekleştirmek için kullanılabilir ([işaretçi yöneltmesi](unsafe-code.md#pointer-indirection)).
-*  `->` İşleci bir işaretçiyi bir yapı üyesi erişmek için kullanılabilir ([işaretçi üye erişimi](unsafe-code.md#pointer-member-access)).
-*  `[]` İşleci, bir işaretçi dizini oluşturmak için kullanılabilir ([işaretçi öğe erişimi](unsafe-code.md#pointer-element-access)).
-*  `&` İşleci, bir değişkenin adresini almak için kullanılabilir ([address-of işlecini](unsafe-code.md#the-address-of-operator)).
-*  `++` Ve `--` işaretçileri artırma ve azaltma işleçleri kullanılabilir ([işaretçi artırma ve azaltma](unsafe-code.md#pointer-increment-and-decrement)).
-*  `+` Ve `-` işleçleri, işaretçi aritmetik işlemleri için kullanılabilir ([işaretçi aritmetiği](unsafe-code.md#pointer-arithmetic)).
-*  `==`, `!=`, `<`, `>`, `<=`, Ve `=>` işaretçileri Karşılaştırma işleçleri kullanılabilir ([işaretçi karşılaştırması](unsafe-code.md#pointer-comparison)).
-*  `stackalloc` İşleci, çağrı yığınından bellek ayırmak için kullanılabilir ([sabit boyutlu arabellekler](unsafe-code.md#fixed-size-buffers)).
-*  `fixed` Deyimi adresini alınabilmesi için bir değişkeni geçici olarak gidermek için kullanılabilir ([fixed deyimi](unsafe-code.md#the-fixed-statement)).
+*  @No__t-0 işleci, işaretçi yöneltme ([işaretçi yöneltme](unsafe-code.md#pointer-indirection)) yapmak için kullanılabilir.
+*  @No__t-0 işleci, bir yapının üyesine işaretçi aracılığıyla erişmek için kullanılabilir ([işaretçi üyesi erişimi](unsafe-code.md#pointer-member-access)).
+*  @No__t-0 işleci bir işaretçiye dizin eklemek için kullanılabilir ([işaretçi öğesi erişimi](unsafe-code.md#pointer-element-access)).
+*  @No__t-0 işleci bir değişkenin adresini ([Adres operatörü](unsafe-code.md#the-address-of-operator)) almak için kullanılabilir.
+*  @No__t-0 ve `--` işleçleri, işaretçileri artırmak ve azaltmak için kullanılabilir ([işaretçi artışı ve azalması](unsafe-code.md#pointer-increment-and-decrement)).
+*  @No__t-0 ve `-` işleçleri, işaretçi aritmetiği ([işaretçi aritmetiği](unsafe-code.md#pointer-arithmetic)) gerçekleştirmek için kullanılabilir.
+*  @No__t-0, `!=`, `<`, `>`, `<=` ve `=>` işleçleri işaretçileri karşılaştırmak için kullanılabilir ([işaretçi karşılaştırması](unsafe-code.md#pointer-comparison)).
+*  @No__t-0 işleci, çağrı yığınından ([sabit boyutlu arabellekler](unsafe-code.md#fixed-size-buffers)) bellek ayırmak için kullanılabilir.
+*  @No__t-0 deyimleri, bir değişkeni geçici olarak çözmek için kullanılabilir ve bu nedenle adresi elde edilebilir ([fixed deyimidir](unsafe-code.md#the-fixed-statement)).
 
-## <a name="fixed-and-moveable-variables"></a>Sabit ve taşınabilir değişkenleri
+## <a name="fixed-and-moveable-variables"></a>Sabit ve taşınabilir değişkenler
 
-Address-of işlecini ([address-of işlecini](unsafe-code.md#the-address-of-operator)) ve `fixed` deyimi ([fixed deyimi](unsafe-code.md#the-fixed-statement)) iki kategoride değişkenleri bölmek: ***Değişkenler sabit*** ve ***taşınabilir değişkenleri***.
+Address-of işleci ([Address-of işleci](unsafe-code.md#the-address-of-operator)) ve `fixed` deyimin ([fixed deyimin](unsafe-code.md#the-fixed-statement)) değişkenleri iki kategoriye ayırır: ***Sabit değişkenler*** ve ***taşınamayacak değişkenler***.
 
-Sabit değişkenler, atık toplayıcı bir işlem tarafından etkilenmez, depolama konumları olarak yer alır. (Sabit değişkenler yerel değişkenler, değer parametreleri ve değişkenleri başvuruluyor işaretçiler tarafından oluşturulan örneklerindendir.) Öte yandan, yeniden konumlandırma veya çöp toplayıcı tarafından elden tabidir depolama konumları olarak taşınabilir değişkenleri bulunur. (Taşınabilir değişkenleri örnekleri alanları nesneler ve diziler öğelerini içerir.)
+Sabit değişkenler çöp toplayıcı 'nin işleminden etkilenmeyen depolama konumlarında bulunur. (Sabit değişkenlere örnek olarak, yerel değişkenler, değer parametreleri ve başvuru işaretçileri tarafından oluşturulan değişkenler verilebilir.) Diğer yandan, taşınabilir değişkenler çöp toplayıcısının yerini değiştirme veya aktiften çıkarma konusunda yer alan depolama konumlarında bulunur. (Taşınamayacak değişkenlerin örnekleri, nesne ve dizi öğelerindeki alanları içerir.)
 
-`&` İşleci ([address-of işlecini](unsafe-code.md#the-address-of-operator)) kısıtlama olmadan alınacağı sabit değişkenin adresini verir. Yeniden konumlandırma veya çöp toplayıcı tarafından elden tabi taşınabilir bir değişken olduğundan, ancak taşınabilir değişkenin adresini yalnızca kullanılarak elde edilebilir bir `fixed` deyimi ([fixed deyimi](unsafe-code.md#the-fixed-statement)) ve bu adresi yalnızca bu süre için geçerli kalır `fixed` deyimi.
+@No__t-0 işleci ([Adres operatörü](unsafe-code.md#the-address-of-operator)), sabit bir değişkenin adresinin kısıtlama olmadan elde edilebilir olmasını sağlar. Ancak, taşınabilir bir değişken çöp toplayıcısının yeniden konumlandırılmasını veya aktiften çıkarılma tabi olduğundan, taşınabilir bir değişkenin adresi yalnızca `fixed` ([fixed](unsafe-code.md#the-fixed-statement)) ifadesiyle elde edilebilir ve bu adres yalnızca Bu `fixed` ifadesinin süresi.
 
-Kesin bağlamında, sabit bir değişken aşağıdakilerden birini verilmiştir:
+Kesin koşullarda, sabit bir değişken aşağıdakilerden biridir:
 
-*  Bir değişken kaynaklanan bir *simple_name* ([basit adları](expressions.md#simple-names)) başvuran bir yerel değişken ya da bir değer parametresini sürece değişkeni anonim bir işlev tarafından yakalanır.
-*  Bir değişken kaynaklanan bir *member_access* ([üye erişimi](expressions.md#member-access)) biçiminde `V.I`burada `V` , sabit bir değişken bir *struct_type*.
-*  Bir değişken kaynaklanan bir *pointer_indirection_expression* ([işaretçi yöneltmesi](unsafe-code.md#pointer-indirection)) biçiminde `*P`, *pointer_member_access* ([İşaretçi üye erişimi](unsafe-code.md#pointer-member-access)) biçiminde `P->I`, veya bir *pointer_element_access* ([işaretçi öğe erişimi](unsafe-code.md#pointer-element-access)) biçiminde `P[E]`.
+*  Değişken anonim bir işlev tarafından yakalanmadığı müddetçe, bir yerel değişkene veya bir değer parametresine başvuran bir *simple_name* ([basit adlar](expressions.md#simple-names)) sonucu elde edilen bir değişkendir.
+*  @No__t-2 ' nin bir *member_access* ([üye erişimi](expressions.md#member-access)) sonucu olan bir değişken, `V` ' ün bir *struct_type*sabit değişkenidir.
+*  Bir değişken, formun @no__t -2, bir *pointer_member_access* ([işaretçi üyesi erişimi](unsafe-code.md#pointer-member-access)[) @no__t](unsafe-code.md#pointer-indirection)-5 veya bir *pointer_element_access* ( [İşaretçi öğesi erişimi](unsafe-code.md#pointer-element-access)) `P[E]` biçiminde.
 
-Diğer tüm değişkenleri taşınabilir değişkenleri olarak sınıflandırılır.
+Diğer tüm değişkenler taşınabilir değişkenler olarak sınıflandırılmaktadır.
 
-Statik alan taşınabilir bir değişken olarak sınıflandırılır unutmayın. Ayrıca bir `ref` veya `out` parametresi parametresi için belirtilen bağımsız değişkeni sabit bir değişken olsa bile taşınabilir bir değişken olarak sınıflandırılmış. Son olarak, bir işaretçinin tarafından üretilen bir değişken her zaman sabit bir değişken olarak sınıflandırıldığını unutmayın.
+Statik bir alanın taşınamayacak değişken olarak sınıflandırıldığını unutmayın. Ayrıca, parametre için verilen bağımsız değişken sabit bir değişken olsa bile `ref` veya `out` parametresinin taşınabilir bir değişken olarak sınıflandırıldığını unutmayın. Son olarak, bir işaretçinin başvurusunun kaldırılması tarafından oluşturulan bir değişkenin her zaman sabit bir değişken olarak sınıflandırıldığını unutmayın.
 
-## <a name="pointer-conversions"></a>İşaretçi dönüşümleri
+## <a name="pointer-conversions"></a>İşaretçi Dönüştürmeler
 
-Mevcut örtük dönüştürmeler kümesini güvenli olmayan bir bağlamda ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) aşağıdaki örtük işaretçi dönüşümleri kapsayacak şekilde genişletilir:
+Güvenli olmayan bir bağlamda, kullanılabilir örtük dönüştürmeler ([örtük dönüştürmeler](conversions.md#implicit-conversions)) kümesi aşağıdaki örtük işaretçi dönüşümlerini içerecek şekilde genişletilir:
 
-*  Herhangi *pointer_type* türüne `void*`.
-*  Gelen `null` herhangi bir değişmez değer *pointer_type*.
+*  Herhangi bir *pointer_type* `void*` türüne.
+*  @No__t-0 değişmez değerinden herhangi bir *pointer_type*.
 
-Ayrıca, güvenli olmayan bir bağlamda, kullanılabilir açık dönüştürmeler kümesini ([açık dönüştürmeler](conversions.md#explicit-conversions)) aşağıdaki açık işaretçi dönüşümleri kapsayacak şekilde genişletilir:
+Ayrıca, güvenli olmayan bir bağlamda, kullanılabilir açık dönüştürmeler ([Açık dönüştürmeler](conversions.md#explicit-conversions)) kümesi aşağıdaki açık işaretçi dönüşümlerini içerecek şekilde genişletilir:
 
-*  Herhangi *pointer_type* herhangi diğer *pointer_type*.
-*  Gelen `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, veya `ulong` herhangi *pointer_type*.
-*  Herhangi *pointer_type* için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, veya `ulong`.
+*  Herhangi bir *pointer_type* başka bir *pointer_type*.
+*  @No__t-0, `byte`, `short`, `ushort`, `int`, `uint`, `long` veya `ulong` herhangi bir *pointer_type*.
+*  Herhangi bir *pointer_type* `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long` ya da `ulong` ' e kadar.
 
-Son olarak, güvenli olmayan bir bağlamda, bir dizi standart örtük dönüştürmeler ([standart örtük dönüştürmeler](conversions.md#standard-implicit-conversions)) aşağıdaki işaretçi dönüştürme içerir:
+Son olarak, güvenli olmayan bir bağlamda, standart örtük dönüştürmeler kümesi ([Standart örtük dönüştürmeler](conversions.md#standard-implicit-conversions)) aşağıdaki işaretçi dönüşümünü içerir:
 
-*  Herhangi *pointer_type* türüne `void*`.
+*  Herhangi bir *pointer_type* `void*` türüne.
 
-İki işaretçi türleri arasında dönüştürmeler, gerçek bir işaretçi değeri hiçbir zaman değiştirin. Diğer bir deyişle, bir işaretçi türüne dönüştürmeye başka bir işaretçi tarafından verilen temel adresi üzerinde etkisi yoktur.
+İki işaretçi türü arasındaki dönüşümler hiçbir şekilde gerçek işaretçi değerini değiştirmez. Diğer bir deyişle, bir işaretçi türünden diğerine dönüştürmenin, işaretçi tarafından verilen temel adres üzerinde hiçbir etkisi yoktur.
 
-Elde edilen işaretçi işaret edilen türü için doğru bir şekilde hizalanmamış bir işaretçi türü diğerine dönüştürülür, sonuç referans edildi, davranış tanımlanmamıştır. Genel olarak, "düzgün hizalanmış" kavramı geçişli: tür işaretçisi, `A` tür işaretçisi için düzgün hizalanmış `B`, sırasıyla bir işaretçi türüne doğru hizalanır `C`, ardından bir işaretçi türüne `A`bir işaretçi türüne düzgün hizalanmış `C`.
+Bir işaretçi türü diğerine dönüştürüldüğünde, ortaya çıkan işaretçi, işaret türü için doğru hizalanmazsa, sonuç başvuru başvurusu varsa, bu davranış tanımsızdır. Genel olarak, "doğru hizalı" kavram geçişlidir: `A` türüne yönelik bir işaretçi, `B` türü bir işaretçi için doğru hizalanmışsa, bu, sırasıyla `C` türünde bir işaretçi için doğru hizalanmışsa, bu durumda `A` türü bir işaretçi bir `C` türü işaretçi.
 
-Bir türü sahip bir değişken, farklı türden bir işaretçi aracılığıyla erişilir aşağıdaki örneği inceleyin:
+Farklı bir türe yönelik bir işaretçi aracılığıyla bir türe sahip bir değişkene erişildiği aşağıdaki durumu göz önünde bulundurun:
 
 ```csharp
 char c = 'A';
@@ -332,7 +332,7 @@ int i = *pi;         // undefined
 *pi = 123456;        // undefined
 ```
 
-Ne zaman bir işaretçi türü bayt, bir işaretçi değişken sonuç noktalarını düşük adresli bayta dönüştürülür. Bu değişkenin kalan baytlar işaretçilere değişkeni en fazla sonuç art arda gelen artışlarla yield. Örneğin, aşağıdaki yöntemi her sekiz bayt bir çift olarak bir onaltılık değer görüntüler:
+Bir işaretçi türü bayta bir işaretçiye dönüştürüldüğünde, sonuç değişkenin en düşük adresli bayta işaret eder. Sonucun ardışık artışlarına kadar, değişkenin boyutuna kadar, bu değişkenin kalan baytlarına kadar dönen işaretçiler. Örneğin, aşağıdaki yöntem bir Double içindeki sekiz baytın her birini onaltılık bir değer olarak görüntüler:
 
 ```csharp
 using System;
@@ -351,26 +351,26 @@ class Test
 }
 ```
 
-Elbette, üretilen çıktı endianness üzerinde bağlıdır.
+Tabii ki, üretilen çıkış, bitime 'ye bağlıdır.
 
-Uygulama tanımlı işaretçiler ve tamsayılar arasındaki eşlemeleri. Ancak, 32 üzerinde * ve 64-bit CPU mimarileri doğrusal bir adres alanı ile ya da tam sayı türlerinden dönüştürmeler işaretçiler genelde tam olarak dönüştürülme gibi davranır `uint` veya `ulong` değerler, sırasıyla ya da bu tam sayı türlerinden.
+İşaretçiler ve tamsayılar arasındaki eşlemeler uygulama tanımlı. Bununla birlikte, doğrusal bir adres alanı ile 32 * ve 64 bit CPU mimarilerinde, tam sayı türlerine veya bu tür bir değere yapılan işaretçilerin dönüştürmeleri genellikle `uint` veya `ulong` değerlerinin, sırasıyla, bu integral türlerine veya bu tür integral türlerine dönüştürülmesine benzer şekilde davranır.
 
 ### <a name="pointer-arrays"></a>İşaretçi dizileri
 
-Güvenli olmayan bir bağlamda işaretçiler dizileri oluşturulabilir. Diğer bir dizi türü için geçerli dönüşümler yalnızca bazıları, işaretçi dizilerde izin verilir:
+Güvenli olmayan bir bağlamda, işaretçiler dizileri oluşturulabilir. İşaretçi dizileri üzerinde yalnızca diğer dizi türleri için uygulanan Dönüştürmelere izin verilir:
 
-*  Örtük bir başvuru dönüştürmesi ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions)) herhangi *array_type* için `System.Array` ve ayrıca bunu uyguladığı arayüzlerin işaretçi dizileri için geçerlidir. Ancak, tüm dizi öğeleri aracılığıyla erişme girişimi `System.Array` veya işaretçi türleri dönüştürülebilir değildir. Bunu uygulayan arabirimler çalışma zamanı bir özel duruma neden olur `object`.
-*  Örtük ve açık dönüştürmeler başvuru ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions), [açık başvuru dönüşümleri](conversions.md#explicit-reference-conversions)) bir tek boyutlu dizi türünden `S[]` için `System.Collections.Generic.IList<T>` ve Genel temel arabirimlerinden işaretçi türleri, tür bağımsız değişkeni olarak kullanılamaz ve işaretçi olmayan türlerin işaretçi türünden hiçbir dönüştürme hiçbir zaman işaretçi dizileri için geçerlidir.
-*  Açık bir başvuru dönüştürmesi ([açık başvuru dönüşümleri](conversions.md#explicit-reference-conversions)) öğesinden `System.Array` ve arabirimler için uygular *array_type* işaretçi dizileri için geçerlidir.
-*  Açık bir başvuru Dönüşümleri ([açık başvuru dönüşümleri](conversions.md#explicit-reference-conversions)) öğesinden `System.Collections.Generic.IList<S>` ve bunun temel arabirimleri için bir tek boyutlu dizi türü `T[]` işaretçi türleri olamaz bu yana hiçbir zaman işaretçi dizileri için geçerlidir kullanılan farklı tür bağımsız değişkenleri ve işaretçi olmayan türlerin işaretçi türünden dönüştürme yok.
+*  Herhangi bir *array_type* 'den `System.Array` ' ye örtük başvuru dönüştürmesi ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions)) ve onun uyguladığı arabirimler, işaretçi dizileri için de geçerlidir. Ancak, dizi öğelerine `System.Array` veya uyguladığı arabirimler aracılığıyla erişmek için herhangi bir girişim, çalışma zamanında bir özel durum oluşmasına neden olur, çünkü işaretçi türleri `object` ' e dönüştürülemez.
+*  Tek boyutlu dizi türündeki örtük ve açık başvuru dönüştürmeleri ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions), [açık başvuru dönüştürmeleri](conversions.md#explicit-reference-conversions)) `S[]` ' ye `System.Collections.Generic.IList<T>` ve genel temel arabirimleri hiçbir şekilde işaretçi dizileri için uygulanmaz. işaretçi türleri tür bağımsız değişkenleri olarak kullanılakullanılamadığından ve işaretçi türlerinden işaretçi olmayan türlere dönüştürme yok.
+*  @No__t-1 ' den açık başvuru dönüştürmesi ([açık başvuru dönüştürmeleri](conversions.md#explicit-reference-conversions)) ve herhangi bir *array_type* için uyguladığı arabirimler işaretçi dizileri için geçerlidir.
+*  @No__t-1 ' den ve temel arabirimlerinden `T[]` ' den tek boyutlu dizi türüne açık başvuru dönüştürmeleri ([açık başvuru dönüştürmeleri](conversions.md#explicit-reference-conversions)), işaretçi türleri tür bağımsız değişkenleri olarak kullanılmadığından ve bu öğe işaretçi türünden işaretçi olmayan türlere dönüştürme yok.
 
-Bu kısıtlamalar için genişletme anlamına `foreach` diziler üzerinden deyimi açıklanan [foreach deyimi](statements.md#the-foreach-statement) işaretçi dizileri için uygulanamaz. Bunun yerine, formun foreach deyimi
+Bu kısıtlamalar, [foreach ifadesinde](statements.md#the-foreach-statement) açıklanan diziler üzerinde `foreach` ifadesinin genişlemesinin işaretçi dizilerine uygulanamadığını ifade ediyor. Bunun yerine, formun foreach ifadesi
 
 ```csharp
 foreach (V v in x) embedded_statement
 ```
 
-Burada türünü `x` biçiminde bir dizi türü `T[,,...,]`, `N` eksi 1 dimensions sayısı ve `T` veya `V` işaretçi türünde, iç içe geçmiş for döngüleri kullanarak aşağıdaki gibi genişletilir:
+`x` türünün türü `T[,,...,]` biçiminde bir dizi türüdür, `N` boyut sayısı eksi 1 ve `T` ya da `V` bir işaretçi türü, iç içe for-döngüleri kullanılarak aşağıdaki şekilde genişletilir:
 
 ```csharp
 {
@@ -385,13 +385,13 @@ Burada türünü `x` biçiminde bir dizi türü `T[,,...,]`, `N` eksi 1 dimensio
 }
 ```
 
-Değişkenleri `a`, `i0`, `i1`,..., `iN` görünür veya erişilebilir olmayan `x` veya *embedded_statement* veya programın başka bir kaynak kodu. Değişken `v` katıştırılmış deyiminde salt okunur. Açık bir dönüştürme ise ([işaretçi dönüşümleri](unsafe-code.md#pointer-conversions)) öğesinden `T` (öğe türü) için `V`, bir hata oluşturulur ve başka bir adım alınır. Varsa `x` değerine sahip `null`, `System.NullReferenceException` çalışma zamanında oluşturulur.
+@No__t-0, `i0`, `i1`,..., `iN`, `x` veya *embedded_statement* ya da programın herhangi bir kaynak kodu için görünür veya erişilebilir değildir. Değişken `v` , gömülü ifadede salt okunurdur. @No__t-1 ' den (öğe türü) `V` ' ye açık bir dönüştürme ([işaretçi dönüşümleri](unsafe-code.md#pointer-conversions)) yoksa, bir hata oluşturulur ve başka bir adım alınmaz. `System.NullReferenceException` Değeri `x` varsa`null`, çalışma zamanında bir oluşturulur.
 
-## <a name="pointers-in-expressions"></a>İşaretçi ifadeleri
+## <a name="pointers-in-expressions"></a>İfadelerdeki işaretçiler
 
-Güvensiz bir bağlamı bir ifade bir işaretçi türünün bir sonucunun hızlanmasını sağlayabilir, ancak isteğe bağlı olarak güvensiz bir bağlamı dışında bir derleme zamanı hatası için bir işaretçi türü olarak ifade bulunmamaktadır. Varsa güvensiz bir bağlamı dışında kesin bağlamında, bir derleme zamanı hatası oluşur *simple_name* ([basit adları](expressions.md#simple-names)), *member_access* ([üye erişimi ](expressions.md#member-access)), *invocation_expression* ([çağrı ifadeleri](expressions.md#invocation-expressions)), veya *element_access* ([öğe erişimi](expressions.md#element-access)) bir işaretçi türü.
+Güvenli olmayan bir bağlamda, bir ifade bir işaretçi türü sonucunu verebilir, ancak güvenli olmayan bir bağlam dışında bir ifadenin işaretçi türü olması için derleme zamanı hatası olur. Kesin koşullarda, güvenli olmayan bir bağlam dışında, *simple_name* ([basit adlar](expressions.md#simple-names)), *member_access* ([üye erişimi](expressions.md#member-access)), *invocation_expression* ([çağırma ifadeleri](expressions.md#invocation-expressions)) veya  *element_access* ([öğe erişimi](expressions.md#element-access)) bir işaretçi türü.
 
-Güvenli olmayan bir bağlamda *primary_no_array_creation_expression* ([birincil ifadeler](expressions.md#primary-expressions)) ve *unary_expression* ([birliişleçler](expressions.md#unary-operators)) Üretim aşağıdaki ek yapıları izin ver:
+Güvenli olmayan bir bağlamda, *primary_no_array_creation_expression* ([birincil ifadeler](expressions.md#primary-expressions)) ve *unary_expression* ([Birli İşleçler](expressions.md#unary-operators)) üretimleri aşağıdaki ek yapılara izin verir:
 
 ```antlr
 primary_no_array_creation_expression_unsafe
@@ -406,11 +406,11 @@ unary_expression_unsafe
     ;
 ```
 
-Bu yapılar, aşağıdaki bölümlerde açıklanmıştır. Öncelik ve ilişkisellik güvenli olmayan işleçlerinin dilbilgisi tarafından kapsanan.
+Bu yapılar aşağıdaki bölümlerde açıklanmıştır. Güvenli olmayan işleçlerin önceliği ve ilişkilendirilebilirliği, dilbilgisi tarafından kapsanıyor.
 
-### <a name="pointer-indirection"></a>İşaretçi yöneltmesi
+### <a name="pointer-indirection"></a>İşaretçi yöneltme
 
-A *pointer_indirection_expression* oluşur yıldız işareti (`*`) tarafından izlenen bir *unary_expression*.
+Bir *pointer_indirection_expression* , bir yıldız işareti (`*`) ve arkasından bir *unary_expression*oluşur.
 
 ```antlr
 pointer_indirection_expression
@@ -418,17 +418,17 @@ pointer_indirection_expression
     ;
 ```
 
-Birli `*` işleci işaretçi yöneltmesi gösterir ve bir işaretçinin işaret ettiği değişken almak için kullanılır. Değerlendirme sonucu `*P`burada `P` bir işaretçi türü ifade `T*`, türünde bir değişken `T`. Birli uygulamak için bir derleme zamanı hata `*` türündeki bir ifade işlecine `void*` veya işaretçi türünde olmayan bir ifade.
+Birli `*` işleci işaretçi yöneltme 'yi gösterir ve bir işaretçinin işaret ettiği değişkeni elde etmek için kullanılır. @No__t-0 ' ın değerlendirilmasının sonucu; burada `P`, `T*` işaretçisi türünün bir ifadesidir, `T` türünde bir değişkendir. Birli `*` işlecini `void*` türünde bir ifadeye veya işaretçi türünde olmayan bir ifadeye uygulamak için derleme zamanı hatası.
 
-Birli etkisi `*` işleci bir `null` işaretçisidir uygulama tanımlı. Özellikle, bu işlemi oluşturan bir garanti yoktur bir `System.NullReferenceException`.
+Birli `*` işlecini `null` işaretçisine uygulamanın etkisi, uygulama tanımlı ' dır. Özellikle, bu işlemin bir @no__t (0) oluşturduğunda garanti yoktur.
 
-Geçersiz bir değer işaretçisi, birli davranışını atandıysa `*` işleci tanımsızdır. Birli tarafından bir işaretçiye başvuruluyor için geçersiz değerler arasında `*` işleci işaret türü için uygunsuz bir şekilde hizalanmış bir adresi olan (örnekte bakın [işaretçi dönüşümleri](unsafe-code.md#pointer-conversions)) ve sonra bir değişkenin adresi geçerlilik süresi.
+İşaretçiye geçersiz bir değer atanmışsa, birli `*` işlecinin davranışı tanımsız olur. Birli `*` işleci tarafından bir işaretçinin başvurusunun kaldırılması için geçersiz değerler arasında, işaret edilen tür için uygun şekilde hizalı bir adrestir (bkz. [işaretçi dönüştürmelerinde](unsafe-code.md#pointer-conversions)örnek) ve yaşam süresinin sonundan sonraki bir değişkenin adresi.
 
-Belirli atama onayına çözümleme amacıyla bir değişken üretilen biçiminde bir ifade değerlendirmesi tarafından `*P` başlangıçta atanan olarak kabul edilir ([değişkenleri başlangıçta atanan](variables.md#initially-assigned-variables)).
+Kesin atama analizinin amaçları doğrultusunda, `*P` biçiminde bir ifade hesaplanarak üretilen bir değişken başlangıçta atanan ([Başlangıçta atanan değişkenler](variables.md#initially-assigned-variables)) olarak değerlendirilir.
 
 ### <a name="pointer-member-access"></a>İşaretçi üye erişimi
 
-A *pointer_member_access* oluşan bir *primary_expression*ve ardından bir "`->`" belirteci, izleyen bir *tanımlayıcı* ve isteğe bağlı bir *type_argument_list*.
+Bir *pointer_member_access* , sonrasında bir *primary_expression*ve ardından bir "`->`" belirteci ve ardından bir *tanımlayıcı* ve isteğe bağlı *type_argument_list*oluşur.
 
 ```antlr
 pointer_member_access
@@ -436,9 +436,9 @@ pointer_member_access
     ;
 ```
 
-Bir işaretçi üye erişimi formun içinde `P->I`, `P` bir işaretçi türü ifade dışında olmalıdır `void*`, ve `I` erişilebilir bir türün üyesi belirtmek gerekir `P` noktaları.
+@No__t-0 ' a bir işaretçi üye erişimi `P` ' in `void*` dışındaki bir işaretçi türünün bir ifadesi olması gerekir ve `I` ' ün, `P` noktaları olan erişilebilir bir üyeyi belirtmelidir.
 
-Bir işaretçi üye erişimi formun `P->I` tam olarak değerlendirilir `(*P).I`. İşaretçi yöneltme işleci bir açıklaması (`*`), bkz: [işaretçi yöneltmesi](unsafe-code.md#pointer-indirection). Üye erişimi işleci bir açıklaması (`.`), bkz: [üye erişimi](expressions.md#member-access).
+@No__t-0 biçiminde bir işaretçi üyesi erişimi, tam olarak `(*P).I` olarak değerlendirilir. İşaretçi yöneltme işlecinin (`*`) bir açıklaması için bkz. [işaretçi yöneltme](unsafe-code.md#pointer-indirection). Üye erişim işlecinin (`.`) açıklaması için bkz. [üye erişimi](expressions.md#member-access).
 
 Örnekte
 
@@ -469,7 +469,7 @@ class Test
 }
 ```
 
-`->` işleci alanlarına erişmek ve işaretçi üzerinden bir yapının bir yöntem çağırmak için kullanılır. Çünkü işlemi `P->I` tam olarak değerine eşdeğer olan `(*P).I`, `Main` yöntemi eşit derecede iyi yazılı:
+`->` işleci, alanlara erişmek ve bir yapı yöntemini işaretçi aracılığıyla çağırmak için kullanılır. @No__t-0 işlemi tam olarak `(*P).I` ' e eşit olduğundan, `Main` yöntemi eşit olarak de yazılabilir:
 
 ```csharp
 class Test
@@ -486,9 +486,9 @@ class Test
 }
 ```
 
-### <a name="pointer-element-access"></a>İşaretçi öğe erişimi
+### <a name="pointer-element-access"></a>İşaretçi öğesi erişimi
 
-A *pointer_element_access* oluşan bir *primary_no_array_creation_expression* içine bir ifadenin ardından "`[`"ve"`]`".
+*Pointer_element_access* , bir *primary_no_array_creation_expression* ve ardından "`[`" ve "`]`" olarak gelen bir ifade içerir.
 
 ```antlr
 pointer_element_access
@@ -496,9 +496,9 @@ pointer_element_access
     ;
 ```
 
-Bir işaretçi öğe erişimi formun içinde `P[E]`, `P` bir işaretçi türü ifade dışında olmalıdır `void*`, ve `E` örtük olarak dönüştürülebilir bir ifade olmalıdır `int`, `uint`, `long`, veya `ulong`.
+@No__t-0 ' a bir işaretçi öğesi erişiminin `P` `void*` dışındaki bir işaretçi türünün bir ifadesi olması ve `E` ' ün örtük olarak `int`, `uint`, `long` veya `ulong` ' ye dönüştürülebileceği bir ifade olması gerekir.
 
-Bir işaretçi öğe erişimi formun `P[E]` tam olarak değerlendirilir `*(P + E)`. İşaretçi yöneltme işleci bir açıklaması (`*`), bkz: [işaretçi yöneltmesi](unsafe-code.md#pointer-indirection). İşaretçi Toplama işleci bir açıklaması (`+`), bkz: [işaretçi aritmetiği](unsafe-code.md#pointer-arithmetic).
+@No__t-0 biçiminde bir işaretçi öğesi erişimi, tam olarak `*(P + E)` olarak değerlendirilir. İşaretçi yöneltme işlecinin (`*`) bir açıklaması için bkz. [işaretçi yöneltme](unsafe-code.md#pointer-indirection). İşaretçi ek işlecinin (`+`) açıklaması için bkz. [işaretçi aritmetiği](unsafe-code.md#pointer-arithmetic).
 
 Örnekte
 
@@ -514,7 +514,7 @@ class Test
 }
 ```
 
-bir işaretçi öğe erişimi karakter arabelleğine başlatmak için kullanılan bir `for` döngü. Çünkü işlemi `P[E]` tam olarak değerine eşdeğer olan `*(P + E)`, örnek eşit derecede iyi yazılmış:
+bir işaretçi öğesi erişimi, `for` döngüsünde karakter arabelleğini başlatmak için kullanılır. @No__t-0 işlemi tam olarak `*(P + E)` ' e eşit olduğundan, örnek de eşit olarak yazılabilir:
 
 ```csharp
 class Test
@@ -528,11 +528,11 @@ class Test
 }
 ```
 
-İşaretçi öğesi erişim işleci işlemleri denetlemez hataları ve erişirken davranışı bir öğe işlemleri tanımsız olur. C ve C++ ile aynı olmasıdır.
+İşaretçi öğesi erişim işleci, sınırların dışı hataları denetlemez ve bir sınır dışı öğeye erişirken bu davranış tanımlı değildir. Bu, C ve ile C++aynıdır.
 
 ### <a name="the-address-of-operator"></a>Address-of işleci
 
-Bir *addressof_expression* oluşur ve işareti (`&`) tarafından izlenen bir *unary_expression*.
+Bir *addressof_expression* , ve sonrasında bir *unary_expression*(`&`) oluşur.
 
 ```antlr
 addressof_expression
@@ -540,9 +540,9 @@ addressof_expression
     ;
 ```
 
-Bir ifade verilen `E` türü olduğu `T` ve sabit bir değişken olarak sınıflandırıldığını ([sabit ve taşınabilir değişkenleri](unsafe-code.md#fixed-and-moveable-variables)), yapı `&E` tarafındanverilendeğişkeninadresihesaplar`E`. Sonuç türü olan `T*` ve bir değer olarak sınıflandırılır. Bir derleme zamanı hatası oluşur `E` durumunda bir değişken olarak sınıflandırılır değil `E` salt okunur yerel bir değişken, Sınıflandırılmamış veya `E` taşınabilir bir değişkeni gösterir. Son durumda, bir fixed deyimi ([fixed deyimi](unsafe-code.md#the-fixed-statement)) geçici olarak "değişkenin adresini edinme önce düzeltmek için" kullanılabilir. Bölümünde belirtildiği [üye erişimi](expressions.md#member-access), bir örnek oluşturucusu veya bir yapı ya da tanımlayan sınıf için statik Oluşturucu dışında bir `readonly` alan, bu alan bir değer, bir değişken değerlendirilir. Bu nedenle, adresi alınamaz. Benzer şekilde, bir sabit adresi alınamaz.
+@No__t-1 türünde olan ve sabit bir değişken ([sabit ve taşınabilir değişkenler](unsafe-code.md#fixed-and-moveable-variables)) olarak sınıflandırılan `E` ifadesi verildiğinde, `&E` yapısı `E` tarafından verilen değişkenin adresini hesaplar. Sonucun türü `T*` ' dır ve bir değer olarak sınıflandırılır. @No__t-0 bir değişken olarak sınıflandırılmayabilir, `E` bir salt okunurdur yerel değişken olarak sınıflandırıldığında veya `E` taşınabilir bir değişkeni alıyorsa, derleme zamanı hatası oluşur. Son durumda, bir sabit ifade ([fixed deyimidir](unsafe-code.md#the-fixed-statement)), adresini almadan önce değişkeni geçici olarak "onarmak" için kullanılabilir. [Üye erişimde](expressions.md#member-access)belirtildiği gibi, bir örnek oluşturucu veya `readonly` alanını tanımlayan bir sınıf için statik oluşturucu dışında, bu alan değişken değil değer olarak kabul edilir. Bu nedenle, adresi alınamaz. Benzer şekilde, bir sabit adresi alınamaz.
 
-`&` İşleci kesinlikle atanmış, ancak aşağıdaki bağımsız değişkeni gerekli olmadığı bir `&` işlemi, değişkenin işlecin uygulandığı değerlendirilir işleminin gerçekleştiği yürütme yolu kesinlikle atanmış. Bu sorumluluk değişkeninin doğru başlatmanın emin olmak için programcının kararına aslında bu durumda gerçekleşmesi olur.
+@No__t-0 işleci, bağımsız değişkeninin kesinlikle atanmasını gerektirmez, ancak bir `&` işleminin ardından, işlecin uygulandığı değişken, işlemin gerçekleştiği yürütme yolunda kesin olarak atanır. Bu durumda, değişkenin doğru başlatılmasının gerçekten gerçekleşmekte olduğundan emin olmak için programcı sorumluluğundadır.
 
 Örnekte
 
@@ -562,26 +562,26 @@ class Test
 }
 ```
 
-`i` Aşağıdaki kesinlikle atanmış olarak kabul edilir `&i` başlatmak için kullanılan işlem `p`. Atamayı `*p` yürürlükte başlatır `i`, ancak eklenmesi bu başlatma, programcının sorumluluğundadır ve atama kaldırıldıysa herhangi bir derleme zamanı hata oluşacak.
+`i`, `p` ' i başlatmak için kullanılan `&i` işleminin ardından kesinlikle atanmış olarak değerlendirilir. @No__t-0 ' a atama, `i` ' i başlatır, ancak bu başlatmanın eklenmesi programcının sorumluluğundadır ve atama kaldırılırsa hiçbir derleme zamanı hatası oluşmaz.
 
-İçin belirli atama onayına kurallarına `&` işleci mevcut sağlayacak şekilde yerel değişkenlerin yedekli başlatma önlenebilir. Örneğin, çok sayıda dış API API tarafından doldurulan bir yapıya bir işaretçi alır. Bu API'lere giden çağrıların yerel yapı değişkenin adresini pass ve kural yapı değişkenin yedekli başlatma gerekli olacaktır.
+@No__t-0 işlecinin kesin atama kuralları, yerel değişkenlerin gereksiz şekilde başlatılmasına karşı kaçınılabilir. Örneğin, birçok harici API, API tarafından doldurulan bir yapıya bir işaretçi alır. Bu tür API çağrıları genellikle yerel bir yapı değişkeninin adresini geçer ve kural olmadan yapı değişkeninin gereksiz şekilde başlatılmasına gerek olur.
 
-### <a name="pointer-increment-and-decrement"></a>İşaretçi artırma ve azaltma
+### <a name="pointer-increment-and-decrement"></a>İşaretçi artışı ve azaltma
 
-Güvenli olmayan bir bağlamda `++` ve `--` işleçleri ([sonek arttırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators) ve [önek arttırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)) işaretçiye uygulanabilir değişkenleri tüm türlerin `void*`. Bu nedenle, her bir işaretçi türü için `T*`, aşağıdaki işleçleri örtük olarak tanımlanır:
+Güvenli olmayan bir bağlamda `++` ve `--` işleçleri ([sonek artırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators) ve [ön ek artırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)), `void*` hariç tüm türlerin işaretçi değişkenlerine uygulanabilir. Bu nedenle, her işaretçi türü için `T*`, aşağıdaki işleçler örtülü olarak tanımlanmıştır:
 
 ```csharp
 T* operator ++(T* x);
 T* operator --(T* x);
 ```
 
-İşleçler olarak aynı sonuçlar `x + 1` ve `x - 1`sırasıyla ([işaretçi aritmetiği](unsafe-code.md#pointer-arithmetic)). Diğer bir deyişle, bir işaretçi değişkeninin türü için `T*`, `++` işleci ekler `sizeof(T)` değişkeninde bulunan adresine ve `--` işleci çıkarır `sizeof(T)` değişkeninde bulunan adresinden.
+İşleçler, sırasıyla `x + 1` ve `x - 1` ile aynı sonuçları üretir ([işaretçi aritmetiği](unsafe-code.md#pointer-arithmetic)). Diğer bir deyişle, `T*` türünde bir işaretçi değişkeni için `++` işleci, değişkende bulunan adrese `sizeof(T)` ekler ve `--` işleci, değişkende bulunan adresten `sizeof(T)` ' ü çıkartır.
 
-Bir işaretçi artırma veya azaltma işlemi taşmaları işaretçi türünün etki alanını, sonucu uygulama tanımlanır, ancak hiçbir özel durum oluşturulur.
+Bir işaretçi artıma veya azaltma işlemi işaretçi türünün etki alanını taşarsa, sonuç uygulama tanımlı olur, ancak hiçbir özel durum üretilmez.
 
 ### <a name="pointer-arithmetic"></a>İşaretçi aritmetiği
 
-Güvenli olmayan bir bağlamda `+` ve `-` işleçleri ([Toplama işleci](expressions.md#addition-operator) ve [çıkarma işleci](expressions.md#subtraction-operator)) tüm İşaretçi türlerinin değerlerini uygulanabilir `void*`. Bu nedenle, her bir işaretçi türü için `T*`, aşağıdaki işleçleri örtük olarak tanımlanır:
+Güvenli olmayan bir bağlamda `+` ve `-` işleçleri ([toplama işleci](expressions.md#addition-operator) ve [çıkarma işleci](expressions.md#subtraction-operator)), `void*` hariç tüm işaretçi türlerinin değerlerine uygulanabilir. Bu nedenle, her işaretçi türü için `T*`, aşağıdaki işleçler örtülü olarak tanımlanmıştır:
 
 ```csharp
 T* operator +(T* x, int y);
@@ -602,9 +602,9 @@ T* operator -(T* x, ulong y);
 long operator -(T* x, T* y);
 ```
 
-Bir ifade verilen `P` bir işaretçi türünün `T*` ve ifade `N` türü `int`, `uint`, `long`, veya `ulong`, ifadeleri `P + N` ve `N + P` işlem İşaretçi türünün değerini `T*` sonuçlarının eklemesini `N * sizeof(T)` tarafından verilen adresine `P`. Benzer şekilde, ifade `P - N` türü işaretçi değeri hesaplar `T*` sonuçlarının arasındaki çıkarma işleminin `N * sizeof(T)` tarafından verilen adresinden `P`.
+@No__t-3, `uint`, `long` veya `ulong` türünde bir `T*` işaretçi türü `P` ' a bir ifade verildiğinde, `P + N` ve `N + P` @no__t `T*` türündeki işaretçi değeri @no__t 1 tarafından verilir. Benzer şekilde, `P - N` ifadesi, `P` tarafından verilen adresten `N * sizeof(T)` ' nin çıkarılmasına neden olan `T*` türünde işaretçi değerini hesaplar.
 
-Verilen iki deyim `P` ve `Q`, bir işaretçi türünün `T*`, ifade `P - Q` tarafından verilen adresleri arasındaki farkı hesaplar `P` ve `Q` ve ardından bu fark tarafından böler`sizeof(T)`. Her zaman bir sonuç türü olan `long`. Aslında, `P - Q` olarak hesaplanan `((long)(P) - (long)(Q)) / sizeof(T)`.
+@No__t-0 ve `Q` bir işaretçi türü `T*` olduğunda, `P - Q` ifadesi `P` ve `Q` tarafından verilen adresler arasındaki farkı hesaplar ve ardından bu farkı `sizeof(T)` ' ya böler. Sonucun türü her zaman `long` ' dır. Aslında `P - Q` `((long)(P) - (long)(Q)) / sizeof(T)` olarak hesaplanır.
 
 Örneğin:
 
@@ -625,18 +625,18 @@ class Test
 }
 ```
 
-Bu çıktıyı üretir:
+çıktıyı üreten:
 
-```
+```console
 p - q = -14
 q - p = 14
 ```
 
-Etki alanı işaretçi türü bir işaretçi aritmetik işlemi taşıyor, sonucu bir uygulama tarafından tanımlanan biçimde kesilmiş, ancak hiçbir özel durum oluşturulur.
+Bir işaretçi aritmetik işlemi işaretçi türünün etki alanını taşarsa, sonuç uygulama tanımlı bir biçimde kesilir, ancak hiçbir özel durum üretilmez.
 
 ### <a name="pointer-comparison"></a>İşaretçi karşılaştırması
 
-Güvenli olmayan bir bağlamda `==`, `!=`, `<`, `>`, `<=`, ve `=>` işleçleri ([ilişkisel ve tür testi işleçleri](expressions.md#relational-and-type-testing-operators)) tüm değerlere uygulanan İşaretçi türleri. İşaretçi Karşılaştırma işleçleri şunlardır:
+Güvenli olmayan bir bağlamda `==`, `!=`, `<`, `>`, `<=` ve `=>` işleçleri ([ilişkisel ve tür-test işleçleri](expressions.md#relational-and-type-testing-operators)) tüm işaretçi türlerinin değerlerine uygulanabilir. İşaretçi karşılaştırma işleçleri şunlardır:
 
 ```csharp
 bool operator ==(void* x, void* y);
@@ -647,11 +647,11 @@ bool operator <=(void* x, void* y);
 bool operator >=(void* x, void* y);
 ```
 
-Örtük bir dönüştürme için herhangi bir işaretçi türü bulunduğundan `void*` Bu işleçleri kullanarak herhangi bir işaretçi türü işlenen türü karşılaştırılabilir. Karşılaştırma işleçleri, işaretsiz tamsayılar değilmiş gibi iki işlenen tarafından belirtilen adresi karşılaştırın.
+Örtük bir dönüştürme herhangi bir işaretçi türünden `void*` türüne mevcut olduğundan, herhangi bir işaretçi türünün işlenenleri bu işleçler kullanılarak karşılaştırılabilir. Karşılaştırma işleçleri, iki işlenen tarafından verilen adresleri işaretsiz tamsayılar gibi karşılaştırır.
 
 ### <a name="the-sizeof-operator"></a>Sizeof işleci
 
-`sizeof` İşleci tarafından verilen bir türde bir değişken kapladığı bayt sayısını döndürür. İşleneni olarak belirtilen tür `sizeof` olmalıdır bir *unmanaged_type* ([işaretçi türleri](unsafe-code.md#pointer-types)).
+@No__t-0 işleci, verilen türdeki bir değişken tarafından bulunan bayt sayısını döndürür. @No__t-0 ' a işlenen olarak belirtilen tür bir *unmanaged_type* ([işaretçi türleri](unsafe-code.md#pointer-types)) olmalıdır.
 
 ```antlr
 sizeof_expression
@@ -659,10 +659,10 @@ sizeof_expression
     ;
 ```
 
-Sonucu `sizeof` işleci türünde bir değer, `int`. Belirli türlerini önceden tanımlanmış `sizeof` aşağıdaki tabloda gösterildiği gibi bir sabit değer işlecini verir.
+@No__t-0 işlecinin sonucu, `int` türünde bir değerdir. Önceden tanımlanmış bazı türler için `sizeof` işleci, aşağıdaki tabloda gösterildiği gibi sabit bir değer verir.
 
 
-| __İfade__   | __Sonuç__ |
+| __İfadesini__   | __Sonuç__ |
 |------------------|------------|
 | `sizeof(sbyte)`  | `1`        |
 | `sizeof(byte)`   | `1`        |
@@ -677,17 +677,17 @@ Sonucu `sizeof` işleci türünde bir değer, `int`. Belirli türlerini önceden
 | `sizeof(double)` | `8`        |
 | `sizeof(bool)`   | `1`        |
 
-Diğer tüm türleri için sonucunu `sizeof` işleci uygulama tarafından tanımlanır ve sabit bir değer sınıflandırılır.
+Tüm diğer türler için, `sizeof` işlecinin sonucu uygulama tanımlı olur ve bir değer olarak sınıflandırıldı, sabit değildir.
 
-Üyeleri bir yapı içinde paketlenir sırasını belirtilmemiş.
+Üyelerin bir yapıya paketleneme sırası belirtilmemiş.
 
-Hizalama amacıyla olabilir adlandırılmamış bir yapı içinde bir yapının başında ve sonunda, struct doldurma. Doldurma olarak kullanılan bit içeriğini belirsiz.
+Hizalama amacıyla, bir yapının başlangıcında, bir yapı içinde ve yapının sonunda adlandırılmamış doldurma olabilir. Doldurma olarak kullanılan bitlerin içeriği belirsiz.
 
-Yapı türüne sahip bir işleç uygulandığında, sonucu herhangi doldurma dahil olmak üzere, bu türde bir değişken bayt toplam sayısıdır.
+Yapı türüne sahip bir işlenene uygulandığında, sonuç, herhangi bir doldurma dahil olmak üzere bu tür bir değişkende toplam bayt sayısıdır.
 
-## <a name="the-fixed-statement"></a>Fixed deyimi
+## <a name="the-fixed-statement"></a>Fixed ekstresi
 
-Güvenli olmayan bir bağlamda *embedded_statement* ([deyimleri](statements.md)) üretim izin veren bir ek yapı `fixed` "taşınabilir bir değişken düzeltmek için" kullanılan ifadesi gibi Adres deyim süresi boyunca sabit kalır.
+Güvenli olmayan bir bağlamda, *embedded_statement* ([deyimler](statements.md)) üretimi ek bir yapı, bir taşınabilir değişkeni "onarmak" için kullanılan `fixed` ifadesi sağlar .
 
 ```antlr
 fixed_statement
@@ -708,20 +708,20 @@ fixed_pointer_initializer
     ;
 ```
 
-Her *fixed_pointer_declarator* yerel bir değişken bildirir verilen *pointer_type* ve karşılık gelen tarafından hesaplanan adresiyle bu yerel değişken başlatır *fixed_ pointer_initializer*. Bildirilen yerel değişken bir `fixed` deyimi, tüm erişilebilir *fixed_pointer_initializer*sağındaki değişkenin bildirimi ve içinde gerçekleşen s *embedded_statement* , `fixed` deyimi. Tarafından bildirilen yerel değişken bir `fixed` deyimi salt okunur kabul edilir. Gömülü deyim bu yerel değişken değiştirme girişiminde bulunursa, bir derleme zamanı hatası oluşur (atama aracılığıyla veya `++` ve `--` işleçleri) veya olarak başarılı bir `ref` veya `out` parametresi.
+Her *fixed_pointer_declarator* verilen *pointer_type* yerel bir değişkenini bildirir ve ilgili *fixed_pointer_initializer*tarafından hesaplanan adresle bu yerel değişkeni başlatır. @No__t-0 ifadesinde belirtilen yerel bir değişkene, bu değişkenin bildiriminin sağında gerçekleşen tüm *fixed_pointer_initializer*lar ve `fixed` ifadesinin *embedded_statement* erişilebilir. @No__t-0 ifadesiyle tanımlanmış bir yerel değişken salt okunurdur. Katıştırılmış deyimin bu yerel değişkeni (atama veya `++` ve `--` işleçleri) değiştirmeye çalışırsa bir derleme zamanı hatası oluşur veya onu `ref` veya `out` parametresi olarak geçirin.
 
-A *fixed_pointer_initializer* aşağıdakilerden biri olabilir:
+Bir *fixed_pointer_initializer* aşağıdakilerden biri olabilir:
 
-*  Belirteç "`&`" arkasından bir *variable_reference* ([belirli atama onayına belirlemek için kesin kurallar](variables.md#precise-rules-for-determining-definite-assignment)) taşınabilir bir değişkene ([sabit ve taşınabilir değişkenleri](unsafe-code.md#fixed-and-moveable-variables)) yönetilmeyen bir türü `T`, türü sağlanan `T*` verilen işaretçi türüne açıkça dönüştürülemez `fixed` deyimi. Bu durumda, belirtilen değişkenin adresi Başlatıcı hesaplar ve değişkeni sabit bir adreste süresi boyunca kalan garanti `fixed` deyimi.
-*  Bir ifade bir *array_type* nespravovaným typem öğelerini `T`, türü sağlanan `T*` verilen işaretçi türüne açıkça dönüştürülemez `fixed` deyimi. Bu durumda, dizideki ilk öğe adresini Başlatıcı hesaplar ve tüm dizi sabit bir adreste süresi boyunca kalan garanti `fixed` deyimi. Dizi ifadesi null ise veya dizi hiç öğe varsa, başlatıcı adresi eşit sıfıra hesaplar.
-*  Türündeki bir ifade `string`, türü sağlanan `char*` verilen işaretçi türüne açıkça dönüştürülemez `fixed` deyimi. Bu durumda, ilk karakterin dizede adresi Başlatıcı hesaplar ve tüm dize sabit bir adreste süresi boyunca kalan garanti `fixed` deyimi. Davranışını `fixed` deyimi uygulama tanımlı dize ifadesi null ise.
-*  A *simple_name* veya *member_access* sabit boyutlu arabellek üyenin türü verilen işaretçi türüne örtük olarak dönüştürülebilir sağlanan taşınabilir bir değişken bir sabit boyutlu arabellek üyesi başvuran içinde `fixed` deyimi. Bu durumda, başlatıcı bir sabit boyutlu arabellek ilk öğesinin işaretçisi hesaplar ([boyutlu arabellekler ifadelerde sabit](unsafe-code.md#fixed-size-buffers-in-expressions)), ve sabit boyutlu arabellek süresiboyuncasabitbiradrestekalmasınagaranti`fixed`deyimi.
+*  "@No__t-0" belirtecini izleyen bir *variable_reference* ([kesin atamayı belirlemek için kesin kurallar](variables.md#precise-rules-for-determining-definite-assignment)), yönetilmeyen bir türdeki `T` ' e taşınabilir bir değişkene ([sabit ve taşınabilir değişkenler](unsafe-code.md#fixed-and-moveable-variables)), `T*` türü sağlanmış `fixed` ifadesinde verilen işaretçi türüne örtük olarak dönüştürülebilir. Bu durumda, başlatıcı verilen değişkenin adresini hesaplar ve değişken `fixed` ifadesinin süresi boyunca sabit bir adreste kalacak şekilde garanti edilir.
+*  @No__t-2 türü `fixed` ifadesinde verilen işaretçi türüne örtülü olarak dönüştürülebilir `T` yönetilmeyen türdeki öğelerle bir *array_type* ifadesi. Bu durumda, başlatıcı dizideki ilk öğenin adresini hesaplar ve tüm diziyi `fixed` ifadesinin süresi boyunca sabit bir adreste kalacak şekilde garanti edilir. Dizi ifadesi null ise veya dizide sıfır öğe varsa, başlatıcı bir adresi sıfıra eşit olarak hesaplar.
+*  @No__t-0 türünde bir ifade, `char*` türü belirtilen `fixed` ifadesinde verilen işaretçi türüne örtük olarak dönüştürülebilir. Bu durumda, başlatıcı dizedeki ilk karakterin adresini hesaplar ve tüm dize, `fixed` ifadesinin süresi boyunca sabit bir adreste kalacak şekilde garanti edilir. @No__t-0 deyiminin davranışı, dize ifadesi null ise uygulama tanımlı olur.
+*  Taşınabilir bir değişkenin sabit boyut arabelleği üyesine başvuran bir *simple_name* veya *member_access* , sabit boyutlu arabellek üyesinin türü, `fixed` ifadesinde verilen işaretçi türüne örtük olarak dönüştürülebilir. Bu durumda, başlatıcı sabit boyutlu arabelleğin ([Ifadelerde sabit boyutlu arabellekler](unsafe-code.md#fixed-size-buffers-in-expressions)) ilk öğesine bir işaretçi hesaplar ve sabit boyutlu arabelleğin `fixed` deyimi süresince sabit bir adreste kalması garanti edilir.
 
-Tarafından hesaplanan her adresi için bir *fixed_pointer_initializer* `fixed` deyimi adres tarafından başvurulan değişkeni yeniden konumlandırma veya çöp toplayıcı tarafından elden çıkarma süresince tabi değildir olmasını sağlar `fixed` deyimi. Örneğin, adresi tarafından hesaplanan bir *fixed_pointer_initializer* bir nesnenin bir alan veya bir dizi örnek, bir öğe başvuru `fixed` deyimi içeren bir nesne örneği değil konumlandırıldı güvence altına alır veya deyim ömrü boyunca elden.
+Bir *fixed_pointer_initializer* tarafından hesaplanan her adres için `fixed` ifadesinde, adres tarafından başvurulan değişkenin, `fixed` ifadesinin süresi boyunca çöp toplayıcı tarafından yeniden konumlandırma veya aktiften çıkarma konusu olmamasını sağlar. Örneğin, bir *fixed_pointer_initializer* tarafından hesaplanan adres bir nesnenin alanına veya bir dizi örneğinin öğesine başvuruyorsa, `fixed` ifade, kapsayan nesne örneğinin, deyimin ömrü.
 
-Bu işaretçi tarafından oluşturulan emin olmak için programcının sorumluluğundadır `fixed` deyimleri Bu deyimler yürütme hayatta değil. Örneğin, ne zaman işaretçiler tarafından oluşturulan `fixed` deyimleri, dış API'lerine geçirilir, bu API'leri bu işaretçiler bellek korunmasını sağlamak için programcının sorumluluğundadır.
+@No__t-0 deyimleri tarafından oluşturulan işaretçilerin Bu deyimlerin yürütülmesinin ötesinde devam etmez. Örneğin, `fixed` deyimleri tarafından oluşturulan işaretçiler dış API 'lere geçirildiğinde, API 'Lerin bu işaretçilerin hiçbir bellek içermediğinden emin olmak programcı sorumluluğundadır.
 
-(Bunlar taşınamıyor çünkü) sabit nesneler yığın parçalanmasına neden olabilir. Bu nedenle, nesneler yalnızca gerçekten gerekli olduğunda düzeltilmelidir ve ardından yalnızca zaman mümkün olan en kısa miktarı için.
+Sabit nesneler yığının parçalanmasına neden olabilir (çünkü taşınamazlar). Bu nedenle, nesneler yalnızca kesinlikle gerekli olduğunda ve yalnızca en kısa sürede mümkün olduğunda düzeltilmelidir.
 
 Örnek
 
@@ -748,11 +748,11 @@ class Test
 }
 ```
 
-bazı kullanımlarını gösterir `fixed` deyimi. İlk ifade düzeltir ve adresini statik alanı alır, ikinci ifade düzeltir ve örnek alan adresini alır ve üçüncü deyim düzeltir ve bir dizi öğesinin adresini alır. Her durumda, normal kullanmak için bir hata bulunması gereken `&` değişkenleri tüm taşınabilir değişkenleri olarak sınıflandırılan beri işleci.
+`fixed` ifadesinin çeşitli kullanımlarını gösterir. İlk ifade bir statik alanın adresini düzeltir ve edinir, ikinci ifade bir örnek alanının adresini düzeltir ve edinir ve üçüncü ifade, bir dizi öğesinin adresini düzeltir ve edinir. Her durumda, değişkenlerin tamamen taşınabilir değişkenler olarak sınıflandırıldığından, bu, normal `&` işlecini kullanmanın bir hatası oluyordu.
 
-Dördüncü `fixed` deyimi yukarıdaki örnekte, üçüncü benzer bir sonuç üretir.
+Yukarıdaki örnekteki dördüncü `fixed` deyimleri, üçüncü için de benzer bir sonuç üretir.
 
-Bu örneği `fixed` deyimi kullandığı `string`:
+@No__t-0 ifadesinin bu örneği `string` kullanır:
 
 ```csharp
 class Test
@@ -773,7 +773,7 @@ class Test
 }
 ```
 
-Güvenli olmayan bir bağlamda tek boyutlu diziler, dizi öğeleri ile dizininden başlayarak, artan dizin sırasıyla depolanır `0` ve dizin ile biten `Length - 1`. Çok boyutlu diziler, dizi öğeleri dizinleri en sağdaki boyutun ilk olarak, artan şekilde depolanan sonra sonraki boyut vb. sola kaldı. İçinde bir `fixed` bir işaretçi ifadesi `p` array örneğine `a`, işaretçi değerleri arasında değişen `p` için `p + a.Length - 1` dizideki öğelerin adresleri temsil eder. Benzer şekilde, arasında değişen değişkenleri `p[0]` için `p[a.Length - 1]` gerçek dizi öğeleri temsil eder. İşlevmiş gibi doğrusal diziler depolandığı yolu verildiğinde, biz herhangi bir boyut dizisi davranabilirsiniz.
+Tek boyutlu dizilerin güvenli olmayan bir bağlam dizisi öğelerinde, `0` dizininden başlayıp Dizin `Length - 1` ile biten Dizin sırasında artan dizin sırasında depolanır. Çok boyutlu diziler için, dizi öğeleri, en sağdaki boyutun dizinlerinin önce, ardından bir sonraki sol boyutun ve bu şekilde sol tarafında arttığı şekilde depolanır. @No__t-2 ' den bir dizi örneğine `p` işaretçisi alan `fixed` ifadesinde, `p` ' ten `p + a.Length - 1` ' e kadar olan işaretçi değerleri dizideki öğelerin adreslerini temsil eder. Benzer şekilde, `p[0]` ile `p[a.Length - 1]` arasındaki değişkenler gerçek dizi öğelerini temsil eder. Dizilerin nerede depolandığına göre, herhangi bir boyutun dizisini doğrusal hale gelse de işleyebiliriz.
 
 Örneğin:
 
@@ -801,9 +801,9 @@ class Test
 }
 ```
 
-Bu çıktıyı üretir:
+çıktıyı üreten:
 
-```
+```console
 [0,0,0] =  0 [0,0,1] =  1 [0,0,2] =  2 [0,0,3] =  3
 [0,1,0] =  4 [0,1,1] =  5 [0,1,2] =  6 [0,1,3] =  7
 [0,2,0] =  8 [0,2,1] =  9 [0,2,2] = 10 [0,2,3] = 11
@@ -830,7 +830,7 @@ class Test
 }
 ```
 
-bir `fixed` deyimi adresini bir işaretçi alır bir yönteme geçirilmesi için bir dizi düzeltmek için kullanılır.
+`fixed` bir ifade, bir diziyi çözmek için kullanılır, bu nedenle adresinin bir işaretçi alan bir yönteme geçirilmesi sağlanır.
 
 Örnekte:
 
@@ -863,21 +863,21 @@ class Test
 }
 ```
 
-fixed deyimi, bir yapının bir sabit boyutlu arabellek adresini bir işaretçi olarak kullanılacak şekilde düzeltmek için kullanılır.
+sabit bir ifade, bir yapının sabit boyutlu arabelleğini gidermek için kullanılır, bu nedenle adresi bir işaretçi olarak kullanılabilir.
 
-A `char*` değer üretilmediğini bir dize örneği her zaman bir boş sonlandırılmış dizeye işaret düzelterek. Bir işaretçi bir fixed deyimi içinde `p` dize örneğine `s`, işaretçi değerleri arasında değişen `p` için `p + s.Length - 1` adresleri karakter dizesi ve işaretçi değerini temsil eden `p + s.Length` her zaman null bir karaktere işaret eder (değer karakteriyle `'\0'`).
+Bir dize örneğini düzelterek oluşturulan @no__t 0 değeri her zaman null ile sonlandırılmış bir dizeye işaret eder. -1 @no__t bir dize örneğine `p` işaretçisi elde eden bir fixed ifadesinde, `p` ' den `p + s.Length - 1` ' e kadar olan işaretçi değerleri dizedeki karakterlerin adreslerini temsil eder ve `p + s.Length` işaretçi değeri her zaman bir null karakteri işaret eder ( `'\0'` değeri olan karakter.
 
-Sabit işaretçileri aracılığıyla yönetilen türü değiştirme nesneler, sonuçlar tanımsız davranışa olabilir. Dizeleri sabit olduğundan, örneğin, bu karakterlerin sabit bir dizeye bir işaretçi tarafından başvurulan değiştirilmedi emin olmak için programcının sorumluluğundadır.
+Yönetilen türdeki nesneleri sabit işaretçiler aracılığıyla değiştirmek tanımsız davranışa neden olabilir. Örneğin, dizeler sabittir olduğundan, sabit bir dizeye yönelik işaretçinin başvurduğu karakterlerin değiştirilmediğinden emin olmak programcı sorumluluğundadır.
 
-Otomatik null sonlandırma dizeleri "C-style" dizeleri bekleyen dış API'lar çağırırken özellikle kullanışlıdır. Ancak, bir dize örneği null karakterleri içeren izni olduğunu unutmayın. Bu tür null karakterler varsa, dize bir null ile sonlandırılmış kabul edilir, kesilmiş görünür `char*`.
+Dizelerin otomatik olarak boş sonlandırması, "C stili" dizelerini bekleyen dış API 'Leri çağırırken özellikle kullanışlıdır. Ancak, bir dize örneğinin null karakter içermesine izin verildiğini unutmayın. Bu null karakterler varsa dize, null sonlandırılmış `char*` olarak kabul edildiğinde kesilir.
 
-## <a name="fixed-size-buffers"></a>Sabit boyutlu arabellekler
+## <a name="fixed-size-buffers"></a>Sabit Boyutlu Arabellekler
 
-Sabit boyutlu arabellekler "C style" satır içi dizi yapılar üye olarak bildirmek için kullanılır ve yönetilmeyen API'ler ile arabirim için öncelikle yararlıdır.
+Sabit boyutlu arabellekler, "C stili" satır içi dizileri yapıların üyeleri olarak bildirmek için kullanılır ve öncelikle yönetilmeyen API 'lerle arabirim oluşturma için faydalıdır.
 
 ### <a name="fixed-size-buffer-declarations"></a>Sabit boyutlu arabellek bildirimleri
 
-A ***sabit boyutlu arabellek*** depolama için belirli bir türde değişken bir sabit uzunluk arabelleği temsil eden bir üyesidir. Bir sabit boyutlu arabellek bildiriminde belirtilen öğe türünün bir veya daha fazla sabit boyutlu arabellekler tanıtır. Sabit boyutlu arabellekler yalnızca yapı bildirimlerinde izin verilir ve yalnızca güvenli bağlamlarda oluşabilir ([güvensiz bir bağlamı](unsafe-code.md#unsafe-contexts)).
+***Sabit boyutlu arabellek*** , belirli bir türdeki değişkenlerin sabit uzunluklu arabelleği için depolamayı temsil eden bir üyedir. Sabit boyutlu bir arabellek bildirimi, belirli bir öğe türünün bir veya daha fazla sabit boyutlu arabelleğini tanıtır. Sabit boyutlu arabelleklere yalnızca struct bildirimlerinde izin verilir ve yalnızca güvenli olmayan bağlamlarda ([güvensiz bağlamlarda](unsafe-code.md#unsafe-contexts)) bulunabilir.
 
 ```antlr
 struct_member_declaration_unsafe
@@ -906,17 +906,17 @@ fixed_size_buffer_declarator
     ;
 ```
 
-Sabit boyutlu arabellek bildirimi öznitelikleri kümesi içerebilir ([öznitelikleri](attributes.md)), `new` değiştiricisi ([değiştiriciler](classes.md#modifiers)), geçerli bir bileşimin dört erişim değiştiricileri ([türü parametreleri ve kısıtlamalar](classes.md#type-parameters-and-constraints)) ve bir `unsafe` değiştirici ([güvensiz bir bağlamı](unsafe-code.md#unsafe-contexts)). Öznitelikler ve değiştiriciler tüm sabit boyutlu arabellek bildirim tarafından bildirilen üyeler için geçerlidir. Aynı değiştiricisi bir sabit boyutlu arabellek bildiriminde birden çok kez görünmesi için bir hatadır.
+Sabit boyutlu bir arabellek bildiriminde bir dizi öznitelik ([öznitelik](attributes.md)), `new` değiştirici ([değiştiriciler](classes.md#modifiers)), dört erişim değiştiricisinin geçerli bir birleşimi ([tür parametreleri ve kısıtlamalar](classes.md#type-parameters-and-constraints)) ve bir `unsafe` değiştiricisi (güvenli olmayan bir şekilde) bulunabilir.[ bağlam](unsafe-code.md#unsafe-contexts)). Öznitelikler ve değiştiriciler, sabit boyutlu arabellek bildirimi tarafından belirtilen tüm Üyeler için geçerlidir. Aynı değiştiricinin sabit boyutlu bir arabellek bildiriminde birden çok kez görünmesi hatadır.
 
-Sabit boyutlu arabellek bildirimi dahil etmek için izin verilmiyor `static` değiştiricisi.
+Sabit boyutlu bir arabellek bildiriminin `static` değiştiricisini içerme izni yoktur.
 
-Arabellek öğe türü sabit boyutlu arabellek bildirimi arabellekleri öğe türü bildirim tarafından tanıtılan belirtir. Arabellek öğe türü, önceden tanımlanmış türlerden biri olmalıdır `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, veya `bool`.
+Sabit boyutlu bir arabellek bildiriminin arabellek öğesi türü, bildirim tarafından tanıtılan arabelleğin öğe türünü belirtir. Arabellek öğesi türü önceden tanımlanmış türlerden biri olmalıdır `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, 0 veya 1.
 
-Arabellek öğe türü, her biri yeni bir üye tanıtır listesini sabit boyutlu arabellek Bildirimciler tarafından izlenir. İçine bir sabit ifade ardından üye adları bir tanımlayıcının bir sabit boyutlu arabellek bildirimci oluşur `[` ve `]` belirteçleri. Sabit ifade, sabit boyutlu arabellek bildirimci tarafından sunulan üye içindeki öğelerin sayısını gösterir. Sabit ifade türü türüne örtük olarak dönüştürülebilir olmalıdır `int`, ve sıfır olmayan pozitif bir tamsayı değeri olmalıdır.
+Buffer öğe türü, her biri yeni bir üye tanıtan sabit boyutlu arabellek bildirimcilerinin bir listesi tarafından izlenir. Sabit boyutlu bir arabellek bildirimci, üyeyi isimlediği bir tanımlayıcıdan, ardından `[` ve `]` belirteçlerine sahip sabit bir ifadeyle oluşur. Sabit ifade, bu sabit boyutlu arabellek bildirimci tarafından tanıtılan üye içindeki öğe sayısını belirtir. Sabit ifadenin türü `int` türüne örtük olarak dönüştürülebilir olmalıdır ve değer sıfır olmayan pozitif bir tamsayı olmalıdır.
 
-Sabit boyutlu arabellek öğelerini sırayla bellekte düzenlendiği garanti edilir.
+Sabit boyutlu bir arabelleğin öğelerinin ardışık olarak bellekte düzenlenme garantisi vardır.
 
-Birden çok sabit boyutlu arabellekler bildiren bir sabit boyutlu arabellek bildirimi, aynı özniteliklerle ve öğe türleri tek bir sabit boyutlu arabellek bildirimin birden fazla bildirimi eşdeğerdir. Örneğin:
+Birden çok sabit boyut arabelleği bildiren sabit boyutlu bir arabellek bildirimi, aynı özniteliklere ve öğe türlerine sahip tek bir sabit boyutlu arabellek bildiriminin birden çok bildirimine eşdeğerdir. Örneğin:
 
 ```csharp
 unsafe struct A
@@ -938,22 +938,22 @@ unsafe struct A
 
 ### <a name="fixed-size-buffers-in-expressions"></a>İfadelerde sabit boyutlu arabellekler
 
-Üye araması ([işleçleri](expressions.md#operators)) sabit boyutlu arabellek üye tam olarak bir alanın üye araması gibi devam eder.
+Sabit boyutlu bir arabellek üyesinin üye araması ([işleçler](expressions.md#operators)), bir alanın üye aramasına tam olarak devam eder.
 
-Kullanarak bir ifade bir sabit boyutlu arabellek başvurulabilen bir *simple_name* ([anlam çıkarma](expressions.md#type-inference)) veya bir *member_access* ([derleme zamanı denetimi dinamik aşırı yükleme çözünürlüğü](expressions.md#compile-time-checking-of-dynamic-overload-resolution)).
+Sabit boyutlu bir arabelleğe, bir *simple_name* ([tür çıkarımı](expressions.md#type-inference)) veya *member_access* ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) kullanılarak bir ifadede başvurulabilir.
 
-Sabit boyutlu arabellek üyesi basit bir ad başvurulduğunda etkisi biçiminde bir üye erişimi aynıdır `this.I`burada `I` sabit boyutlu arabellek üyesidir.
+Sabit boyutlu bir arabellek üyesine basit ad olarak başvuruluyorsa, efekt `this.I` biçiminde bir üye erişimiyle aynıdır; burada `I` sabit boyutlu arabellek üyesidir.
 
-Üye erişimi formun içinde `E.I`, `E` bir yapı türü ve üye araması için `I` yapı türünün sabit boyutlu üyesi ardından belirler, `E.I` olduğu bir sınıflandırılmış gibi değerlendirilir:
+@No__t-0 biçiminde üye erişiminde, `E` bir yapı türüdür ve bu yapı türünde `I` ' nin üye araması sabit boyutlu bir üyeyi tanımlarsa, `E.I` ' ün sınıflandırılan aşağıdaki gibi değerlendirilir:
 
-*  İfade `E.I` oluşmaz güvenli olmayan bir bağlamda, bir derleme zamanı hatası oluşur.
-*  Varsa `E` bir derleme zamanı hatası oluşur, bir değer olarak sınıflandırılır.
-*  Aksi takdirde `E` taşınabilir bir değişken ([sabit ve taşınabilir değişkenleri](unsafe-code.md#fixed-and-moveable-variables)) ve ifade `E.I` değil bir *fixed_pointer_initializer* ([düzeltildi deyimi](unsafe-code.md#the-fixed-statement)), bir derleme zamanı hatası oluşur.
-*  Aksi takdirde, `E` sabit bir değişkene başvuruyor ve sonuç ifadesi bir sabit boyutlu arabellek üyenin ilk öğesinin işaretçisi `I` içinde `E`. Sonuç türünde `S*`burada `S` öğe türü `I`ve bir değer olarak sınıflandırılır.
+*  @No__t-0 ifadesi güvenli olmayan bir bağlamda gerçekleşmezse, derleme zamanı hatası oluşur.
+*  @No__t-0 değeri bir değer olarak sınıflandırıldığında, bir derleme zamanı hatası oluşur.
+*  Aksi takdirde, `E` taşınabilir bir değişkendir ([sabit ve taşınabilir değişkenler](unsafe-code.md#fixed-and-moveable-variables)) ve `E.I` ifadesi bir *fixed_pointer_initializer* ([fixed Deyimi](unsafe-code.md#the-fixed-statement)) değilse, bir derleme zamanı hatası oluşur.
+*  Aksi takdirde, `E` sabit bir değişkene başvurur ve ifadenin sonucu, `E` ' deki sabit boyutlu arabellek üyesinin `I` ' in ilk öğesine yönelik bir işaretçidir. Sonuç `S*` türündedir, burada `S` `I` ' nin öğe türüdür ve bir değer olarak sınıflandırılır.
 
-Sabit boyutlu arabellek sonraki öğeler ilk öğeye işaretçi işlemlerini kullanarak erişilebilir. Dizilere erişim, farklı bir sabit boyutlu arabellek öğelere erişim güvenli olmayan bir işlemdir ve kontrol aralığı değil.
+Sabit boyutlu arabelleğin sonraki öğelerine, ilk öğeden işaretçi işlemleri kullanılarak erişilebilir. Dizilere erişimin aksine, sabit boyutlu bir arabelleğin öğelerine erişimi güvenli olmayan bir işlemdir ve Aralık işaretli değildir.
 
-Aşağıdaki örnek, bildirir ve sabit boyutlu arabellek üyesi bir yapı kullanır.
+Aşağıdaki örnek, sabit boyutlu bir arabellek üyesine sahip bir struct bildirir ve kullanır.
 
 ```csharp
 unsafe struct Font
@@ -980,15 +980,15 @@ class Test
 }
 ```
 
-### <a name="definite-assignment-checking"></a>Belirli atama onayına denetleniyor
+### <a name="definite-assignment-checking"></a>Kesin atama denetimi
 
-Sabit boyutlu arabellekler olmayan belirli atama onayına denetimi tabi ([belirli atama onayına](variables.md#definite-assignment)), ve sabit boyutlu arabellek üyeleri, struct türüne değişkenlerinin denetimi özelliğine belirli atama amacıyla yoksayılır.
+Sabit boyutlu arabellekler kesin atama denetimine ([kesin atama](variables.md#definite-assignment)) tabi değildir ve yapı türü değişkenlerinin kesin atama denetimi amacıyla sabit boyutlu arabellek üyeleri göz ardı edilir.
 
-En dıştaki içeren yapı değişkeni bir sabit boyutlu arabellek üyesinin, bir statik değişken, bir sınıf örneği ya da bir dizi öğesine bir örnek değişkeni sabit boyutlu arabellek öğeleri varsayılan değerlerine otomatik olarak başlatılır ([Varsayılan değerler](variables.md#default-values)). Diğer durumlarda, ilk sabit boyutlu arabellek içeriği tanımsızdır.
+Sabit boyutlu bir arabellek üyesinin struct değişkenini içeren en dıştaki, bir statik değişken, bir sınıf örneğinin örnek değişkeni veya bir dizi öğesi olduğunda, sabit boyutlu arabelleğin öğeleri otomatik olarak varsayılan değerlerine başlatılır ([varsayılan değerler](variables.md#default-values)). Diğer tüm durumlarda, sabit boyutlu bir arabelleğin ilk içeriği tanımsızdır.
 
 ## <a name="stack-allocation"></a>Yığın ayırma
 
-Bir yerel değişken bildiriminde güvenli olmayan bir bağlamda ([yerel değişken bildirimlerini](statements.md#local-variable-declarations)) çağrı yığından belleği ayırır bir yığın ayırma Başlatıcı içerebilir.
+Güvenli olmayan bir bağlamda, yerel değişken bildirimi ([yerel değişken bildirimleri](statements.md#local-variable-declarations)), çağrı yığınından bellek ayıran bir yığın ayırma başlatıcısı içerebilir.
 
 ```antlr
 local_variable_initializer_unsafe
@@ -1000,15 +1000,15 @@ stackalloc_initializer
     ;
 ```
 
-*Unmanaged_type* yeni ayrılan bir konumda depolanan öğelerin türünü belirtir ve *ifade* bu öğe sayısını gösterir. Birlikte ele alındığında, bunlar için gerekli ayırma boyutu belirtin. Yığın ayırma boyutu negatif olamaz, bu öğeleri olarak sayısını belirtmek için bir derleme zamanı hatası olduğu bir *constant_expression* negatif bir değer olarak değerlendirir.
+*Unmanaged_type* , yeni ayrılan konumda depolanacak öğelerin türünü gösterir ve *ifade* bu öğelerin sayısını belirtir. Birlikte getirildiğinde, gerekli ayırma boyutunu belirtir. Yığın ayırma boyutu negatif olamaz, bu, öğelerin sayısını negatif bir değer değerlendiren bir *constant_expression* olarak belirtmek için bir derleme zamanı hatasıdır.
 
-Bir yığın ayırma Başlatıcı formun `stackalloc T[E]` gerektirir `T` nespravovaným typem olmasını ([işaretçi türleri](unsafe-code.md#pointer-types)) ve `E` türündeki bir ifade olmasını `int`. Yapı ayırır `E * sizeof(T)` çağrısından bayt yığın ve türünde bir işaretçi döndürür `T*`, yeni ayrılan bloğu için. Varsa `E` tanımsız bir davranıştır sonra negatif bir değer olan. Varsa `E` sıfırsa, ardından hiçbir ayırma yapılan ve döndürülen işaretçi uygulama tanımlanır. Verilen boyuta bloğunu ayırmak yeterli bellek yoksa bir `System.StackOverflowException` oluşturulur.
+@No__t-0 formunun bir yığın ayırma başlatıcısı, yönetilmeyen bir tür ([işaretçi türleri](unsafe-code.md#pointer-types)) ve `E` ' ü `int` türünde bir ifade olacak şekilde @no__t gerektirir. Yapı, çağrı yığınından `E * sizeof(T)` bayt ayırır ve yeni ayrılan bloğa `T*` türünde bir işaretçi döndürür. @No__t-0 negatif bir değer ise, davranış tanımsızdır. @No__t-0 sıfırsa, hiçbir ayırma yapılmaz ve döndürülen işaretçi uygulama tanımlı olur. Verilen boyutta bir blok ayırmak için yeterli kullanılabilir bellek yoksa, bir `System.StackOverflowException` oluşturulur.
 
-Yeni ayrılan bellek içeriğini tanımsızdır.
+Yeni ayrılan belleğin içeriği tanımlı değil.
 
-Yığın ayırma başlatıcıları içinde verilmez `catch` veya `finally` blokları ([try deyimi](statements.md#the-try-statement)).
+@No__t-0 veya `finally` bloklarda ([TRY ifadesinde](statements.md#the-try-statement)) yığın ayırma başlatıcılarına izin verilmez.
 
-Açıkça kullanılarak ayrılmış belleği boşaltmak için bir yolu yoktur `stackalloc`. Bu işlev üyesi döndürdüğünde işlevi üyesi yürütülmesi sırasında oluşturulan tüm yığın tarafından ayrılan bellek blokları otomatik olarak atılır. Bu karşılık gelir `alloca` işlev, genellikle C ve C++ uygulamalarında bulunan bir uzantı.
+@No__t-0 kullanılarak ayrılan belleği açıkça serbest bırakma yöntemi yoktur. İşlev üyesinin yürütülmesi sırasında oluşturulan tüm yığın ayrılmış bellek blokları, bu işlev üyesi döndürüldüğünde otomatik olarak atılır. Bu, C ve C++ uygulamalarında yaygın olarak bulunan bir uzantı olan `alloca` işlevine karşılık gelir.
 
 Örnekte
 
@@ -1038,11 +1038,11 @@ class Test
 }
 ```
 
-bir `stackalloc` Başlatıcı kullanılan `IntToString` yöntemi bir yığında 16 karakter arabelleği ayrılamadı. Yöntem döndürüldüğünde arabellek otomatik olarak atılır.
+yığın üzerinde 16 karakterlik bir arabellek ayırmak için `IntToString` yönteminde `stackalloc` başlatıcısı kullanılır. Yöntem döndürüldüğünde arabellek otomatik olarak atılır.
 
 ## <a name="dynamic-memory-allocation"></a>Dinamik bellek ayırma
 
-Dışında `stackalloc` işleci, C# önceden tanımlanmış hiçbir yapıları olmayan atık toplanan bellek yönetmek için sağlar. Bu tür Hizmetleri genellikle sınıf kitaplıkları destekleyerek sağlanan veya doğrudan alttaki işletim sisteminden alınan. Örneğin, `Memory` sınıfı aşağıdaki nasıl temel işletim sistemi yığın işlevlerini C# ' den erişilebilen gösterilmektedir:
+@No__t-0 işleci dışında, C# atık olmayan toplanan belleği yönetmek için önceden tanımlanmış bir yapı sağlar. Bu tür hizmetler genellikle sınıf kitaplıklarını destekleyerek veya doğrudan temel işletim sisteminden içeri aktarılarak sağlanır. Örneğin, aşağıdaki `Memory` sınıfı, temel alınan bir işletim sisteminin yığın işlevlerine nasıl erişilebileceğini göstermektedir C#:
 
 ```csharp
 using System;
@@ -1120,7 +1120,7 @@ public unsafe class Memory
 }
 ```
 
-Kullanan bir örnek `Memory` sınıfı aşağıda verilmiştir:
+@No__t-0 sınıfını kullanan bir örnek aşağıda verilmiştir:
 
 ```csharp
 class Test
@@ -1142,4 +1142,4 @@ class Test
 }
 ```
 
-Örneğin 256 bayt ile bellek ayırır `Memory.Alloc` ve bellek bloğu 0 ile 255 artırma değerlerle başlatır. Ardından 256 öğe bayt dizisi ayırır ve kullandığı `Memory.Copy` bellek bloğu içeriğini bayt dizisine kopyalamak için. Son olarak, bellek bloğu kullanılarak serbest `Memory.Free` ve bayt dizisinin içeriğini konsola.
+Örnek, `Memory.Alloc` üzerinden 256 baytlık belleği ayırır ve bellek bloğunu 0 ' dan 255 ' e kadar artan değerlerle başlatır. Daha sonra bir 256 öğe bayt dizisi ayırır ve bellek bloğunun içeriğini bayt dizisine kopyalamak için `Memory.Copy` kullanır. Son olarak, bellek bloğu `Memory.Free` kullanılarak serbest bırakılır ve byte dizisinin içeriği konsolun çıktılardır.

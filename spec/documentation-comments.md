@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: adf81842e3c763c7bbdd3f10bb884dc1207b9099
-ms.sourcegitcommit: 0489cb64b7dfb328813d757f4d447a15b85a5851
+ms.openlocfilehash: 2026fc1bf9d3576b967cbc2e9a670aa44b7eab3a
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70912432"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704015"
 ---
 # <a name="documentation-comments"></a>Belge açıklamaları
 
@@ -28,7 +28,7 @@ delimited_doc_comment
     ;
 ```
 
-Bir *single_line_doc_comment*içinde, her bir *single_line_doc_comment*için geçerli *single_line_doc_comment*bitişik olan `///` karakterleri izleyen bir *boşluk* karakteri varsa, buXML çıktısına boşluk karakteri dahil değildir.
+Bir *single_line_doc_comment*içinde, geçerli *single_line_doc_comment*bitişik her *single_line_doc_comment*s üzerinde `///` karakterlerinden sonra bir *boşluk* karakteri varsa, bu *boşluk* XML çıktısına karakter dahil değildir.
 
 Ayrılmış bir belge açıklamasında, ikinci satırdaki ilk boşluk olmayan karakter bir yıldız işareti ise ve isteğe bağlı boşluk karakterlerinden aynı desenli ve bir yıldız karakteri ayrılmış-belge-açıklama içindeki her satırın başlangıcında tekrarlanırsa, sonra yinelenen modelin karakterleri XML çıktısına dahil edilmez. Bu düzende, sonra yıldız karakteri ve daha önce boşluk karakterleri bulunabilir.
 
@@ -61,7 +61,7 @@ Belge dosyasının tür ve Üyeler hakkında tam bilgi sağlamadığına ve (ör
 Belge oluşturucunun, XML kurallarına göre geçerli olan herhangi bir etiketi kabul etmesi ve işlemesi gerekir. Aşağıdaki Etiketler kullanıcı belgelerinde yaygın olarak kullanılan işlevleri sağlar. (Kuşkusuz, diğer Etiketler mümkündür.)
 
 
-| __Etiket__          | __Kısmı__                                            | __Amaç__                                            |
+| __Etiket__          | __Kısmı__                                            | __Amacı__                                            |
 |------------------|--------------------------------------------------------|--------------------------------------------------------|
 | `<c>`            | [`<c>`](documentation-comments.md#c)                   | Kod benzeri yazı tipinde metin ayarlama                           | 
 | `<code>`         | [`<code>`](documentation-comments.md#code)             | Kaynak kodu veya program çıkışının bir veya daha fazla satırını ayarlama |
@@ -186,7 +186,7 @@ Bu etiket, kaynak kodu dosyasının dışında bir XML belgesinden bilgi dahil e
 
 __Sözdizimi__
 
-```
+```xml
 <include file="filename" path="xpath" />
 ```
 

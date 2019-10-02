@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fbe0267b5b33b1a24dbdca493d118c576092573
-ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.openlocfilehash: 4676bcd3f0a92260b4e5e20a0aa5b5ec00bf204e
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876918"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704068"
 ---
 # <a name="lexical-structure"></a>Sözcük yapısı
 
@@ -382,7 +382,7 @@ boolean_literal
     ;
 ```
 
-Bir *boolean_literal* `bool`türü.
+Bir *boolean_literal* türü `bool` ' dir.
 
 #### <a name="integer-literals"></a>Tamsayı sabit değerleri
 
@@ -429,8 +429,8 @@ Bir tamsayı değişmez değeri ile temsil edilen değer, `ulong` tür aralığ�
 
 En küçük `int` ve `long` değerlerin ondalık tamsayı değişmez değer olarak yazılmasına izin vermek için aşağıdaki iki kural bulunur:
 
-* 2147483648 (2 ^ 31) değerine sahip bir *decimal_integer_literal* ve tek bir birli eksi işleç belirtecini ([birli eksi işleci](expressions.md#unary-minus-operator)) izleyen belirteç olarak hiçbir *integer_type_suffix* belirdiğinde, sonuç türünde `int`birsabittirdeğer-2147483648 (-2 ^ 31). Diğer tüm durumlarda, bu tür bir *decimal_integer_literal* türüdür `uint`.
-* 9223372036854775808 (2 ^ 63) değerine sahip bir *decimal_integer_literal* ve *integer_type_suffix* veya *integer_type_suffix* `L` olmadığında ya `l` da tek bir birli eksi sonrasında belirteç olarak göründüğünde işleç belirteci ([birli eksi işleci](expressions.md#unary-minus-operator)), sonuç,-9223372036854775808 (-2 `long` ^ 63) değerine sahip bir sabit değerdir. Diğer tüm durumlarda, bu tür bir *decimal_integer_literal* türüdür `ulong`.
+* 2147483648 (2 ^ 31) değerine sahip bir *decimal_integer_literal* ve tek başına eksi işleç belirtecini ([birli eksi işleci](expressions.md#unary-minus-operator)) izleyen belirteç olarak hiçbir *integer_type_suffix* belirdiğinde, sonuç `int` türünde bir sabittir değer-2147483648 (-2 ^ 31). Diğer tüm durumlarda, bu tür bir *decimal_integer_literal* `uint` ' dir.
+* 9223372036854775808 (2 ^ 63) değerine sahip bir *decimal_integer_literal* ve hiçbir *integer_type_suffix* ya da *integer_type_suffix* `L` ya da `l`, tek bir birli eksi işleç belirtecinin hemen ardından belirteç olarak görünür ([ Birli eksi işleci](expressions.md#unary-minus-operator)), sonuç,-9223372036854775808 (-2 ^ 63) değerine sahip `long` türünde bir sabittir. Diğer tüm durumlarda, bu tür bir *decimal_integer_literal* `ulong` ' dir.
 
 #### <a name="real-literals"></a>Gerçek sabit değerler
 
@@ -459,7 +459,7 @@ real_type_suffix
     ;
 ```
 
-*Real_type_suffix* belirtilmemişse, gerçek değişmez değerin `double`türü. Aksi halde gerçek tür soneki gerçek değişmez değerin türünü aşağıdaki gibi belirler:
+*Real_type_suffix* belirtilmemişse, gerçek sabit değerin türü `double` ' dir. Aksi halde gerçek tür soneki gerçek değişmez değerin türünü aşağıdaki gibi belirler:
 
 *  `F` Ya da`f` türünde`float`olan gerçek bir sabit değer. Örneğin,,, ve `1f` `1.5f` `1e10f`değişmezdeğerleritüm türündedir `float`. `123.456F`
 *  `D` Ya da`d` türünde`double`olan gerçek bir sabit değer. Örneğin,,, ve `1d` `1.5d` `1e10d`değişmezdeğerleritüm türündedir `double`. `123.456D`
@@ -516,7 +516,7 @@ Basit bir kaçış dizisi, aşağıdaki tabloda açıklandığı gibi bir Unicod
 |---------------------|--------------------|----------------------|
 | `\'`                | Tek tırnak       | `0x0027`             | 
 | `\"`                | Çift tırnak       | `0x0022`             | 
-| `\\`| Ters eğik çizgi |`0x005C`             | 
+| `\\`                | Ters eğik çizgi          | `0x005C`             | 
 | `\0`                | Null               | `0x0000`             | 
 | `\a`                | Uyarı              | `0x0007`             | 
 | `\b`                | Geri Al tuşu          | `0x0008`             | 
@@ -526,7 +526,7 @@ Basit bir kaçış dizisi, aşağıdaki tabloda açıklandığı gibi bir Unicod
 | `\t`                | Yatay sekme     | `0x0009`             | 
 | `\v`                | Dikey sekme       | `0x000B`             | 
 
-Bir *character_literal* `char`türü.
+Bir *character_literal* türü `char` ' dir.
 
 #### <a name="string-literals"></a>Dize sabit değerleri
 
@@ -575,7 +575,7 @@ quote_escape_sequence
     ;
 ```
 
-Bir regular_string_literal_character içinde ters eğik çizgi karakteri (`\`) izleyen bir karakter şu karakterlerden biri olmalıdır `'` `0`:, `"`, `\`,,, `b` `a` , `f`, `n`, `r`, `t`, `u`, `U`, `x`, `v`. Aksi takdirde, bir derleme zamanı hatası oluşur.
+Bir *regular_string_literal_character* ters eğik çizgi karakteri (`\`) izleyen bir karakter şu karakterlerden biri olmalıdır: `'`, `"`, `\`, `0`, `a`, `b`, `f`, `n`, 0, 1, @no__ t-12, 3, 4, 5. Aksi takdirde, bir derleme zamanı hatası oluşur.
 
 Örnek
 ```csharp
@@ -600,7 +600,7 @@ three";
 
 Bir onaltılık kaçış sırası, dizi onaltılık basamağa sahip olabilir, dize sabiti `"\x123"` 123 onaltılık değeri olan tek bir karakter içerir. Onaltılık değeri 12 ve ardından karakter 3 olan karakteri içeren bir dize oluşturmak için, bir tane yazabilir `"\x00123"` veya `"\x12" + "3"` bunun yerine.
 
-Bir *string_literaL* `string`türü.
+Bir *string_literaL* türü `string` ' dir.
 
 Her dize sabit değeri, yeni bir dize örneği ile sonuçlanır. Dize eşitlik işlecine ([dize eşitlik işleçleri](expressions.md#string-equality-operators)) göre eşdeğer olan iki veya daha fazla dize değişmez değeri aynı programda görünürse, bu dize değişmez değerleri aynı dize örneğine başvurur. Örneğin, tarafından oluşturulan çıkış
 ```csharp
@@ -782,7 +782,7 @@ single_verbatim_balanced_text_character
 
 *İnterpolated_string_literal* belirteci, *interpolated_string_literal*içindeki oluşum sırasıyla birden fazla belirteç ve diğer girdi öğeleri olarak yeniden yorumlanır:
 
-* Aşağıdakilerin oluşumları ayrı ayrı belirteçler olarak yeniden yorumlanır `$` : önde gelen işareti, *interpolated_regular_string_whole*, *interpolated_regular_string_start*, *interpolated_regular_string_mid*, *interpolated_regular_string_end*, *interpolated_verbatim_string_whole*, *interpolated_verbatim_string_start*, *interpolated_verbatim_string_mid* ve *interpolated_verbatim_string_end*.
+* Aşağıdakilerin oluşumları ayrı ayrı belirteçler olarak yeniden yorumlanır: önde gelen `$` işareti, *interpolated_regular_string_whole*, *interpolated_regular_string_start*, *interpolated_regular_string_mid*,  *interpolated_regular_string_end*, *interpolated_verbatim_string_whole*, *interpolated_verbatim_string_start*, *interpolated_verbatim_string_mid* ve *interpolated_verbatim_string_end*.
 * Bunlar arasındaki *regular_balanced_text* ve *verbatim_balanced_text* örnekleri, bir *input_section* ([sözcük temelli analiz](lexical-structure.md#lexical-analysis)) olarak yeniden işlenir ve giriş öğelerinin ortaya çıkan sırası olarak yeniden yorumlanır. Bunlar, yeniden yorumlanan enterpolasyonlu dize sabit belirteçlerini içerebilir.
 
 Sözdizimsel analiz, belirteçleri bir *interpolated_string_expression* ([enterpolasyonlu dizeler](expressions.md#interpolated-strings)) olarak yeniden birleştirir.
@@ -1054,13 +1054,13 @@ Sözdizimi tarafından gösterildiği gibi, koşullu derleme yönergeleri `#if` 
 
 Bir *pp_conditional* , normal sözcük işleme için kapsanan *conditional_section*s 'nin en çok birini seçer:
 
-*  `#if` `true` Ve`#elif` yönergelerinin pp_expression s, bir alınana kadar sırayla değerlendirilir. Bir ifade `true`varsa, karşılık gelen yönergesinin *conditional_section* seçilidir.
-*  Tüm *pp_expression*s `false`yield varsa ve bir `#else` yönerge varsa, `#else` yönergesinin *conditional_section* seçilidir.
+*  @No__t-1 ve `#elif` yönergelerinin *pp_expression*s, bir @no__t 3 ' ün bir hesaplanana kadar sırayla değerlendirilir. Bir ifade `true` değerini alıyorsa, karşılık gelen yönergenin *conditional_section* seçilidir.
+*  Tüm *pp_expression*s `false` ' i yield ve bir `#else` yönergesi varsa, `#else` yönergesinin *conditional_section* seçilidir.
 *  Aksi takdirde, hiçbir *conditional_section* seçili değildir.
 
 Seçili *conditional_section*, varsa normal *input_section*olarak işlenir: bölümünde yer alan kaynak kodu, sözlü dilbilgisine uymalıdır; belirteçler, bölümündeki kaynak koddan oluşturulur; ve bölümündeki ön işleme yönergelerinin tanımlanmış etkileri vardır.
 
-Kalan *conditional_section*s, varsa, *skipped_section*s olarak işlenir: ön işleme yönergeleri haricinde, bölümdeki kaynak kodu sözlü dilbilgisine bağlı kalmamalıdır; bölümünde kaynak koddan hiçbir belirteç oluşturulmaz; ve bölümündeki ön işleme yönergeleri, sözcüksel doğru olmalıdır ancak başka türlü işlenmemelidir. Bir *skipped_section*olarak işlenmekte olan bir *conditional_section* içinde, iç içe geçmiş *conditional_section*s (iç içe `#if`geçmiş... içinde bulunur. `#endif` ve`#region`... yapılar) de skipped_section s olarak işlenir. `#endregion`
+Kalan *conditional_section*s, varsa, *skipped_section*s olarak işlenir: ön işleme yönergeleri haricinde, bölümdeki kaynak kodu sözlü dilbilgisine bağlı kalmamalıdır; bölümünde kaynak koddan hiçbir belirteç oluşturulmaz; ve bölümündeki ön işleme yönergeleri, sözcüksel doğru olmalıdır ancak başka türlü işlenmemelidir. *Skipped_section*olarak işlenmekte olan bir *conditional_section* içinde, iç içe geçmiş *conditional_section*s (iç içe `#if`... `#endif` ve `#region`... `#endregion` yapıları) aynı zamanda skipped_ olarak işlenir  *Bölüm*öğeleri.
 
 Aşağıdaki örnek, koşullu derleme yönergelerinin nasıl iç içe geçirebileceği gösterilmektedir:
 ```csharp
@@ -1115,7 +1115,7 @@ class Hello
 }
 ```
 çıkışın sonucu:
-```
+```console
 hello,
 #if Debug
         world
@@ -1160,7 +1160,7 @@ pp_message
 
 class Test {...}
 ```
-her zaman bir uyarı üretir ("iade etmeden önce kod incelemesi gereklidir") ve koşullu semboller `Debug` ve `Retail` ikisi de tanımlanmışsa bir derleme zamanı hatası ("derleme hem hata ayıklama hem de perakende olamaz") oluşturur. Bir *pp_message* , rastgele metin içerebileceğini unutmayın; Özellikle, sözcükteki `can't`tek tırnak içinde gösterildiği gibi iyi biçimlendirilmiş belirteçler içermesi gerekmez.
+her zaman bir uyarı üretir ("iade etmeden önce kod incelemesi gereklidir") ve koşullu semboller `Debug` ve `Retail` ikisi de tanımlanmışsa bir derleme zamanı hatası ("derleme hem hata ayıklama hem de perakende olamaz") oluşturur. Bir *pp_message* , rastgele metin içerebileceğini unutmayın; Özellikle, `can't` sözcüklerinde tek tırnak içinde gösterildiği gibi iyi biçimlendirilmiş belirteçler içermemelidir.
 
 ### <a name="region-directives"></a>Bölge yönergeleri
 
@@ -1180,7 +1180,7 @@ pp_end_region
     ;
 ```
 
-Bir bölgeye hiçbir anlam anlamı eklenmez; bölgeler, programcı tarafından veya kaynak kodun bir bölümünü işaretlemek için otomatikleştirilmiş araçlar tarafından kullanılmak üzere tasarlanmıştır. Aynı şekilde `#region` veya `#endregion` yönergesinde belirtilen iletide anlam anlamı yoktur; yalnızca bölgeyi tanımlamak için kullanılır. Eşleştirme `#region` ve`#endregion` yönergelerin farklı *pp_message*s 'leri olabilir.
+Bir bölgeye hiçbir anlam anlamı eklenmez; bölgeler, programcı tarafından veya kaynak kodun bir bölümünü işaretlemek için otomatikleştirilmiş araçlar tarafından kullanılmak üzere tasarlanmıştır. Aynı şekilde `#region` veya `#endregion` yönergesinde belirtilen iletide anlam anlamı yoktur; yalnızca bölgeyi tanımlamak için kullanılır. @No__t-0 ve `#endregion` yönergelerinin eşleşen *pp_message*s farklı olabilir.
 
 Bir bölgenin sözcük işleme işlemi:
 ```csharp
@@ -1222,13 +1222,13 @@ file_name_character
     ;
 ```
 
-Hiçbir `#line` yönergesi yoksa, derleyici çıktıda gerçek satır numaralarını ve kaynak dosya adlarını raporlar. Olmayan `#line` bir`default` *line_indicator* içeren bir yönergeyi işlerken, derleyici, belirtilen satır numarası (ve belirtilmişse dosya adı) gibi yönergeden sonra satırı değerlendirir.
+Hiçbir `#line` yönergesi yoksa, derleyici çıktıda gerçek satır numaralarını ve kaynak dosya adlarını raporlar. @No__t-2 olmayan bir *line_indicator* içeren `#line` yönergesini işlerken, derleyici, belirtilen satır numarası (ve belirtilmişse dosya adı) gibi yönergeden sonra satırı değerlendirir.
 
 Bir `#line default` yönerge, önceki tüm #line yönergelerinin etkisini tersine çevirir. Derleyici, kesin olmayan `#line` bir yönergeler gibi, izleyen satırlar için gerçek satır bilgilerini raporlar.
 
 Bir `#line hidden` yönergenin hata iletilerinde bildirilen dosya ve satır numaraları üzerinde hiçbir etkisi yoktur, ancak kaynak düzeyinde hata ayıklamayı etkiler. Hata ayıklarken, bir `#line hidden` yönergeyle sonraki `#line` `#line hidden`yönerge (olmayan) arasındaki tüm satırlarda satır numarası bilgisi yoktur. Hata ayıklayıcıda kod üzerinden adımla, bu satırlar tamamen atlanır.
 
-Bir *dosya_adı* , kaçış karakterlerinin işlenmediği normal bir dize sabit değerinden farklı olduğunu unutmayın; "`\`" karakteri, bir *dosya_adı*içindeki normal ters eğik çizgi karakterini belirtir.
+Bir *dosya_adı* , kaçış karakterlerinin işlenmediği normal bir dize sabit değerinden farklı olduğunu unutmayın; "`\`" karakteri, yalnızca bir *dosya_adı*içindeki normal ters eğik çizgi karakterini belirler.
 
 ### <a name="pragma-directives"></a>Pragma yönergeleri
 

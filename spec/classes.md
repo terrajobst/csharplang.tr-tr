@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2c87cafb8591b9dff2aa517b65af80ab263c7faa
-ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.openlocfilehash: e0def754174ab8646f9b849abe86d2c375c958b6
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876898"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703978"
 ---
 # <a name="classes"></a>Sınıflar
 
@@ -21,7 +21,7 @@ class_declaration
     ;
 ```
 
-Bir *class_declaration* , isteğe bağlı bir *öznitelik* kümesi ([öznitelikler](attributes.md)) ve ardından isteğe bağlı bir `partial` değiştirici kümesi ([sınıf değiştiricileri](classes.md#class-modifiers)) ve ardından anahtar `class` sözcüğü ve sonra, isteğe bağlı bir *type_parameter_list* ([tür parametreleri](classes.md#type-parameters)) ve ardından isteğe bağlı bir *class_base* belirtimi (sınıf taban belirtimi) içeren bir *tanımlayıcı* .[ ](classes.md#class-base-specification)) ardından, isteğe bağlı bir *type_parameter_constraints_clause*s kümesi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) ve ardından bir *class_body* ([sınıf gövdesi](classes.md#class-body)), isteğe bağlı olarak bir noktalı virgül gelir.
+Bir *class_declaration* , isteğe bağlı bir *öznitelik* kümesi ([öznitelikler](attributes.md)) ve ardından isteğe bağlı bir *class_modifier*s kümesi ([sınıf değiştiricileri](classes.md#class-modifiers)) ve ardından isteğe bağlı bir `partial` değiştiricisi ve sonra anahtar sözcüğü ile oluşur `class` ve sonra *isteğe bağlı bir* *type_parameter_list* ([tür parametreleri](classes.md#type-parameters)) ve ardından Isteğe bağlı bir *class_base* belirtimi ([sınıf taban belirtimi](classes.md#class-base-specification)) ve ardından isteğe bağlı bir *type_parameter_constraints_clause*s kümesi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)), ardından bir *class_body* ([sınıf gövdesi](classes.md#class-body)) ve isteğe bağlı olarak noktalı virgül.
 
 Bir sınıf bildirimi, bir *type_parameter_list*sağlamadıkça, *type_parameter_constraints_clause*s sağlayamazsınız.
 
@@ -111,18 +111,18 @@ __Statik Sınıf türlerine başvurma__
 
 Bir *namespace_or_type_name* ([ad alanı ve tür adları](basic-concepts.md#namespace-and-type-names)), şu durumlarda bir statik sınıfa başvurmasına izin verilir
 
-*  *Namespace_or_type_name* `T` , formun namespace_or_type_name`T.I`veya
-*  *Namespace_or_type_name* `T` , formun`typeof(T)`bir *typeof_expression* ([bağımsız değişken listeleri](expressions.md#argument-lists)1).
+*  *Namespace_or_type_name* , `T` `T.I` biçiminde bir *namespace_or_type_name* veya
+*  *Namespace_or_type_name* , `T` ' in ([bağımsız değişken listeleri](expressions.md#argument-lists)1), `typeof(T)` biçiminde bir *typeof_expression* .
 
 Bir *primary_expression* ([işlev üyeleri](expressions.md#function-members)), şu durumlarda bir statik sınıfa başvurmasına izin verilir
 
-*  *Primary_expression* , `E` formun[](expressions.md#compile-time-checking-of-dynamic-overload-resolution) (dinamikaşırıyüklemeçözümlemesiiçinderlemezamanıdenetimi`E.I`) bir member_access.
+*  *Primary_expression* , `E` ' dir. bu, `E.I` biçiminde bir *member_access* ([dinamik aşırı yükleme çözümlemesi için derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)).
 
 Diğer bir bağlamda, statik bir sınıfa başvurmak için derleme zamanı hatası olur. Örneğin, bir statik sınıfın temel sınıf olarak kullanılabilmesi, bir üyenin bir bileşen türü ([Iç içe türler](classes.md#nested-types)), bir genel tür bağımsız değişkeni veya tür parametresi kısıtlaması olması hatadır. Benzer şekilde, bir statik sınıf dizi türünde, bir `new` işaretçi türü, bir ifade, bir tür dönüştürme ifadesi `is` , ifade `sizeof` , `as` ifade, ifade veya varsayılan değer ifadesi içinde kullanılamaz.
 
 ### <a name="partial-modifier"></a>Kısmi değiştirici
 
-Değiştirici, bu class_declaration kısmi bir tür bildirimi olduğunu göstermek için kullanılır. `partial` Bir kapsayan ad alanı veya tür bildiriminde aynı ada sahip birden çok kısmi tür bildirimi, [kısmi türlerde](classes.md#partial-types)belirtilen kurallara göre tek bir tür bildirimi oluşturmak için birleştirilir.
+@No__t-0 değiştiricisi, bu *class_declaration* kısmi bir tür bildirimi olduğunu göstermek için kullanılır. Bir kapsayan ad alanı veya tür bildiriminde aynı ada sahip birden çok kısmi tür bildirimi, [kısmi türlerde](classes.md#partial-types)belirtilen kurallara göre tek bir tür bildirimi oluşturmak için birleştirilir.
 
 Program metninin ayrı kesimleri üzerinde dağıtılan bir sınıf bildiriminin olması, bu parçaların farklı bağlamlarda üretilmesi veya saklanması durumunda yararlı olabilir. Örneğin, bir sınıf bildiriminin bir kısmı makine tarafından oluşturulmuş olabilir, diğeri el ile yazılır. İki ' un metinsel ayrımı, diğer bir güncelleştirme ile çakışma arasından güncelleştirme yapılmasını engeller.
 
@@ -171,7 +171,7 @@ class Extend<V>: V {}            // Error, type parameter used as base class
 
 #### <a name="base-classes"></a>Temel sınıflar
 
-Bir *class_type* *class_base*'e dahil edildiğinde, belirtilen sınıfın doğrudan temel sınıfını belirtir. Bir sınıf bildiriminde *class_base*yoksa veya *class_base* yalnızca arabirim türlerini listelemeli, doğrudan taban sınıfın `object`kabul edilir. Bir sınıf, [Devralma](classes.md#inheritance)bölümünde açıklandığı gibi doğrudan temel sınıfından üyeleri devralır.
+Bir *class_type* *class_base*'e dahil edildiğinde, belirtilen sınıfın doğrudan temel sınıfını belirtir. Bir sınıf bildiriminde *class_base*yoksa veya *class_base* yalnızca arabirim türlerini listelemeli, doğrudan taban sınıfın `object` olduğu varsayılır. Bir sınıf, [Devralma](classes.md#inheritance)bölümünde açıklandığı gibi doğrudan temel sınıfından üyeleri devralır.
 
 Örnekte
 ```csharp
@@ -298,7 +298,7 @@ constructor_constraint
     ;
 ```
 
-Her *type_parameter_constraints_clause* , belirtecini `where`, ardından bir tür parametresinin adını, ardından iki nokta üst üste ve bu tür parametresine yönelik kısıtlamaların listesini içerir. Her tür parametresi için en fazla `where` bir yan tümce olabilir `where` ve yan tümceler herhangi bir sırada listelenebilir. Bir özellik erişimcisindeki `set` `get` ve belirteçleri gibi, belirteçbir`where` anahtar sözcük değildir.
+Her *type_parameter_constraints_clause* `where` belirtecini, ardından bir tür parametresinin adını, ardından iki nokta üst üste ve bu tür parametresi için kısıtlamaların listesini içerir. Her tür parametresi için en fazla `where` bir yan tümce olabilir `where` ve yan tümceler herhangi bir sırada listelenebilir. Bir özellik erişimcisindeki `set` `get` ve belirteçleri gibi, belirteçbir`where` anahtar sözcük değildir.
 
 Bir `where` yan tümcesinde verilen kısıtlamaların listesi, şu bileşenlerden herhangi birini içerebilir: tek bir birincil kısıtlama, bir veya daha fazla ikincil kısıtlama ve Oluşturucu `new()`kısıtlaması.
 
@@ -344,9 +344,9 @@ Bu ilişki verildiğinde, bir tür parametresinin kendisine (doğrudan veya dola
 Herhangi bir kısıtlama bağımlı tür parametreleri arasında tutarlı olmalıdır. Tür parametresi `S` daha sonra tür parametresine `T` bağımlıysa:
 
 *  `T`değer türü kısıtlamasına sahip olmamalıdır. Aksi takdirde `T` , etkin bir şekilde `S` mühürlenmiş olduğundan `T`, iki tür parametresi gereksinimini ortadan kaldıran aynı türde olmaya zorlanır.
-*  Değer `S` türü `T` kısıtlaması varsa, *class_type* kısıtlamasına sahip olmamalıdır.
-*  Eğer `S` bir *class_type* kısıtlaması `A` varsa ve `T` bir *class_type* kısıtlaması `B` varsa, bir kimlik dönüştürmesi veya öğesinden `A` `B`örtükbaşvurudönüştürmesiolmalıdırya da ' dan `B` ' ye `A`örtük bir başvuru dönüştürmesi.
-*  `U` `U` `T` `A` `B` Ayrıca tür parametresine bağlıdır ve bir class_type kısıtlamasına sahiptir ve bir class_type kısıtlamasına sahipse, bir kimlik dönüştürmesi olmalıdır `S` ya da örtük başvuru dönüşümünü `A` `B` 'den`B` ' ye dönüştürme. `A`
+*  @No__t-0 ' ın değer türü kısıtlaması varsa, `T` ' in bir *class_type* kısıtlaması olması gerekir.
+*  @No__t-0 ' ın bir *class_type* kısıtlaması varsa-2 @no__t ve `T` bir *class_type* kısıtlaması içeriyorsa `B` ' e bir kimlik dönüştürme veya örtük başvuru dönüştürmesi olması gerekir `A` ' dan `B` veya örtük bir başvuru dönüştürmesi `B` ' e `A`.
+*  @No__t-0 ' da `U` tür parametresine ve `U` ' ye bir *class_type* @no__t kısıtlaması varsa `T` ' e bir *class_type* kısıtlaması varsa `B` ' den bir kimlik dönüştürme veya örtük başvuru dönüştürmesi olmalıdır `A` `B` ' a veya 0 ' dan 1 ' e örtük başvuru dönüştürmesi.
 
 Değer türü kısıtlamasına sahip `S` olmak ve `T` başvuru türü kısıtlamasına sahip olmak için geçerlidir. Bu `T` türler`System.Object`, ,`System.Enum`,ve herhangi bir arabirim türü için etkili bir şekilde sınırlandırılmıştır. `System.ValueType`
 
@@ -424,21 +424,21 @@ Bir tür parametresinin `T` ***etkin temel sınıfı*** aşağıdaki gibi tanım
 
 *  Birincil `T` kısıtlamaları veya tür parametresi kısıtlamalarına sahip değilse, etkin taban sınıfı olur. `object`
 *  Değer türü kısıtlamasına `System.ValueType` sahipse,etkin`T` taban sınıfı olur.
-*  Eğer `T` bir *class_type* `C` kısıtlaması varsa ancak *type_parameter* kısıtlaması yoksa, etkin taban sınıfı olur `C`.
-*  Class_type kısıtlaması yoksa ancak bir veya daha fazla *type_parameter* kısıtlaması varsa, etkin taban sınıfı type_ 'un etkin temel sınıfları kümesindeki en kapsamlı tür ([yükseltilmemiş dönüştürme işleçleri)](conversions.md#lifted-conversion-operators) `T`  *parametre* kısıtlamaları. Tutarlılık kuralları, bu tür bir en kapsamlı türün mevcut olmasını güvence altına alıyor.
-*  Hem `T` bir *class_type* kısıtlaması hem de bir veya daha fazla *type_parameter* kısıtlaması varsa, etkin taban sınıfı *class_type* oluşan küme içindeki en kapsamlı tür ([yükseltilmemiş dönüştürme işleçleri](conversions.md#lifted-conversion-operators)) kısıtlaması ve type_parameter kısıtlamalarının etkin temel sınıfları. `T` Tutarlılık kuralları, bu tür bir en kapsamlı türün mevcut olmasını güvence altına alıyor.
-*  Başvuru `T` türü kısıtlaması varsa ancak *class_type* kısıtlaması yoksa, etkin taban sınıfı olur `object`.
+*  @No__t-0 ' ın bir *class_type* @no__t kısıtlaması varsa ancak *type_parameter* kısıtlaması yoksa, etkin taban sınıfı `C` ' tir.
+*  @No__t-0 ' ın bir *class_type* kısıtlaması yoksa ancak bir veya daha fazla *type_parameter* kısıtlaması varsa, etkin taban sınıfı, type_ 'nın etkin temel sınıfları kümesindeki en kapsamlı tür ([yükseltilmemiş dönüştürme işleçleri](conversions.md#lifted-conversion-operators)) olur  *parametre* kısıtlamaları. Tutarlılık kuralları, bu tür bir en kapsamlı türün mevcut olmasını güvence altına alıyor.
+*  @No__t-0 ' ın hem *class_type* kısıtlaması hem de bir veya daha fazla *type_parameter* kısıtlaması varsa, etkin taban sınıfı *class_type* oluşan küme içindeki en kapsamlı tür ([yükseltilmemiş dönüştürme işleçleri](conversions.md#lifted-conversion-operators)) `T` ve *type_parameter* kısıtlamalarının etkin taban sınıflarının kısıtlaması. Tutarlılık kuralları, bu tür bir en kapsamlı türün mevcut olmasını güvence altına alıyor.
+*  @No__t-0 ' ın başvuru türü kısıtlaması varsa ancak *class_type* kısıtlaması yoksa, etkin taban sınıfı `object` ' dir.
 
-Bu kuralların amacına yönelik olarak, T 'nin `V` bir *value_type*kısıtlaması varsa, bunun yerine bir `V` *class_type*olan en özel temel türü kullanın. Bu, açıkça verilen kısıtlamada asla gerçekleşmeyebilir, ancak genel bir yöntemin kısıtlamaları geçersiz kılan bir yöntem bildirimi veya bir arabirim yönteminin açık bir uygulamasıyla dolaylı olarak devralındığında gerçekleşebilir.
+Bu kuralların amacına göre, T 'nin bir *value_type*`V` kısıtlaması varsa, bunun yerine bir *class_type*olan en özel temel tür olan `V` ' yi kullanın. Bu, açıkça verilen kısıtlamada asla gerçekleşmeyebilir, ancak genel bir yöntemin kısıtlamaları geçersiz kılan bir yöntem bildirimi veya bir arabirim yönteminin açık bir uygulamasıyla dolaylı olarak devralındığında gerçekleşebilir.
 
 Bu kurallar, etkin temel sınıfın her zaman bir *class_type*olduğundan emin olur.
 
 Bir tür parametresinin `T` ***etkin arabirim kümesi*** şu şekilde tanımlanır:
 
-*  Secondary_constraints yoksa, etkin arabirimi kümesi boş olur. `T`
-*  İnterface_type kısıtlamaları varsa ancak *type_parameter* kısıtlaması yoksa, etkin arabirim kümesi, *interface_type* kısıtlamaları kümesidir. `T`
-*  İnterface_type kısıtlaması yoksa ancak *type_parameter* kısıtlamalarına sahipse, etkin arabirim kümesi, *type_parameter* kısıtlamalarının etkin arabirim kümelerinin birleşimidir. `T`
-*  Hem interface_type kısıtlamalarına hem de *type_parameter* kısıtlamalarına sahipse,etkinarabirimkümesi,interface_typekısıtlamalarıkümesininbirleşimidirvetype_parametergeçerli`T` arabirim kümeleridirkısıtlamalar.
+*  @No__t-0 ' *secondary_constraints*yoksa, etkin arabirimi kümesi boştur.
+*  @No__t-0 ' *interface_type* kısıtlamaları varsa ancak *type_parameter* kısıtlaması yoksa, etkin arabirim kümesi, *interface_type* kısıtlamaları kümesidir.
+*  @No__t-0 ' ın hiçbir *interface_type* kısıtlaması yoksa ancak *type_parameter* kısıtlamaları varsa, etkin arabirim kümesi, *type_parameter* kısıtlamalarının etkin arabirim kümelerinin birleşimidir.
+*  @No__t-0 ' ın hem *interface_type* kısıtlamaları hem de *type_parameter* kısıtlamaları varsa, etkin arabirim kümesi, *interface_type* kısıtlamaları kümesinin birleşimi ve *type_parameter* için geçerli arabirim kümeleridir kısıtlamaları.
 
 Bir tür parametresinin başvuru türü kısıtlaması varsa veya etkin taban sınıfı veya `System.ValueType`değilse `object` , ***başvuru türü olarak bilinir*** .
 
@@ -472,7 +472,7 @@ class_body
 
 Bir tür bildirimi, birden çok ***Kısmi tür***bildirimine bölünebilir. Tür bildirimi, bu bölümdeki kurallara göre, programın derleme zamanı ve çalışma zamanı işlemenin geri kalanı sırasında tek bir bildirim olarak değerlendirilmesinin ardından parçalarından oluşturulur.
 
-Bir *class_declaration*, *struct_declaration* veya *interface_declaration* , bir `partial` değiştirici içeriyorsa kısmi tür bildirimini temsil eder. `partial`bir anahtar sözcük değildir `class`ve yalnızca anahtar sözcüklerden `struct` birinden veya `interface` bir tür bildiriminde ya da bir yöntem bildiriminde bulunan türden `void` önce görünürse bir değiştirici işlevi görür. Diğer bağlamlarda, normal tanımlayıcı olarak kullanılabilir.
+Bir *class_declaration*, *struct_declaration* veya *interface_declaration* , `partial` değiştiricisi içeriyorsa kısmi tür bildirimini temsil eder. `partial`bir anahtar sözcük değildir `class`ve yalnızca anahtar sözcüklerden `struct` birinden veya `interface` bir tür bildiriminde ya da bir yöntem bildiriminde bulunan türden `void` önce görünürse bir değiştirici işlevi görür. Diğer bağlamlarda, normal tanımlayıcı olarak kullanılabilir.
 
 Kısmi tür bildiriminin her bölümü bir `partial` değiştirici içermelidir. Aynı ada sahip olmalıdır ve diğer bölümlerle aynı ad alanında veya tür bildiriminde bildirilmelidir. Değiştirici, tür bildiriminin ek bölümlerinin başka bir yerde mevcut olabileceğini gösterir, ancak bu tür ek parçaların varlığı bir gereksinim değildir; `partial` değiştiricisini içermesi için tek bir bildirime sahip bir tür için geçerlidir. `partial`
 
@@ -575,7 +575,7 @@ partial class X: IComparable
 }
 ```
 
-### <a name="members"></a>Üyeler
+### <a name="members"></a>Members
 
 Kısmi yöntemlerin ([kısmi Yöntemler](classes.md#partial-methods)) dışında, birden çok bölümde belirtilen bir türün üyeleri kümesi, her bölümde belirtilen üye kümesinin birleşimidir. Tür bildiriminin tüm bölümlerinin gövdeleri aynı bildirim alanını ([Bildirimler](basic-concepts.md#declarations)) ve her üyenin kapsamını ([kapsamlar](basic-concepts.md#scopes)) paylaşır ve tüm parçaların gövdeleriyle birlikte genişletilir. Herhangi bir üyenin erişilebilirlik etki alanı her zaman kapsayan türün tüm parçalarını içerir; tek `private` bir bölümde belirtilen bir üyeye başka bir bölümden serbestçe erişilebilir. Üyenin `partial` değiştiriciyle bir tür olmadığı durumlar dışında, türün birden fazla bölümünde aynı üyeyi bildirmek için derleme zamanı hatası vardır.
 
@@ -884,7 +884,7 @@ Bir `new` değiştirici devralınmış bir üyeyi gizlemez bir bildirime dahil e
 
 ### <a name="access-modifiers"></a>Erişim değiştiricileri
 
-Bir *class_member_declaration* , olası beş tür erişilebilirliği ([belirtilen erişilebilirlik](basic-concepts.md#declared-accessibility) `public`) herhangi birine sahip olabilir:, `protected` `protected internal`, `internal`, veya `private`. `protected internal` Birleşim haricinde, birden fazla erişim değiştiricisi belirtmek için derleme zamanı hatası olur. Bir *class_member_declaration* herhangi bir erişim değiştiricisi `private` içermiyorsa varsayılır.
+Bir *class_member_declaration* , olası beş tür erişilebilirliği ([belirtilen erişilebilirlik](basic-concepts.md#declared-accessibility)) herhangi birine sahip olabilir: `public`, `protected internal`, `protected`, `internal` veya `private`. `protected internal` Birleşim haricinde, birden fazla erişim değiştiricisi belirtmek için derleme zamanı hatası olur. Bir *class_member_declaration* herhangi bir erişim değiştiricisi içermiyorsa `private` varsayılır.
 
 ### <a name="constituent-types"></a>Anayent türleri
 
@@ -896,13 +896,13 @@ Bir sınıfın üyeleri ***statik Üyeler*** veya ***örnek üyeleridir***. Gene
 
 Bir alan, yöntem, özellik, olay, işleç veya Oluşturucu bildirimi bir `static` değiştirici içerdiğinde, statik bir üye bildirir. Ayrıca, bir sabit veya tür bildirimi dolaylı olarak statik bir üye bildirir. Statik Üyeler aşağıdaki özelliklere sahiptir:
 
-*  Formun `M` `M` `E` [](expressions.md#member-access)bir member_access (üye erişimi) içinde bir statik üyeye başvuruluyorsa, içeren bir türü belirtmelidir. `E.M` Bir örneği göstermek için derleme zamanı hatasıdır `E` .
+*  @No__t-3 biçiminde bir *member_access* ([üye erişimi](expressions.md#member-access)) @no__t bir statik üyenin başvurduğu zaman, `E` `M` içeren bir türü belirtmelidir. Bir örneği göstermek için derleme zamanı hatasıdır `E` .
 *  Statik bir alan, belirli bir kapalı sınıf türünün tüm örnekleri tarafından paylaşılacak tam olarak bir depolama konumunu tanımlar. Belirli bir kapalı sınıf türünün kaç örneğinin oluşturulduğuna bakılmaksızın, bir statik alanın yalnızca bir kopyası vardır.
 *  Statik işlev üyesi (yöntem, özellik, olay, işleç veya Oluşturucu) belirli bir örnek üzerinde çalışmaz ve bu tür bir işlev üyesinde başvurmak `this` için derleme zamanı hatası olur.
 
 Bir alan, yöntem, özellik, olay, Dizin Oluşturucu, Oluşturucu veya yıkıcı bildirimi bir `static` değiştirici içermiyorsa, bir örnek üyesi bildirir. (Bir örnek üyesi bazen statik olmayan bir üye olarak adlandırılır.) Örnek üyeleri aşağıdaki özelliklere sahiptir:
 
-*  Formun `M` `M` `E` [](expressions.md#member-access)bir member_access (üye erişimi) içinde bir örnek üyesine başvurulduğunda, içeren bir türün örneğini belirtmelidir. `E.M` Bir tür belirtmek `E` için bağlama zamanı hatası olur.
+*  @No__t-3 biçiminde bir *member_access* ([üye erişimi](expressions.md#member-access)) `M` ' a bir örnek üyesi başvurulduğunda, `E`, `M` içeren bir türün örneğini belirtmelidir. Bir tür belirtmek `E` için bağlama zamanı hatası olur.
 *  Bir sınıfın her örneği, sınıfının tüm örnek alanlarını ayrı bir kümesini içerir.
 *  Bir örnek işlev üyesi (yöntem, özellik, Dizin Oluşturucu, örnek Oluşturucu veya yıkıcı), sınıfın belirli bir örneği üzerinde çalışır ve bu örneğe ( `this` [Bu erişim](expressions.md#this-access)) olarak erişilebilir.
 
@@ -933,7 +933,7 @@ class Test
 }
 ```
 
-Yöntemi bir örnek işlev üyesinde, hem örnek üyelerine hem de statik üyelere erişmek için bir *simple_name* ([basit adlar](expressions.md#simple-names)) kullanılabileceğini gösterir. `F` Yöntemi, bir statik işlev üyesinde, bir simple_name aracılığıyla örnek üyesine erişmek için derleme zamanı hatası olduğunu gösterir. `G` Yöntemi, bir member_access ([üye erişimi](expressions.md#member-access)) içinde, örnek üyelerine örnekler aracılığıyla erişilmesi ve statik üyelerin türler aracılığıyla erişilmesi gerekir. `Main`
+@No__t-0 yöntemi bir örnek işlev üyesinde, hem örnek üyelerine hem de statik üyelere erişmek için bir *simple_name* ([basit adlar](expressions.md#simple-names)) kullanılabileceğini gösterir. @No__t-0 yöntemi bir statik işlev üyesinde, bir *simple_name*aracılığıyla örnek üyesine erişmek için derleme zamanı hatası olduğunu gösterir. @No__t-0 yöntemi, bir *member_access* ([üye erişimi](expressions.md#member-access)), örnek üyelerine örnekler aracılığıyla erişilmesi ve statik üyelere türler aracılığıyla erişilmesi gerekir.
 
 ### <a name="nested-types"></a>İç içe türler
 
@@ -1220,7 +1220,7 @@ class Test
 }
 ```
 bir sınıf `A` salt okunurdur bir özelliği `P`tanımlar, böylece imzaları ve `set_P` yöntemleri için `get_P` ayırırsınız. Bir sınıf `B` ' dan `A` türetilir ve bu ayrılmış imzaların her ikisini birden gizler. Örnek, çıktıyı üretir:
-```
+```console
 123
 123
 456
@@ -1279,11 +1279,11 @@ constant_declarator
     ;
 ```
 
-Bir *constant_declaration* , `new` bir dizi *öznitelik* ([öznitelik](attributes.md)), değiştirici ([Yeni değiştirici](classes.md#the-new-modifier)) ve dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)) içerebilir. Öznitelikler ve değiştiriciler, *constant_declaration*tarafından belirtilen tüm Üyeler için geçerlidir. Sabitler statik üye olarak kabul edilse de, bir *constant_declaration* gerektirmez veya bir `static` değiştiriciye izin vermez. Aynı değiştiricinin Sabit bildiriminde birden çok kez görünmesi hatadır.
+Bir *constant_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)), `new` değiştiricisi ([Yeni değiştirici](classes.md#the-new-modifier)) ve dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)) içerebilir. Öznitelikler ve değiştiriciler, *constant_declaration*tarafından belirtilen tüm Üyeler için geçerlidir. Sabitler statik üye olarak kabul edilse de, bir *constant_declaration* gerektirmez veya `static` değiştiricisi izin vermez. Aynı değiştiricinin Sabit bildiriminde birden çok kez görünmesi hatadır.
 
-Bir *constant_declaration* *türü* , bildirim tarafından tanıtılan üyelerin türünü belirtir. Türün ardından, her biri yeni bir üye tanıtan bir *constant_declarator*s listesi gelir. Bir *constant_declarator* ,`=`üyeyi ve ardından bir "" belirteci ve sonra üyenin değerini veren bir *constant_expression* ([sabit ifadeler](expressions.md#constant-expressions)) gelen bir *tanımlayıcıdan* oluşur.
+Bir *constant_declaration* *türü* , bildirim tarafından tanıtılan üyelerin türünü belirtir. Türün ardından, her biri yeni bir üye tanıtan bir *constant_declarator*s listesi gelir. Bir *constant_declarator* , üyeyi, ardından bir "`=`" belirteci ve sonra üyenin değerini veren bir *constant_expression* ([sabit ifadeler](expressions.md#constant-expressions)) olan bir *tanımlayıcıdan* oluşur.
 
-`byte`Sabit bildiriminde `sbyte`belirtilen *tür* `short` ,`char`,,, ,`uint`,, ,`float`,,,,,,, olmalıdır `long` `ushort` `int` `ulong` `double` ,,`decimal`,, bir enum_type veya reference_type. `string` `bool` Her bir *constant_expression* , hedef türünde bir değer veya örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) tarafından hedef türüne dönüştürülebilen bir tür değeri vermelidir.
+Sabit bildiriminde belirtilen *tür* `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, 0, 1, 2, 3, 4, bir *enum_type*veya *reference_ olmalıdır yazın*. Her bir *constant_expression* , hedef türünde bir değer veya örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) tarafından hedef türüne dönüştürülebilen bir tür değeri vermelidir.
 
 Bir sabit *türünün* en az sabitin ([Erişilebilirlik kısıtlamaları](basic-concepts.md#accessibility-constraints)) olarak erişilebilir olması gerekir.
 
@@ -1291,9 +1291,9 @@ Bir sabitin değeri, bir *simple_name* ([basit adlar](expressions.md#simple-name
 
 Bir sabit, bir *constant_expression*katılabilir. Bu nedenle, bir sabit, *constant_expression*gerektiren herhangi bir yapı içinde kullanılabilir. Bu yapılara `case` örnek olarak Etiketler, `goto case` deyimler, `enum` üye bildirimleri, öznitelikler ve diğer sabit bildirimler verilebilir.
 
-[Sabit ifadelerde](expressions.md#constant-expressions)açıklandığı gibi, *constant_expression* derleme zamanında tam olarak değerlendirilebilen bir ifadedir. ' Den `string` farklı bir *reference_type* ' in null olmayan bir değerini oluşturmanın tek yolu `new` işleci uygulamaktır ve `new` bir *constant_expression*içinde işlecine izin verilmediğinden, için olası tek değer dışındaki *reference_type*s `string` `null`sabitleri.
+[Sabit ifadelerde](expressions.md#constant-expressions)açıklandığı gibi, *constant_expression* derleme zamanında tam olarak değerlendirilebilen bir ifadedir. @No__t-1 dışında bir *reference_type* null olmayan bir değer oluşturmanın tek yolu `new` işlecini uygulamak ve bir *constant_expression*içinde `new` işlecine izin verilmediğinden, bu sabitlerin *tek olası değeri* `string` ' dan farklı reference_type s `null` ' dir.
 
-Sabit bir değer için sembolik bir ad istendiğinde, ancak bu değerin türü sabit bildirimde izin verilmediğinde veya değer derleme zamanında bir *constant_expression*tarafından hesaplanmadığında, bir `readonly` alan ([salt okunur alanlar ](classes.md#readonly-fields)) bunun yerine kullanılabilir.
+Sabit bir değer için sembolik bir ad istendiğinde, ancak bu değerin türü bir sabit bildirimde izin verilmediğinde veya değer derleme zamanında bir *constant_expression*tarafından hesaplanmadığında, `readonly` alanı ([salt okunur alanlar](classes.md#readonly-fields)) olabilir Bunun yerine kullanılabilir.
 
 Birden çok sabiti bildiren bir sabit bildirim, aynı özniteliklere, Değiştiricilere ve türe sahip tek sabitlerin birden çok bildirimi ile eşdeğerdir. Örneğin:
 ```csharp
@@ -1362,9 +1362,9 @@ variable_initializer
     ;
 ```
 
-Bir *field_declaration* , `static` bir dizi *öznitelik* ( `new` [öznitelik](attributes.md)), değiştirici ([Yeni değiştirici](classes.md#the-new-modifier)), dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)) ve bir değiştirici ([statik ve örnek alanları](classes.md#static-and-instance-fields)). Ayrıca, bir *field_declaration* `readonly` bir değiştirici ([salt okunur alanlar](classes.md#readonly-fields)) veya bir `volatile` değiştirici ([geçici alanlar](classes.md#volatile-fields)) içerebilir, ancak ikisini birden içeremez. Öznitelikler ve değiştiriciler, *field_declaration*tarafından belirtilen tüm Üyeler için geçerlidir. Aynı değiştiricinin bir alan bildiriminde birden çok kez görünmesi hatadır.
+Bir *field_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)), `new` değiştiricisi ([Yeni değiştirici](classes.md#the-new-modifier)), dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)) ve bir `static` değiştiricisini içerebilir ([ Statik ve örnek alanları](classes.md#static-and-instance-fields)). Ayrıca, bir *field_declaration* `readonly` değiştirici ([salt okunur alanlar](classes.md#readonly-fields)) veya `volatile` değiştiricisi ([geçici alanlar](classes.md#volatile-fields)) içerebilir, ancak ikisini birden içeremez. Öznitelikler ve değiştiriciler, *field_declaration*tarafından belirtilen tüm Üyeler için geçerlidir. Aynı değiştiricinin bir alan bildiriminde birden çok kez görünmesi hatadır.
 
-Bir *field_declaration* *türü* , bildirim tarafından tanıtılan üyelerin türünü belirtir. Türün ardından, her biri yeni bir üye tanıtan bir *variable_declarator*s listesi gelir. Bir *variable_declarator* , bu üyeyi belirten, isteğe bağlı`=`olarak "" belirteci ve bu üyenin ilk değerini veren bir *variable_initializer* ([değişken başlatıcıları](classes.md#variable-initializers)) içeren bir *tanımlayıcıdan* oluşur.
+Bir *field_declaration* *türü* , bildirim tarafından tanıtılan üyelerin türünü belirtir. Türün ardından, her biri yeni bir üye tanıtan bir *variable_declarator*s listesi gelir. Bir *variable_declarator* , bu üyeyi belirten, isteğe bağlı olarak bir "`=`" belirteci ve bu üyenin ilk değerini veren bir *variable_initializer* ([değişken başlatıcıları](classes.md#variable-initializers)) içeren bir *tanımlayıcıdan* oluşur.
 
 Alanın *türü* en az alanın kendisi ([Erişilebilirlik kısıtlamaları](basic-concepts.md#accessibility-constraints)) olarak erişilebilir olmalıdır.
 
@@ -1425,13 +1425,13 @@ class Application
 
 Örnek alanı bir örneğe aittir. Özellikle, bir sınıfın her örneği, bu sınıfın tüm örnek alanlarının ayrı bir kümesini içerir.
 
-Bir alan, `E.M` `M` `M` `E` formunbirmember_access(üyeerişimi)içindebaşvuruluyorsa,birstatikalandır,içerenbirtürübelirtmekvebirörnekalanıise,E'nin`M` [](expressions.md#member-access) içeren `M`türün bir örneğini gösterir.
+@No__t-2 ' *member_access* ([üye erişimi](expressions.md#member-access)) biçiminde bir alana başvurulduğunda, `M` statik bir alan ise, `E` `M` içeren bir türü belirtmelidir ve `M` bir örnek alanı ise, E 'nin içeren bir türün örneğini belirtmelidir. `M`.
 
 Statik ve örnek üyeleri arasındaki farklılıklar, [statik ve örnek üyelerinde](classes.md#static-and-instance-members)daha ayrıntılı bir şekilde ele alınmıştır.
 
 ### <a name="readonly-fields"></a>ReadOnly alanları
 
-Bir *field_declaration* , bir `readonly` değiştirici içerdiğinde, bildirim tarafından tanıtılan alanlar ***salt okunur alanlardır***. Salt okunur alanlara doğrudan atamalar yalnızca bu bildirimin bir parçası veya aynı sınıftaki bir örnek Oluşturucu ya da statik oluşturucu içinde olabilir. (Salt okunur bir alan, bu bağlamlarda birden çok kez atanabilir.) Özellikle, bir `readonly` alana doğrudan atamalara yalnızca aşağıdaki bağlamlarda izin verilir:
+Bir *field_declaration* `readonly` değiştiricisi içerdiğinde, bildirim tarafından tanıtılan alanlar ***salt okunur alanlardır***. Salt okunur alanlara doğrudan atamalar yalnızca bu bildirimin bir parçası veya aynı sınıftaki bir örnek Oluşturucu ya da statik oluşturucu içinde olabilir. (Salt okunur bir alan, bu bağlamlarda birden çok kez atanabilir.) Özellikle, bir `readonly` alana doğrudan atamalara yalnızca aşağıdaki bağlamlarda izin verilir:
 
 *  Alanı tanıtan *variable_declarator* (bildirime bir *variable_initializer* ekleyerek).
 *  Bir örnek alanı için, alan bildirimini içeren sınıfın örnek oluşturucularında; statik bir alan için, alan bildirimini içeren sınıfın statik oluşturucusunda. Bunlar ayrıca, bir `readonly` alanı `out` veya `ref` parametresi olarak geçirmek için geçerli olduğu tek bağlamlardır.
@@ -1490,7 +1490,7 @@ namespace Program2
 
 ### <a name="volatile-fields"></a>Geçici alanlar
 
-Bir *field_declaration* , bir `volatile` değiştirici içerdiğinde, bu bildirim tarafından tanıtılan alanlar ***geçici alanlardır***.
+Bir *field_declaration* `volatile` değiştiricisi içerdiğinde, bu bildirim tarafından tanıtılan alanlar ***geçici alanlardır***.
 
 Geçici olmayan alanlar için, yönergeleri yeniden sipariş eden iyileştirme teknikleri, *lock_statement* tarafından sağlanmış gibi eşitlemeye gerek olmadan alanlara erişen çok iş parçacıklı programlarda beklenmedik ve öngörülemeyen sonuçlara yol[açabilir ( Lock deyimleri](statements.md#the-lock-statement)). Bu iyileştirmeler derleyici tarafından, çalışma zamanı sistemine veya donanımla gerçekleştirilebilir. Geçici alanlar için, bu tür yeniden sıralama iyileştirmeleri kısıtlanmıştır:
 
@@ -1501,7 +1501,7 @@ Bu kısıtlamalar, tüm iş parçacıklarının gerçekleştirilen diğer bir i�
 
 *  Bir *reference_type*.
 *  `byte`Türü ,`char` ,,`System.UIntPtr`,, ,,`bool`,, ,`System.IntPtr`veya. `uint` `float` `sbyte` `short` `ushort` `int`
-*  `byte` ,`sbyte` ,,`uint`, Veya sabit listesi temel türüne sahip bir enum_type. `short` `ushort` `int`
+*  @No__t-1, `sbyte`, `short`, `ushort`, `int` veya `uint` sabit listesi temel türüne sahip bir *enum_type* .
 
 Örnek
 ```csharp
@@ -1536,7 +1536,7 @@ class Test
 }
 ```
 çıktıyı üretir:
-```
+```console
 result = 143
 ```
 
@@ -1560,7 +1560,7 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 b = False, i = 0
 ```
 `b` ve`i` her ikisi de otomatik olarak varsayılan değerlere başlatılmıştı.
@@ -1586,7 +1586,7 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 x = 1.4142135623731, i = 100, s = Hello
 ```
 statik alan başlatıcılarının yürütmesi ve `i` atamaları `s` , örnek alanı başlatıcıları çalıştırıldığında meydanagelir.`x`
@@ -1608,7 +1608,7 @@ class Test
 }
 ```
 Bu davranışı sergiler. A ve b 'nin dairesel tanımlarına rağmen program geçerli olur. Çıkışa neden olur
-```
+```console
 a = 1, b = 2
 ```
 statik alanlar `a` ve `b` , başlatıcıları yürütülmeden önce ( `0` için `int`varsayılan değer) olarak başlatılır. Başlatıcısı `a` çalıştırıldığında `1`değeri sıfır olduğunda`a` , olarak başlatılır. `b` `b` Başlatıcısı çalıştırıldığında, `a` değeri zaten `1` olurve`2`olarakbaşlatılır. `b`
@@ -1642,13 +1642,13 @@ class B
 }
 ```
 çıktıyı üretebilir:
-```
+```console
 Init A
 Init B
 1 1
 ```
 veya çıkış:
-```
+```console
 Init B
 Init A
 1 1
@@ -1684,7 +1684,7 @@ class B
 }
 ```
 çıkışın olması gerekir:
-```
+```console
 Init B
 Init A
 1 1
@@ -1695,7 +1695,7 @@ statik oluşturucuların çalıştırıldığı zaman ( [statik oluşturucularda
 
 Bir sınıfın örnek alanı değişken başlatıcıları, bu sınıfın örnek oluşturucularından ([Oluşturucu başlatıcıların](classes.md#constructor-initializers)) herhangi birine girişte hemen yürütülen atama dizisine karşılık gelir. Değişken başlatıcıları, sınıf bildiriminde göründükleri metin sırasına göre yürütülür. Sınıf örneği oluşturma ve başlatma işlemi, [örnek oluşturucularda](classes.md#instance-constructors)daha ayrıntılı olarak açıklanmıştır.
 
-Örnek alanı için değişken Başlatıcısı oluşturulan örneğe başvuramaz. Bu nedenle, bir değişken başlatıcısında başvurmak `this` için bir derleme zamanı hatası, bir değişken başlatıcısı için bir *simple_name*aracılığıyla herhangi bir örnek üyesine başvuruda bulunmak üzere bir derleme zamanı hatası olduğundan. Örnekte
+Örnek alanı için değişken Başlatıcısı oluşturulan örneğe başvuramaz. Bu nedenle, bir değişken başlatıcısında `this` ' a başvurmak için derleme zamanı hatası, bir değişken başlatıcısı için bir *simple_name*aracılığıyla bir örnek üyesine başvuruda bulunmak üzere bir derleme zamanı hatası olduğundan. Örnekte
 ```csharp
 class A
 {
@@ -1752,7 +1752,7 @@ method_body
     ;
 ```
 
-Bir *method_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini içerebilir ([erişim değiştiricileri](classes.md#access-modifiers)) `new` , ([Yeni değiştirici](classes.md#the-new-modifier)) `static` , ([statik ve örnek yöntemleri](classes.md#static-and-instance-methods)), `virtual` ([sanal yöntemler](classes.md#virtual-methods)), `override` ( `sealed` `abstract` [geçersiz kılma yöntemleri](classes.md#override-methods)), ([korumalı Yöntemler](classes.md#sealed-methods)), ([soyut](classes.md#abstract-methods)Yöntemler) ve `extern`([Dış Yöntemler](classes.md#external-methods)) değiştiricileri.
+Bir *method_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)), `new` ([Yeni değiştirici](classes.md#the-new-modifier)), `static` ([statik ve örnek) içerebilir. Yöntemler](classes.md#static-and-instance-methods)), `virtual` ([sanal yöntemler](classes.md#virtual-methods)), 0 ([geçersiz kılma yöntemleri](classes.md#override-methods)), 2 ([korumalı Yöntemler](classes.md#sealed-methods)), 4 ([soyut yöntemler](classes.md#abstract-methods)) ve 6 ([dış Yöntemler](classes.md#external-methods)) değiştiricileri.
 
 Aşağıdakilerin tümü doğru ise bir bildirimin geçerli bir değiştiriciler birleşimi vardır:
 
@@ -1767,23 +1767,23 @@ Aşağıdakilerin tümü doğru ise bir bildirimin geçerli bir değiştiriciler
 
 `async` Değiştiriciye sahip bir yöntem zaman uyumsuz [işlevdir ve zaman uyumsuz işlevlerde](classes.md#async-functions)açıklanan kuralları izler.
 
-Bir yöntem bildiriminin *Sbayrak* değeri, hesaplanan ve yöntemi tarafından döndürülen değerin türünü belirtir. , Yöntemin bir `void` değer döndürmediğinden, *Sbayrak* . Bildirim `partial` değiştiricisini içeriyorsa, dönüş türü olmalıdır `void`.
+Bir yöntem bildiriminin *Sbayrak* değeri, hesaplanan ve yöntemi tarafından döndürülen değerin türünü belirtir. Yöntem bir değer döndürmezse, *Sbayrak* `void` ' dir. Bildirim `partial` değiştiricisini içeriyorsa, dönüş türü olmalıdır `void`.
 
-*MEMBER_NAME* , yöntemin adını belirtir. Yöntem açık arabirim üyesi uygulaması ([Açık arabirim üyesi uygulamalar](interfaces.md#explicit-interface-member-implementations)) değilse, *MEMBER_NAME* yalnızca bir *tanımlayıcıdır*. Açık arabirim üyesi uygulama için, *MEMBER_NAME* bir *interface_type* ve ardından bir`.` *tanımlayıcı*ile oluşur.
+*MEMBER_NAME* , yöntemin adını belirtir. Yöntem açık arabirim üyesi uygulaması ([Açık arabirim üyesi uygulamalar](interfaces.md#explicit-interface-member-implementations)) değilse, *MEMBER_NAME* yalnızca bir *tanımlayıcıdır*. Açık arabirim üyesi uygulama için, *MEMBER_NAME* bir *interface_type* ve arkasından bir "`.`" ve bir *tanımlayıcı*oluşur.
 
-İsteğe bağlı *type_parameter_list* , yöntemin tür parametrelerini belirtir ([tür parametreleri](classes.md#type-parameters)). Eğer bir *type_parameter_list* belirtilmişse, yöntemi ***genel bir yöntemdir***. Metodun bir `extern` değiştiricisi varsa, bir *type_parameter_list* belirtilemez.
+İsteğe bağlı *type_parameter_list* , yöntemin tür parametrelerini belirtir ([tür parametreleri](classes.md#type-parameters)). Eğer bir *type_parameter_list* belirtilmişse, yöntemi ***genel bir yöntemdir***. Yöntemin `extern` değiştiricisi varsa, bir *type_parameter_list* belirtilemez.
 
 İsteğe bağlı *formal_parameter_list* , yönteminin parametrelerini belirtir ([Yöntem parametreleri](classes.md#method-parameters)).
 
-İsteğe bağlı *type_parameter_constraints_clause*s, bağımsız tür parametrelerinde ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) kısıtlamaları belirtir ve yalnızca bir *type_parameter_list* sağlanırsa ve yöntemin bir `override` değiştirici.
+İsteğe bağlı *type_parameter_constraints_clause*s, bağımsız tür parametrelerinde ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) kısıtlamaları belirtir ve yalnızca bir *type_parameter_list* sağlanırsa ve yöntemin bir `override` değiştiricisi.
 
 Bir metodun *formal_parameter_list* içinde başvurulan her bir *tür, en* azından yöntemin kendisi ([Erişilebilirlik kısıtlamaları](basic-concepts.md#accessibility-constraints)) olarak erişilebilir olmalıdır.
 
 *Method_body* , bir noktalı virgül, bir ***deyim gövdesi*** veya bir ***ifade gövdesidir***. Deyim gövdesi, yöntemi çağrıldığında yürütülecek deyimleri belirten bir *bloğundan*oluşur. Bir ifade gövdesi, `=>` sonrasında bir *ifade* ve noktalı virgül ile oluşur ve yöntem çağrıldığında gerçekleştirilecek tek bir ifadeyi gösterir. 
 
-Ve `abstract` yöntemleri`extern` için *method_body* yalnızca noktalı virgülle oluşur. Yöntemler `partial` için *method_body* , bir noktalı virgül, bir blok gövdesinden veya bir ifade gövdesinden oluşabilir. Diğer tüm yöntemler için, *method_body* bir blok gövdesidir veya bir ifade gövdesidir.
+@No__t-0 ve `extern` yöntemleri için, *method_body* yalnızca noktalı virgülle oluşur. @No__t-0 yöntemleri için *method_body* , bir noktalı virgül, bir blok gövdesinden veya bir ifade gövdesinden oluşabilir. Diğer tüm yöntemler için, *method_body* bir blok gövdesidir veya bir ifade gövdesidir.
 
-*Method_body* noktalı virgül içeriyorsa, bildirim `async` değiştiriciyi içermeyebilir.
+*Method_body* noktalı virgül içeriyorsa, bildirim `async` değiştiricisini içermeyebilir.
 
 Ad, tür parametre listesi ve bir yöntemin biçimsel parametre listesi metodun imzasını ([imzalar ve aşırı yükleme](basic-concepts.md#signatures-and-overloading)) tanımlar. Özellikle, bir yöntemin imzası adından, tür parametrelerinin sayısından ve biçimsel parametrelerinin sayısı, değiştiricilerinden ve türlerinden oluşur. Bu amaçlar için, bir biçimsel parametre türünde oluşan yöntemin tür parametresi, kendi adı tarafından değil, yönteminin tür bağımsız değişkeni listesindeki sıra konumuna göre tanımlanır. Dönüş türü yöntemin imzasının bir parçası değildir, ya da tür parametrelerinin ya da biçimsel parametrelerin adları değildir.
 
@@ -1829,11 +1829,11 @@ parameter_array
 
 Biçimsel parametre listesi, yalnızca en son bir *parameter_array*olabilecek bir veya daha fazla virgülle ayrılmış parametre içerir.
 
-Bir *fixed_parameter* , isteğe bağlı bir *öznitelik* kümesi `out` ([öznitelikler](attributes.md)), isteğe `ref`bağlı veya `this` değiştirici, bir *tür*, *tanımlayıcı* ve isteğe bağlı bir *default_ içerir bağımsız değişken*. Her *fixed_parameter* verilen ada sahip verilen türdeki bir parametreyi bildirir. `this` Değiştirici yöntemi bir genişletme yöntemi olarak belirler ve yalnızca bir statik metodun ilk parametresinde kullanılabilir. Uzantı yöntemleri [uzantı yöntemlerinde](classes.md#extension-methods)daha ayrıntılı olarak açıklanmıştır.
+Bir *fixed_parameter* , isteğe bağlı bir *öznitelik* kümesi ([öznitelikler](attributes.md)), isteğe bağlı `ref`, `out` veya `this` değiştiricisi, bir *tür*, *tanımlayıcı* ve isteğe bağlı bir *default_argument*oluşur. Her *fixed_parameter* verilen ada sahip verilen türdeki bir parametreyi bildirir. `this` Değiştirici yöntemi bir genişletme yöntemi olarak belirler ve yalnızca bir statik metodun ilk parametresinde kullanılabilir. Uzantı yöntemleri [uzantı yöntemlerinde](classes.md#extension-methods)daha ayrıntılı olarak açıklanmıştır.
 
 *Default_argument* içeren bir *fixed_parameter* , ***isteğe bağlı bir parametre***olarak bilinir, ancak *default_argument* olmayan bir *fixed_parameter* ***gerekli bir parametredir***. Gerekli bir parametre, *formal_parameter_list*içinde isteğe bağlı bir parametreden sonra görünmeyebilir.
 
-Veya parametresinin bir default_argument olamaz. `ref` `out` Bir *default_argument* içindeki *ifade* aşağıdakilerden biri olmalıdır:
+@No__t-0 veya `out` parametresinin bir *default_argument*olamaz. Bir *default_argument* içindeki *ifade* aşağıdakilerden biri olmalıdır:
 
 *  bir *constant_expression*
 *  `new S()` form`S` bir değer türü olan bir ifade
@@ -1843,7 +1843,7 @@ Veya parametresinin bir default_argument olamaz. `ref` `out` Bir *default_argume
 
 Bir uygulama kısmi yöntem bildiriminde ([kısmi Yöntemler](classes.md#partial-methods)) isteğe bağlı parametreler oluşursa, açık bir arabirim üye uygulaması ([Açık arabirim üyesi uygulamalar](interfaces.md#explicit-interface-member-implementations)) veya tek parametreli Dizin Oluşturucu bildiriminde ([ Dizin oluşturucular](classes.md#indexers)) derleyici bir uyarı vermelidir, çünkü bu Üyeler asla bağımsız değişkenlerin atlanmasına izin vermek için hiçbir şekilde çağrılamaz.
 
-Bir *parameter_array* , isteğe bağlı bir *öznitelikler* kümesinden ([öznitelikler](attributes.md)), bir `params` değiştiriciye, bir *array_type*ve bir *tanımlayıcıdan*oluşur. Bir parametre dizisi verilen bir ada sahip belirtilen dizi türünün tek bir parametresini bildirir. Bir parametre dizisinin *array_type* bir tek boyutlu dizi türü ([dizi türleri](arrays.md#array-types)) olmalıdır. Bir yöntem çağrısında, bir parametre dizisi verilen dizi türünün tek bir bağımsız değişkeninin belirtilmesine izin verir veya dizi öğe türünde sıfır veya daha fazla bağımsız değişken belirtilmesine izin verir. Parametre dizileri, [parametre dizileri](classes.md#parameter-arrays)içinde daha ayrıntılı olarak açıklanmıştır.
+Bir *parameter_array* , isteğe bağlı *öznitelik* kümesinden ([öznitelikler](attributes.md)), `params` değiştiricisinden, *array_type*ve bir *tanımlayıcıdan*oluşur. Bir parametre dizisi verilen bir ada sahip belirtilen dizi türünün tek bir parametresini bildirir. Bir parametre dizisinin *array_type* bir tek boyutlu dizi türü ([dizi türleri](arrays.md#array-types)) olmalıdır. Bir yöntem çağrısında, bir parametre dizisi verilen dizi türünün tek bir bağımsız değişkeninin belirtilmesine izin verir veya dizi öğe türünde sıfır veya daha fazla bağımsız değişken belirtilmesine izin verir. Parametre dizileri, [parametre dizileri](classes.md#parameter-arrays)içinde daha ayrıntılı olarak açıklanmıştır.
 
 Bir *parameter_array* isteğe bağlı bir parametreden sonra gerçekleşebilir, ancak varsayılan bir değere sahip olamaz; bunun yerine bir *parameter_array* için bağımsız değişkenlerin atlanmasından sonra boş bir dizi oluşturulmasına neden olur.
 
@@ -1861,7 +1861,7 @@ public void M(
 ) { }
 ```
 
-İçin `d` *formal_parameter_list,* gerekli bir başvuru parametresidir `b`, `s`,,, ve`t`isteğebağlıdeğerparametreleridir `o` `M` `i` ve `a` bir parametre dizisidir.
+@No__t-@no__t 1 için *formal_parameter_list* -2, gerekli bir başvuru parametresidir, `d` gerekli bir değer parametresidir, `b`, `s`, `o` ve `t` isteğe bağlı değer parametreleridir ve `a` bir parametre dizisidir.
 
 Yöntem bildirimi parametreler, tür parametreleri ve yerel değişkenler için ayrı bir bildirim alanı oluşturur. Adlar, bu bildirim alanına tür parametresi listesi ve yöntemin biçimsel parametre listesi ve yöntemin *bloğundaki* yerel değişken bildirimleri tarafından tanıtılmıştır. Bir yöntem bildirim alanının iki üyesinin aynı ada sahip olması için bir hatadır. Aynı ada sahip öğeleri içermesi için bir iç içe geçmiş bildirim alanının yöntem bildirim alanı ve yerel değişken bildirim alanı için bir hatadır.
 
@@ -1888,7 +1888,7 @@ Bir yöntem bir değer parametresine yeni değerler atamaya izin verilir. Bu ata
 
 `ref` Değiştirici ile belirtilen bir parametre bir başvuru parametresidir. Değer parametresinden farklı olarak, başvuru parametresi yeni bir depolama konumu oluşturmaz. Bunun yerine, başvuru parametresi, yöntem çağrısında bağımsız değişken olarak verilen değişkenle aynı depolama konumunu temsil eder.
 
-Bir biçimsel parametre bir başvuru parametresi olduğunda, bir yöntem çağrısında karşılık gelen bağımsız değişken, aynı bir `ref` *variable_reference* ([kesin atamayı belirlemek için kesin kurallar](variables.md#precise-rules-for-determining-definite-assignment)) ve ardından gelen anahtar sözcüğünden oluşmalıdır biçimsel parametre olarak yazın. Bir değişken başvuru parametresi olarak geçirilebilmesi için kesinlikle atanmalı.
+Bir biçimsel parametre bir başvuru parametresi olduğunda, bir yöntem çağrısında karşılık gelen bağımsız değişken `ref` ve bir *variable_reference* ([kesin atamayı belirlemek için kesin kurallar](variables.md#precise-rules-for-determining-definite-assignment)) ile aynı türde olmalıdır biçimsel parametre. Bir değişken başvuru parametresi olarak geçirilebilmesi için kesinlikle atanmalı.
 
 Bir yöntem içinde, başvuru parametresi her zaman kesinlikle atanmış olarak değerlendirilir.
 
@@ -1914,7 +1914,7 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 i = 2, j = 1
 ```
 
@@ -1943,7 +1943,7 @@ class A
 
 `out` Değiştirici ile belirtilen bir parametre bir çıkış parametresidir. Bir başvuru parametresine benzer şekilde, çıkış parametresi yeni bir depolama konumu oluşturmaz. Bunun yerine, bir çıktı parametresi, yöntem çağrısında bağımsız değişken olarak verilen değişkenle aynı depolama konumunu temsil eder.
 
-Bir biçimsel parametre bir çıkış parametresi olduğunda, bir yöntem çağrısında karşılık gelen bağımsız değişken, bir `out` *variable_reference* ([kesin atamayı belirlemek için kesin kurallar](variables.md#precise-rules-for-determining-definite-assignment)) ve ardından gelen anahtar sözcüğünden oluşmalıdır biçimsel parametre olarak yazın. Bir değişken, çıkış parametresi olarak geçirilebilmesi için kesinlikle atanmamalıdır, ancak bir değişkenin çıkış parametresi olarak geçirildiği bir çağrıdan sonra, değişken kesinlikle atanmış olarak değerlendirilir.
+Bir biçimsel parametre bir çıkış parametresi olduğunda, bir yöntem çağrısında karşılık gelen bağımsız değişken `out` anahtar sözcüğünden ve ardından bir *variable_reference* ([kesin atamayı belirlemek için kesin kurallar](variables.md#precise-rules-for-determining-definite-assignment)) ile aynı türdeki biçimsel parametre. Bir değişken, çıkış parametresi olarak geçirilebilmesi için kesinlikle atanmamalıdır, ancak bir değişkenin çıkış parametresi olarak geçirildiği bir çağrıdan sonra, değişken kesinlikle atanmış olarak değerlendirilir.
 
 Bir yöntem içinde, yerel bir değişken gibi, bir çıkış parametresi başlangıçta atanmamış olarak kabul edilir ve değeri kullanılmadan önce kesinlikle atanmalıdır.
 
@@ -1978,7 +1978,7 @@ class Test
 ```
 
 Örnek, çıktıyı üretir:
-```
+```console
 c:\Windows\System\
 hello.txt
 ```
@@ -2018,7 +2018,7 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 Array contains 3 elements: 1 2 3
 Array contains 4 elements: 10 20 30 40
 Array contains 0 elements:
@@ -2060,7 +2060,7 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 F();
 F(object[]);
 F(object,object);
@@ -2097,7 +2097,7 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 System.Int32 System.String System.Double
 System.Object[]
 System.Object[]
@@ -2114,7 +2114,7 @@ Statik bir yöntem belirli bir örnek üzerinde çalışmaz ve statik bir yönte
 
 Bir örnek yöntemi bir sınıfın belirli bir örneği üzerinde çalışır ve bu örneğe ( `this` [Bu erişim](expressions.md#this-access)) olarak erişilebilir.
 
-Bir yöntem, `E.M` `E` `M` formunbir`M` *member_access* ([üye erişimi](expressions.md#member-access)) içinde başvuruluyorsa, birstatikyöntemiseiçerenbirtürübelirtmelidirveeğerbirörnekyöntemiise,`M` `E` içeren`M`bir türün örneği belirtilmelidir.
+@No__t-2 *biçiminde bir yönteme* başvurulduğunda, @no__t[](expressions.md#member-access)-3 statik bir yöntem ise, `E` `M` içeren bir türü belirtmelidir ve `M` bir örnek yöntemi ise, `E` bir tür örneğini belirtmelidir `M` ' i içerir.
 
 Statik ve örnek üyeleri arasındaki farklılıklar, [statik ve örnek üyelerinde](classes.md#static-and-instance-members)daha ayrıntılı bir şekilde ele alınmıştır.
 
@@ -2168,7 +2168,7 @@ class Test
 ```
 
 Örnekte, `A` sanal olmayan bir yöntemi `F` ve sanal bir yöntemi `G`tanıtır. Sınıfı `B` yeni bir sanal olmayan yöntem `F`tanıtır, böylece devralınmış `F`öğesini gizler ve ayrıca devralınan yöntemi `G`geçersiz kılar. Örnek, çıktıyı üretir:
-```
+```console
 A.F
 B.F
 B.G
@@ -2216,7 +2216,7 @@ class Test
 }
 ```
 `C` ve`D` sınıfları aynı imzaya sahip iki sanal yöntem içerir: Tarafından `A` tanıtılan ve tarafından `C`tanıtılan bir. Tarafından `C` tanıtılan yöntem öğesinden `A`devralınan yöntemi gizler. Bu nedenle, içindeki `D` geçersiz kılma bildirimi tarafından `C`tanıtılan yöntemi geçersiz kılar ve tarafından `A`tanıtılan yöntemi geçersiz kılmak mümkün değildir.`D` Örnek, çıktıyı üretir:
-```
+```console
 B.F
 B.F
 D.F
@@ -2522,7 +2522,7 @@ Bir yöntemin `void` ***sonuç türü*** , dönüş türü `void`ise veya yönte
 
 Bir yöntemin `void` sonuç türü ve bir blok gövdesi olduğunda, `return` bloktaki deyimlerin ([return deyimi](statements.md#the-return-statement)) bir ifade belirtmelerine izin verilmez. Void yönteminin bloğunun yürütülmesi normal şekilde tamamlanırsa (diğer bir deyişle, bu yöntem, Yöntem gövdesinin sonundaki şekilde akar), bu yöntem yalnızca geçerli çağıranına döner.
     
-Bir yöntemin `void` sonucu ve bir ifade gövdesi olduğunda, ifade `E` bir *statement_expression*olmalıdır ve gövde, formun `{ E; }`bir blok gövdesine tam olarak eşdeğerdir.
+Bir yöntemde `void` sonucu ve bir ifade gövdesi olduğunda, `E` ifadesi bir *statement_expression*olmalıdır ve gövde, `{ E; }` biçimindeki bir blok gövdesine tam olarak eşdeğerdir.
     
 Bir yöntemde void olmayan bir sonuç türü ve bir blok gövdesi olduğunda, bloktaki her `return` deyim, sonuç türüne örtük olarak dönüştürülebilir bir ifade belirtmelidir. Değer döndüren metodun blok gövdesinin uç noktasına ulaşılamıyor olmalıdır. Diğer bir deyişle, blok gövdesi olan bir değer döndüren yöntemde, denetimin Yöntem gövdesinin sonunu akışa girmesine izin verilmez.
     
@@ -2556,7 +2556,7 @@ değer döndüren `F` Yöntem, denetim Yöntem gövdesinin sonuna akabileceğind
 
 Yöntem aşırı yükleme çözümleme kuralları [tür çıkarımı](expressions.md#type-inference)bölümünde açıklanmaktadır.
 
-## <a name="properties"></a>Özellikler
+## <a name="properties"></a>properties
 
 ***Özelliği*** , bir nesnenin veya sınıfın özelliklerine erişim sağlayan bir üyesidir. Özellik örnekleri, bir dizenin uzunluğunu, bir yazı tipinin boyutunu, bir pencerenin başlığını, bir müşterinin adını vb. içerir. Özellikler, alanlar için doğal bir uzantıdır. her ikisi de ilişkili türleri olan üyeler adlandırılmış ve alanlara ve özelliklere erişim için sözdizimi aynıdır. Ancak, alanların aksine, Özellikler depolama konumlarını göstermiyor. Bunun yerine, özellikler, değerleri okunmak veya yazıldığında yürütülecek deyimleri belirten ***erişimcileri*** vardır. Bu sayede, eylemleri bir nesne özniteliklerinin okuma ve yazma ile ilişkilendirmek için bir mekanizma sağlar; Ayrıca, bu tür özniteliklere de hesaplanmasına izin verir.
 
@@ -2592,15 +2592,15 @@ property_initializer
     ;
 ```
 
-Bir *property_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini içerebilir ([erişim değiştiricileri](classes.md#access-modifiers)) `new` , ([Yeni değiştirici](classes.md#the-new-modifier)) `static` , ([statik ve örnek yöntemleri](classes.md#static-and-instance-methods)), `virtual` ([sanal yöntemler](classes.md#virtual-methods)), `override` ( `sealed` `abstract` [geçersiz kılma yöntemleri](classes.md#override-methods)), ([korumalı Yöntemler](classes.md#sealed-methods)), ([soyut](classes.md#abstract-methods)Yöntemler) ve `extern`([Dış Yöntemler](classes.md#external-methods)) değiştiricileri.
+Bir *property_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)), `new` ([Yeni değiştirici](classes.md#the-new-modifier)), `static` ([statik ve örnek) içerebilir. Yöntemler](classes.md#static-and-instance-methods)), `virtual` ([sanal yöntemler](classes.md#virtual-methods)), 0 ([geçersiz kılma yöntemleri](classes.md#override-methods)), 2 ([korumalı Yöntemler](classes.md#sealed-methods)), 4 ([soyut yöntemler](classes.md#abstract-methods)) ve 6 ([dış Yöntemler](classes.md#external-methods)) değiştiricileri.
 
 Özellik bildirimleri, geçerli değiştiriciler birleşimleriyle ilgili olarak yöntem bildirimleri ([Yöntemler](classes.md#methods)) ile aynı kurallara tabidir.
 
-Bir özellik bildiriminin *türü* , bildirim tarafından tanıtılan özelliğin türünü belirtir ve *MEMBER_NAME* özelliğinin adını belirtir. Özellik açık bir arabirim üyesi uygulama değilse, *MEMBER_NAME* yalnızca bir *tanımlayıcıdır*. Açık arabirim üye uygulaması ([Açık arabirim üye uygulamaları](interfaces.md#explicit-interface-member-implementations)) için, *MEMBER_NAME* bir *interface_type* ve ardından bir`.` *tanımlayıcı*ile oluşur.
+Bir özellik bildiriminin *türü* , bildirim tarafından tanıtılan özelliğin türünü belirtir ve *MEMBER_NAME* özelliğinin adını belirtir. Özellik açık bir arabirim üyesi uygulama değilse, *MEMBER_NAME* yalnızca bir *tanımlayıcıdır*. Açık arabirim üye uygulaması ([Açık arabirim üye uygulamaları](interfaces.md#explicit-interface-member-implementations)) için, *MEMBER_NAME* bir *interface_type* ve arkasından bir "`.`" ve bir *tanımlayıcı*oluşur.
 
 Özelliğin *türü* en az özelliğin kendisi ([Erişilebilirlik kısıtlamaları](basic-concepts.md#accessibility-constraints)) olarak erişilebilir olmalıdır.
 
-Bir *property_body* , ***erişimci gövdesinden*** ya da bir ***ifade gövdesinden***oluşabilir. Bir erişimci gövdesinde, "`{`" ve "`}`" belirteçlerinin içine alınması gereken accessor_declarations, özelliğin erişimcileri ([erişimcileri](classes.md#accessors)) bildirmek. Erişimciler, özelliği okuma ve yazma ile ilişkili yürütülebilir deyimleri belirler.
+Bir *property_body* , ***erişimci gövdesinden*** ya da bir ***ifade gövdesinden***oluşabilir. Bir erişimci gövdesinde, "`{`" ve "`}`" belirteçlerinin içine alınması gereken *accessor_declarations*, özelliğin erişimcileri ([erişimcileri](classes.md#accessors)) ' sini bildirin. Erişimciler, özelliği okuma ve yazma ile ilişkili yürütülebilir deyimleri belirler.
 
 `=>` Arkasından bir `{ get { return E; } }` ifade`E` ve bir noktalı virgül gelen bir ifade gövdesi, deyim gövdesine tam olarak eşdeğerdir ve bu nedenle yalnızca alıcı özelliklerini belirtmek için kullanılabilir alıcı tek bir ifade tarafından verilir.
 
@@ -2618,7 +2618,7 @@ Statik bir özellik belirli bir örnekle ilişkili değildir ve statik bir özel
 
 Örnek özelliği, bir sınıfın belirli bir örneğiyle ilişkilendirilir ve bu örneğe bu özelliğin erişimcilerinde `this` ([Bu erişim](expressions.md#this-access)) erişilebilir.
 
-Bir özelliğe, `E.M` `M` `M` `E` formunbirmember_access(üyeerişimi)içindebaşvuruluyorsa,birstatiközelliktir,içerenbirtürübelirtmekvebirörnekise`M` [](expressions.md#member-access) özelliği, içeren `M`bir türün örneğini belirtmelidir.
+@No__t-2 *biçiminde bir özelliğe* başvurulduğunda, @no__t[](expressions.md#member-access)-3 statik bir özellik ise, `E` `M` içeren bir türü belirtmelidir ve `M` bir örnek özelliği ise, E türünün bir örneğini belirtmek gerekir `M` ' yi içerir.
 
 Statik ve örnek üyeleri arasındaki farklılıklar, [statik ve örnek üyelerinde](classes.md#static-and-instance-members)daha ayrıntılı bir şekilde ele alınmıştır.
 
@@ -2654,20 +2654,20 @@ accessor_body
     ;
 ```
 
-Erişimci bildirimleri bir *get_accessor_declaration*, *set_accessor_declaration*veya her ikisinden oluşur. Her `get` erişimci bildirimi belirtecinden oluşur veya `set` sonra isteğe bağlı bir *accessor_modifier* ve *accessor_body*.
+Erişimci bildirimleri bir *get_accessor_declaration*, *set_accessor_declaration*veya her ikisinden oluşur. Her erişimci bildirimi `get` veya `set` belirtecinden sonra isteğe bağlı bir *accessor_modifier* ve bir *accessor_body*oluşur.
 
 *Accessor_modifier*s kullanımı aşağıdaki kısıtlamalara tabidir:
 
 *  Bir *accessor_modifier* , bir arabirimde veya açık arabirim üyesi uygulamasında kullanılamaz.
-*  Değiştiriciye sahip `override` olmayan bir özellik veya Dizin Oluşturucu için, yalnızca özellik veya `get` dizin oluşturucunun hem hem de `set` erişimcisi varsa ve bu erişimcilerle yalnızca biri için izin verildiğinde bir accessor_modifier izin verilir.
-*  `override` Değiştirici içeren bir özellik veya Dizin Oluşturucu için, erişimci geçersiz kılınmakta olan erişimcinin *accessor_modifier*ile eşleşmesi gerekir.
+*  @No__t-0 değiştiricisi olmayan bir özellik veya Dizin Oluşturucu için, yalnızca özellik veya dizin oluşturucunun hem `get` hem de `set` erişimcisi varsa ve bu erişimcilerle yalnızca birinde izin verildiğinde bir *accessor_modifier* izin verilir.
+*  @No__t-0 değiştiricisi içeren bir özellik veya Dizin Oluşturucu için, erişimci geçersiz kılınmakta olan erişimcinin *accessor_modifier*ile eşleşmesi gerekir.
 *  *Accessor_modifier* , özelliğin veya dizin oluşturucunun kendisi tarafından belirtilen erişilebilirliğine göre kesinlikle daha kısıtlayıcı bir erişilebilirlik bildirmelidir. Kesin olması için:
-   * Özelliğin veya dizin oluşturucunun tanımlanmış bir erişilebilirliği `public`varsa, *accessor_modifier* `protected internal`, `internal` `protected`, veya `private`olabilir.
-   * Özelliğin veya dizin oluşturucunun tanımlanmış bir erişilebilirliği `protected internal`varsa, *accessor_modifier* `internal` `protected`, veya `private`olabilir.
-   * Özellik veya dizin `internal` oluşturucunun veya `protected` `private`' nin tanımlanmış bir erişilebilirliği varsa, *accessor_modifier* olmalıdır.
-   * Özelliğin veya dizin oluşturucunun tanımlanmış bir erişilebilirliği `private`varsa, hiçbir *accessor_modifier* kullanılamaz.
+   * Özelliğin veya dizin oluşturucunun `public` ' ı tarafından tanımlanmış bir erişilebilirliği varsa, *accessor_modifier* `protected internal`, `internal`, `protected` veya `private` olabilir.
+   * Özelliğin veya dizin oluşturucunun `protected internal` ' ı tarafından tanımlanmış bir erişilebilirliği varsa, *accessor_modifier* `internal`, `protected` veya `private` olabilir.
+   * Özelliğin veya dizin oluşturucunun `internal` veya `protected` ' in tanımlanmış bir erişilebilirliği varsa, *accessor_modifier* `private` olmalıdır.
+   * Özelliğin veya dizin oluşturucunun `private` ' ı tarafından tanımlanmış bir erişilebilirliği varsa, hiçbir *accessor_modifier* kullanılamaz.
 
-Ve `abstract` özellikleri`extern` için, belirtilen her erişimci için *accessor_body* yalnızca noktalı virgüldür. Soyut olmayan, extern olmayan bir özelliğin her bir *accessor_body* noktalı virgül olabilir. Bu durumda, ***otomatik olarak uygulanan bir özelliktir*** ([otomatik olarak uygulanan özellikler](classes.md#automatically-implemented-properties)). Otomatik olarak uygulanan özelliğin en az bir get erişimcisi olmalıdır. Diğer soyut olmayan, extern olmayan özelliğin erişimcileri için *accessor_body* , karşılık gelen erişimci çağrıldığında yürütülecek deyimleri belirten bir *bloğudur* .
+@No__t-0 ve `extern` özellikleri için, belirtilen her erişimci için *accessor_body* yalnızca noktalı virgüldür. Soyut olmayan, extern olmayan bir özelliğin her bir *accessor_body* noktalı virgül olabilir. Bu durumda, ***otomatik olarak uygulanan bir özelliktir*** ([otomatik olarak uygulanan özellikler](classes.md#automatically-implemented-properties)). Otomatik olarak uygulanan özelliğin en az bir get erişimcisi olmalıdır. Diğer soyut olmayan, extern olmayan özelliğin erişimcileri için *accessor_body* , karşılık gelen erişimci çağrıldığında yürütülecek deyimleri belirten bir *bloğudur* .
 
 `get` Erişimci, özellik türünün dönüş değeri olan parametresiz bir yönteme karşılık gelir. Atama hedefi dışında, bir ifadede bir özelliğe başvurulduğunda, `get` özelliğin erişimcisi özelliğin değerini hesaplamak için çağrılır ([ifadelerin değerleri](expressions.md#values-of-expressions)). Bir `get` erişimcinin gövdesi, [Yöntem gövdesinde](classes.md#method-body)açıklanan değer döndüren yöntemlere yönelik kurallara uymalıdır. Özellikle, bir `return` `get` erişimcinin gövdesindeki tüm deyimler, özellik türüne örtük olarak dönüştürülebilir bir ifade belirtmelidir. Ayrıca, `get` erişimcinin uç noktasına ulaşılamamalıdır.
 
@@ -3081,7 +3081,7 @@ public class D: B
 }
 ```
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Events
 
 Bir ***olay*** , bir nesnenin veya sınıfın bildirimleri sağlamasını sağlayan bir üyedir. İstemciler ***olay işleyicileri***sağlayarak olaylar için yürütülebilir kod ekleyebilir.
 
@@ -3122,7 +3122,7 @@ remove_accessor_declaration
     ;
 ```
 
-Bir *event_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini içerebilir ([erişim değiştiricileri](classes.md#access-modifiers)) `new` , ([Yeni değiştirici](classes.md#the-new-modifier)) `static` , ([statik ve örnek yöntemleri](classes.md#static-and-instance-methods)), `virtual` ([sanal yöntemler](classes.md#virtual-methods)), `override` ( `sealed` `abstract` [geçersiz kılma yöntemleri](classes.md#override-methods)), ([korumalı Yöntemler](classes.md#sealed-methods)), ([soyut](classes.md#abstract-methods)Yöntemler) ve `extern`([Dış Yöntemler](classes.md#external-methods)) değiştiricileri.
+Bir *event_declaration* bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)), `new` ([Yeni değiştirici](classes.md#the-new-modifier)), `static` ([statik ve örnek) içerebilir. Yöntemler](classes.md#static-and-instance-methods)), `virtual` ([sanal yöntemler](classes.md#virtual-methods)), 0 ([geçersiz kılma yöntemleri](classes.md#override-methods)), 2 ([korumalı Yöntemler](classes.md#sealed-methods)), 4 ([soyut yöntemler](classes.md#abstract-methods)) ve 6 ([dış Yöntemler](classes.md#external-methods)) değiştiricileri.
 
 Olay bildirimleri, geçerli değiştiriciler birleşimleriyle ilgili olarak yöntem bildirimleri ([yöntemleriyle](classes.md#methods)) ile aynı kurallara tabidir.
 
@@ -3132,11 +3132,11 @@ Bir olay bildirimi, *event_accessor_declarations*içerebilir. Ancak, dış olmay
 
 *Event_accessor_declarations* atan bir olay bildirimi, bir veya daha fazla olayı tanımlar — her bir *variable_declarator*s. Öznitelikler ve değiştiriciler, bu tür bir *event_declaration*tarafından belirtilen tüm Üyeler için geçerlidir.
 
-Bir *event_declaration* için hem `abstract` değiştirici hem de küme ayracı ile ayrılmış *event_accessor_declarations*içeren derleme zamanı hatasıdır.
+Bir *event_declaration* için derleme zamanı hatası, `abstract` değiştiricisi ve küme ayracı ile ayrılmış *event_accessor_declarations*içermelidir.
 
-Bir olay bildirimi bir `extern` değiştirici içerdiğinde, olay bir ***dış olay***olarak kabul edilir. Dış bir olay bildirimi gerçek uygulama içermediği için, hem `extern` değiştirici hem de *event_accessor_declarations*içermesi hatadır.
+Bir olay bildirimi bir `extern` değiştirici içerdiğinde, olay bir ***dış olay***olarak kabul edilir. Dış bir olay bildirimi gerçek uygulama sağladığından, `extern` değiştiricisini ve *event_accessor_declarations*içermesi bir hatadır.
 
-Bir *variable_initializer*içeren bir olay bildirimi `abstract` `external` *variable_declarator* için derleme zamanı hatasıdır.
+@No__t-1 veya `external` değiştiricisine sahip bir olay bildirimi *variable_declarator* *için bir derleme*zamanı hatası vardır.
 
 Bir olay, `+=` ve `-=` işleçlerinin sol işleneni olarak kullanılabilir ([olay atama](expressions.md#event-assignment)). Bu işleçler sırasıyla olay işleyicilerini bir olaydan kaldırmak ya da kaldırmak için kullanılır ve olayın erişim değiştiricileri, bu tür işlemlere izin verilen bağlamlara eklenir.
 
@@ -3179,7 +3179,7 @@ Burada, `LoginDialog` örnek Oluşturucu iki `Button` örnek oluşturur ve olay 
 
 ### <a name="field-like-events"></a>Alan benzeri olaylar
 
-Bir olayın bildirimini içeren sınıfın veya yapının program metni içinde, bazı olaylar alan gibi kullanılabilir. Bu şekilde kullanılmak üzere, bir olay ya `abstract` `extern`da olmamalıdır ve açıkça *event_accessor_declarations*içermemelidir. Bu tür bir olay, bir alana izin veren herhangi bir bağlamda kullanılabilir. Alan, olaya eklenmiş olan olay işleyicileri listesine başvuran bir temsilci ([Temsilciler](delegates.md)) içerir. Hiçbir olay işleyicisi eklenmemişse, alan içerir `null`.
+Bir olayın bildirimini içeren sınıfın veya yapının program metni içinde, bazı olaylar alan gibi kullanılabilir. Bu şekilde kullanılabilmesi için bir olayın `abstract` veya `extern` olmaması ve açıkça *event_accessor_declarations*dahil olmaması gerekir. Bu tür bir olay, bir alana izin veren herhangi bir bağlamda kullanılabilir. Alan, olaya eklenmiş olan olay işleyicileri listesine başvuran bir temsilci ([Temsilciler](delegates.md)) içerir. Hiçbir olay işleyicisi eklenmemişse, alan içerir `null`.
 
 Örnekte
 ```csharp
@@ -3240,13 +3240,13 @@ Sınıfı `X`içinde, `+=` ve `Ev` işleçlerinin`-=` sol tarafındaki başvurul
 
 ### <a name="event-accessors"></a>Olay erişimcileri
 
-Olay bildirimleri, yukarıdaki `Button` örnekte olduğu gibi genellikle event_accessor_declarations ' ı atyordu. Bunun için bir durum, her olay için bir alanın depolama maliyetinin kabul edilebilir olması durumunda oluşur. Böyle durumlarda, bir sınıf *event_accessor_declarations* içerebilir ve olay işleyicilerinin listesini depolamak için özel bir mekanizma kullanabilir.
+Olay bildirimleri, yukarıdaki `Button` örnekte olduğu gibi genellikle *event_accessor_declarations*' i atlayın. Bunun için bir durum, her olay için bir alanın depolama maliyetinin kabul edilebilir olması durumunda oluşur. Böyle durumlarda, bir sınıf *event_accessor_declarations* içerebilir ve olay işleyicilerinin listesini depolamak için özel bir mekanizma kullanabilir.
 
 Bir olayın *event_accessor_declarations* olay işleyicilerini ekleme ve kaldırma ile ilişkili yürütülebilir deyimleri belirtir.
 
 Erişimci bildirimleri bir *add_accessor_declaration* ve *remove_accessor_declaration*oluşur. Her erişimci bildirimi belirtecinden `add` oluşur veya `remove` arkasından bir *blok*gelir. Bir *add_accessor_declaration* ile ilişkili *blok* , bir olay işleyicisi eklendiğinde yürütülecek deyimleri belirtir ve bir *remove_accessor_declaration* ile ilişkili *blok* yürütülecek deyimleri belirtir bir olay işleyicisi kaldırıldığında.
 
-Her *add_accessor_declaration* ve *remove_accessor_declaration* , olay `void` türü ve dönüş türü tek bir değer parametresine sahip bir yönteme karşılık gelir. Bir olay erişimcisinin örtük parametresi olarak adlandırılmıştır `value`. Olay atamasında bir olay kullanıldığında, uygun olay erişimcisi kullanılır. Özellikle, atama işleci ise `+=` Add erişimcisi kullanılır ve atama `-=` işleci varsa kaldırma erişimcisi kullanılır. Her iki durumda da, atama işlecinin sağ işleneni olay erişimcisinin bağımsız değişkeni olarak kullanılır. Bir *add_accessor_declaration* veya *remove_accessor_declaration* bloğunun, `void` [Yöntem gövdesinde](classes.md#method-body)açıklanan yöntemlerle ilgili kurallara uyması gerekir. Özellikle, `return` bu tür bir bloktaki deyimlerin bir ifade belirtmelerine izin verilmez.
+Her *add_accessor_declaration* ve *remove_accessor_declaration* , olay türünün tek değerli parametresine sahip bir yönteme karşılık gelir ve `void` dönüş türü. Bir olay erişimcisinin örtük parametresi olarak adlandırılmıştır `value`. Olay atamasında bir olay kullanıldığında, uygun olay erişimcisi kullanılır. Özellikle, atama işleci ise `+=` Add erişimcisi kullanılır ve atama `-=` işleci varsa kaldırma erişimcisi kullanılır. Her iki durumda da, atama işlecinin sağ işleneni olay erişimcisinin bağımsız değişkeni olarak kullanılır. Bir *add_accessor_declaration* veya *Remove_accessor_declaration* bloğunun, [Yöntem gövdesinde](classes.md#method-body)açıklanan `void` yöntemlerine yönelik kurallara uyması gerekir. Özellikle, `return` bu tür bir bloktaki deyimlerin bir ifade belirtmelerine izin verilmez.
 
 Bir olay erişimcisinde örtük olarak adlı `value`bir parametre olduğundan, bu ada sahip olması için bir yerel değişken veya bir olay erişimcisinde belirtilen sabit için derleme zamanı hatası olur.
 
@@ -3298,7 +3298,7 @@ Statik bir olay, belirli bir örnekle ilişkili değildir ve statik bir olayın 
 
 Örnek olay, bir sınıfın belirli bir örneğiyle ilişkilendirilir ve bu örneğe bu olayın erişimcilerinde `this` ([Bu erişim](expressions.md#this-access)) erişilebilir.
 
-Bir olaya, `E.M` `E` `M` formunbir`M` *member_access* ([üye erişimi](expressions.md#member-access)) içinde başvuruluyorsa, bir statik olaydır,içerenbirtürübelirtmelidirvebirörnekolayıdır,E'nin`M` içeren `M`türün bir örneğini gösterir.
+@No__t-2 *biçiminde bir olaya* başvurulduğunda, @no__t[](expressions.md#member-access)-3 statik bir olaydır `E` `M` içeren bir türü belirtmelidir ve `M` bir örnek olayıdır, E 'nin içeren bir türün örneğini belirtmelidir. `M`.
 
 Statik ve örnek üyeleri arasındaki farklılıklar, [statik ve örnek üyelerinde](classes.md#static-and-instance-members)daha ayrıntılı bir şekilde ele alınmıştır.
 
@@ -3356,19 +3356,19 @@ indexer_body
     ;
 ```
 
-Bir *indexer_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin ([erişim değiştiricileri](classes.md#access-modifiers) `new` ) geçerli bir birleşimini içerebilir ([Yeni değiştirici](classes.md#the-new-modifier)) `virtual` , ([ Sanal yöntemler](classes.md#virtual-methods)), `override` ([geçersiz kılma yöntemleri](classes.md#override-methods)) `sealed` , ([Sealed Yöntemler](classes.md#sealed-methods) `abstract` ), ([soyut](classes.md#abstract-methods)Yöntemler) ve `extern` ([dış Yöntemler](classes.md#external-methods)) değiştiricileri.
+Bir *indexer_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)), `new` ([Yeni değiştirici](classes.md#the-new-modifier)), `virtual` ([sanal yöntemler) içerebilir ](classes.md#virtual-methods)), `override` ([geçersiz kılma yöntemleri](classes.md#override-methods)), 0 ([Sealed Yöntemler](classes.md#sealed-methods)), 2 ([soyut yöntemler](classes.md#abstract-methods)) ve 4 ([dış Yöntemler](classes.md#external-methods)) değiştiricileri.
 
 Dizin Oluşturucu bildirimleri, bir özel durum, Dizin Oluşturucu bildiriminde statik değiştiriciye izin verilmemesine neden olacak şekilde, geçerli değiştiriciler birleşimleriyle ilgili olarak yöntem bildirimleri ([yöntemleri](classes.md#methods)) ile aynı kurallara tabidir.
 
 , Ve `virtual` değiştiricileri`abstract` tek bir durum dışında birbirini dışlıyor. `override` `abstract` Ve`override` değiştiricileri bir soyut dizin oluşturucunun sanal bir dizin için geçersiz kılabilmesi için birlikte kullanılabilir.
 
-Bir Dizin Oluşturucu bildiriminin *türü* , bildirim tarafından tanıtılan dizin oluşturucunun öğe türünü belirtir. Dizin Oluşturucu açık bir arabirim üyesi uygulama değilse, *türün* ardından anahtar sözcüğü `this`gelir. Açık arabirim üyesi uygulama için, *türün* arkasından bir *interface_type*, "`.`" ve anahtar sözcüğü `this`gelir. Diğer üyelerin aksine, Dizin oluşturucular Kullanıcı tanımlı adlara sahip değildir.
+Bir Dizin Oluşturucu bildiriminin *türü* , bildirim tarafından tanıtılan dizin oluşturucunun öğe türünü belirtir. Dizin Oluşturucu açık bir arabirim üyesi uygulama değilse, *türün* ardından anahtar sözcüğü `this`gelir. Açık arabirim üyesi uygulama için, *türün* ardından bir *interface_type*, "`.`" ve anahtar sözcüğü `this` olur. Diğer üyelerin aksine, Dizin oluşturucular Kullanıcı tanımlı adlara sahip değildir.
 
 *Formal_parameter_list* , dizin oluşturucunun parametrelerini belirtir. Bir dizin oluşturucunun biçimsel parametre listesi[bir yönteme karşılık](classes.md#method-parameters)gelir, ancak en az bir parametre belirtilmesi ve `ref` ve `out` parametre değiştiricilerine izin verilmemelidir.
 
 Bir dizin oluşturucunun *türü* ve *formal_parameter_list* içinde başvurulan türlerin her biri en azından dizin oluşturucunun kendisi ([Erişilebilirlik kısıtlamaları](basic-concepts.md#accessibility-constraints)) olarak erişilebilir olmalıdır.
 
-Bir *indexer_body* , ***erişimci gövdesinden*** ya da bir ***ifade gövdesinden***oluşabilir. Bir erişimci gövdesinde, "`{`" ve "`}`" belirteçlerinin içine alınması gereken accessor_declarations, özelliğin erişimcileri ([erişimcileri](classes.md#accessors)) bildirmek. Erişimciler, özelliği okuma ve yazma ile ilişkili yürütülebilir deyimleri belirler.
+Bir *indexer_body* , ***erişimci gövdesinden*** ya da bir ***ifade gövdesinden***oluşabilir. Bir erişimci gövdesinde, "`{`" ve "`}`" belirteçlerinin içine alınması gereken *accessor_declarations*, özelliğin erişimcileri ([erişimcileri](classes.md#accessors)) ' sini bildirin. Erişimciler, özelliği okuma ve yazma ile ilişkili yürütülebilir deyimleri belirler.
 
 "`=>`" İfadesinden sonra gelen `E` ve noktalı virgülden oluşan bir ifade gövdesi deyim gövdesine `{ get { return E; } }`tam olarak eşdeğerdir ve bu nedenle yalnızca alıcı sonucunun tek bir ifade tarafından verilir.
 
@@ -3559,7 +3559,7 @@ Fazla yüklenebilir operatörlerin üç kategorisi vardır: Birli İşleçler ([
 
 *Operator_body* , bir noktalı virgül, bir ***deyim gövdesi*** veya bir ***ifade gövdesidir***. Deyim gövdesi, işleç çağrıldığında yürütülecek deyimleri belirten bir *bloğundan*oluşur. *Blok* , [Yöntem gövdesinde](classes.md#method-body)açıklanan değer döndüren yöntemlere yönelik kurallara uymalıdır. Bir ifade gövdesi, `=>` sonrasında bir ifade ve noktalı virgül ile oluşur ve işleç çağrıldığında gerçekleştirilecek tek bir ifadeyi gösterir.
 
-İşleçler `extern` için, *operator_body* yalnızca noktalı virgülden oluşur. Diğer tüm işleçler için, *operator_body* bir blok gövdedir veya bir ifade gövdesidir.
+@No__t-0 işleçleri için, *operator_body* yalnızca noktalı virgülle oluşur. Diğer tüm işleçler için, *operator_body* bir blok gövdedir veya bir ifade gövdesidir.
 
 Tüm işleç bildirimleri için aşağıdaki kurallar geçerlidir:
 
@@ -3650,7 +3650,7 @@ Belirli bir kaynak türü `S` ve hedef türü `T`için, null `S` yapılabilir `T
 
 *  `S0`ve `T0` farklı türlerdir.
 *  `S0` Ya`T0` da işleç bildiriminin gerçekleştiği sınıf veya yapı türüdür.
-*  Ne `S0` de `T0` bir *interface_type*değildir.
+*  Ne `S0` ne de `T0` bir *interface_type*.
 *  Kullanıcı tanımlı dönüştürmeler hariç olmak üzere `S` dönüştürme, ' den `T` ' e veya `T` `S`' den ' a arasında bulunmaz.
 
 Bu kuralların amaçları doğrultusunda, veya `S` `T` ile ilişkili herhangi bir tür parametresi, diğer türlerle devralma ilişkisine sahip olmayan benzersiz türler olarak kabul edilir ve bu tür parametrelerinin herhangi bir kısıtlaması yok sayılır.
@@ -3775,7 +3775,7 @@ constructor_body
     ;
 ```
 
-Bir *constructor_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)), dört erişim değiştiricisinin geçerli bir birleşimini ([erişim değiştiricileri](classes.md#access-modifiers)) ve bir `extern` ([dış Yöntemler](classes.md#external-methods)) değiştiricisini içerebilir. Oluşturucu bildiriminin aynı değiştiriciyi birden çok kez içerme izni yoktur.
+Bir *constructor_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)), dört erişim değiştiricisinin geçerli bir birleşimi ([erişim değiştiricileri](classes.md#access-modifiers)) ve bir `extern` ([dış Yöntemler](classes.md#external-methods)) değiştiricisi içerebilir. Oluşturucu bildiriminin aynı değiştiriciyi birden çok kez içerme izni yoktur.
 
 Bir *constructor_declarator* öğesinin *tanımlayıcısı* , örnek oluşturucusunun bildirildiği sınıfı içermelidir. Başka bir ad belirtilmişse, derleme zamanı hatası oluşur.
 
@@ -3793,7 +3793,7 @@ Bir Oluşturucu bildirimi bir `extern` değiştirici içerdiğinde, Oluşturucu 
 
 ### <a name="constructor-initializers"></a>Oluşturucu başlatıcıları
 
-Tüm örnek oluşturucular (sınıf `object`dışındakiler hariç), *constructor_body*hemen öncesine başka bir örnek oluşturucusunun bir çağrılmasını dolaylı olarak içerir. Örtük olarak çağrılacak Oluşturucu *constructor_initializer*tarafından belirlenir:
+Tüm örnek oluşturucular (`object` sınıfı için olanlar hariç), *constructor_body*hemen öncesine başka bir örnek oluşturucusunun bir çağrılmasını dolaylı olarak içerir. Örtük olarak çağrılacak Oluşturucu *constructor_initializer*tarafından belirlenir:
 
 *  Formun `base(argument_list)` bir örnek Oluşturucu başlatıcısı veya `base()` doğrudan taban sınıftan çağrılabilir bir örnek oluşturucusunun oluşmasına neden olur. Bu Oluşturucu, varsa *argument_list* ve [aşırı yükleme](expressions.md#overload-resolution)çözümlemesi çözüm kuralları kullanılarak seçilir. Aday örnek oluşturucular kümesi, doğrudan Taban sınıfında yer alan tüm erişilebilir örnek oluşturuculardan veya doğrudan temel sınıfta hiçbir örnek Oluşturucu bildirilmemiş ise varsayılan oluşturucuda ([Varsayılan oluşturucular](classes.md#default-constructors)) oluşur. Bu küme boşsa veya tek bir en iyi örnek Oluşturucu tanımlanamıyorsa, bir derleme zamanı hatası oluşur.
 *  Formun `this(argument-list)` bir örnek Oluşturucu başlatıcısı veya `this()` sınıfın kendisinden bir örnek oluşturucusunun çağrılmasını sağlar. Oluşturucu, varsa *argument_list* ve [aşırı yükleme](expressions.md#overload-resolution)çözümlemesi çözüm kuralları kullanılarak seçilir. Aday örnek oluşturucular kümesi, sınıfta belirtilen tüm erişilebilir örnek oluşturuculardan oluşur. Bu küme boşsa veya tek bir en iyi örnek Oluşturucu tanımlanamıyorsa, bir derleme zamanı hatası oluşur. Bir örnek Oluşturucu bildirimi, oluşturucuyu çağıran bir Oluşturucu başlatıcısı içeriyorsa, bir derleme zamanı hatası oluşur.
@@ -3820,11 +3820,11 @@ class B: A
 }
 ```
 
-Örnek Oluşturucu Başlatıcısı oluşturulan örneğe erişemez. Bu nedenle, Oluşturucu başlatıcısının bağımsız değişken ifadesinde başvurulmasına `this` yönelik derleme zamanı hatası, bir bağımsız değişken ifadesi için bir *simple_name*aracılığıyla herhangi bir örnek üyesine başvuruda bulunmak üzere bir derleme zamanı hatası olur.
+Örnek Oluşturucu Başlatıcısı oluşturulan örneğe erişemez. Bu nedenle, Oluşturucu başlatıcısının bağımsız değişken ifadesinde `this` ' a başvurulmasına yönelik derleme zamanı hatası, bir bağımsız değişken ifadesi için bir *simple_name*aracılığıyla herhangi bir örnek üyesine başvuruda bulunmak üzere bir derleme zamanı hatası olur.
 
 ### <a name="instance-variable-initializers"></a>Örnek değişken başlatıcıları
 
-Bir örnek oluşturucusunun Oluşturucu başlatıcısı olmadığında veya bu kullanıcının formun `base(...)`Oluşturucu başlatıcısı varsa, bu Oluşturucu, örnek alanlarının *variable_initializer*s tarafından belirtilen başlatmaları örtük olarak gerçekleştirir sınıfında bildirilmiştir. Bu, oluşturucuya girişte ve doğrudan temel sınıf oluşturucusunun örtük çağrılmasıyla önce yürütülen bir atama dizisine karşılık gelir. Değişken başlatıcıları, sınıf bildiriminde göründükleri metin sırasına göre yürütülür.
+Bir örnek oluşturucusunun Oluşturucu başlatıcısı olmadığında veya `base(...)` biçiminde bir Oluşturucu başlatıcısı varsa, bu Oluşturucu örtük olarak içinde belirtilen örnek alanlarının *variable_initializer*s tarafından belirtilen başlatma işlemlerini gerçekleştirir. kendi sınıfı. Bu, oluşturucuya girişte ve doğrudan temel sınıf oluşturucusunun örtük çağrılmasıyla önce yürütülen bir atama dizisine karşılık gelir. Değişken başlatıcıları, sınıf bildiriminde göründükleri metin sırasına göre yürütülür.
 
 ### <a name="constructor-execution"></a>Oluşturucu yürütme
 
@@ -3858,7 +3858,7 @@ class B: A
 }
 ```
 `new B()` öğesinin`B`bir örneğini oluşturmak için kullanıldığında, aşağıdaki çıktı üretilir:
-```
+```console
 x = 1, y = 0
 ```
 
@@ -3948,7 +3948,7 @@ Bir sınıf örnek Oluşturucu bildirimleri içermiyorsa, varsayılan bir örnek
 ```csharp
 protected C(): base() {}
 ```
-veya
+or
 ```csharp
 public C(): base() {}
 ```
@@ -4034,7 +4034,7 @@ static_constructor_body
     ;
 ```
 
-Bir *static_constructor_declaration* , *öznitelik* ( `extern` [öznitelikler](attributes.md)) ve değiştirici ([dış Yöntemler](classes.md#external-methods)) kümesini içerebilir.
+Bir *static_constructor_declaration* , bir dizi *öznitelik* ([öznitelik](attributes.md)) ve `extern` değiştiricisi ([dış Yöntemler](classes.md#external-methods)) içerebilir.
 
 Bir *static_constructor_declaration* öğesinin *tanımlayıcısı* , statik oluşturucunun bildirildiği sınıfı adı vermelidir. Başka bir ad belirtilmişse, derleme zamanı hatası oluşur.
 
@@ -4084,7 +4084,7 @@ class B
 }
 ```
 Çıktının üretilmesi gerekir:
-```
+```console
 Init A
 A.F
 Init B
@@ -4119,7 +4119,7 @@ class B
 }
 ```
 çıktıyı üretir
-```
+```console
 X = 1, Y = 2
 ```
 
@@ -4157,7 +4157,7 @@ Bir *destructor_declaration* bir *öznitelikler* kümesi içerebilir ([özniteli
 
 Bir *destructor_declaration* öğesinin *tanımlayıcısı* , yok edicinin bildirildiği sınıfı adını vermelidir. Başka bir ad belirtilmişse, derleme zamanı hatası oluşur.
 
-Yıkıcı bildirimi bir `extern` değiştirici içerdiğinde, yıkıcı bir ***dış yıkıcı***olarak kabul edilir. Bir dış yıkıcı bildirimi gerçek uygulama sunmadığından, *destructor_body* bir noktalı virgül içerir. Diğer tüm Yıkıcılar için, *destructor_body* sınıfının bir örneğini bırakmak için yürütülecek deyimleri belirten bir *bloğundan* oluşur. Bir *destructor_body* , `void` dönüş türü ([Yöntem gövdesi](classes.md#method-body)) olan bir örnek yönteminin *method_body* öğesine karşılık gelir.
+Yıkıcı bildirimi bir `extern` değiştirici içerdiğinde, yıkıcı bir ***dış yıkıcı***olarak kabul edilir. Bir dış yıkıcı bildirimi gerçek uygulama sunmadığından, *destructor_body* bir noktalı virgül içerir. Diğer tüm Yıkıcılar için, *destructor_body* sınıfının bir örneğini bırakmak için yürütülecek deyimleri belirten bir *bloğundan* oluşur. Bir *destructor_body* , `void` dönüş türü ([Yöntem gövdesi](classes.md#method-body)) ile bir örnek yönteminin *method_body* öğesine karşılık gelir.
 
 Yok ediciler devralınmaz. Bu nedenle, bir sınıfta bu sınıfta bildirilebilecek olandan başka yok edicisi yoktur.
 
@@ -4723,7 +4723,7 @@ Değiştirici içeren bir yönteme ([yöntemlere](classes.md#methods)) veya anon
 
 Herhangi `ref` bir veya `out` parametresi belirtmek için zaman uyumsuz bir işlevin biçimsel parametre listesi için derleme zamanı hatası.
 
-Zaman uyumsuz bir metodun SID 'si ya da `void` bir ***görev türü***olmalıdır. Görev türleri ve ' `System.Threading.Tasks.Task` den `System.Threading.Tasks.Task<T>`oluşturulan türlerdir. Breçekimi 'nin sake 'ı için bu bölümde sırasıyla ve `Task` `Task<T>`olarak başvurulur. Bir görev türü döndüren zaman uyumsuz bir yöntem, görev döndüren olarak kabul edilir.
+Zaman uyumsuz bir metodun SID *'si @no__t* -1 ya da bir ***görev türü***olmalıdır. Görev türleri ve ' `System.Threading.Tasks.Task` den `System.Threading.Tasks.Task<T>`oluşturulan türlerdir. Breçekimi 'nin sake 'ı için bu bölümde sırasıyla ve `Task` `Task<T>`olarak başvurulur. Bir görev türü döndüren zaman uyumsuz bir yöntem, görev döndüren olarak kabul edilir.
 
 Görev türlerinin tam tanımı uygulama tanımlı, ancak dilin bir görev türü görüntüleme noktasından tamamlanmamış, başarılı veya hatalı durumlardan birinde. Hatalı bir görev ilgili özel durumu kaydeder. Başarılı `Task<T>` bir tür `T`sonucunu kaydeder. Görev türleri beklenebilir ve bu nedenle await ifadelerinin işlenenleri ([await ifadeleri](expressions.md#await-expressions)) olabilir.
 

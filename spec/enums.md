@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: c3b716e6eb331be2ee33fffeb42c1e2406cd3a5c
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 3b142d7dbda8a94a4cf2c973a2e380065dcbf5ee
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488765"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703962"
 ---
 # <a name="enums"></a>Numaralandırmalar
 
-Bir ***sabit listesi türü*** ayrı değer türü ([değer türleri](types.md#value-types)), adlandırılmış sabitler kümesini bildirir.
+***Sabit listesi türü*** , adlandırılmış sabitler kümesini bildiren ayrı bir değer türüdür ([değer türleri](types.md#value-types)).
 
 Örnek
 
@@ -21,11 +21,11 @@ enum Color
 }
 ```
 
-adlı bir sabit listesi türü bildirir `Color` üyeleriyle `Red`, `Green`, ve `Blue`.
+-1, `Green` ve `Blue` @no__t üyelere sahip `Color` adlı bir sabit listesi türü bildirir.
 
-## <a name="enum-declarations"></a>Enum bildirimleri
+## <a name="enum-declarations"></a>Sabit Listesi bildirimleri
 
-Bir numaralandırma bildirimi yeni bir sabit listesi türü bildirir. With anahtar sözcüğü bir numaralandırma bildirimi başlar `enum`, adı, erişilebilirlik, temel alınan türü ve numaralandırma üyeleri tanımlar.
+Sabit listesi bildirimi yeni bir sabit listesi türü bildirir. Enum bildirimi `enum` anahtar sözcüğüyle başlar ve ad, erişilebilirlik, temel türü ve sabit listesinin üyelerini tanımlar.
 
 ```antlr
 enum_declaration
@@ -42,7 +42,7 @@ enum_body
     ;
 ```
 
-Her bir numaralandırma türünün adlı karşılık gelen bir integral türü olan ***temel alınan türü*** sabit listesi türü. Bu temel türünü numaralandırmada tanımlanan tüm Numaralayıcı değerleri temsil etmesi mümkün olması gerekir. Bir numaralandırma bildirimi bir temel alınan türü açıkça bildirebilir `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long` veya `ulong`. Unutmayın `char` bir temel türü kullanılamaz. Bir temel türü açıkça bildirmiyor bir numaralandırma bildirimi bir temel türüne sahip `int`.
+Her sabit listesi türünün, enum türünün ***temel alınan türü*** olarak adlandırılan karşılık gelen bir integral türü vardır. Bu temel tür, numaralandırmada tanımlanan tüm Numaralandırıcı değerlerini temsil edebilmelidir. Sabit listesi bildirimi, `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long` veya `ulong` türündeki temel bir türü açıkça bildirebilir. @No__t-0 ' ın temel alınan bir tür olarak kullanılamayacağını unutmayın. Temel alınan bir türü açıkça bildirmiyor bir numaralandırma bildirimi, temel alınan bir tür `int` ' dır.
 
 Örnek
 
@@ -55,11 +55,11 @@ enum Color: long
 }
 ```
 
-temel alınan bir türü ile bir sabit listesi bildirir `long`. Bir geliştirici, temel alınan bir türünü kullanmayı tercih edebilirsiniz `long`aralığında olan değerleri kullanımını etkinleştirmek için örnekte gibi `long` ancak aralığını `int`, veya gelecek için bu seçeneği korumak için.
+`long` temel türüne sahip bir sabit listesi bildirir. Geliştirici, örneğin `long` aralığında olan ancak `int` aralığında olmayan değerlerin kullanımını etkinleştirmek ya da gelecekte bu seçeneği korumak için `long` ' ın temel bir türünü kullanmayı tercih edebilir.
 
-## <a name="enum-modifiers"></a>Enum değiştiriciler
+## <a name="enum-modifiers"></a>Sabit Listesi değiştiricileri
 
-Bir *enum_declaration* isteğe bağlı olarak bir dizi sabit listesi değiştiriciler içerebilir:
+Bir *enum_declaration* isteğe bağlı olarak bir sabit listesi değiştiricileri sırası içerebilir:
 
 ```antlr
 enum_modifier
@@ -71,13 +71,13 @@ enum_modifier
     ;
 ```
 
-Aynı değiştiricisi bir sabit listesi bildiriminde birden çok kez görünmesi için bir derleme zamanı hatasıdır.
+Aynı değiştiricinin bir numaralandırma bildiriminde birden çok kez görünmesi için derleme zamanı hatası vardır.
 
-Bu sınıf bildirimi aynı anlamı, bir numaralandırma bildirimi, değiştiricilere sahip ([sınıfı değiştiricileri](classes.md#class-modifiers)). Ancak, unutmayın, `abstract` ve `sealed` değiştiriciler bir sabit listesi bildiriminde izin verilmez. Numaralandırmalar, soyut olamaz ve türetme tanımaz.
+Bir numaralandırma bildiriminin değiştiricileri, bir sınıf bildirimiyle ([sınıf değiştiricileri](classes.md#class-modifiers)) aynı anlama sahiptir. Ancak, `abstract` ve `sealed` değiştiricilerine bir numaralandırma bildiriminde izin verilmeyeceğini unutmayın. Numaralandırmalar özet olamaz ve türetmeye izin vermez.
 
-## <a name="enum-members"></a>Numaralandırma üyeleri
+## <a name="enum-members"></a>Sabit listesi üyeleri
 
-Bir numaralandırma türü bildirimi gövdesi adlandırılmış sabitler sabit listesi türü, sıfır veya daha fazla numaralandırma üyeleri tanımlar. İki sabit listesi üye aynı ada sahip olabilir.
+Enum türü bildiriminin gövdesi, sabit listesi türünün adlandırılmış sabitleri olan sıfır veya daha fazla numaralandırma üyesini tanımlar. İki numaralandırma üyesi aynı ada sahip olamaz.
 
 ```antlr
 enum_member_declarations
@@ -89,7 +89,7 @@ enum_member_declaration
     ;
 ```
 
-Her sabit listesi üyesi, ilişkili bir sabit değere sahip. Bu değer içeren numaralandırması için temeldeki türü türüdür. Her sabit listesi üyesi için sabit değerin numaralandırması için temeldeki türü aralığında olması gerekir. Örnek
+Her sabit listesi üyesinin ilişkili bir sabit değeri vardır. Bu değerin türü, kapsayan Enum için temel alınan türdür. Her bir sabit listesi üyesinin sabit değeri, sabit listesinin temel alınan türünün aralığında olmalıdır. Örnek
 
 ```csharp
 enum Color: uint
@@ -100,9 +100,9 @@ enum Color: uint
 }
 ```
 
-sonuçları bir derleme zamanı hatası nedeniyle sabit değerler `-1`, `-2`, ve `-3` integral türünün temel alınan bir aralıkta yer `uint`.
+`-1`, `-2` ve `-3` sabit değerleri temel alınan integral türü `uint` aralığında olmadığından, derleme zamanı hatası oluşur.
 
-Birden çok sabit listesi üye aynı ilişkili değer paylaşabilir. Örnek
+Birden çok enum üyesi aynı ilişkili değeri paylaşabilir. Örnek
 
 ```csharp
 enum Color 
@@ -115,12 +115,12 @@ enum Color
 }
 ```
 
-içinde iki numaralandırma üyeleri--enum gösterir `Blue` ve `Max` --aynı değeri ilişkilendirdiniz.
+iki sabit listesi üyesinin--`Blue` ve `Max` ile aynı ilişkili değere sahip bir Enum gösterir.
 
-İlişkili değer enum üyesini örtük veya açık olarak atanır. Sabit listesi üyesi bildirimi varsa bir *constant_expression* Başlatıcı, temel alınan numaralandırma türüne örtük olarak dönüştürülen bu sabit ifade değerini sabit listesi üyesi ilişkili değeridir. Sabit listesi üyesi bildirimi Başlatıcı varsa, ilişkili değeri örtük olarak, şu şekilde ayarlanır:
+Sabit Listesi üyesinin ilişkili değeri örtük veya açık olarak atanır. Enum üyesinin bildiriminde bir *constant_expression* başlatıcısı varsa, bu sabit ifadenin değeri örtük olarak numaralandırmanın temel alınan türüne dönüştürüldü, enum üyesinin ilişkili değeridir. Enum üyesinin bildiriminde Başlatıcı yoksa, ilişkili değeri örtük olarak aşağıdaki gibi ayarlanır:
 
-*  Sabit listesi üyesi enum türünde bildirilen ilk sabit listesi üyesi ise, ilişkili değeri sıfırdır.
-*  Aksi takdirde, sabit listesi üyesi ilişkili değerini bir metin içeriğini eklemek önceki sabit listesi üyesi ilişkili değerini artırarak elde edilir. Daha fazla bu değer temel alınan türü tarafından temsil edilebilir değerler aralığında olması gerekir, aksi takdirde bir derleme zamanı hatası oluşur.
+*  Sabit listesi üyesi, numaralandırma türünde belirtilen ilk enum üyesiyse, ilişkili değeri sıfırdır.
+*  Aksi takdirde, enum üyesinin ilişkili değeri, metin içeriğini eklemek önceki enum üyesinin ilişkili değeri bir ile arttırılarak elde edilir. Bu artış değeri, temel alınan tür tarafından gösterilebilen değer aralığı içinde olmalıdır, aksi takdirde bir derleme zamanı hatası oluşur.
 
 Örnek
 
@@ -160,9 +160,9 @@ class Test
 }
 ```
 
-sabit listesi üye adları ve ilişkili değerleri yazdırır. Çıktı.
+sabit listesi üye adlarını ve bunlarla ilişkili değerleri yazdırır. Çıktı:
 
-```
+```console
 Red = 0
 Green = 10
 Blue = 11
@@ -170,11 +170,11 @@ Blue = 11
 
 Aşağıdaki nedenlerle:
 
-*  sabit listesi üyesi `Red` değeri sıfır (bunu Başlatıcı içermiyor ve ilk sabit listesi üyesi olduğundan); otomatik olarak atanır
-*  sabit listesi üyesi `Green` değeri açıkça verilir `10`;
-*  ve sabit listesi üyesi `Blue` değeri metin içeriğini eklemek kendisinden üyenin büyük bir otomatik olarak atanır.
+*  `Red` sabit listesi üyesi, otomatik olarak sıfır değerine atanır (Başlatıcı olmadığından ve ilk sabit listesi üyesi olduğundan);
+*  `Green` sabit listesi üyesi, `10`; değerine açıkça verilir.
+*  `Blue` enum üyesi, metin içeriğini eklemek kendisinden önce gelen Üyeden bir daha büyük değere otomatik olarak atanır.
 
-İlişkili değeri bir sabit listesi üyesi olabilir değil, doğrudan veya dolaylı olarak kendi ilişkili sabit listesi üyesi değerini kullanın. Bu döngü kısıtlama dışında sabit listesi üyesi başlatıcıları metinsel konumlarına bakmaksızın diğer sabit listesi üyesi başlatıcıları serbestçe başvurabilir. Böylece yayınları diğer enum üyelerine başvuru yaparken gerekli olmayan bir sabit listesi üyesi başlatıcısı içinde diğer sabit listesi üyelerinin değerlerini her zaman kendi temel türü türünü varmış gibi davranılır.
+Enum üyesinin ilişkili değeri, doğrudan veya dolaylı olarak kendi ilişkili enum üyesinin değerini kullanamaz. Bu döngü kısıtlamasından farklı olarak, sabit listesi üye başlatıcıları, metinsel konumlarından bağımsız olarak diğer sabit listesi üye başlatıcılarına serbestçe başvurabilirler. Bir sabit listesi üye başlatıcısı içinde, diğer sabit listesi üyelerinin değerleri her zaman kendi temel türlerinin türüne sahip olarak değerlendirilir ve bu sayede diğer sabit listesi üyelerine başvuru yaparken yapılan yayınlar gerekli değildir.
 
 Örnek
 
@@ -186,22 +186,22 @@ enum Circular
 }
 ```
 
-sonuçları bir derleme zamanı hatası nedeniyle bildirimlerini `A` ve `B` döngüsel olan. `A` bağımlı `B` açıkça ve `B` bağlıdır `A` örtük olarak.
+`A` ve `B` bildirimleri dairesel olduğundan derleme zamanı hatası oluşur. `A` `B` ' ye bağlıdır ve `B` ' ye örtülü olarak @no__t bağlıdır.
 
-Numaralandırma üyeleri adlı ve sınıfları alanları tam olarak benzer bir şekilde kapsamlı. Sabit listesi üyesi kapsamını içeren enum türü gövdesidir. Bu kapsam içinde numaralandırma üyeleri için basit adlarına göre adlandırılır. Diğer tüm koddan bir sabit listesi üyesi adını numaralandırma türü adı ile nitelenmelidir. Numaralandırma üyeleri tüm bildirilen erişilebilirliği yok--sabit listesi üyesi, kapsayan bir enum türü erişilemiyorsa erişilebilir.
+Sabit listesi üyeleri, sınıfların içindeki alanlara tam olarak benzer şekilde adlandırılır ve kapsamlandırılır. Bir sabit listesi üyesinin kapsamı, kapsayan enum türünün gövdesidir. Bu kapsam içinde, sabit listesi üyeleri kendi basit adlarıyla adlandırılabilir. Diğer tüm koddan, bir sabit listesi üyesinin adı, sabit listesi türünün adı ile nitelenmelidir. Sabit listesi üyelerinin tanımlanmış bir erişilebilirliği yoktur--bir numaralandırma üyesine, içerdiği numaralandırma türü erişilebilir ise erişilebilir.
 
-## <a name="the-systemenum-type"></a>System.Enum Türü
+## <a name="the-systemenum-type"></a>System. Enum türü
 
-Türü `System.Enum` soyut temel sınıf (Bu, ayrı ve sabit listesi türü temel alınan türünden farklı) tüm sabit listesi türleri ve üyeleri devralınan `System.Enum` herhangi bir sabit listesi türü kullanılabilir. Kutulama dönüştürmesi ([kutulama dönüştürmeler](types.md#boxing-conversions)) herhangi bir sabit listesi Türü alanından mevcut `System.Enum`ve bir paket açma dönüşümünün ([kutudan çıkarma dönüştürme](types.md#unboxing-conversions)) öğesinden var. `System.Enum` herhangi bir sabit listesi türü için.
+@No__t-0 türü, tüm numaralandırma türlerinin soyut temel sınıfıdır (Bu, sabit listesi türünün temel alınan türünden farklıdır) ve `System.Enum` ' den devralınan Üyeler herhangi bir numaralandırma türünde kullanılabilir. Herhangi bir numaralandırma türünden `System.Enum` ' e ([kutulama dönüşümleri](types.md#boxing-conversions)), `System.Enum` ' ten herhangi bir numaralandırma türüne ([kutudan](types.md#unboxing-conversions)çıkarma dönüştürmesi) var.
 
-Unutmayın `System.Enum` kendisi değil bir *enum_type*. Bunun yerine, olan bir *class_type* tüm gelen *enum_type*s türetilir. Türü `System.Enum` tür tarafından devralındığında `System.ValueType` ([System.ValueType türü](types.md#the-systemvaluetype-type)), buna karşılık, tür tarafından devralındığında `object`. Çalışma zamanında, türünde bir değer `System.Enum` olabilir `null` veya paketlenmiş değere herhangi bir enum tür başvurusu.
+@No__t-0 ' ın kendisinin bir *enum_type*olmadığı unutulmamalıdır. Bunun yerine, tüm *enum_type*s 'nin türetildiği bir *class_type* . @No__t-0 türü `System.ValueType` ([System. ValueType türü](types.md#the-systemvaluetype-type)) türünden devralır, bu, sırasıyla `object` türünden devralır. Çalışma zamanında, `System.Enum` türünde bir değer `null` olabilir ya da herhangi bir numaralandırma türündeki paketlenmiş bir değere başvuru olabilir.
 
-## <a name="enum-values-and-operations"></a>Sabit listesi değerlerinin ve işlemler
+## <a name="enum-values-and-operations"></a>Sabit listesi değerleri ve işlemleri
 
-Her bir numaralandırma türünün farklı bir tür tanımlar; Açık numaralandırma dönüştürme ([açık numaralandırma dönüştürmeler](conversions.md#explicit-enumeration-conversions)) enum türü ve integral türünde arasında veya iki sabit listesi türleri arasında dönüştürme için gereklidir. Enum türü alan değerleri kümesi numaralandırma üyelerini sınırlı değildir. Özellikle, bir sabit listesi türünü temel herhangi bir değerini numaralandırma türüne dönüştürülebilen ve sabit listesi türü farklı geçerli bir değer.
+Her enum türü farklı bir tür tanımlar; bir numaralandırma türü ile integral türü arasında veya iki sabit listesi türü arasında dönüştürme yapmak için açık bir numaralandırma dönüştürmesi ([açık numaralandırma dönüştürmeleri](conversions.md#explicit-enumeration-conversions)) gereklidir. Bir numaralandırma türünün üzerinde sürebelirlenen değerler kümesi, sabit listesi üyeleri tarafından sınırlı değildir. Özellikle, bir sabit listesinin temel alınan türünün herhangi bir değeri, sabit listesi türüne dönüşebilir ve bu sabit listesi türünün ayrı bir geçerli değeridir.
 
-Numaralandırma üyeleri kendi içeren numaralandırma türünün sahiptir (dışındaki diğer sabit listesi üyesi başlatıcıları içinde: bkz [numaralandırma üyeleri](enums.md#enum-members)). Sabit listesi üyesi değerini sabit listesi türünde bildirilen `E` ilişkili değeriyle `v` olduğu `(E)v`.
+Sabit listesi üyeleri, kendi kapsayan enum türünde (diğer sabit listesi üye başlatıcıları dışında: [enum üyelerine](enums.md#enum-members)bakın) türü vardır. @No__t-1 ilişkili değeri ile `E` numaralandırma türünde belirtilen bir sabit listesi üyesinin değeri `(E)v` ' dir.
 
-Aşağıdaki işleçleri, değerleri sabit listesi türleri üzerinde kullanılabilir: `==`, `!=`, `<`, `>`, `<=`, `>=`  ([numaralandırma Karşılaştırma işleçleri](expressions.md#enumeration-comparison-operators)) , ikili `+`  ([Toplama işleci](expressions.md#addition-operator)), ikili `-`  ([çıkarma işleci](expressions.md#subtraction-operator)), `^`, `&` , `|`  ([Numaralandırma mantıksal işleçler](expressions.md#enumeration-logical-operators)), `~`  ([bit düzeyinde tamamlama işleci](expressions.md#bitwise-complement-operator)), `++` ve `--`  ([Sonek arttırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators) ve [önek arttırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)).
+Aşağıdaki işleçler, enum türlerinin değerleri üzerinde kullanılabilir: `==`, `!=`, `<`, `>`, `<=`, `>=` @ no__t-6 ([numaralandırma karşılaştırma işleçleri](expressions.md#enumeration-comparison-operators)), ikili `+` @ no__t-9 ([toplama işleci](expressions.md#addition-operator)), ikili 1 @ no__ t-12 ([çıkarma işleci](expressions.md#subtraction-operator)), 4, 5, 6 @ no__t-17 ([numaralandırma mantıksal işleçler](expressions.md#enumeration-logical-operators)), 9 @ No__t-20 ([bit düzeyinde tamamlama işleci](expressions.md#bitwise-complement-operator)), 2 ve 3 @ no__t-24 ([Sonek artışı ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators) ve [önek artırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)).
 
-Her sabit listesi türü otomatik olarak sınıfından türetilen `System.Enum` (, sırasıyla türetilir `System.ValueType` ve `object`). Bu nedenle, devralınan yöntemler ve özellikler bu sınıfın bir numaralandırma türünün değerleri üzerinde kullanılabilir.
+Her numaralandırma türü otomatik olarak `System.Enum` sınıfından türetilir (Bu, sırasıyla `System.ValueType` ve `object` ' den türetilir). Bu nedenle, bu sınıfın devralınmış yöntemleri ve özellikleri, bir sabit listesi türünün değerleri üzerinde kullanılabilir.

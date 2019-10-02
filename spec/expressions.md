@@ -1,72 +1,72 @@
 ---
-ms.openlocfilehash: 130898a8b5a7b8eb986b314cb4cf78038e840b02
-ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
+ms.openlocfilehash: f61039abd6bd557ac0ea625e6aac1c8bafa57b02
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66193928"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704082"
 ---
 # <a name="expressions"></a>İfadeler
 
-Bir ifade, işleçler ve işlenenler dizisidir. Bu bölümde sözdizimi, değerlendirme işleçler ve işlenenler ve ifadeler anlamını sırasını tanımlar.
+İfade, işleç ve işlenen dizisidir. Bu bölümde sözdizimi, işlenenler ve işleçler değerlendirmesi sırası ve ifadelerin anlamı tanımlanmaktadır.
 
 ## <a name="expression-classifications"></a>İfade sınıflandırmaları
 
-Bir ifade aşağıdakilerden biri sınıflandırıldığını:
+Bir ifade, aşağıdakilerden biri olarak sınıflandırıldı:
 
-*  Bir değer. Her değer, ilişkili bir türe sahip.
-*  Bir değişken. Her değişken, ilişkili bir türü, yani değişkeninin bildirilen türü vardır.
-*  Bir ad alanı. Bu sınıflandırmada bir ifade yalnızca sol tarafında görünebilir bir *member_access* ([üye erişimi](expressions.md#member-access)). Diğer herhangi bir bağlam içinde bir ad alanı olarak sınıflandırılmış bir ifade, bir derleme zamanı hatasına neden olur.
-*  Bir tür. Bu sınıflandırmada bir ifade yalnızca sol tarafında görünebilir bir *member_access* ([üye erişimi](expressions.md#member-access)), veya bir işleneni olarak `as` işleci ([işleci ](expressions.md#the-as-operator)), `is` işleci ([işleci](expressions.md#the-is-operator)), veya `typeof` işleci ([typeof işleci](expressions.md#the-typeof-operator)). Diğer herhangi bir bağlam içinde bir tür olarak sınıflandırılmış bir ifade, bir derleme zamanı hatasına neden olur.
-*  Bir üye aramasından kaynaklanan aşırı yüklenmiş yöntemler kümesi bir yöntem grubu ([üye araması](expressions.md#member-lookup)). Bir yöntem grubu, ilişkilendirilmiş ifadenin ve ilişkili tür bağımsız değişken listesi olabilir. Bir örnek yöntemi çağrıldığında, örnek ifade değerlendirme sonucu örneği tarafından temsil edilen olur `this` ([bu erişim](expressions.md#this-access)). Bir yöntem grubu içinde izin verilen bir *invocation_expression* ([çağrı ifadeleri](expressions.md#invocation-expressions)), *delegate_creation_expression* ([temsilci oluşturma ifadeleri](expressions.md#delegate-creation-expressions)) ve sol tarafında bir işleç ve bir uyumlu temsilci türüne örtük olarak dönüştürülebilir ([yöntem grubu dönüştürmeler](conversions.md#method-group-conversions)). Diğer herhangi bir bağlam içinde bir yöntem grubu sınıflandırılmış bir ifade, bir derleme zamanı hatasına neden olur.
-*  Bir null sabit değer. Bu sınıflandırmada bir ifade bir başvuru türüyle veya Null olabilen türü örtük olarak dönüştürülebilir.
-*  Anonim bir işlevdir. Bu sınıflandırmada bir ifade bir uyumlu temsilci türü ya da ifade ağaç türüne örtük olarak dönüştürülebilir.
-*  Özellik erişimi. Yani özellik türünün ilişkili bir türü her özellik erişebilir. Ayrıca, bir özellik erişimi ilişkili örnek bir ifade olabilir. Erişimci olduğunda ( `get` veya `set` blok) örneğinin özellik erişimi çağrılır, örnek ifade değerlendirme sonucu örneği tarafından temsil edilen olur `this` ([bu erişim](expressions.md#this-access)).
-*  Bir olay erişim. İlişkili bir türü, yani olay türünü her olay erişebilir. Ayrıca, bir olay erişimini ilişkili örnek bir ifade olabilir. Olay erişimini'nın sol işlenen olarak görünebilir `+=` ve `-=` işleçleri ([olay ataması](expressions.md#event-assignment)). Diğer herhangi bir bağlam içinde bir olay erişimini sınıflandırılmış bir ifade, bir derleme zamanı hatasına neden olur.
-*  Bir dizin oluşturucu erişim. İlişkili bir türü, yani öğe türü Indexer'ın her dizin oluşturucu erişebilir. Ayrıca, bir dizin oluşturucu erişim ilişkilendirilmiş ifade ve ilişkili bağımsız değişken listesi vardır. Erişimci olduğunda ( `get` veya `set` blok) bir dizin oluşturucu erişim çağrılır, örnek ifade değerlendirme sonucu örneği tarafından temsil edilen olur `this` ([bu erişim](expressions.md#this-access)), sonucu bağımsız değişken listesi değerlendirme çağırmanın parametre listesi olur.
-*  Bir şey yok. İfade bir yöntem çağrısından dönüş türüne sahip olduğunda bu gerçekleşir `void`. Hiçbir şey yalnızca bağlamında geçerli olarak sınıflandırılmış bir ifade bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)).
+*  Bir değer. Her değerin ilişkili bir türü vardır.
+*  Bir değişken. Her değişkenin bir ilişkili türü vardır, yani bu değişkenin belirtilen türü.
+*  Ad alanı. Bu sınıflandırmayla bir ifade, yalnızca bir *member_access* ([üye erişimi](expressions.md#member-access)) sol tarafında görünür. Diğer bir bağlamda, ad alanı olarak sınıflandırılan bir ifade, derleme zamanı hatasına neden olur.
+*  Bir tür. Bu sınıflandırmayla bir ifade, yalnızca bir *member_access* ([üye erişimi](expressions.md#member-access)) sol tarafı veya `as` işleci ([as işleci](expressions.md#the-as-operator)), `is` işleci ([IS işleci](expressions.md#the-is-operator)) veya @no için bir işlenen olarak yer alabilir __T-6 işleci ([typeof işleci](expressions.md#the-typeof-operator)). Başka bir bağlamda, tür olarak sınıflandırılan bir ifade, derleme zamanı hatasına neden olur.
+*  Bir üye aramasının ([üye arama](expressions.md#member-lookup)) sonucu olan aşırı yüklenmiş yöntemler kümesi olan bir yöntem grubu. Bir yöntem grubunun ilişkili bir örnek ifadesi ve ilişkili bir tür bağımsız değişkeni listesi olabilir. Bir örnek yöntemi çağrıldığında, örnek ifadesinin değerlendirilme sonucu `this` ([Bu erişim](expressions.md#this-access)) ile temsil edilen örnek haline gelir. Bir *invocation_expression* ([çağırma ifadelerinde](expressions.md#invocation-expressions)), bir *delegate_creation_expression* ([temsilci oluşturma ifadeleri](expressions.md#delegate-creation-expressions)) ve bir bir işleç işlecinin sol tarafı olarak bir yöntem grubuna izin verilir ve örtülü olarak olabilir uyumlu bir temsilci türüne dönüştürüldü ([Yöntem grubu dönüştürmeleri](conversions.md#method-group-conversions)). Diğer bir bağlamda, Yöntem grubu olarak sınıflandırılan bir ifade derleme zamanı hatasına neden olur.
+*  Null bir sabit değer. Bu sınıflandırmayla bir ifade, örtük olarak bir başvuru türüne veya null yapılabilir türe dönüştürülebilir.
+*  Anonim bir işlev. Bu sınıflandırmayla bir ifade, örtülü olarak uyumlu bir temsilci türüne veya ifade ağacı türüne dönüştürülebilir.
+*  Özellik erişimi. Her özellik erişiminin, özelliğin türü olarak ilişkili bir türü vardır. Ayrıca, özellik erişiminin ilişkili bir örnek ifadesi olabilir. Örnek özellik erişiminin bir erişimcisi (`get` veya `set` bloğu) çağrıldığında, örnek ifadesinin değerlendirilme sonucu, `this` ([Bu erişim](expressions.md#this-access)) tarafından temsil edilen örnek haline gelir.
+*  Bir olay erişimi. Her olay erişiminde ilişkili bir tür bulunur, bu olay türü olayın türüdür. Ayrıca, bir olay erişiminin ilişkili bir örnek ifadesi olabilir. @No__t-0 ve `-=` işleçlerinin ([olay atama](expressions.md#event-assignment)) sol tarafında bir olay erişimi görüntülenebilir. Diğer bir bağlamda, olay erişimi olarak sınıflandırılan bir ifade, derleme zamanı hatasına neden olur.
+*  Dizin Oluşturucu erişimi. Her Dizin Oluşturucu erişiminin ilişkili bir türü vardır, yani dizin oluşturucunun öğe türü. Ayrıca, Dizin Oluşturucu erişiminin ilişkili bir örnek ifadesi ve ilişkili bağımsız değişken listesi vardır. Bir Dizin Oluşturucu erişiminin bir erişimcisi (`get` veya `set` bloğu) çağrıldığında, örnek ifadesinin değerlendirilme sonucu `this` ([Bu erişim](expressions.md#this-access)) tarafından temsil edilen örnek olur ve bağımsız değişken listesinin değerlendirilme sonucu, çağrının parametre listesi.
+*  Yapma. Bu, ifade `void` dönüş türüne sahip bir yöntemin çağrılışında oluşur. Nothing olarak sınıflandırılan bir ifade yalnızca bir *statement_expression* ([Expression deyimleri](statements.md#expression-statements)) bağlamında geçerlidir.
 
-Bir ifade sonucunu hiçbir zaman ad alanı, tür, yöntem grubuna veya olay erişimini ' dir. Bunun yerine, yukarıda belirtildiği gibi bu kategorileri ifadelerin yalnızca belirli bağlamlarda izin verilen ara yapılarıdır.
+Bir ifadenin nihai sonucu hiçbir şekilde bir ad alanı, tür, Yöntem grubu veya olay erişimdir. Bunun yerine, yukarıda belirtildiği gibi, bu ifade kategorileri yalnızca belirli bağlamlarda izin verilen ara yapılardır.
 
-Bir özellik erişimi veya dizin oluşturucu erişim her zaman bir değer olarak, bir çağrı gerçekleştirerek yeniden sınıflandırılması *get erişimcisine* veya *set erişimcisine*. Belirli bir erişimci özelliğin veya dizin oluşturucu erişim bağlamında tarafından belirlenir: Erişim atama, hedef ise *set erişimcisine* yeni bir değer atamak için çağrılır ([basit atama](expressions.md#simple-assignment)). Aksi takdirde, *get erişimcisine* geçerli değerini almak için çağrılır ([ifadelerin değerleri](expressions.md#values-of-expressions)).
+Bir özellik erişimi veya Dizin Oluşturucu erişimi, *Get erişimcisinin* veya *set erişimcisinin*çağrılması gerçekleştirerek her zaman bir değer olarak yeniden sınıflanır. Belirli erişimci, özelliğin veya dizin oluşturucunun erişiminin bağlamına göre belirlenir: Erişim bir atamanın hedefi ise, *küme erişimcisi* yeni bir değer ([basit atama](expressions.md#simple-assignment)) atamak için çağrılır. Aksi takdirde, *get erişimcisi* geçerli değeri ([ifadelerin değerleri](expressions.md#values-of-expressions)) almak için çağrılır.
 
 ### <a name="values-of-expressions"></a>İfadelerin değerleri
 
-Bir ifade içeren yapıları çoğunu nihai olarak belirtmek için ifadeyi gerektiren bir ***değer***. Gerçek ifade bir ad alanı, bir tür, bir yöntem grubu veya hiçbir şey gösteriyorsa bu gibi durumlarda, bir derleme zamanı hatası oluşur. Ancak, ifade, özellik erişimi, bir dizin oluşturucu erişim veya bir değişken gösteriyorsa, özelliği, dizin oluşturucu veya değişken değeri örtük olarak değiştirilir:
+Bir ifadeyi içeren yapıların çoğu sonunda ifadenin bir ***değeri***belirtmek için gereklidir. Bu gibi durumlarda, gerçek ifade bir ad alanı, bir tür, bir yöntem grubu veya hiçbir şey ifade ediyorsa, derleme zamanı hatası oluşur. Ancak, ifade bir özellik erişimi, Dizin Oluşturucu erişimi veya bir değişken ise, özelliğin, dizin oluşturucunun veya değişkenin değeri örtük olarak yerine kullanılır:
 
-*  Yalnızca şu anda değişkeni tarafından tanımlanan depolama konumunda depolanan değeri bir değişkene değeridir. Bir değişken kesinlikle atanan dikkate alınmalıdır ([belirli atama onayına](variables.md#definite-assignment)) önce değeri alınabilir veya aksi halde bir derleme zamanı hatası oluşur.
-*  Bir özellik erişim ifadesinin değerine çağırarak elde edilen *get erişimcisine* özelliği. Özellik Hayır varsa *get erişimcisine*, bir derleme zamanı hatası oluşur. Aksi takdirde, işlev üyesi çağırma ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) gerçekleştirilir, ve çağrısının sonucunu özellik erişim ifadesinin değeri olur.
-*  Bir dizin oluşturucu erişim ifadesinin değerini çağırarak elde *get erişimcisine* dizin oluşturucu. Dizin Oluşturucu Hayır varsa *get erişimcisine*, bir derleme zamanı hatası oluşur. Aksi takdirde, bir işlev üye çağrısı ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) bağımsız değişkeniyle gerçekleştirilir listesi výraz indexeru erişim ile ilişkili ve bu değeri çağrısının sonucunu olur Dizin Oluşturucu erişim ifadesi.
+*  Bir değişkenin değeri, değişken tarafından tanımlanan depolama konumunda şu anda depolanan değer olacaktır. Değerin alınabilmesi için bir değişken kesin olarak atanmış ([kesin atama](variables.md#definite-assignment)) olarak kabul edilmelidir, aksi takdirde bir derleme zamanı hatası oluşur.
+*  Özellik erişim ifadesinin değeri, özelliğin *get erişimcisi* çağrılarak elde edilir. Özelliğin *get erişimcisi*yoksa, bir derleme zamanı hatası oluşur. Aksi takdirde, bir işlev üye çağrısı ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) gerçekleştirilir ve çağrının sonucu özellik erişim ifadesinin değeri olur.
+*  Dizin Oluşturucu erişim ifadesinin değeri, dizin oluşturucunun *get erişimcisi* çağrılarak elde edilir. Dizin oluşturucunun *get erişimcisi*yoksa, bir derleme zamanı hatası oluşur. Aksi takdirde, Dizin Oluşturucu erişim ifadesiyle ilişkili bağımsız değişken listesiyle bir işlev üye çağrısı ([dinamik aşırı yükleme çözümlemesi çözümleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) gerçekleştirilir ve çağrının sonucu dizin oluşturucunun erişim değeri olur ifadesini.
 
 ## <a name="static-and-dynamic-binding"></a>Statik ve dinamik bağlama
 
-Tür veya bağlı ifadeleri (bağımsız değişkenler, işlenen, Alıcılar) değerini temel alan bir işlem anlamını belirleme işlemi, genellikle olarak adlandırılır ***bağlama***. Örneğin bir yöntem çağrısının anlamı alıcı ve bağımsız değişkenler türüne göre belirlenir. Bir işleç anlamını işlenenleri türüne göre belirlenir.
+Bileşen ifadelerinin türü veya değerine (bağımsız değişkenler, işlenenler, alıcılar) göre bir işlemin anlamını belirleme işlemi genellikle ***bağlama***olarak adlandırılır. Örneğin, bir yöntem çağrısının anlamı alıcı ve bağımsız değişkenlerin türüne göre belirlenir. Bir işlecin anlamı, işlenenlerinin türüne göre belirlenir.
 
-C# anlamı bir işlem, genellikle belirlenir derleme zamanında, bağlı alt ifadeler, derleme zamanı türüne dayalı. Benzer şekilde, bir ifade bir hata varsa hata algılandı ve derleyici tarafından bildirilen. Bu yaklaşım olarak da bilinen ***statik bağlama***.
+C# Bir işlemin anlamı genellikle derleme zamanında, bileşen ifadelerinin derleme zamanı türüne göre belirlenir. Benzer şekilde, bir ifade hata içeriyorsa, hata algılanır ve derleyici tarafından raporlanır. Bu yaklaşım ***statik bağlama***olarak bilinir.
 
-Ancak, bir ifade dinamik bir ifadeyi ise (yani türüne sahip `dynamic`) bu yer aldığı herhangi bir bağlamayı çalışma zamanı türünü (yani gerçek nesnenin türü çalışma zamanında gösterir) üzerinde bulunan, türü yerine dayalı olmaması gerektiğini gösterir. derleme zamanı. Bu tür bir işlem bağlaması, bu nedenle işlem programın çalıştırılması sırasında yürütülmek üzere olduğu zamana kadar ertelenir. Bu olarak adlandırılır ***dinamik bağlama***.
+Ancak, bir ifade dinamik bir ifadesiyse (yani, türü `dynamic`) Bu, içinde yer aldığı herhangi bir bağlamanın kendi çalışma zamanı türünü (yani çalışma zamanında gösterdiği nesnenin gerçek türü) temel aldığı tür değil, derleme zamanı. Bu nedenle, bu tür bir işlemin bağlanması, programın çalışması sırasında işlemin gerçekleştirileceği zamana kadar ertelenir. Bu, ***dinamik bağlama***olarak adlandırılır.
 
-Bir işlemi dinamik olarak bağlı olduğunda, çok az kayıpla veya hiç denetimi derleyici tarafından gerçekleştirilir. Bunun yerine çalışma zamanı bağlama başarısız olursa, hataları çalışma zamanında özel durumlar olarak raporlanır.
+Bir işlem dinamik olarak bağlandığında, derleyici tarafından çok az veya hiçbir denetim yapılmaz. Çalışma zamanı bağlama başarısız olursa, hatalar çalışma zamanında özel durum olarak bildirilir.
 
-Aşağıdaki C# işlemlerinde tabi bağlanır:
+' De C# aşağıdaki işlemler bağlamaya tabidir:
 
 *  Üye erişimi: `e.M`
 *  Yöntem çağırma: `e.M(e1, ..., eN)`
-*  Temsilci çağrısı:`e(e1, ..., eN)`
+*  Temsilci çağrısı: `e(e1, ..., eN)`
 *  Öğe erişimi: `e[e1, ..., eN]`
 *  Nesne oluşturma: `new C(e1, ..., eN)`
-*  Birli işleçler aşırı: `+`, `-`, `!`, `~`, `++`, `--`, `true`, `false`
-*  İkili işleçler aşırı: `+`, `-`, `*`, `/`, `%`, `&`, `&&`, `|`, `||`, `??`, `^`, `<<` , `>>`, `==`,`!=`, `>`, `<`, `>=`, `<=`
-*  Atama İşleçleri: `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=`
+*  Aşırı yüklenmiş Birli İşleçler: `+`, `-`, `!`, `~`, `++`, `--`, `true`, `false`
+*  Aşırı yüklenmiş ikili işleçler: `+`, `-`, `*`, `/`, `%`, `&`, `&&`, `|`, `||`, `??`, 0, 1, 2, 3, 4, 5, 6, 7
+*  Atama işleçleri: `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, 0
 *  Örtük ve açık dönüştürmeler
 
-Hiçbir dinamik ifadeler söz konusu olduğunda, C# derleme zamanı türlerini bağlı ifadeleri seçim işleminde kullanıldığı anlamına gelir statik bağlama varsayılan kullanır. Yukarıda listelenen işlemlerinde bağlı ifadelerden biri dinamik bir ifadeyi olduğunda, ancak işlemi yerine dinamik olarak bağlı.
+Hiçbir dinamik ifade dahil edildiğinde, C# varsayılan statik bağlama olur, bu, bileşen ifadelerinin derleme zamanı türlerinin seçim sürecinde kullanıldığı anlamına gelir. Ancak, yukarıda listelenen işlemler içindeki yapısal ifadelerden biri dinamik bir ifade olduğunda, işlem bunun yerine dinamik olarak bağlanır.
 
-### <a name="binding-time"></a>Bağlama zamanı
+### <a name="binding-time"></a>Bağlama Zamanı
 
-Çalışma zamanında dinamik bağlama gerçekleşmeden ise statik bağlama derleme zamanında, gerçekleşir. Aşağıdaki bölümlerde terimi ***bağlama zamanı*** derleme zamanı veya çalışma bağlama ne zaman yer aldığı bağlı olarak süresi, ifade eder.
+Statik bağlama, derleme zamanında gerçekleşir, ancak dinamik bağlama çalışma zamanında gerçekleşir. Aşağıdaki bölümlerde, bağlama ***zamanı*** terimi, bağlamanın ne zaman gerçekleşdiğine bağlı olarak, derleme zamanı veya çalışma zamanı anlamına gelir.
 
-Aşağıdaki örnek, statik ve dinamik bağlama ve bağlama zamanı kavramları göstermektedir:
+Aşağıdaki örnek, statik ve dinamik bağlamanın ve bağlama zamanının önemli sayısını göstermektedir:
 ```csharp
 object  o = 5;
 dynamic d = 5;
@@ -76,58 +76,58 @@ Console.WriteLine(o);  // static  binding to Console.WriteLine(object)
 Console.WriteLine(d);  // dynamic binding to Console.WriteLine(int)
 ```
 
-İlk iki statik olarak bağlı: aşırı yüklemesini `Console.WriteLine` kendi bağımsız değişkenin derleme zamanı türüne göre seçilir. Bu nedenle, derleme zamanı bağlama zamanı.
+İlk iki çağrı statik olarak bağlanmıştır: `Console.WriteLine` ' nın aşırı yüklemesi, bağımsız değişkeninin derleme zamanı türüne göre çekilir. Bu nedenle, bağlama zamanı derleme zamanı olur.
 
-Üçüncü çağrı dinamik olarak bağlı: aşırı yüklemesini `Console.WriteLine` bağımsız değişkeninin çalışma zamanı türüne göre seçilir. Derleme zamanı türü bildiğinizdir dinamik bir ifadeyi bağımsız değişken olduğu için böyle `dynamic`. Bu nedenle, üçüncü çağrı için bağlama süresi, çalışma zamanı.
+Üçüncü çağrı dinamik olarak bağlı: `Console.WriteLine` ' nın aşırı yüklemesi, bağımsız değişkeninin çalışma zamanı türüne göre çekilir. Bağımsız değişken dinamik bir ifade olduğu için bunun nedeni, derleme zamanı türü `dynamic` ' dır. Bu nedenle, üçüncü çağrının bağlama zamanı çalışma zamanı olur.
 
 ### <a name="dynamic-binding"></a>Dinamik bağlama
 
-Dinamik bağlama amacı ile etkileşim kurmak C# programları izin vermektir ***dinamik nesneler***, yani normal C# kurallarına izlemeyin nesneleri tür sistemi. Dinamik nesneler nesnelerden farklı sistemleri ile başka bir programlama dili olabilir veya program aracılığıyla farklı işlemler için kendi bağlama semantiği uygulamak için Kurulum olan nesneler olması olabilir.
+Dinamik bağlamanın amacı, C# programların ***dinamik nesnelerle***etkileşime geçmesini sağlamaktır, yani C# tür sisteminin normal kurallarını takip etmez. Dinamik nesneler, farklı türlerde sistemlerle diğer programlama dillerinden nesneler olabilir veya farklı işlemler için kendi bağlama semantiğini uygulamak üzere programlı bir şekilde kurulum olan nesneler olabilir.
 
-Dinamik Nesne kendi semantiği uygulayan mekanizması tanımlanan uygulamasıdır. Belirli bir arabirim--yeniden tanımlanan uygulama--C# çalışma zamanı için özel semantiğine sahip olduğunu göstermek için dinamik nesneler tarafından uygulanır. Dinamik bir nesne üzerinde işlemler dinamik olarak bağlı olduğunda, bu nedenle, kendi bağlama semantiği yerine C# bu belgede belirtildiği gibi devralır.
+Dinamik bir nesnenin kendi semantiğini uyguladığı mekanizma uygulama tanımlı ' dır. Verilen bir arabirim (yeniden tanımlanmış bir uygulama), dinamik nesneler tarafından özel semantiklere sahip oldukları C# çalışma zamanına işaret etmek için uygulanır. Bu nedenle, dinamik bir nesne üzerindeki her bir işlem dinamik olarak bağlandığında, bu belgede belirtiler C# yerine kendi bağlama semantiğinin yerine geçer.
 
-Dinamik nesnelerle birlikte çalışabilirlik izin vermek için dinamik bağlama amacı olmakla birlikte, dinamik olsalar da olmadığını C# dinamik bağlamanın tüm nesneler üzerinde sağlar. Bu, üzerinde işlemler sonuçlarını değil kendilerini dinamik nesneler olabilir, ancak yine de programcıları derleme zamanında bilinmeyen bir tür ilgilidir dinamik Nesne için daha sorunsuz bir tümleştirme sağlar. Ayrıca Dinamik bağlama ilgili hiçbir nesne dinamik nesneler olsa bile hata yapmaya açık yansıma tabanlı kodun ortadan kaldırılmasına yardımcı olur.
+Dinamik bağlamanın amacı dinamik nesnelerle birlikte çalıştırılmasına izin verirken, C# dinamik olmasına bakılmaksızın tüm nesnelerde dinamik bağlamaya izin verir. Bu, dinamik nesnelerin daha yumuşak bir şekilde tümleştirilmesini sağlar, çünkü bunlar üzerindeki işlemlerin sonuçları dinamik nesneler olmayabilir, ancak hala derleme zamanında programcıya bilinmeyen bir tür olabilir. Ayrıca dinamik bağlama, hiçbir nesne dahil, dinamik nesneler olmasa bile hataya açık olan yansıma tabanlı kodu ortadan kaldırmaya yardımcı olabilir.
 
-Tam olarak tüm--uygulanır, dinamik bağlama, ne zaman denetleme--derleme uygulandığında ve hangi derleme zamanı sonucu ve ifade sınıflandırma olan dilde her yapı için aşağıdaki bölümlerde açıklanmaktadır.
+Aşağıdaki bölümlerde, dinamik bağlama uygulandığında, her bir yapı için, dinamik bağlama uygulandığında, derleme zaman denetimi (varsa), varsa derleme zamanı ve ifade sınıflandırmasının ne olduğu ile ilgili olarak açıklanır.
 
-### <a name="types-of-constituent-expressions"></a>Bağlı ifade türleri
+### <a name="types-of-constituent-expressions"></a>Anayent ifadelerin türleri
 
-Bir işlem statik olarak bağlı olduğunda (örneğin bir alıcı, bağımsız değişken, bir dizin veya bir işlenen) bağlı bir ifadenin türü her zaman bu ifade, derleme zamanı türünde kabul edilir.
+Bir işlem statik olarak bağlandığında, bir bileşen ifadesinin türü (örn. bir alıcı, bir bağımsız değişken, bir dizin veya işlenen), her zaman bu ifadenin derleme zamanı türü olarak değerlendirilir.
 
-Bir işlemi dinamik olarak bağlı olduğunda, bağlı bir ifadenin türü oluşturan ifadenin derleme zamanı türüne bağlı olarak farklı şekilde belirlenir:
+Bir işlem dinamik olarak bağlandığında, bileşen ifadesinin türü, bileşen ifadesinin derleme zamanı türüne bağlı olarak farklı yollarla belirlenir:
 
-*  Derleme zamanı türündeki bağlı bir ifade `dynamic` ifade için çalışma zamanında değerlendirilir. gerçek değer türü olduğu kabul edilir
-*  Derleme zamanı türü olan bir tür parametresine bağlı bir ifade çalışma zamanında tür parametresi bağlı türe sahip olduğu kabul edildiği
-*  Aksi takdirde bağlı ifadesi, derleme zamanı türü olduğu kabul edilir.
+*  @No__t-0 derleme zamanı türünün yapısal ifadesi, ifadenin çalışma zamanında değerlendirilen gerçek değer türüne sahip olarak kabul edilir
+*  Derleme zamanı türü bir tür parametresi olan bir anayent ifadesi tür parametresinin çalışma zamanında bağlı olduğu türe sahip olarak kabul edilir
+*  Aksi halde, oluşturan ifade derleme zamanı türüne sahip olarak kabul edilir.
 
 ## <a name="operators"></a>İşleçler
 
-İfadeleri oluşturulmuş ***işlenenler*** ve ***işleçleri***. İfade işleçleri işlenenlere uygulamak için hangi işlemleri gösterir. İşleçler örnekler `+`, `-`, `*`, `/`, ve `new`. Değişmez değerler, alanlar, yerel değişkenleri ve ifadeleri işlenenler örnekleridir.
+İfadeler, ***işlenenler*** ve ***işleçlerden***oluşturulur. Bir ifadenin işleçleri, işlenenlerin hangi işlemleri uygulanacağını gösterir. `+`İşleç örnekleri `-` ,`/`,, ve`new`içerir. `*` İşlenenlerin örnekleri, sabit değerleri, alanları, yerel değişkenleri ve ifadeleri içerir.
 
 Üç tür işleç vardır:
 
-*  Birli işleçler. Birli işleçleri, tek bir işlenen alır ve iki önek gösterimini kullanın (gibi `--x`) veya sonek gösteriminde (gibi `x++`).
-*  İkili işleçler. İkili işleçler iki işlenen alır ve tüm içtakı gösterimi kullanın (gibi `x + y`).
-*  Üçlü işleci. Yalnızca bir Üçlü işleç `?:`, var; üç işlenen alır ve infix gösterim kullanır (`c ? x : y`).
+*  Birli İşleçler. Birli İşleçler bir işlenen alır ve önek gösterimini (`--x`) ya da sonek gösterimini (örneğin, `x++`) kullanır.
+*  İkili işleçler. İkili işleçler iki işlenen alır ve tüm kullanım dışı gösterimi (`x + y`) kullanır.
+*  Üçlü işleç. Yalnızca bir üçlü operatör, `?:`, var; üç işlenen alır ve geçersiz kılma gösterimi kullanır (`c ? x : y`).
 
-Bir ifadede, işleçlerin değerlendirilme sırasını tarafından belirlenen ***öncelik*** ve ***ilişkilendirilebilirliği*** işleçlerinin ([İşleç önceliği ve ilişkiselliği](expressions.md#operator-precedence-and-associativity)) .
+Bir ifadedeki işleçlerin değerlendirilme sırası, işleçlerin ***Öncelik*** ve ***ilişkilendirilebilirliği*** ([işleç önceliği ve ilişkilendirilebilirlik](expressions.md#operator-precedence-and-associativity)) tarafından belirlenir.
 
-İfadelerde işlenenlerin soldan sağa doğru değerlendirilir. Örneğin, `F(i) + G(i++) * H(i)`, yöntemi `F` eski değeri kullanılarak çağrılacak `i`, ardından yöntemi `G` eski değeriyle adlı `i`ve son olarak, yöntemi `H` Yenideğerleçağrılır`i`. İşleç önceliği ayrıdır ve ilgisiz budur.
+Bir ifadedeki işlenenler soldan sağa değerlendirilir. Örneğin `F(i) + G(i++) * H(i)` ' da `F` yöntemi `i` ' nin eski değeri kullanılarak çağrılır, `G` yöntemi eski `i` değeri ile çağrılır ve son olarak `H` yöntemi `i` değeri ile çağırılır. Bu, ' den farklıdır ve işleç önceliğine ilgisiz değildir.
 
-Belirli işleçleri olabilir ***aşırı***. İşleç aşırı yüklemesi bir yerde işlemleri için belirtilen kullanıcı tanımlı işleç uygulamalarına izin verir ya da her iki işlenen kullanıcı tanımlı sınıf veya yapı türü ([işleci aşırı yüklemesi](expressions.md#operator-overloading)).
+Bazı işleçler ***aşırı***yüklenebilir. İşleç aşırı yüklemesi, Kullanıcı tanımlı operatör uygulamalarının bir veya her ikisinin de Kullanıcı tanımlı sınıf veya yapı türünde ([operatör aşırı yüklemesi](expressions.md#operator-overloading)) olduğu işlemler için belirtilmesine izin verir.
 
-### <a name="operator-precedence-and-associativity"></a>İşleç önceliği ve ilişkiselliği
+### <a name="operator-precedence-and-associativity"></a>İşleç önceliği ve ilişkilendirilebilirlik
 
-Bir ifade birden çok işleç içeren ***öncelik*** işleçleri tek tek işleçler değerlendirilme sırası denetler. Örneğin, ifade `x + y * z` değerlendirmesinde `x + (y * z)` çünkü `*` işleci, ikili daha yüksek bir önceliğe sahip `+` işleci. Bir işleç önceliği, ilişkili dilbilgisi üretim tanımına göre belirlenir. Örneğin, bir *additive_expression* oluşan bir dizi *multiplicative_expression*s ayırarak `+` veya `-` işleçleri, bu nedenle vererek `+` ve `-` işleçleri daha düşük önceliğe `*`, `/`, ve `%` işleçleri.
+Bir ifade birden çok işleç içerdiğinde, işleçlerin ***önceliği*** ayrı işleçlerin değerlendirilme sırasını denetler. Örneğin, `*` işlecinin ikili `+` işlecinden daha yüksek önceliği olduğundan `x + y * z` ifadesi `x + (y * z)` olarak değerlendirilir. Bir işlecin önceliği, ilişkili dilbilgisi üretiminin tanımıyla belirlenir. Örneğin, bir *additive_expression* , `+` veya `-` işleçleriyle ayrılmış bir *multiplicative_expression*s dizisinden oluşur. bu nedenle, `*`, `/` ve @no__ kıyasla `+` ve `-` işleçleri daha düşük önceliğe sahiptir t-8 işleçleri.
 
-Tüm işleçler sırayla önceliği en yüksekten en düşüğe aşağıdaki tabloda özetlenmiştir:
+Aşağıdaki tablo, en yüksekten en düşüğe öncelik sırasına göre tüm işleçleri özetler:
 
-| __Bölüm__                                                                                   | __Kategori__                | __İşleçler__ | 
+| __Kısmı__                                                                                   | __Kategori__                | __İşleçler__ | 
 |-----------------------------------------------------------------------------------------------|-----------------------------|---------------|
 | [Birincil ifadeler](expressions.md#primary-expressions)                                     | Birincil                     | `x.y`  `f(x)`  `a[x]`  `x++`  `x--`  `new`  `typeof`  `default`  `checked`  `unchecked`  `delegate` | 
-| [Birli işleçler](expressions.md#unary-operators)                                             | Birli                       | `+`  `-`  `!`  `~`  `++x`  `--x`  `(T)x` | 
+| [Birli İşleçler](expressions.md#unary-operators)                                             | Li                       | `+`  `-`  `!`  `~`  `++x`  `--x`  `(T)x` | 
 | [Aritmetik işleçler](expressions.md#arithmetic-operators)                                   | Çarpma              | `*`  `/`  `%` | 
-| [Aritmetik işleçler](expressions.md#arithmetic-operators)                                   | Eklenebilir                    | `+`  `-`      | 
+| [Aritmetik işleçler](expressions.md#arithmetic-operators)                                   | Msal                    | `+`  `-`      | 
 | [Kaydırma işleçleri](expressions.md#shift-operators)                                             | Shift                       | `<<`  `>>`    | 
 | [İlişkisel ve tür testi işleçleri](expressions.md#relational-and-type-testing-operators) | İlişkisel ve tür testi | `<`  `>`  `<=`  `>=`  `is`  `as` | 
 | [İlişkisel ve tür testi işleçleri](expressions.md#relational-and-type-testing-operators) | Eşitlik                    | `==`  `!=`    | 
@@ -136,88 +136,88 @@ Tüm işleçler sırayla önceliği en yüksekten en düşüğe aşağıdaki tab
 | [Mantıksal işleçler](expressions.md#logical-operators)                                         | Mantıksal VEYA                  | <code>&#124;</code>           |
 | [Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)                 | Koşullu VE             | `&&`          | 
 | [Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)                 | Koşullu VEYA              | <code>&#124;&#124;</code>          | 
-| [Null birleşim işleci](expressions.md#the-null-coalescing-operator)                   | Null birleşim             | `??`          | 
+| [Null birleştirme işleci](expressions.md#the-null-coalescing-operator)                   | Null birleşim             | `??`          | 
 | [Koşullu işleç](expressions.md#conditional-operator)                                   | Koşullu                 | `?:`          | 
 | [Atama işleçleri](expressions.md#assignment-operators), [anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)  | Atama ve lambda ifadesi | `=`  `*=`  `/=`  `%=`  `+=`  `-=`  `<<=`  `>>=`  `&=`  `^=`  <code>&#124;=</code>  `=>` | 
 
-Aynı önceliğe sahip iki işleç arasında bir işlenen ortaya çıktığında, işleçlerin ilişkiselliği işlemlerinin gerçekleştirildiği sırayı denetler:
+Aynı önceliğe sahip iki işleç arasında bir işlenen gerçekleştiğinde, işleçlerin ilişkilendirilebilirliği, işlemlerin gerçekleştirileceği sırayı denetler:
 
-*  Atama işleçleri ve null birleşim işleci hariç tüm ikili işleçler şunlardır: ***ilişkilendirilebilir***, yani işlemler soldan sağa doğru gerçekleştirilir. Örneğin, `x + y + z` değerlendirmesinde `(x + y) + z`.
-*  Atama İşleçleri, null birleşim işleci ve koşullu işleç (`?:`) olan ***sağla ilişkilendirilebilir***, sağdan sola işlemler gerçekleştirilir anlamına gelir. Örneğin, `x = y = z` değerlendirmesinde `x = (y = z)`.
+*  Atama işleçleri ve null birleşim işleci dışında, tüm ikili işleçler ***sola ilişkilendirilebilir***, yani işlemler soldan sağa yapılır. Örneğin, `x + y + z` olarak `(x + y) + z`değerlendirilir.
+*  Atama işleçleri, null birleşim işleci ve koşullu işleç (`?:`) ***doğru ilişkilendirilebilir***, yani işlemler sağdan sola yapılır. Örneğin, `x = y = z` olarak `x = (y = z)`değerlendirilir.
 
-Öncelik ve ilişkisellik parantez kullanılarak denetlenebilir. Örneğin, `x + y * z` ilk çarpar `y` tarafından `z` ve ardından sonuca ekler `x`, ancak `(x + y) * z` ilk ekler `x` ve `y` ve sonucu çarpan `z`.
+Öncelik ve ilişkilendirilebilirlik, parantezler kullanılarak denetlenebilir. Örneğin, `x + y * z` ' ı ilk önce `z` ile @no__t çarpar ve sonra sonucu `x` ' e ekler, ancak `(x + y) * z` ' ü önce `x` ve `y` ' ı ekler ve ardından sonucu @no__t 7 ile çarpar.
 
 ### <a name="operator-overloading"></a>İşleç aşırı yüklemesi
 
-Tüm birli ve ikili işleçler, herhangi bir ifade içinde otomatik olarak kullanılabilir uygulamalar önceden tanımlanmış. Önceden tanımlanmış uygulamalarının yanı sıra, kullanıcı tanımlı uygulamaları dahil ederek tanıtılabilir `operator` bildirimlerinde sınıflar ve yapılar ([işleçleri](classes.md#operators)). Kullanıcı tanımlı işleç uygulamalarına her zaman önceden tanımlanmış işleç uygulamalarına öncelikli: Hiçbir geçerli kullanıcı tanımlı işleç uygulamalarına varken önceden tanımlanmış işleç uygulamalarına, açıklanan şekilde değerlendirilmesi yalnızca [birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution) ve [ikili İşleç aşırı yüklemesi Çözüm](expressions.md#binary-operator-overload-resolution).
+Tüm birli ve ikili işleçlerin, herhangi bir ifadede otomatik olarak kullanılabilen önceden tanımlanmış uygulamaları vardır. Önceden tanımlanmış uygulamalara ek olarak, Kullanıcı tanımlı uygulamalar, sınıflar ve yapılar ([işleçler](classes.md#operators)) `operator` bildirimleri eklenerek tanıtılamaz. Kullanıcı tanımlı operatör uygulamaları, her zaman önceden tanımlanmış operatör uygulamalarından önceliklidir: Yalnızca geçerli bir Kullanıcı tanımlı operatör uygulaması mevcut olmadığında, [birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution) ve [ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)bölümünde açıklandığı gibi önceden tanımlanmış operatör uygulamaları göz önünde bulundurulacaktır.
 
-***Aşırı yüklenebilir birli işleçler*** şunlardır:
+***Fazla yüklenebilir Birli İşleçler*** şunlardır:
 ```csharp
 +   -   !   ~   ++   --   true   false
 ```
 
-Ancak `true` ve `false` ifadelerinde açıkça kullanılmaz (ve bu nedenle öncelik tablosunda bulunmayan [İşleç önceliği ve ilişkiselliği](expressions.md#operator-precedence-and-associativity)), çünkü bunlar işleçler değerlendirilir birden fazla ifade bağlamlarda çağrılır: boolean ifadeleri ([Boolean ifadeler](expressions.md#boolean-expressions)) ve koşul içeren ifadeler ([koşullu işleç](expressions.md#conditional-operator)) ve koşullu mantıksal işleçler ([koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)).
+@No__t-0 ve `false` açıkça ifadelerde kullanılmamalıdır (ve bu nedenle [işleç önceliği ve ilişkilendirilebilirliği](expressions.md#operator-precedence-and-associativity)içindeki öncelik tablosuna dahil edilmez), bunlar birkaç ifadede çağrıldıklarından işleçler olarak kabul edilir bağlamlar: Boolean ifadeleri ([Boolean](expressions.md#boolean-expressions)ifadeleri) ve koşullu ([koşullu işleç](expressions.md#conditional-operator)) ve koşullu mantıksal işleçler (koşullu[mantıksal](expressions.md#conditional-logical-operators)işleçler) içeren ifadeler.
 
-***Aşırı yüklenebilir ikili işleçler*** şunlardır:
+***Fazla yüklenebilir ikili işleçler*** şunlardır:
 ```csharp
 +   -   *   /   %   &   |   ^   <<   >>   ==   !=   >   <   >=   <=
 ```
 
-Yalnızca yukarıda listelenen işleçleri aşırı yüklenebilir. Özellikle, üye erişimi, yöntem çağırma aşırı mümkün değildir veya `=`, `&&`, `||`, `??`, `?:`, `=>`, `checked`, `unchecked`, `new`, `typeof`, `default`, `as`, ve `is` işleçleri.
+Yalnızca yukarıda listelenen operatörler aşırı yüklenebilir. Özellikle, üye erişimi, yöntem çağırma veya `=`, `&&`, `||`, `??`, `?:`, `=>`, `checked`, `unchecked`, `new`, `typeof`, 0, 1 ve 2 işleçlerini aşırı yüklemek mümkün değildir.
 
-İkili İşleç aşırı karşılık gelen atama işleci, varsa, aynı zamanda örtük olarak aşırı yüklenmiş olur. Örneğin, bir işleç aşırı `*` aynı zamanda bir işleç aşırı yüklemesi olan `*=`. Daha ayrıntılı açıklanır budur [bileşik atama](expressions.md#compound-assignment). Unutmayın atama işleci (`=`) aşırı yüklenemez. Atama her zaman bir değişkene bir değer Bitsel basit kopyasını gerçekleştirir.
+İkili işleç aşırı yüklendiğinde, karşılık gelen atama işleci de dolaylı olarak aşırı yüklenmiştir. Örneğin, `*` işlecinin aşırı yüklemesi aynı zamanda `*=` işlecinin aşırı yüküne sahiptir. Bu, [bileşik atamada](expressions.md#compound-assignment)daha ayrıntılı olarak açıklanmıştır. Atama işlecinin kendisinin (`=`) aşırı yüklü olamayacağını unutmayın. Atama her zaman bir değeri bir değişkene basit bit temelinde bir kopyasını gerçekleştirir.
 
-İşlemleri gibi cast `(T)x`, kullanıcı tanımlı dönüşümler sağlayarak aşırı ([kullanıcı tanımlı dönüşümler](conversions.md#user-defined-conversions)).
+@No__t-0 gibi atama işlemleri, Kullanıcı tanımlı dönüştürmeler ([Kullanıcı tanımlı dönüştürmeler](conversions.md#user-defined-conversions)) sağlanarak aşırı yüklenmiştir.
 
-Öğe erişimi, gibi `a[x]`, bir aşırı yüklenebilir işleç olarak kabul edilmez. Kullanıcı tanımlı dizin dizin oluşturucular bunun yerine, desteklenir ([dizin oluşturucular](classes.md#indexers)).
+@No__t-0 gibi öğe erişimi, aşırı yüklenebilir bir operatör olarak kabul edilmez. Bunun yerine, Kullanıcı tanımlı dizin oluşturucular ([Dizin oluşturucular](classes.md#indexers)) aracılığıyla desteklenir.
 
-İfadeler, işleçleri, işleç gösterimi kullanılarak başvurulur ve bildirimlerinde, işleçler işlevsel bir gösterim kullanılarak başvurulur. Aşağıdaki tabloda, işleci ve tekli veya ikili işleçler için işlevsel gösterimler arasındaki ilişkiyi gösterir. İlk giriş *op* hiçbir aşırı yüklenebilir birli önek işleci gösterir. İkinci giriş *op* birli sonek gösterir `++` ve `--` işleçleri. Üçüncü giriş *op* hiçbir aşırı yüklenebilir ikili işleç gösterir.
+İfadelerde, işleçlere işleç gösterimi kullanılarak başvurulur ve bildirimlerinde, işlev gösterimi kullanılarak işleçlere başvurulur. Aşağıdaki tabloda, birli ve ikili işleçler için işleç ve işlevsel gösterimler arasındaki ilişki gösterilmektedir. İlk girişte, *op* fazla yüklenebilir birli ön ek işlecini gösterir. İkinci girişte, *op* birli sonek `++` ve `--` işleçlerini gösterir. Üçüncü girişte, *op* , aşırı yüklenebilir ikili işleç olduğunu gösterir.
 
 
-| __İşleç gösterimi__ | __İşlevsel bir gösterim__ |
+| __İşleç gösterimi__ | __İşlevsel Gösterim__ |
 |-----------------------|-------------------------|
 | `op x`                | `operator op(x)`        | 
 | `x op`                | `operator op(x)`        | 
 | `x op y`              | `operator op(x,y)`      | 
 
-Kullanıcı tanımlı işleç bildirimleri her zaman en az bir parametre işleç bildirimi içeren sınıf veya yapı türü olmasını gerektirir. Bu nedenle, önceden tanımlanmış işleç aynı imzaya sahip bir kullanıcı tanımlı işleç için mümkün değildir.
+Kullanıcı tanımlı işleç bildirimleri her zaman, işleç bildirimini içeren sınıf veya yapı türünde parametrelerden en az birini gerektirir. Bu nedenle, Kullanıcı tanımlı bir işlecin önceden tanımlanmış bir işleçle aynı imzaya sahip olması mümkün değildir.
 
-Kullanıcı tanımlı işleç bildirimi sözdizimi, öncelik veya bir işleç ilişkilendirilebilirliği değiştiremezsiniz. Örneğin, `/` ikili işleç, her zaman sahip öncelik düzeyi belirtilen işleci her zaman, [İşleç önceliği ve ilişkiselliği](expressions.md#operator-precedence-and-associativity)ve her zaman ilişkilendirilebilir.
+Kullanıcı tanımlı işleç bildirimleri bir işlecin sözdizimini, önceliğini veya ilişkilendirilebilirliğini değiştiremez. Örneğin, `/` işleci her zaman bir ikili işleçtir, her zaman [işleç önceliği ve ilişkilendirilebilirliği](expressions.md#operator-precedence-and-associativity)içinde belirtilen öncelik düzeyine sahiptir ve her zaman sola ilişkilendirilebilir.
 
-Bunu pleases herhangi bir hesaplama gerçekleştirmek bir kullanıcı tanımlı işleç için mümkün olsa da, sonuçlar sezgisel beklenen dışındaki uygulamalar kesinlikle önerilmez. Örneğin, uygulaması `operator ==` ve eşitlik için iki işlenenden karşılaştırma uygun bir dönüş `bool` sonucu.
+Kullanıcı tanımlı bir işlecin, kiralamaları yaptığı herhangi bir hesaplamayı gerçekleştirmesi mümkün olsa da, büyük bir süre içinde olması beklenen, farklı sonuçlar üreten uygulamalar kesinlikle önerilmez. Örneğin, `operator ==` ' ın uygulanması iki işleneni eşitlik için karşılaştırmalı ve uygun bir `bool` sonucu döndürmelidir.
 
-Tek tek işleçler açıklamalarını [birincil ifadeler](expressions.md#primary-expressions) aracılığıyla [koşullu mantıksal işleçler](expressions.md#conditional-logical-operators) önceden tanımlanmış uygulamalar işleçler ve geçerli tüm ek kuralları belirtin her işleç için. Açıklamaları olun kullanım koşulları ***birli işleç aşırı yükleme çözünürlüğü***, ***ikili işleci aşırı yükleme çözünürlüğü***, ve ***sayısal yükseltme***, bir işlem olan tanımları Aşağıdaki bölümlerde bulundu.
+[Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators) aracılığıyla [birincil ifadelerde](expressions.md#primary-expressions) bağımsız işleçlerin açıklamaları, işleçlerin önceden tanımlanmış uygulamalarını ve her bir operatör için uygulanan ek kuralları belirtir. Açıklamalar ***birli operatör aşırı yükleme çözünürlüğü***, ***ikili işleç aşırı yükleme çözümlemesi***ve ***sayısal yükseltme***, tanımları aşağıdaki bölümlerde bulunan tanımlardan birini kullanır.
 
-### <a name="unary-operator-overload-resolution"></a>Birli işleç aşırı yükleme çözünürlüğü
+### <a name="unary-operator-overload-resolution"></a>Birli operatör aşırı yükleme çözünürlüğü
 
-Bir işlem formun `op x` veya `x op`burada `op` bir aşırı yüklenebilir birli işleç ve `x` türündeki bir ifade `X`, şu şekilde işlenir:
+@No__t-0 veya `x op` biçiminde bir işlem, `op` ' nin aşırı yüklenebilir birli işleç olduğu ve `x` ' i `X` türü bir ifade olduğu için şu şekilde işlenir:
 
-*  Aday kullanıcı tanımlı işleçler tarafından sağlanan dizi `X` işlemi için `operator op(x)` kurallarını kullanarak belirlenir [aday kullanıcı tanımlı işleçler](expressions.md#candidate-user-defined-operators).
-*  Aday kullanıcı tanımlı işleçler kümesi boş değilse, bu işlem için aday işleçleri kümesini olur. Aksi takdirde, önceden tanımlanmış birli `operator op` lifted formlarına dahil olmak üzere uygulamalar, işlem için aday işleçleri kümesini haline gelir. Önceden tanımlanmış uygulamalar belirli bir işlecin işleci açıklamasında belirtilen ([birincil ifadeler](expressions.md#primary-expressions) ve [birli işleçler](expressions.md#unary-operators)).
-*  Aşırı yükleme çözünürlüğü kurallarına [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution) bağımsız değişken listesi ile ilgili en iyi operatör seçmek için aday işleçleri kümesini uygulanan `(x)`, ve bu işleci aşırı yükleme sonucu haline gelir. Çözümleme işlemi. Tek bir en iyi operatör seçmek aşırı yükleme çözümlemesi başarısız olursa bir bağlama zamanı hatası oluşur.
+*  @No__t-1 işlemi için `X` tarafından sunulan aday Kullanıcı tanımlı işleçler kümesi, [aday Kullanıcı tanımlı işleçlerin](expressions.md#candidate-user-defined-operators)kuralları kullanılarak belirlenir.
+*  Aday Kullanıcı tanımlı işleçler kümesi boş değilse, bu işlem için aday işleçler kümesi olur. Aksi halde, yükseltilmemiş formları dahil olmak üzere önceden tanımlanmış birli `operator op` uygulamaları, işlem için aday işleçler kümesi olur. Belirli bir işlecin önceden tanımlanmış uygulamaları, işlecinin açıklamasında belirtilir ([birincil ifadeler](expressions.md#primary-expressions) ve [Birli İşleçler](expressions.md#unary-operators)).
+*  Aşırı [yükleme çözümlemesi](expressions.md#overload-resolution) çözüm kuralları, `(x)` bağımsız değişken listesine göre en iyi işleci seçmek üzere aday işleçler kümesine uygulanır ve bu işleç aşırı yükleme çözümleme işleminin sonucu olur. Aşırı yükleme çözümlemesi tek bir en iyi operatör seçmezse bağlama zamanı hatası oluşur.
 
-### <a name="binary-operator-overload-resolution"></a>İkili İşleç aşırı yükleme çözünürlüğü
+### <a name="binary-operator-overload-resolution"></a>İkili işleç aşırı yükleme çözümü
 
-Bir işlem formun `x op y`burada `op` bir aşırı yüklenebilir ikili işleç `x` türündeki bir ifade `X`, ve `y` türündeki bir ifade `Y`, şu şekilde işlenir:
+@No__t-0, `op` ' in aşırı yüklenebilir bir ikili işleç olduğu, `x` `X` türünde bir ifadedir ve `y` ' ün `Y` türünde bir ifade olduğu bir işlem aşağıdaki şekilde işlenir:
 
-*  Aday kullanıcı tanımlı işleçler tarafından sağlanan dizi `X` ve `Y` işlemi için `operator op(x,y)` belirlenir. Tarafından sağlanan aday işleçleri birleşimi kümesi oluşan `X` ve tarafından sağlanan aday işleçleri `Y`, her belirlenen kurallarını kullanarak [aday kullanıcı tanımlı işleçler](expressions.md#candidate-user-defined-operators). Varsa `X` ve `Y` aynı türde olan veya `X` ve `Y` paylaşılan aday işleçler yalnızca Birleşik kümesine defa geçebildiği sonra ortak bir taban türünden türetilir.
-*  Aday kullanıcı tanımlı işleçler kümesi boş değilse, bu işlem için aday işleçleri kümesini olur. Aksi takdirde, önceden tanımlanmış ikili `operator op` lifted formlarına dahil olmak üzere uygulamalar, işlem için aday işleçleri kümesini haline gelir. Önceden tanımlanmış uygulamalar belirli bir işlecin işleci açıklamasında belirtilen ([aritmetik işleçler](expressions.md#arithmetic-operators) aracılığıyla [koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)). Önceden tanımlanmış sabit listesi ve temsilci işleçleri için kabul yalnızca biri bağlama zamanı türü olan bir enum veya temsilci türüne göre tanımlanan işleçleridir.
-*  Aşırı yükleme çözünürlüğü kurallarına [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution) bağımsız değişken listesi ile ilgili en iyi operatör seçmek için aday işleçleri kümesini uygulanan `(x,y)`, ve bu işleci aşırı yükleme sonucu haline gelir. Çözümleme işlemi. Tek bir en iyi operatör seçmek aşırı yükleme çözümlemesi başarısız olursa bir bağlama zamanı hatası oluşur.
+*  @No__t-0 ve `Y` tarafından sunulan aday Kullanıcı tanımlı işleçler kümesi `operator op(x,y)` ' dir. Küme, `X` tarafından sunulan aday işleçleri birleşiminden ve `Y` tarafından sunulan aday işleçlerden (her biri [aday Kullanıcı tanımlı işleçlerin](expressions.md#candidate-user-defined-operators)kuralları kullanılarak belirlenir) oluşur. @No__t-0 ve `Y` aynı türde veya `X` ve `Y` ortak bir temel türden türetildiyse, paylaşılan aday işleçler yalnızca Birleşik küme içinde bir kez gerçekleşir.
+*  Aday Kullanıcı tanımlı işleçler kümesi boş değilse, bu işlem için aday işleçler kümesi olur. Aksi halde, yükseltilmemiş formları dahil önceden tanımlanmış ikili `operator op` uygulamaları, işlem için aday işleçler kümesi olur. Belirli bir işlecin önceden tanımlanmış uygulamaları, işlecinin açıklamasında belirtilir ( [Koşullu mantıksal işleçler](expressions.md#conditional-logical-operators)aracılığıyla[Aritmetik işleçler](expressions.md#arithmetic-operators) ). Önceden tanımlanmış Enum ve temsilci işleçleri için kabul edilen tek işleçler, işlenenlerden birinin bağlama zamanı türü olan bir Enum veya temsilci türü tarafından tanımlananlar.
+*  Aşırı [yükleme çözümlemesi](expressions.md#overload-resolution) çözüm kuralları, `(x,y)` bağımsız değişken listesine göre en iyi işleci seçmek üzere aday işleçler kümesine uygulanır ve bu işleç aşırı yükleme çözümleme işleminin sonucu olur. Aşırı yükleme çözümlemesi tek bir en iyi operatör seçmezse bağlama zamanı hatası oluşur.
 
-### <a name="candidate-user-defined-operators"></a>Aday kullanıcı tanımlı işleçler
+### <a name="candidate-user-defined-operators"></a>Aday Kullanıcı tanımlı işleçler
 
-Belirli bir türe `T` ve bir işlem `operator op(A)`burada `op` aşırı yüklenebilir bir işleç ve `A` aday kümesini bir bağımsız değişken listesi tarafından sağlanan kullanıcı tanımlı işleçler olan `T` için `operator op(A)` belirlenir şu şekilde:
+@No__t-0 ve bir işlem `operator op(A)`, `op` aşırı yüklenebilir bir operatör ve `A` de bir bağımsız değişken listesidir, `operator op(A)` için `T` tarafından sağlanan aday Kullanıcı tanımlı işleçler kümesi aşağıdaki şekilde belirlenir:
 
-*  Tür belirleme `T0`. Varsa `T` boş değer atanabilir bir tür `T0` Aksi takdirde, temelindeki türe olan `T0` eşittir `T`.
-*  Tüm `operator op` bildirimlerinde `T0` ve tüm yükseltilmiş böyle işleçlerinin forms en az bir işleç uygulanabilir olduğunda ([geçerli işlev üyesi](expressions.md#applicable-function-member)) bağımsız değişken listesine göre `A`, ardından kümesi Aday işleçler gibi ilgili tüm işleçler oluşur `T0`.
-*  Aksi takdirde `T0` olduğu `object`, aday işleçleri kümesini boştur.
-*  Aksi takdirde, aday işleçleri kümesini sağlayan `T0` doğrudan taban sınıfı tarafından sağlanan aday işleçleri kümesi `T0`, veya etkili temel sınıfını `T0` varsa `T0` parametre türüdür.
+*  @No__t-0 türünü saptayın. @No__t-0 null yapılabilir bir tür ise, `T0` temel türüdür, aksi takdirde `T0` `T` ' e eşittir.
+*  @No__t-1 ' deki tüm `operator op` bildirimleri ve söz konusu operatörlerin tüm yükseltilmemiş formlarında, en az bir operatör uygulanabilir ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)), bağımsız değişken listesi `A` ' e göre geçerliyse, aday işleçler kümesi `T0` ' te uygun işleçler.
+*  Aksi takdirde, `T0` `object` ise aday işleçler kümesi boştur.
+*  Aksi takdirde, `T0` tarafından sunulan aday işleçleri kümesi, `T0` ' in doğrudan taban sınıfı tarafından sunulan aday işleçler kümesidir veya `T0` bir tür parametresi ise, `T0` ' nin etkin taban sınıfı olur.
 
-### <a name="numeric-promotions"></a>Sayısal promosyonlar
+### <a name="numeric-promotions"></a>Sayısal yükseltmeler
 
-Sayısal promosyon, belirli örtük dönüştürmeleri önceden tanımlı tekli veya ikili sayısal işleçler işlenenlerin gerçekleştirme otomatik olarak oluşur. Sayısal yükseltme ayrı bir mekanizma, ancak önceden tanımlı operatörler için aşırı yükleme çözünürlüğü uygulanması yerine bir etkin değil. Kullanıcı tanımlı işleçler benzer etkileri göstermesi için uygulanabilir ancak sayısal yükseltme değerlendirmesi kullanıcı tanımlı işleçler, özellikle etkilemez.
+Sayısal yükseltme, önceden tanımlanmış birli ve ikili sayısal işleçlerin işlenenlerinin belirli örtük dönüştürmelerini otomatik olarak gerçekleştirmekten oluşur. Sayısal yükseltme, farklı bir mekanizma değildir, ancak önceden tanımlanmış işleçlere aşırı yükleme çözümlemesi uygulamanın bir etkisi vardır. Sayısal yükseltme, Kullanıcı tanımlı işleçlerin benzer etkileri sergilemek üzere uygulanabilmesine rağmen özellikle Kullanıcı tanımlı işleçlerin değerlendirilmesini etkilemez.
 
-Sayısal yükseltme örnek olarak, önceden tanımlanmış uygulamalar ikili göz önünde bulundurun `*` işleci:
+Sayısal yükseltmede örnek olarak, ikili `*` işlecinin önceden tanımlanmış uygulamalarını göz önünde bulundurun:
 
 ```csharp
 int operator *(int x, int y);
@@ -229,30 +229,30 @@ double operator *(double x, double y);
 decimal operator *(decimal x, decimal y);
 ```
 
-Ne zaman çözümleme kurallarını aşırı yükleme ([aşırı yükleme çözünürlüğü](expressions.md#overload-resolution)) bu kümesine uygulanan operatörleri, işlenen türleri için örtük dönüştürmelerin mevcut işleçlerinin ilk seçmek için etkisidir. Örneğin, işlemi için `b * s`burada `b` olduğu bir `byte` ve `s` olduğu bir `short`, aşırı yükleme çözümlemesi seçer `operator *(int,int)` en iyi işleci olarak. Bu nedenle, etkin olan `b` ve `s` dönüştürülür `int`, ve sonuç türü `int`. Benzer şekilde, işlem için `i * d`burada `i` olduğu bir `int` ve `d` olduğu bir `double`, aşırı yükleme çözümlemesi seçer `operator *(double,double)` en iyi işleci olarak.
+Bu işleç kümesine aşırı yükleme çözümleme kuralları ([aşırı yükleme çözümlemesi](expressions.md#overload-resolution)) uygulandığında, efekt, örtük dönüştürmelerin işlenen türlerinden ilk birini seçmek için kullanılır. Örneğin, `b` ' in bir `byte` olduğu ve `s` ' ü bir `short` @no__t, aşırı yükleme çözümlemesi en iyi operatör olarak `operator *(int,int)` ' i seçer. Bu nedenle, `b` ve `s` `int` ' ye dönüştürülecektir ve sonucun türü `int` ' tür. Benzer şekilde, `i` ' in bir `int` olduğu ve `d` ' ü bir `double` @no__t, aşırı yükleme çözümü en iyi operatör olarak `operator *(double,double)` ' i seçer.
 
-#### <a name="unary-numeric-promotions"></a>Birli sayısal promosyonlar
+#### <a name="unary-numeric-promotions"></a>Tekli sayı yükseltmeleri
 
-Önceden tanımlanmış işlenenler için sayısal yükseltmesi Unary gerçekleşir `+`, `-`, ve `~` birli işleçler. Yalnızca sayısal yükseltmesi Unary oluşur türündeki işlenenler dönüştürme `sbyte`, `byte`, `short`, `ushort`, veya `char` türüne `int`. Ayrıca, birli için `-` işleci, sayısal yükseltmesi unary dönüştürür türündeki işlenenler `uint` türüne `long`.
+Ön tanımlı `+`, `-` ve `~` birli işleçlerin işlenenleri için tek başına sayısal yükseltme oluşur. Birli sayısal yükseltme yalnızca `sbyte`, `byte`, `short`, `ushort` veya `char` türündeki işlenenleri `int` türüne dönüştürmekten oluşur. Ayrıca, birli `-` işleci için tek başına sayısal promosyon, `uint` türündeki işlenenleri `long` türüne dönüştürür.
 
-#### <a name="binary-numeric-promotions"></a>İkili sayısal promosyonlar
+#### <a name="binary-numeric-promotions"></a>İkili sayısal yükseltmeler
 
-Önceden tanımlanmış işlenenler için ikili sayısal yükseltme gerçekleşir `+`, `-`, `*`, `/`, `%`, `&`, `|`, `^`, `==`, `!=`, `>`, `<`, `>=`, ve `<=` ikili işleçler. İkili sayısal yükseltme, her iki işlenen de ilişkisel olmayan işleçleri olması durumunda, ayrıca işlemin sonuç türü olur, ortak bir türe örtük olarak dönüştürür. Burada göründükleri sırayla aşağıdaki kuralları, uygulama ikili sayısal yükseltme oluşur:
+Önceden tanımlanmış `+`, `-`, `*`, `/`, `%`, `&`, `|`, `^`, `==`, `!=`, 0, 1, 2 ve 3 ikili işleçlerinin işlenenleri için ikili sayısal yükseltme oluşur. İkili sayısal yükseltme, ilişkisel olmayan işleçler söz konusu olduğunda her iki işleneni dolaylı olarak ortak bir türe dönüştürür. bu da işlemin sonuç türü olur. İkili sayısal yükseltme aşağıdaki kuralları, burada göründükleri düzende uygulamaktan oluşur:
 
-*  İki işlenenden türü ise `decimal`, diğer işlenen türüne dönüştürülür `decimal`, veya bir bağlama hatası diğer işlenen türü ise oluşur `float` veya `double`.
-*  Aksi takdirde iki işlenenden türü ise `double`, diğer işlenen türüne dönüştürülür `double`.
-*  Aksi takdirde iki işlenenden türü ise `float`, diğer işlenen türüne dönüştürülür `float`.
-*  Aksi takdirde iki işlenenden türü ise `ulong`, diğer işlenen türüne dönüştürülür `ulong`, veya bir bağlama hatası diğer işlenen türü ise oluşur `sbyte`, `short`, `int`, veya `long`.
-*  Aksi takdirde iki işlenenden türü ise `long`, diğer işlenen türüne dönüştürülür `long`.
-*  Aksi takdirde iki işlenenden türü ise `uint` ve diğer işlenen türünde `sbyte`, `short`, veya `int`, her iki işlenen de türüne dönüştürülür `long`.
-*  Aksi takdirde iki işlenenden türü ise `uint`, diğer işlenen türüne dönüştürülür `uint`.
-*  Aksi takdirde, her iki işlenen de türüne dönüştürülür `int`.
+*  Her iki işlenen `decimal` türünde ise, diğer işlenen `decimal` türüne dönüştürülür veya diğer işlenen `float` veya `double` türünde olduğunda bir bağlama zamanı hatası oluşur.
+*  Aksi halde, her iki işlenen `double` türünde ise, diğer işlenen `double` türüne dönüştürülür.
+*  Aksi halde, her iki işlenen `float` türünde ise, diğer işlenen `float` türüne dönüştürülür.
+*  Aksi halde, her iki işlenen `ulong` türünde ise, diğer işlenen `ulong` türüne dönüştürülür veya diğer işlenen `sbyte`, `short`, `int` veya `long` türünde olduğunda bir bağlama zamanı hatası oluşur.
+*  Aksi halde, her iki işlenen `long` türünde ise, diğer işlenen `long` türüne dönüştürülür.
+*  Aksi halde, her iki işlenen `uint` türündedir ve diğer işlenen `sbyte`, `short` veya `int` türündedir, her iki işlenen de `long` türüne dönüştürülür.
+*  Aksi halde, her iki işlenen `uint` türünde ise, diğer işlenen `uint` türüne dönüştürülür.
+*  Aksi halde, her iki işlenen `int` türüne dönüştürülür.
 
-İlk kural karıştırmak herhangi bir işlem izin vermiyor Not `decimal` tür `double` ve `float` türleri. Arasında örtük dönüştürme işlemi yok olgu gelen kuralını izler `decimal` türü ve `double` ve `float` türleri.
+İlk kuralın `decimal` türünü, `double` ve `float` türleriyle karıştırabelirten işlemlere izin vermez. Bu kural, `decimal` türü ile `double` ve `float` türleri arasında örtük dönüştürme olmadığı gerçeden sonraki bir şekildedir.
 
-Ayrıca bir işlenen türünde olması mümkün olmadığını göz önünde bulundurun `ulong` imzalı bir tamsayı türünde olduğunda diğer işlenen. Neden hiçbir integral türü bulunmaktadır: tam aralığını temsil edebilir `ulong` işaretli integral türlerindeki yanı sıra.
+Ayrıca, diğer işlenen işaretli bir integral türünde olduğunda bir işlenenin `ulong` türünde olması mümkün değildir. Bunun nedeni, `ulong` ' ın tam aralığını ve imzalı integral türlerini temsil eden hiçbir integral türü yok.
 
-Yukarıdaki durumların her ikisinde atama ifadesi açıkça bir işlenen diğer işlenen ile uyumlu bir türe dönüştürmek için kullanılabilir.
+Yukarıdaki her iki durumda da, bir işleneni açıkça diğer işlenenle uyumlu bir türe dönüştürmek için bir atama ifadesi kullanılabilir.
 
 Örnekte
 ```csharp
@@ -260,7 +260,7 @@ decimal AddPercent(decimal x, double percent) {
     return x * (1.0 + percent / 100.0);
 }
 ```
-bağlama zamanı hatası oluşur bir `decimal` çarpılmasıyla edilemez bir `double`. İkinci işleneni açıkça dönüştürerek hata çözümlenene `decimal`gibi:
+bir `decimal` `double` ile çarpılamıyor bir bağlama zamanı hatası oluşur. Hata, ikinci işlenen aşağıdaki gibi `decimal` ' a açıkça dönüştürülürken çözümlenir:
 
 ```csharp
 decimal AddPercent(decimal x, double percent) {
@@ -268,17 +268,17 @@ decimal AddPercent(decimal x, double percent) {
 }
 ```
 
-### <a name="lifted-operators"></a>Yükseltilmiş işleçleri
+### <a name="lifted-operators"></a>Yükseltilmemiş işleçleri
 
-***İşleçler yükseltilmiş*** da bu türlerin boş değer atanabilir forms ile kullanılmak üzere atanamayan değer türleri üzerinde çalışması önceden tanımlanmış ve kullanıcı tanımlı işleçler izin verir. Yükseltilmiş işleçleri, aşağıda açıklandığı gibi belirli gereksinimleri karşılaması önceden tanımlanmış ve kullanıcı tanımlı işleçler oluşturulur:
+***Yükseltilmemiş işleçleri*** , null olamayan değer türlerinde çalışan, önceden tanımlanmış ve Kullanıcı tanımlı işleçlere izin vererek bu türlerin null yapılabilir formlarla de kullanılmasını sağlar. Yükseltilmemiş işleçleri, aşağıda açıklandığı gibi, belirli gereksinimleri karşılayan önceden tanımlı ve Kullanıcı tanımlı işleçlerden oluşturulur:
 
-*   Birli işleçleri
+*   Birli İşleçler için
 
     ```csharp
     +  ++  -  --  !  ~
     ```
 
-    Her iki değer atanamayan değer türleri işlenen ve sonuç türleri olması durumunda lifted form bir işleç var. Tek bir ekleyerek lifted formun oluşturulan `?` değiştiricisi işlenen ve sonuç türleri için. İşlenen null ise lifted işlecini bir null değer oluşturur. Aksi takdirde lifted işleci, işlenen kaydırmayacağını, temel alınan işlecini uygular ve sonucu sarmalar.
+    bir işlecin yükseltilmemiş formu, işlenen ve sonuç türleri null yapılamayan değer türleri ise vardır. Yükseltilmemiş formu, işlenene ve sonuç türlerine tek bir `?` değiştiricisi eklenerek oluşturulur. Yükseltilmemiş işleci, işlenen null ise null değeri üretir. Aksi takdirde, yükseltilmemiş işleci işleneni geri sarar, temeldeki işleci uygular ve sonucu sarmalar.
 
 *   İkili işleçler için
 
@@ -286,126 +286,126 @@ decimal AddPercent(decimal x, double percent) {
     +  -  *  /  %  &  |  ^  <<  >>
     ```
 
-    Tüm NULL olmayan değer türleri işlenen ve sonuç türleri olması durumunda lifted form bir işleç var. Tek bir ekleyerek lifted formun oluşturulan `?` değiştiricisi her işlenen ve sonuç türü. Varsa lifted işleci bir null değer üreten veya her iki işlenen de null (bir özel durum olan `&` ve `|` operatörleri `bool?` açıklandığı yazın [Boolean mantıksal işleçler](expressions.md#boolean-logical-operators)). Aksi takdirde, lifted işleci işlenenler kaydırmayacağını, temel alınan işleci uygulanır ve sonuç sarmalar.
+    bir işlecin yükseltilmemiş formu, işlenen ve sonuç türleri null yapılamayan tüm değer türleri ise vardır. Yükseltilmemiş formu, her işlenenin ve sonuç türünün tek bir `?` değiştiricisi eklenerek oluşturulur. Yükseltilmemiş işleci, bir veya her iki işlenen de null ise null değeri üretir @no__t ( [Boolean mantıksal işleçler](expressions.md#boolean-logical-operators)bölümünde açıklandığı gibi `bool?` türünün `|` işleçleri). Aksi halde, yükseltilmemiş işleci işlenenleri sarmalanmış, temeldeki işleci uygular ve sonucu sarmalar.
 
-*   Eşitlik işleçleri
+*   Eşitlik işleçleri için
 
     ```csharp
     ==  !=
     ```
 
-    İşlenen türleri atanamayan değer türleri ve sonuç türü olup olmadığını ise lifted form bir işleç var. `bool`. Tek bir ekleyerek lifted formun oluşturulan `?` değiştiricisi her işlenen türü. Lifted işleci iki null değeri eşit ve null değeri eşit olmayan herhangi bir null olmayan değer için değerlendirir. Her iki işlenen de null olmayan, lifted işleci işlenenler sarmalanmış olmaktan çıkaran ve üretmek için temel alınan işleci geçerlidir `bool` sonucu.
+    bir işlecin yükseltilmemiş formu, işlenen türleri hem null yapılamayan değer türleri hem de sonuç türü `bool` ise vardır. Yükseltilmemiş formu, her bir işlenen türüne tek bir `?` değiştiricisi eklenerek oluşturulur. Yükseltilmemiş işleci iki null değeri eşit kabul eder ve null olmayan bir değer null değeri boş değer olarak eşit değildir. Her iki işlenen de null değilse, yükseltilmemiş işleci işlenenleri geri sarar ve `bool` sonucunu üretmek için temeldeki işleci uygular.
 
-*   İlişkisel işleçleri
+*   İlişkisel işleçler için
 
     ```csharp
     <  >  <=  >=
     ```
 
-    İşlenen türleri atanamayan değer türleri ve sonuç türü olup olmadığını ise lifted form bir işleç var. `bool`. Tek bir ekleyerek lifted formun oluşturulan `?` değiştiricisi her işlenen türü. Değer lifted işleci üretir `false` bir veya iki işlenenin null olduğunda. Aksi takdirde lifted işleci işlenenler sarmalanmış olmaktan çıkaran ve oluşturmak için temel alınan işleci geçerlidir `bool` sonucu.
+    bir işlecin yükseltilmemiş formu, işlenen türleri hem null yapılamayan değer türleri hem de sonuç türü `bool` ise vardır. Yükseltilmemiş formu, her bir işlenen türüne tek bir `?` değiştiricisi eklenerek oluşturulur. Bir veya her iki işlenen de null ise, yükseltilmemiş işleci `false` değerini üretir. Aksi halde, yükseltilmemiş işleci işlenenleri kaldırır ve `bool` sonucunu üretmek için temeldeki işleci uygular.
 
-## <a name="member-lookup"></a>Üye araması
+## <a name="member-lookup"></a>Üye arama
 
-Üye araması anlamı bir türün bağlamı içindeki bir adın yapabildiği belirlenir işlemidir. Değerlendirme bir parçası olarak bir üye araması oluşabilir bir *simple_name* ([basit adları](expressions.md#simple-names)) veya bir *member_access* ([üye erişimi](expressions.md#member-access)) içinde bir ifade. Varsa *simple_name* veya *member_access* olarak gerçekleşir *primary_expression* , bir *invocation_expression* ([ Yöntem çağrıları](expressions.md#method-invocations)), üye çağrılmasına kabul edilir.
+Üye arama, bir tür bağlamındaki bir adın anlamını tespit eden işlemdir. Üye arama, bir ifadede bir *simple_name* ([basit adlar](expressions.md#simple-names)) veya *member_access* ([üye erişimi](expressions.md#member-access)) değerlendirme işleminin parçası olarak gerçekleşebilir. *Simple_name* veya *member_access* , bir *invocation_expression* ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) *primary_expression* olarak gerçekleşirse, üyenin çağrılması söylenir.
 
-Üye bir yöntem veya olay ise ya da bir sabit, alan veya özellik bir temsilci türü ise ([Temsilciler](delegates.md)) veya türü `dynamic` ([dinamik tür](types.md#the-dynamic-type)), üye olduğusöylenirsonra*çağrılmayan*.
+Bir üye bir yöntem veya olaydır ya da bir temsilci türü ([Temsilciler](delegates.md)) veya `dynamic` ([dinamik tür](types.md#the-dynamic-type)) türünde bir sabit, alan veya özellik ise, üyenin *ıncable*olarak kabul edilir.
 
-Üye araması üyesi aynı zamanda üyesinin tür parametreleri ve üye erişilebilir olup yalnızca adını göz önünde bulundurur. Üye araması amacıyla, genel yöntemleri ve iç içe geçmiş genel türler dizi ilgili bildirimleri belirtilen tür parametreleri ve diğer tüm üyeleri sıfır Tür parametrelerine sahip.
+Üye arama yalnızca bir üyenin adını değil, üyenin sahip olduğu tür parametrelerinin sayısını ve üyenin erişilebilir olup olmadığını dikkate alır. Üye arama amaçları için, genel metotlar ve iç içe geçmiş genel türler ilgili bildirimlerinde belirtilen tür parametrelerinin sayısına ve diğer tüm üyelerin sıfır tür parametrelerine sahip olması gerekir.
 
-Adı bir üye araması `N` ile `K`  tür parametrelerindeki tür `T` şu şekilde işlenir:
+@ No__t-3 türünde `K` @ no__t-2tür parametreleri ile @ no__t-0 adlı bir üye araması şu şekilde işlenir:
 
-*  İlk olarak bir dizi adlı erişilebilir üyeler `N` belirlenir:
-    * Varsa `T` adlı erişilebilir üyeler kümesi birleşimi kümesi ise bir tür parametresi olduğundan `N` her bir birincil kısıtlaması veya ikincil bir kısıtlama olarak belirtilen türlerle ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) için  `T`, adlı erişilebilir üyeler kümesini birlikte `N` içinde `object`.
-    * Aksi takdirde, küme, tüm erişilebilir oluşur ([üye erişimi](basic-concepts.md#member-access)) adlı üye `N` içinde `T`devralınan üyeleri ve adlı erişilebilir Üyeler dahil olmak üzere `N` içinde `object`. Varsa `T` bir oluşturulmuş tür olsa üyelerin kümesini tür bağımsız değişkenleri açıklanan şekilde değiştirerek elde edilen [oluşturulan türler üyeleri](classes.md#members-of-constructed-types). İçeren üye bir `override` değiştiricisi kümeden hariç tutulur.
-*  Ardından, eğer `K` sıfırsa, türleri, bildirimleri içeren tür parametreleri kaldırıldığında tüm iç içe. Varsa `K` sıfır olmayan tür parametreleri kaldırılır, farklı bir değere sahip tüm üyeleri olan. Dikkat edin `K` sıfır, yöntemleri sahip olmak parametreleri kaldırılmaz, bu yana tür çıkarımı işlem türü ([anlam çıkarma](expressions.md#type-inference)) tür bağımsız değişkenlerini çıkarsanacak mümkün olabilir.
-*  Üye ise sonraki *çağrılan*, tüm olmayan-*çağrılmayan* üyeleri kümesinden kaldırılır.
-*  Ardından, diğer üyeleri tarafından gizlenen üyeleri kümesinden kaldırılır. Her üye için `S.M` kümesindeki burada `S` tür, üye `M` bildirildiğinde, aşağıdaki kurallar uygulanır:
-    * Varsa `M` tüm üyelerini bir temel türde bildirilen sonra sabit, alan, özelliği, olay veya numaralandırma üyesi olduğu `S` kümesinden kaldırılır.
-    * Varsa `M` bir tür bildiriminde kullanıldığında, ardından tüm olmayan bir temel türde bildirilen türleri olan `S` kümesinden kaldırılır ve tür parametreleri aynı sayıda bildirimlerle type all `M` bir temel türde bildirilen `S` kaldırılır kümesinden.
-    * Varsa `M` tüm yöntemi olmayan üyeleri bir temel türde bildirilen sonra bir yöntem olan `S` kümesinden kaldırılır.
-*  Ardından, sınıf üyeleri tarafından gizlenen bir arabirim üyeleri kümesinden kaldırılır. Bu adım yalnızca, bir etkisi olmaz `T` parametre türüdür ve `T` hem etkin temel bir sınıf dışında olan `object` ve boş olmayan etkin arabirimi ayarlayın ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)). Her üye için `S.M` kümesindeki burada `S` hangi tür üyesi `M` bildirildiğinde, aşağıdaki kurallar uygulanır, `S` sınıf bildirimi dışında olan `object`:
-    * Varsa `M` bir sabit, alan, özelliği, olay, sabit listesi üyesi veya türü bildirimi bir arabirim bildirimi içinde bildirilen tüm üyelerle kümesinden kaldırılır sonra olduğu.
-    * Varsa `M` bir yöntem bir arabirim bildirimi içinde bildirilen tüm yöntemi olmayan üyeleri kümesi ve aynı imzaya sahip tüm yöntemleri kaldırılır sonra olduğu `M` bildirilen bir arabirimde bildirimi kümesinden kaldırılır.
-*  Son olarak, gizli üyeleri kaldırılmış arama sonucu belirlenir:
-    * Belirlenen bir metot değil tek bir üyesi oluşuyorsa, ardından bu arama sonucunu üyesidir.
-    * Küme yalnızca yöntemleri içeriyorsa, aksi takdirde, ardından bu yöntemleri arama sonucu grubudur.
-    * Aksi takdirde, belirsiz arama ve bir bağlama zamanı hatası oluşur.
+*  İlk olarak, @ no__t-0 adlı bir erişilebilir üye kümesi belirlenir:
+    * @No__t-0 bir tür parametresi ise, küme, birincil kısıtlama olarak belirtilen türlerin her birinde @ no__t-1 adlı erişilebilir üye kümelerinin birleşimidir ve bu küme, @ no__t-3 için ikincil kısıtlama ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) ile birlikte `object` ' te @ no__t-4 adlı erişilebilir Üyeler.
+    * Aksi halde, küme devralınan Üyeler ve `object` ' te @ no__t-3 adlı erişilebilir Üyeler dahil olmak üzere @ no__t-2 içinde @ no__t-1 adlı tüm erişilebilir ([üye erişim](basic-concepts.md#member-access)) üyelerinden oluşur. @No__t-0 oluşturulmuş bir türse, Üyeler kümesi, [oluşturulan türlerin üyelerinde](classes.md#members-of-constructed-types)açıklanan tür bağımsız değişkenlerinin yerine alınır. @No__t-0 değiştiricisi içeren Üyeler kümeden çıkarılır.
+*  Sonra, `K` sıfırsa, bildirimleri tür parametreleri içeren tüm iç içe türler kaldırılır. @No__t-0 sıfır değilse, farklı sayıda tür parametrelerine sahip tüm Üyeler kaldırılır. Tür çıkarımı işlemi ([tür çıkarımı](expressions.md#type-inference)) tür bağımsız değişkenlerini çıkarsanbileceği için `K` olduğunda tür parametrelerine sahip Yöntemler kaldırılmaz.
+*  Sonra, üye *çağrılırsa*,*çağrılamayan* tüm Üyeler kümeden kaldırılır.
+*  Daha sonra, diğer Üyeler tarafından gizlenen Üyeler kümeden kaldırılır. Küme içindeki her üye için @no__t: `S`, @ no__t-2 üyesinin bildirildiği türdür, aşağıdaki kurallar uygulanır:
+    * @No__t-0 bir sabit, alan, özellik, olay veya numaralandırma üyesiyse, temel türünde (`S`) belirtilen tüm Üyeler kümeden kaldırılır.
+    * @No__t-0 bir tür bildirimidir, `S` ' in temel türünde bildirilmeyen tüm türler kümeden kaldırılır ve `S` temel türünde tanımlanan `M` olarak aynı sayıda parametre içeren tüm tür bildirimleri kümesinden kaldırılır.
+    * @No__t-0 bir yöntem ise, `S` temel türünde belirtilen tüm yöntem olmayan Üyeler kümeden kaldırılır.
+*  Daha sonra, sınıf üyeleri tarafından gizlenen arabirim üyeleri kümeden kaldırılır. Bu adım yalnızca `T` bir tür parametresidir ve `T` ' in hem `object` ' den hem de boş olmayan bir etkin arabirim kümesi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) dışında etkin bir temel sınıfı varsa, bu adımın bir etkisi vardır. Küme içindeki her üye için @no__t: `S`, üyenin `M` ' nin bildirildiği türdür, `S` `object` dışında bir sınıf bildirimidir, aşağıdaki kurallar uygulanır:
+    * @No__t-0 bir sabit, alan, özellik, olay, numaralandırma üyesi veya tür bildirimidir, bir arabirim bildiriminde belirtilen tüm Üyeler kümeden kaldırılır.
+    * @No__t-0 bir yöntem ise, bir arabirim bildiriminde belirtilen tüm yöntem olmayan Üyeler kümeden kaldırılır ve arabirim bildiriminde belirtilen `M` ile aynı imzaya sahip tüm yöntemler kümeden kaldırılır.
+*  Son olarak, gizli üyeleri kaldırdıkça, aramanın sonucu belirlenir:
+    * Küme, yöntem olmayan tek bir üyenin içeriyorsa, bu üye aramanın sonucudur.
+    * Aksi takdirde, küme yalnızca yöntemleri içeriyorsa, bu yöntem grubu aramanın sonucudur.
+    * Aksi takdirde, arama belirsizdir ve bir bağlama zamanı hatası oluşur.
 
-Tür parametreleri ve arabirimler dışında türlerindeki üye aramalar ve kesinlikle tek devralımlı arabirimler üye arama için (devralma zincirini her arabirim tam olarak sıfır veya bir doğrudan temel arabirim varsa), arama kurallarını etkisi yalnızca, aynı ad veya imzaya sahip üyeler Gizle temel üyeler türetilmiş. Bu tür tek devralımlı aramaları hiçbir zaman belirsiz olabilir. Büyük olasılıkla birden çok devralma, arabirimler üye arama gelen ortaya çıkabilecek belirsizlikleri açıklanan [arabirim üye erişimi](interfaces.md#interface-member-access).
+Tür parametreleri ve arabirimleri dışındaki türlerde üye aramaları ve kesinlikle tek devralma olan arabirimlerde üye aramaları için (devralma zincirindeki her arabirim tam olarak sıfır veya bir doğrudan temel arabirimine sahiptir), arama kurallarının etkisi yalnızca bu türetilmiş Üyeler aynı ad veya imzaya sahip temel üyeleri gizler. Bu tür tek devralma aramaları hiçbir şekilde belirsiz değildir. Birden çok devralma arabirimindeki üye aramalarından muhtemelen olabilecek belirsizlikleri, [arabirim üye erişimi](interfaces.md#interface-member-access)bölümünde açıklanmıştır.
 
-### <a name="base-types"></a>Taban türleri
+### <a name="base-types"></a>Temel türler
 
-Bir tür üyesi arama amacıyla `T` aşağıdaki temel türleri olduğu kabul edilir:
+Üye arama amaçları doğrultusunda `T` türü aşağıdaki temel türlere sahip olacak şekilde değerlendirilir:
 
-*  Varsa `T` olduğu `object`, ardından `T` temel tür yok.
-*  Varsa `T` olduğu bir *enum_type*, temel türde `T` sınıf türleri `System.Enum`, `System.ValueType`, ve `object`.
-*  Varsa `T` olduğu bir *struct_type*, temel türde `T` sınıf türleri `System.ValueType` ve `object`.
-*  Varsa `T` olduğu bir *class_type*, temel türde `T` temel sınıfları, `T`, sınıf türü de dahil olmak üzere `object`.
-*  Varsa `T` olduğu bir *INTERFACE_TYPE*, temel türde `T` temel arabirimleri olan `T` ve sınıf türüne `object`.
-*  Varsa `T` olduğu bir *array_type*, temel türde `T` sınıf türleri `System.Array` ve `object`.
-*  Varsa `T` olduğu bir *delegate_type*, temel türde `T` sınıf türleri `System.Delegate` ve `object`.
+*  @No__t-0 `object` ise, `T` temel türe sahip değildir.
+*  @No__t-0 bir *enum_type*ise, `T` taban türleri `System.Enum`, `System.ValueType` ve `object` sınıflardır.
+*  @No__t-0 *ise, @no__t*-2 taban türleri `System.ValueType` ve `object` sınıf türleridir.
+*  @No__t-0 ise, `T` Taban *türleri, @no__t*-4 sınıf türü de dahil olmak üzere `T` temel sınıflarıdır.
+*  @No__t-0 bir *interface_type*ise, `T` taban türleri `T` ' ün temel arabirimlerdir ve `object` sınıf türüdür.
+*  @No__t-0 bir *array_type*ise, `T` taban türleri `System.Array` ve `object` sınıflardır.
+*  @No__t-0 *ise, @no__t*-2 taban türleri `System.Delegate` ve `object` sınıf türleridir.
 
 ## <a name="function-members"></a>İşlev üyeleri
 
-İşlev üyeleri yürütülebilir deyimleri içermesine üyeleridir. İşlev üyeleri her zaman türlerin üyelerini ve ad alanları üyeleri olamaz. C# işlev üyeleri aşağıdaki kategorileri tanımlar:
+İşlev üyeleri, çalıştırılabilir deyimler içeren üyeleridir. İşlev üyeleri her zaman türlerin üyeleridir ve ad alanlarının üyeleri olamaz. C#Aşağıdaki işlev üyesi kategorilerini tanımlar:
 
 *  Yöntemler
-*  Özellikler
-*  Olaylar
+*  properties
+*  Events
 *  Dizin Oluşturucular
 *  Kullanıcı tanımlı işleçler
-*  Örnek oluşturucuları
+*  Örnek oluşturucular
 *  Statik oluşturucular
 *  Yıkıcılar
 
-Yok ediciler ve (hangi açıkça çağrılamaz) statik oluşturucular dışında işlev üyeleri içinde yer alan ifadeleri işlev üyesi çağrılarını yürütülür. Bir işlev üye çağrısı yazma olarak gerçek sözdizimini üzerinde belirli işlev üye kategorisine bağlıdır.
+Yok ediciler ve statik oluşturucular dışında (açıkça çağrılamaz), işlev üyelerinde bulunan deyimler işlev üyesi etkinleştirmeleri aracılığıyla yürütülür. İşlev üye çağrısı yazmak için gerçek sözdizimi, belirli bir işlev üyesi kategorisine bağlıdır.
 
-Bağımsız değişken listesi ([bağımsız değişken listeleri](expressions.md#argument-lists)) işlevi üyesi çağırma gerçek değerleri veya değişken başvuruları işlevi üyesinin parametrelerini sağlar.
+İşlev üyesi çağırma işlevinin bağımsız değişken listesi ([bağımsız değişken listeleri](expressions.md#argument-lists)), işlev üyesinin parametreleri için gerçek değerler veya değişken başvuruları sağlar.
 
-Genel yöntemler çağrıları tür bağımsız değişkenleri, yönteme kümesini belirlemek için tür çıkarımı uygulayabilir. Bu işlem açıklanan [anlam çıkarma](expressions.md#type-inference).
+Genel yöntemlerin etkinleştirmeleri, yönteme geçirilecek tür bağımsız değişkenleri kümesini belirlemede tür çıkarımı kullanabilir. Bu işlem [tür çıkarımı](expressions.md#type-inference)bölümünde açıklanmaktadır.
 
-Yöntemleri, Dizinleyicileri, işleçleri ve örnek oluşturucuları çağrılarını aşırı yükleme çözünürlüğü, aday birtakım çağrılacak işlev üyeleri belirlemek için kullanın. Bu işlem açıklanan [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution).
+Yöntemler, Dizin oluşturucular, işleçler ve örnek oluşturucuların çağırmaları, hangi bir tür üye kümesinin çalıştırılacağını belirleyen aşırı yükleme çözümlemesi sağlar. Bu işlem [aşırı yükleme çözümlemesi](expressions.md#overload-resolution)bölümünde açıklanmaktadır.
 
-Belirli işlev üyesi bağlama zamanında belirlendikten sonra büyük olasılıkla aşırı yükleme çözünürlüğü işlevi üye çağrılırken gerçek çalışma zamanı açıklanan işlemidir [derleme zamanı dinamik aşırı yükleme çözünürlüğüdenetleniyor](expressions.md#compile-time-checking-of-dynamic-overload-resolution).
+Bağlama zamanında belirli bir işlev üyesi tanımlandıktan sonra, muhtemelen aşırı yükleme çözünürlüğü aracılığıyla işlev üyesini çağırma işleminin gerçek çalışma zamanı [denetimi, dinamik aşırı yükleme çözümünün derleme zamanı denetiminde](expressions.md#compile-time-checking-of-dynamic-overload-resolution)açıklanmaktadır.
 
-Açıkça çağrılan işlev üyeleri altı kategorileri içeren yapıları yerinde alan işleme aşağıdaki tabloda özetlenmiştir. Tabloda `e`, `x`, `y`, ve `value` değişkenler veya değerler olarak sınıflandırılan ifadeleri belirtmek `T` bir tür olarak sınıflandırılmış bir ifadeyi gösterir `F` basit bir yöntem ve adıdır`P` basit bir özelliğin adıdır.
+Aşağıdaki tabloda, açıkça çağrılabilen işlev üyelerinin altı kategorisini içeren yapılar içinde gerçekleşen işlem özetlenmektedir. Tabloda, `e`, `x`, `y` ve `value`, değişkenler veya değerler olarak sınıflandırılan ifadeleri gösterir, `T` tür olarak sınıflandırılan bir ifadeyi belirtir, `F` bir yöntemin basit adıdır ve `P` bir özelliğin basit adıdır.
 
 
-| __Yapısı__     | __Örnek__    | __Açıklama__ |
+| __Oluşturma__     | __Örnek__    | __Açıklama__ |
 |-------------------|----------------|-----------------|
-| Yöntem çağırma | `F(x,y)`       | Aşırı yükleme çözünürlüğü uygulanan en iyi yöntem seçmek için `F` içeren sınıf veya yapı içinde. Yöntem bağımsız değişken listesi ile çağrılan `(x,y)`. Yöntem değilse `static`, örnek ifade `this`. | 
-|                   | `T.F(x,y)`     | Aşırı yükleme çözünürlüğü uygulanan en iyi yöntem seçmek için `F` sınıf veya yapı içinde `T`. Yöntem değilse bir bağlama zamanı hatası oluşur `static`. Yöntem bağımsız değişken listesi ile çağrılan `(x,y)`. | 
-|                   | `e.F(x,y)`     | Aşırı yükleme çözünürlüğü uygulanan en iyi yöntem F sınıf, yapı veya arabirim türü tarafından verilen seçmek için `e`. Yöntem ise bir bağlama zamanı hatası oluşur `static`. Örnek ifade ile yöntemi çağrılır `e` ve bağımsız değişken listesi `(x,y)`. | 
-| Özellik erişimi   | `P`            | `get` Erişimci özelliğin `P` kapsayan sınıfın veya yapının çağrılır. Bir derleme zamanı hatası oluşur `P` salt yazılır. Varsa `P` değil `static`, örnek ifade `this`. | 
-|                   | `P = value`    | `set` Erişimci özelliğin `P` içeren sınıf veya yapı bağımsız değişken listesiyle çağrılır `(value)`. Bir derleme zamanı hatası oluşur `P` salt okunur. Varsa `P` değil `static`, örnek ifade `this`. | 
-|                   | `T.P`          | `get` Erişimci özelliğin `P` sınıf veya yapı içinde `T` çağrılır. Bir derleme zamanı hatası oluşur `P` değil `static` veya `P` salt yazılır. | 
-|                   | `T.P = value`  | `set` Erişimci özelliğin `P` sınıf veya yapı içinde `T` bağımsız değişken listesi ile çağrılan `(value)`. Bir derleme zamanı hatası oluşur `P` değil `static` veya `P` salt okunur. | 
-|                   | `e.P`          | `get` Erişimci özelliğin `P` içinde sınıf, yapı veya arabirim türü tarafından verilen `e` örnek ifade ile çağrılan `e`. Bir bağlama zamanı hatası oluşur `P` olduğu `static` veya `P` salt yazılır. | 
-|                   | `e.P = value`  | `set` Erişimci özelliğin `P` içinde sınıf, yapı veya arabirim türü tarafından verilen `e` örnek ifade ile çağrılan `e` ve bağımsız değişken listesi `(value)`. Bir bağlama zamanı hatası oluşur `P` olduğu `static` veya `P` salt okunur. | 
-| Olay erişimini      | `E += value`   | `add` Olay erişimcisi `E` kapsayan sınıfın veya yapının çağrılır. Varsa `E` olan statik, örnek ifadesidir `this`. | 
-|                   | `E -= value`   | `remove` Olay erişimcisi `E` kapsayan sınıfın veya yapının çağrılır. Varsa `E` olan statik, örnek ifadesidir `this`. | 
-|                   | `T.E += value` | `add` Olay erişimcisi `E` sınıf veya yapı içinde `T` çağrılır. Bir bağlama zamanı hatası oluşur `E` statik değil. | 
-|                   | `T.E -= value` | `remove` Olay erişimcisi `E` sınıf veya yapı içinde `T` çağrılır. Bir bağlama zamanı hatası oluşur `E` statik değil. | 
-|                   | `e.E += value` | `add` Olay erişimcisi `E` içinde sınıf, yapı veya arabirim türü tarafından verilen `e` örnek ifade ile çağrılan `e`. Bir bağlama zamanı hatası oluşur `E` statiktir. | 
-|                   | `e.E -= value` | `remove` Olay erişimcisi `E` içinde sınıf, yapı veya arabirim türü tarafından verilen `e` örnek ifade ile çağrılan `e`. Bir bağlama zamanı hatası oluşur `E` statiktir. | 
-| Dizinleyici erişimi    | `e[x,y]`       | Aşırı yükleme çözünürlüğü, dizin oluşturucunun en iyi sınıf, yapı veya arabirim e türü tarafından verilen seçmek için uygulanır. `get` Erişimci Indexer'ın örnek ifade ile çağrılan `e` ve bağımsız değişken listesi `(x,y)`. Dizin Oluşturucu salt yazılır ise bir bağlama zamanı hatası oluşur. | 
-|                   | `e[x,y] = value` | Aşırı yükleme çözünürlüğü uygulanan en iyi dizin oluşturucu sınıf, yapı veya arabirim türü tarafından verilen seçmek için `e`. `set` Erişimci Indexer'ın örnek ifade ile çağrılan `e` ve bağımsız değişken listesi `(x,y,value)`. Dizin Oluşturucu salt okunur ise bir bağlama zamanı hatası oluşur. | 
-| İşleç çağırma | `-x`         | Aşırı yükleme çözünürlüğü uygulanan en iyi birli işleç sınıf veya yapı türü tarafından verilen seçmek için `x`. Seçili işleç bağımsız değişken listesi ile çağrılan `(x)`. | 
-|                     | `x + y`      | Aşırı yükleme çözünürlüğü sınıflar veya yapılar türleri tarafından verilen iyi ikili operatör seçmek için uygulanan `x` ve `y`. Seçili işleç bağımsız değişken listesi ile çağrılan `(x,y)`. | 
-| Örnek oluşturucusu çağırma | `new T(x,y)` | Sınıf veya yapı en iyi örnek oluşturucusu seçmek için aşırı yükleme çözünürlüğü uygulanan `T`. Örnek oluşturucusu bağımsız değişken listesi ile çağrılan `(x,y)`. | 
+| Yöntem çağırma | `F(x,y)`       | Aşırı yükleme çözümlemesi, kapsayan sınıf veya yapıda en iyi yöntem `F` ' ı seçmek üzere uygulanır. Yöntemi `(x,y)` bağımsız değişken listesiyle çağrılır. Yöntem `static` değilse, örnek ifadesi `this` ' dir. | 
+|                   | `T.F(x,y)`     | Yeniden yükleme çözümlemesi, sınıf veya yapı `T` ' de en iyi yöntem `F` ' ı seçmek üzere uygulanır. Yöntem `static` değilse bir bağlama zamanı hatası oluşur. Yöntemi `(x,y)` bağımsız değişken listesiyle çağrılır. | 
+|                   | `e.F(x,y)`     | @No__t-0 türü tarafından verilen sınıf, yapı veya arabirimdeki en iyi yöntemi seçmek için aşırı yükleme çözümlemesi uygulanır. Yöntem `static` olduğunda bağlama zamanı hatası oluşur. Yöntemi, `e` örnek ifadesiyle ve-1 @no__t bağımsız değişken listesinde çağrılır. | 
+| Özellik erişimi   | `P`            | İçeren sınıf veya yapı içindeki `P` özelliğinin `get` erişimcisi çağrıldı. @No__t-0 salt yazılır ise, derleme zamanı hatası oluşur. @No__t-0 `static` değilse, örnek ifadesi `this` ' dir. | 
+|                   | `P = value`    | İçeren sınıf veya yapı içindeki `P` özelliğinin `set` erişimcisi `(value)` bağımsız değişken listesiyle çağrılır. @No__t-0 salt okunurdur derleme zamanı hatası oluşur. @No__t-0 `static` değilse, örnek ifadesi `this` ' dir. | 
+|                   | `T.P`          | Sınıf veya yapı `T` ' deki `P` özelliğinin `get` erişimcisi çağrılır. @No__t-0 `static` değilse veya `P` salt yazılır ise, derleme zamanı hatası oluşur. | 
+|                   | `T.P = value`  | Sınıf veya yapı `T` ' deki `P` özelliğinin `set` erişimcisi `(value)` bağımsız değişken listesiyle çağrılır. @No__t-0 `static` değilse veya `P` salt okunurdur, derleme zamanı hatası oluşur. | 
+|                   | `e.P`          | Sınıf, yapı veya `e` türü tarafından verilen arabirimdeki `P` özelliğinin `get` erişimcisi, `e` örnek ifadesiyle çağrılır. @No__t-0 `static` ise bağlama zamanı hatası oluşur veya `P` salt yazılır ise. | 
+|                   | `e.P = value`  | Sınıf, yapı veya `e` türü tarafından verilen arabirimdeki `P` özelliğinin `set` erişimcisi, `e` örnek ifadesiyle ve `(value)` bağımsız değişken listesiyle çağrılır. @No__t-0 `static` ise bağlama zamanı hatası oluşur veya `P` salt okunurdur. | 
+| Olay erişimi      | `E += value`   | Kapsayan sınıf veya yapı içindeki `E` olayının `add` erişimcisi çağrıldı. @No__t-0 statik değilse, örnek ifadesi `this` ' dir. | 
+|                   | `E -= value`   | Kapsayan sınıf veya yapı içindeki `E` olayının `remove` erişimcisi çağrıldı. @No__t-0 statik değilse, örnek ifadesi `this` ' dir. | 
+|                   | `T.E += value` | Sınıf veya yapı `T` ' deki `E` olayının `add` erişimcisi çağrılır. @No__t-0 statik değilse bir bağlama zamanı hatası oluşur. | 
+|                   | `T.E -= value` | Sınıf veya yapı `T` ' deki `E` olayının `remove` erişimcisi çağrılır. @No__t-0 statik değilse bir bağlama zamanı hatası oluşur. | 
+|                   | `e.E += value` | Sınıf, yapı veya `e` türü tarafından verilen arabirimdeki `E` olayının `add` erişimcisi, `e` örnek ifadesiyle çağrılır. @No__t-0 statikse bir bağlama zamanı hatası oluşur. | 
+|                   | `e.E -= value` | Sınıf, yapı veya `e` türü tarafından verilen arabirimdeki `E` olayının `remove` erişimcisi, `e` örnek ifadesiyle çağrılır. @No__t-0 statikse bir bağlama zamanı hatası oluşur. | 
+| Dizin Oluşturucu erişimi    | `e[x,y]`       | Aşırı yükleme çözümlemesi, sınıf, yapı veya e-postayla verilen arabirimdeki en iyi Dizin oluşturucuyu seçmek için uygulanır. Dizin oluşturucunun `get` erişimcisi, `e` örnek ifadesiyle ve `(x,y)` bağımsız değişken listesinde çağrılır. Dizin Oluşturucu salt yazılır ise bağlama zamanı hatası oluşur. | 
+|                   | `e[x,y] = value` | Sınıf, yapı veya `e` türü tarafından verilen arabirimdeki en iyi Dizin oluşturucuyu seçmek için aşırı yükleme çözümlemesi uygulanır. Dizin oluşturucunun `set` erişimcisi, `e` örnek ifadesiyle ve `(x,y,value)` bağımsız değişken listesinde çağrılır. Dizin Oluşturucu salt okunurdur bağlama zamanı hatası oluşur. | 
+| İşleç çağırma | `-x`         | @No__t-0 türü tarafından verilen sınıfta veya yapıda en iyi birli işleci seçmek için aşırı yükleme çözümlemesi uygulanır. Seçilen işleç `(x)` bağımsız değişken listesiyle çağrılır. | 
+|                     | `x + y`      | @No__t-0 ve `y` türleri tarafından verilen sınıflarda veya yapılarda en iyi ikili işleci seçmek için aşırı yükleme çözümlemesi uygulanır. Seçilen işleç `(x,y)` bağımsız değişken listesiyle çağrılır. | 
+| Örnek Oluşturucu çağrısı | `new T(x,y)` | Sınıf veya yapı `T` ' da en iyi örnek oluşturucusunu seçmek için aşırı yükleme çözümlemesi uygulanır. Örnek Oluşturucu `(x,y)` bağımsız değişken listesiyle çağrılır. | 
 
 ### <a name="argument-lists"></a>Bağımsız değişken listeleri
 
-Her işlev üyesi ve temsilci çağırma, gerçek değerleri veya değişken başvuruları işlevi üyesinin parametrelerini sağlayan bir bağımsız değişken listesi içerir. Bir işlev üye çağrısının bağımsız değişken listesi belirtmek için sözdizimi işlevi üye kategorisine göre bağlıdır:
+Her işlev üyesi ve temsilci çağrısı, işlev üyesinin parametreleri için gerçek değerler veya değişken başvuruları sağlayan bir bağımsız değişken listesi içerir. İşlev üyesi çağrısının bağımsız değişken listesini belirtmek için sözdizimi, işlev üyesi kategorisine bağlıdır:
 
-*  Örneğin Oluşturucular, yöntemler, dizin oluşturucular ve Temsilciler, bağımsız değişkenler olarak belirtilen bir *argument_list*, aşağıda açıklandığı gibi. Çağrılırken, dizin oluşturucular için `set` erişimci bağımsız değişken listesi ayrıca atama işlecinin sağ işleneni belirtilen ifade içerir.
-*  Özellikler için bağımsız değişken listesi çağrılırken boştur `get` erişimci ve çağrılırken atama işlecinin sağ işleneni belirtilen ifade oluşur `set` erişimcisi.
-*  Olaylar için sağ işleneni belirtilen ifade bağımsız değişken listesi oluşan `+=` veya `-=` işleci.
-*  Kullanıcı tanımlı işleçler için bağımsız değişken listesi tek işlecinin işleneni, tekli veya ikili işleci iki işlenenleri oluşur.
+*  Örnek oluşturucular, Yöntemler, Dizin oluşturucular ve temsilciler için bağımsız değişkenler, aşağıda açıklandığı gibi bir *argument_list*olarak belirtilir. Dizin oluşturucular için, `set` erişimcisini çağırırken bağımsız değişken listesi, atama işlecinin sağ işleneni olarak belirtilen ifadeyi de içerir.
+*  Özellikler için, `get` erişimcisi çağrılırken bağımsız değişken listesi boştur ve `set` erişimcisi çağrılırken atama işlecinin sağ işleneni olarak belirtilen ifadeden oluşur.
+*  Olaylar için bağımsız değişken listesi, `+=` veya `-=` işlecinin sağ işleneni olarak belirtilen ifadeden oluşur.
+*  Kullanıcı tanımlı işleçler için bağımsız değişken listesi birli işlecin tek işleneninden veya ikili işlecinin iki işleneninden oluşur.
 
-Bağımsız değişken özelliklerinin ([özellikleri](classes.md#properties)), olaylar ([olayları](classes.md#events)) ve kullanıcı tanımlı işleçler ([işleçleri](classes.md#operators)) her zaman değer parametre olarak geçirilen ([ Parametre değeri](classes.md#value-parameters)). Dizin oluşturucular bağımsız değişkenleri ([dizin oluşturucular](classes.md#indexers)) her zaman değer parametre olarak geçirilen ([değer parametreleri](classes.md#value-parameters)) ya da parametre dizileri ([parametre dizileri](classes.md#parameter-arrays)). Başvuru ve çıkış parametreleri, bu işlev üyeleri kategoriler için desteklenmez.
+Özelliklerinin bağımsız değişkenleri ([Özellikler](classes.md#properties)), Olaylar ([Olaylar](classes.md#events)) ve Kullanıcı tanımlı işleçler ([işleçler](classes.md#operators)) her zaman değer parametreleri olarak geçirilir ([değer parametreleri](classes.md#value-parameters)). Dizin oluşturucularının bağımsız değişkenleri ([Dizin oluşturucular](classes.md#indexers)) her zaman değer parametreleri ([değer parametreleri](classes.md#value-parameters)) veya parametre dizileri ([parametre dizileri](classes.md#parameter-arrays)) olarak geçirilir. Başvuru ve çıkış parametreleri bu işlev üyesi kategorileri için desteklenmez.
 
-Bir örnek oluşturucusu, yöntem, dizin oluşturucu veya temsilci çağırma bağımsız değişkenler olarak belirtilen bir *argument_list*:
+Örnek oluşturucusunun, yöntemin, dizin oluşturucunun veya temsilci çağrısının bağımsız değişkenleri bir *argument_list*olarak belirtilir:
 
 ```antlr
 argument_list
@@ -427,51 +427,51 @@ argument_value
     ;
 ```
 
-Bir *argument_list* bir veya daha fazla oluşur *bağımsız değişken*virgülle ayırarak, s. Her bağımsız değişken isteğe oluşur *argument_name* arkasından bir *argument_value*. Bir *bağımsız değişken* ile bir *argument_name* şeklinde adlandırılan bir ***adlandırılmış bağımsız değişkeni***bilgileriyse bir *bağımsız değişken* olmadan bir  *argument_name* olduğu bir ***konumsal bağımsız değişkeni***. Adlandırılmış bir bağımsız değişken görüntülenmesini konumsal bağımsız değişken için bir hata olduğu bir *argument_list*.
+Bir *argument_list* , virgülle ayrılmış bir veya daha fazla *bağımsız değişkenden*oluşur. Her bağımsız değişken, bir *argument_value*tarafından izlenen isteğe bağlı bir *argument_name* oluşur. *Argument_name* içeren bir *bağımsız* değişken ***adlandırılmış bağımsız değişken***olarak adlandırılır, ancak *argument_name* olmayan bir *bağımsız* değişken ***konumsal bir bağımsız***değişkendir. Bir *argument_list*içindeki adlandırılmış bir bağımsız değişkenden sonra yer aldığı konum bağımsız değişkeninin görünmesi hatadır.
 
-*Argument_value* aşağıdaki biçimlerden birini alabilir:
+*Argument_value* aşağıdaki formlardan birini gerçekleştirebilir:
 
-*  Bir *ifade*, gösteren bir değer parametre olarak geçirilen bağımsız değişken ([değer parametreleri](classes.md#value-parameters)).
-*  Anahtar sözcüğü `ref` arkasından bir *variable_reference* ([değişken başvuruları](variables.md#variable-references)), bir başvuru parametresi geçirilen bağımsız değişken belirten ([başvuru parametreleri ](classes.md#reference-parameters)). Bir değişken kesinlikle atanmalıdır ([belirli atama onayına](variables.md#definite-assignment)) önce bir başvuru parametresi geçirilebilir. Anahtar sözcüğü `out` arkasından bir *variable_reference* ([değişken başvuruları](variables.md#variable-references)), bir output parametresi olarak geçirilen bağımsız değişken belirten ([çıkış parametresi](classes.md#output-parameters)). Bir değişken kesinlikle atanmış olarak kabul edilir ([belirli atama onayına](variables.md#definite-assignment)) izleyen bir işlev üye çağrısı değişkeni bir output parametresi olarak geçirilir.
+*  Bağımsız değişkenin değer parametresi olarak geçtiğini belirten bir *ifade*([değer parametreleri](classes.md#value-parameters)).
+*  Bağımsız değişkenin bir başvuru parametresi ([başvuru parametreleri](classes.md#reference-parameters)) olarak geçtiğini belirten bir *variable_reference* ([değişken başvuruları](variables.md#variable-references)) tarafından izlenen `ref` anahtar sözcüğü. Bir değişken başvuru parametresi olarak geçirilebilmesi için kesinlikle atanmalı ([kesin atama](variables.md#definite-assignment)). Bağımsız değişkenin bir çıkış parametresi ([çıkış parametreleri](classes.md#output-parameters)) olarak geçtiğini belirten bir *variable_reference* ([değişken başvuruları](variables.md#variable-references)) tarafından izlenen `out` anahtar sözcüğü. Değişken, değişkenin çıkış parametresi olarak geçirildiği bir işlev üyesi çağrısı sonrasında kesin olarak atanmış ([kesin atama](variables.md#definite-assignment)) olarak değerlendirilir.
 
-#### <a name="corresponding-parameters"></a>Karşılık gelen parametreleri
+#### <a name="corresponding-parameters"></a>Karşılık gelen parametreler
 
-Bir bağımsız değişken listesindeki her bağımsız değişkeni var. sahip işlev üyesi veya çağrılan temsilci karşılık gelen bir parametre olarak.
+Bir bağımsız değişken listesindeki her bağımsız değişken için, çağrılan işlev üyesinde veya temsilde karşılık gelen bir parametre olması gerekmez.
 
-Aşağıda kullanılan parametre listesi aşağıdaki gibi belirlenir:
+Aşağıda kullanılan parametre listesi aşağıdaki şekilde belirlenir:
 
-*  Sanal yöntemler ve sınıflar tanımlanmış dizin oluşturuculara, parametre listesi en belirgin bildirimden seçilir ya işlevi üyesinin alıcısı statik türü ile başlayan ve temel sınıflarının aramayı geçersiz kılın.
-*  Arabirim yöntemleri ve dizin oluşturucular için parametre listesi çekilir üyesinin, arabirim türü ile başlayan ve temel arabirimleri aramayı en belirgin tanımı oluşturur. Benzersiz bir parametre listesi yok bulunduğunda, erişilemez adlarını ve isteğe bağlı parametre içeren bir parametre listesi oluşturulur, çağrıları adlandırılmış parametreler kullanan veya isteğe bağlı bağımsız değişkenlere atlayın.
-*  Kısmi yöntemler için tanımlayan kısmi yöntem bildiriminde parametre listesi kullanılır.
-*  Diğer tüm işlev üyeleri ve temsilciler için kullanılanla olan yalnızca bir tek bir parametre listesi yoktur.
+*  Sınıflarda tanımlı sanal yöntemler ve Dizin oluşturucular için, parametre listesi, alıcı türü ve temel sınıfları arasında arama yaparak işlev üyesinin en belirgin bildiriminden veya geçersiz kılınmadan çekilir.
+*  Arabirim yöntemleri ve Dizin oluşturucular için, parametre listesi, arabirim türü ile başlayıp temel arabirimler üzerinden arama yaparak üyenin en belirli tanımını oluşturacak şekilde çekilir. Benzersiz bir parametre listesi bulunamazsa, erişilemeyen adlara sahip bir parametre listesi ve isteğe bağlı parametre oluşturulur; bu nedenle, etkinleştirmeleri adlandırılmış parametreleri kullanamaz veya isteğe bağlı bağımsız değişkenleri alamaz.
+*  Kısmi yöntemler için, tanımlayan kısmi Yöntem bildiriminin parametre listesi kullanılır.
+*  Diğer tüm işlev üyeleri ve temsilciler için yalnızca tek bir parametre listesi bulunur ve bu, kullanılır.
 
-Bir değişken veya parametre konumunu sayıda bağımsız değişken veya bağımsız değişken listesi veya parametre listesi önceki parametreleri olarak tanımlanır.
+Bir bağımsız değişkenin veya parametrenin konumu, bağımsız değişken listesi veya parametre listesinde kendisinden önceki bağımsız değişken veya parametre sayısı olarak tanımlanır.
 
-İşlev üye bağımsız değişkenleri için karşılık gelen parametreleri şu şekilde oluşturulur:
+İşlev üyesi bağımsız değişkenleri için karşılık gelen parametreler şu şekilde oluşturulur:
 
-*  Bağımsız değişken *argument_list* örnek oluşturucuları, yöntemleri, Dizinleyicileri ve temsilciler:
-    * Konumsal bağımsız değişken bir sabit parametre parametre listesindeki aynı konumda oluştuğu bu parametreye karşılık gelir.
-    * Konumsal bağımsız değişken işlev üyesi çağrılır, normal bir biçimde bir parametre dizisi ile aynı konumda parametre listesinde gerçekleşmelidir parametre dizisine karşılık gelir.
-    * Konumsal bağımsız değişken bir sabit parametre parametre listesindeki aynı konumda gerçekleştiği genişletilmiş hâli içinde çağrılan bir parametre dizisi ile işlevi üyesinin parametre dizisi içindeki bir öğeye karşılık gelir.
-    * Adlandırılmış bir bağımsız değişken, parametre listesinde aynı ada sahip parametre karşılık gelir.
-    * Çağrılırken, dizin oluşturucular için `set` erişimci, atama işlecinin sağ işleneninin karşılık gelen örtük olarak belirtilen ifade `value` parametresinin `set` erişimci bildirimi.
-*  Çağrılırken özellikleri `get` erişimci var olan herhangi bir bağımsız değişken. Çağrılırken `set` erişimci, atama işlecinin sağ işleneninin karşılık gelen örtük olarak belirtilen ifade `value` parametresinin `set` erişimci bildirimi.
-*  Kullanıcı tanımlı birli işleçler (dönüştürmeleri dahil) için tek bir işlenen işleç bildirimi, tek bir parametre karşılık gelir.
-*  Kullanıcı tanımlı ikili işleçler için ilk parametre olarak sol işlenen karşılık gelir ve sağ işlenen işleç bildirimi ikinci parametresi için karşılık gelir.
+*  Örnek oluşturucular, Yöntemler, Dizin oluşturucular ve temsilcilerin *argument_list* bağımsız değişkenleri:
+    * Parametre listesindeki aynı konumda sabit bir parametrenin gerçekleştiği konumsal bir bağımsız değişken bu parametreye karşılık gelir.
+    * Normal biçiminde çağrılan bir parametre dizisi olan bir işlev üyesinin Konumsal bağımsız değişkeni, parametre listesinde aynı konumda olması gereken parametre dizisine karşılık gelir.
+    * Bir parametre dizisi olan bir işlev üyesinin, parametre listesinde aynı konumda hiçbir sabit parametre gerçekleşmediği, parametre dizisindeki bir öğeye karşılık gelen bir konum bağımsız değişkeni.
+    * Adlandırılmış bir bağımsız değişken, parametre listesinde aynı ada sahip parametreye karşılık gelir.
+    * Dizin oluşturucular için, `set` erişimcisi çağrılırken, atama işlecinin sağ işleneni olarak belirtilen ifade, `set` erişimci bildiriminin örtük `value` parametresine karşılık gelir.
+*  @No__t-0 erişimcisi çağrılırken özellikler için bağımsız değişken yoktur. @No__t-0 erişimcisi çağrılırken, atama işlecinin sağ işleneni olarak belirtilen ifade, `set` erişimci bildiriminin örtük `value` parametresine karşılık gelir.
+*  Kullanıcı tanımlı Birli İşleçler (dönüşümler dahil) için, tek işlenen işleç bildiriminin tek parametresine karşılık gelir.
+*  Kullanıcı tanımlı ikili işleçler için, sol işlenen ilk parametreye karşılık gelir ve sağ işlenen işleç bildiriminin ikinci parametresine karşılık gelir.
 
-#### <a name="run-time-evaluation-of-argument-lists"></a>Çalışma zamanı değerlendirmesini bağımsız değişken listeleri
+#### <a name="run-time-evaluation-of-argument-lists"></a>Bağımsız değişken listelerinin çalışma süresi değerlendirmesi
 
-Bir işlev üye çağrısı çalışma zamanı işlenmesi sırasında ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), ifadeler veya bağımsız değişken listesi değişken başvuruları sırayla soldan sağa doğru olarak değerlendirilir aşağıdaki gibidir:
+Bir işlev üye çağrısının çalışma zamanı işlemesi sırasında ([dinamik aşırı yükleme çözümlemesi Için derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), bir bağımsız değişken listesinin ifadeleri ya da değişken başvuruları, soldan sağa aşağıdaki gibi sırayla değerlendirilir:
 
-*  Bir değer parametresi için bağımsız değişken ifadesi değerlendirilir ve örtük bir dönüştürme ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) karşılık gelen parametre türü gerçekleştirilir. Sonuç değerini işlevi üye çağrısı değer parametresi ilk değeri olur.
-*  Bir başvuru veya çıkış parametresi için değişken başvurusu değerlendirilir ve elde edilen depolama konumu işlev üyesi çağırma parametresi tarafından temsil edilen depolama konumu olur. Bir dizi öğesinin bir başvuru veya çıktı parametresi olarak verilen bir değişken başvurusu ise bir *reference_type*, dizinin öğe türü parametresinin türü için aynı olduğundan emin olmak için bir çalışma zamanı denetimi gerçekleştirilir. Bu denetim başarısız olursa bir `System.ArrayTypeMismatchException` oluşturulur.
+*  Bir değer parametresi için bağımsız değişken ifadesi değerlendirilir ve ilgili parametre türüne örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) gerçekleştirilir. Sonuç değeri, işlev üye çağrısında değer parametresinin başlangıç değeri olur.
+*  Bir başvuru veya çıkış parametresi için, değişken başvurusu değerlendirilir ve sonuçta elde edilen depolama konumu, işlev üyesi çağrısında parametresi tarafından temsil edilen depolama konumu olur. Başvuru veya çıkış parametresi olarak verilen değişken başvurusu bir *reference_type*dizi öğesi ise, dizinin öğe türünün parametrenin türüyle aynı olduğundan emin olmak için bir çalışma zamanı denetimi yapılır. Bu denetim başarısız olursa, bir `System.ArrayTypeMismatchException` oluşturulur.
 
-Yöntemler, dizin oluşturucular ve örnek oluşturucuları bir parametre dizisi, en sağdaki parametre bildirmek ([parametre dizileri](classes.md#parameter-arrays)). Bu işlev üyeleri normal formlarına veya hangi uygun olduğuna bağlı olarak, genişletilmiş biçimde çağrılır ([geçerli işlev üyesi](expressions.md#applicable-function-member)):
+Yöntemler, Dizin oluşturucular ve örnek oluşturucular, en sağdaki parametreleri parametre dizisi ([parametre dizileri](classes.md#parameter-arrays)) olarak bildirebilir. Bu tür işlev üyeleri, uygulanabilir olduğu ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) bağlı olarak kendi normal biçiminde veya genişletilmiş biçiminde çağırılır:
 
-*  Bir parametre dizisi olan bir işlevi üyesinin, normal bir biçimde çağrıldığında parametre dizisi için belirtilen bağımsız değişken örtük olarak dönüştürülebilir tek bir ifade olmalıdır ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) parametre dizi türü. Bu durumda, parametre dizisi, tam olarak bir değer parametresini gibi davranır.
-*  Bir parametre dizisi olan bir işlevi üyesinin, genişletilmiş biçimde çağrıldığında, sıfır veya daha fazla konumsal bağımsız değişkenler örtük olarak dönüştürülebilir bir ifade bulunduğu her bağımsız değişken, bir parametre dizisi için çağırma belirtmeniz gerekir ([örtük dönüştürmeleri](conversions.md#implicit-conversions)) parametre dizinin öğe türü. Bu durumda, çağırma bağımsız değişken sayısı için karşılık gelen uzunluğu parametre dizi türü örneği oluşturur, belirtilen bağımsız değişken değerleri dizi örneği başlatır ve yeni oluşturulan bir dizi örneği fiili kullanır bağımsız değişken.
+*  Parametre dizisi olan bir işlev üyesi normal biçimde çağrıldığında, parametre dizisi için verilen bağımsız değişken parametre dizi türüne örtük olarak dönüştürülebilir ([örtük dönüştürmeler](conversions.md#implicit-conversions)) tek bir ifade olmalıdır. Bu durumda, parametre dizisi tam olarak bir değer parametresi gibi davranır.
+*  Bir parametre dizisi olan bir işlev üyesi genişletilmiş biçimde çağrıldığında, çağırma parametre dizisi için sıfır veya daha fazla Konumsal bağımsız değişkeni belirtmelidir; burada her bağımsız değişken örtük olarak dönüştürülebilir bir ifadedir ([örtük dönüştürmeler ](conversions.md#implicit-conversions)) parametre dizisinin öğe türü. Bu durumda, çağırma parametre dizisi türünde bağımsız değişken sayısına karşılık gelen bir bir örnek oluşturur, dizi örneğinin öğelerini verilen bağımsız değişken değerleriyle başlatır ve gerçek olarak yeni oluşturulan dizi örneğini kullanır değişkendir.
 
-İfade bir bağımsız değişken listesinin, yazıldıkları sırayla her zaman değerlendirilir. Bu nedenle, örneğin
+Bir bağımsız değişken listesinin ifadeleri her zaman yazıldığı sırada değerlendirilir. Bu nedenle örnek
 ```csharp
 class Test
 {
@@ -487,12 +487,12 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 x = 0, y = 1, z = 2
 x = 4, y = -1, z = 3
 ```
 
-Dizi değişimini kuralları ([dizi kovaryansı](arrays.md#array-covariance)) bir dizi türünde bir değer izin `A[]` bir dizi türünde bir örneğe bir başvuru olarak `B[]`, gelen bir örtük bir başvuru dönüştürmesi var sağlanan `B` için `A`. Bu kurallar, bir dizi öğesi olduğunda nedeniyle bir *reference_type* geçirilen bir başvurusu veya çıktı parametresi olarak, dizinin gerçek öğe türü, parametre için aynı olduğundan emin olmak için bir çalışma zamanı denetimi gereklidir. Örnekte
+Dizi birlikte değişim kuralları ([dizi Kovaryans](arrays.md#array-covariance)), `A[]` dizi türünde bir değere izin verir. bu, `B` ' ten `A` ' e kadar örtük bir başvuru dönüştürmesi sağlanmış `B[]` dizi türünün bir örneğine başvuru sağlar. Bu kurallar nedeniyle, bir *reference_type* dizi öğesi başvuru veya çıkış parametresi olarak geçirildiğinde, dizinin gerçek öğe türünün parametreyle aynı olduğundan emin olmak için bir çalışma zamanı denetimi gereklidir. Örnekte
 ```csharp
 class Test
 {
@@ -506,13 +506,13 @@ class Test
     }
 }
 ```
-İkinci çağırmayı `F` neden olan bir `System.ArrayTypeMismatchException` gerçek öğe türü için durum `b` olduğu `string` değil `object`.
+`F` ' ın ikinci çağrılması, `b` ' nin gerçek öğe türü `string` ve `object` olmadığından `System.ArrayTypeMismatchException` oluşturulmasına neden olur.
 
-Bir parametre dizisi olan bir işlevi üyesinin, genişletilmiş biçimde çağrıldığında, çağırma tam olarak bir dizi oluşturma ifadesi olarak bir dizi Başlatıcısı ile işlenir ([dizi oluşturma ifadeleri](expressions.md#array-creation-expressions)) geçici olarak eklendi Genişletilmiş parametreleri. Örneğin, bildirimi verilen
+Bir parametre dizisi olan bir işlev üyesi genişletilmiş biçimde çağrıldığında, genişletilmiş parametrelere bir dizi Başlatıcısı ([dizi oluşturma ifadeleri](expressions.md#array-creation-expressions)) içeren bir dizi oluşturma ifadesi eklenirse, çağırma tam olarak işlenir. Örneğin, bildirim verildiğinde
 ```csharp
 void F(int x, int y, params object[] args);
 ```
-yöntem genişletilmiş biçiminin aşağıdaki çağrıları
+yöntemin genişletilmiş biçimini aşağıdaki şekilde çağırma
 ```csharp
 F(10, 20);
 F(10, 20, 30, 40);
@@ -525,13 +525,13 @@ F(10, 20, new object[] {30, 40});
 F(10, 20, new object[] {1, "hello", 3.0});
 ```
 
-Özellikle, boş bir dizi parametre dizisi için verilen sıfır bağımsız değişken olduğunda oluşturulduğunu unutmayın.
+Özellikle, parametre dizisi için belirtilen 0 bağımsız değişken olduğunda boş bir dizi oluşturulduğunu unutmayın.
 
-Karşılık gelen bir isteğe bağlı parametreler içeren bir işlevi üyesinin bağımsız değişken atlanırsa, varsayılan bağımsız değişkenleri işlev üyesi bildirimi örtük olarak geçirilir. Bunlar her zaman sabit olduğu için bunların değerlendirme kalan bağımsız değişkenleri Değerlendirme sırasını etkilemez.
+Bağımsız değişkenler, karşılık gelen isteğe bağlı parametrelere sahip bir işlev üyesinden atlandığında, işlev üyesi bildiriminin varsayılan bağımsız değişkenleri dolaylı olarak geçirilir. Bunlar her zaman sabit olduğundan, değerlendirmesi kalan bağımsız değişkenlerin değerlendirme sırasını etkilemez.
 
 ### <a name="type-inference"></a>Tür çıkarımı
 
-Genel yöntem çağrıldığında tür bağımsız değişkenleri, belirtmeden bir ***anlam çıkarma*** işlemi çağrısı için tür bağımsız değişkenleri Infer dener. Tür çıkarımı varlığını genel bir yöntem çağırmak için kullanılacak daha kullanışlı bir söz dizimi ve Programcı gereksiz tür bilgilerini belirtmekten kaçınmak olanak sağlar. Örneğin, yöntem bildiriminde verilen:
+Genel bir yöntem tür bağımsız değişkenleri belirtilmeden çağrıldığında, bir ***tür çıkarım*** işlemi çağrının tür bağımsız değişkenlerini çıkarmayı dener. Tür çıkarımı varlığı, genel bir yöntemi çağırmak için daha uygun bir sözdiziminin kullanılmasına izin verir ve programcı 'nın gereksiz tür bilgilerini belirtmelerini önler. Örneğin, yöntem bildirimi verildiğinde:
 ```csharp
 class Chooser
 {
@@ -542,169 +542,169 @@ class Chooser
     }
 }
 ```
-çağrılacak mümkündür `Choose` tür bağımsız değişkeni açıkça belirtmeden yöntemi:
+açıkça bir tür bağımsız değişkeni belirtmeden `Choose` yöntemini çağırmak mümkündür:
 ```csharp
 int i = Chooser.Choose(5, 213);                 // Calls Choose<int>
 
 string s = Chooser.Choose("foo", "bar");        // Calls Choose<string>
 ```
 
-Tür çıkarımı, tür bağımsız değişkeni aracılığıyla `int` ve `string` bağımsız değişkenlerden yönteme belirlenir.
+Tür çıkarımı aracılığıyla `int` ve `string` tür bağımsız değişkenleri, bağımsız değişkenlerden yöntemine göre belirlenir.
 
-Tür çıkarımı bağlama zamanı işleme yöntemi çağrısının bir parçası olarak gerçekleşir ([yöntem çağrıları](expressions.md#method-invocations)) ve çağırma aşırı yükleme çözünürlüğü adımdan önce gerçekleşir. Belirli yöntem grubu içinde bir yöntem çağırmayla belirtilir ve hiçbir tür bağımsız değişkenleri yöntemi çağrısının bir parçası olarak belirtilen tür çıkarımı her genel yöntem yöntem grubu uygulanır. Tür çıkarımı başarılı olursa çıkarsanan tür bağımsız değişkenlerini sonraki aşırı yükleme çözümlemesi için bağımsız değişken türlerini belirlemek için kullanılır. Aşırı yükleme çözünürlüğü çağırmak için bir genel yöntem seçerse, gösterilen türde bağımsız değişkenleri çağrı gerçek tür bağımsız değişkenleri olarak kullanılır. Belirli bir yöntem için tür çıkarımı başarısız olursa, bu yöntem aşırı yükleme çözünürlüğü içinde yer almaz. Tür çıkarımı, içinde ve kendisinin, başarısız bir bağlama zamanı hatası neden olmaz. Ancak, uygun yöntemleri bulmak ardından aşırı yükleme çözümlemesi başarısız olduğunda genellikle bir bağlama zamanı hata oluşur.
+Tür çıkarımı, bir yöntem çağırma işleminin ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) bağlama zamanı işlemenin bir parçası olarak oluşur ve çağrının aşırı yükleme çözümleme adımından önce gerçekleşir. Bir yöntem çağrısında belirli bir yöntem grubu belirtildiğinde ve yöntem çağrısının bir parçası olarak hiçbir tür bağımsız değişkeni belirtilmediğinde, yöntem grubundaki her genel yönteme tür çıkarımı uygulanır. Tür çıkarımı başarılı olursa, sonraki aşırı yükleme çözümlemesi için bağımsız değişken türlerini belirlemede çıkartılan tür bağımsız değişkenleri kullanılır. Aşırı yükleme çözümlemesi, çağırabileceğiniz bir genel yöntem seçerse, çağırma için gerçek tür bağımsız değişkenleri olarak, çıkartılan tür bağımsız değişkenleri kullanılır. Belirli bir yöntemin tür çıkarımı başarısız olursa, bu yöntem aşırı yükleme çözümüne katılmaz. , Ve içindeki çıkarım hatası, bağlama zamanı hatasına neden olmaz. Ancak, aşırı yükleme çözümlemesi sırasında bir bağlama zamanı hatasına neden olur ve ilgili herhangi bir yöntemi bulamaz.
 
-Sağlanan bağımsız değişken sayısı yöntemindeki parametre sayısından farklı ise, çıkarım hemen başarısız olur. Aksi takdirde, genel yöntem aşağıdaki imzası sahip olduğunu varsayın:
+Sağlanan bağımsız değişken sayısı yöntemdeki parametre sayısından farklıysa, çıkarımı hemen başarısız olur. Aksi takdirde, genel yöntemin aşağıdaki imzaya sahip olduğunu varsayalım:
 ```csharp
 Tr M<X1,...,Xn>(T1 x1, ..., Tm xm)
 ```
 
-Formun yöntemi çağrısıyla `M(E1...Em)` tür çıkarımı görevin benzersiz tür bağımsız değişkenleri bulmaktır `S1...Sn` her tür parametrelerinin `X1...Xn` böylece çağrı `M<S1...Sn>(E1...Em)` geçerli olur.
+Formun yöntem çağrısıyla `M(E1...Em)` tür çıkarımı görevi, `M<S1...Sn>(E1...Em)` ' ün geçerli hale gelmesi için `X1...Xn` tür parametrelerinin her biri için-1 @no__t benzersiz tür bağımsız değişkenlerini bulmalıdır.
 
-Çıkarma işlemi sırasında her tür parametresi `Xi` ya da *sabit* belirli bir türe `Si` veya *sabitlenmemiş* kümesi ile *sınırları*. Her sınır bazı türüdür `T`. Başlangıçta her tür değişkeni `Xi` boş kümesi ile sınırlarının sabitlenmemiş olduğu.
+Çıkarımı işlemi sırasında her tür parametresi `Xi`, belirli bir tür @no__t- *2 veya ilişkili* bir *sınır*kümesiyle *sabitlenmiştir* . Her bir sınır `T` ' dır. Başlangıçta her tür değişkeni `Xi` boş bir sınır kümesiyle sabitlenemez.
 
-Tür çıkarımı aşamada gerçekleşir. Her aşama önceki aşamanın bulguları üzerinde göre daha fazla türü değişkenler için tür bağımsız değişkenleri Infer dener. İkinci aşama türü değişkenler belirli türlere giderir ve daha fazla sınır algılar ancak ilk aşaması sınırlarının, ilk bazı çıkarımı yapar. İkinci aşama olması gerekebilir birkaç kez yinelenir.
+Tür çıkarımı aşamalar halinde gerçekleşir. Her aşama, önceki aşamanın bulgularını temel alarak daha fazla tür değişkeni için tür bağımsız değişkenlerini çıkarması denenecek. İlk aşama bazı ilk dereceden sınırları yapar, ancak ikinci aşama belirli türlere tür değişkenlerini ve daha fazla sınırları düzeltir. İkinci aşamanın birkaç kez tekrarlanmanız gerekebilir.
 
-*Not:* Yalnızca bir genel yöntem çağrıldığında tür çıkarımı gerçekleşir. Tür çıkarımı yöntemi gruplarına dönüştürülmesi için açıklanan [anlam çıkarma dönüştürme yöntemi gruplarının](expressions.md#type-inference-for-conversion-of-method-groups) ve en iyi ortak türü bir ifade kümesi bulma bölümünde açıklanmıştır [birtakım en iyi ortak türü bulma ifadelerin](expressions.md#finding-the-best-common-type-of-a-set-of-expressions).
+*Not:* Tür çıkarımı yalnızca genel bir yöntem çağrıldığında değil. Yöntem gruplarının dönüştürülmesine ilişkin tür çıkarımı, [Yöntem gruplarının dönüştürülmesi için tür çıkarımı](expressions.md#type-inference-for-conversion-of-method-groups) ve bir ifade kümesinin en iyi ortak [türünü bulma bölümünde açıklanmıştır.](expressions.md#finding-the-best-common-type-of-a-set-of-expressions)
 
-#### <a name="the-first-phase"></a>Birinci aşama
+#### <a name="the-first-phase"></a>İlk aşama
 
-Her yöntem bağımsız `Ei`:
+Yöntem bağımsız değişkenlerinin her biri için `Ei`:
 
-*   Varsa `Ei` anonim bir işlev, bir *açık parametre tür çıkarımı* ([açık parametre türü çıkarımı](expressions.md#explicit-parameter-type-inferences)) öğesinden yapılan `Ei` için `Ti`
-*   Aksi takdirde `Ei` bir türe sahip `U` ve `xi` değer parametresi bir *alt sınır çıkarımı* yapılan *gelen* `U` *için* `Ti`.
-*   Aksi takdirde `Ei` bir türe sahip `U` ve `xi` olduğu bir `ref` veya `out` parametresi bir *tam çıkarımı* yapılan *gelen* `U` *için* `Ti`.
-*   Aksi takdirde, hiçbir çıkarımı bu bağımsız değişken için yapılır.
+*   @No__t-0 Anonim bir işlevdir, bir *Açık parametre türü çıkarımı* ([Açık parametre türü](expressions.md#explicit-parameter-type-inferences)), `Ei` ' ten `Ti` ' e yapılır
+*   Aksi takdirde, `Ei` ' a `U` türü varsa `xi` değeri bir değer parametresidir ve `U` ' *ten* `Ti` ' *ye* *daha düşük bir çıkarım* yapılır.
+*   Aksi takdirde, `Ei` ' a `U` türü varsa `xi` `ref` veya `out` parametresi ise `U` ' *den* @no__t- *9 ' a* doğru bir *çıkarım* yapılır.
+*   Aksi takdirde, bu bağımsız değişken için çıkarımı yapılmaz.
 
 
-#### <a name="the-second-phase"></a>İkinci aşaması
+#### <a name="the-second-phase"></a>İkinci aşama
 
-İkinci aşama aşağıdaki gibi çalışır:
+İkinci aşama aşağıdaki gibi ilerler:
 
-*   Tüm *sabitlenmemiş* türü değişkenler `Xi` gerektirmeyen *bağlıdır* ([bağımlılığı](expressions.md#dependence)) tüm `Xj` sabit ([düzeltme](expressions.md#fixing)).
-*   Böyle bir türü değişkenler varsa, tüm *sabitlenmemiş* türü değişkenler `Xi` olan *sabit* kendisi için aşağıdakilerin tümü tutun:
-    *   En az bir tür değişkeni `Xj` , bağlıdır `Xi`
-    *   `Xi` bir olmayan-boş dizi sınırları vardır
-*   Böyle bir türü değişkenler mevcutsa ve hala *sabitlenmemiş* değişkenleri, anlam çıkarma başarısız yazın.
-*   Aksi takdirde, başka *sabitlenmemiş* türü değişkenler var, tür çıkarımı başarılı olur.
-*   Aksi takdirde tüm bağımsız değişkenler için `Ei` karşılık gelen parametre türüyle `Ti` burada *çıktı türleri* ([çıktı türleri](expressions.md#output-types)) içeren *sabitlenmemiş* türü değişkenler `Xj` ancak *giriş türleri* ([giriş türleri](expressions.md#input-types)) bulunmayan bir *çıkış tür çıkarımı* ([çıkış tür çıkarımı ](expressions.md#output-type-inferences)) yapılan *gelen* `Ei` *için* `Ti`. İkinci aşama daha sonra yinelenir.
+*   @No__t-1 ' i ([bağımlıce](expressions.md#dependence)) *bağımlı* olmayan tüm *sabit* olmayan tür değişkenleri `Xj` sabittir ([düzeltiliyor](expressions.md#fixing)).
+*   Böyle bir tür değişkeni yoksa, `Xi` olmayan tüm *sabit* tür değişkenleri aşağıdaki her bir bekletme için *sabittir* :
+    *   En az bir tür değişkeni vardır `Xj` ' a bağlı `Xi`
+    *   `Xi` ' da boş olmayan bir sınır kümesi vardır
+*   Böyle bir tür değişkeni yoksa ve hala *sabit* olmayan tür değişkenleri varsa, tür çıkarımı başarısız olur.
+*   Aksi halde, daha fazla *sabit olmayan* tür değişkeni yoksa, tür çıkarımı başarılı olur.
+*   Aksi takdirde, karşılık gelen parametre türü `Ei` olan `Ti` olan tüm bağımsız değişkenler için, *Çıkış türlerinin* ([çıktı türleri](expressions.md#output-types)) *sabit* olmayan tür değişkenleri içerdiği `Xj` ' i, ancak *giriş türleri* ([giriş türleri](expressions.md#input-types)) değil,  *çıkış türü çıkarımı* ([Çıkış türü ını](expressions.md#output-type-inferences)) 1 ' *den* 3 ' *e* yapılır. İkinci aşama yinelenir.
 
 #### <a name="input-types"></a>Giriş türleri
 
-Varsa `E` bir yöntem grubu ya da anonim işlev örtük olarak belirlenmiş ve `T` bir temsilci türü veya ifade ağacı türü sonra tüm parametre türlerini mi `T` olan *giriş türleri* , `E` *türüyle* `T`.
+@No__t-0 bir yöntem grubu veya örtük olarak yazılmış anonim işlevse ve `T` bir temsilci türü ya da ifade ağacı türü ise, `T` türündeki tüm parametre türleri `T` *türünde* `E` ' ün *giriş türleridir* .
 
-####  <a name="output-types"></a>Çıktı türleri
+####  <a name="output-types"></a>Çıkış türleri
 
-Varsa `E` bir yöntem grubu veya anonim bir işlevdir ve `T` bir temsilci türü veya ifade ağacı türü sonra dönüş türü olan `T` olduğu bir *çıktı türünü* `E` *türüne sahip*  `T`.
+@No__t-0 bir yöntem grubu veya anonim bir işlevdir ve `T` bir temsilci türü ya da ifade ağacı türü ise, `T` ' nin dönüş türü `T` *türündeki* `E` *Çıkış türüdür* .
 
-#### <a name="dependence"></a>Bağımlılık
+#### <a name="dependence"></a>Düzeyde bağımlı
 
-Bir *sabitlenmemiş* tür değişkeni `Xi` *doğrudan bağlı olduğu* sabitlenmemiş türü değişkeni `Xj` bazı bağımsız değişkeni ise `Ek` türüyle `Tk` `Xj` oluşan bir *giriş türü* , `Ek` türüyle `Tk` ve `Xi` oluşan bir *çıkış türü* , `Ek` türüyle `Tk`.
+@No__t-1 *sabit* olmayan bir tür değişkeni *doğrudan* sabit olmayan bir tür değişkenine bağlıdır `Xj` `Tk` türünde `Ek` `Xj` *türünde bir @no__t* -6 ve *`Tk` türü* `Xi`3 türündeki 2 çıkış türü.
 
-`Xj` *bağımlı* `Xi` varsa `Xj` *doğrudan bağlı olduğu* `Xi` veya `Xi` *doğrudan bağlı olduğu* `Xk` ve `Xk` *bağlıdır* `Xj`. Bu nedenle "bağlıdır" olan "doğrudan bağlı olduğu" geçişli ancak değil Yansımalı kapatma.
+`Xj` *'* a bağlı `Xj` doğrudan `Xi` *'* i kullanıyorsa ya da `Xi` `Xk` ' i @no__t ve `Xk` ' *a bağlıdır @no__t* -11 ' *ye bağlıdır.* Bu nedenle "bağlı olan", geçişli ancak yansımalı olmayan "açık" kapanışı değildir.
 
-#### <a name="output-type-inferences"></a>Çıkış türü çıkarımı
+#### <a name="output-type-inferences"></a>Çıkış türü ında
 
-Bir *çıkış tür çıkarımı* yapılan *gelen* bir ifade `E` *için* türü `T` şu şekilde:
+Bir *Çıkış türü çıkarımı* @no__t *-2 '* *den* aşağıdaki şekilde `T` türüne yapılır:
 
-*  Varsa `E` çıkarılan dönüş türü anonim bir işlevdir `U` ([Inferred dönüş türü](expressions.md#inferred-return-type)) ve `T` bir temsilci türü veya dönüş türüne sahip ifade ağacı türü `Tb`, ardından *alt sınır çıkarımı* ([alt sınır çıkarımı](expressions.md#lower-bound-inferences)) yapılan *gelen* `U` *için* `Tb`.
-*  Aksi takdirde `E` bir yöntem grubu olduğundan ve `T` bir temsilci türü veya parametre türleri ile ifade ağacı türü `T1...Tk` ve dönüş türü `Tb`ve aşırı yükleme çözünürlüğü `E` türleriyle `T1...Tk` verir bir tek bir yöntemin dönüş türü içeren `U`, ardından bir *alt sınır çıkarımı* yapılan *gelen* `U` *için* `Tb`.
-*  Aksi takdirde `E` türüne sahip ifade `U`, bir *alt sınır çıkarımı* yapılan *gelen* `U` *için* `T`.
-*  Aksi takdirde, hiçbir çıkarımı yapılır.
+*  @No__t-0, `U` ([çıkartılan dönüş türü](expressions.md#inferred-return-type)) dönüş türü olan anonim bir işlevdir ve `T`, dönüş türü `Tb` olan bir temsilci türü ya da ifade ağacı türü, daha sonra *alt sınır çıkarımı* ([alt sınır](expressions.md#lower-bound-inferences)) @no__t *-8 '* *den* 0 ' a yapılır.
+*  Aksi takdirde, `E` bir yöntem grubudur ve `T`, parametre türleri `T1...Tk` ve dönüş türü `Tb` olan bir temsilci türü ya da ifade ağacı türü ve `E` ' ü `T1...Tk` ' i içeren tek bir yöntem döndürür `U` daha sonra, `U` ' *dan* 1 ' *e* *daha düşük bir çıkarım* yapılır.
+*  Aksi takdirde, `E` türü `U` olan bir ifade ise, `U` ' *ten* *@no__t-* 6 ' a *daha düşük bir çıkarım* yapılır.
+*  Aksi takdirde, hiçbir Inse yapılmaz.
 
-#### <a name="explicit-parameter-type-inferences"></a>Açık parametre tür çıkarımı
+#### <a name="explicit-parameter-type-inferences"></a>Açık parametre türü
 
-Bir *açık parametre tür çıkarımı* yapılan *gelen* bir ifade `E` *için* türü `T` şu şekilde:
+@No__t *-2 '* *den* aşağıdaki şekilde `T` türüne *açık bir parametre türü çıkarımı* yapılır:
 
-*  Varsa `E` parametre türleri ile açıkça yazılmış bir anonim işlev `U1...Uk` ve `T` bir temsilci türü veya parametre türleri ile ifade ağacı türü `V1...Vk` sonra her `Ui` bir *tam çıkarım* ([tam çıkarımı](expressions.md#exact-inferences)) yapılan *gelen* `Ui` *için* karşılık gelen `Vi`.
+*  @No__t-0, parametre türleri `U1...Uk` ve `T` olan bir temsilci türü ya da ifade ağacı @no__t türü, her @no__t için her-4 ' *ü (* [tam](expressions.md#exact-inferences)değer)@no__t *-8 '* den karşılık gelen 0 ' a.
 
-#### <a name="exact-inferences"></a>Tam çıkarımı
+#### <a name="exact-inferences"></a>Tam ında
 
-Bir *tam çıkarımı* *gelen* türü `U` *için* türü `V` şu şekilde yapılır:
+@No__t-2 `V` türüne *doğru bir çıkarım* *aşağıdaki şekilde yapılır* :
 
-*  Varsa `V` biri *sabitlenmemiş* `Xi` ardından `U` tam sınırlarının kümesine eklenen `Xi`.
+*  @No__t-0 ' ı *fixed* `Xi` ' den biri ise, `Xi` ' e ait tam sınırların kümesine `U` eklenir.
 
-*  Aksi takdirde ayarlar `V1...Vk` ve `U1...Uk` aşağıdaki durumlarda atanamadığı olmadığının kontrol edilmesiyle belirlenir:
+*  Aksi takdirde, `V1...Vk` ve `U1...Uk` ayarları aşağıdaki durumlardan herhangi birinin uygulanabilir olup olmadığını denetleyerek belirlenir:
 
-   *  `V` bir dizi türü `V1[...]` ve `U` bir dizi türü `U1[...]` aynı boyut,
-   *  `V` türü `V1?` ve `U` türü `U1?`
-   *  `V` bir oluşturulmuş tür olsa `C<V1...Vk>`ve `U` bir oluşturulmuş tür olsa `C<U1...Uk>`
+   *  `V`,-1 @no__t bir dizi türüdür ve `U1[...]` aynı sırada  ' tür.
+   *  `V` `V1?` türü ve `U` tür `U1?`
+   *  `V` oluşturulmuş bir tür `C<V1...Vk>`ve `U` oluşturulmuş bir tür `C<U1...Uk>`
 
-   Bu durumların herhangi birinde ardından uygularsanız bir *tam çıkarımı* yapılan *gelen* her `Ui` *için* karşılık gelen `Vi`.
+   Bu durumlardan herhangi biri uygunsa, her `Ui` ' *den* karşılık gelen `Vi` ' *e* *tam bir çıkarım* yapılır.
 
-*  Aksi takdirde, hiçbir çıkarımı yapılır.
+*  Aksi takdirde hiçbir Inse yapılmaz.
 
-#### <a name="lower-bound-inferences"></a>Alt sınır çıkarımı
+#### <a name="lower-bound-inferences"></a>Alt sınır
 
-A *alt sınır çıkarımı* *gelen* türü `U` *için* türü `V` şu şekilde yapılır:
+@No__t *-2 @no__t* -4 türüne *alt sınır çıkarımı* aşağıdaki gibi yapılır:
 
-*  Varsa `V` biri *sabitlenmemiş* `Xi` ardından `U` alt sınırı kümesine eklenen `Xi`.
-*  Aksi takdirde `V` türü `V1?`ve `U` türü `U1?` alt sınır çıkarımı yapılan sonra `U1` için `V1`.
-*  Aksi takdirde ayarlar `U1...Uk` ve `V1...Vk` aşağıdaki durumlarda atanamadığı olmadığının kontrol edilmesiyle belirlenir:
-   *  `V` bir dizi türü `V1[...]` ve `U` bir dizi türü `U1[...]` (veya tür parametresi, geçerli bir temel türü olan `U1[...]`) aynı boyut,
-   *  `V` biri `IEnumerable<V1>`, `ICollection<V1>` veya `IList<V1>` ve `U` tek boyutlu dizi türü `U1[]`(veya tür parametresi, geçerli bir temel türü olan `U1[]`)
-   *  `V` oluşturulan sınıf, yapı, arabirim veya temsilci türü `C<V1...Vk>` ve benzersiz bir tür `C<U1...Uk>` şekilde `U` (veya `U` bir tür parametresi, etkili temel sınıfı veya etkin arabirim kendine herhangi bir üyesi) olan aynıdır, devralınan (doğrudan veya dolaylı olarak) veya (doğrudan veya dolaylı olarak) uygulayan `C<U1...Uk>`.
+*  @No__t-0 *sabit* `Xi` ' den biri ise, `Xi` ' e ait alt sınırlar kümesine `U` eklenir.
+*  Aksi takdirde, `V` `V1?`türüdür ve `U` tür `U1?` ise `U1` ' ten `V1` ' e daha düşük bir sınır çıkarımı yapılır.
+*  Aksi takdirde, `U1...Uk` ve `V1...Vk` ayarları aşağıdaki durumlardan herhangi birinin uygulanabilir olup olmadığını denetleyerek belirlenir:
+   *  `V` ' a bir dizi türü `V1[...]` ve `U` bir dizi @no__t türüdür (veya geçerli temel türü `U1[...]` olan bir tür parametresi) aynı derecenin
+   *  `IEnumerable<V1>`  `ICollection<V1>` veya `IList<V1>` ve `U` bir tek boyutlu dizi türü `U1[]` ' dir (veya geçerli temel türü `U1[]` olan bir tür parametresi)
+   *  `V`, oluşturulmuş bir sınıf, yapı, arabirim veya temsilci türü `C<V1...Vk>` ' dir @no__t ve `U` (veya `U` bir tür parametresi ise, etkin taban sınıfı veya etkin arabirim kümesinin herhangi bir üyesi) ile aynıdır. , öğesinden devralır (doğrudan veya dolaylı olarak) veya (doğrudan veya dolaylı olarak) `C<U1...Uk>` uygular.
 
-      (Büyük/küçük harf arabiriminde anlamına "benzersizlik" kısıtlama `C<T> {} class U: C<X>, C<Y> {}`, ardından gelen çıkarımını yapma, hiçbir çıkarımı yapılan `U` için `C<T>` çünkü `U1` olabilir `X` veya `Y`.)
+      ("Benzersizlik" kısıtlaması, durum arabirimindeki `C<T> {} class U: C<X>, C<Y> {}` olduğunda, `U1` `X` veya `Y` olabileceği için, `U` ' den `C<T>` ' ye kadar bir çıkarımı yapılmadığını gösterir.)
 
-   Ardından bir çıkarımı yapılan tüm durumlarda uygularsanız *gelen* her `Ui` *için* karşılık gelen `Vi` şu şekilde:
+   Bu durumlardan herhangi biri uygunsa, her `Ui` ' *den* karşılık gelen `Vi` ' *e* aşağıdaki şekilde bir çıkarımı yapılır:
 
-   *  Varsa `Ui` bir başvuru türü bilinmiyor bir *tam çıkarımı* yapılır
-   *  Aksi takdirde `U` bir dizi türü bir *alt sınır çıkarımı* yapılır
-   *  Aksi takdirde `V` olduğu `C<V1...Vk>` çıkarımı i. tür parametresi üzerinde bağlıdır sonra `C`:
-      *  Birlikte değişken ise bir *alt sınır çıkarımı* yapılır.
-      *  Değişken karşıtı ise bir *üst sınır çıkarımı* yapılır.
-      *  Sabit olması durumunda bir *tam çıkarımı* yapılır.
-*  Aksi takdirde, hiçbir çıkarımı yapılır.
+   *  @No__t-0 ' ı bir başvuru türü olarak bilinmiyorsa, *kesin bir çıkarım* yapılır
+   *  Aksi takdirde, `U` bir dizi türüdür, daha sonra *alt sınır çıkarımı* yapılır
+   *  Aksi takdirde, `V` `C<V1...Vk>` ise, çıkarım, `C` ' nin ı-TH türü parametresine bağlıdır:
+      *  Daha fazla değişken ise, *alt sınır çıkarımı* yapılır.
+      *  Değişken karşıtı ise, *üst sınır çıkarımı* yapılır.
+      *  Sabit ise, *kesin bir çıkarım* yapılır.
+*  Aksi takdirde, hiçbir Inse yapılmaz.
 
-#### <a name="upper-bound-inferences"></a>Üst sınır çıkarımı
+#### <a name="upper-bound-inferences"></a>Üst sınır
 
-Bir *üst sınır çıkarımı* *gelen* türü `U` *için* türü `V` şu şekilde yapılır:
+@No__t-2 `V` *türünden bir* *üst sınır çıkarımı* *Şu şekilde yapılır* :
 
-*  Varsa `V` biri *sabitlenmemiş* `Xi` ardından `U` için üst sınır kümesine eklenen `Xi`.
-*  Aksi takdirde ayarlar `V1...Vk` ve `U1...Uk` aşağıdaki durumlarda atanamadığı olmadığının kontrol edilmesiyle belirlenir:
-   *  `U` bir dizi türü `U1[...]` ve `V` bir dizi türü `V1[...]` aynı boyut,
-   *  `U` biri `IEnumerable<Ue>`, `ICollection<Ue>` veya `IList<Ue>` ve `V` tek boyutlu dizi türü `Ve[]`
-   *  `U` türü `U1?` ve `V` türü `V1?`
-   *  `U` oluşturulan sınıf, yapı, arabirim veya temsilci türü olduğundan `C<U1...Uk>` ve `V` bir sınıf, yapı, devralır, (doğrudan veya dolaylı olarak) eşdeğer olan arabirim veya temsilci türünün veya uygular (doğrudan veya dolaylı olarak) olan bir benzersiz tür `C<V1...Vk>`
+*  @No__t-0 ' ı *fixed* `Xi` ' den biri ise, `U` @no__t üst sınırlar kümesine eklenir.
+*  Aksi takdirde, `V1...Vk` ve `U1...Uk` ayarları aşağıdaki durumlardan herhangi birinin uygulanabilir olup olmadığını denetleyerek belirlenir:
+   *  `U`,-1 @no__t bir dizi türüdür ve `V1[...]` aynı sırada  ' tür.
+   *  `U` `IEnumerable<Ue>` `ICollection<Ue>` veya `IList<Ue>` ve `V` tek boyutlu dizi türüdür `Ve[]`
+   *  `U` `U1?` türü ve `V` tür `V1?`
+   *  `U` oluşturulan sınıf, yapı, arabirim veya temsilci türü `C<U1...Uk>` ve `V` bir sınıf, yapı, arabirim veya temsilci türü, öğesinden devralır (doğrudan veya dolaylı) ya da (doğrudan veya dolaylı olarak) benzersiz bir tür uygular `C<V1...Vk>`
 
-      (Biz varsa anlamına "benzersizlik" kısıtlama `interface C<T>{} class V<Z>: C<X<Z>>, C<Y<Z>>{}`, ardından gelen çıkarımını yapma, hiçbir çıkarımı yapılan `C<U1>` için `V<Q>`. Çıkarımı değil yapılır `U1` ya da `X<Q>` veya `Y<Q>`.)
+      ("Benzersizlik" kısıtlaması, `interface C<T>{} class V<Z>: C<X<Z>>, C<Y<Z>>{}` olduğunda, `C<U1>` ' den `V<Q>` ' ye kadar bir çıkarımı yapılmadığını gösterir. Inıd `U1` ' dan `X<Q>` veya `Y<Q>` ' ye kadar değil.)
 
-   Ardından bir çıkarımı yapılan tüm durumlarda uygularsanız *gelen* her `Ui` *için* karşılık gelen `Vi` şu şekilde:
-   *  Varsa `Ui` bir başvuru türü bilinmiyor bir *tam çıkarımı* yapılır
-   *  Aksi takdirde `V` bir dizi türü bir *üst sınır çıkarımı* yapılır
-   *  Aksi takdirde `U` olduğu `C<U1...Uk>` çıkarımı i. tür parametresi üzerinde bağlıdır sonra `C`:
-      *  Birlikte değişken ise bir *üst sınır çıkarımı* yapılır.
-      *  Değişken karşıtı ise bir *alt sınır çıkarımı* yapılır.
-      *  Sabit olması durumunda bir *tam çıkarımı* yapılır.
-*  Aksi takdirde, hiçbir çıkarımı yapılır.   
+   Bu durumlardan herhangi biri uygunsa, her `Ui` ' *den* karşılık gelen `Vi` ' *e* aşağıdaki şekilde bir çıkarımı yapılır:
+   *  @No__t-0 ' ı bir başvuru türü olarak bilinmiyorsa, *kesin bir çıkarım* yapılır
+   *  Aksi takdirde, `V` bir dizi türü ise, *üst sınır çıkarımı* yapılır
+   *  Aksi takdirde, `U` `C<U1...Uk>` ise, çıkarım, `C` ' nin ı-TH türü parametresine bağlıdır:
+      *  Covaryant ise, *üst sınır çıkarımı* yapılır.
+      *  Değişken karşıtı ise, *alt sınır çıkarımı* yapılır.
+      *  Sabit ise, *kesin bir çıkarım* yapılır.
+*  Aksi takdirde, hiçbir Inse yapılmaz.   
 
-#### <a name="fixing"></a>Düzeltme
+#### <a name="fixing"></a>Düzelttikten
 
-Bir *sabitlenmemiş* tür değişkeni `Xi` sınırları bir dizi *sabit* şu şekilde:
+Bir dizi sınır içeren @no__t *sabit* olmayan bir tür değişkeni aşağıdaki gibi *düzeltilir* :
 
-*  Dizi *aday türleri* `Uj` sınırlarının kümesindeki tüm türleri olarak başlar `Xi`.
-*  Ardından her sınırını inceleyeceğiz `Xi` sırasıyla: Her tam bağlama için `U` , `Xi` tüm türleri `Uj` olmayan aynı `U` aday kümesinden kaldırılır. Her alt sınırı için `U` , `Xi` tüm türleri `Uj` için hangi orada olduğu *değil* örtük bir dönüştürme `U` aday kümesinden kaldırılır. Her üst sınırı için `U` , `Xi` tüm türleri `Uj` hangi buradan olan *değil* örtük dönüştürmeleri `U` aday kümesinden kaldırılır.
-*  Eğer kalan aday türleri arasında `Uj` benzersiz bir tür `V` olduğu örtük dönüştürmeleri diğer tüm aday türleri, ardından gelen `Xi` için sabit `V`.
-*  Aksi takdirde, tür çıkarımı başarısız olur.
+*  @No__t-1 *aday türleri* kümesi, `Xi` için sınırlar kümesindeki tüm türlerin kümesi olarak başlatılır.
+*  Sonra her bir `Xi` ' ı sırayla inceliyoruz: Her bir tam @no__t için-1 ' in 0 ' a `Xi` ' i `U` ' @no__t e ait olmayan tüm türler aday kümesinden kaldırılır. Her bir alt sınır için `U` ' @no__t dan `Xi` ' den örtük bir dönüştürme *olmadığı* `Uj` ' den tüm türler aday kümesinden kaldırılır. Her üst sınır için `U` ' dan `Xi` ' i n `U` ' e örtük dönüştürme *olmayan* tüm @no__t türler aday kümesinden kaldırılır.
+*  Kalan aday türleri arasında `Uj`, diğer aday türlerine örtük bir dönüştürme olan `V` benzersiz bir tür vardır ve bu durumda `Xi` `V` ' e sabitlenmiştir.
+*  Aksi takdirde tür çıkarımı başarısız olur.
 
 #### <a name="inferred-return-type"></a>Çıkarılan dönüş türü
 
-Çıkarılan dönüş türü anonim bir işlevin `F` tür çıkarımı ve aşırı yükleme çözümlemesi sırasında kullanılır. Çıkarılan dönüş türü, burada verilen açık olduğundan, türleri, ya da bilinen tüm parametre bir anonim işlev dönüştürme sağlanan veya üzerinde bir kapsayan tür çıkarımı sırasında genel çıkarılan anonim bir işlev için yalnızca belirlenebilir yöntem çağırma.
+@No__t-0 Anonim işlevinin çıkarılan dönüş türü, tür çıkarımı ve aşırı yükleme çözümlemesi sırasında kullanılır. Çıkarılan dönüş türü yalnızca, açıkça verildiği veya bir kapsayan genel üzerinde tür çıkarımı sırasında çıkarsandığı için, tüm parametre türlerinin bilindikleri anonim bir işlev için belirlenebilir Yöntem çağırma.
 
-***Sonuç türü çıkarımı yapılan*** şu şekilde belirlenir:
+***Çıkarılan sonuç türü*** aşağıdaki şekilde belirlenir:
 
-*  Varsa gövdesinin `F` olduğu bir *ifade* türü ve çıkarılan bir sonuç türü olan `F` ifade türü.
-*  Varsa gövdesinin `F` olduğu bir *blok* ve bloğun ifadelerde dizi `return` deyimleri en iyi ortak bir türe sahip `T` ([birifadekümesienyaygıntürübulma](expressions.md#finding-the-best-common-type-of-a-set-of-expressions)), ardından çıkarılan bir sonuç türü `F` olduğu `T`.
-*  Aksi halde, sonuç türü için çıkarsanamıyor `F`.
+*  @No__t-0 gövdesi türü olan bir *ifadesiyse* , `F` ' nin çıkartılan sonuç türü bu ifadenin türüdür.
+*  @No__t-0 ' ın gövdesi bir *blok* ise ve bloğun `return` deyimlerindeki ifadelerin kümesi en iyi ortak tür olan `T` ' e sahiptir ([bir ifade kümesinin En Iyi ortak türünü bulmayla](expressions.md#finding-the-best-common-type-of-a-set-of-expressions)), `F` ' in ortaya çıkarılan sonuç türü `T` ' dır.
+*  Aksi takdirde, `F` için sonuç türü çıkarsanamıyor.
 
-***Dönüş türü çıkarımı yapılan*** şu şekilde belirlenir:
+***Çıkarılan dönüş türü*** aşağıdaki şekilde belirlenir:
 
-*  Varsa `F` zaman uyumsuz ve gövdesini `F` nothing sınıflandırılmış bir ya da bir ifade ([ifade sınıflandırmaları](expressions.md#expression-classifications)), ya da dönüş deyim ifadeleri, sahip olduğu bir deyim bloğunu çıkarılan dönüş türü `System.Threading.Tasks.Task`
-*  Varsa `F` zaman uyumsuz olduğunu ve çıkarılan bir sonuç türü `T`, çıkarılan dönüş türü `System.Threading.Tasks.Task<T>`.
-*  Varsa `F` olmayan zaman uyumsuz olduğunu ve çıkarılan bir sonuç türü `T`, çıkarılan dönüş türü `T`.
-*  Aksi takdirde bir dönüş türü için çıkarsanamıyor `F`.
+*  @No__t-0 zaman uyumsuz ise ve `F` gövdesi Nothing ([ifade sınıflandırmaları](expressions.md#expression-classifications)) olarak sınıflandırılmış bir ifade veya hiçbir dönüş deyiminin ifadesi olmadığı bir deyim bloğu ise, çıkarılan dönüş türü `System.Threading.Tasks.Task` olur
+*  @No__t-0 zaman uyumsuz ise ve ortaya çıkarılan sonuç türü `T` ise, çıkarılan dönüş türü `System.Threading.Tasks.Task<T>` ' dir.
+*  @No__t-0, zaman uyumsuz ise ve ortaya çıkarılan bir sonuç türü `T` ise, çıkarılan dönüş türü `T` ' dir.
+*  Aksi takdirde `F` için bir dönüş türü çıkarsanamıyor.
 
-Tür çıkarımı anonim işlevler içeren bir örnek olarak, göz önünde bulundurun `Select` genişletme yöntemi içinde bildirilen `System.Linq.Enumerable` sınıfı:
+Anonim işlevler içeren tür çıkarımı örneği olarak, `System.Linq.Enumerable` sınıfında belirtilen `Select` genişletme yöntemini göz önünde bulundurun:
 ```csharp
 namespace System.Linq
 {
@@ -720,165 +720,165 @@ namespace System.Linq
 }
 ```
 
-Varsayılarak `System.Linq` ad alanı ile alınmış bir `using` yan tümcesi ve bir sınıf belirtilen `Customer` ile bir `Name` türünün özelliği `string`, `Select` yöntemi, müşterilerin listesini adlarını seçmek için kullanılabilir:
+@No__t-0 ad alanının bir `using` yan tümcesiyle içeri aktarıldığını ve `string` türünde `Name` özelliğine sahip `Customer` sınıfı verildiğini varsayarsak, `Select` yöntemi bir müşteri listesinin adlarını seçmek için kullanılabilir:
 ```csharp
 List<Customer> customers = GetCustomerList();
 IEnumerable<string> names = customers.Select(c => c.Name);
 ```
 
-Uzantı metodu çağırma ([uzantısı yöntem çağrıları](expressions.md#extension-method-invocations)), `Select` çağrıya bir statik yöntem çağırma yazarak işlenir:
+@No__t-1 ' in uzantı yöntemi çağırma ([genişletme yöntemi etkinleştirmeleri](expressions.md#extension-method-invocations)), statik bir yöntem çağrısına yapılan çağrıyı yeniden yazarak işlenir:
 ```csharp
 IEnumerable<string> names = Enumerable.Select(customers, c => c.Name);
 ```
 
-Tür bağımsız değişkenleri açıkça belirtilmedi olduğundan, tür çıkarımı tür bağımsız değişkenlerini çıkarsamak için kullanılır. İlk olarak, `customers` bağımsız değişken ilgili `source` parametresi çıkarımını yapma `T` olmasını `Customer`. Anonim işlev kullanarak yazın, yukarıda açıklanan çıkarımı işleminin `c` türü verilen `Customer`ve ifade `c.Name` dönüş türü için ilgili `selector` parametresi çıkarımını yapma `S` olması`string`. Bu nedenle, çağırma eşdeğerdir
+Tür bağımsız değişkenleri açıkça belirtilmediği için tür çıkarımı tür bağımsız değişkenlerini çıkarsanacak şekilde kullanılır. İlk olarak, `customers` bağımsız değişkeni `source` parametresiyle ilgilidir, bu `T` `Customer` olur. Daha sonra, yukarıda açıklanan anonim işlev türü çıkarımı işlemini kullanarak, `c` `Customer` türü ve `c.Name` ifadesi `selector` parametresinin dönüş türüyle ilişkilidir, `S` ' ün `string` olmasını sağlar. Bu nedenle, çağırma şu şekilde eşdeğerdir
 ```csharp
 Sequence.Select<Customer,string>(customers, (Customer c) => c.Name)
 ```
-ve sonuç türünü `IEnumerable<string>`.
+Sonuç `IEnumerable<string>` türündedir.
 
-Aşağıdaki örnek nasıl anonim işlev türü gösterir çıkarımı "bağımsız değişken bir genel yöntem çağrısı arasında akış" tür bilgilerini sağlar. Yöntem verilen:
+Aşağıdaki örnek, anonim işlev türü çıkarımını genel yöntem çağrısında bağımsız değişkenler arasında "Flow" öğesine nasıl izin verdiğini gösterir. Yöntem verildi:
 ```csharp
 static Z F<X,Y,Z>(X value, Func<X,Y> f1, Func<Y,Z> f2) {
     return f2(f1(value));
 }
 ```
 
-Tür çıkarımı çağrısı için:
+Çağırma için tür çıkarımı:
 ```csharp
 double seconds = F("1:15:30", s => TimeSpan.Parse(s), t => t.TotalSeconds);
 ```
-şu şekilde çalışır: İlk olarak, bağımsız değişken `"1:15:30"` ilgili `value` parametresi çıkarımını yapma `X` olmasını `string`. Ardından, ilk anonim işlev parametresinin `s`, çıkarsanan tür verilen `string`ve ifade `TimeSpan.Parse(s)` dönüş türü için ilgili `f1`, çıkarımını yapma `Y` olmasını `System.TimeSpan`. Son olarak, ikinci anonim işlev parametresi `t`, çıkarsanan tür verilen `System.TimeSpan`ve ifade `t.TotalSeconds` dönüş türü için ilgili `f2`, çıkarımını yapma `Z` olmasını `double`. Bu nedenle, çağrısının sonucunu türünde `double`.
+Şu şekilde devam eder: İlk olarak, `"1:15:30"` bağımsız değişkeni `value` parametresiyle ilgilidir, bu `X` `string` olur. Ardından, `s` olan ilk adsız işlevin parametresine `string` Çıkarsanan tür `TimeSpan.Parse(s)` ifadesi `f1` ' ün dönüş türüyle ilişkilidir, `Y` ' ü `System.TimeSpan` olarak yeniden dener. Son olarak, `t` olan ikinci adsız işlevin parametresine `System.TimeSpan` Çıkarsanan tür `t.TotalSeconds` ifadesi `f2` ' ün dönüş türü ile ilgilidir ve `Z` ' ün `double` olmasını sağlar. Bu nedenle, çağrının sonucu `double` türündedir.
 
-#### <a name="type-inference-for-conversion-of-method-groups"></a>Dönüştürme yöntemi grupları için tür çıkarımı
+#### <a name="type-inference-for-conversion-of-method-groups"></a>Yöntem gruplarının dönüştürülmesi için tür çıkarımı
 
-Benzer şekilde, genel yöntemlerin kullanımını çağrıları, tür çıkarımı ayrıca bir yöntem grubu olduğunda uygulanmalıdır `M` genel yöntem içeren bir temsilci türüne dönüştürülür `D` ([yöntem grubu dönüştürmeler](conversions.md#method-group-conversions)). Verilen bir yöntemi
+Genel yöntemlerin çağrılarına benzer şekilde, genel bir yöntem içeren `M` Yöntem grubu, `D` ([Yöntem grubu dönüştürmeleri](conversions.md#method-group-conversions)) verilen temsilci türüne dönüştürüldüğünde tür çıkarımı da uygulanmalıdır. Verilen Yöntem
 ```csharp
 Tr M<X1...Xn>(T1 x1 ... Tm xm)
 ```
-ve yöntem grubu `M` temsilci türüne atanan `D` görevi tür çıkarımı, tür bağımsız değişkenleri bulmaktır `S1...Sn` böylece ifade:
+`M` Yöntem grubu, temsilci türüne atandı `D` tür çıkarımı, ifadenin tür bağımsız değişkenlerini bulmakta `S1...Sn` ifadesi.
 ```csharp
 M<S1...Sn>
 ```
-uyumlu hale gelir ([temsilci bildirimi](delegates.md#delegate-declarations)) ile `D`.
+`D` ile uyumlu ([temsilci bildirimleri](delegates.md#delegate-declarations)) olur.
 
-Genel yöntem çağrıları için tür çıkarımı algoritması bu durumda olup yalnızca bağımsız değişken *türleri*, hiçbir bağımsız değişken *ifadeleri*. Özellikle, hiçbir anonim işlev vardır ve bu nedenle birden çok aşamaları çıkarımı gerek yoktur.
+Genel yöntem çağrılarının tür çıkarımı algoritmasından farklı olarak, bu durumda yalnızca bağımsız değişken *türleri*vardır, hiçbir bağımsız değişken *ifadesi*yoktur. Özellikle, anonim işlev yoktur ve bu nedenle birden çok çıkarım aşaması gerekmez.
 
-Bunun yerine, tüm `Xi` değerlendirilir *sabitlenmemiş*ve *alt sınır çıkarımı* yapılan *gelen* her bağımsız değişken türü `Uj` , `D` *için* karşılık gelen parametre türü `Tj` , `M`. Eğer herhangi birinin `Xi` sınır yoktur bulunamadı, tür çıkarımı başarısız olur. Aksi takdirde, tüm `Xi` olan *sabit* karşılık gelen `Si`, tür çıkarımı sonucu olan.
+Bunun yerine, tüm `Xi` ' ı *sabitlenmemiş*olarak kabul edilir ve `Uj` ' *ten* `D` ' e ait her bağımsız değişken türünden `M` `Tj` ' *ye* karşılık gelen parametre türüne *alt sınır çıkarımı* yapılır. @No__t varsa-0 sınır bulunmazsa, tür çıkarımı başarısız olur. Aksi halde, her `Xi`, karşılık gelen `Si` ' ye *sabitlenir* ve bu tür çıkarımı oluşur.
 
-#### <a name="finding-the-best-common-type-of-a-set-of-expressions"></a>Bir ifade kümesi en iyi ortak türü bulma
+#### <a name="finding-the-best-common-type-of-a-set-of-expressions"></a>Bir ifade kümesinin en iyi ortak türünü bulma
 
-Bazı durumlarda, ortak bir türe ifade kümesi için çıkarım gerekir. Belirli, örtük olarak yazılan diziler öğesi türleri ve dönüş türleri anonim işlevlerle *blok* gövdeleri bu şekilde bulundu.
+Bazı durumlarda, bir dizi ifade için ortak bir türün çıkarsanması gerekir. Özellikle, örtük olarak yazılan dizilerin öğe türleri ve *blok* gövdeleri olan anonim işlevlerin dönüş türleri bu şekilde bulunur.
 
-Sezgisel, bir ifade kümesi verilen `E1...Em` bu çıkarım bir yöntem çağrısına eşdeğerdir
+Intuicanlı, bir dizi ifade verildiğinde `E1...Em` bu çıkarımı, bir yöntemi çağırmak için eşdeğer olmalıdır
 ```csharp
 Tr M<X>(X x1 ... X xm)
 ```
-ile `Ei` bağımsız değişkenler olarak.
+`Ei` ile bağımsız değişken olarak.
 
-Daha kesin çıkarımı başlar bir *sabitlenmemiş* tür değişkeni `X`. *Çıkış türü çıkarımı* ardından yapılan *gelen* her `Ei` *için* `X`. Son olarak, `X` olduğu *sabit* ve başarılı olursa, sonuç türü `S` elde edilen en yaygın tür ifadeler için. Eğer böyle `S` yoksa, en iyi ortak tür ifadeleri sahip.
+Daha kesin olarak, çıkarım `X` *sabit* olmayan bir tür değişkeniyle başlar. Daha sonra her `Ei` ' *den* `X` ' *e* kadar *Çıkış türü* . Son olarak, `X` *sabittir* ve başarılıysa, sonuçta elde edilen tür `S`, ifadeler için en iyi ortak türdür. Böyle bir `S` yoksa, ifadelerde en iyi ortak tür yoktur.
 
-### <a name="overload-resolution"></a>Aşırı yükleme çözümlemesi
+### <a name="overload-resolution"></a>Aşırı yükleme çözümü
 
-Aşırı yükleme çözünürlüğü, bir bağımsız değişken listesi ve aday işlevi üyelerin kümesini çağırmak için en iyi işlevi üye seçme bir bağlama zamanı mekanizmadır. Aşırı yükleme çözünürlüğü, C# içinde aşağıdaki ayrı bağlamlarda çağrılacak işlev üyesi seçer:
+Aşırı yükleme çözümlemesi, verilen bağımsız değişken listesini ve aday işlev üyelerini çağırmak için en iyi işlev üyesini seçmeye yönelik bir bağlama zamanı mekanizmasıdır. Aşırı yükleme çözümlemesi, içindeki C#aşağıdaki farklı bağlamlarda çağrılacak işlev üyesini seçer:
 
-*  Adlı bir yöntemin çağrı bir *invocation_expression* ([yöntem çağrıları](expressions.md#method-invocations)).
-*  Adlı bir örnek oluşturucusunda çağrılmasını bir *object_creation_expression* ([nesne oluşturma ifadeleri](expressions.md#object-creation-expressions)).
-*  Çağırma bir dizin oluşturucu erişimcisinin bir *element_access* ([öğe erişimi](expressions.md#element-access)).
-*  Bir deyimde başvurulan önceden tanımlı veya kullanıcı tanımlı işleç çağırmayı ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution) ve [ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)).
+*  Bir *invocation_expression* ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) içinde adlı bir yöntemin çağrılması.
+*  Bir *object_creation_expression* ([nesne oluşturma ifadelerinde](expressions.md#object-creation-expressions)) adlı örnek oluşturucunun çağrılması.
+*  Bir *element_access* ([öğe erişimi](expressions.md#element-access)) aracılığıyla bir Dizin Oluşturucu erişimcisinin çağrılması.
+*  İfadede önceden tanımlanmış veya Kullanıcı tanımlı bir işlecin çağrılması ([birli operatör aşırı yükleme çözümü](expressions.md#unary-operator-overload-resolution) ve [ikili işleç aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)).
 
-Her biri bu içerikler aday işlevi üyelerin kümesini ve bağımsız değişkenler listesi kendi benzersiz bir yolla, yukarıda listelenen bölümlerde ayrıntılı olarak açıklandığı gibi tanımlar. Örneğin, bir yöntem çağırma için aday kümesini işaretlenmiş yöntemler içermez `override` ([üye araması](expressions.md#member-lookup)), ve bir taban sınıf yöntemlerini olmayan adaylar türetilmiş bir sınıf içinde herhangi bir yöntemi geçerli ise ([ Yöntem çağrıları](expressions.md#method-invocations)).
+Bu bağlamların her biri, yukarıda listelenen bölümlerde ayrıntılı olarak açıklandığı gibi aday işlev üyeleri kümesini ve bağımsız değişkenlerin listesini kendi benzersiz şeklinde tanımlar. Örneğin, bir yöntem çağrısı için aday kümesi, `override` ([üye arama](expressions.md#member-lookup)) olarak işaretlenmiş yöntemleri içermez ve türetilmiş bir sınıftaki herhangi bir yöntem geçerliyse ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) temel sınıftaki Yöntemler aday değildir.
 
-Aday işlev üyeleri ve bağımsız değişken listesi uyguladığınızı belirledikten sonra en iyi işlevi üye seçimi tüm durumlarda aynıdır:
+Aday işlev üyeleri ve bağımsız değişken listesi tanımlandıktan sonra, en iyi işlev üyesinin seçimi her durumda aynıdır:
 
-*  Kümesi bulunur, uygun aday işlevi üyelerin kümesini göz önünde bulundurulduğunda, en iyi üye işlevi. Set işlevi yalnızca bir üye içeriyorsa, ardından işlevi üyenin en iyi işlevi üyesidir. Aksi takdirde, en iyi işlevi şartıyla her işlev üyesi kuralları kullanarak diğer işlev üyeleri karşılaştırılır, belirtilen bağımsız değişken listesi ile ilgili diğer tüm işlev üyeleri daha iyi bir işlevin üye üyesidir [ Daha iyi işlevi üye](expressions.md#better-function-member). Tam olarak diğer tüm işlev üyeleri iyi bir işlev üyesi ise, işlev üye çağrısı belirsiz olduğu ve bir bağlama zamanı hatası oluşur.
+*  Uygulanabilir aday işlev üyeleri kümesi verildiğinde, bu küme içindeki en iyi işlev üyesi bulunur. Küme yalnızca bir işlev üyesi içeriyorsa, bu işlev üyesi en iyi işlev üyesidir. Aksi halde, en iyi işlev üyesi, her bir işlev üyesinin [daha iyi işlevdeki kuralları kullanarak diğer tüm işlev üyeleriyle karşılaştırıldığı belirtilen bağımsız değişken listesine göre diğer tüm işlev üyelerinden daha iyi olan bir işlev üyesidir. üye](expressions.md#better-function-member). Tüm diğer işlev üyelerinden daha iyi olan tam olarak bir işlev üyesi yoksa, işlev üye çağrısı belirsizdir ve bir bağlama zamanı hatası oluşur.
 
-Aşağıdaki bölümlerde tam anlamları koşullarını tanımlamak ***geçerli işlev üyesi*** ve ***daha iyi işlevi üye***.
+Aşağıdaki bölümlerde, koşullara ***uygun işlev üyesinin*** ve ***daha iyi işlev üyesinin***tam anlamları tanımlanacaktır.
 
 #### <a name="applicable-function-member"></a>Geçerli işlev üyesi
 
-Bir işlevin üyesi olduğu söylenir bir ***geçerli işlev üyesi*** bağımsız değişken listesine göre `A` şunların hepsini olduğunda true:
+Bir işlev üyesi, aşağıdakilerin tümü doğru olduğunda bir bağımsız değişken listesi `A` olan ***geçerli bir işlev üyesi*** olarak kabul edilir:
 
-*  Her bağımsız değişkende `A` bir parametreye işlev üyesi bildiriminde açıklandığı karşılık gelen [karşılık gelen parametreleri](expressions.md#corresponding-parameters), ve herhangi bir parametre hiçbir bağımsız değişken karşılık gelen bir isteğe bağlı bir parametredir.
-*  Her bağımsız değişkeni için `A`, parametre modunu bağımsız değişken geçirme (yani, değer `ref`, veya `out`) karşılık gelen parametre, parametre geçirme moduna aynıdır ve
-   *  bir değer parametresini veya bir parametre dizisi, örtük bir dönüştürme ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) karşılık gelen parametre türüne bağımsız değişkende var veya
-   *  için bir `ref` veya `out` parametresi, bağımsız değişken türünü karşılık gelen parametre türü için aynı. Sonuçta bir `ref` veya `out` parametredir geçirilen bağımsız değişken için bir diğer ad.
+*  @No__t-0 ' daki her bağımsız değişken, [karşılık gelen parametrelerde](expressions.md#corresponding-parameters)açıklandığı gibi işlev üye bildirimindeki parametreye karşılık gelir ve hiçbir bağımsız değişkenin karşılık geldiği parametre isteğe bağlı bir parametredir.
+*  @No__t-0 ' daki her bir bağımsız değişken için, bağımsız değişkenin (örn. değer, `ref` veya `out`) parametre geçirme modu, karşılık gelen parametrenin parametre geçirme moduyla aynıdır ve
+   *  bir değer parametresi veya bir parametre dizisi için, bağımsız değişkenden karşılık gelen parametrenin türüne örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) var veya
+   *  `ref` veya `out` parametresi için bağımsız değişkenin türü karşılık gelen parametrenin türüyle aynıdır. Tümü, `ref` veya `out` parametresi geçilen bağımsız değişken için bir diğer addır.
 
-Bir parametre dizisi içeren işlev üyesi için yukarıdaki kurallar tarafından işlevi üyesi olup olmadığını, uygulanabilir olduğu söylenir kendi ***normal form***. Bir parametre dizisi içeren işlev üyesi, normal bir biçimde geçerli değilse, işlev üye bunun yerine uygulanabilir olabilir, ***genişletilmiş form***:
+Bir parametre dizisi içeren bir işlev üyesi için, işlev üyesi Yukarıdaki kurallar tarafından geçerliyse, bunun ***normal biçiminde***geçerli olduğu söylenir. Bir parametre dizisi içeren bir işlev üyesi normal biçiminde geçerli değilse, işlev üyesi ***genişletilmiş biçimde***uygulanabilir olabilir:
 
-*  Genişletilmiş formun işlev üyesi bildiriminde parametre dizisi sıfır ile değiştirilerek oluşturulur veya daha fazla değer parametre parametresinin öğe türünün gibi dizi bu bağımsız değişken listesindeki bağımsız değişken sayısı `A` toplam eşleşir parametre sayısı. Varsa `A` işlevi üyesi bildiriminde sabit parametre sayısından daha az sayıda bağımsız değişken varsa, genişletilmiş formun işlevi üyesinin oluşturulamaz ve bu nedenle geçerli değildir.
-*  Aksi takdirde, genişletilmiş form, her değişken için geçerli `A` bağımsız değişken geçirme mode parametresi için karşılık gelen parametre, parametre geçirme modu aynıdır ve
-   *  bir sabit değer parametresi veya örtük bir dönüştürme genişletmesi tarafından oluşturulan bir değer parametresini ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) karşılık gelen parametresinin türü için bağımsız değişkenin türünden var veya
-   *  için bir `ref` veya `out` parametresi, bağımsız değişken türünü karşılık gelen parametre türü için aynı.
+*  Genişletilmiş form, işlev üyesi bildirimindeki parametre dizisi parametre dizisinin öğe türünün sıfır veya daha fazla değer parametresiyle değiştirilerek oluşturulur, çünkü bağımsız değişken listesindeki bağımsız değişkenlerin sayısı `A`, toplam sayısıyla eşleşir parametreleri. @No__t-0 ' ın işlev üyesi bildirimindeki sabit parametrelerin sayısından daha az bağımsız değişkeni varsa, işlev üyesinin genişletilmiş biçimi oluşturulamıyor ve bu nedenle geçerli değildir.
+*  Aksi halde, `A` ' daki her bağımsız değişken için genişletilmiş form geçerli olur-0 parametre geçirme modu, karşılık gelen parametrenin parametre geçirme moduyla aynı ve
+   *  sabit bir değer parametresi veya genişletme tarafından oluşturulan bir değer parametresi için, bağımsız değişkenin türünden, karşılık gelen parametrenin türüne örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) vardır veya
+   *  `ref` veya `out` parametresi için bağımsız değişkenin türü karşılık gelen parametrenin türüyle aynıdır.
 
 #### <a name="better-function-member"></a>Daha iyi işlev üyesi
 
-Daha iyi işlevi üye belirleme amacıyla, yalnızca bağımsız değişken ifadeleri kendilerini özgün bağımsız değişken listesinde göründükleri sırayla içeren stripped-down bağımsız değişken listesini bir oluşturulur.
+Daha iyi işlev üyesini belirleme amaçları doğrultusunda, yalnızca bağımsız değişken ifadelerinin orijinal bağımsız değişken listesinde göründükleri sırada kendilerini içeren bir aşağı açılan bağımsız değişken listesi oluşturulur.
 
-Her üye şu şekilde oluşturulur aday işlevi için parametre listeler:
+Aday işlev üyelerinin her biri için parametre listeleri aşağıdaki şekilde oluşturulur:
 
-*  Üye işlevi yalnızca genişletilmiş biçiminde geçerli genişletilmiş formun kullanılır.
+*  İşlev üyesi yalnızca genişletilmiş biçimde uygulanabiliyorsa genişletilmiş form kullanılır.
 *  Karşılık gelen bağımsız değişken içermeyen isteğe bağlı parametreler parametre listesinden kaldırılır
-*  Bunlar bağımsız değişken listesindeki aynı konuma karşılık gelen bağımsız değişken olarak gerçekleşmesi parametreleri yeniden sıralanır.
+*  Parametreler, bağımsız değişken listesindeki ilgili bağımsız değişkenle aynı konumda gerçekleşmeleri için yeniden sıralanmaz.
 
-Bir bağımsız değişken listesi verilen `A` bağımsız değişken ifadeleri kümesiyle `{E1, E2, ..., En}` ve iki geçerli işlev üyeleri `Mp` ve `Mq` parametre türleri ile `{P1, P2, ..., Pn}` ve `{Q1, Q2, ..., Qn}`, `Mp` olarak tanımlanır bir ***daha iyi işlevi üye*** daha `Mq` varsa
+Bir bağımsız değişken listesi `A`, bir bağımsız değişken ifadeleri kümesi `{E1, E2, ..., En}` ve `{P1, P2, ..., Pn}` ve `{Q1, Q2, ..., Qn}` parametre türleriyle `Mp` ve `Mq`, `Mp` ' dan ***daha iyi bir işlev üyesi*** olarak tanımlanmıştır @no__t
 
-*  Her bir bağımsız değişkeni, arasında örtük dönüşüm `Ex` için `Qx` arasında örtük dönüşüm daha iyi değil `Ex` için `Px`, ve
-*  en az bir bağımsız değişkeni, dönüştürme `Ex` için `Px` dönüştürme işlemi daha iyidir `Ex` için `Qx`.
+*  Her bağımsız değişken için, `Ex` ' dan `Qx` ' e örtük dönüştürme `Ex` ' den `Px` ' e kadar örtülü dönüşümden daha iyi değildir ve
+*  en az bir bağımsız değişken için, `Ex` ' dan `Px` ' e dönüştürme `Ex` ' den `Qx` ' e kadar olan dönüşümden daha iyidir.
 
-Bu değerlendirme, gerçekleştirirken `Mp` veya `Mq` genişletilmiş hâli içinde geçerli ise `Px` veya `Qx` parametre listesi genişletilmiş biçiminde bir parametreye başvuruyor.
+Bu değerlendirmeyi gerçekleştirirken, `Mp` veya `Mq` Genişletilmiş biçimde geçerliyse, `Px` veya `Qx` parametre listesinin genişletilmiş biçimindeki bir parametreye başvurur.
 
-Tür parametresi dizileri durumunda `{P1, P2, ..., Pn}` ve `{Q1, Q2, ..., Qn}` eşdeğerdir (yani her `Pi` karşılık gelen bir kimlik dönüştürme sahip `Qi`), aşağıdaki KRAVAT sonu kuralları uygulanır, daha iyi belirlemek için sırayla üye işlevi.
+@ No__t-0 ve `{Q1, Q2, ..., Qn}` parametre tür dizileri eşdeğerdir (yani, her @no__t 2 ' ye karşılık gelen `Qi` ' e bir kimlik dönüştürmesi varsa), daha iyi işlev üyesini belirleyebilmek için aşağıdaki bağlama kuralları uygulanır.
 
-*  Varsa `Mp` genel olmayan bir yöntem ve `Mq` genel bir yöntem ise `Mp` göre daha iyidir `Mq`.
-*  Aksi takdirde `Mp` , normal bir biçimde uygulanabilir ve `Mq` sahip bir `params` dizisi ve ardından genişletilmiş biçimde yalnızca kendi geçerlidir `Mp` göre daha iyidir `Mq`.
-*  Aksi takdirde `Mp` daha fazla parametre gözükeceğini `Mq`, ardından `Mp` göre daha iyidir `Mq`. Her iki yöntem de sahip olmadığında ortaya çıkabilir `params` diziler ve bu yalnızca genişletilmiş formlarında uygulanabilir.
-*  Aksi halde, tüm parametreleri `Mp` varsayılan bağımsız değişkenler için en az bir isteğe bağlı bir parametre atanması gerekiyor ancak karşılık gelen bir bağımsız değişken olan `Mq` ardından `Mp` göre daha iyidir `Mq`.
-*  Aksi takdirde `Mp` daha fazla belirli parametre türleri vardır `Mq`, ardından `Mp` göre daha iyidir `Mq`. İzin `{R1, R2, ..., Rn}` ve `{S1, S2, ..., Sn}` örneklenmemiş ve genişletilmemiş parametre türleri temsil eden `Mp` ve `Mq`. `Mp`ın parametre türleri daha belirli `Mq`ait ise, her bir parametreye `Rx` less yazımına özgü değil `Sx`ve en az bir parametre `Rx` daha belirli olduğundan `Sx`:
-   *  Bir tür olmayan parametresi daha az belirli bir tür parametresidir.
-   *  Yinelemeli olarak oluşturulmuş bir türü en az bir bağımsız değişken türü (tür bağımsız değişkenleri aynı sayıda ile) oluşturulan başka bir tür daha özeldir ve hiçbir tür bağımsız değişkeni karşılık gelen tür bağımsız değişkeni diğer less yazımına özgü daha ayrıntılı olarak.
-   *  İlk öğe türü ikinci öğesi türünden daha belirli ise bir dizi türü (aynı boyut sayısı ile) başka bir dizi türü daha belirgin olur.
-*  Aksi takdirde yükseltilmiş bir işleci bir üyesidir ve diğer lifted işleci ise, yükseltilmiş bir iyidir.
-*  Aksi takdirde, hiçbir işlev üyesi daha iyidir.
+*  @No__t-0 genel olmayan bir yöntem ise ve `Mq` genel bir yöntem ise, `Mp` `Mq` ' ten daha iyidir.
+*  Aksi takdirde, `Mp` normal biçimde uygulanabiliyorsa ve `Mq` `params` dizisine sahipse ve yalnızca genişletilmiş biçimde uygulanabilir ise, `Mp` `Mq` ' ten daha iyidir.
+*  Aksi takdirde, `Mp` ' ı `Mq` ' den daha fazla tanımlanmış parametre içeriyorsa, `Mp` @no__t 3 ' ten daha iyidir. Her iki yöntem de `params` dizileri içeriyorsa ve yalnızca genişletilmiş formlarında uygulanabildiğinde bu durum oluşabilir.
+*  Aksi halde, `Mp` ' ın tüm parametrelerinin karşılık gelen bir bağımsız değişkeni varsa, varsayılan bağımsız değişkenlerin `Mq` ' de en az bir isteğe bağlı parametre yerine kullanılması gerekiyorsa `Mp` `Mq` ' ten daha iyidir.
+*  Aksi takdirde, `Mp` ' ı `Mq` ' den daha belirli parametre türlerine sahipse, `Mp` `Mq` ' ten daha iyidir. @No__t-0 ve `{S1, S2, ..., Sn}`, `Mp` ve `Mq` ' ün örneklenmiş ve genişletilmemiş parametre türlerini temsil eder. `Mp` ' ın parametre türleri `Mq` ' den daha özeldir, her bir parametre için `Rx` `Sx` ' ten daha az değildir ve en az bir parametre için `Rx` `Sx` ' ten daha özgüdür:
+   *  Tür parametresi, tür olmayan bir parametreden daha az özgüdür.
+   *  Yinelemeli olarak, oluşturulmuş bir tür, en az bir tür bağımsız değişkeni daha büyükse ve hiçbir tür bağımsız değişkeni diğer bir tür bağımsız değişkeniyle daha az özel değilse, oluşturulmuş bir tür farklı oluşturulmuş türden (aynı sayıda tür bağımsız değişkenle) daha özgüdür.
+   *  Bir dizi türü, birincinin öğe türü ikincisinin öğe türünden daha belirgin ise, başka bir dizi türünden (aynı sayıda boyut ile) daha özgüdür.
+*  Aksi takdirde, bir üye yükseltilmemiş olmayan bir işleçtir ve diğeri bir yükseltilmemiş işleçse, yükseltilmemiş olmayan bir tane daha iyidir.
+*  Aksi halde, hiçbir işlev üyesi daha iyidir.
 
-#### <a name="better-conversion-from-expression"></a>İfadeden daha iyi dönüştürme
+#### <a name="better-conversion-from-expression"></a>Deyimden daha iyi dönüştürme
 
-Örtük bir dönüştürme verilen `C1` ifadeden dönüştüren `E` türüne `T1`ve örtük bir dönüştürme `C2` ifadeden dönüştüren `E` türüne `T2`, `C1` olan bir ***daha iyi bir dönüştürme*** daha `C2` varsa `E` tam olarak eşleşmiyor `T2` ve aşağıdakilerden birini barındırır:
+Bir örtük dönüştürme `E`  ifadesinden `T1` türüne dönüştüren ve `E` ifadesinden `T2` türüne dönüştüren örtük bir dönüştürme `C2` @no__t @no__t, @no__-6 ' dan ***daha iyi bir dönüştürme*** t-9 0 ' u ve en az birini aşağıdaki tutmalarla tam olarak eşleşmez:
 
-* `E` tam olarak eşleşen `T1` ([ifadesi tam olarak eşleşen](expressions.md#exactly-matching-expression))
-* `T1` daha iyi bir dönüştürme hedefi `T2` ([daha iyi dönüştürme hedef](expressions.md#better-conversion-target))
+* `E` @no__t tam olarak eşleşir-1 ([tam olarak eşleşen ifade](expressions.md#exactly-matching-expression))
+* `T1`, `T2` ' den daha iyi bir dönüştürme hedefi ([daha iyi dönüştürme hedefi](expressions.md#better-conversion-target))
 
-#### <a name="exactly-matching-expression"></a>Tam olarak eşleşen bir ifade
+#### <a name="exactly-matching-expression"></a>Tam eşleştirme Ifadesi
 
-Bir ifade verilen `E` ve türü `T`, `E` tam olarak eşleşen `T` tutuyorsa aşağıdakilerden biri:
+@No__t-0 ve `T` türünde bir ifade verildiğinde, aşağıdakilerden biri varsa `T` ' ü tam olarak  ile eşleşir:
 
-*  `E` bir türe sahip `S`, ve gelen bir kimlik dönüştürme var `S` için `T`
-*  `E` Anonim bir işlev ise `T` bir temsilci türü `D` veya bir ifade ağacı türü `Expression<D>` ve aşağıdakilerden birini barındırır:
-   *  Çıkarılan bir dönüş türü `X` yok `E` parametre listesini bağlamında `D` ([Inferred dönüş türü](expressions.md#inferred-return-type)), ve gelen bir kimlik dönüştürme var `X` için dönüş türü `D`
-   *  Her iki `E` olmayan zaman uyumsuz olduğunu ve `D` dönüş türü olan `Y` veya `E` zaman uyumsuz olduğunu ve `D` dönüş türü olan `Task<Y>`, ve aşağıdakilerden birini barındırır:
-      * Gövdesi `E` bir ifade, tam olarak eşleşme. `Y`
-      * Gövdesi `E` her return deyimi bu tam olarak eşleşen bir ifade döndüğü bir deyim bloğunu olduğu `Y`
+*  `E` `S` türüne sahip ve `S` ' den `T` ' e bir kimlik dönüştürmesi var
+*  `E` Anonim bir işlevdir, `T` bir temsilci türü `D` veya bir ifade ağacı türü `Expression<D>` ve aşağıdakilerden biri olabilir:
+   *  @No__t-2 ' nin parametre listesi bağlamında `E` için @no__t çıkarılan bir dönüş türü vardır ([çıkarılan dönüş türü](expressions.md#inferred-return-type)) ve `X` ' ten dönüş türü `D` ' e bir kimlik dönüştürme var
+   *  @No__t-0, zaman uyumsuz değil ve `D` bir dönüş türüne sahip `Y` ' dir veya `E` zaman uyumsuz ve `D` ' ü bir dönüş türü `Task<Y>` ' i ve aşağıdakilerden birini içerir:
+      * @No__t-0 gövdesi tam olarak eşleşen bir ifadedir-1 @no__t
+      * @No__t-0 gövdesi, her dönüş deyiminin tamamen @no__t eşleşen bir ifade döndürdüğü bir deyim bloğudur.
 
-#### <a name="better-conversion-target"></a>Daha iyi dönüştürme hedef
+#### <a name="better-conversion-target"></a>Daha iyi dönüştürme hedefi
 
-Verilen iki `T1` ve `T2`, `T1` daha iyi bir dönüştürme hedefi `T2` örtülü dönüştürme olmaz, `T2` için `T1` var ve aşağıdakilerden birini barındırır:
+@No__t-0 ve `T2` olan iki farklı tür verildiğinde `T1` `T2` ' ten `T1` ' e örtük dönüştürme yoksa ve aşağıdakilerden en az biri varsa, `T2` ' ten daha iyi bir dönüştürme hedefidir:
 
-*  Örtük bir dönüştürme `T1` için `T2` var.
-*  `T1` bir temsilci türü `D1` veya bir ifade ağacı türü `Expression<D1>`, `T2` bir temsilci türü `D2` veya bir ifade ağacı türü `Expression<D2>`, `D1` dönüş türü olan `S1` ve biri Aşağıdaki tutar:
-   * `D2` void döndüren
-   * `D2` dönüş türü olan `S2`, ve `S1` daha iyi bir dönüştürme hedefi `S2`
-*  `T1` olan `Task<S1>`, `T2` olduğu `Task<S2>`, ve `S1` daha iyi bir dönüştürme hedefi `S2`
-*  `T1` olan `S1` veya `S1?` burada `S1` işaretli bir integral türü ve `T2` olduğu `S2` veya `S2?` burada `S2` işaretsiz bir tamsayı türüdür. Özellikle:
-   * `S1` olan `sbyte` ve `S2` olduğu `byte`, `ushort`, `uint`, veya `ulong`
-   * `S1` olan `short` ve `S2` olduğu `ushort`, `uint`, veya `ulong`
-   * `S1` olan `int` ve `S2` olduğu `uint`, veya `ulong`
-   * `S1` olan `long` ve `S2` olduğu `ulong`
+*  @No__t-0 ' dan `T2` ' e örtük dönüştürme var
+*  `T1`, bir temsilci türü `D1` veya bir ifade ağacı türü `Expression<D1>`, `T2` bir temsilci türü `D2` veya bir ifade ağacı türü `Expression<D2>`, `D1` bir dönüş türü `S1` ve aşağıdakilerden biri olabilir :
+   * `D2` void döndürüyor
+   * `D2` ' a bir dönüş türü `S2` ve `S1` `S2` ' ten daha iyi bir dönüştürme hedefidir
+*  `T1` `Task<S1>`, `T2` `Task<S2>` ve `S1` `S2` ' ten daha iyi bir dönüştürme hedefi
+*  `S1` veya `S1?` ' dir; burada `S1` ' ün işaretli bir integral türü olduğu ve `T2` ' ün bir işaretsiz integral türü olduğu `S2` veya `S2?` @no__t. Engelle
+   * `S1` `sbyte` ve `S2` `byte`, `ushort`, `uint` veya `ulong`
+   * `S1` `short` ve `S2` `ushort`, `uint` veya `ulong`
+   * `S1` `int` ve `S2` `uint` veya `ulong`
+   * `S1` `long` ve `S2` `ulong`
 
-#### <a name="overloading-in-generic-classes"></a>Genel sınıflar aşırı yükleme
+#### <a name="overloading-in-generic-classes"></a>Genel sınıflarda aşırı yükleme
 
-Bildirilen imzaları benzersiz olmasını sağlarken tür bağımsız değişkenlerini değiştirme içinde aynı imzaya sonuçları mümkündür. Bu gibi durumlarda, yukarıdaki aşırı yükleme çözünürlüğü KRAVAT sonu kurallarını en belirgin üye seçer.
+Belirtilen imzaların benzersiz olması gerekir, ancak tür bağımsız değişkenlerinin değişimi de özdeş imzalara neden olabilir. Bu gibi durumlarda, yukarıdaki aşırı yükleme çözümünün bağlama kuralları en belirli üyeyi seçer.
 
-Aşağıdaki örnekler, geçerli ve bu kuralına göre geçersiz aşırı yüklemeleri gösterir:
+Aşağıdaki örneklerde, bu kurala göre geçerli ve geçersiz olan aşırı yüklemeler gösterilmektedir:
 
 ```csharp
 interface I1<T> {...}
@@ -910,66 +910,66 @@ class G2<U,V>
 }
 ```
 
-### <a name="compile-time-checking-of-dynamic-overload-resolution"></a>Derleme zamanı dinamik aşırı yükleme çözünürlüğü denetleniyor
+### <a name="compile-time-checking-of-dynamic-overload-resolution"></a>Dinamik aşırı yükleme çözümlemesi için derleme zamanı denetimi
 
-En dinamik olarak bağlı işlemler için olası adaylar çözümlemesi için derleme zamanında bilinmeyen kümesidir. Bazı durumlarda, ancak aday kümesi derleme zamanında bilinen:
+Dinamik olarak bağlı işlemler için, derleme zamanında çözümleme için olası aday adayları bilinmiyor. Ancak, bazı durumlarda aday kümesi derleme zamanında bilinir:
 
-*  Dinamik bağımsız değişkenlere sahip statik yöntem çağrıları
-*  Örnek yöntemi çağrılarında nerede alıcı dinamik bir ifade değil
-*  Dizin Oluşturucu çağrıları nerede alıcı dinamik bir ifade değil
-*  Dinamik bağımsız değişkenlere sahip Oluşturucu çağrı
+*  Dinamik bağımsız değişkenlerle statik yöntem çağrıları
+*  Örnek yöntemi, alıcının dinamik bir ifade olmadığı yerleri çağırır
+*  Alıcının dinamik bir ifade olmadığı Dizin Oluşturucu çağrıları
+*  Dinamik bağımsız değişkenlerle Oluşturucu çağrıları
 
-Bu gibi durumlarda, bunlardan herhangi birinin büyük olasılıkla çalışma zamanında uygulanabilir değilse görmek her adayı için sınırlı bir derleme zamanı denetimi gerçekleştirilir. Bu onay, aşağıdaki adımlardan oluşur:
+Bu durumlarda, her bir aday için sınırlı bir derleme zamanı denetimi gerçekleştirilerek, bunlardan herhangi birinin çalışma zamanında uygulayıp uygulamamadığını görebilirler. Bu denetim aşağıdaki adımlardan oluşur:
 
-*  Kısmi tür çıkarımı: Herhangi bir tür doğrudan veya dolaylı olarak türünde bir bağımsız değişken üzerinde bağlı olmayan bağımsız değişkeni `dynamic` kurallarını kullanarak algılanır [anlam çıkarma](expressions.md#type-inference). Kalan tür bağımsız değişkeni bilinmeyen.
-*  Kısmi Uygulanabilirlik denetimi: Uygulanabilirlik göre denetlenir [geçerli işlev üyesi](expressions.md#applicable-function-member), ancak eşleşen türleri bilinmeyen parametreler yoksayılıyor.
-*  Hiçbir aday bu testi başarılı olursa, bir derleme zamanı hatası oluşur.
+*  Kısmi tür çıkarımı: @No__t-0 türünde bir bağımsız değişkene doğrudan veya dolaylı olarak bağımlı olmayan herhangi bir tür bağımsız değişkeni, [tür çıkarımı](expressions.md#type-inference)kuralları kullanılarak çıkarsanacaktır. Kalan tür bağımsız değişkenleri bilinmiyor.
+*  Kısmi uygulanabilirlik denetimi: Uygulanabilirlik, [uygulanabilir işlev üyesine](expressions.md#applicable-function-member)göre denetlenir, ancak türleri bilinmeyen parametreler yok sayılıyor.
+*  Bu testi hiçbir aday geçirmediğinde, derleme zamanı hatası oluşur.
 
-### <a name="function-member-invocation"></a>İşlev üye çağrısı
+### <a name="function-member-invocation"></a>İşlev üyesi çağırma
 
-Bu bölümde belirli işlev üye çağırmak için çalışma zamanında gerçekleşen işlemi açıklanmaktadır. Bağlama zamanı işlemini çağırmak için çözüm candidate işlev üyeleri bir dizi uygulayarak büyük olasılıkla aşırı belirli üye zaten belirledi varsayılır.
+Bu bölümde, belirli bir işlev üyesini çağırmak için çalışma zamanında gerçekleşen işlem açıklanmaktadır. Bir bağlama zamanı işleminin, büyük olasılıkla bir aday işlev üyesi kümesine aşırı yükleme çözümlemesi uygulayarak, çağırmak için belirli bir üyeyi daha önce belirlediğini kabul edilir.
 
-Çağırma işlemi açıklamak amacıyla işlev üyeleri iki kategoriye ayrılır:
+Çağırma işlemini açıklama amaçlarıyla, işlev üyeleri iki kategoriye ayrılmıştır:
 
-*  Statik işlev üyeleri. Örnek oluşturucuları, statik yöntemler, statik özellik erişimcileri ve kullanıcı tanımlı işleçler şunlardır. Statik işlev her zaman sanal olmayan üyeleridir.
-*  Örnek işlev üyeleri. Bu örnek yöntemleri, örnek özellik erişimcileri ve dizin oluşturucu erişimcileri ücretlerdir. Örnek işlev üyeleri, sanal olmayan ya da sanal ve her zaman belirli bir örneği üzerinde çağrılır. Örnek bir örnek ifade Hesaplandı ve işlev üyesi olarak içinde erişilebilir duruma gelir `this` ([bu erişim](expressions.md#this-access)).
+*  Statik işlev üyeleri. Bunlar örnek oluşturucular, statik yöntemler, statik özellik erişimcileri ve Kullanıcı tanımlı işleçlerdir. Statik işlev üyeleri her zaman sanal değildir.
+*  Örnek işlevi üyeleri. Bunlar örnek yöntemleridir, örnek özellik erişimcileri ve Dizin Oluşturucu erişimcileri. Örnek işlevi üyeleri sanal olmayan veya sanal değil, her zaman belirli bir örnek üzerinde çağrılır. Örnek bir örnek ifadesi tarafından hesaplanır ve işlev üyesi içinde `this` ([Bu erişim](expressions.md#this-access)) olarak erişilebilir hale gelir.
 
-Çalışma zamanı işleme işlevi üye çağırmanın, aşağıdaki adımlardan oluşur burada `M` işlevi üyesidir ve `M` bir örnek üyesi `E` örnek ifade:
+Bir işlev üye çağrısının çalışma zamanı işleme aşağıdaki adımlardan oluşur; burada `M` İşlev üyesidir ve `M` bir örnek üyesiyse, `E` örnek ifadedir:
 
-*  Varsa `M` statik işlev üye:
-   * Bağımsız değişken listesi açıklandığı gibi değerlendirilir [bağımsız değişken listeleri](expressions.md#argument-lists).
+*  @No__t-0 bir statik işlev üyesiyse:
+   * Bağımsız değişken listesi, [bağımsız değişken listelerinde](expressions.md#argument-lists)açıklandığı şekilde değerlendirilir.
    * `M` çağrılır.
 
-*  Varsa `M` örnek işlevi üyesine içinde bildirilen bir *value_type*:
-   * `E` değerlendirilir. Bu değerlendirme bir özel durum neden olursa, başka bir adım daha sonra yürütülür.
-   * Varsa `E` bir değişken, ardından geçici bir yerel değişken sınıflandırılmaz `E`ın türü oluşturulur ve değerini `E` bu değişkenine atanır. `E` Ardından, geçici yerel değişken başvuru olarak yeniden sınıflandırılması. Geçici değişken olarak erişilebilir `this` içinde `M`, ancak başka hiçbir şekilde. Bu nedenle, yalnızca zaman `E` true değişkeni çağırıcı değişiklikleri gözlemlemek için mümkün olduğu, `M` yapar `this`.
-   * Bağımsız değişken listesi açıklandığı gibi değerlendirilir [bağımsız değişken listeleri](expressions.md#argument-lists).
-   * `M` çağrılır. Tarafından başvurulan değişken `E` tarafından başvurulan değişken olur `this`.
+*  @No__t-0 bir *value_type*içinde belirtilen bir örnek işlev üyesiyse:
+   * `E` değerlendirilir. Bu değerlendirme bir özel duruma neden olursa başka bir adım yürütülmez.
+   * @No__t-0 bir değişken olarak sınıflandırılmadıysa, `E` ' in türünün geçici bir yerel değişkeni oluşturulur ve bu değişkene `E` değeri atanır. `E` daha sonra bu geçici yerel değişkene bir başvuru olarak yeniden sınıflanır. Geçici değişken `M` içinde `this` olarak erişilebilir, ancak başka hiçbir şekilde kullanılamaz. Bu nedenle, yalnızca `E` gerçek bir değişken olduğunda, çağıranın `M` `this` ' ye yaptığı değişiklikleri gözlemlemek mümkün olur.
+   * Bağımsız değişken listesi, [bağımsız değişken listelerinde](expressions.md#argument-lists)açıklandığı şekilde değerlendirilir.
+   * `M` çağrılır. @No__t-0 tarafından başvurulan değişken `this` tarafından başvurulan değişken haline gelir.
 
-*  Varsa `M` örnek işlevi üyesine içinde bildirilen bir *reference_type*:
-   * `E` değerlendirilir. Bu değerlendirme bir özel durum neden olursa, başka bir adım daha sonra yürütülür.
-   * Bağımsız değişken listesi açıklandığı gibi değerlendirilir [bağımsız değişken listeleri](expressions.md#argument-lists).
-   * Varsa türünü `E` olduğu bir *value_type*, paketleme dönüştürmesi ([kutulama dönüştürmeler](types.md#boxing-conversions)) dönüştürmek için gerçekleştirilen `E` türüne `object`, ve `E` olarak kabul edilir türünde olmasını `object` aşağıdaki adımlarda. Bu durumda, `M` yalnızca üyesi olabilir `System.Object`.
-   * Değerini `E` geçerli olması için denetlenir. Varsa değerini `E` olduğu `null`, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülür.
+*  @No__t-0 bir *reference_type*içinde belirtilen bir örnek işlev üyesiyse:
+   * `E` değerlendirilir. Bu değerlendirme bir özel duruma neden olursa başka bir adım yürütülmez.
+   * Bağımsız değişken listesi, [bağımsız değişken listelerinde](expressions.md#argument-lists)açıklandığı şekilde değerlendirilir.
+   * @No__t-0 türü bir *value_type*ise, `E` ' ü `object` türüne dönüştürmek için bir paketleme dönüştürmesi ([kutulama dönüştürmeleri](types.md#boxing-conversions)) gerçekleştirilir ve aşağıdaki adımlarda `E` `object` türünde olduğu kabul edilir. Bu durumda, `M` yalnızca `System.Object` ' in üyesi olabilir.
+   * @No__t-0 değeri geçerli olacak şekilde işaretlendi. @No__t-0 değeri `null` ise, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülmez.
    * Çağrılacak işlev üyesi uygulama belirlenir:
-     * Bağlama zamanı türü `E` bir arabirim, çağrılacak işlev üye uygulamasıdır `M` tarafından başvurulan örnek çalışma zamanı türü tarafından sağlanan `E`. Bu işlev üye arabirim eşleme kurallarını uygulayarak belirlenir ([arabirim eşleme](interfaces.md#interface-mapping)) uygulamasını belirlemek için `M` tarafından başvurulan örnek çalışma zamanı türü tarafından sağlanan `E`.
-     * Aksi takdirde `M` sanal işlev üyesi olduğu çağrılacak işlev üye uygulamasıdır `M` tarafından başvurulan örnek çalışma zamanı türü tarafından sağlanan `E`. Bu işlev üye en türetilen uygulamaya belirlemek için kuralları uygulayarak belirlenir ([sanal yöntemleri](classes.md#virtual-methods)), `M` tarafından başvurulan örnek çalışma zamanı türüne göre `E`.
-     * Aksi takdirde, `M` sanal olmayan işlev üyesi olduğu ve çağrılacak işlev üyesidir `M` kendisi.
-   * Yukarıdaki adımda belirlenen işlev üyesi uygulama çağrılır. Tarafından başvurulan nesne `E` tarafından başvurulan nesne haline gelir `this`.
+     * @No__t-0 ' ın bağlama zamanı türü bir arabirim ise, çağrılacak işlev üyesi, `E` tarafından başvurulan örneğin çalışma zamanı türü tarafından verilen `M` uygulamasıdır. Bu işlev üyesi, `E` tarafından başvurulan örneğin çalışma zamanı türü tarafından verilen `M` uygulamasını belirlemekte kullanılacak arabirim eşleme kuralları ([arabirim eşleme](interfaces.md#interface-mapping)) uygulanarak belirlenir.
+     * Aksi takdirde, `M` bir sanal işlev üyesiyse çağrılacak işlev üyesi, `E` tarafından başvurulan örneğin çalışma zamanı türü tarafından verilen `M` uygulamasıdır. Bu işlev üyesi, `E` tarafından başvurulan örneğin çalışma zamanı türüne göre `M` ' in en fazla türetilmiş uygulamasını ([sanal yöntemler](classes.md#virtual-methods)) belirlemek için kurallar uygulanarak belirlenir.
+     * Aksi takdirde, `M`, sanal olmayan bir işlev üyesidir ve çağrılacak işlev üyesi `M` ' dir.
+   * Yukarıdaki adımda belirlenen işlev üyesi uygulama çağrılır. @No__t-0 tarafından başvurulan nesne `this` tarafından başvurulan nesne haline gelir.
 
-#### <a name="invocations-on-boxed-instances"></a>Paketlenmiş örneklerinde etkinleştirmeleri
+#### <a name="invocations-on-boxed-instances"></a>Paketlenmiş örneklerde etkinleştirmeleri
 
-İşlev üyesi uygulanan bir *value_type* , söz konusu kutulanmış örneği çağrılabilir *value_type* aşağıdaki durumlarda:
+Bir *value_type* içinde uygulanan bir işlev üyesi, aşağıdaki durumlarda bu *value_type* 'ın paketlenmiş bir örneği aracılığıyla çağrılabilir:
 
-*  İşlev üyesi olduğunda bir `override` türden devralınan bir yöntemin `object` ve örnek türündeki bir ifade, çağrılan `object`.
-*  Ne zaman işlevi üye işlevi arabirim üyesini uygulamasıdır ve bir örnek ifade çağrılan bir *INTERFACE_TYPE*.
-*  Ne zaman işlev üyesi bir temsilci çağrılır.
+*  İşlev üyesi, `object` türünden devralınan bir yöntemin `override` olduğunda ve `object` türünde bir örnek ifadesi aracılığıyla çağrıldığında.
+*  İşlev üyesi bir arabirim işlevi üyesinin bir uygulamasıdır ve bir *interface_type*örnek ifadesi aracılığıyla çağrılır.
+*  İşlev üyesi bir temsilci aracılığıyla çağrıldığında.
 
-Bu gibi durumlarda paketlenmiş örneği içeren bir değişken değerlendirilir *value_type*, ve bu değişken tarafından başvurulan değişken `this` işlevi üye çağrısı içinde. Özellikle, bu işlev üyesi paketlenmiş bir örneğinde çağrıldığında, kutulanmış örneğinde yer alan değeri değiştirmek işlev üyesi mümkündür, anlamına gelir.
+Bu durumlarda kutulanmış örnek, *value_type*değişkenini içeren olarak değerlendirilir ve bu değişken, işlev üye çağrısı içinde `this` tarafından başvurulan değişken olur. Özellikle bu, bir işlev üyesinin paketlenmiş bir örnek üzerinde çağrıldığı anlamına gelir, işlev üyesinin kutulanmış örnekte bulunan değeri değiştirmesi mümkündür.
 
 ## <a name="primary-expressions"></a>Birincil ifadeler
 
-Birincil ifadeler basit formlar ifadeleri içerir.
+Birincil ifadeler, en basit ifade biçimlerini içerir.
 
 ```antlr
 primary_expression
@@ -1002,23 +1002,23 @@ primary_no_array_creation_expression
     ;
 ```
 
-Birincil ifadeler arasında bölünen *array_creation_expression*s ve *primary_no_array_creation_expression*s. Dizi oluşturma ifadesi bu şekilde kullanarak, diğer basit ifade forms birlikte listelemek yerine olası karmaşık kod gibi izin vermeyecek şekilde dilbilgisi sağlar
+Birincil ifadeler *array_creation_expression*s ve *primary_no_array_creation_expression*s arasında bölünür. Dizi oluşturma-ifadesini diğer basit ifade formlarıyla birlikte listelemek yerine bu şekilde düşünerek, dilbilgisinde,
 ```csharp
 object o = new int[3][1];
 ```
-hangi olarak yoksa yorumlanacağını
+Aksi takdirde
 ```csharp
 object o = (new int[3])[1];
 ```
 
 ### <a name="literals"></a>Sabit değerler
 
-A *primary_expression* , oluşur bir *değişmez değer* ([değişmez değerleri](lexical-structure.md#literals)) bir değer olarak sınıflandırılır.
+*Değişmez* değer ([sabit değerler](lexical-structure.md#literals)) içeren bir *primary_expression* , bir değer olarak sınıflandırıldı.
 
 
 ### <a name="interpolated-strings"></a>Ara değerli dizeler
 
-Bir *interpolated_string_expression* oluşan bir `$` burada görüntülerle boşluklarını, virgülle ayrılmış bir normal veya verbatim değişmez dize değeri tarafından izlenen oturum `{` ve `}`ifadeleri alın ve biçimlendirme belirtimleri. İlişkilendirilmiş dize ifadesi sonucu olan bir *interpolated_string_literal* , parçalanmış bireysel belirteçlere açıklandığı [ilişkilendirilmiş dize değişmez değerleri](lexical-structure.md#interpolated-string-literals).
+Bir *interpolated_string_expression* , `$` işaretinden sonra, `{` ve `}`, tırnak işareti ve biçimlendirme belirtimleriyle sınırlandırılmış, boşluklar ve tam dize değişmez değeri oluşur. Enterpolasyonlu dize ifadesi, [enterpolasyonlu dize sabit değerleri](lexical-structure.md#interpolated-string-literals)içinde açıklandığı gibi ayrı belirteçlere ayrılmış bir *interpolated_string_literal* sonucudur.
 
 ```antlr
 interpolated_string_expression
@@ -1050,30 +1050,30 @@ interpolated_verbatim_string_body
     ;
 ```
 
-*Constant_expression* içinde bir ilişkilendirme için örtük bir dönüştürme olmalıdır `int`.
+Bir ilişkilendirmedeki *constant_expression* `int` ' e örtülü dönüştürmeye sahip olmalıdır.
 
-Bir *interpolated_string_expression* bir değer olarak sınıflandırılır. İçin hemen dönüştürülürse `System.IFormattable` veya `System.FormattableString` örtük ilişkilendirilmiş dize dönüştürme ([örtük ilişkilendirilmiş dize dönüştürme](conversions.md#implicit-interpolated-string-conversions)), ilişkilendirilmiş dize ifadesi türü vardır. Aksi takdirde, bu türün sahip `string`.
+Bir *interpolated_string_expression* değer olarak sınıflandırılır. Örtülü olarak enterpolasyonlu bir dize dönüştürmesi (örtük olarak bulunan dize[dönüştürmeleri](conversions.md#implicit-interpolated-string-conversions)) ile `System.IFormattable` veya `System.FormattableString` ' e dönüştürülürse, enterpolasyonlu dize ifadesinde bu tür vardır. Aksi takdirde, `string` türü vardır.
 
-İlişkilendirilmiş dize türünde ise `System.IFormattable` veya `System.FormattableString`, bir çağrıdır anlamı `System.Runtime.CompilerServices.FormattableStringFactory.Create`. Tür ise `string`, bir çağrıdır ifadesinin anlamını `string.Format`. Her iki durumda da, her bir ilişkilendirme için yer tutucular ve bağımsız değişken için yer tutucu karşılık gelen her ifade için hazır bir biçim dizesi çağrısının bağımsız değişken listesi oluşur.
+Enterpolasyonlu bir dizenin türü `System.IFormattable` veya `System.FormattableString` ise, anlamı `System.Runtime.CompilerServices.FormattableStringFactory.Create` ' ye bir çağrıdır. Tür `string` ise, ifadenin anlamı `string.Format` ' e bir çağrıdır. Her iki durumda da, çağrının bağımsız değişken listesi, her ilişkilendirme için yer tutucular içeren bir biçim dizesi değişmez değerinden ve yer sahiplerine karşılık gelen her bir ifade için bir bağımsız değişkenle oluşur.
 
-Biçim dize sabit değeri şu şekilde oluşturulur burada `N` içinde ilişkilendirme sayısı *interpolated_string_expression*:
+Biçim dizesi değişmez değeri aşağıdaki gibi oluşturulur; burada `N`, *interpolated_string_expression*içindeki enterpolasyonun sayısıdır:
 
-*  Bir *interpolated_regular_string_whole* veya bir *interpolated_verbatim_string_whole* izleyen `$` Bu belirteci biçimi dize sabit değeri ise, oturum açın.
-*  Aksi takdirde, biçim dize sabit değeri şunlardan oluşur: 
+*  Bir *interpolated_regular_string_whole* veya *interpolated_verbatim_string_whole* `$` işaretini izliyorsa, biçim dize sabit değeri bu belirteç olur.
+*  Aksi takdirde, biçim dizesi değişmez değeri şunlardan oluşur: 
    *  İlk *interpolated_regular_string_start* veya *interpolated_verbatim_string_start*
-   *  Sonra her numarası için `I` gelen `0` için `N-1`: 
-      * Ondalık temsili `I`
-      * Ardından, eğer karşılık gelen *ilişkilendirme* sahip bir *constant_expression*, `,` (ayrılmış) değerini ondalık gösterimini tarafından izlenen *constant_expression*
-      * Ardından *interpolated_regular_string_mid*, *interpolated_regular_string_end*, *interpolated_verbatim_string_mid* veya *interpolated_ verbatim_string_end* karşılık gelen ilişkilendirme hemen ardından.
+   *  Sonra her numara için, `0` ' den `N-1` ' ye @no__t: 
+      * @No__t ondalık temsili-0
+      * Ardından, karşılık gelen *ilişkilendirmeden* bir *constant_expression*varsa, `,` (virgül) ve ardından *constant_expression* değerinin ondalık temsili gelir.
+      * Ardından, ilgili ilişkilendirmeden hemen sonra *interpolated_regular_string_mid*, *interpolated_regular_string_end*, *interpolated_verbatim_string_mid* veya *interpolated_verbatim_string_end* .
 
-Yalnızca sonraki bağımsız değişkenler *ifadeleri* gelen *ilişkilendirme* (varsa), sırasıyla.
+Sonraki bağımsız değişkenler, sırasıyla *enterpolasyonların* (varsa) *ifadeleridir* .
 
 TODO: örnekler.
 
 
-### <a name="simple-names"></a>Basit adları
+### <a name="simple-names"></a>Basit adlar
 
-A *simple_name* isteğe bağlı olarak bir tür bağımsız değişken listesi tarafından izlenen bir tanımlayıcı oluşur:
+Bir *simple_name* , isteğe bağlı olarak bir tür bağımsız değişken listesi tarafından izlenen bir tanımlayıcıdan oluşur:
 
 ```antlr
 simple_name
@@ -1081,37 +1081,37 @@ simple_name
     ;
 ```
 
-A *simple_name* herhangi formunun `I` veya formun `I<A1,...,Ak>`burada `I` tek bir tanımlayıcıdır ve `<A1,...,Ak>` isteğe bağlıdır *type_argument_list*. Hiçbir *type_argument_list* olduğundan belirtilen göz önünde bulundurun `K` sıfır olmalıdır. *Simple_name* değerlendirilir ve şu şekilde sınıflandırılan:
+*Simple_name* , `I` veya `I<A1,...,Ak>` biçiminde `I` tek bir tanımlayıcıdır ve `<A1,...,Ak>` ise isteğe bağlı bir *type_argument_list*. *Type_argument_list* belirtilmediğinde `K` ' i sıfır olacak şekilde düşünün. *Simple_name* değerlendirilir ve aşağıdaki şekilde sınıflandırılacaktır:
 
-*  Varsa `K` sıfırdır ve *simple_name* içinde görünür bir *blok* ve *blok*'s (veya bir kapsayan *blok*ait) yerel değişken bildirimi alanı ([bildirimleri](basic-concepts.md#declarations)) bir yerel değişken, parametre veya adla sabiti içeren `I`, ardından *simple_name* , yerel bir değişkene başvuruyor parametresi veya sabit ve değişken veya değer sınıflandırılır.
-*  Varsa `K` sıfırdır ve *simple_name* bir genel yöntem bildirimi gövdesi içinde görüntülenir ve bu bildirimi bir tür parametresi adı ile içeriyorsa `I`, ardından *simple_name*bu tür parametresine başvuruyor.
-*  Aksi durumda, her örnek türü için `T` ([örnek türü](classes.md#the-instance-type)), örnek türü kapsayan tür bildirimi ile başlayan ve her kapsayan sınıfın veya yapının örneği türüyle devam bildiriminin (varsa):
-   *  Varsa `K` sıfır ve bildirimi `T` ada sahip bir tür parametresi içeren `I`, ardından *simple_name* bu tür parametresine başvuran.
-   *  Aksi takdirde, bir üye araması ([üye araması](expressions.md#member-lookup)), `I` içinde `T` ile `K`  tür bağımsız değişkeni bir eşleşme üretir:
-      * Varsa `T` kapsayan sınıf veya yapı türü örneği türüdür ve Ara bir tanımlayan veya hakkında daha fazla yöntem, sonucu bir ilişkili örnek ifade olan bir yöntem grubu olduğundan `this`. Tür bağımsız değişken listesi belirtilmişse genel yöntem arayan kullanılır ([yöntem çağrıları](expressions.md#method-invocations)).
-      * Aksi takdirde `T` arama bir örnek üyesi tanımlıyorsa ve başvuru örnek oluşturucusu, bir örnek yöntemi veya örneği erişimci gövdesi içinde ortaya çıkarsa kapsayan sınıf veya yapı türü örneği türü değil Sonuç üye erişimi ile aynı olur ([üye erişimi](expressions.md#member-access)) biçiminde `this.I`. Bu durum yalnızca oluşabilir olduğunda `K` sıfırdır.
-      * Aksi halde, sonuç bir üye erişimi ile aynı olur ([üye erişimi](expressions.md#member-access)) biçiminde `T.I` veya `T.I<A1,...,Ak>`. Bu durumda, bunun için bir bağlama zamanı hatasına neden olur *simple_name* bir örnek üyesine başvurma.
+*  @No__t-0 sıfırsa ve *simple_name* bir *blok* içinde görünürse ve *blok*(veya kapsayan *bloğun*) yerel değişken bildirim alanı ([Bildirimler](basic-concepts.md#declarations)), ile bir yerel değişken, parametre veya sabit içeriyorsa ad @ no__t-6, sonra *simple_name* bu yerel değişkene, parametreye veya sabitine başvurur ve değişken veya değer olarak sınıflandırılmaktadır.
+*  @No__t-0 sıfırsa ve *simple_name* bir genel yöntem bildiriminin gövdesinde görüntüleniyorsa ve bu bildirim @ no__t-2 adında bir tür parametresi içeriyorsa, *simple_name* bu tür parametresine başvurur.
+*  Aksi halde, her bir örnek türü için @ no__t-0 ([örnek türü](classes.md#the-instance-type)), hemen kapsayan tür bildiriminin örnek türüyle başlar ve her bir kapsayan sınıfın ya da yapı bildiriminin örnek türüyle (varsa) devam eder:
+   *  @No__t-0 ise ve `T` bildirimi, @ no__t-2 adlı bir tür parametresi içeriyorsa, *simple_name* bu tür parametresine başvurur.
+   *  Aksi halde, `K` @ no__t-4tür bağımsız değişkenleriyle `T` ' de `I` ' i üye araması ([üye arama](expressions.md#member-lookup)) bir eşleşme üretir:
+      * @No__t-0, hemen kapsayan sınıfın veya yapı türünün örnek türü ise ve arama bir veya daha fazla yöntemi tanımlarsa, sonuç, ilişkili bir örnek ifadesi `this` olan bir yöntem grubudur. Bir tür bağımsız değişken listesi belirtilmişse, genel bir yöntemi ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) çağırmak için kullanılır.
+      * Aksi takdirde, arama bir örnek üyesi tanımlarsa ve başvuru bir örnek oluşturucusunun, örnek yönteminin veya örnek erişimcisinin gövdesinde gerçekleşirse, `T`, hemen kapsayan sınıfın veya yapı türünün örnek türüdür. , `this.I` biçimindeki üye erişimi ([üye erişimi](expressions.md#member-access)) ile aynıdır. Bu yalnızca `K` ' ı sıfır olduğunda meydana gelebilir.
+      * Aksi halde, sonuç, `T.I` veya `T.I<A1,...,Ak>` biçimindeki üye erişimi ([üye erişimi](expressions.md#member-access)) ile aynıdır. Bu durumda, *simple_name* 'in bir örnek üyesine başvurması için bağlama zamanı hatası vardır.
 
-*  Aksi durumda, her ad alanı için `N`, ad alanı ile başlayan *simple_name* devam her ad alanı (varsa) kapsayan ve bitiş genel ad alanı ile birlikte aşağıdaki adımlardan oluşur bir varlık bulunana kadar değerlendirilir:
-   *  Varsa `K` sıfırdır ve `I` bir ad alanındaki adı `N`, ardından:
-      * Varsa konumu burada *simple_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive* veya  *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *simple_name* belirsiz ve bir derleme zamanı hatası oluşur.
-      * Aksi takdirde, *simple_name* adlı isim uzayına başvuruyor `I` içinde `N`.
-   *  Aksi takdirde `N` adına sahip bir erişilebilir türü içeren `I` ve `K`  tür parametreleri:
-      * Varsa `K` sıfır ve konumun burada *simple_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N` ve ad alanı bildirimi içeren bir *extern_alias_directive*veya *using_alias_directive* , ad ilişkilendirir `I` ad alanı veya tür, ardından *simple_name* belirsiz ve bir derleme zamanı hatası oluşur.
-      * Aksi takdirde, *namespace_or_type_name* belirli tür bağımsız değişkenleri ile oluşturulan türü ifade eder.
-   *  Aksi halde, konum burada *simple_name* gerçekleşir için bir ad alanı bildirimi kapsadığı `N`:
-      * Varsa `K` sıfırdır ve ad alanı bildirimi içeren bir *extern_alias_directive* veya *using_alias_directive* , ad ilişkilendirir `I` bir içeri aktarılan ad alanıyla veya tür, ardından *simple_name* bu ad alanı veya tür ifade eder.
-      * Aksi takdirde, ad alanları ve tür bildirimleri tarafından aldıysanız *using_namespace_directive*s ve *using_static_directive*ad alanı bildiriminin bir s içeren tam olarak bir erişilebilir türü veya Uzantı olmayan statik üye adına sahip `I` ve `K`  tür parametrelerindeki, ardından *simple_name* bu türe veya üyeye belirli tür bağımsız değişkenleri ile oluşturulmuş ifade eder.
-      * Aksi takdirde ad alanları ve türler tarafından alınan *using_namespace_directive*ad alanı bildiriminin bir s içeren birden fazla erişilebilir türü veya genişletme yöntemi statik üye adına sahip `I` ve `K`  tür parametrelerindeki, ardından *simple_name* belirsiz ve hata oluşur.
+*  Aksi halde, *simple_name* gerçekleştiği ad alanından başlayarak, her bir kapsayan ad alanıyla (varsa) devam ederek ve genel ad alanıyla sona ermek üzere @ no__t-0 ad alanı için, aşağıdaki adımlar bir varlık bulunana kadar değerlendirilir:
+   *  @No__t-0 sıfırsa ve `I`, @ no__t-2 içindeki bir ad alanının adı ise:
+      * *Simple_name* 'in gerçekleştiği konum `N` için bir ad alanı bildirimiyle çevrelenmiş ve ad alanı bildirimi, @ no__t-4 adını bir ile ilişkilendiren bir *extern_alias_directive* veya *using_alias_directive* içeriyorsa ad alanı veya tür, sonra *simple_name* belirsizdir ve bir derleme zamanı hatası oluşur.
+      * Aksi takdirde *simple_name* , `I` adlı ad alanını `N` ' de belirtir.
+   *  Aksi takdirde, `N` adı @ no__t-1 ve `K` @ no__t-3type parametrelerine sahip erişilebilir bir tür içeriyorsa:
+      * @No__t-0 sıfırsa ve *simple_name* 'in gerçekleştiği konum `N` için bir ad alanı bildirimiyle çevrelenmiş ve ad alanı bildirimi, bir *extern_alias_directive* veya *using_alias_directive* içerir ad alanı veya tür ile @ no__t-5 adını, *simple_name* belirsizdir ve derleme zamanı hatası oluşur.
+      * Aksi takdirde, *namespace_or_type_name* verilen tür bağımsız değişkenleriyle oluşturulan türe başvurur.
+   *  Aksi takdirde, *simple_name* 'in gerçekleştiği konum @ no__t-1 için bir ad alanı bildirimi ile çevrelenmiş ise:
+      * @No__t-0 sıfırsa ve ad alanı bildirimi, @ no__t-3 adını içeri aktarılan bir ad alanı veya türle ilişkilendiren bir *extern_alias_directive* veya *using_alias_directive* içeriyorsa, *simple_name* bu ad alanına başvurur veya türüyle.
+      * Aksi halde, ad alanı bildiriminin *using_namespace_directive*s ve *using_static_directive*s tarafından içeri aktarılan ad alanları ve tür bildirimleri, tam olarak bir erişilebilir tür veya uzantı olmayan statik üye içeriyorsa @ no__ t-2 ve `K` @ no__t-4tür parametreleri, ardından *simple_name* , belirtilen tür bağımsız değişkenleriyle oluşturulan bu türe veya üyeye başvurur.
+      * Aksi halde, ad alanı bildiriminin *using_namespace_directive*s tarafından içeri aktarılan ad alanları ve türler, @ no__t-1 ve `K` @ no__t-3type Parameters adına sahip birden fazla erişilebilir tür veya uzantı dışı statik üye içeriyorsa *simple_name* belirsizdir ve bir hata oluşur.
 
-   Tüm bu adımı tam olarak paralel işlenmesini karşılık gelen adımına olduğuna dikkat edin bir *namespace_or_type_name* ([Namespace ve tür adları](basic-concepts.md#namespace-and-type-names)).
+   Bu adımın tamamı, bir *namespace_or_type_name* ([ad alanı ve tür adları](basic-concepts.md#namespace-and-type-names)) işlenirken ilgili adıma tam olarak paralel olduğunu unutmayın.
 
-*  Aksi takdirde, *simple_name* olup tanımsız ve bir derleme zamanı hatası oluşur.
+*  Aksi takdirde, *simple_name* tanımsızdır ve bir derleme zamanı hatası oluşur.
 
 
-### <a name="parenthesized-expressions"></a>Parantezli İfade
+### <a name="parenthesized-expressions"></a>Parantez içinde ifadeler
 
-A *parenthesized_expression* oluşan bir *ifade* parantez içine alınmış.
+Bir *parenthesized_expression* , parantez içine alınmış bir *ifadeden* oluşur.
 
 ```antlr
 parenthesized_expression
@@ -1119,11 +1119,11 @@ parenthesized_expression
     ;
 ```
 
-A *parenthesized_expression* değerlendirilerek hesaplanan *ifade* parantez içinde. Varsa *ifade* parantez içinde bir ad alanı veya tür, bir derleme zamanı hatası oluşur gösterir. Aksi takdirde, sonucunu *parenthesized_expression* içerdiği için değerlendirme sonucu *ifade*.
+Parantez içindeki *ifade* hesaplanarak bir *parenthesized_expression* değerlendirilir. Parantez içindeki *ifade* bir ad alanı veya tür alıyorsa, bir derleme zamanı hatası oluşur. Aksi takdirde, *parenthesized_expression* sonucu içerilen *ifadenin*değerlendirmesinin sonucudur.
 
 ### <a name="member-access"></a>Üye erişimi
 
-A *member_access* oluşan bir *primary_expression*, *predefined_type*, veya bir *qualified_alias_member*"çizgidir`.`"belirteci, izleyen bir *tanımlayıcı*ve ardından isteğe bağlı olarak bir *type_argument_list*.
+Bir *member_access* , bir *primary_expression*, *predefined_type*veya *qualified_alias_member*, ardından bir "`.`" belirteci ve ardından bir *tanımlayıcı*tarafından ve isteğe bağlı olarak bir type_argument_list tarafından oluşur.
 
 ```antlr
 member_access
@@ -1138,50 +1138,50 @@ predefined_type
     ;
 ```
 
-*Qualified_alias_member* üretim tanımlanmış [Namespace diğer adı niteleyicileri](namespaces.md#namespace-alias-qualifiers).
+*Qualified_alias_member* üretimi, [ad alanı diğer adı niteleyicilerine](namespaces.md#namespace-alias-qualifiers)göre tanımlanır.
 
-A *member_access* herhangi formunun `E.I` veya formun `E.I<A1, ..., Ak>`burada `E` olan bir birincil ifade, `I` tek bir tanımlayıcıdır ve `<A1, ..., Ak>` isteğe bağlıdır  *type_argument_list*. Hiçbir *type_argument_list* olduğundan belirtilen göz önünde bulundurun `K` sıfır olmalıdır.
+*Member_access* , `E.I` veya `E.I<A1, ..., Ak>` biçiminde `E` ' ün birincil ifade olduğu `I` ' ün tek bir tanımlayıcıdır ve `<A1, ..., Ak>` ' i isteğe bağlı bir *type_argument_list*. *Type_argument_list* belirtilmediğinde `K` ' i sıfır olacak şekilde düşünün.
 
-A *member_access* ile bir *primary_expression* türü `dynamic` dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda üye erişimi derleyici özellik erişimi türü sınıflandırır `dynamic`. Anlamını belirlemek için aşağıdaki kuralları *member_access* çalışma zamanında çalışma zamanı tür yerine derleme zamanı türü kullanarak, daha sonra uygulanır *primary_expression*. Bu çalışma zamanı sınıflandırma için bir yöntem grubu müşteri adayları sonra üye erişimi olmalıdır *primary_expression* , bir *invocation_expression*.
+@No__t-2 türünde *primary_expression* içeren bir *member_access* dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, derleyici üye erişimini `dynamic` türünde bir özellik erişimi olarak sınıflandırır. *Member_access* 'in anlamını belirlemede aşağıdaki kurallar, *primary_expression*derleme zamanı türü yerine çalışma zamanı türü kullanılarak çalışma zamanında uygulanır. Bu çalışma zamanı sınıflandırması bir yöntem grubuna yol açar, üye erişimi bir *invocation_expression* *primary_expression* olmalıdır.
 
-*Member_access* değerlendirilir ve şu şekilde sınıflandırılan:
+*Member_access* değerlendirilir ve aşağıdaki şekilde sınıflandırılacaktır:
 
-*  Varsa `K` sıfırdır ve `E` bir ad alanı ve `E` ada sahip iç içe geçmiş bir ad alanı içerir `I`, sonra bu ad alanı oluşur.
-*  Aksi takdirde `E` bir ad alanı ve `E` adına sahip bir erişilebilir türü içeren `I` ve `K`  sonucu belirli tür bağımsız değişkenleri ile oluşturulan türü ise parametreleri yazın.
-*  Varsa `E` olduğu bir *predefined_type* veya *primary_expression* , bir tür olarak sınıflandırılan `E` bir tür parametresi değil ve üye araması ([üyearaması](expressions.md#member-lookup)) ' ın `I` içinde `E` ile `K`  tür parametreleri üreten bir eşleşme ardından `E.I` değerlendirilir ve şu şekilde sınıflandırılan:
-   *  Varsa `I` sonucu belirli tür bağımsız değişkenleri ile oluşturulan türü ise bir tür tanımlar.
-   *  Varsa `I` sonucu bir yöntem grubu ile ilişkili örnek ifade yok ise bir veya daha fazla yöntemleri tanımlar. Tür bağımsız değişken listesi belirtilmişse genel yöntem arayan kullanılır ([yöntem çağrıları](expressions.md#method-invocations)).
-   *  Varsa `I` tanımlayan bir `static` özelliği ve ardından sonucu olan bir özellik erişimi ile ilişkilendirilmiş ifade yok.
-   *  Varsa `I` tanımlayan bir `static` alan:
-      * Alan ise `readonly` ve başvuru sınıfın veya yapının alan bildirilmiş statik Oluşturucu dışında gerçekleşir ve ardından bir değeri, yani statik alanının sonucudur `I` içinde `E`.
-      * Aksi takdirde, bir değişken, yani statik alan sonucudur `I` içinde `E`.
-   *  Varsa `I` tanımlayan bir `static` olay:
-      * Başvuru sınıfı veya olay bildirilir ve olayı olmadan bildirildi yapı içinde oluşursa *event_accessor_declarations* ([olayları](classes.md#events)), ardından `E.I` tam olarak işlenir gibi `I` statik alan bırakıldı.
-      * Aksi takdirde, hiçbir ilişkilendirilmiş ifade ile bir olay erişimini sonucudur.
-   *  Varsa `I` bir sabiti sonuç değeri, yani bu sabitin değeri ise tanımlar.
-    * Varsa `I` sonucu bir değeri, yani bu sabit listesi üyesi ise, bir numaralandırma üyesine tanımlar.
-    * Aksi takdirde, `E.I` geçersiz üye başvuru ve bir derleme zamanı hatası oluşur.
-*  Varsa `E` özellik erişimi, dizin oluşturucu erişim, değişken veya değer türü, `T`ve bir üye araması ([üye araması](expressions.md#member-lookup)), `I` içinde `T` ile `K`  tür bağımsız değişkenleri üreten bir eşleşme ardından `E.I` değerlendirilir ve şu şekilde sınıflandırılan:
-   *  İlk olarak, eğer `E` bir özellik veya dizin oluşturucu erişim sonra özelliğin değerini ya da dizin oluşturucu erişim elde edilir ([ifadelerin değerleri](expressions.md#values-of-expressions)) ve `E` bir değer olarak yeniden sınıflandırılması.
-   *  Varsa `I` sonucu bir ilişkili örnek ifade olan bir yöntem grubu ise bir veya daha fazla yöntemleri tanımlayan `E`. Tür bağımsız değişken listesi belirtilmişse genel yöntem arayan kullanılır ([yöntem çağrıları](expressions.md#method-invocations)).
-   *  Varsa `I` bir Instance özelliği tanımlar.
-      * Varsa `E` olduğu `this`, `I` otomatik olarak uygulanan bir özellik tanımlar ([Özellikleri'otomatik olarak uygulanan](classes.md#automatically-implemented-properties)) için bir örnek oluşturucusu içinde bir ayarlayıcı ve başvuru olmadan bir sınıf veya yapı türü `T`, sonucu bir değişken, yani otomatik-özellik tarafından verilen gizli destek alanı ise `I` örneğinde `T` tarafından verilen `this`.
-      * Aksi halde, sonuç ilişkili örnek bir ifade olan bir özellik erişimi, `E`.
-   *  Varsa `T` olduğu bir *class_type* ve `I` tanımlar, bir örnek alan *class_type*:
-      * Varsa değerini `E` olduğu `null`, ardından bir `System.NullReferenceException` oluşturulur.
-      * Aksi durumda, alan ise `readonly` ve başvuru alan bildirilmiş sınıfının örnek oluşturucusu dışında gerçekleşir ve ardından bir değer, yani bir alanın değerini sonucudur `I` başvurduğu nesnede `E`.
-      * Aksi takdirde, bir değişken, yani alanın sonucudur `I` başvurduğu nesnede `E`.
-   *  Varsa `T` olduğu bir *struct_type* ve `I` tanımlar, bir örnek alan *struct_type*:
-      * Varsa `E` bir değer veya alan ise `readonly` ve başvuru alan bildirilmiş struct'ın örnek oluşturucusu dışında gerçekleşir ve ardından bir değer, yani bir alanın değerini sonucudur `I` tarafından verilen yapı örneğinde  `E`.
-      * Aksi takdirde, bir değişken, yani alanın sonucudur `I` tarafından verilen yapı örneğinde `E`.
-   *  Varsa `I` tanımlayan bir örnek olay:
-      * Başvuru sınıfı veya olay bildirilir ve olayı olmadan bildirildi yapı içinde oluşursa *event_accessor_declarations* ([olayları](classes.md#events)), ve başvuru olarak gerçekleşmez sol tarafında bir `+=` veya `-=` işleci, ardından `E.I` tam olarak işlenen gibi `I` örnek alanı.
-      * Aksi halde, sonuç ilişkili örnek bir ifade olan bir olay erişimini, `E`.
-*  Aksi takdirde, bir işlem için girişimde `E.I` olarak bir uzantı metodu çağırma ([uzantısı yöntem çağrıları](expressions.md#extension-method-invocations)). Bu başarısız olursa, `E.I` geçersiz üye başvuru ve bir bağlama zamanı hatası oluşur.
+*  @No__t-0 ise ve `E` bir ad alanı ve `E` ' nin adı @ no__t-3 olan iç içe bir ad alanı içeriyorsa, sonuç bu ad alanıdır.
+*  Aksi takdirde, `E` bir ad alanıdır ve `E`, @ no__t-2 ve `K` @ no__t-4type parametrelerine sahip erişilebilir bir tür içeriyorsa, sonuç verilen tür bağımsız değişkenleriyle oluşturulan türdür.
+*  @No__t-0 bir *predefined_type* veya bir tür olarak sınıflandırılan bir *primary_expression* ise, `E` bir tür parametresi değilse ve `K` @ no__t-8tür parametrelerine sahip `E` içinde `I` ' ın üye araması ([üye araması](expressions.md#member-lookup)) bir eşleşme oluşturmazsa, sonra `E.I` değerlendirilir ve aşağıdaki şekilde sınıflandırılacaktır:
+   *  @No__t-0 bir türü tanımlarsa, sonuç, belirtilen tür bağımsız değişkenleriyle oluşturulan türüdür.
+   *  @No__t-0 bir veya daha fazla yöntemi tanımlarsa, sonuç ilişkili örnek ifadesi olmayan bir yöntem grubudur. Bir tür bağımsız değişken listesi belirtilmişse, genel bir yöntemi ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) çağırmak için kullanılır.
+   *  @No__t-0 bir `static` özelliği tanımlarsa, sonuç, ilişkili örnek ifadesi olmayan bir özellik erişimiydi.
+   *  @No__t-0 `static` alanını tanımlar:
+      * Alan `readonly` ise ve başvuru, alanın bildirildiği sınıf veya yapının statik oluşturucusunun dışında oluşursa, sonuç bir değerdir, yani @ no__t-2 içinde @ no__t-1 statik alanının değeri olur.
+      * Aksi halde, sonuç bir değişkendir, yani @ no__t-1 içinde @ no__t-0 statik alanı.
+   *  @No__t-0 `static` olayını tanımlar:
+      * Başvuru, olayın bildirildiği sınıf veya yapı içinde oluşursa ve olay *event_accessor_declarations* ([Olaylar](classes.md#events)) olmadan bildirilirse, `E.I` tam olarak, `I` statik bir alan gibi işlenir.
+      * Aksi halde, sonuç, ilişkili örnek ifadesi olmayan bir olay erişimiydi.
+   *  @No__t-0 bir sabiti tanımlarsa, sonuç bir değerdir, yani bu sabit değeridir.
+    * @No__t-0 bir numaralandırma üyesini tanımlarsa, bu, söz konusu numaralandırma üyesinin değeri olan değer olur.
+    * Aksi takdirde, `E.I` geçersiz bir üye başvurusudur ve derleme zamanı hatası oluşur.
+*  @No__t-0 ' a bir özellik erişimi, Dizin Oluşturucu erişimi, değişken veya değer, türü @ no__t-1 ve `K` @ no__t-6type bağımsız değişkenleri ile `T` ' te `I` ' ün üye araması ([üye arama](expressions.md#member-lookup)) bir eşleşme üretir, `E.I` değerlendirilir ve şöyle sınıflandırıldı:
+   *  İlk olarak, `E` bir özellik veya Dizin Oluşturucu erişimdir, özellik veya Dizin Oluşturucu erişimi değeri elde edilir ([Ifadelerin değerleri](expressions.md#values-of-expressions)) ve `E` bir değer olarak yeniden sınıflandıralınır.
+   *  @No__t-0 bir veya daha fazla yöntemi tanımlarsa sonuç, ilişkili bir örnek ifadesi `E` olan bir yöntem grubudur. Bir tür bağımsız değişken listesi belirtilmişse, genel bir yöntemi ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) çağırmak için kullanılır.
+   *  @No__t-0 bir örnek özelliği tanımlarsa,
+      * @No__t-0 `this` ise, `I` otomatik olarak uygulanan bir özelliği ([Otomatik uygulanan özellikler](classes.md#automatically-implemented-properties)) bir ayarlayıcı olmadan tanımlar ve başvuru bir sınıf veya yapı türü `T` için bir örnek oluşturucu içinde oluşur ve sonuç , `this` tarafından verilen `T` örneğindeki `I` tarafından verilen otomatik özellik için gizli destek alanı olan bir değişkendir.
+      * Aksi takdirde, sonuç @ no__t-0 ' ın ilişkili örnek ifadesiyle bir özellik erişimiydi.
+   *  @No__t-0 bir *class_type* ve `I` Bu *class_type*örnek alanını tanımlar:
+      * @No__t-0 değeri `null` ise, `System.NullReferenceException` oluşturulur.
+      * Aksi halde, alan `readonly` ise ve başvuru, alanın bildirildiği sınıfın örnek oluşturucusunun dışında oluşursa, sonuç bir değerdir, yani @ no__t-2 tarafından başvurulan nesnedeki @ no__t-1 alanının değeri.
+      * Aksi takdirde, sonuç bir değişkendir, yani @ no__t-1 tarafından başvurulan nesnedeki @ no__t-0 alanı.
+   *  @No__t-0 bir *struct_type* ve `I` Bu *struct_type*örnek alanını tanımlar:
+      * @No__t-0 bir değer ise veya alan `readonly` ise ve başvuru, alanın bildirildiği yapının örnek oluşturucusunun dışında oluşursa, sonuç bir değerdir, yani @ no__t-3 tarafından verilen yapı örneğindeki @ no__t-2 alanının değeri.
+      * Aksi takdirde, sonuç bir değişkendir, yani @ no__t-1 tarafından verilen yapı örneğindeki @ no__t-0 alanı.
+   *  @No__t-0 bir örnek olayı tanımlarsa:
+      * Başvuru, olayın bildirildiği sınıf veya yapı içinde oluşursa ve olay *event_accessor_declarations* ([Olaylar](classes.md#events)) olmadan bildirilirse ve başvuru `+=` veya `-=` işlecinin sol tarafında gerçekleşmezse `E.I`, tam olarak `I` bir örnek alanı olduğu gibi işlenir.
+      * Aksi takdirde, sonuç @ no__t-0 ' ın ilişkili örnek ifadesiyle bir olay erişimiydi.
+*  Aksi takdirde, `E.I` ' ı uzantı yöntemi çağırma ([genişletme yöntemi etkinleştirmeleri](expressions.md#extension-method-invocations)) olarak işlemek için bir girişimde bulunuldu. Bu başarısız olursa, `E.I` geçersiz bir üye başvurusudur ve bir bağlama zamanı hatası oluşur.
 
-#### <a name="identical-simple-names-and-type-names"></a>Basit aynı adlar ve tür adları
+#### <a name="identical-simple-names-and-type-names"></a>Aynı basit adlar ve tür adları
 
-Üye erişimi formun içinde `E.I`, `E` tek bir tanımlayıcı ve anlamını `E` olarak bir *simple_name* ([basit adları](expressions.md#simple-names)) olan bir sabit, alan, özelliği yerel değişken veya parametre olarak anlamı, aynı türde `E` olarak bir *type_name* ([Namespace ve tür adları](basic-concepts.md#namespace-and-type-names)), ardından her iki olası anlamı `E` olan izin verilir. İki olası anlamı `E.I` hiçbir zaman bu yana belirsiz olan `I` mutlaka türünün bir üyesi olmalıdır `E` her iki durumda. Diğer bir deyişle, kural yalnızca statik üyeleri ve iç içe geçmiş türleri erişimine `E` burada bir derleme zamanı hatası Aksi halde oluşmuş. Örneğin:
+@No__t-0 biçiminde bir üye erişiminde, `E` tek bir tanımlayıcıdır ve bir *simple_name* ([basit adlar](expressions.md#simple-names)) olarak @no__t 2 ' nin anlamı, `E` ' in anlamı ile aynı türe sahip bir sabit, alan, özellik, yerel değişken veya parametre ise *type_name* ([ad alanı ve tür adları](basic-concepts.md#namespace-and-type-names)), her ikisine de `E` ' in olası anlamları izin verilir. @No__t-0 ' ın iki olası anlamı hiçbir zaman belirsiz değildir, çünkü `I` her iki durumda da `E` türünün bir üyesi olmalıdır. Diğer bir deyişle, kural yalnızca statik üyelere ve derleme zamanı hatası oluşması durumunda `E` ' ın iç içe türlerine erişime izin verir. Örneğin:
 ```csharp
 struct Color
 {
@@ -1208,38 +1208,38 @@ class A
 
 #### <a name="grammar-ambiguities"></a>Dilbilgisi belirsizlikleri
 
-Üretime *simple_name* ([basit adları](expressions.md#simple-names)) ve *member_access* ([üye erişimi](expressions.md#member-access)) ortaya çıkmasına neden belirsizliklerden verebilirsiniz Dilbilgisi ifadeler için. Örneğin, ifade:
-```
+*Simple_name* ([basit adlar](expressions.md#simple-names)) ve *member_access* ([üye erişimi](expressions.md#member-access)) üretimleri, ifadelerde dilbilgisi için belirsizlikleri verebilir. Örneğin, ifade:
+```csharp
 F(G<A,B>(7));
 ```
-bir çağrı olarak yorumlanabilecek `F` iki bağımsız değişkeni ile `G < A` ve `B > (7)`. Alternatif olarak, bunu bir çağrı olarak yorumlanabilecek `F` bir bağımsız değişken ile genel yöntem çağrısına olduğu `G` iki tür bağımsız değişkenleri ve normal bir bağımsız değişken.
+iki bağımsız değişkenle `F` ' a çağrı olarak yorumlanamıyor, `G < A` ve `B > (7)`. Alternatif olarak, iki tür bağımsız değişkeni ve bir normal bağımsız değişkeni olan @ no__t-1 Genel yöntemine yapılan bir çağrı olan bir bağımsız değişkenle `F` çağrısı olarak yorumlanabilecek.
 
-Bir dizi belirteçleri (bağlamda) olarak ayrıştırılabilir varsa bir *simple_name* ([basit adları](expressions.md#simple-names)), *member_access* ([üye erişimi](expressions.md#member-access)), veya *pointer_member_access* ([işaretçi üye erişimi](unsafe-code.md#pointer-member-access)) ile biten bir *type_argument_list* ([tür bağımsız değişkenleri](types.md#type-arguments)), Kapanış hemen ardından belirteci `>` belirteci incelenir. Biri ise
+Bir belirteç dizisi bir *simple_name* ([basit adlar](expressions.md#simple-names)), *member_access* ([üye erişimi](expressions.md#member-access)) veya *pointer_member_access* ([işaretçi üyesi erişimi](unsafe-code.md#pointer-member-access)) ile biten bir type_argument_ ile birlikte ayrıştırılamıyorsa  *liste* ([tür bağımsız değişkenleri](types.md#type-arguments)), kapatma `>` belirtecini izleyen belirteç incelenir. Bunlardan biri ise
 ```csharp
 (  )  ]  }  :  ;  ,  .  ?  ==  !=  |  ^
 ```
-ardından *type_argument_list* parçası olarak korunur *simple_name*, *member_access* veya *pointer_member_access* ve tüm diğer olası ayrıştırma belirteçleri dizisini göz ardı edilir. Aksi takdirde, *type_argument_list* parçası olarak kabul edilmemektedir *simple_name*, *member_access* veya *pointer_member_access*, hiçbir diğer olası ayrıştırma belirteçleri dizisini olsa bile. Bu kurallar Not uygulanan ayrıştırılırken bir *type_argument_list* içinde bir *namespace_or_type_name* ([Namespace ve tür adları](basic-concepts.md#namespace-and-type-names)). Deyimi
+daha sonra *type_argument_list* , *simple_name*, *member_access* veya *pointer_member_access* bir parçası olarak tutulur ve belirteçleri dizisinin diğer olası ayrıştırması atılır. Aksi takdirde, belirteç dizisinin başka bir olası ayrıştırması olmasa bile type_argument_list *simple_name*, *member_access* veya *pointer_member_access*'in bir parçası olarak kabul edilmez. Bu kuralların bir *namespace_or_type_name* içinde ([ad alanı ve tür adları](basic-concepts.md#namespace-and-type-names)) *type_argument_list* ayrıştırılırken uygulanmadığını unutmayın. İfade
 ```csharp
 F(G<A,B>(7));
 ```
-Bu kural göre bir çağrı olarak yorumlanır `F` bir bağımsız değişken ile genel yöntem çağrısına olduğu `G` iki tür bağımsız değişkenleri ve normal bir bağımsız değişken. Deyimleri
+Bu kurala göre, iki tür bağımsız değişkeni ve bir normal bağımsız değişken içeren bir genel @no__t yönteme çağrı olan bir bağımsız değişkenle `F` ' a çağrı olarak yorumlanacaktır. Deyimler
 ```csharp
 F(G < A, B > 7);
 F(G < A, B >> 7);
 ```
-Her bir çağrı olarak yorumlanacaktır `F` iki bağımsız değişken. Deyimi
+her biri, iki bağımsız değişkenle `F` ' a çağrı olarak yorumlanır. İfade
 ```csharp
 x = F < A > +y;
 ```
-deyim yazılmış gibi işleç, işleç ve tek işlenenli artı işleci, büyük bir küçüktür olarak yorumlanacaktır `x = (F < A) > (+y)`, yerine olarak bir *simple_name* ile bir *type_argument_list* bir ikili artı işleci tarafından izlenen. Deyimi
+, bir simple_name yerine bir *type_argument_list* ve ardından bir ikili artı işleci gelen bir olarak değil, bir küçüktür işleci, büyüktür operatörü ve birli artı @no__t işleci olarak yorumlanacaktır. İfadesinde
 ```csharp
 x = y is C<T> + z;
 ```
-belirteçleri `C<T>` olarak yorumlanan bir *namespace_or_type_name* ile bir *type_argument_list*.
+`C<T>` belirteçleri, bir *type_argument_list*ile *namespace_or_type_name* olarak yorumlanır.
 
-### <a name="invocation-expressions"></a>Çağrı ifadeleri
+### <a name="invocation-expressions"></a>Çağırma ifadeleri
 
-Bir *invocation_expression* bir yöntem çağırmak için kullanılır.
+Bir yöntemi çağırmak için bir *invocation_expression* kullanılır.
 
 ```antlr
 invocation_expression
@@ -1247,52 +1247,52 @@ invocation_expression
     ;
 ```
 
-Bir *invocation_expression* dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)) aşağıdakilerden en az birini tutuyorsa:
+Aşağıdakilerden en az biri tutuyorsa, bir *invocation_expression* dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)):
 
-* *Primary_expression* derleme zamanı türü `dynamic`.
-* En az bir bağımsız değişken isteğe bağlı *argument_list* derleme zamanı türü `dynamic` ve *primary_expression* bir temsilci türü yok.
+* *Primary_expression* , derleme zamanı türü `dynamic` ' dir.
+* İsteğe bağlı *argument_list* 'ın en az bir bağımsız değişkeninin derleme zamanı türü `dynamic` ve *primary_expression* bir temsilci türüne sahip değil.
 
-Bu durumda, derleyici sınıflandırır *invocation_expression* türünde bir değer olarak `dynamic`. Anlamını belirlemek için aşağıdaki kuralları *invocation_expression* çalışma zamanında derleme zamanı türü ihtiyaçlarını yerine çalışma zamanı türü kullanarak, daha sonra uygulanır *primary_expression* ve derleme zamanı türü olan bağımsız değişkenler `dynamic`. Varsa *primary_expression* derleme zamanı tür yok `dynamic`, yöntem çağırma açıklandığı gibi sınırlı bir derleme zamanı denetimi uğradığında sonra [derleme zamanı dinamik aşırı yükleme çözünürlüğü denetleniyor ](expressions.md#compile-time-checking-of-dynamic-overload-resolution).
+Bu durumda, derleyici *invocation_expression* `dynamic` türünde bir değer olarak sınıflandırır. *İnvocation_expression* anlamını belirlemede aşağıdaki kurallar, *primary_expression* ve derleme zamanı türü olan bağımsız değişkenlerden derleme zamanı türü yerine çalışma zamanı türü kullanılarak çalışma zamanında uygulanır. @no_ _T-2. *Primary_expression* , `dynamic` derleme zamanı türüne sahip değilse, yöntem çağrısı, [dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)konusunda açıklandığı gibi sınırlı bir derleme süresi denetimi yapar.
 
-*Primary_expression* , bir *invocation_expression* bir yöntem grubu ya da bir değeri olmalıdır bir *delegate_type*. Varsa *primary_expression* bir yöntem grubu olduğundan *invocation_expression* yöntemi bir çağrıdır ([yöntem çağrıları](expressions.md#method-invocations)). Varsa *primary_expression* bir değeri bir *delegate_type*, *invocation_expression* temsilci bir çağrıdır ([temsilci çağrılarını](expressions.md#delegate-invocations)). Varsa *primary_expression* ne bir yöntem grubu ne de değeri bir *delegate_type*, bir bağlama zamanı hatası oluşur.
+Bir *invocation_expression* 'ın *primary_expression* bir yöntem grubu veya bir *delegate_type*değeri olmalıdır. *Primary_expression* bir yöntem grubu ise, *invocation_expression* bir yöntem çağrıdır ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)). *Primary_expression* bir *delegate_type*değeri ise, *invocation_expression* bir temsilci çağrıdır ([temsilci etkinleştirmeleri](expressions.md#delegate-invocations)). *Primary_expression* bir yöntem grubu veya bir *delegate_type*değeri değilse, bir bağlama zamanı hatası oluşur.
 
-İsteğe bağlı *argument_list* ([bağımsız değişken listeleri](expressions.md#argument-lists)) yönteminin parametreleri için değerleri veya değişken başvuruları sağlar.
+İsteğe bağlı *argument_list* ([bağımsız değişken listeleri](expressions.md#argument-lists)), metodun parametreleri için değerler veya değişken başvuruları sağlar.
 
-Değerlendirme sonucu bir *invocation_expression* şu şekilde sınıflandırılır:
+Bir *invocation_expression* değerlendirmesi sonucu aşağıdaki şekilde sınıflandırıldı:
 
-*  Varsa *invocation_expression* bir yöntem veya döndüren bir temsilci çağıran `void`, hiçbir şey sonucudur. Hiçbir şey yalnızca bağlamında izin verilir olarak sınıflandırılmış bir ifade bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)) veya gövdesi bir *lambda_expression*([Anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)). Aksi halde bir bağlama zamanı hatası oluşur.
-*  Aksi halde, sonuç bir yöntem veya temsilci tarafından döndürülen tür değeri.
+*  *İnvocation_expression* , `void` döndüren bir yöntemi veya temsilciyi çağıralıyorsa, sonuç Nothing olur. Nothing olarak sınıflandırılan bir ifadeye, yalnızca bir *statement_expression* ([Expression deyimleri](statements.md#expression-statements)) bağlamında veya bir *lambda_expression* ([anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)) gövdesi olarak izin verilir. Aksi halde bağlama zamanı hatası oluşur.
+*  Aksi takdirde, sonuç Yöntem veya temsilci tarafından döndürülen türün bir değeridir.
 
-#### <a name="method-invocations"></a>Yöntem çağrıları
+#### <a name="method-invocations"></a>Yöntem etkinleştirmeleri
 
-Bir yöntem çağırma için *primary_expression* , *invocation_expression* bir yöntem grubu olması gerekir. Yöntem grubu çağrılacak bir yöntem veya belirli bir yöntemi çağırmak için seçilecek aşırı yüklenmiş yöntemler kümesini tanımlar. İkinci durumda, belirli bir yöntemi çağırmak için belirlenmesi bağımsız değişken türleri tarafından sağlanan bağlam bağlıdır *argument_list*.
+Bir yöntem çağrısı için, *invocation_expression* öğesinin *primary_expression* bir yöntem grubu olması gerekir. Yöntem grubu, çağrılacak bir yöntemi veya çağırmak için belirli bir yöntemi seçebileceğiniz aşırı yüklenmiş yöntemleri belirler. İkinci durumda, çağrılacak belirli yöntemin belirlenmesi, *argument_list*içindeki bağımsız değişkenlerin türleri tarafından belirtilen bağlamı temel alır.
 
-Bağlama zamanı işleme biçiminde bir yöntem çağrısının `M(A)`burada `M` bir yöntem grubu olduğundan (belki de dahil olmak üzere bir *type_argument_list*), ve `A` isteğe bağlıdır *argument_ Liste*, aşağıdaki adımlardan oluşur:
+@No__t-0, `M` bir yöntem grubu (muhtemelen bir *type_argument_list*dahil) ve `A` isteğe bağlı bir *argument_list*olan bir yöntem çağrısı olan bağlama zamanı işleme, aşağıdaki adımlardan oluşur:
 
-*  Yöntem çağırma için aday yöntemleri kümesini oluşturulur. Her bir yöntemin `F` yöntem grubu ile ilişkili `M`:
-   *  Varsa `F` genel olmayan, olan `F` bir adaydır olduğunda:
-      * `M` hiçbir tür bağımsız değişken listesi vardır ve
-      * `F` ilişkilendirilebilmesi için uygulanabilir `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)).
-   *  Varsa `F` geneldir ve `M` hiçbir tür bağımsız değişken listesi vardır `F` bir adaydır olduğunda:
-      * Anlam çıkarma ([anlam çıkarma](expressions.md#type-inference)) başarılı, tür bağımsız değişkenleri için arama listesini çıkarımını yapma ve
-      * İlgili yöntem tür parametreleri için çıkarsanan tür bağımsız değişkenlerini başvurulduğunda sonra parametre listesindeki tüm oluşturulan türler f kendi kısıtlamaları karşılamak ([kısıtlamaları karşılamadığınızı](types.md#satisfying-constraints)) ve parametrelistesi`F` ilişkilendirilebilmesi için uygulanabilir `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)).
-   *  Varsa `F` geneldir ve `M` türü bağımsız değişken listesi içeren `F` bir adaydır olduğunda:
-      * `F` tür bağımsız değişken listesinde sağlanan gibi aynı sayıda yöntem tür parametreleri vardır ve
-      * Tür bağımsız değişkenleri karşılık gelen yöntemi tür parametreleri için başvurulduğunda sonra parametre listesindeki tüm oluşturulan türler f kendi kısıtlamaları karşılamak ([kısıtlamaları karşılamadığınızı](types.md#satisfying-constraints)) ve parametre listesini `F` ilişkilendirilebilmesi için uygulanabilir `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)).
-*  Aday yöntemleri kümesini yalnızca en çok türetilen türler yöntemlerinden içerecek şekilde azalır: Her bir yöntemin `C.F` kümesindeki burada `C` hangi tür yöntemi `F` bildirilen, tüm yöntemler temel bir türde bildirilen `C` kümesinden kaldırılır. Ayrıca, varsa `C` bir sınıf türü dışındaki: `object`, bir arabirim türü içinde bildirilen tüm yöntemler kümesinden kaldırılır. (Yöntem grubu dışındaki nesne etkin bir temel sınıf ve ayarlanmış bir boş olmayan etkin arabirimi sahip bir tür parametresi bir üye araması sonucu olduğunda bu ikinci kuralı yalnızca bir etkisi yoktur.)
-*  Aday yöntemleri sonuç kümesi boşsa, aşağıdaki adımları başka işlem terk ve bunun yerine bir çağrı bir uzantı metodu çağırma olarak işlemek için girişimde ([uzantısı yöntem çağrıları](expressions.md#extension-method-invocations)). Bu başarısız olursa, ardından hiçbir uygun yöntemleri kayıtlı ve bir bağlama zamanı hatası oluşur.
-*  Aday yöntemleri kümesinin en iyi yöntem aşırı yükleme çözünürlüğü kurallarını kullanarak tanımlanır [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution). Tek bir en iyi yöntem tanımlanamaz, yöntem çağırma belirsiz ve bir bağlama zamanı hatası oluşur. Aşırı yükleme çözümlemesi yaparken bir genel yöntem parametreleri (sağlanan veya çıkarsanan) tür bağımsız değişkenlerini değiştirerek sonra için karşılık gelen yöntem türü parametreleri olarak kabul edilir.
-*  Seçilen en iyi yöntem, nihai doğrulama gerçekleştirilir:
-   * Yöntem, yöntem grubuna bağlamında doğrulanır: En iyi yöntem statik bir yöntemi ise, yöntem grubu kullanmasından gereken bir *simple_name* veya *member_access* bir tür. En iyi yöntem bir örnek yöntem ise, yöntem grubu kullanmasından gereken bir *simple_name*, *member_access* bir değişken veya değer aracılığıyla veya *base_access*. Bu gereksinimleri hiçbiri true ise, bir bağlama zamanı hatası oluşur.
-   * En iyi yöntem genel bir yöntem ise (sağlanan veya çıkarsanan) tür bağımsız değişkenlerini yönelik kısıtlamalar denetlenir ([kısıtlamaları karşılamadığınızı](types.md#satisfying-constraints)) genel metodunda bildirilen. Herhangi bir tür bağımsız değişkeni tür parametresi üzerinde karşılık gelen Kısıt karşılamaz, bir bağlama zamanı hatası meydana gelir.
+*  Yöntem çağrısı için aday yöntemler kümesi oluşturulur. Her yöntem için `M`  Yöntem grubuyla ilişkilendirilir:
+   *  @No__t-0 genel değilse, şu durumlarda `F` bir adaydır:
+      * `M` tür bağımsız değişken listesine sahip değil ve
+      * `F` `A` ' e ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) göre uygulanabilir.
+   *  @No__t-0 genel ise ve `M` tür bağımsız değişken listesine sahip değilse, şu durumlarda `F` bir adaydır:
+      * Tür çıkarımı ([tür çıkarımı](expressions.md#type-inference)) başarılı, çağrının tür bağımsız değişkenlerinin bir listesini, ve
+      * Çıkarsanan tür bağımsız değişkenleri karşılık gelen yöntem türü parametreleri yerine getirildikten sonra, F parametre listesindeki tüm oluşturulmuş türler, kısıtlamalarını karşılar ([kısıtlamalar karşılamaları](types.md#satisfying-constraints)) ve `F` ' in parametre listesi ile geçerlidir `A` ' ye ([uygulanabilir işlev üyesine](expressions.md#applicable-function-member)) göre.
+   *  @No__t-0 geneldir ve `M` bir tür bağımsız değişken listesi içeriyorsa, şu durumlarda `F` bir adaydır:
+      * `F`, tür bağımsız değişkeni listesinde sağlanan sayıda yöntem türü parametreye sahiptir ve
+      * Tür bağımsız değişkenleri, karşılık gelen yöntem türü parametreleri yerine eklendikten sonra, F parametre listesindeki tüm oluşturulmuş türler kısıtlamalarını karşılar ([kısıtlamalar karşılamaları](types.md#satisfying-constraints)) ve `F` ' in parametre listesi şu şekilde geçerlidir `A` ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)).
+*  Aday yöntemler kümesi yalnızca en türetilmiş türlerden Yöntemler içerecek şekilde azaltılır: Küme içinde `C.F` olan her yöntem için, `C` `F` yönteminin bildirildiği türdür, `C` temel türünde belirtilen tüm yöntemler kümeden kaldırılır. Ayrıca, `C` `object` dışında bir sınıf türü ise, bir arabirim türünde belirtilen tüm yöntemler kümeden kaldırılır. (Bu ikinci kural yalnızca Yöntem grubu, nesne dışındaki etkin bir temel sınıfa sahip olan bir tür parametresindeki üye aramasının ve boş olmayan etkin bir arabirim kümesinin sonucu olduğunda etkiler.)
+*  Elde edilen aday yöntemler kümesi boşsa, aşağıdaki adımlar üzerinde daha fazla işleme terk edilir ve bunun yerine, çağırma yöntemi çağırma ([uzantı yöntemi etkinleştirmeleri](expressions.md#extension-method-invocations)) olarak çağrıyı işlemek için bir girişimde bulunuldu. Bu başarısız olursa, geçerli hiçbir yöntem yoktur ve bir bağlama zamanı hatası oluşur.
+*  Aday Yöntemler kümesinin en iyi yöntemi, [aşırı yükleme çözümünün](expressions.md#overload-resolution)aşırı yükleme çözümleme kuralları kullanılarak tanımlanır. Tek bir en iyi yöntem tanımlanamıyorsa, yöntem çağırma belirsizdir ve bir bağlama zamanı hatası oluşur. Aşırı yükleme çözümlemesi gerçekleştirirken, genel yöntemin parametreleri karşılık gelen yöntem türü parametreleri için tür bağımsız değişkenleri (sağlanan veya çıkartılan) değiştirildikten sonra değerlendirilir.
+*  Seçilen en iyi yöntemin son doğrulaması gerçekleştirilir:
+   * Yöntemi, Yöntem grubu bağlamında onaylanır: En iyi yöntem bir statik yöntem ise, Yöntem grubu bir *simple_name* veya *member_access* aracılığıyla bir tür aracılığıyla sonuçlanmış olmalıdır. En iyi yöntem bir örnek yöntemi ise, Yöntem grubu bir *simple_name*, bir değişken veya değer aracılığıyla *member_access* veya bir *base_access*ile sonuçlanmış olmalıdır. Bu gereksinimlerin hiçbiri doğru değilse, bir bağlama zamanı hatası oluşur.
+   * En iyi yöntem genel bir yöntem ise, tür bağımsız değişkenleri (sağlanan veya çıkartılan) genel yöntemde belirtilen kısıtlamalara (karşılayan[kısıtlamalar](types.md#satisfying-constraints)) göre denetlenir. Herhangi bir tür bağımsız değişkeni tür parametresindeki karşılık gelen kısıtlamayı karşılamaz bir bağlama zamanı hatası oluşur.
 
-Bir yöntem seçili ve Yukarıdaki adımlarla bağlama zamanında doğrulanmış sonra gerçek çalışma zamanı çağırma işlevi üye çağrısının açıklanan kurallara göre işlenir [derleme zamanı dinamik aşırı yükleme çözünürlüğü denetleniyor ](expressions.md#compile-time-checking-of-dynamic-overload-resolution).
+Yukarıdaki adımlarla bağlama zamanında bir Yöntem seçildikten ve doğrulandıktan sonra, gerçek çalışma zamanı çağrısı, [dinamik aşırı yükleme çözümünün derleme zamanı denetiminde](expressions.md#compile-time-checking-of-dynamic-overload-resolution)açıklanan işlev üye çağırma kurallarına göre işlenir.
 
-Yukarıda açıklanan çözümleme kurallarını sezgisel etkisini aşağıdaki gibidir: Bir yöntem çağrısı tarafından çağrılan yöntemin belirli bulmak için yöntem çağırma tarafından gösterilen türü ile başlayın ve en az bir geçerli, erişilebilir, geçersiz kılma olmayan yöntem bildiriminde bulunana kadar devralma zincirini devam edin. Ardından tür çıkarımı gerçekleştirin ve aşırı yükleme çözümlemesi, türde bildirilen geçerli, erişilebilir, geçersiz kılma olmayan yöntemler kümesi üzerinde ve bu nedenle seçili yöntemi çağır. Hiçbir yöntemi bulunamadı, bunun yerine çağrı bir uzantı metodu çağırma olarak işlenecek deneyin.
+Yukarıda açıklanan çözümleme kurallarının sezgisel etkisi aşağıdaki gibidir: Bir yöntem çağrısı tarafından çağrılan belirli bir yöntemi bulmak için, yöntem çağırma tarafından belirtilen türle başlayın ve en az bir geçerli, erişilebilir, geçersiz kılma olmayan yöntem bildirimi bulunana kadar devralma zincirini devam edin. Daha sonra tür çıkarımı ve aşırı yükleme çözümlemesini, bu tür içinde belirtilen geçerli, erişilebilir, geçersiz kılma olmayan yöntemler kümesi ve bu nedenle seçilen yöntemi çağırmak için gerçekleştirin. Hiçbir yöntem bulunmazsa, çağırma yöntemini bir genişletme yöntemi çağrısı olarak işlemeyi deneyin.
 
-#### <a name="extension-method-invocations"></a>Uzantı yöntem çağrıları
+#### <a name="extension-method-invocations"></a>Genişletme yöntemi etkinleştirmeleri
 
-Bir yöntem çağrısı ([çağrılarını paketlenmiş örneklerinde](expressions.md#invocations-on-boxed-instances)) biçimlerden biri
+Bir yöntem çağrısında ([paketlenmiş örneklerde çağırma](expressions.md#invocations-on-boxed-instances)), formlardan birinin
 ```csharp
 expr . identifier ( )
 
@@ -1302,9 +1302,9 @@ expr . identifier < typeargs > ( )
 
 expr . identifier < typeargs > ( args )
 ```
-normal işleme çağrısının hiçbir uygun yöntemleri bulursa, bir yapı bir uzantı metodu çağırma olarak işlemek için girişimde. Varsa *expr* veya herhangi bir *args* derleme zamanı türü `dynamic`, genişletme yöntemleri geçerli değil.
+çağrının normal işlemesi uygulanabilir bir yöntem bulamıyorsa, yapıyı uzantı metodu çağrısı olarak işlemek için bir girişimde bulunuldu. Eğer *Expr* veya *bağımsız* değişkenlerin herhangi birinde derleme zamanı türü `dynamic` varsa, genişletme yöntemleri uygulanmaz.
 
-Amaç en iyi bulmaktır *type_name* `C`, böylece karşılık gelen statik yöntem çağırma gerçekleşir:
+Amaç, karşılık gelen statik yöntem çağrısının gerçekleşmesi için en iyi *type_name* `C` ' i bulledir:
 ```csharp
 C . identifier ( expr )
 
@@ -1315,25 +1315,25 @@ C . identifier < typeargs > ( expr )
 C . identifier < typeargs > ( expr , args )
 ```
 
-Bir genişletme yöntemi `Ci.Mj` olduğu ***uygun*** varsa:
+@No__t-0 genişletme yöntemi şu durumlarda ***uygundur*** :
 
-*  `Ci` Genel olmayan, iç içe bir sınıftır
-*  Adını `Mj` olduğu *tanımlayıcısı*
-*  `Mj` erişilebilir ve bağımsız değişkenler için yukarıda gösterildiği gibi bir statik yöntem olarak uygulandığında uygulanabilir
-*  Gelen bir örtük kimlik, başvuru veya paketleme dönüştürmesi var *expr* ilk parametresinin türü için `Mj`.
+*  `Ci`, genel olmayan, iç içe olmayan bir sınıftır
+*  @No__t-0 ' ın adı *tanımlayıcı*
+*  `Mj`, yukarıda gösterildiği gibi bağımsız değişkenlere statik bir yöntem olarak uygulandığında erişilebilir ve uygulanabilir olur
+*  Bir örtük kimlik, başvuru veya paketleme dönüştürmesi, `Mj` ' in ilk parametresinin türüne göre *ifade* ' ten oluşur.
 
-Arama `C` aşağıdaki gibi çalışır:
+@No__t-0 araması aşağıdaki gibi devam eder:
 
-*  Her kapsayan ad alanı bildirimi ile devam etmesini ve içeren derleme birimi ile biten en yakın kapsayan ad alanı bildirimi, başlayarak art arda denemeler genişletme yöntemleri aday kümesini bulmak için oluşturulur:
-   * Belirtilen ad alanı veya derleme birimi genel olmayan tür bildirimleri doğrudan içerip içermediğini `Ci` uygun genişletme yöntemleri ile `Mj`, sonra da bu genişletme yöntemleri kümesini aday kümesidir.
-   * Varsa türleri `Ci` tarafından alınan *using_static_declarations* ve doğrudan tarafından içeri aktarılan ad alanlarını bildirilen *using_namespace_directive*belirtilen ad alanı veya derleme biriminde doğrudan s uygun bir uzantı yöntemlerini içeren `Mj`, sonra da bu genişletme yöntemleri kümesini aday kümesidir.
-*  Aday ayarlanmadı kapsayan tüm ad alanı bildirimi veya derleme biriminde bulunursa, bir derleme zamanı hatası oluşur.
-*  Aksi takdirde, aşırı yükleme çözünürlüğü açıklanan aday uygulanır ([aşırı yükleme çözünürlüğü](expressions.md#overload-resolution)). Tek bir en iyi yöntem bulunursa, bir derleme zamanı hatası oluşur.
-*  `C` bir genişletme yöntemi bildirilen en iyi yöntem içinde türüdür.
+*  En yakın kapsayan ad alanı bildirimiyle başlayarak, kapsayan her bir ad alanı bildirimine devam edin ve kapsayan derleme birimi ile sona ermek üzere, bir dizi genişletme yöntemini bulmak için art arda denemeler yapılır:
+   * Verilen ad alanı veya derleme birimi, uygun uzantı yöntemleriyle `Mj` @no__t doğrudan genel olmayan tür bildirimleri içeriyorsa, bu uzantı yöntemlerinin kümesi aday kümesidir.
+   * *Using_static_declarations* tarafından içeri aktarılan ve doğrudan verilen ad alanındaki veya derleme birimindeki *using_namespace_directive*s tarafından içeri aktarılan ad alanlarında doğrudan bildirildiği @no__t takdirde, daha sonra uygun uzantı @no__t yöntemlerini içerir. Bu uzantı yöntemlerinin kümesi aday kümesidir.
+*  Herhangi bir kapsayan ad alanı bildiriminde veya derleme biriminde hiçbir aday kümesi bulunamazsa, derleme zamanı hatası oluşur.
+*  Aksi halde, aşırı yükleme çözümlemesi aday kümesine ([aşırı yükleme çözümlemesi](expressions.md#overload-resolution)) açıklandığı şekilde uygulanır. Tek bir en iyi yöntem bulunamazsa, derleme zamanı hatası oluşur.
+*  `C`, en iyi yöntemin bir genişletme yöntemi olarak bildirildiği türdür.
 
-Kullanarak `C` bir hedef olarak yöntem çağrısından sonra bir statik yöntem çağırma işlenir ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)).
+@No__t-0 ' ı hedef olarak kullanarak, yöntem çağrısı daha sonra statik bir yöntem çağırma ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) olarak işlenir.
 
-Önceki kuralların ortalama örnek yöntemleri genişletme yöntemleri üzerinde önceliklidir, iç ad alanı bildirimi uzantı yöntemleri genişletme yöntemleri dış ad alanı bildirimi ve bu uzantı üzerinde öncelik kazanır doğrudan bir ad alanında bildirilen yöntemler önceliklidir genişletme yöntemleri kullanarak, aynı ad alanı içeri aktarılan ad alanı yönergesi. Örneğin:
+Önceki kurallar, örnek yöntemlerinin genişletme yöntemlerine göre öncelikli olduğunu, iç ad alanı bildirimlerinde kullanılabilen genişletme yöntemlerinin, dış ad alanı bildirimlerinde bulunan genişletme yöntemlerine ve bu uzantıya göre öncelikli olduğunu ifade ediyor. bir ad alanında doğrudan tanımlanan Yöntemler, using ad alanı yönergesi ile aynı ad alanına aktarılan genişletme yöntemlerine göre önceliklidir. Örneğin:
 ```csharp
 public static class E
 {
@@ -1369,7 +1369,7 @@ class X
 }
 ```
 
-Örnekte, `B`'s yöntemi ilk genişletme yöntemi göre önceliklidir ve `C`'s yöntemi her iki uzantı yöntemleri göre önceliklidir.
+Örnekte, `B` ' ın yöntemi ilk uzantı yöntemine göre önceliklidir ve `C` ' in yöntemi her iki uzantı yönteminden önceliklidir.
 
 ```csharp
 public static class C
@@ -1409,27 +1409,27 @@ namespace N2
 }
 ```
 
-Bu örneğin çıktısı şöyledir:
-```
+Bu örneğin çıktısı şu şekilde olur:
+```console
 E.F(1)
 D.G(2)
 C.H(3)
 ```
-`D.G` öncelikli `C.G`, ve `E.F` hem de önceliklidir `D.F` ve `C.F`.
+`D.G` `C.G` ' den önceliklidir `E.F` `D.F` ve `C.F` arasında önceliklidir.
 
-#### <a name="delegate-invocations"></a>Temsilci çağrılarını
+#### <a name="delegate-invocations"></a>Temsilci etkinleştirmeleri
 
-Bir temsilci çağrısı için *primary_expression* , *invocation_expression* değeri olmalıdır bir *delegate_type*. Ayrıca, dikkate *delegate_type* işlevi üye aynı parametre listesiyle *delegate_type*, *delegate_type* uygulanabilir (olması gerekir [Geçerli işlev üyesi](expressions.md#applicable-function-member)) ile ilişkilendirilebilmesi için *argument_list* , *invocation_expression*.
+Bir temsilci çağrısı için, *invocation_expression* öğesinin *primary_expression* bir *delegate_type*değeri olması gerekir. Ayrıca, *delegate_type* ile aynı parametre listesine sahip bir işlev üyesi olmak *için,* *delegate_type* , argument_ açısından uygulanabilir ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) olmalıdır *invocation_expression*listesi.
 
-Bir temsilci çağrısı formun çalışma zamanı işlenmesini `D(A)`burada `D` olduğu bir *primary_expression* , bir *delegate_type* ve `A` isteğe bağlı bir olan*argument_list*, aşağıdaki adımlardan oluşur:
+@No__t-0 biçiminde bir temsilci çağırma işleminin çalışma zamanı işleme `D` ' in bir *delegate_type* *primary_expression* ve `A` isteğe bağlı bir *argument_list*, aşağıdaki adımlardan oluşur:
 
-*  `D` değerlendirilir. Bu değerlendirme bir özel durum neden olursa, başka bir adım yürütülür.
-*  Değerini `D` geçerli olması için denetlenir. Varsa değerini `D` olduğu `null`, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülür.
-*  Aksi takdirde, `D` temsilci örneği bir başvurudur. İşlev çağrılarını üyesi ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) temsilcinin çağırma listesine çağrılabilir varlıkların her biri üzerinde gerçekleştirilir. Bir örnek ve örnek yöntemi oluşan çağrılabilir varlıklar için örnek çağrısına çağrılabilir varlıkta içerilen örneğidir.
+*  `D` değerlendirilir. Bu değerlendirme bir özel duruma neden olursa başka bir adım yürütülmez.
+*  @No__t-0 değeri geçerli olacak şekilde işaretlendi. @No__t-0 değeri `null` ise, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülmez.
+*  Aksi takdirde, `D` bir temsilci örneğine başvurudur. İşlev üyesi etkinleştirmeleri ([dinamik aşırı yükleme çözümlemesi Için derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), temsilcinin çağırma listesindeki çağrılabilir varlıkların her birinde gerçekleştirilir. Örnek ve örnek yönteminden oluşan çağrılabilir varlıklar için, çağırma örneği çağrılabilir varlıkta bulunan örneğidir.
 
 ### <a name="element-access"></a>Öğe erişimi
 
-Bir *element_access* oluşan bir *primary_no_array_creation_expression*ve ardından bir "`[`" belirteci, izleyen bir *argument_list*ve ardından bir " `]`"belirteci. *Argument_list* bir veya daha fazla oluşur *bağımsız değişken*virgülle ayırarak, s.
+Bir *element_access* *primary_no_array_creation_expression*, ardından bir "`[`" belirteci ve ardından bir *argument_list*ve ardından "`]`" belirteci ile oluşur. *Argument_list* , virgülle ayrılmış bir veya daha fazla *bağımsız değişkenden*oluşur.
 
 ```antlr
 element_access
@@ -1437,51 +1437,51 @@ element_access
     ;
 ```
 
-*Argument_list* , bir *element_access* içermesine izin verilmiyor `ref` veya `out` bağımsız değişkenler.
+Bir *element_access* öğesinin *argument_list* `ref` veya `out` bağımsız değişken içermesine izin verilmez.
 
-Bir *element_access* dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)) aşağıdakilerden en az birini tutuyorsa:
+Aşağıdakilerden en az biri tutuyorsa, bir *element_access* dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)):
 
-* *Primary_no_array_creation_expression* derleme zamanı türü `dynamic`.
-* En az bir ifade *argument_list* derleme zamanı türü `dynamic` ve *primary_no_array_creation_expression* bir dizi türü yok.
+* *Primary_no_array_creation_expression* , derleme zamanı türü `dynamic` ' dir.
+* *Argument_list* öğesinin en az bir ifadesinin derleme zamanı türü `dynamic` ve *primary_no_array_creation_expression* bir dizi türüne sahip değil.
 
-Bu durumda, derleyici sınıflandırır *element_access* türünde bir değer olarak `dynamic`. Anlamını belirlemek için aşağıdaki kuralları *element_access* çalışma zamanında derleme zamanı türü ihtiyaçlarını yerine çalışma zamanı türü kullanarak, daha sonra uygulanır *primary_no_array_creation_expression*ve *argument_list* derleme zamanı türüne sahip ifade `dynamic`. Varsa *primary_no_array_creation_expression* derleme zamanı tür yok `dynamic`, öğe erişimi açıklandığı gibi sınırlı bir derleme zamanı denetimi uğradığında sonra [derleme zamanı dinamik denetleniyor aşırı yükleme çözümlemesi](expressions.md#compile-time-checking-of-dynamic-overload-resolution).
+Bu durumda, derleyici *element_access* `dynamic` türünde bir değer olarak sınıflandırır. *Element_access* anlamını belirlemede aşağıdaki kurallar, *primary_no_array_creation_expression* ve *argument_list* 'in derleme zamanı türü yerine çalışma zamanı türü kullanılarak çalışma zamanında uygulanır derleme zamanı türü `dynamic` olan ifadeler. *Primary_no_array_creation_expression* , `dynamic` derleme zamanı türüne sahip değilse, öğe erişimi, [dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)konusunda açıklandığı gibi sınırlı bir derleme süresi denetimi yapar.
 
-Varsa *primary_no_array_creation_expression* , bir *element_access* bir değeri bir *array_type*, *element_access* olduğu bir dizi erişim ([dizi erişim](expressions.md#array-access)). Aksi takdirde, *primary_no_array_creation_expression* bir değişken veya değeri bir sınıf, yapı veya bir veya daha fazla dizin oluşturucu üye, bu durumda olan bir arabirim türü olmalıdır *element_access* olduğu bir Dizin Oluşturucu erişim ([dizinleyici erişimi](expressions.md#indexer-access)).
+Bir *element_access* öğesinin *primary_no_array_creation_expression* değeri *array_type*ise, *element_access* bir dizi erişimdir ([dizi erişimi](expressions.md#array-access)). Aksi takdirde, *primary_no_array_creation_expression* bir veya daha fazla Indexer üyesine sahip bir sınıf, yapı veya arabirim türünün bir değişkeni ya da değeri olmalıdır ve bu durumda *element_access* bir Dizin Oluşturucu erişimi ([Dizin Oluşturucu erişimi](expressions.md#indexer-access)) olur.
 
 #### <a name="array-access"></a>Dizi erişimi
 
-Bir dizi erişim *primary_no_array_creation_expression* , *element_access* değeri olmalıdır bir *array_type*. Ayrıca, *argument_list* bir dizi erişim adlandırılmış bağımsız değişkenler içeren izni yok. İfadelerin sayısı *argument_list* boyut sayısı aynı olmalıdır *array_type*, ve her deyim türü olmalıdır `int`, `uint`, `long`, `ulong`, ya da bir veya daha fazla bu türleri için örtük olarak dönüştürülebilir olmalıdır.
+Dizi erişimi için, *element_access* öğesinin *primary_no_array_creation_expression* bir *array_type*değeri olması gerekir. Ayrıca, bir dizi erişiminin *argument_list* adlandırılmış bağımsız değişkenler içermesine izin verilmez. *Argument_list* içindeki ifade sayısı *array_type*derecesi ile aynı olmalıdır ve her ifadenin `int`, `uint`, `long`, `ulong` türünde olması veya bu türlerden bir veya daha fazlasına örtük olarak dönüştürülebilir olması gerekir.
 
-Yani ifadelerinin içinde değerleri tarafından seçilen dizi öğesi dizinin öğe türü bir değişken bir dizi erişim değerlendirmesinin sonucu olan *argument_list*.
+Dizi erişiminin hesaplanmasının sonucu, dizinin öğe türünün bir değişkenidir. Yani, *argument_list*içindeki ifade (ler) in değeri tarafından seçilen dizi öğesidir.
 
-Dizi erişiminin formun çalışma zamanı işlenmesini `P[A]`burada `P` olduğu bir *primary_no_array_creation_expression* , bir *array_type* ve `A` bir olduğu*argument_list*, aşağıdaki adımlardan oluşur:
+@No__t-0 biçiminde dizi erişiminin çalışma zamanı işleme `P` ' in bir *array_type* *primary_no_array_creation_expression* ve `A` bir *argument_list*, aşağıdaki adımlardan oluşur:
 
-*  `P` değerlendirilir. Bu değerlendirme bir özel durum neden olursa, başka bir adım yürütülür.
-*  Dizin ifadelerin *argument_list* sırayla soldan sağa doğru değerlendirilir. Her dizin ifadesi, örtük bir dönüştürme değerlendirmesinin ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) şu türlerden biri olarak gerçekleştirilir: `int`, `uint`, `long`, `ulong`. Örtük bir dönüştürme bulunduğu bu listedeki ilk türü seçilir. Örneğin, Dizin ifadesi türü ise `short` ardından örtük dönüştürmeleri `int` örtük dönüştürmelerine bu yana gerçekleştirilen `short` için `int` ve `short` için `long` mümkündür. Bir dizini ifade veya sonraki örtük dönüştürme değerinin bir özel durum neden olursa, daha fazla dizin ifadesi değerlendirilir ve başka adımlar yürütülür.
-*  Değerini `P` geçerli olması için denetlenir. Varsa değerini `P` olduğu `null`, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülür.
-*  Her bir ifadenin değerine *argument_list* gerçek sınırları her boyutunun başvurduğu dizi örneği karşılaştırılarak `P`. Bir veya daha fazla değer aralık dışında ise bir `System.IndexOutOfRangeException` oluşturulur ve başka bir adım yürütülür.
-*  Dizin ifadelerini tarafından verilen bir dizi öğesinin konumunu hesaplanır ve bu konum dizi erişimi sonucunu olur.
+*  `P` değerlendirilir. Bu değerlendirme bir özel duruma neden olursa başka bir adım yürütülmez.
+*  *Argument_list* 'in Dizin ifadeleri, soldan sağa doğru sırayla değerlendirilir. Her bir dizin ifadesinin değerlendirmesi aşağıdaki türlerden birine örtük dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) gerçekleştirilir: `int`, `uint`, `long`, `ulong`. Bu listede örtük bir dönüştürmenin bulunduğu ilk tür seçilir. Örneğin, Dizin ifadesi `short` ise, `short` ' den `int` ' e ve `short` ' e kadar `long` arasında örtük dönüştürmeler yapıladıklarından `int` ' e örtük dönüştürme gerçekleştirilir. Bir dizin ifadesi veya sonraki örtük dönüştürme değerlendirmesi bir özel duruma neden oluyorsa, daha fazla dizin ifadesi değerlendirilmez ve başka bir adım yürütülmez.
+*  @No__t-0 değeri geçerli olacak şekilde işaretlendi. @No__t-0 değeri `null` ise, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülmez.
+*  *Argument_list* içindeki her ifadenin değeri, `P` tarafından başvurulan dizi örneği boyutunun gerçek sınırlarına göre denetlenir. Bir veya daha fazla değer Aralık dışında ise, `System.IndexOutOfRangeException` oluşturulur ve başka bir adım yürütülmez.
+*  Dizin ifadeleri tarafından verilen dizi öğesinin konumu hesaplanır ve bu konum dizi erişiminin sonucu olur.
 
-#### <a name="indexer-access"></a>Dizinleyici erişimi
+#### <a name="indexer-access"></a>Dizin Oluşturucu erişimi
 
-Bir dizin oluşturucu erişim *primary_no_array_creation_expression* , *element_access* bir değişkeni veya bir sınıf, yapı veya arabirim türü değeri olması gerekir ve bu tür bir veya daha fazla uygulamalıdır ilişkilendirilebilmesi için geçerli olan dizin oluşturucular *argument_list* , *element_access*.
+Bir Dizin Oluşturucu erişimi için *element_access* öğesinin *primary_no_array_creation_expression* bir sınıf, yapı veya arabirim türünde bir değişken ya da değer olması gerekir ve bu tür, şu değere göre geçerli olan bir veya daha fazla dizinleyici uygulamalıdır *element_access* *argument_list* .
 
-Bir dizin oluşturucu erişim formun bağlama zamanı işlenmesini `P[A]`burada `P` olduğu bir *primary_no_array_creation_expression* bir sınıf, yapı veya arabirim türü `T`, ve `A` olduğu bir *argument_list*, aşağıdaki adımlardan oluşur:
+@No__t-0 biçiminde bir Dizin Oluşturucu erişiminin bağlama zamanı işleme `P` ' in bir sınıf, yapı veya arabirim türünün bir *primary_no_array_creation_expression* `T` ve `A` ' ün bir *argument_list*olması, aşağıdakilerden oluşur olanları
 
-*  Dizin oluşturucular tarafından sağlanan dizi `T` oluşturulur. Küme içinde bildirilen tüm dizin oluşturucuların oluşur `T` veya bir taban türü `T` olmayan `override` bildirimleri ve bu bağlamda erişilebilir ([üye erişimi](basic-concepts.md#member-access)).
-*  Belirlenen, geçerli ve gizlenmesi bu dizin oluşturucular tarafından diğer dizin oluşturucular için azaltılır. Her dizin oluşturucu için aşağıdaki kurallar uygulanır `S.I` kümesindeki burada `S` türüdür, dizin oluşturucu `I` bildirilir:
-   * Varsa `I` ilişkilendirilebilmesi için geçerli değildir `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)), ardından `I` kümesinden kaldırılır.
-   * Varsa `I` ilişkilendirilebilmesi için uygulanabilir `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)), tüm dizin oluşturucuların temel bir tür içinde bildirilirse `S` kümesinden kaldırılır.
-   * Varsa `I` ilişkilendirilebilmesi için uygulanabilir `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)) ve `S` bir sınıf türü dışında: `object`, bir arabirimde bildirilen tüm dizin oluşturucuların kümesinden kaldırılır.
-*  Aday dizin oluşturucular sonuç kümesi boşsa, ardından ilgili hiçbir dizin oluşturucular var ve bir bağlama zamanı hatası oluşur.
-*  En iyi aday dizin oluşturucular kümesini Oluşturucusu aşırı yükleme çözünürlüğü kurallarını kullanarak tanımlanır [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution). Tek bir en iyi dizin oluşturucu tanımlanamıyor dizinleyici erişimi belirsiz ve bir bağlama zamanı hatası oluşur.
-*  Dizin ifadelerin *argument_list* sırayla soldan sağa doğru değerlendirilir. Dizin Oluşturucu erişim işlemenin sonucu bir dizin oluşturucu erişim sınıflandırılmış bir ifadedir. Výraz indexeru erişim Yukarıdaki adımda belirlenen dizin oluşturucu başvuruyor ve ilişkili örneği deyimine sahip `P` ve bir ilişkili bağımsız değişken listesi `A`.
+*  @No__t-0 tarafından belirtilen dizin oluşturucular kümesi oluşturulur. Küme, `T` ' da belirtilen tüm dizin oluşturuculardan veya `override` bildirimleri olmayan `T` temel türünde veya geçerli bağlamda ([üye erişimi](basic-concepts.md#member-access)) erişilebilir olan tüm dizin oluşturuculardan oluşur.
+*  Küme, uygulanabilir ve diğer Dizin oluşturucular tarafından gizlenmediği dizin oluşturucularının düşürüldü. Aşağıdaki kurallar, küme içindeki her bir dizin oluşturucuya @no__t (`S` ' in Indexer `I` ' nin bildirildiği türdür) geçerlidir:
+   * @No__t-0 `A` ' e ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) göre geçerli değilse, kümeden `I` kaldırılır.
+   * @No__t-0 `A` ' e ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) göre geçerliyse, `S` temel türünde belirtilen tüm dizin oluşturucular kümeden kaldırılır.
+   * @No__t-0 `A` ' e ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) göre uygulanabilir ve `S` `object` dışında bir sınıf türüdür, bir arabirimde bildirildiği tüm dizin oluşturucular kümeden kaldırılır.
+*  Elde edilen aday Dizin oluşturucular kümesi boşsa, uygulanabilir Dizin oluşturucular yok ve bir bağlama zamanı hatası oluşur.
+*  Aday Dizin oluşturucular kümesinin en iyi Dizin Oluşturucusu, [aşırı yükleme çözümünün](expressions.md#overload-resolution)aşırı yükleme çözümleme kuralları kullanılarak tanımlanır. Tek bir en iyi Dizin Oluşturucu tanımlanamıyorsa, Dizin Oluşturucu erişimi belirsizdir ve bir bağlama zamanı hatası oluşur.
+*  *Argument_list* 'in Dizin ifadeleri, soldan sağa doğru sırayla değerlendirilir. Dizin Oluşturucu erişimini işlemenin sonucu, Dizin Oluşturucu erişimi olarak sınıflandırılan bir ifadedir. Dizin Oluşturucu erişim ifadesi, yukarıdaki adımda belirlenen dizin oluşturucuya başvurur ve `P` ' ın ilişkili bir örnek ifadesine ve `A` ' in ilişkili bağımsız değişken listesine sahiptir.
 
-Bu kullanılır bağlama bağlı olarak bir dizin oluşturucu erişim çağrılması ya da neden olur. *get erişimcisine* veya *set erişimcisine* dizin oluşturucu. Dizin Oluşturucu erişim atama, hedef ise *set erişimcisine* yeni bir değer atamak için çağrılır ([basit atama](expressions.md#simple-assignment)). Diğer tüm durumlarda *get erişimcisine* geçerli değerini almak için çağrılır ([ifadelerin değerleri](expressions.md#values-of-expressions)).
+Bir Dizin Oluşturucu erişimi, kullanıldığı içeriğe bağlı olarak, dizin oluşturucunun *Get erişimcisinin* veya *set erişimcisinin* çağrısına neden olur. Dizin Oluşturucu erişimi bir atamanın hedefi ise, *küme erişimcisi* yeni bir değer atamak için çağrılır ([basit atama](expressions.md#simple-assignment)). Diğer tüm durumlarda, *get erişimcisi* geçerli değeri ([ifadelerin değerleri](expressions.md#values-of-expressions)) almak için çağrılır.
 
 ### <a name="this-access"></a>Bu erişim
 
-A *this_access* ayrılmış sözcükten `this`.
+Bir *This_Access* , `this` ayrılmış sözcükten oluşur.
 
 ```antlr
 this_access
@@ -1489,20 +1489,20 @@ this_access
     ;
 ```
 
-A *this_access* yalnızca izin verilen *blok* örnek oluşturucusu, bir örnek yöntemi veya bir örneği erişimcisi. Biri, aşağıdaki anlamlara sahiptir:
+Bir *This_Access* yalnızca bir örnek oluşturucusunun, örnek yönteminin veya örnek erişimcinin *bloğunda* izin verilir. Aşağıdaki anlamlara sahiptir:
 
-*  Zaman `this` kullanılan bir *primary_expression* sınıfının örnek oluşturucusu içinde bir değer olarak sınıflandırılır. Değer türü örneği türüdür ([örnek türü](classes.md#the-instance-type)) sınıfın içine girerek kullanımı gerçekleşir ve yapılandırılmakta olan nesneye bir başvuru değerdir.
-*  Zaman `this` kullanılan bir *primary_expression* bir örnek yöntemi veya bir sınıfın örneği erişimci içinde bir değer olarak sınıflandırılır. Değer türü örneği türüdür ([örnek türü](classes.md#the-instance-type)), içinde kullanımı gerçekleşir ve yöntem veya erişimci çağrılan nesne başvuru değeri olduğu sınıf.
-*  Zaman `this` kullanılan bir *primary_expression* bir yapı içinde bir örnek oluşturucusunda bir değişken olarak sınıflandırılır. Değişkeninin türü örnek türüdür ([örnek türü](classes.md#the-instance-type)) yapı içinde hangi kullanımı gerçekleşir ve yapılandırılmakta struct değişkeni temsil eder. `this` Değişken bir örnek oluşturucusunda bir yapının, aynı şekilde davranır bir `out` yapı türünde parametre — özellikle, bu değişken her örneğinin yürütme yolu kesinlikle atanmalıdır anlamına gelir Oluşturucu.
-*  Zaman `this` kullanılan bir *primary_expression* bir örnek yöntemi veya bir yapının örneği erişimci içinde bir değişken olarak sınıflandırılır. Değişkeninin türü örnek türüdür ([örnek türü](classes.md#the-instance-type)) yapı içinde kullanımı gerçekleşir.
-   * Yöntem veya erişimci bir yineleyici değilse ([yineleyiciler](classes.md#iterators)), `this` değişkenini temsil eder, yapı, yöntem veya erişimci çağrıldı ve aynı şekilde davranır bir `ref` yapı türünde parametre.
-   * Bir yineleyici yöntem veya erişimci ise `this` değişken, yöntem veya erişimci çağrıldı ve tam olarak aynı yapı türünün bir değer parametresini davranışını struct'ın bir kopyasını temsil eder.
+*  @No__t-0 bir sınıfın örnek Oluşturucusu içindeki bir *primary_expression* kullanıldığında, değer olarak sınıflandırılmaktadır. Değerin türü, kullanımın gerçekleştiği sınıfın örnek türü ([örnek türü](classes.md#the-instance-type)) ve değer, oluşturulmakta olan nesneye bir başvurudur.
+*  @No__t-0 bir sınıfın örnek metodu veya örnek erişimcisi içindeki bir *primary_expression* kullanıldığında, değer olarak sınıflandırılmaktadır. Değerin türü, kullanımının gerçekleştiği sınıfın örnek türü ([örnek türü](classes.md#the-instance-type)) ve değer, yöntemin veya erişimcinin çağrıldığı nesneye bir başvurudur.
+*  @No__t-0 bir yapının örnek Oluşturucusu içindeki bir *primary_expression* kullanıldığında, değişken olarak sınıflandırılır. Değişkenin türü, kullanımın gerçekleştiği yapının örnek türüdür ([örnek türü](classes.md#the-instance-type)) ve değişken oluşturulan yapıyı temsil eder. Bir yapının örnek oluşturucusunun `this` değişkeni, yapı türünün bir `out` parametresiyle tamamen aynı şekilde davranır — özellikle, bu, değişkenin örnek oluşturucusunun her yürütme yolunda kesinlikle atanması gerektiği anlamına gelir.
+*  @No__t-0 bir yapının örnek metodu veya örnek erişimcisi içindeki bir *primary_expression* kullanıldığında, bir değişken olarak sınıflandırılır. Değişkenin türü, kullanımının gerçekleştiği yapının örnek türüdür ([örnek türü](classes.md#the-instance-type)).
+   * Yöntem veya erişimci bir yineleyici ([yineleyiciler](classes.md#iterators)) değilse, `this` değişkeni Yöntem veya erişimcinin çağrıldığı yapıyı temsil eder ve yapı türünün `ref` parametresiyle tam olarak aynı şekilde davranır.
+   * Yöntem veya erişimci bir yineleyici ise, `this` değişkeni, yöntemin veya erişimcinin çağrıldığı yapının bir kopyasını temsil eder ve yapı türünün bir değer parametresiyle tam olarak aynı şekilde davranır.
 
-Kullanım `this` içinde bir *primary_expression* yukarıda listelenen olanlar dışındaki bir bağlamda bir derleme zamanı hatasıdır. Özellikle, başvurmak mümkün değildir `this` statik bir yöntemi, bir statik özellik erişimcisi ya da bir *variable_initializer* alanı bildirimi.
+Yukarıda listelenenlerin dışında bir bağlamda bir *primary_expression* içinde `this` kullanımı, derleme zamanı hatasıdır. Özellikle, bir statik yöntemde, statik bir özellik erişimcisinde veya bir alan bildirimi *variable_initializer* içinde `this` ' a başvurmak mümkün değildir.
 
 ### <a name="base-access"></a>Temel erişim
 
-A *base_access* ayrılmış sözcükten `base` tarafından izlenen bir "`.`" belirteci ve tanımlayıcısı veya bir *argument_list* köşeli ayraçlar içinde:
+Bir *base_access* , bir "`.`" belirteci ve tanımlayıcı ya da köşeli ayraç içine alınmış bir *argument_list* tarafından izlenen `base` ayrılmış sözcükten oluşur:
 
 ```antlr
 base_access
@@ -1511,11 +1511,11 @@ base_access
     ;
 ```
 
-A *base_access* benzer şekilde adlandırılmış üyeleri geçerli sınıf veya yapı tarafından gizlenen bir temel sınıf üyelerinin erişmek için kullanılır. A *base_access* yalnızca izin verilen *blok* örnek oluşturucusu, bir örnek yöntemi veya bir örneği erişimcisi. Zaman `base.I` bir sınıf ya da yapının gerçekleşir `I` o sınıfın veya yapının temel sınıfının üyesi belirtmek gerekir. Benzer şekilde, `base[E]` uygulanabilir bir dizin oluşturucu, temel sınıfta bulunmalıdır bir sınıf içinde gerçekleşir.
+Geçerli sınıf veya yapıda benzer adlandırılmış Üyeler tarafından gizlenen temel sınıf üyelerine erişmek için bir *base_access* kullanılır. Bir *base_access* yalnızca bir örnek oluşturucusunun, örnek yönteminin veya örnek erişimcinin *bloğunda* izin verilir. Bir sınıf veya yapıda `base.I` olduğunda, `I`, bu sınıfın veya yapının temel sınıfının bir üyesini belirtmelidir. Benzer şekilde, bir sınıfta `base[E]` olduğunda, temel sınıfta ilgili bir Dizin Oluşturucu bulunmalıdır.
 
-Bağlama zamanında *base_access* ifadeleri biçiminde `base.I` ve `base[E]` tam olarak yazılmış yokmuş gibi değerlendirilir `((B)this).I` ve `((B)this)[E]`burada `B` sınıfın temel sınıf ya da yapı oluştuğu yapı. Bu nedenle, `base.I` ve `base[E]` karşılık `this.I` ve `this[E]`, dışında `this` temel sınıfın bir örneği görüntülenir.
+Bağlama sırasında, `base.I` ve `base[E]` ' nin *base_access* ifadeleri tam olarak `((B)this).I` ve `((B)this)[E]` yazılmış gibi değerlendirilir; burada `B`, yapının gerçekleştiği sınıfın veya yapının temel sınıfıdır. Bu nedenle, `base.I` ve `base[E]` `this.I` ve `this[E]` ' e karşılık gelir, `this` hariç, temel sınıfın bir örneği olarak görüntülenir.
 
-Olduğunda bir *base_access* belirlenmesi, çalışma zamanında çağrılacak üye işlevi bir sanal işlev üyesi (yöntemi, özelliği veya dizin oluşturucu) için başvurur ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetleniyor ](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) değiştirilir. Çağrılan işlev üyesi en türetilen uygulamaya bularak belirlenir ([sanal yöntemleri](classes.md#virtual-methods)) ilişkilendirilebilmesi için işlevi üyesinin `B` (yerine çalışma zamanı türü göre `this`, olarak temel olmayan Access'te normal olacaktır). Bu nedenle, içinde bir `override` , bir `virtual` üye işlevi, bir *base_access* işlevi üye'nın devralınmış uygulaması çağırmak için kullanılabilir. İşlev üyesi tarafından başvurulan bir *base_access* bir bağlama zamanı hatası oluşur, soyuttur.
+Bir *base_access* , bir sanal işlev üyesine (bir yöntem, özellik veya Dizin Oluşturucu) başvurduğunda, çalışma zamanında hangi işlev üyesinin çalıştırılacağını belirleme ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) değiştirilir. Çağrılan işlev üyesi, işlev üyesinin, `B` '[e (@no__t](classes.md#virtual-methods)-2 ' nin çalışma zamanı türüne göre değil, temel olmayan bir erişime göre her zamanki gibi) eklenerek belirlenir. . Bu nedenle, bir `virtual` işlev üyesinin `override` ' ın içinde, işlev üyesinin devralınmış uygulamasını çağırmak için bir *base_access* kullanılabilir. Bir *base_access* tarafından başvurulan işlev üyesi Özet ise, bir bağlama zamanı hatası oluşur.
 
 ### <a name="postfix-increment-and-decrement-operators"></a>Sonek artırma ve azaltma işleçleri
 
@@ -1529,48 +1529,48 @@ post_decrement_expression
     ;
 ```
 
-İşlenen bir sonek artırma veya azaltma işlemi bir değişken, bir özellik erişimi veya bir dizin oluşturucu erişim sınıflandırılmış bir ifade olmalıdır. İşleminin sonucu, işlenenin aynı türden bir değerdir.
+Bir sonek artışı veya azaltma işleminin işleneni, değişken olarak sınıflandırılmış bir ifade, özellik erişimi veya Dizin Oluşturucu erişimi olmalıdır. İşlemin sonucu, işlenenden aynı türde bir değerdir.
 
-Varsa *primary_expression* derleme zamanı türü `dynamic` işleci dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)), *post_increment_expression*veya *post_decrement_expression* derleme zamanı türü `dynamic` ve çalışma zamanı türünü kullanarak zamanında aşağıdaki kurallar uygulanır *primary_expression*.
+*Primary_expression* , derleme zamanı türü `dynamic` ise, işleç dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)), *post_increment_expression* veya *post_decrement_expression* derleme zamanı türüne sahiptir `dynamic` Aşağıdaki kurallar, *primary_expression*çalışma zamanı türü kullanılarak çalışma zamanında uygulanır.
 
-Bir sonek işleneni artırmak, veya azaltma işlemi bir özellik veya dizin oluşturucu erişim, özelliği veya dizin oluşturucu gerekir sahip hem bir `get` ve `set` erişimcisi. Durum bu değilse, bir bağlama zamanı hatası oluşur.
+Bir sonek artışı veya azaltma işleminin işleneni bir özellik veya Dizin Oluşturucu erişimi ise, özelliğin veya dizin oluşturucunun hem `get` hem de bir `set` erişimcisi olmalıdır. Bu durumda, bir bağlama zamanı hatası oluşur.
 
-Birli işleç aşırı yükleme çözümlemesi ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. Önceden tanımlanmış `++` ve `--` işleçleri aşağıdaki türleri için mevcut: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char` , `float`, `double`, `decimal`ve herhangi bir sabit listesi türü. Önceden tanımlanmış `++` işleçleri dönüş işleneni ve önceden tanımlanmış 1 ekleyerek üretilen değeri `--` işleçleri, işlenende 1 çıkarılmasıyla oluşturulan değeri döndürür. İçinde bir `checked` bu ekleme veya çıkarma sonucu sonuç türü aralığının dışında ve sonuç türü bir integral türünü ya da sabit listesi türü ise bağlam bir `System.OverflowException` oluşturulur.
+Tekil operatör aşırı yükleme çözümü ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. Önceden tanımlı `++` ve `--` işleçleri şu türler için mevcuttur: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, 0, 1, 2, 3 ve herhangi bir numaralandırma türü. Önceden tanımlı `++` işleçleri, işlenene 1 eklenerek üretilen değeri döndürür ve önceden tanımlanmış `--` işleçleri işleneni 1 çıkararak üretilen değeri döndürür. @No__t-0 bağlamında, bu ekleme veya çıkarma sonucu sonuç türü aralığının dışındaysa ve sonuç türü bir tam sayı türü veya Enum türü ise, bir `System.OverflowException` atılır.
 
-Çalışma zamanı işlenmesini bir sonek artırma veya azaltma işlemi formun `x++` veya `x--` aşağıdaki adımlardan oluşur:
+@No__t-0 veya `x--` biçiminde bir sonek artışı veya azaltma işleminin çalışma zamanı işleme aşağıdaki adımlardan oluşur:
 
-*   Varsa `x` bir değişken olarak sınıflandırıldığını:
-    * `x` değişkeni oluşturmak için değerlendirilir.
-    * Değerini `x` kaydedilir.
-    * Seçili işleç kaydedilmiş değerle çağrıldığını `x` bağımsız değişken olarak.
-    * Operatör tarafından döndürülen değer değerlendirmesi tarafından belirtilen konumda depolanan `x`.
-    * Kaydedilen değeri `x` işleminin sonucu olur.
-*   Varsa `x` bir özellik veya dizin oluşturucu erişim sınıflandırıldığını:
-    * Örnek ifade (varsa `x` değil `static`) ve bağımsız değişken listesi (varsa `x` bir dizin oluşturucu erişim) ile ilişkili `x` değerlendirilir, ve sonuçları sonraki kullanılan `get` ve `set` erişimci çağrıları.
-    * `get` Erişimcisine `x` çağrılır ve döndürülen değer kaydedilir.
-    * Seçili işleç kaydedilmiş değerle çağrıldığını `x` bağımsız değişken olarak.
-    * `set` Erişimcisine `x` operatör olarak tarafından döndürülen değerle çağrılır, `value` bağımsız değişken.
-    * Kaydedilen değeri `x` işleminin sonucu olur.
+*   @No__t-0 bir değişken olarak sınıflandırıldıysanız:
+    * `x` değişkeni üretmek için değerlendirilir.
+    * @No__t-0 değeri kaydedilir.
+    * Seçili operatör, bağımsız değişkeni olarak `x` olan kaydedilmiş değeriyle çağrılır.
+    * İşleci tarafından döndürülen değer, `x` değerlendirmesi tarafından verilen konumda depolanır.
+    * @No__t-0 ' ın kaydedilmiş değeri işlemin sonucu olur.
+*   @No__t-0 bir özellik veya Dizin Oluşturucu erişimi olarak sınıflandırıldığında:
+    * Örnek ifadesi (`x` `static` değilse) ve bağımsız değişken listesi (`x` ' in bir Dizin Oluşturucu erişimsiyse) `x` ile ilişkili olarak değerlendirilir ve sonuçlar sonraki `get` ve `set` erişimci etkinleştirmeleri içinde kullanılır.
+    * @No__t-1 ' in `get` erişimcisi çağrılır ve döndürülen değer kaydedilir.
+    * Seçili operatör, bağımsız değişkeni olarak `x` olan kaydedilmiş değeriyle çağrılır.
+    * @No__t-1 ' in `set` erişimcisi, `value` bağımsız değişkeni olarak işleç tarafından döndürülen değerle çağrılır.
+    * @No__t-0 ' ın kaydedilmiş değeri işlemin sonucu olur.
 
-`++` Ve `--` işleçleri de destekler öneki biçimini ([önek arttırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)). Genellikle, sonucunu `x++` veya `x--` değeri `x` işleminden önce ise sonucu `++x` veya `--x` değeri `x` işleminden sonra. Her iki durumda da `x` kendisini işleminden sonra aynı değere sahiptir.
+@No__t-0 ve `--` işleçleri önek gösterimini de destekler ([önek artırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)). Genellikle, `x++` veya `x--` sonucu işlemden önce `x` değeridir, ancak `++x` veya `--x` sonucu işlemden sonra `x` değeri olur. Her iki durumda da, `x` ' ın kendisi işlemden sonra aynı değere sahiptir.
 
-Bir `operator ++` veya `operator --` uygulama sonek veya önek gösterim kullanılarak çağrılacak. İki gösterimler için ayrı bir işleç uygulamalarına sahip mümkün değildir.
+@No__t-0 veya `operator --` bir uygulama, sonek veya ön ek gösterimi kullanılarak çağrılabilir. İki gösterimler için ayrı işleç uygulamalarına sahip olmak mümkün değildir.
 
 ### <a name="the-new-operator"></a>New işleci
 
-`new` İşleci yeni türlerin örneklerini oluşturmak için kullanılır.
+@No__t-0 işleci, yeni tür örnekleri oluşturmak için kullanılır.
 
-Üç tür vardır `new` ifadeleri:
+@No__t-0 ifadesinin üç biçimi vardır:
 
-*  Nesne oluşturma ifadeler yeni örneklerini sınıf türleri ve değer türleri oluşturmak için kullanılır.
-*  Dizi oluşturma ifadeleri, dizi türleri yeni örnekleri oluşturmak için kullanılır.
-*  Temsilci oluşturma ifadeler yeni örnekleri temsilci türleri oluşturmak için kullanılır.
+*  Nesne oluşturma ifadeleri, sınıf türlerinin ve değer türlerinin yeni örneklerini oluşturmak için kullanılır.
+*  Dizi oluşturma ifadeleri dizi türlerinin yeni örneklerini oluşturmak için kullanılır.
+*  Temsilci oluşturma ifadeleri temsilci türlerinin yeni örneklerini oluşturmak için kullanılır.
 
-`new` İşleci, bir türün bir örneğinin oluşturulmasını gösterir, ancak dinamik bellek ayrılması gelmez. Özellikle, örnekleri değer türlerinin değişkenleri bulundukları ve dinamik edilmedi meydana ötesinde ek bellek gerektirir, `new` türlerin örneklerini oluşturmak için kullanılır.
+@No__t-0 işleci bir tür örneğinin oluşturulmasını, ancak dinamik bellek ayırmayı göstermez. Özellikle, değer türlerinin örnekleri, bulundukları değişkenlerin ötesinde ek bellek gerektirmez ve değer türlerinin örneklerini oluşturmak için `new` kullanıldığında dinamik ayırmalar gerçekleşmez.
 
 #### <a name="object-creation-expressions"></a>Nesne oluşturma ifadeleri
 
-Bir *object_creation_expression* yeni bir örneğini oluşturmak için kullanılan bir *class_type* veya *value_type*.
+Bir *object_creation_expression* , *class_type* veya *value_type*yeni bir örneğini oluşturmak için kullanılır.
 
 ```antlr
 object_creation_expression
@@ -1584,44 +1584,44 @@ object_or_collection_initializer
     ;
 ```
 
-*Türü* , bir *object_creation_expression* olmalıdır bir *class_type*, *value_type* veya *type_parameter* . *Türü* olamaz bir `abstract` *class_type*.
+Bir *object_creation_expression* *türü* *class_type*, *value_type* veya *type_parameter*olmalıdır. *Tür* `abstract` *class_type*olamaz.
 
-İsteğe bağlı *argument_list* ([bağımsız değişken listeleri](expressions.md#argument-lists)) yalnızca izin verilen *türü* olduğu bir *class_type* veya *struct_ tür*.
+İsteğe bağlı *argument_list* ([bağımsız değişken listeleri](expressions.md#argument-lists)) yalnızca *tür* bir *class_type* veya *struct_type*ise izin verilir.
 
-Parantez içine bir nesne Başlatıcı veya koleksiyon Başlatıcısı içerir sağlanan ve bir nesne oluşturma ifadesi oluşturucu bağımsız değişken listesini atlayabilirsiniz. Oluşturucu bağımsız değişken listesi atlama ve parantez kapsayan bir boş bağımsız değişken listesi belirtmeye eşdeğerdir.
+Nesne oluşturma ifadesi, Oluşturucu bağımsız değişken listesini atlayabilir ve kapsayan parantez, bir nesne Başlatıcısı veya koleksiyon başlatıcısı içerir. Oluşturucu bağımsız değişken listesini atlama ve kapsayan parantezler boş bir bağımsız değişken listesi belirtmeye eşdeğerdir.
 
-İlk örnek oluşturucusu ve ardından nesne Başlatıcı (BelirtilenüyeveyaöğeninbaşlatmalarişlemebirnesneBaşlatıcıveyakoleksiyonBaşlatıcısıiçerenbirnesneoluşturmaifadesiişlenmesinioluşur[ Nesne başlatıcılarda](expressions.md#object-initializers)) veya koleksiyon Başlatıcısı ([koleksiyon başlatıcıları](expressions.md#collection-initializers)).
+Bir nesne Başlatıcısı veya koleksiyon başlatıcısı içeren bir nesne oluşturma ifadesinin işlenmesi, ilk örnek oluşturucuyu işlemeyi ve sonra nesne Başlatıcısı tarafından belirtilen üye veya öğe başlatmaları işlemeyi içerir ([ Nesne başlatıcıları](expressions.md#object-initializers)) veya koleksiyon başlatıcısı ([koleksiyon başlatıcıları](expressions.md#collection-initializers)).
 
-İsteğe bağlı bağımsız değişken varsa *argument_list* derleme zamanı türü `dynamic` sonra *object_creation_expression* dinamik olarak bağlı ([dinamikbağlama](expressions.md#dynamic-binding)) ve bağımsız değişkenleri çalışma zamanı türünü kullanarak zamanında aşağıdaki kurallar uygulanır *argument_list* derleme zamanı türü `dynamic`. Ancak, nesne oluşturma açıklandığı gibi sınırlı bir derleme zamanı denetimi uğradığında [derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution).
+İsteğe bağlı *argument_list* ' deki bağımsız değişkenlerden herhangi biri `dynamic` ' in derleme zamanı türüne sahipse, *object_creation_expression* dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)) ve çalışma zamanında aşağıdaki kurallar çalışma zamanında uygulanır derleme zamanı türü `dynamic` olan *argument_list* bağımsız değişkenlerinin türü. Ancak, nesne oluşturma, [dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)konusunda açıklandığı gibi sınırlı bir derleme süresi denetimi yapar.
 
-Bağlama zamanı işlenmesini bir *object_creation_expression* formun `new T(A)`burada `T` olduğu bir *class_type* veya *value_type* ve `A` isteğe bağlıdır *argument_list*, aşağıdaki adımlardan oluşur:
+@No__t-1, `T` ' nin bir *class_type* ya da *value_type* olduğu ve `A` ' in isteğe bağlı bir *argument_list*olduğu, bu biçimdeki bir *object_creation_expression* bağlama zamanı işleme, aşağıdaki adımlardan oluşur:
 
-*   Varsa `T` olduğu bir *value_type* ve `A` mevcut değil:
-    * *Object_creation_expression* bir varsayılan oluşturucu çağrıdır. Sonucu *object_creation_expression* türü değeri `T`, yani için varsayılan değer `T` tanımlandığı gibi [System.ValueType türü](types.md#the-systemvaluetype-type).
-*   Aksi takdirde `T` olduğu bir *type_parameter* ve `A` mevcut değil:
-    * Hiçbir değer tür kısıtlaması veya Oluşturucu kısıtlaması ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) için belirtilen `T`, bir bağlama zamanı hatası oluşur.
-    * Sonucu *object_creation_expression* tür parametresi için ilişkili çalışma zamanı tür değeri adlı varsayılan oluşturucu türü çağırma sonucu. Çalışma zamanı türü bir başvuru türü veya değer türü olabilir.
-*   Aksi takdirde `T` olduğu bir *class_type* veya *struct_type*:
-    * Varsa `T` olduğu bir `abstract` *class_type*, bir derleme zamanı hatası oluşur.
-    * Çağrılacak örnek oluşturucusu aşırı yükleme çözünürlüğü kurallarını kullanarak belirlenir [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution). Bildirilen tüm erişilebilir örnek oluşturucular aday örnek oluşturucuları kümesini oluşan `T` ilişkilendirilebilmesi için geçerli olan `A` ([geçerli işlev üyesi](expressions.md#applicable-function-member)). Aday örnek oluşturucuları kümesi boşsa veya tek bir en iyi örnek oluşturucusu tanımladıysanız, bir bağlama zamanı hatası oluşur.
-    * Sonucu *object_creation_expression* türü değeri `T`, yani değer üretilmediğini Yukarıdaki adımda belirlenen örnek oluşturucusunu çağırarak.
-*  Aksi takdirde, *object_creation_expression* geçersiz ve bir bağlama zamanı hatası oluşur.
+*   @No__t-0 bir *value_type* ve `A` yoksa:
+    * *Object_creation_expression* , varsayılan bir Oluşturucu çağrıdır. *Object_creation_expression* sonucu, `T` türünde bir değerdir, yani [System. ValueType türünde](types.md#the-systemvaluetype-type)tanımlanan `T` için varsayılan değerdir.
+*   Aksi takdirde, `T` bir *type_parameter* ve `A` yoksa:
+    * @No__t-1 için hiçbir değer türü kısıtlaması veya Oluşturucu kısıtlaması ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) belirtilmemişse, bir bağlama zamanı hatası oluşur.
+    * *Object_creation_expression* sonucu, tür parametresinin bağlandığı çalışma zamanı türünün bir değeridir, yani bu türün varsayılan yapıcısını çağırma sonucu. Çalışma zamanı türü bir başvuru türü veya değer türü olabilir.
+*   Aksi takdirde, `T` bir *class_type* veya *struct_type*ise:
+    * @No__t-0 bir `abstract` *class_type*ise, derleme zamanı hatası oluşur.
+    * Çağrılacak örnek Oluşturucu [aşırı yükleme çözümünün](expressions.md#overload-resolution)aşırı yükleme çözümleme kuralları kullanılarak belirlenir. Aday örnek oluşturucular kümesi, `T` ' da belirtilen tüm erişilebilir örnek oluşturuculardan oluşur. Bu, `A` ' e ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) göre geçerlidir. Aday örnek oluşturucular kümesi boşsa veya tek bir en iyi örnek Oluşturucu tanımlanamıyorsa, bir bağlama zamanı hatası oluşur.
+    * *Object_creation_expression* sonucu, yukarıdaki adımda belirlenen örnek oluşturucuyu çağırarak üretilen değer olan `T` türünde bir değerdir.
+*  Aksi takdirde, *object_creation_expression* geçersizdir ve bir bağlama zamanı hatası oluşur.
 
-Bile *object_creation_expression* dinamik bağlı, derleme zamanı hala türdür `T`.
+*Object_creation_expression* dinamik olarak bağlı olsa da, derleme zamanı türü hala `T` ' dir.
 
-Çalışma zamanı işlenmesini bir *object_creation_expression* formun `new T(A)`burada `T` olduğu *class_type* veya *struct_type* ve `A` isteğe bağlıdır *argument_list*, aşağıdaki adımlardan oluşur:
+@No__t-1 biçiminde bir *object_creation_expression* çalışma zamanı işleme, `T` *class_type* veya bir *struct_type* ve `A` isteğe bağlı bir *argument_list*, aşağıdaki adımlardan oluşur:
 
-*   Varsa `T` olduğu bir *class_type*:
-    * Sınıfının yeni bir örneğini `T` ayrılır. Yeni bir örneğini ayırmak yeterli bellek yoksa bir `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülür.
-    * Yeni örneğin tüm alanları varsayılan değerlerine başlatılır ([varsayılan değerler](variables.md#default-values)).
-    * Örnek oluşturucusu işlevi üye çağırma kurallarına göre çağrılır ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)). Yeni ayrılmış örneğe bir başvuru için örnek oluşturucusu otomatik olarak geçirilir ve örnek bu oluşturucu içinde erişilebilir `this`.
-*   Varsa `T` olduğu bir *struct_type*:
-    * Türün bir örneğini `T` geçici yerel değişken ayırarak oluşturulur. Bir örnek oluşturucusunu beri bir *struct_type* kesinlikle oluşturulmasını, hiçbir başlatma geçici değişken gereklidir örneğin her alan için bir değer atamak için gereklidir.
-    * Örnek oluşturucusu işlevi üye çağırma kurallarına göre çağrılır ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)). Yeni ayrılmış örneğe bir başvuru için örnek oluşturucusu otomatik olarak geçirilir ve örnek bu oluşturucu içinde erişilebilir `this`.
+*   @No__t-0 ise *class_type*:
+    * @No__t-0 sınıfının yeni bir örneği ayrıldı. Yeni örneği ayırmak için yeterli kullanılabilir bellek yoksa, `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülmez.
+    * Yeni örneğin tüm alanları varsayılan değerlerine ([varsayılan değerler](variables.md#default-values)) başlatılır.
+    * Örnek Oluşturucu, işlev üye çağırma kurallarına göre çağrılır ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)). Yeni ayrılmış örneğe bir başvuru, örnek oluşturucusuna otomatik olarak geçirilir ve örneğe `this` olarak bu Oluşturucu içinden erişilebilir.
+*   @No__t-0 ise *struct_type*:
+    * @No__t-0 türünde bir örnek, geçici bir yerel değişken ayırarak oluşturulur. Bir *struct_type* öğesinin örnek Oluşturucusu, oluşturulan örneğin her bir alanına kesinlikle değer atamak gerektiğinden, geçici değişkenin başlatılması gerekmez.
+    * Örnek Oluşturucu, işlev üye çağırma kurallarına göre çağrılır ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)). Yeni ayrılmış örneğe bir başvuru, örnek oluşturucusuna otomatik olarak geçirilir ve örneğe `this` olarak bu Oluşturucu içinden erişilebilir.
 
 #### <a name="object-initializers"></a>Nesne başlatıcıları
 
-Bir ***nesne Başlatıcı*** sıfır veya daha fazla alanlar, özellikler veya dizini oluşturulmuş bir nesne öğelerin değerleri belirtir.
+Bir ***nesne Başlatıcısı*** , bir nesnenin sıfır veya daha fazla alanı, özelliği veya dizinli öğeleri için değerler belirtir.
 
 ```antlr
 object_initializer
@@ -1648,19 +1648,19 @@ initializer_value
     ;
 ```
 
-Kapsadığı üyesi başlatıcıları, bir dizi nesne Başlatıcı oluşan `{` ve `}` belirteçler ve virgülle ayrılmış. Her *member_initializer* başlatma hedefi belirler. Bir *tanımlayıcı* ise bir erişilebilir alan veya özellik başlatılmakta, nesnenin adı olmalıdır bir *argument_list* içine üzerinde erişilebilir bir dizin oluşturucu için bağımsız değişkenler köşeli ayraç belirtmelisiniz başlatılan nesne. Nesne Başlatıcı aynı alan veya özellik için birden fazla üye Başlatıcı eklemek için bir hatadır.
+Bir nesne Başlatıcısı, `{` ve `}` belirteçlerinin içine alınmış ve virgüllerle ayrılmış bir dizi üye başlatıcıdan oluşur. Her *member_initializer* , başlatma için bir hedef belirler. Bir *tanımlayıcı* , başlatılan nesnenin erişilebilir bir alanı veya özelliğini sağlamalıdır, ancak köşeli ayraç içine alınmış bir *argument_list* , başlatılmış nesne üzerindeki erişilebilir bir Dizin Oluşturucu için bağımsız değişkenler belirtmelidir. Bir nesne başlatıcısının aynı alan veya özellik için birden fazla üye başlatıcısı içermesi hatadır.
 
-Her *initializer_target* bir eşittir işareti ve bir ifade, bir nesne Başlatıcı veya koleksiyon başlatıcısı tarafından izlenir. İçinde başlatma yeni oluşturulan nesneye başvurmak için nesne Başlatıcı ifadeleri için mümkün değildir.
+Her *initializer_target* ardından bir eşittir işareti ve bir ifade, bir nesne Başlatıcısı veya bir koleksiyon başlatıcısı gelir. Nesne Başlatıcısı içindeki ifadeler, başlatılan yeni oluşturulan nesneye başvuracaktır.
 
-Eşittir işareti atama aynı şekilde işlendikten sonra bir ifade belirtir bir üye Başlatıcısı ([basit atama](expressions.md#simple-assignment)) hedef.
+Eşittir işaretinden sonra bir ifade belirten bir üye başlatıcısı, hedefle ([basit atama](expressions.md#simple-assignment)) aynı şekilde işlenir.
 
-Nesne Başlatıcı sonra eşittir işareti belirten bir üye başlatıcısı bir ***iç içe geçmiş nesne Başlatıcı***, yani gömülü bir nesnenin bir başlatma. Alan veya özellik için yeni bir değer atamak yerine, iç içe geçmiş nesne Başlatıcı atamalarını atamaları üyelerine alanı veya özelliği olarak kabul edilir. İç içe geçmiş nesne başlatıcıları özelliklere sahip bir değer türü veya değer türü salt okunur alanlara uygulanamaz.
+Eşittir işaretinden sonra bir nesne Başlatıcısı belirten bir üye başlatıcısı, ***iç içe geçmiş nesne Başlatıcısı***, yani gömülü bir nesnenin bir başlatması. Alan veya özelliğe yeni bir değer atamak yerine, iç içe nesne başlatıcısındaki atamalar, alan veya özellik üyelerine atamalar olarak değerlendirilir. İç içe nesne başlatıcıları bir değer türü olan özelliklere veya bir değer türüne sahip salt okuma alanlarına uygulanamaz.
 
-Eşittir işaretinden sonra koleksiyon Başlatıcısı belirten bir üye başlatıcısı, katıştırılmış bir koleksiyonun bir başlatmadır. Hedef alan, özelliği veya dizin oluşturucu için yeni bir koleksiyon atamak yerine başlatıcısında verilen öğeleri hedef tarafından başvurulan koleksiyona eklenir. Hedef belirtilen gereksinimleri karşılayan bir koleksiyon türünde olmalıdır [koleksiyon başlatıcıları](expressions.md#collection-initializers).
+Eşittir işaretinden sonra bir koleksiyon başlatıcısı belirten üye başlatıcısı, gömülü bir koleksiyonun başlatılmasından. Hedef alana, özelliğe veya dizin oluşturucuya yeni bir koleksiyon atamak yerine, başlatıcıda verilen öğeler hedef tarafından başvurulan koleksiyona eklenir. Hedef, [koleksiyon başlatıcıları](expressions.md#collection-initializers)'nda belirtilen gereksinimleri karşılayan bir koleksiyon türünde olmalıdır.
 
-Bir dizin Başlatıcı bağımsız değişkenleri her zaman tam olarak bir kez değerlendirilir. Bu nedenle, bunlar bağımsız değişkenler (örneğin bir boş iç içe geçmiş Başlatıcı nedeniyle) hiç kullanılmadı düştüğünden olsa bile, yan etkileri için değerlendirilir.
+Bir dizin başlatıcısının bağımsız değişkenleri her zaman tam olarak bir kez değerlendirilir. Bu nedenle, bağımsız değişkenler (örneğin, boş bir iç içe bir başlatıcı nedeniyle) hiç kullanılmasa bile, bunların yan etkileri için değerlendirilirler.
 
-Aşağıdaki sınıf iki koordinat noktasıyla temsil eder:
+Aşağıdaki sınıf iki koordinat içeren bir noktayı temsil eder:
 ```csharp
 public class Point
 {
@@ -1671,7 +1671,7 @@ public class Point
 }
 ```
 
-Örneği `Point` oluşturulabilir ve şu şekilde başlatıldı:
+@No__t-0 ' ın bir örneği aşağıdaki şekilde oluşturulup başlatılabilir:
 ```csharp
 Point a = new Point { X = 0, Y = 1 };
 ```
@@ -1682,7 +1682,7 @@ __a.X = 0;
 __a.Y = 1; 
 Point a = __a;
 ```
-Burada `__a` yoksa görünmez ve erişilemez bir geçici değişken. Aşağıdaki sınıf iki noktalarından oluşturulan bir dikdörtgen temsil eder:
+Burada `__a`, aksi durumda görünmeyen ve erişilemeyen geçici bir değişkendir. Aşağıdaki sınıf, iki noktadan oluşturulan bir dikdörtgeni temsil eder:
 ```csharp
 public class Rectangle
 {
@@ -1693,7 +1693,7 @@ public class Rectangle
 }
 ```
 
-Örneği `Rectangle` oluşturulabilir ve şu şekilde başlatıldı:
+@No__t-0 ' ın bir örneği aşağıdaki şekilde oluşturulup başlatılabilir:
 ```csharp
 Rectangle r = new Rectangle {
     P1 = new Point { X = 0, Y = 1 },
@@ -1713,9 +1713,9 @@ __p2.Y = 3;
 __r.P2 = __p2; 
 Rectangle r = __r;
 ```
-Burada `__r`, `__p1` ve `__p2` görünmez ve erişilemez Aksi takdirde geçici değişkenlerdir.
+`__r`, `__p1` ve `__p2`, aksi durumda görünmeyen ve erişilemeyen geçici değişkenlerdir.
 
-Varsa `Rectangle`ın katıştırılmış iki Oluşturucu ayırır `Point` örnekleri
+@No__t-0 ' ın Oluşturucusu iki Embedded `Point` örneğini ayırırsa
 ```csharp
 public class Rectangle
 {
@@ -1726,7 +1726,7 @@ public class Rectangle
     public Point P2 { get { return p2; } }
 }
 ```
-Şu yapı katıştırılmış başlatmak için kullanılan `Point` yeni örnekleri atamak yerine örnekleri:
+Aşağıdaki yapı, yeni örnekler atamak yerine gömülü `Point` örneklerini başlatmak için kullanılabilir:
 ```csharp
 Rectangle r = new Rectangle {
     P1 = { X = 0, Y = 1 },
@@ -1743,7 +1743,7 @@ __r.P2.Y = 3;
 Rectangle r = __r;
 ```
 
-C, aşağıdaki örnek, uygun bir tanımını ele alalım:
+C 'nin uygun bir tanımı verildiğinde aşağıdaki örnek:
 ```csharp
 var c = new C {
     x = true,
@@ -1754,7 +1754,7 @@ var c = new C {
     [1,2] = {}
 };
 ```
-Bu bir dizi atamaları eşdeğerdir:
+Bu atama dizisine eşdeğerdir:
 ```csharp
 C __c = new C();
 __c.x = true;
@@ -1770,11 +1770,11 @@ __c[__i2,__i3].Add("b");
 int __i4 = 1, __i5 = 2;
 var c = __c;
 ```
-Burada `__c`vb. görünmez ve kaynak kodu için erişilemez oluşturulan değişkenlerdir. Unutmayın bağımsız değişkenleri için `[0,0]` değerlendirilen yalnızca bir kez ve bağımsız değişkenleri `[1,2]` hiçbir zaman kullanılmaz olsa bile bir kez değerlendirilir.
+Burada `__c`, vb., görünmeyen ve kaynak kodla erişilemeyen değişkenler tarafından oluşturulmuştur. @No__t-0 için bağımsız değişkenlerin yalnızca bir kez değerlendirileceğini ve `[1,2]` için bağımsız değişkenlerin, hiç kullanılmasa bile bir kez değerlendirildiğini unutmayın.
 
 #### <a name="collection-initializers"></a>Koleksiyon başlatıcıları
 
-Koleksiyon başlatıcısı, bir koleksiyonun öğeleri belirtir.
+Koleksiyon Başlatıcısı, bir koleksiyonun öğelerini belirtir.
 
 ```antlr
 collection_initializer
@@ -1796,16 +1796,16 @@ expression_list
     ;
 ```
 
-Koleksiyon başlatıcısı, bir dizi öğesi başlatıcıları, kapsadığı oluşan `{` ve `}` belirteçler ve virgülle ayrılmış. Her öğe Başlatıcısı başlatılmakta koleksiyon nesnesine eklenecek bir öğeyi belirtir ve ifadeler tarafından alınmış bir listesini oluşur `{` ve `}` belirteçler ve virgülle ayrılmış.  Tek ifadeli öğe Başlatıcısı küme ayraçları olmadan yazılabilir, ancak ardından belirsizlik üyesi başlatıcıları önlemek için bir atama ifadesi olamaz. *Non_assignment_expression* üretim tanımlanmış [ifade](expressions.md#expression).
+Bir koleksiyon başlatıcısı, `{` ve `}` belirteçleri içine alınmış ve virgüllerle ayrılmış bir dizi öğe başlatıcısından oluşur. Her öğe başlatıcısı, başlatılmakta olan koleksiyon nesnesine eklenecek bir öğe belirtir ve `{` ve `}` belirteçleri içeren ve virgüllerle ayrılmış bir ifade listesinden oluşur.  Tek ifadeyle bir öğe başlatıcısı küme ayracı olmadan yazılabilir, ancak üye başlatıcılarla belirsizliğe engel olmak için atama ifadesi olamaz. *Non_assignment_expression* üretimi [ifadede](expressions.md#expression)tanımlanmıştır.
 
-Koleksiyon Başlatıcısı içeren bir nesne oluşturma ifadesi örneği verilmiştir:
+Aşağıda, bir koleksiyon başlatıcısı içeren bir nesne oluşturma ifadesine örnek verilmiştir:
 ```csharp
 List<int> digits = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 ```
 
-Koleksiyon Başlatıcısı uygulandığı koleksiyon nesnesi uygulayan bir türü olmalıdır `System.Collections.IEnumerable` veya bir derleme zamanı hatası oluşur. Koleksiyon Başlatıcısı sırada belirtilen her öğe için çağıran bir `Add` yöntemi hedef uygulama normal üye araması bağımsız değişken listesi öğe Başlatıcısı ile ifade listesi nesnesi ve aşırı yükleme çözümlemesi her. Bu nedenle, koleksiyon nesnesi adı ile ilgili bir örneği veya genişletme metodu olmalıdır `Add` her öğe Başlatıcısı için.
+Koleksiyon başlatıcısının uygulandığı koleksiyon nesnesi `System.Collections.IEnumerable` uygulayan bir türde olmalıdır veya bir derleme zamanı hatası oluşur. Koleksiyon Başlatıcısı sırasıyla belirtilen her öğe için, hedef nesnede bir `Add` yöntemini, bağımsız değişken listesi olarak öğe başlatıcısının ifade listesini çağırır, her çağrı için normal üye arama ve aşırı yükleme çözümlemesi uygulama. Bu nedenle, koleksiyon nesnesinin her öğe başlatıcısı için `Add` adına sahip uygulanabilir bir örnek veya genişletme yöntemi olmalıdır.
 
-Aşağıdaki sınıf bir kişiyle bir ad ve telefon numaralarının listesini temsil eder:
+Aşağıdaki sınıf, bir kişinin adını ve telefon numaralarının listesini temsil eder:
 ```csharp
 public class Contact
 {
@@ -1818,7 +1818,7 @@ public class Contact
 }
 ```
 
-A `List<Contact>` oluşturulabilir ve şu şekilde başlatıldı:
+@No__t-0, aşağıdaki gibi oluşturulabilir ve başlatılabilir:
 ```csharp
 var contacts = new List<Contact> {
     new Contact {
@@ -1845,11 +1845,11 @@ __c2.PhoneNumbers.Add("650-555-0199");
 __clist.Add(__c2);
 var contacts = __clist;
 ```
-Burada `__clist`, `__c1` ve `__c2` görünmez ve erişilemez Aksi takdirde geçici değişkenlerdir.
+`__clist`, `__c1` ve `__c2`, aksi durumda görünmeyen ve erişilemeyen geçici değişkenlerdir.
 
 #### <a name="array-creation-expressions"></a>Dizi oluşturma ifadeleri
 
-Bir *array_creation_expression* yeni bir örneğini oluşturmak için kullanılan bir *array_type*.
+Bir *array_type*yeni bir örneğini oluşturmak için bir *array_creation_expression* kullanılır.
 
 ```antlr
 array_creation_expression
@@ -1859,54 +1859,54 @@ array_creation_expression
     ;
 ```
 
-Bir dizi oluşturma ifadesi ilk form, her biri ayrı ayrı ifadeleri ifade listeden silmesi sonuçları türünde bir dizi örnek ayırır. Örneğin, dizi oluşturma ifadesi `new int[10,20]` türünün bir dizi örneği üretir `int[,]`ve dizi oluşturma ifadesi `new int[10][,]` türünde bir dizi üretir `int[][,]`. Her deyim ifade listesi içinde türünde olmalıdır `int`, `uint`, `long`, veya `ulong`, ya da bir veya daha fazla bu türleri için örtük olarak dönüştürülebilir. Her bir ifadenin değerine karşılık gelen yeni ayrılan dizi örneği boyutun uzunluğunu belirler. Bir dizi boyutun uzunluğu negatif olmayan olması gerektiğinden, bir derleme zamanı hatası sahip olduğu bir *constant_expression* ifade listesi negatif bir değere sahip.
+İlk formun dizi oluşturma ifadesi, bağımsız ifadelerin her birini ifade listesinden silmenin sonucu olan türün bir dizi örneğini ayırır. Örneğin, `new int[10,20]` dizi oluşturma ifadesi `int[,]` türünde bir dizi örneği oluşturur ve `new int[10][,]` dizi oluşturma ifadesi `int[][,]` türünde bir dizi oluşturur. İfade listesindeki her bir ifadenin `int`, `uint`, `long` veya `ulong` türünde olması veya örtülü olarak bu türlerden bir veya daha fazlasına dönüştürülebilir olması gerekir. Her ifadenin değeri, yeni ayrılan dizi örneğindeki karşılık gelen boyutun uzunluğunu belirler. Bir dizi boyutunun uzunluğunun negatif olması gerektiğinden, ifade listesinde negatif bir değer olan bir *constant_expression* sahip olmak için bir derleme zamanı hatası olur.
 
-Güvenli olmayan bir bağlamda dışında ([güvensiz bir bağlamı](unsafe-code.md#unsafe-contexts)), dizileri düzenini belirtilmemiş.
+Güvenli olmayan bir bağlam ([güvenli olmayan bağlamların](unsafe-code.md#unsafe-contexts)) dışında, dizilerin düzeni belirtilmemiş olur.
 
-İlk biçiminde bir dizi oluşturma ifadesi dizi Başlatıcı içeriyorsa, ifade listesi içinde her bir ifade bir sabit olmalıdır ve ifade listesi tarafından belirtilen boyut sayısı ve boyutu uzunlukları dizi Başlatıcısı içeriğiyle eşleşmesi gerekir.
+İlk formun dizi oluşturma ifadesi bir dizi başlatıcısı içeriyorsa, ifade listesindeki her bir ifade bir sabit olmalıdır ve ifade listesi tarafından belirtilen sıralama ve boyut uzunlukları dizi başlatıcısının ile aynı olmalıdır.
 
-İçinde bir dizi oluşturma ifadesi ikinci veya üçüncü formunun boyut sayısı belirtilen dizi türü veya boyut tanımlayıcısı dizi Başlatıcısı eşleşmelidir. Tek tek boyut uzunlukları, öğeleri dizi başlatıcısı, karşılık gelen iç içe geçme düzeylerinin her biri çok sayıda algılanır. Bu nedenle, ifade
+İkinci veya üçüncü formun dizi oluşturma ifadesinde, belirtilen dizi türü veya sıralama belirticisinin sıralaması dizi başlatıcısının ile aynı olmalıdır. Tek tek boyut uzunlukları, dizi başlatıcısının karşılık gelen iç içe geçme düzeylerindeki öğelerin sayısından algılanır. Bu nedenle, ifadesi
 ```csharp
 new int[,] {{0, 1}, {2, 3}, {4, 5}}
 ```
-tam olarak karşılık gelir
+tam olarak karşılık gelen
 ```csharp
 new int[3, 2] {{0, 1}, {2, 3}, {4, 5}}
 ```
 
-Üçüncü biçiminde bir dizi oluşturma ifadesi olarak adlandırılır bir ***dizi oluşturma ifadesi örtük***. Dizinin öğe türü açıkça, ancak en yaygın türü olarak belirlenen verilmez, ikinci forma benzer ([en iyi ortak türü bir ifade kümesi bulma](expressions.md#finding-the-best-common-type-of-a-set-of-expressions)) dizi ifadeleri kümesinin Başlatıcı. Çok boyutlu bir dizi için başka bir deyişle, bir where *rank_specifier* en az bir virgül içeren tüm bu kümesi oluşur *ifade*içinde bulunan iç içe geçmiş s *array_initializer*s.
+Üçüncü formun dizi oluşturma ifadesi, ***örtük olarak yazılmış dizi oluşturma ifadesi***olarak adlandırılır. Dizinin öğe türü açıkça verilmemiştir, ancak dizi başlatıcısındaki ifadelerin kümesinin en iyi ortak türü ([bir ifade kümesinin en iyi ortak türünü bulma](expressions.md#finding-the-best-common-type-of-a-set-of-expressions)) olarak belirlenir, ikinci forma benzerdir. Çok boyutlu bir dizi için, örneğin, *rank_specifier* en az bir virgül içerdiğinde, bu küme iç içe yerleştirilmiş *array_initializer*s 'de bulunan tüm *ifade*öğeleri içerir.
 
-Dizi başlatıcıları daha ayrıntılı açıklanır [Dizi başlatıcıları](arrays.md#array-initializers).
+Dizi başlatıcıları, [dizi başlatıcılarda](arrays.md#array-initializers)daha ayrıntılı olarak açıklanmıştır.
 
-Bir dizi oluşturma ifadesi değerlendirme sonucu bir değer, yani yeni ayrılan dizi örneğe bir başvuru olarak sınıflandırılır. Bir dizi oluşturma ifadesi çalışma zamanı işlenmesini aşağıdaki adımlardan oluşur:
+Dizi oluşturma ifadesinin değerlendirilme sonucu bir değer olarak sınıflandırıldığından, yani yeni ayrılmış dizi örneğine bir başvurudur. Bir dizi oluşturma ifadesinin çalışma zamanı işleme aşağıdaki adımlardan oluşur:
 
-*  Boyut uzunluğu ifadelerin *expression_list* sırayla soldan sağa doğru değerlendirilir. Örtük bir dönüştürme her ifade değerlendirmesinin ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) şu türlerden biri olarak gerçekleştirilir: `int`, `uint`, `long`, `ulong`. Örtük bir dönüştürme bulunduğu bu listedeki ilk türü seçilir. Bir ifade veya sonraki örtük dönüştürme değerinin bir özel durum neden olursa, hiçbir ek ifadeler değerlendirilir ve başka bir adım yürütülür.
-*  Boyut uzunluğu hesaplanan değerleri şu şekilde doğrulanır. Bir veya daha fazla değer olan küçükse sıfır, bir `System.OverflowException` oluşturulur ve başka bir adım yürütülür.
-*  Belirtilen boyut uzunlukta bir dizi örneğiyle ayrılır. Yeni bir örneğini ayırmak yeterli bellek yoksa bir `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülür.
-*  Yeni dizi örneğinin tüm öğeleri varsayılan değerlerine başlatılır ([varsayılan değerler](variables.md#default-values)).
-*  Dizi oluşturma ifadesi dizi Başlatıcı içeriyorsa, ardından her bir dizi Başlatıcısı ifadesinde değerlendirilir ve karşılık gelen dizi öğesine atanır. Atamalar ve değerlendirmeleri ifadeleri, dizi başlatıcısında yazılır sırayla gerçekleştirilir — diğer bir deyişle, öğeleri en sağdaki boyutu ilk artan dizin sırasıyla artan düzende başlatılır. Belirtilen bir ifade veya sonraki atama karşılık gelen bir dizi öğesinin değerinin bir özel durum neden olursa, daha fazla öğe başlatılır (ve kalan öğeleri, bu nedenle varsayılan değerlerine sahip olur).
+*  *Expression_list* boyut uzunluğu ifadeleri, soldan sağa doğru sırayla değerlendirilir. Her bir ifadenin aşağıdaki türlerden birine yönelik olarak örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) gerçekleştirilmesi, `int`, `uint`, `long`, `ulong` ' tür. Bu listede örtük bir dönüştürmenin bulunduğu ilk tür seçilir. Bir ifade veya sonraki örtük dönüştürme değerlendirmesi bir özel duruma neden oluyorsa, başka ifadeler değerlendirilmez ve başka bir adım yürütülmez.
+*  Boyut uzunlukları için hesaplanan değerler aşağıdaki şekilde onaylanır. Bir veya daha fazla değer sıfırdan küçükse, `System.OverflowException` oluşturulur ve başka adımlar yürütülmez.
+*  Verilen boyut uzunluklarına sahip bir dizi örneği ayrıldı. Yeni örneği ayırmak için yeterli kullanılabilir bellek yoksa, `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülmez.
+*  Yeni dizi örneğinin tüm öğeleri varsayılan değerlerine ([varsayılan değerler](variables.md#default-values)) başlatılır.
+*  Dizi oluşturma ifadesi bir dizi başlatıcısı içeriyorsa, dizi başlatıcısındaki her bir ifade değerlendirilir ve karşılık gelen dizi öğesine atanır. Değerlendirmeler ve Atamalar, ifadelerin dizi başlatıcıda yazıldığı sırada gerçekleştirilir — diğer bir deyişle, öğeler, en sağdaki boyut ilk artarak Dizin sırasında başlatılır. Belirli bir ifadenin değerlendirilmesi veya karşılık gelen dizi öğesine sonraki atama bir özel duruma neden oluyorsa, daha fazla öğe başlatılmaz (ve kalan öğelerin varsayılan değerleri olur).
 
-Bir dizi oluşturma ifadesi dizi oluşturmada bir dizi türünde öğelerle izin verir, ancak böyle bir dizinin öğeleri el ile başlatılması gerekir. Örneğin, deyim
+Dizi oluşturma ifadesi bir dizi türünün öğeleriyle bir dizinin örneklemesine izin verir, ancak bu tür bir dizinin öğeleri el ile başlatılmış olmalıdır. Örneğin, ekstresi
 ```csharp
 int[][] a = new int[100][];
 ```
-tek boyutlu bir dizi türü 100 öğelerle oluşturur `int[]`. Her öğenin ilk değer `null`. Ayrıca alt dizileri ve deyim örneği oluşturmak aynı dizi oluşturma ifadesi için mümkün değildir
+`int[]` türünde 100 öğe içeren tek boyutlu bir dizi oluşturur. Her öğenin başlangıç değeri `null` ' dır. Aynı dizi oluşturma ifadesinin alt dizileri ve deyimi de örneği oluşturması mümkün değildir
 ```csharp
 int[][] a = new int[100][5];        // Error
 ```
-bir derleme zamanı hatası sonuçlanır. Alt dizileri örneğinin bunun yerine el ile giriş olarak gerçekleştirilmelidir
+derleme zamanı hatasına neden olur. Alt dizilerin örneklenmesi bunun yerine el ile gerçekleştirilmelidir, örneğin
 ```csharp
 int[][] a = new int[100][];
 for (int i = 0; i < 100; i++) a[i] = new int[5];
 ```
 
-Dizi alt dizileri tümü aynı uzunlukta olduğunda olan "dikdörtgen" bir şekil varsa çok boyutlu bir dizi kullanmak daha verimlidir. Yukarıdaki örnekte, dizi örneğinin 101 nesneleri oluşturur — bir dış dizi ve 100 alt dizi. Buna karşılık,
+Dizi dizisinde "dikdörtgen" bir şekil varsa, bu, alt diziler aynı uzunluktadır ve çok boyutlu bir dizi kullanmak daha verimlidir. Yukarıdaki örnekte, dizi dizisinin örneklenmesi 101 nesne oluşturuyor — bir dış dizi ve 100 alt dizileri. Buna karşılık,
 ```csharp
 int[,] = new int[100, 5];
 ```
-yalnızca tek bir nesne, iki boyutlu bir dizi oluşturur ve tek bir deyimde ayırma gerçekleştirir.
+yalnızca tek bir nesne, iki boyutlu bir dizi oluşturur ve ayırmayı tek bir ifadede gerçekleştirir.
 
-Türü örtük olarak belirlenmiş dizi oluşturma örnekleri şunlardır:
+Aşağıda örtük olarak yazılmış dizi oluşturma ifadelerinin örnekleri verilmiştir:
 ```csharp
 var a = new[] { 1, 10, 100, 1000 };                       // int[]
 
@@ -1917,9 +1917,9 @@ var c = new[,] { { "hello", null }, { "world", "!" } };   // string[,]
 var d = new[] { 1, "one", 2, "two" };                     // Error
 ```
 
-Son deyim bir derleme zamanı hatası olduğundan neden ne `int` ya da `string` diğerine örtük olarak dönüştürülebilir ve bu nedenle var olmayan en sık yazın. Açıkça belirlenmiş dizi oluşturma ifadesi bu durumda, örneğin olmasını türü belirtme kullanılmalıdır `object[]`. Alternatif olarak, bir öğenin bunlar da sonra gösterilen öğe türü ortak bir taban türe, başvurusuna yayınlanabilir.
+Son ifade, `int` veya `string` örtülü olarak birbirlerine dönüştürülebilir olduğundan ve en iyi ortak tür olmadığından, derleme zamanı hatasına neden olur. Açıkça yazılmış bir dizi oluşturma ifadesinin bu durumda kullanılması gerekir, örneğin `object[]` olacak tür belirtin. Alternatif olarak, öğelerinden biri ortak bir temel türe alınabilir, bu da çıkarılan öğe türü olur.
 
-Türü örtük olarak belirlenmiş dizi oluşturma ifadeleri anonim nesne başlatıcıları birleştirilebilir ([anonim nesne oluşturma ifadeleri](expressions.md#anonymous-object-creation-expressions)) anonim olarak oluşturmak için veri yapılarını yazılı. Örneğin:
+Anonim olarak belirlenmiş veri yapıları oluşturmak için örtük olarak yazılmış dizi oluşturma ifadeleri anonim nesne başlatıcıları ([anonim nesne oluşturma ifadeleri](expressions.md#anonymous-object-creation-expressions)) ile birleştirilebilir. Örneğin:
 ```csharp
 var contacts = new[] {
     new {
@@ -1935,7 +1935,7 @@ var contacts = new[] {
 
 #### <a name="delegate-creation-expressions"></a>Temsilci oluşturma ifadeleri
 
-A *delegate_creation_expression* yeni bir örneğini oluşturmak için kullanılan bir *delegate_type*.
+Bir *delegate_type*yeni bir örneğini oluşturmak için bir *delegate_creation_expression* kullanılır.
 
 ```antlr
 delegate_creation_expression
@@ -1943,31 +1943,31 @@ delegate_creation_expression
     ;
 ```
 
-Temsilci oluşturma ifadesine bağımsız değişkeni bir yöntem grubu, anonim bir işlev veya derleme zamanı tür değeri olmalıdır `dynamic` veya *delegate_type*. Bağımsız değişken bir yöntem grubu ise, bu yöntem tanımlar ve bir örnek yöntemi temsilci oluşturmak istediğiniz bir nesne. Bağımsız değişken anonim bir işlev ise doğrudan temsilci hedef yöntem gövdesini ve parametreleri tanımlar. Bağımsız değişken bir değer ise bir kopyasını oluşturmak için bir temsilci örneğini tanımlar.
+Bir temsilci oluşturma ifadesinin bağımsız değişkeni bir yöntem grubu, anonim bir işlev veya `dynamic` ya da bir *delegate_type*derleme zamanı türünde bir değer olmalıdır. Bağımsız değişken bir yöntem grubu ise, yöntemini ve bir örnek yöntemi için, bir temsilci oluşturulacak nesneyi tanımlar. Bağımsız değişken anonim bir işlevse, temsilci hedefinin parametrelerini ve Yöntem gövdesini doğrudan tanımlar. Bağımsız değişken bir değer ise, bir kopyasını oluşturmak için bir temsilci örneğini tanımlar.
 
-Varsa *ifade* derleme zamanı türü `dynamic`, *delegate_creation_expression* dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)) ve aşağıdaki kuralları çalışma zamanı türünü kullanarak zamanında uygulanan *ifade*. Aksi takdirde kuralları, derleme zamanında uygulanır.
+*İfadede* derleme zamanı türü `dynamic` varsa, *delegate_creation_expression* dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)) ve aşağıdaki kurallar, *ifadenin*çalışma zamanı türü kullanılarak çalışma zamanında uygulanır. Aksi takdirde kurallar derleme zamanında uygulanır.
 
-Bağlama zamanı işlenmesini bir *delegate_creation_expression* formun `new D(E)`burada `D` olduğu bir *delegate_type* ve `E` olduğu bir *ifadesi* , aşağıdaki adımlardan oluşur:
+@No__t-1 biçiminde bir *delegate_creation_expression* bağlama zamanı işleme, `D` bir *delegate_type* ve `E` bir *ifadedir*, aşağıdaki adımlardan oluşur:
 
-*  Varsa `E` bir yöntem grubu olduğundan temsilci oluşturma ifadesi, bir yöntem grubu dönüştürme aynı şekilde işlenir ([yöntem grubu dönüştürmeler](conversions.md#method-group-conversions)) öğesinden `E` için `D`.
-*  Varsa `E` anonim bir işlev, temsilci oluşturma ifadesi, tıpkı bir anonim işlev dönüştürme olarak işlenir ([anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions)) gelen `E` için `D`.
-*  Varsa `E` bir değer `E` uyumlu olması gerekir ([temsilci bildirimi](delegates.md#delegate-declarations)) ile `D`, ve sonuç yeni oluşturulan bir temsilci türü başvuru `D` aynı çağrıya başvuruyor liste olarak `E`. Varsa `E` ile uyumlu olmayan `D`, bir derleme zamanı hatası oluşur.
+*  @No__t-0 bir yöntem grubu ise, temsilci oluşturma ifadesi, bir yöntem grubu dönüştürmesi ([Yöntem grubu dönüştürmeleri](conversions.md#method-group-conversions)) ile `E` ' den `D` ' e kadar aynı şekilde işlenir.
+*  @No__t-0 Anonim bir işlevse, temsilci oluşturma ifadesi, anonim işlev dönüştürmesinde ([anonim işlev dönüştürmeleri](conversions.md#anonymous-function-conversions)), `E` ' ye `D` ' e kadar aynı şekilde işlenir.
+*  @No__t-0 bir değer ise, `E` ' i `D` ile uyumlu olmalıdır ([temsilci bildirimleri](delegates.md#delegate-declarations)) ve sonuç, `E` ile aynı çağırma listesine başvuran `D` türünde yeni oluşturulmuş bir temsilciye başvurudur. @No__t-0 `D` ile uyumlu değilse, bir derleme zamanı hatası oluşur.
 
-Çalışma zamanı işlenmesini bir *delegate_creation_expression* formun `new D(E)`burada `D` olduğu bir *delegate_type* ve `E` olduğu bir *ifadesi* , aşağıdaki adımlardan oluşur:
+@No__t-1 biçiminde bir *delegate_creation_expression* çalışma zamanı işleme, `D` bir *delegate_type* ve `E` bir *ifadedir*, aşağıdaki adımlardan oluşur:
 
-*   Varsa `E` bir yöntem grubu olduğundan temsilci oluşturma ifadesi bir yöntem grubu dönüştürme olarak değerlendirilir ([yöntem grubu dönüştürmeler](conversions.md#method-group-conversions)) öğesinden `E` için `D`.
-*   Varsa `E` anonim bir işlev, temsilci oluşturma bir anonim işlev dönüştürme değerlendirmesinde `E` için `D` ([anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions)).
-*   Varsa `E` bir değeri bir *delegate_type*:
-    * `E` değerlendirilir. Bu değerlendirme bir özel durum neden olursa, başka bir adım yürütülür.
-    * Varsa değerini `E` olduğu `null`, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülür.
-    * Temsilci türüne yeni bir örneğini `D` ayrılır. Yeni bir örneğini ayırmak yeterli bellek yoksa bir `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülür.
-    * Yeni temsilci örneğini temsilci örneği tarafından verilen aynı çağırma listesiyle başlatılır `E`.
+*   @No__t-0 bir yöntem grubu ise, temsilci oluşturma ifadesi, `E` ' den `D` ' e bir yöntem grubu dönüştürmesi ([Yöntem grubu dönüştürmeleri](conversions.md#method-group-conversions)) olarak değerlendirilir.
+*   @No__t-0 Anonim bir işlevse, temsilci oluşturma, `E` ' den `D` ' ye ([anonim işlev dönüştürmeleri](conversions.md#anonymous-function-conversions)) anonim işlev dönüştürmesi olarak değerlendirilir.
+*   @No__t-0 bir *delegate_type*değeridir:
+    * `E` değerlendirilir. Bu değerlendirme bir özel duruma neden olursa başka bir adım yürütülmez.
+    * @No__t-0 değeri `null` ise, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülmez.
+    * @No__t-0 temsilci türünün yeni bir örneği ayrıldı. Yeni örneği ayırmak için yeterli kullanılabilir bellek yoksa, `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülmez.
+    * Yeni temsilci örneği, `E` tarafından verilen temsilci örneğiyle aynı çağırma listesiyle başlatılır.
 
-Temsilci örneği ve ardından tüm temsilci ömrü boyunca sabit mi kaldığını bir temsilcinin çağırma listesi belirlenir. Diğer bir deyişle, oluşturulduktan sonra bir temsilcinin hedef çağrılabilir varlıkları değiştirmek mümkün değildir. Ne zaman iki temsilci olduğunda birleştirilir veya bir kaldırıldı diğerinden ([temsilci bildirimi](delegates.md#delegate-declarations)), yeni bir temsilci sonuçlanır; varolan bir temsilci değiştirilen içeriğini sahip.
+Temsilcinin çağırma listesi, temsilcinin örneklendiği zaman belirlenir ve sonra temsilcinin tüm ömrü boyunca sabit kalır. Diğer bir deyişle, oluşturulduktan sonra bir temsilcinin hedef çağrılabilir varlıklarını değiştirmek mümkün değildir. İki temsilci birleştirildiğinde veya bir diğeri ([temsilci bildirimlerinden](delegates.md#delegate-declarations)) kaldırıldığında, yeni bir temsilci oluşur; Mevcut temsilcinin içeriği değiştirilmedi.
 
-Bir özellik, dizin oluşturucu, kullanıcı tanımlı işleç, örnek oluşturucusu, yok Edicisi veya statik Oluşturucu başvuran bir temsilci oluşturmak mümkün değildir.
+Bir özellik, Dizin Oluşturucu, Kullanıcı tanımlı işleç, örnek Oluşturucu, yıkıcı veya statik oluşturucuya başvuran bir temsilci oluşturmak mümkün değildir.
 
-Bir temsilci yukarıda açıklandığı gibi bir yöntem grubu, biçimsel parametre listesi oluşturulduğunda ve temsilcinin dönüş türü, seçmek için aşırı yüklenmiş yöntemler belirleyin. Örnekte
+Yukarıda açıklandığı gibi, bir yöntem grubundan bir temsilci oluşturulduğunda, temsilci 'nin biçimsel parametre listesi ve dönüş türü, ne tür aşırı yüklenmiş yöntemlerin ekleneceğini belirleyin. Örnekte
 ```csharp
 delegate double DoubleFunc(double x);
 
@@ -1984,11 +1984,11 @@ class A
     }
 }
 ```
-`A.f` alan ikinci başvuran bir temsilci ile başlatılan `Square` yöntemi yöntemin dönüş türünü ve biçimsel parametre listesi tam olarak eşleştiğinden `DoubleFunc`. İkinci vardı `Square` yöntemi yüklenmemiş değil, bir derleme zamanı hatası oluşmuş.
+`A.f` alanı, ikinci `Square` yöntemine başvuran bir temsilciyle başlatılır çünkü bu yöntem, biçimsel parametre listesi ve dönüş türü `DoubleFunc` ' dir. İkinci `Square` metodu yoktu, derleme zamanı hatası oluşmuş olabilir.
 
 #### <a name="anonymous-object-creation-expressions"></a>Anonim nesne oluşturma ifadeleri
 
-Bir *anonymous_object_creation_expression* anonim bir türün bir nesne oluşturmak için kullanılır.
+Anonim türdeki bir nesne oluşturmak için bir *anonymous_object_creation_expression* kullanılır.
 
 ```antlr
 anonymous_object_creation_expression
@@ -2013,11 +2013,11 @@ member_declarator
     ;
 ```
 
-Anonim nesne Başlatıcı, anonim bir tür bildirir ve o türün örneğini döndürür. Anonim bir tür doğrudan devralan bir adsız sınıf türüdür `object`. Anonim bir tür, türün bir örneğini oluşturmak için kullanılan anonim nesne başlatıcısından algılanan salt okunur özellikler bir dizi üyeleridir. Özellikle, anonim nesne Başlatıcı form
+Anonim bir nesne Başlatıcısı, anonim bir tür bildirir ve bu türün bir örneğini döndürür. Anonim tür, doğrudan `object` ' dan devralan isimsiz bir sınıf türüdür. Anonim bir türün üyeleri, türünün bir örneğini oluşturmak için kullanılan anonim nesne başlatıcıdan çıkarılan salt okunurdur salt yazılır özelliklerden oluşan bir dizidir. Özellikle, formun anonim nesne Başlatıcısı
 ```csharp
 new { p1 = e1, p2 = e2, ..., pn = en }
 ```
-Formun anonim bir tür bildirir
+formun anonim türünü bildirir
 ```csharp
 class __Anonymous1
 {
@@ -2042,11 +2042,11 @@ class __Anonymous1
     public override int GetHashCode() { ... }
 }
 ```
-Burada her `Tx` karşılık gelen ifade türü `ex`. İçinde kullanılan ifade bir *member_declarator* bir türü olmalıdır. Bu nedenle, bir ifade için bir derleme zamanı hatası olduğu bir *member_declarator* null veya anonim bir işlevdir. Ayrıca bir derleme zamanı hatası güvenli olmayan bir tür için ifadeyi için bir hizmettir.
+Her `Tx`, karşılık gelen `ex` ifadesinin türüdür. Bir *member_declarator* içinde kullanılan ifadenin türü olmalıdır. Bu nedenle, *member_declarator* içindeki bir ifadenin null veya anonim bir işlev olması için derleme zamanı hatası vardır. Ayrıca, ifadenin güvenli olmayan bir türü olması için derleme zamanı hatası da vardır.
 
-Anonim bir türün ve parametre adlarını kendi `Equals` yöntemi derleyici tarafından otomatik olarak oluşturulur ve program metni başvurulamaz.
+Anonim bir türün ve parametresinin `Equals` yöntemine ait adları otomatik olarak derleyici tarafından oluşturulur ve program metninde başvurulamaz.
 
-Aynı programın içinde aynı sırada aynı adları ve derleme zamanı türü özellikleri dizisi belirtin iki anonim nesne başlatıcıları aynı anonim türün örneğini oluşturur.
+Aynı programda aynı ada ve derleme zamanı türlerine sahip bir özellikler dizisini belirten iki anonim nesne başlatıcıları aynı şekilde aynı anonim türde örnekler oluşturacaktır.
 
 Örnekte
 ```csharp
@@ -2054,26 +2054,26 @@ var p1 = new { Name = "Lawnmower", Price = 495.00 };
 var p2 = new { Name = "Shovel", Price = 26.95 };
 p1 = p2;
 ```
-son satırı atamaya izin `p1` ve `p2` anonim türleri aynı.
+`p1` ve `p2` aynı anonim türde olduğundan, son satırdaki atamaya izin verilir.
 
-`Equals` Ve `GetHashcode` anonim türlerde geçersiz kılma yöntemleri devralınan yöntemleri `object`, açısından tanımlanan `Equals` ve `GetHashcode` özelliklerinin iki örneği aynı anonim tür eşit olacak şekilde, ve yalnızca bunların tüm özelliklerini eşitse.
+Anonim türlerdeki `Equals` ve `GetHashcode` yöntemleri `object` ' den devralınan yöntemleri geçersiz kılar ve özelliklerin `Equals` ve `GetHashcode` ' de tanımlanır. böylece, aynı anonim türdeki iki örnek yalnızca tüm özellikleri sıfıra.
 
-Basit bir ad üye bildirimcisi kısaltılmış ([anlam çıkarma](expressions.md#type-inference)), üye erişimi ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), bir taban erişim ([temel erişim](expressions.md#base-access)) ya da bir üyesi null koşullu erişim ([projeksiyon başlatıcılar olarak Null koşullu ifadeler](expressions.md#null-conditional-expressions-as-projection-initializers)). Bu adlı bir ***projeksiyon Başlatıcı*** ve aynı ada sahip bir özellik ataması ve bildirimi için toplu özelliktir. Özellikle, üye bildirimcilerde formları
+Bir üye bildirimci basit bir ada ([tür çıkarımı](expressions.md#type-inference)), bir üye erişimini ([dinamik aşırı yükleme çözümlemesi için derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), temel erişim ([temel erişim](expressions.md#base-access)) veya null koşullu üye erişimini kısaltılabilir ([ Yansıtma başlatıcıları olarak null Koşullu ifadeler](expressions.md#null-conditional-expressions-as-projection-initializers)). Bu, ***projeksiyon başlatıcısı*** olarak adlandırılır ve aynı ada sahip bir özelliğe bir bildirim ve atama için toplu bir özelliktir. Özellikle, formların üye bildirimcileri
 ```csharp
 identifier
 expr.identifier
 ```
-sırasıyla aşağıdaki tam olarak eşdeğerdir:
+sırasıyla aşağıdaki gibi tam olarak eşdeğerdir:
 ```csharp
 identifier = identifier
 identifier = expr.identifier
 ```
 
-Bu nedenle, projeksiyon başlatıcısında *tanımlayıcı* hem değer ve alan veya özellik değeri atanır seçer. Sezgisel, yalnızca bir değer, aynı zamanda değerin adını bir projeksiyon Başlatıcısı yansıtıyor.
+Bu nedenle, bir projeksiyon başlatıcısında *tanımlayıcı* hem değeri hem de değerin atandığı alanı veya özelliği seçer. Bir projeksiyon başlatıcısı projesi yalnızca bir değer değil, aynı zamanda değerin adı değildir.
 
 ### <a name="the-typeof-operator"></a>Typeof işleci
 
-`typeof` Elde etmek için kullanılan işleci `System.Type` nesne türü.
+@No__t-0 işleci, bir tür için `System.Type` nesnesini elde etmek için kullanılır.
 
 ```antlr
 typeof_expression
@@ -2097,19 +2097,19 @@ comma
     ;
 ```
 
-İlk formu *typeof_expression* oluşan bir `typeof` tarafından bir parantez içine alınmış anahtar sözcüğünü *türü*. Bu formu, bir ifadenin sonucu `System.Type` belirtilen tür için nesnesi. Yalnızca bir tane `System.Type` herhangi bir türü için nesne. Bir tür için buna `T`, `typeof(T) == typeof(T)` her zaman doğrudur. *Türü* olamaz `dynamic`.
+İlk *typeof_expression* biçimi `typeof` anahtar sözcükten ve sonra parantez içine alınmış bir *tür*ile oluşur. Bu formun bir ifadesinin sonucu, belirtilen tür için `System.Type` nesnesidir. Verilen herhangi bir tür için yalnızca bir `System.Type` nesnesi vardır. Bu, bir @ no__t-0, `typeof(T) == typeof(T)` türü için her zaman doğru olduğu anlamına gelir. *Tür* `dynamic` olamaz.
 
-İkinci form, *typeof_expression* oluşan bir `typeof` tarafından bir parantez içine alınmış anahtar sözcüğünü *unbound_type_name*. Bir *unbound_type_name* çok benzer bir *type_name* ([Namespace ve tür adları](basic-concepts.md#namespace-and-type-names)) dışında bir *unbound_type_name* içerir *generic_dimension_specifier*s burada bir *type_name* içeren *type_argument_list*s. Zaman işleneni bir *typeof_expression* hem de yapılarının dilbilgisi karşılayan belirteçler dizisidir *unbound_type_name* ve *type_name*, yani zaman içeriyor ne bir *generic_dimension_specifier* ya da bir *type_argument_list*, bir dizi belirteçleri olarak kabul edilir bir *type_name*. Anlamı bir *unbound_type_name* şu şekilde belirlenir:
+*Typeof_expression* ikinci biçimi `typeof` anahtar sözcükten ve sonra parantez içine alınmış bir *unbound_type_name*oluşur. Bir *unbound_type_name* *type_name* ([ad alanı ve tür adları](basic-concepts.md#namespace-and-type-names)), bir *unbound_type_name* , *type_name içeren* *generic_dimension_specifier* *s içerir. argument_list*s. Bir *typeof_expression* işleneni, hem *unbound_type_name* hem de *type_name*, her ikisi de ne bir *generic_dimension_specifier* ne de bir type_argument içerdiğinde bir belirteç dizisi olduğunda  *_liste*, belirteçlerin sırası bir *type_name*olarak kabul edilir. Bir *unbound_type_name* anlamı aşağıdaki şekilde belirlenir:
 
-*  Belirteçleri için bir dizi dönüştürme bir *type_name* her değiştirerek *generic_dimension_specifier* ile bir *type_argument_list* virgül aynı sayıda olması ve anahtar sözcüğü `object` her *type_argument*.
-*  Ortaya çıkan değerlendirmek *type_name*, çalışırken tüm tür parametresi kısıtlamaları yoksayılıyor.
-*  *Unbound_type_name* sonuç olarak oluşturulan tür ile ilişkili ilişkisiz genel tür çözümler ([bağlı ve türleri ilişkisiz](types.md#bound-and-unbound-types)).
+*  Her bir *generic_dimension_specifier* ile aynı sayıda virgül içeren bir *type_argument_list* ve her bir *type_argument*için `object` anahtar sözcüğünü değiştirerek, belirteçlerin dizisini bir *type_name* dönüştürün.
+*  Tüm tür parametresi kısıtlamalarını yoksayarak elde edilen *type_name*değerlendirin.
+*  *Unbound_type_name* , ortaya çıkan oluşturulan türle ilişkili ilişkisiz genel tür ([bağlı ve ilişkisiz türler](types.md#bound-and-unbound-types)) ile çözümlenir.
 
-Sonucu *typeof_expression* olduğu `System.Type` genel tür ilişkisiz sonuç nesnesi.
+*Typeof_expression* sonucu, sonuçta elde edilen ilişkisiz genel tür için `System.Type` nesnesidir.
 
-Üçüncü biçiminde *typeof_expression* oluşan bir `typeof` tarafından bir parantez içine alınmış anahtar sözcüğünü `void` anahtar sözcüğü. Bu formu, bir ifadenin sonucu `System.Type` devamsızlık türü temsil eden nesne. Tarafından döndürülen tür nesnesi `typeof(void)` herhangi bir türü için döndürülen tür nesneden farklıdır. Burada bu yöntem istediğiniz örneğiyle birlikte void yöntemleri dahil olmak üzere herhangi bir yöntem dönüş türünü temsil eden bir yöntemden faydalanabilir yansıma yöntemleri üzerine olanak dilde sınıf kitaplıkları bu özel türü nesne yararlıdır `System.Type`.
+Üçüncü *typeof_expression* biçimi `typeof` anahtar sözcüğünden ve sonra parantez içinde `void` anahtar sözcüğüyle oluşur. Bu formun bir ifadesinin sonucu, bir türün yokluğunu temsil eden `System.Type` nesnesidir. @No__t-0 tarafından döndürülen tür nesnesi herhangi bir tür için döndürülen tür nesnesinden farklıdır. Bu özel tür nesnesi, dildeki yöntemlere izin veren sınıf kitaplıklarında yararlıdır; burada, bu yöntemlerin, `System.Type` örneğiyle void yöntemler de dahil olmak üzere herhangi bir yöntemin dönüş türünü temsil etmek için bir yol olmasını ister.
 
-`typeof` İşleci bir tür parametresinde kullanılabilir. Sonuç `System.Type` tür parametresine bağlanan çalışma zamanı türü için nesne. `typeof` İşleci, aynı zamanda oluşturulmuş bir türü veya ilişkisiz bir genel tür üzerinde kullanılabilir ([bağlı ve türleri ilişkisiz](types.md#bound-and-unbound-types)). `System.Type` İlişkisiz bir genel tür ile aynı değil nesne `System.Type` örneği türündeki nesne. Bu nedenle, her zaman olduğu kapalı bir oluşturulmuş tür çalışma zamanında örnek türü kendi `System.Type` nesne bağlıdır kullanın, çalışma zamanı tür bağımsız değişkenlerde ilişkisiz genel tür hiçbir tür bağımsız değişkenleri sahipken.
+@No__t-0 işleci bir tür parametresinde kullanılabilir. Sonuç, tür parametresine bağlanan çalışma zamanı türü için `System.Type` nesnesidir. @No__t-0 işleci, oluşturulmuş bir tür veya ilişkisiz genel tür ([bağlı ve ilişkisiz türler](types.md#bound-and-unbound-types)) üzerinde de kullanılabilir. İlişkisiz genel tür için `System.Type` nesnesi, örnek türünün `System.Type` nesnesiyle aynı değildir. Örnek türü her zaman çalışma zamanında bir kapalı oluşturulmuş türdür, `System.Type` nesnesi kullanımda olan çalışma zamanı türü bağımsız değişkenlerine bağlıdır, ancak ilişkisiz genel türün tür bağımsız değişkenleri yoktur.
 
 Örnek
 ```csharp
@@ -2142,8 +2142,8 @@ class Test
     }
 }
 ```
-aşağıdaki çıktıyı üretir:
-```
+Aşağıdaki çıktıyı üretir:
+```console
 System.Int32
 System.Int32
 System.String
@@ -2155,13 +2155,13 @@ X`1[X`1[System.Int32]]
 X`1[T]
 ```
 
-Unutmayın `int` ve `System.Int32` aynı türdedir.
+@No__t-0 ve `System.Int32` ' in aynı türde olduğunu unutmayın.
 
-Ayrıca sonucunu `typeof(X<>)` tür bağımsız değişkeni ancak sonucu benzemez `typeof(X<T>)` yapar.
+Ayrıca, `typeof(X<>)` ' nın sonucunun tür bağımsız değişkenine bağımlı olmadığına, ancak `typeof(X<T>)` ' in sonucunu unutmayın.
 
 ### <a name="the-checked-and-unchecked-operators"></a>Checked ve unchecked işleçleri
 
-`checked` Ve `unchecked` işleçleri denetlemek için kullanılan ***taşma denetimi bağlamını*** Tamsayı türünde aritmetik işlemler ve dönüştürmeler için.
+@No__t-0 ve `unchecked` işleçleri, tam sayı türü aritmetik işlemler ve dönüştürmeler için ***taşma denetimi bağlamını*** denetlemek üzere kullanılır.
 
 ```antlr
 checked_expression
@@ -2173,27 +2173,27 @@ unchecked_expression
     ;
 ```
 
-`checked` İşleci denetlenen bir bağlamda kapsanan ifadeyi değerlendirir ve `unchecked` işleci işaretlenmemiş bir bağlamda kapsanan ifadeyi değerlendirir. A *checked_expression* veya *unchecked_expression* tam olarak karşılık gelen bir *parenthesized_expression* ([parantezliifade](expressions.md#parenthesized-expressions)) dışında verilen taşma denetimi bağlamını kapsanan ifade değerlendirilir.
+@No__t-0 işleci içerilen ifadeyi işaretlenmiş bir bağlamda değerlendirir ve `unchecked` işleci, içerilen ifadeyi işaretlenmemiş bir bağlamda değerlendirir. Bir *checked_expression* veya *unchecked_expression* , içerilen ifadenin verilen taşma Denetim bağlamı içinde değerlendirilmesinden bağımsız olarak, bir *parenthesized_expression* ([parantez içine alınmış ifadelerde](expressions.md#parenthesized-expressions)) öğesine karşılık gelir .
 
-İçerik denetleme taşma ayrıca aracılığıyla denetlenebilir `checked` ve `unchecked` deyimleri ([checked ve unchecked deyimleri](statements.md#the-checked-and-unchecked-statements)).
+Taşma Denetim bağlamı `checked` ve `unchecked` deyimleri ([Checked ve unchecked deyimleri](statements.md#the-checked-and-unchecked-statements)) aracılığıyla da denetlenebilir.
 
-Aşağıdaki işlemleri tarafından kurulan bağlam taşma etkilenen `checked` ve `unchecked` işleçler ve deyimler:
+Aşağıdaki işlemler `checked` ve `unchecked` işleçleri ve deyimleri tarafından oluşturulan taşma denetimi bağlamından etkilenir:
 
-*  Önceden tanımlanmış `++` ve `--` birli işleçleri ([sonek arttırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators) ve [önek arttırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)), işlenen integral olduğunda yazın.
-*  Önceden tanımlanmış `-` birli işleç ([birli eksi işleci](expressions.md#unary-minus-operator)), işlenen bir tamsayı türünde olduğunda.
-*  Önceden tanımlanmış `+`, `-`, `*`, ve `/` ikili işleçler ([aritmetik işleçler](expressions.md#arithmetic-operators)), her iki işlenen de integral türleridir.
-*  Açık sayısal Dönüşümler ([açık sayısal dönüşümler](conversions.md#explicit-numeric-conversions)) bir integral türünden başka bir integral türüne veya gelen `float` veya `double` bir integral türü.
+*  Ön tanımlı `++` ve `--` Birli İşleçler ([sonek artırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators) ve [ön ek artırma ve azaltma işleçleri](expressions.md#prefix-increment-and-decrement-operators)), işlenen bir integral türüdür.
+*  Ön tanımlı `-` birli işleç ([birli eksi işleci](expressions.md#unary-minus-operator)), işlenen bir integral türüdür.
+*  Ön tanımlı `+`, `-`, `*` ve `/` ikili işleçler ([Aritmetik işleçler](expressions.md#arithmetic-operators)), her iki işlenen de İntegral türleridir.
+*  Tek bir integral türünden başka bir integral türüne veya `float` veya `double` ' den integral türüne açık sayısal dönüştürmeler ([Açık sayısal dönüştürmeler](conversions.md#explicit-numeric-conversions)).
 
-Ne zaman yukarıdaki işlemlerden biri hedef türü, işlemi gerçekleştirilen denetimler olduğu bağlam sonuç davranışına temsil etmek için çok büyük bir sonuç üreten:
+Yukarıdaki işlemlerden biri hedef türünde temsil etmek için çok büyük bir sonuç üretdüğünde, işlemin gerçekleştirildiği bağlam, sonuçta elde edilen davranışı denetler:
 
-*  İçinde bir `checked` bağlamı, işlemi bir sabit ifade ise ([sabit ifadeler](expressions.md#constant-expressions)), bir derleme zamanı hatası oluşur. Aksi durumda, çalışma zamanında, işlemi gerçekleştirilirken bir `System.OverflowException` oluşturulur.
-*  İçinde bir `unchecked` bağlamı, sonucu, hedef türüne uygun değil herhangi bir yüksek sıra bitleri atarak kısaltılır.
+*  @No__t-0 bağlamında, işlem sabit bir ifadesiyse ([sabit ifadeler](expressions.md#constant-expressions)), bir derleme zamanı hatası oluşur. Aksi takdirde, işlem çalışma zamanında gerçekleştirildiğinde, bir `System.OverflowException` oluşturulur.
+*  @No__t-0 bağlamında, sonuç, hedef türüne sığmayan yüksek sıralı bitleri atarak kesilir.
 
-Sabit olmayan ifade (çalışma zamanında değerlendirilir ifadeleri) değil içine alınan göre `checked` veya `unchecked` işleçleri deyimleri, bağlam varsayılan taşma mi `unchecked` (derleyici gibi dış etkenler sürece anahtarlar ve yürütme ortamı yapılandırması) arama `checked` değerlendirme.
+Herhangi bir `checked` veya `unchecked` işleci veya deyimi tarafından kullanılmayan sabit olmayan ifadeler (çalışma zamanında değerlendirilen ifadeler) için @no__t, dış faktörler (örneğin, derleyici anahtarları ve yürütme ortamı yapılandırması) `checked` değerlendirmesi çağrısı.
 
-(Tam olarak derleme zamanında değerlendirilebilen ifadeleri) sabit ifadeler için bağlam varsayılan taşma her zaman olduğu `checked`. Sabit bir ifade açıkça yerleştirilir sürece bir `unchecked` içerik, ifade her zaman derleme zamanı değerlendirmesi sırasında gerçekleşen taşıyor, derleme zamanı hatalarına neden olabilir.
+Sabit ifadeler (derleme zamanında tam olarak değerlendirilebilecek ifadeler) için, varsayılan taşma denetimi bağlamı her zaman `checked` ' dır. Sabit bir ifade `unchecked` bağlamına açık bir şekilde yerleştirilmediği için, ifadenin derleme zamanı değerlendirmesi sırasında oluşan taşmalar her zaman derleme zamanı hatalarına neden olur.
 
-Anonim bir işlev gövdesini etkilenmez `checked` veya `unchecked` anonim işlev gerçekleştiği bağlamı.
+Anonim işlevin gövdesi, anonim işlevin gerçekleştiği `checked` veya `unchecked` bağlamlarından etkilenmez.
 
 Örnekte
 ```csharp
@@ -2215,7 +2215,7 @@ class Test
     }
 }
 ```
-Hiçbiri bir ifadenin derleme zamanında değerlendirilebilen bu yana herhangi bir derleme zamanı hata bildirilir. Çalışma zamanında, `F` yöntem bir `System.OverflowException`ve `G` yöntemi-727379968 (aralık dışı sonuç alt 32 bit) döndürür. Davranışını `H` yöntemi, derleme için içerik denetimi varsayılan taşma bağlıdır, ancak aynı olan `F` veya aynı `G`.
+hiçbir deyimin hiçbiri derleme zamanında değerlendirilemediğinden, derleme zamanı hataları bildirilmemiştir. Çalışma zamanında, `F` yöntemi bir `System.OverflowException` oluşturur ve `G` yöntemi-727379968 döndürür (Aralık dışı sonucun alt 32 bitleri). @No__t-0 yönteminin davranışı, derleme için varsayılan taşma denetimi bağlamına bağlıdır, ancak `F` ile aynı ya da `G` ile aynı olur.
 
 Örnekte
 ```csharp
@@ -2237,9 +2237,9 @@ class Test
     }
 }
 ```
-Sabit ifadelerde değerlendirirken oluşan taşıyor `F` ve `H` ifadeler değerlendirilir çünkü bildirilmesini derleme zamanı hatalarına neden bir `checked` bağlamı. Taşma Sabit ifadede değerlendirirken gerçekleşir `G`, ancak değerlendirme gerçekleştikten sonra bir `unchecked` bağlamı taşma bildirilmedi.
+`F` ' da sabit ifadeler değerlendirilirken oluşan taşmalar ve `H`, ifadeler bir `checked` bağlamında değerlendirildiğinden derleme zamanı hatalarının raporlanmasına neden olur. @No__t-0 ' da sabit ifade değerlendirilirken bir taşma meydana gelir, ancak değerlendirme bir `unchecked` bağlamında gerçekleşdiğinden taşma bildirilmedi.
 
-`checked` Ve `unchecked` işleçler yalnızca metin içeriğini eklemek bulunan bu işlemler için bağlam taşma etkiler "`(`"ve"`)`" belirteçleri. İşleçler, kapsanan ifade değerlendirme sonucu olarak çağrılan işlev üyeleri üzerinde etkisi yoktur. Örnekte
+@No__t-0 ve `unchecked` işleçleri yalnızca "`(`" ve "`)`" belirteçlerinde bulunan metin içeriğini eklemek bu işlemler için taşma denetimi bağlamını etkiler. İşleçler, içerilen ifadenin hesaplanmasının sonucu olarak çağrılan işlev üyelerini etkilemez. Örnekte
 ```csharp
 class Test
 {
@@ -2252,9 +2252,9 @@ class Test
     }
 }
 ```
-kullanımını `checked` içinde `F` değerlendirmesi etkilemez `x * y` içinde `Multiply`, bu nedenle `x * y` varsayılan taşma denetimi bağlamını değerlendirilir.
+`F` ' de `checked` kullanımı, `Multiply` ' teki `x * y` ' nin değerlendirilmesini etkilemez, bu nedenle `x * y` varsayılan taşma denetimi bağlamında değerlendirilir.
 
-`unchecked` İşleci, işaretli integral türlerindeki sabitleri onaltılık gösterimde yazarken kullanışlıdır. Örneğin:
+@No__t-0 işleci, işaretli integral türlerinin sabitlerini onaltılık gösterimde yazarken kullanışlıdır. Örneğin:
 ```csharp
 class Test
 {
@@ -2264,13 +2264,13 @@ class Test
 }
 ```
 
-Yukarıdaki onaltılık sabitler her ikisi de türlerinin `uint`. Sabitler dışında olduğundan `int` olmadan aralığı `unchecked` işleç, yayınlar için `int` derleme zamanı hataya neden.
+Yukarıdaki onaltılık sabitlerin her ikisi de `uint` türündedir. Sabitler `int` aralığının dışında olduğundan, `unchecked` işleci olmadan `int` ' ye yapılan yayınlar derleme zamanı hataları oluşturur.
 
-`checked` Ve `unchecked` işleçler ve ifadeler programcılar bazı sayısal hesaplamalar belirli yönlerini denetlemek izin verin. Ancak, bazı sayısal işleçlerin davranışını işlenenlerini veri türlerine bağlıdır. Örneğin, her zaman iki ondalık basamak çarparak sonuçlanıyor bir özel durum taşmada bile içinde bir açıkça `unchecked` oluşturun. Benzer şekilde, iki çarparak hiçbir zaman sonuçları bir özel durum taşmada bile içinde gezinen bir açıkça `checked` oluşturun. Ayrıca, diğer işleçlerin Denetleme modu tarafından hiçbir zaman etkilenir, yoksa varsayılan veya açık.
+@No__t-0 ve `unchecked` işleçleri ve deyimleri, programcıların bazı sayısal hesaplamaların belirli yönlerini denetlemesine olanak tanır. Ancak, bazı sayısal işleçlerin davranışı işlenenlerinin veri türlerine bağlıdır. Örneğin, iki ondalıkın çarpılması her zaman açık bir `unchecked` yapısı içinde bile taşma üzerinde bir özel durumla sonuçlanır. Benzer şekilde, iki kayan noktalı çarpma, açıkça `checked` yapısı içinde bile taşma üzerinde hiçbir şekilde neden olmaz. Ayrıca, diğer işleçler, varsayılan veya açık olsun denetim modundan hiçbir şekilde etkilenmez.
 
 ### <a name="default-value-expressions"></a>Varsayılan değer ifadeleri
 
-Varsayılan değeri elde etmek için kullanılan bir varsayılan değer ifadesi ([varsayılan değerler](variables.md#default-values)) türü. Genellikle bir varsayılan değer ifadesi türü parametre bir değer türü veya bir başvuru türü ise, bilinmeyebilir beri tür parametreleri için kullanılır. (Öğesinden dönüştürme var `null` tür parametresi olarak bir başvuru türü bilinen sürece sabit bir tür parametresine.)
+Varsayılan değer ifadesi bir türün varsayılan değerini ([varsayılan değerler](variables.md#default-values)) almak için kullanılır. Tür parametresi bir değer türü veya bir başvuru türü ise, genellikle varsayılan değer ifadesi tür parametreleri için kullanılır. (Tür parametresi bir başvuru türü olarak bilinmediği takdirde, `null` değişmez değerinde bir tür parametresine dönüştürme yok.)
 
 ```antlr
 default_value_expression
@@ -2278,14 +2278,14 @@ default_value_expression
     ;
 ```
 
-Varsa *türü* içinde bir *default_value_expression* değerlendirir çalışma zamanında bir başvuru türü için sonucudur `null` bu türe dönüştürülüp. Varsa *türü* içinde bir *default_value_expression* değerlendirir çalışma zamanında bir değer türüne, sonucudur *value_type*ait varsayılan değer ([varsayılan Oluşturucular](types.md#default-constructors)).
+Bir *default_value_expression* içindeki *tür* çalışma zamanında bir başvuru türüne değerlendirilirse, sonuç `null` bu türe dönüştürülür. Bir *default_value_expression* içindeki *tür* çalışma zamanında bir değer türüne değerlendirilirse sonuç, *value_type*'in varsayılan değeridir ([Varsayılan oluşturucular](types.md#default-constructors)).
 
-A *default_value_expression* sabit ifade ([sabit ifadeler](expressions.md#constant-expressions)) türü bir başvuru türü veya bir başvuru türü olarak bilinen bir tür parametresi ise ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)). Ayrıca, bir *default_value_expression* sabit bir ifade türü aşağıdaki değer türlerinden biri ise: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, `decimal`, `bool`, ya da herhangi bir numaralandırma türü.
+Tür bir başvuru türü veya başvuru türü olarak bilinen bir tür parametresi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) ise, bir *default_value_expression* sabit ifadedir ([sabit ifadeler](expressions.md#constant-expressions)). Ayrıca, tür şu değer türlerinden biri ise, *default_value_expression* sabit bir ifadedir: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, 0, 1, 2, 3 ya da herhangi bir numaralandırma türü.
 
 
-### <a name="nameof-expressions"></a>Nameof ifadeleri
+### <a name="nameof-expressions"></a>NameOf ifadeleri
 
-A *nameof_expression* bir program varlık olarak bir sabit dize adını almak için kullanılır.
+Bir *nameof_expression* , bir program varlığının adını sabit bir dize olarak almak için kullanılır.
 
 ```antlr
 nameof_expression
@@ -2306,29 +2306,29 @@ named_entity_target
     ;
 ```
 
-Dilbilgisi bakımından Konuşmayı *named_entity* işlenen, her zaman bir ifade. Çünkü `nameof` ayrılmış bir anahtar sözcük olmayan bir nameof ifade her zaman basit bir ad ile bir çağrı sözdizimi kurallarına göre belirsiz `nameof`. Ad arama, uyumluluk nedenleriyle ([basit adları](expressions.md#simple-names)) adını `nameof` başarılı, ifade olarak işlenir bir *invocation_expression* --çağırma olmasına bakılmaksızın yasal. Aksi durumda olduğu bir *nameof_expression*.
+Dilbilgisi, *named_entity* işleneni her zaman bir ifadedir. @No__t-0, ayrılmış bir anahtar sözcük olmadığından, bir NameOf ifadesi her zaman sözdizimsel olarak basit ad olan `nameof` ' i çağırmayla belirsizdir. Uyumluluk nedenleriyle `nameof` adının bir ad araması ([basit adlar](expressions.md#simple-names)) başarılı olursa, çağrının yasal olup olmamasına bakılmaksızın ifade *invocation_expression* olarak değerlendirilir. Aksi halde, bir *nameof_expression*.
 
-Anlamını *named_entity* , bir *nameof_expression* Bunu anlamı; ifade olarak olarak diğer bir deyişle, ya da bir *simple_name*, *base_access*  veya *member_access*. Bununla birlikte, burada arama açıklanan [basit adları](expressions.md#simple-names) ve [üye erişimi](expressions.md#member-access) bir örnek üye statik bir bağlamda bulunamadığı için hatayla sonuçlanır bir *nameof_expression*böyle bir hata oluşturur.
+Bir *nameof_expression* 'ın *named_entity* anlamı, ifadenin anlamı olarak ifade edilir; Yani, bir *simple_name*, *base_access* ya da *member_access*olarak. Ancak, [basit adlarda](expressions.md#simple-names) ve [üye erişimlerinde](expressions.md#member-access) açıklanan aramanın bir hata ile sonuçlandığı, bir örnek üyesi statik bir bağlamda bulunduğu için, bir *nameof_expression* böyle bir hata üretir.
 
-Bir derleme zamanı hata için bir *named_entity* atamak için bir yöntem grubu bir *type_argument_list*. Bir derleme zamanı hata için bir *named_entity_target* türünün `dynamic`.
+Bir yöntem grubunu bir *type_argument_list*sahip olacak şekilde belirlemek bir *named_entity* için derleme zamanı hatasıdır. Bir *named_entity_target* `dynamic` türünde olması için derleme zamanı hatasıdır.
 
-A *nameof_expression* sabit ifade türü `string`, ve çalışma zamanında hiçbir etkisi olmaz. Özellikle, kendi *named_entity* değerlendirilmez ve belirli atama onayına analiz amacıyla göz ardı edilir ([basit ifadeler için genel kurallar](variables.md#general-rules-for-simple-expressions)). Değerini son tanımlayıcısıdır *named_entity* isteğe bağlı son önce *type_argument_list*, aşağıdaki şekilde dönüştürülmüş:
+*Nameof_expression* , `string` türünde sabit bir ifadedir ve çalışma zamanında hiçbir etkiye sahip değildir. Özellikle, *named_entity* değerlendirilmez ve kesin atama analizinin ([basit ifadeler için genel kurallar](variables.md#general-rules-for-simple-expressions)) amaçları doğrultusunda yok sayılır. Değeri, isteğe bağlı son *type_argument_list*öncesindeki *named_entity* 'in son tanımlayıcısıdır ve aşağıdaki şekilde dönüştürülür:
 
-* Önek "`@`", kullandıysanız kaldırılır.
-* Her *unicode_escape_sequence* , karşılık gelen bir Unicode karakter dönüştürülür.
-* Tüm *formatting_characters* kaldırılır.
+* "`@`" Kullanılırsa, ' "öneki kaldırılır.
+* Her *unicode_escape_sequence* karşılık gelen Unicode karakteriyle dönüştürülür.
+* Herhangi bir *formatting_characters* kaldırılır.
 
-Uygulanan aynı dönüştürmeleri bunlar [tanımlayıcıları](lexical-structure.md#identifiers) tanımlayıcıları arasındaki test ederken.
+Bunlar, tanımlayıcılar arasında eşitlik test edilirken [tanımlayıcılarla](lexical-structure.md#identifiers) uygulanan dönüşümlerdir.
 
 TODO: örnekler
 
 ### <a name="anonymous-method-expressions"></a>Anonim yöntem ifadeleri
 
-Bir *anonymous_method_expression* anonim bir işlevdir tanımlamanın iki yollarından biridir. Bunlar daha ayrıntılı açıklanmıştır [anonim işlev ifadeleri](expressions.md#anonymous-function-expressions).
+Bir *anonymous_method_expression* , anonim bir işlevi tanımlamanın iki yöntemlerinden biridir. Bunlar, [anonim işlev ifadelerinde](expressions.md#anonymous-function-expressions)daha ayrıntılı olarak açıklanmıştır.
 
-## <a name="unary-operators"></a>Birli işleçler
+## <a name="unary-operators"></a>Birli İşleçler
 
-`?`, `+`, `-`, `!`, `~`, `++`, `--`, Noktaya yayın, ve `await` işleçleri birli işleçler çağrılır.
+@No__t-0, `+`, `-`, `!`, `~`, `++`, `--`, cast ve `await` işleçleri Birli İşleçler olarak adlandırılır.
 
 ```antlr
 unary_expression
@@ -2346,11 +2346,11 @@ unary_expression
     ;
 ```
 
-Varsa işleneni bir *unary_expression* derleme zamanı türü `dynamic`, dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı türü *unary_expression* olduğu `dynamic`, ve çalışma zamanında çalışma zamanı tür işleneninin kullanarak aşağıda açıklanan çözümleme gerçekleşir.
+Bir *unary_expression* işleneni `dynamic` ' in derleme zamanı türüne sahipse, dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, *unary_expression* 'in derleme zamanı türü `dynamic` ve aşağıda açıklanan çözüm, işlenenin çalışma zamanı türü kullanılarak çalışma zamanında gerçekleşmeyecektir.
 
-### <a name="null-conditional-operator"></a>Null koşullu işleci
+### <a name="null-conditional-operator"></a>Null-koşullu işleç
 
-Yalnızca işlenen null değilse null koşullu işleci, işleneni işlemlerin bir listesi uygular. Aksi takdirde sonucudur işlecini `null`.
+Null koşullu işleç, yalnızca bu işlenen null değilse, işlenene bir işlem listesi uygular. Aksi takdirde, işleci uygulamanın sonucu `null` ' dır.
 
 ```antlr
 null_conditional_expression
@@ -2366,79 +2366,79 @@ null_conditional_operations
     ;
 ```
 
-Üye erişimi ve (hangi kendilerini null koşullu olabilir) öğe erişim işlemleri yanı sıra, çağırma işlemlerin listesini içerebilir.
+İşlem listesi, üye erişimi ve öğe erişim işlemleri (kendileri de null koşullu olabilir) ve çağırma içerebilir.
 
-Örneğin, ifade `a.b?[0]?.c()` olduğu bir *null_conditional_expression* ile bir *primary_expression* `a.b` ve *null_conditional_operations* `?[0]` (öğesi null koşullu erişimi) `?.c` (null koşullu üye erişimi) ve `()` (çağırma).
+Örneğin `a.b?[0]?.c()` ifadesi, *primary_expression* `a.b` ve *null_conditional_operations* `?[0]` (null-koşullu öğe erişimi), `?.c` (null-koşullu üye) ile bir *null_conditional_expression* . erişim) ve `()` (çağırma).
 
-İçin bir *null_conditional_expression* `E` ile bir *primary_expression* `P`, let `E0` olması öndegelenmetiniçeriğinieklemekkaldırarakeldeedilenifade`?`her birinden *null_conditional_operations* , `E` bir sahip. Kavramsal olarak, `E0` null denetimleri hiçbiri tarafından temsil edilen, hesaplanacak olan ifade `?`s bulma bir `null`.
+Bir *primary_expression* `P` içeren bir *null_conditional_expression* `E` için, `E` *null_conditional_operations* @no__t her birinden önde gelen `?` ' i kaldırmak metin içeriğini eklemek tarafından elde edilen ifade bir tane vardır. Kavramsal olarak, `E0` `?`s tarafından temsil edilen null denetimlerin hiçbiri `null` bulamazsa değerlendirilecek ifadedir.
 
-Ayrıca, `E1` olması önde gelen metin içeriğini eklemek kaldırarak elde edilen ifade `?` yalnızca gelen, ilk *null_conditional_operations* içinde `E`. Bu neden bir *birincil ifade* (varsa yalnızca `?`) veya başka bir *null_conditional_expression*.
+Ayrıca, metin içeriğini eklemek tarafından alınan ifadenin, `E` ' teki *null_conditional_operations* 'un yalnızca birinciden önde gelen `?` kaldırılarak elde @no__t. Bu bir *birincil ifadeye* (yalnızca bir `?` varsa) veya başka bir *null_conditional_expression*yol açabilir.
 
-Örneğin, varsa `E` ifade `a.b?[0]?.c()`, ardından `E0` ifade `a.b[0].c()` ve `E1` ifade `a.b[0]?.c()`.
+Örneğin, `E` ifadesi-1 @no__t, `E0` ifadesi `a.b[0].c()` ve `E1` ifadesi `a.b[0]?.c()` ' tir.
 
-Varsa `E0` nothing, ardından sınıflandırılır `E` nothing sınıflandırılır. Aksi takdirde E bir değer olarak sınıflandırılır.
+@No__t-0 Nothing olarak sınıflandırıldıysanız, `E` Nothing olarak sınıflandırılır. Aksi halde E bir değer olarak sınıflandırılır.
 
-`E0` ve `E1` anlamını belirlemek için kullanılan `E`:
+`E0` ve `E1` `E` ' nin anlamını belirlemede kullanılır:
 
-*  Varsa `E` olarak gerçekleşir bir *statement_expression* anlamını `E` deyimi ile aynıdır
+*  @No__t-0 *statement_expression* olarak gerçekleşirse, `E` anlamı deyimde aynı olur
 
    ```csharp
    if ((object)P != null) E1;
    ```
 
-   dışında P yalnızca bir kez değerlendirilir.
+   Bu P yalnızca bir kez değerlendirilir.
 
-*  Aksi takdirde `E0` bir derleme zamanı hatası oluşur nothing sınıflandırılır.
+*  Aksi takdirde, `E0` hiçbir şey olarak sınıflandırıldığında, derleme zamanı hatası oluşur.
 
-*  Aksi takdirde, izin `T0` türünde `E0`.
+*  Aksi takdirde, `T0` `E0` türü olamaz.
 
-   *  Varsa `T0` bir derleme zamanı hatası oluşur, bir başvuru türüyle veya NULL olmayan değer türü olması için bilinmeyen bir tür parametresi.
+   *  @No__t-0, başvuru türü veya null yapılamayan bir değer türü olarak bilinen bir tür parametresidir, derleme zamanı hatası oluşur.
 
-   *  Varsa `T0` NULL olmayan bir değer türü ve türü olan `E` olduğu `T0?`ve anlamını `E` aynıdır
+   *  @No__t-0 null yapılamayan bir değer türü ise, `E` türü `T0?` ' dir ve @no__t 3 ' ün anlamı şu şekilde aynıdır
 
       ```csharp
       ((object)P == null) ? (T0?)null : E1
       ```
 
-      dışında `P` yalnızca bir kez değerlendirilir.
+      `P` yalnızca bir kez değerlendirilir.
 
-   *  Aksi takdirde E T0 türüdür ve E anlamını aynıdır
+   *  Aksi takdirde, E türü T0 ve E 'nin anlamı
 
       ```csharp
       ((object)P == null) ? null : E1
       ```
 
-      dışında `P` yalnızca bir kez değerlendirilir.
+      `P` yalnızca bir kez değerlendirilir.
 
-Varsa `E1` kendisi bir *null_conditional_expression*, daha sonra testler için iç içe yeniden, bu kurallar uygulanır `null` kalmayana kadar başka `?`'s, ve ifade tüm aşağı azaltıldı Birincil ifade `E0`.
+@No__t-0 ' ı bir *null_conditional_expression*ise, bu kurallar tekrar uygulanır @no__t, daha fazla `?` ' e kadar ve ifade, birincil ifadeye `E0` ' e kadar azaltılır.
 
-Örneğin, ifade `a.b?[0]?.c()` deyim olduğu gibi bir deyim-ifadesi olarak gerçekleşir:
+Örneğin, `a.b?[0]?.c()` ifadesi deyimde olduğu gibi bir deyim ifadesi olarak gerçekleşirse:
 ```csharp
 a.b?[0]?.c();
 ```
-anlamını eşdeğerdir:
+anlamı şu şekilde eşdeğerdir:
 ```csharp
 if (a.b != null) a.b[0]?.c();
 ```
-hangi yeniden eşdeğerdir:
+yeniden eşittir:
 ```csharp
 if (a.b != null) if (a.b[0] != null) a.b[0].c();
 ```
-Dışında `a.b` ve `a.b[0]` yalnızca bir kez değerlendirilir.
+@No__t-0 ve `a.b[0]` yalnızca bir kez değerlendirilir.
 
-Değerini, olarak kullanıldığı bir bağlam içinde ortaya çıkarsa:
+Değeri kullanıldığı bir bağlamda gerçekleşirse, şöyle olduğu gibi:
 ```csharp
 var x = a.b?[0]?.c();
 ```
-ve son çağırma türü, NULL olmayan bir değer türü değil varsayarak anlamını eşdeğerdir:
+son çağrının türünün null yapılamayan bir değer türü olmadığı varsayılarak, anlamı şu değere eşittir:
 ```csharp
 var x = (a.b == null) ? null : (a.b[0] == null) ? null : a.b[0].c();
 ```
-Dışında `a.b` ve `a.b[0]` yalnızca bir kez değerlendirilir.
+`a.b` ve `a.b[0]` yalnızca bir kez değerlendirilir.
 
-#### <a name="null-conditional-expressions-as-projection-initializers"></a>Null koşullu ifadeler projeksiyon başlatıcılar olarak
+#### <a name="null-conditional-expressions-as-projection-initializers"></a>Projeksiyon başlatıcıları olarak null Koşullu ifadeler
 
-Null koşullu ifade yalnızca olarak kullanılabilir bir *member_declarator* içinde bir *anonymous_object_creation_expression* ([anonim nesne oluşturma ifadeleri](expressions.md#anonymous-object-creation-expressions)), Bu, bir (isteğe bağlı olarak null koşullu) üye erişimi ile sona erer. Dilbilgisi bakımından, bu gereklilik olarak ifade edilebilir:
+Null koşullu ifadeye yalnızca bir *anonymous_object_creation_expression* ([anonim nesne oluşturma ifadelerinde](expressions.md#anonymous-object-creation-expressions)) içinde, bir (isteğe bağlı olarak null koşullu) üye erişimiyle biterse *member_declarator* olarak izin verilir. Dilbilgisi, bu gereksinim şöyle ifade edilebilir:
 
 ```antlr
 null_conditional_member_access
@@ -2447,11 +2447,11 @@ null_conditional_member_access
     ;
 ```
 
-Bu bir dil bilgisi için özel durumdur *null_conditional_expression* yukarıda. Üretim için *member_declarator* içinde [anonim nesne oluşturma ifadeleri](expressions.md#anonymous-object-creation-expressions) yalnızca içeren *null_conditional_member_access*.
+Bu, yukarıdaki *null_conditional_expression* için dilbilgisinde özel bir durumdur. [Anonim nesne oluşturma ifadelerinde](expressions.md#anonymous-object-creation-expressions) *member_declarator* için üretim, daha sonra yalnızca *null_conditional_member_access*içerir.
 
-#### <a name="null-conditional-expressions-as-statement-expressions"></a>Null koşullu ifadeleri deyim ifadeleri olarak
+#### <a name="null-conditional-expressions-as-statement-expressions"></a>Deyim ifadeleri olarak null Koşullu ifadeler
 
-Null koşullu ifade yalnızca olarak kullanılabilir bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)) ile bir çağrı sona ererse. Dilbilgisi bakımından, bu gereklilik olarak ifade edilebilir:
+Null koşullu ifadeye yalnızca bir çağırma ile bitiyorsa, *statement_expression* ([Expression deyimleri](statements.md#expression-statements)) olarak izin verilir. Dilbilgisi, bu gereksinim şöyle ifade edilebilir:
 
 ```antlr
 null_conditional_invocation_expression
@@ -2459,12 +2459,12 @@ null_conditional_invocation_expression
     ;
 ```
 
-Bu bir dil bilgisi için özel durumdur *null_conditional_expression* yukarıda. Üretim için *statement_expression* içinde [ifade deyimleri](statements.md#expression-statements) yalnızca içeren *null_conditional_invocation_expression*.
+Bu, yukarıdaki *null_conditional_expression* için dilbilgisinde özel bir durumdur. *Statement_expression* for [Expression deyimlerine](statements.md#expression-statements) yönelik üretim, daha sonra yalnızca *null_conditional_invocation_expression*içerir.
 
 
 ### <a name="unary-plus-operator"></a>Tekli artı işleci
 
-Formun bir işlem için `+x`, birli işleç aşırı yükleme çözümlemesi ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenen seçili işleç parametre türüne dönüştürülür ve sonuç türü işlecinin dönüş türüdür. Önceden tanımlanmış birli artı işleçler şunlardır:
+@No__t-0 biçiminde bir işlem için, tekil işleç aşırı yükleme çözümlemesi ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenen, seçili işlecin parametre türüne dönüştürülür ve sonucun türü işlecin dönüş türüdür. Önceden tanımlanmış birli artı işleçleri şunlardır:
 
 ```csharp
 int operator +(int x);
@@ -2476,24 +2476,24 @@ double operator +(double x);
 decimal operator +(decimal x);
 ```
 
-Bu işleçlerden her biri için sonuç basit işlenenin değeridir.
+Bu işleçlerin her biri için sonuç yalnızca işlenenin değeridir.
 
 ### <a name="unary-minus-operator"></a>Birli eksi işleci
 
-Formun bir işlem için `-x`, birli işleç aşırı yükleme çözümlemesi ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenen seçili işleç parametre türüne dönüştürülür ve sonuç türü işlecinin dönüş türüdür. Önceden tanımlanmış değilleme işleçleri şunlardır:
+@No__t-0 biçiminde bir işlem için, tekil işleç aşırı yükleme çözümlemesi ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenen, seçili işlecin parametre türüne dönüştürülür ve sonucun türü işlecin dönüş türüdür. Önceden tanımlanmış olumsuzlama işleçleri şunlardır:
 
-*  Tamsayı olumsuzlama:
+*  Tamsayı değilleme:
 
    ```csharp
    int operator -(int x);
    long operator -(long x);
    ```
 
-   Sonuç çıkarılmasıyla hesaplanır `x` sıfırdan. Varsa değerini `x` işlenen türünde gösterilebilir en küçük değer (-2 ^ 31 için `int` veya -2 ^ 63 için `long`), ardından matematik negation `x` işlenen türü içinde gösterilebilir değil. İçinde bu meydana gelirse bir `checked` bağlamı bir `System.OverflowException` içinde ortaya çıkarsa; oluşturulur bir `unchecked` bağlamını, işlenenin sonucudur ve taşma bildirilmedi.
+   Sonuç, sıfırdan `x` çıkarılarak hesaplanır. @No__t-0 değeri, işlenen türünün en küçük gösterilemeyen değeri ise (-2 ^ 31 for `int` veya-2 ^ 63 for `long`), `x` ' ün matematik değilleme, işlenen türü içinde gösterilemeyen bir tablo değildir. Bu bir `checked` bağlamı içinde oluşursa, bir `System.OverflowException` oluşturulur; `unchecked` bağlamında gerçekleşirse, sonuç işlenenin değeridir ve taşma raporlanır.
 
-   Değilleme işleci, işlenenin türü olup olmadığını `uint`, türüne dönüştürülür `long`, ve sonuç türü `long`. Bir özel durum verir kuralıdır `int` değeri -2147483648 (-2 ^ 31) ondalık tamsayı sabit değeri yazılacak ([tamsayı sabit değerlerinde](lexical-structure.md#integer-literals)).
+   Olumsuzlama işlecinin işleneni `uint` türünde ise, `long` türüne dönüştürülür ve sonucun türü `long` olur. Bir özel durum, `int` değeri-2147483648 (-2 ^ 31) değerinin ondalık tamsayı sabit değeri ([tamsayı değişmez](lexical-structure.md#integer-literals)değer) olarak yazılmasına izin veren kuraldır.
 
-   Değilleme işleci, işlenenin türü olup olmadığını `ulong`, bir derleme zamanı hatası oluşur. Bir özel durum verir kuralıdır `long` değer -9223372036854775808 (-2 ^ 63) ondalık tamsayı sabit değeri yazılacak ([tamsayı sabit değerlerinde](lexical-structure.md#integer-literals)).
+   Olumsuzlama işlecinin işleneni `ulong` türünde ise, bir derleme zamanı hatası oluşur. Özel durum, `long` değeri-9223372036854775808 (-2 ^ 63) ' nin ondalık tamsayı sabit değeri ([tamsayı değişmez değerler](lexical-structure.md#integer-literals)) olarak yazılmasına izin veren kuraldır.
 
 *  Kayan nokta olumsuzlama:
 
@@ -2502,7 +2502,7 @@ Formun bir işlem için `-x`, birli işleç aşırı yükleme çözümlemesi ([b
    double operator -(double x);
    ```
 
-   Sonuç değeri `x` ters işareti ile. Varsa `x` , NaN olup da NaN sonucudur.
+   Sonuç, ters çevrilme ile `x` değeridir. @No__t-0 NaN ise, sonuç de NaN olur.
 
 *  Ondalık olumsuzlama:
 
@@ -2510,20 +2510,20 @@ Formun bir işlem için `-x`, birli işleç aşırı yükleme çözümlemesi ([b
    decimal operator -(decimal x);
    ```
 
-   Sonuç çıkarılmasıyla hesaplanır `x` sıfırdan. Ondalık olumsuzlama birli eksi işleci türünde kullanmaya eşdeğerdir `System.Decimal`.
+   Sonuç, sıfırdan `x` çıkarılarak hesaplanır. Decimal olumsuzlama, `System.Decimal` türündeki birli eksi işlecinin kullanılmasıyla eşdeğerdir.
 
-### <a name="logical-negation-operator"></a>Mantıksal değilleme işleci
+### <a name="logical-negation-operator"></a>Mantıksal Değilleme İşleci
 
-Formun bir işlem için `!x`, birli işleç aşırı yükleme çözümlemesi ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenen seçili işleç parametre türüne dönüştürülür ve sonuç türü işlecinin dönüş türüdür. Yalnızca bir önceden tanımlanmış mantıksal değilleme işleci vardır:
+@No__t-0 biçiminde bir işlem için, tekil işleç aşırı yükleme çözümlemesi ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenen, seçili işlecin parametre türüne dönüştürülür ve sonucun türü işlecin dönüş türüdür. Yalnızca bir tane önceden tanımlanmış mantıksal olumsuzlama işleci var:
 ```csharp
 bool operator !(bool x);
 ```
 
-Bu işleç, işlenenin mantıksal olumsuzlama hesaplar: İşlenen `true`, sonuç `false`. İşlenen `false`, sonuç `true`.
+Bu işleç, işlenenin mantıksal olumsuzunu hesaplar: İşlenen `true` ise, sonuç `false` ' dir. İşlenen `false` ise, sonuç `true` ' dir.
 
 ### <a name="bitwise-complement-operator"></a>Bit düzeyinde tamamlama işleci
 
-Formun bir işlem için `~x`, birli işleç aşırı yükleme çözümlemesi ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenen seçili işleç parametre türüne dönüştürülür ve sonuç türü işlecinin dönüş türüdür. Önceden tanımlanmış bir bit düzeyinde tamamlayıcı işleçler şunlardır:
+@No__t-0 biçiminde bir işlem için, tekil işleç aşırı yükleme çözümlemesi ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenen, seçili işlecin parametre türüne dönüştürülür ve sonucun türü işlecin dönüş türüdür. Önceden tanımlanmış bit düzeyinde tamamlama işleçleri şunlardır:
 ```csharp
 int operator ~(int x);
 uint operator ~(uint x);
@@ -2531,17 +2531,17 @@ long operator ~(long x);
 ulong operator ~(ulong x);
 ```
 
-Bu işleçlerden her biri için işlemin sonucunu, bit düzeyinde tamamlayıcı olan `x`.
+Bu işleçlerin her biri için, işlemin sonucu `x` ' ı bit düzeyinde tamamdır.
 
-Her bir numaralandırma türü `E` örtük olarak aşağıdaki bit düzeyinde tamamlama işleci sağlar:
+@No__t-0 her numaralandırma türü, aşağıdaki bit düzeyinde tamamlayıcı işleci dolaylı olarak sağlar:
 
 ```csharp
 E operator ~(E x);
 ```
 
-Değerlendirme sonucu `~x`burada `x` ifade bir sabit listesi türü `E` bir temel türü ile `U`, tam olarak değerlendiriliyor aynıdır `(E)(~(U)x)`dışında dönüştürme `E` olduğu her zaman olarak gerçekleştirilen sahipse bir `unchecked` bağlam ([checked ve unchecked işleçleri](expressions.md#the-checked-and-unchecked-operators)).
+@No__t-0 ' ın değerlendirilmesinin sonucu, `x` ' in temel alınan bir tür `U` olan `E` ' n i n @no__t değerlendirmesiyle tamamen aynıdır, ancak `E` ' e dönüştürme her zaman `unchecked` bağlamında gibi gerçekleştirilir ( [Checked ve unchecked işleçleri](expressions.md#the-checked-and-unchecked-operators)).
 
-### <a name="prefix-increment-and-decrement-operators"></a>Önek artırma ve azaltma işleçleri
+### <a name="prefix-increment-and-decrement-operators"></a>Önek arttırma ve azaltma işleçleri
 
 ```antlr
 pre_increment_expression
@@ -2553,33 +2553,33 @@ pre_decrement_expression
     ;
 ```
 
-İşlenen bir önek artırma veya azaltma işlemi bir değişken, bir özellik erişimi veya bir dizin oluşturucu erişim sınıflandırılmış bir ifade olmalıdır. İşleminin sonucu, işlenenin aynı türden bir değerdir.
+Önek artırma veya azaltma işleminin işleneni, değişken olarak sınıflandırılmış bir ifade, özellik erişimi veya Dizin Oluşturucu erişimi olmalıdır. İşlemin sonucu, işlenenden aynı türde bir değerdir.
 
-Bir önek işleneni artırmak, veya azaltma işlemi bir özellik veya dizin oluşturucu erişim, özelliği veya dizin oluşturucu gerekir sahip hem bir `get` ve `set` erişimcisi. Durum bu değilse, bir bağlama zamanı hatası oluşur.
+Bir önek artış veya azaltma işleminin işleneni bir özellik veya Dizin Oluşturucu erişimi ise, özelliğin veya dizin oluşturucunun hem `get` hem de bir `set` erişimcisi olmalıdır. Bu durumda, bir bağlama zamanı hatası oluşur.
 
-Birli işleç aşırı yükleme çözümlemesi ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. Önceden tanımlanmış `++` ve `--` işleçleri aşağıdaki türleri için mevcut: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char` , `float`, `double`, `decimal`ve herhangi bir sabit listesi türü. Önceden tanımlanmış `++` işleçleri dönüş işleneni ve önceden tanımlanmış 1 ekleyerek üretilen değeri `--` işleçleri, işlenende 1 çıkarılmasıyla oluşturulan değeri döndürür. İçinde bir `checked` bu ekleme veya çıkarma sonucu sonuç türü aralığının dışında ve sonuç türü bir integral türünü ya da sabit listesi türü ise bağlam bir `System.OverflowException` oluşturulur.
+Tekil operatör aşırı yükleme çözümü ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. Önceden tanımlı `++` ve `--` işleçleri şu türler için mevcuttur: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, 0, 1, 2, 3 ve herhangi bir numaralandırma türü. Önceden tanımlı `++` işleçleri, işlenene 1 eklenerek üretilen değeri döndürür ve önceden tanımlanmış `--` işleçleri işleneni 1 çıkararak üretilen değeri döndürür. @No__t-0 bağlamında, bu ekleme veya çıkarma sonucu sonuç türü aralığının dışındaysa ve sonuç türü bir tam sayı türü veya Enum türü ise, bir `System.OverflowException` atılır.
 
-Çalışma zamanı işlenmesini önek artırma veya azaltma işlemi formun `++x` veya `--x` aşağıdaki adımlardan oluşur:
+@No__t-0 veya `--x` biçiminde bir önek artış veya azaltma işleminin çalışma zamanı işleme aşağıdaki adımlardan oluşur:
 
-*   Varsa `x` bir değişken olarak sınıflandırıldığını:
-    * `x` değişkeni oluşturmak için değerlendirilir.
-    * Seçili işleç değeri ile çağrılan `x` bağımsız değişken olarak.
-    * Operatör tarafından döndürülen değer değerlendirmesi tarafından belirtilen konumda depolanan `x`.
-    * Operatör tarafından döndürülen değer, işlemin sonucunu haline gelir.
-*   Varsa `x` bir özellik veya dizin oluşturucu erişim sınıflandırıldığını:
-    * Örnek ifade (varsa `x` değil `static`) ve bağımsız değişken listesi (varsa `x` bir dizin oluşturucu erişim) ile ilişkili `x` değerlendirilir, ve sonuçları sonraki kullanılan `get` ve `set` erişimci çağrıları.
-    * `get` Erişimcisine `x` çağrılır.
-    * Seçili işleç tarafından döndürülen değerle çağrılır `get` bağımsız değişken olarak erişimcisi.
-    * `set` Erişimcisine `x` operatör olarak tarafından döndürülen değerle çağrılır, `value` bağımsız değişken.
-    * Operatör tarafından döndürülen değer, işlemin sonucunu haline gelir.
+*   @No__t-0 bir değişken olarak sınıflandırıldıysanız:
+    * `x` değişkeni üretmek için değerlendirilir.
+    * Seçili operatör, bağımsız değişkeni olarak `x` değeriyle çağrılır.
+    * İşleci tarafından döndürülen değer, `x` değerlendirmesi tarafından verilen konumda depolanır.
+    * İşleci tarafından döndürülen değer işlemin sonucu olur.
+*   @No__t-0 bir özellik veya Dizin Oluşturucu erişimi olarak sınıflandırıldığında:
+    * Örnek ifadesi (`x` `static` değilse) ve bağımsız değişken listesi (`x` ' in bir Dizin Oluşturucu erişimsiyse) `x` ile ilişkili olarak değerlendirilir ve sonuçlar sonraki `get` ve `set` erişimci etkinleştirmeleri içinde kullanılır.
+    * @No__t-1 ' in `get` erişimcisi çağrıldı.
+    * Seçilen işleç, bağımsız değişkeni olarak `get` erişimcisinin döndürdüğü değerle çağrılır.
+    * @No__t-1 ' in `set` erişimcisi, `value` bağımsız değişkeni olarak işleç tarafından döndürülen değerle çağrılır.
+    * İşleci tarafından döndürülen değer işlemin sonucu olur.
 
-`++` Ve `--` işleçleri de destekler sonek gösteriminde ([sonek arttırma ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators)). Genellikle, sonucunu `x++` veya `x--` değeri `x` işleminden önce ise sonucu `++x` veya `--x` değeri `x` işleminden sonra. Her iki durumda da `x` kendisini işleminden sonra aynı değere sahiptir.
+@No__t-0 ve `--` işleçleri de sonek gösterimini ([Sonek artışı ve azaltma işleçleri](expressions.md#postfix-increment-and-decrement-operators)) destekler. Genellikle, `x++` veya `x--` sonucu işlemden önce `x` değeridir, ancak `++x` veya `--x` sonucu işlemden sonra `x` değeri olur. Her iki durumda da, `x` ' ın kendisi işlemden sonra aynı değere sahiptir.
 
-Bir `operator++` veya `operator--` uygulama sonek veya önek gösterim kullanılarak çağrılacak. İki gösterimler için ayrı bir işleç uygulamalarına sahip mümkün değildir.
+@No__t-0 veya `operator--` bir uygulama, sonek veya ön ek gösterimi kullanılarak çağrılabilir. İki gösterimler için ayrı işleç uygulamalarına sahip olmak mümkün değildir.
 
-### <a name="cast-expressions"></a>Cast ifadeleri
+### <a name="cast-expressions"></a>Atama ifadeleri
 
-A *cast_expression* açıkça bir ifadenin belirtilen bir türe dönüştürmek için kullanılır.
+Bir ifadeyi açıkça belirli bir türe dönüştürmek için bir *cast_expression* kullanılır.
 
 ```antlr
 cast_expression
@@ -2587,22 +2587,22 @@ cast_expression
     ;
 ```
 
-A *cast_expression* formun `(T)E`burada `T` olduğu bir *türü* ve `E` olduğu bir *unary_expression*, açık bir gerçekleştirir dönüştürme ([açık dönüştürmeler](conversions.md#explicit-conversions)) değerinin `E` türüne `T`. Açık bir dönüştürme gelen varsa `E` için `T`, bir bağlama zamanı hatası oluşur. Aksi halde sonuç, açık bir dönüştürme tarafından üretilen değeridir. Sonucu her zaman bir değer olarak sınıflandırılır bile `E` bir değişkeni gösterir.
+@No__t-1, `T` *' nin bir* *tür* olduğu ve `E` ' ün bir *unary_expression*olduğu `E` değerini `T` türünde bir açık dönüştürme ([Açık dönüştürmeler](conversions.md#explicit-conversions)) gerçekleştirir. @No__t-0 ' dan `T` ' e hiçbir açık dönüştürme yoksa, bağlama zamanı hatası oluşur. Aksi takdirde, sonuç açık dönüştürme tarafından üretilen değerdir. Sonuç her zaman bir değer olarak sınıflandırılır, `E` bir değişkeni belirtir.
 
-Dil bilgisi için bir *cast_expression* için belirli bir söz dizimi belirsizliğe neden olur. Örneğin, ifade `(x)-y` ya da olarak yorumlanabilecek bir *cast_expression* (atanacağını `-y` türüne `x`) veya farklı bir *additive_expression* birlikte bir *parenthesized_expression* (değeri hesaplar `x - y)`.
+Bir *cast_expression* için dilbilgisi, belirli bir sözdizimsel belirsizlikleri 'e yol açar. Örneğin, `(x)-y` ifadesi bir *cast_expression* (`x` türüne `-y` dönüştürmesi) ya da *parenthesized_expression* ile birleştirilmiş bir *additive_expression* (`x - y)` değerini hesaplayan) olarak yorumlanır.
 
-Çözümlenecek *cast_expression* belirsizlikler, aşağıdaki kural bulunmaktadır: Bir veya daha fazla bir dizi *belirteci*s ([boşluk](lexical-structure.md#white-space)) içine parantez içine başlangıcı olarak kabul edilir bir *cast_expression* yalnızca aşağıdakilerden en az biri doğruysa:
+*Cast_expression* belirsizlikleri 'i çözümlemek için aşağıdaki kural bulunur: Parantez içine alınmış bir veya daha fazla *belirteç*([boşluk](lexical-structure.md#white-space)) sırası, *cast_expression* 'in başlangıcını yalnızca en az bir tane doğru olduğunda kabul edilir:
 
-*  Bir dizi belirteçleri doğru dilbilgisi için olan bir *türü*, ancak bir *ifade*.
-*  Dizi belirteçleri doğru dilbilgisi için olan bir *türü*, ve ayraç takip belirtecin belirteç "`~`", belirteç "`!`", belirteç "`(`", bir  *tanımlayıcı* ([Unicode karakter kaçış dizileri](lexical-structure.md#unicode-character-escape-sequences)), *değişmez değer* ([değişmez değerleri](lexical-structure.md#literals)), veya tüm *anahtar sözcüğü*([Anahtar sözcükleri](lexical-structure.md#keywords)) dışında `as` ve `is`.
+*  Belirteçlerin sırası, bir *tür*için doğru dilbilgisinde bulunur, ancak bir *ifade*için kullanılamaz.
+*  Belirteçlerin sırası, bir *tür*için doğru dilbilgisi ve kapatma parantezinden hemen sonraki belirteç "`~`", belirteç "`!`", belirteç "`(`", bir *tanımlayıcı* ([Unicode karakter kaçış dizileri ](lexical-structure.md#unicode-character-escape-sequences)), bir *değişmez değer* ([değişmez](lexical-structure.md#literals)değer) veya 0 ve 1 dışında herhangi bir *anahtar sözcük* ([anahtar](lexical-structure.md#keywords)sözcük).
 
-Terim "doğru dilbilgisi" yukarıda yalnızca, bir dizi belirteçleri belirli dilbilgisi üretim uymalıdır anlamına gelir. Özellikle bağlı tüm tanımlayıcılar gerçek anlamını algılamaz. Örneğin, varsa `x` ve `y` , ardından tanımlayıcılardır `x.y` olan bir tür için doğru dilbilgisi bile `x.y` gerçekte bir tür belirtmek değil.
+Yukarıdaki "doğru dilbilgisi" terimi, yalnızca belirteçlerin sırasının belirli dilbilgisi üretimine uyması gerektiği anlamına gelir. Bu, özellikle herhangi bir anayayrılan tanımlayıcıların gerçek anlamını düşünmez. Örneğin, `x` ve `y` tanımlayıcısa, `x.y` gerçekten bir tür belirtmese bile, `x.y` bir tür için doğru dilbilgisidir.
 
-Takip eden, varsa Kesinleştirme kuraldan `x` ve `y` tanımlayıcılardır, `(x)y`, `(x)(y)`, ve `(x)(-y)` olan *cast_expression*s, ancak `(x)-y` değil, bile `x` bir türü tanımlar. Ancak, varsa `x` önceden tanımlanmış bir türü tanımlayan bir anahtar sözcüğü (gibi `int`), tüm dört formlar sonra *cast_expression*s (böyle bir anahtar sözcük büyük olasılıkla bir ifade kendisi tarafından çözümlenemediğinden).
+Kesinleştirme kuralından sonra, `x` ve `y` tanımlayıcıları varsa, `(x)y`, `(x)(y)` ve `(x)(-y)` *cast_expression*s olsa da, `x` bir tür tanımladığı halde `(x)-y` değildir. Ancak, `x`, önceden tanımlanmış bir türü (`int` gibi) tanımlayan bir anahtar sözcüktür, tüm dört form *cast_expression*s 'dir (böyle bir anahtar sözcük büyük olasılıkla kendisi bir ifade olamaz).
 
 ### <a name="await-expressions"></a>Await ifadeleri
 
-Await işleci işlenen tarafından temsil edilen zaman uyumsuz işlem tamamlanıncaya kadar kapsayan zaman uyumsuz İşlev değerlendirmesi askıya almak için kullanılır.
+Await işleci, işlenen tarafından temsil edilen zaman uyumsuz işlem tamamlanana kadar kapsayan zaman uyumsuz işlevin değerlendirmesini askıya almak için kullanılır.
 
 ```antlr
 await_expression
@@ -2610,57 +2610,57 @@ await_expression
     ;
 ```
 
-Bir *await_expression* yalnızca bir zaman uyumsuz işlev gövdesinde izin verilir ([yineleyiciler](classes.md#iterators)). İçinde en yakın kapsayan zaman uyumsuz işlev bir *await_expression* bu sayfalarda gerçekleşmeyebilir:
+*Await_expression* yalnızca zaman uyumsuz bir işlevin gövdesinde ([yineleyiciler](classes.md#iterators)) izin verilir. En yakın kapsayan zaman uyumsuz işlevi içinde, *await_expression* bu yerlerde gerçekleşmeyebilir:
 
-*  İç içe geçmiş (async olmayan) bir anonim işlev içinde
-*  Bloğu içinde bir *lock_statement*
+*  İç içe geçmiş (zaman uyumsuz) anonim bir işlev içinde
+*  Bir *lock_statement* bloğunun içinde
 *  Güvenli olmayan bir bağlamda
 
-Unutmayın bir *await_expression* içinde birçok yerinden olamaz bir *query_expression*olanlar olmayan zaman uyumsuz lambda ifadelerini kullanmak sözdizimsel olarak dönüştürülür çünkü.
+Bir *await_expression* , bir *query_expression*içinde çoğu yerde gerçekleşmediğini unutmayın, çünkü bunlar sözdizimsel olmayan lambda ifadeleri kullanmak üzere CLS olarak dönüştürülür.
 
-Bir zaman uyumsuz işlev içinde `await` tanımlayıcı olarak kullanılamaz. Bu nedenle hiçbir belirsizliğine await ifadeleri ve tanımlayıcıları içeren çeşitli ifadeler arasında yoktur. Zaman uyumsuz işlevleri dışında `await` normal bir tanımlayıcı olarak görev yapar.
+Zaman uyumsuz bir işlevin içinde, `await` tanımlayıcı olarak kullanılamaz. Bu nedenle, await ifadeleri ve tanımlayıcılar içeren çeşitli ifadeler arasında sözdizimsel belirsizlik yoktur. Zaman uyumsuz işlevlerin dışında, `await` normal tanımlayıcı işlevi görür.
 
-İşleneni bir *await_expression* çağrılır ***görev***. Zaman tam olmayabilir veya zaman uyumsuz bir işlem temsil ettiği *await_expression* değerlendirilir. Await işleci amacı, beklenen görev tamamlanana kadar kapsayan zaman uyumsuz işlev yürütülmesini askıya alma ve sonra sonucunu elde etmektir.
+Bir *await_expression* işleneni ***görev***olarak adlandırılır. *Await_expression* değerlendirilen zaman uyumsuz bir işlemi temsil eder veya tamamlanmayabilir. Await işlecinin amacı, beklenen zaman uyumsuz işlevin yürütülmesini, bekleme görevi tamamlanana kadar askıya almak ve sonra sonucunu elde etmek için kullanılır.
 
-#### <a name="awaitable-expressions"></a>Beklenebilir ifadeleri
+#### <a name="awaitable-expressions"></a>Awasever ifadeleri
 
-Görev bir await ifadesi olması gereken ***beklenebilir***. Bir ifade `t` aşağıdakilerden birini tutuyorsa beklenebilir olduğu:
+Await ifadesinin görevi için ***beklenen***bir ifade olması gerekir. Aşağıdakilerden biri varsa-0 @no__t bir ifade beklenebilir:
 
 *  `t` derleme zamanı türü `dynamic`
-*  `t` sahip olarak adlandırılan bir erişilebilir örneği veya genişletme yöntemi `GetAwaiter` parametresiz ve hiçbir tür parametreleri ve dönüş türü ile `A` kendisi için aşağıdakilerin tümü tutun:
-   * `A` arabirimi uygulayan `System.Runtime.CompilerServices.INotifyCompletion` (bundan böyle olarak bilinen `INotifyCompletion` kısaltma)
-   * `A` erişilebilir, okunabilir örneği özelliği `IsCompleted` türü `bool`
-   * `A` erişilebilir bir örnek yöntemi olan `GetResult` parametresiz ve hiçbir tür parametreleri
+*  `t` ' da `GetAwaiter` adlı, hiçbir parametre olmadan ve hiçbir tür parametresi olmadan ve bir dönüş türü olan `A` ' yi içeren erişilebilir bir örnek veya genişletme yöntemi vardır:
+   * `A` `System.Runtime.CompilerServices.INotifyCompletion` arabirimini uygular (bundan sonra breçekimi için `INotifyCompletion` olarak bilinirdi)
+   * `A` ' @no__t erişilebilir, okunabilir bir örnek özelliğine sahiptir `bool` türünde-1
+   * `A` ' @no__t erişilebilir bir örnek yöntemi vardır ve parametre içermeyen-1 ve tür parametresi yok
 
-Amacı `GetAwaiter` yöntemi olduğundan edinmek için bir ***awaiter*** görev. Türü `A` çağrılır ***awaiter türü*** await ifadesi için.
+@No__t-0 yönteminin amacı, görev için bir ***awaiter*** elde sağlamaktır. @No__t-0 türü await ifadesi için ***awaiter türü*** olarak adlandırılır.
 
-Amacı `IsCompleted` görev zaten tamamlandıysa, belirlemek için özelliğidir. Bu durumda, değerlendirme askıya almak için gerek yoktur.
+@No__t-0 özelliğinin amacı görevin zaten tamamlanıp tamamlanmadığını belirlemektir. Bu durumda, değerlendirmeyi askıya almanız gerekmez.
 
-Amacı `INotifyCompletion.OnCompleted` yöntemdir; görev için bir "Devam" kaydolma için başka bir deyişle bir temsilci (tür `System.Action`), çağrılacak görev tamamlandıktan sonra.
+@No__t-0 yönteminin amacı, göreve bir "devamlılık" kaydı sağlamaktır; Yani, görev tamamlandıktan sonra çağrılacak bir temsilci (`System.Action` türü).
 
-Amacı `GetResult` yöntemi tamamlandığında, görevin sonucunu elde etmektir. Bu sonucu bir sonuç değeri ile büyük olasılıkla Başarılı tamamlama olabilir veya tarafından oluşturulan bir özel durum olabilir `GetResult` yöntemi.
+@No__t-0 yönteminin amacı, tamamlandıktan sonra görevin sonucunu elde etmek için kullanılır. Bu sonuç, büyük olasılıkla bir sonuç değeriyle birlikte başarılı bir şekilde tamamlanmayabilir veya `GetResult` yöntemi tarafından oluşturulan bir özel durum olabilir.
 
-#### <a name="classification-of-await-expressions"></a>Sınıflandırılması await ifadeleri
+#### <a name="classification-of-await-expressions"></a>Await ifadelerinin sınıflandırması
 
-İfade `await t` ifade aynı şekilde sınıflandırılır `(t).GetAwaiter().GetResult()`. Bu nedenle, dönüş türü `GetResult` olduğu `void`, *await_expression* nothing sınıflandırılır. Void olmayan dönüş türü varsa `T`, *await_expression* türünde bir değer sınıflandırılır `T`.
+@No__t-0 ifadesi, `(t).GetAwaiter().GetResult()` ifadesiyle aynı şekilde sınıflandırıldı. Bu nedenle, `GetResult` ' ın dönüş türü `void` ise, *await_expression* hiçbir şey olarak sınıflandırılacaktır. Void olmayan bir dönüş türü `T` ise, *await_expression* -2 @no__t türünde bir değer olarak sınıflandırılacaktır.
 
-#### <a name="runtime-evaluation-of-await-expressions"></a>Çalışma zamanı değerlendirmesini await ifadeleri
+#### <a name="runtime-evaluation-of-await-expressions"></a>Await ifadelerinin çalışma zamanı değerlendirmesi
 
-Çalışma zamanında, ifade `await t` gibi değerlendirilir:
+Çalışma zamanında, `await t` ifadesi aşağıdaki gibi değerlendirilir:
 
-*  Bir awaiter `a` ifadenin değerlendirilmesi yoluyla elde edilen `(t).GetAwaiter()`.
-*  A `bool` `b` ifadenin değerlendirilmesi yoluyla elde edilen `(a).IsCompleted`.
-*  Varsa `b` olduğu `false` değerlendirme bağlıdır sonra `a` arabirimi uygulayan `System.Runtime.CompilerServices.ICriticalNotifyCompletion` (bundan böyle olarak bilinen `ICriticalNotifyCompletion` kısaltma). Bu denetim, zaman bağlama sırasında gerçekleştirilir; yani, çalışma zamanında, `a` derleme zamanı tür sahip `dynamic`ve aksi takdirde derleme zamanında. İzin `r` sürdürme temsilci belirtmek ([yineleyiciler](classes.md#iterators)):
-    * Varsa `a` uygulamıyor `ICriticalNotifyCompletion`, ifade `(a as (INotifyCompletion)).OnCompleted(r)` değerlendirilir.
-    * Varsa `a` uygulamak `ICriticalNotifyCompletion`, ifade `(a as (ICriticalNotifyCompletion)).UnsafeOnCompleted(r)` değerlendirilir.
-    * Değerlendirme sonra askıya alınır ve denetim, zaman uyumsuz işlev geçerli çağırana döndürülür.
-*  Ya da hemen sonra (varsa `b` olduğu `true`), veya sürdürme temsilcinin sonraki çağrı sırasında (varsa `b` olduğu `false`), ifade `(a).GetResult()` değerlendirilir. Bir değer döndürürse, bu değeri sonucudur *await_expression*. Aksi halde sonuç hiçbir şey olur.
+*  Awaiter `a` `(t).GetAwaiter()` ifadesi hesaplanarak elde edilir.
+*  @No__t-0 `b` `(a).IsCompleted` ifadesi hesaplanarak elde edilir.
+*  @No__t-0 ' ı `false` ise değerlendirme, `a` @no__t arabirimini (breçekimi için `ICriticalNotifyCompletion` olarak bilinirdi) uygulayıp uygulamadığına bağlıdır. Bu denetim bağlama zamanında yapılır; Yani, `a` ' ın derleme zamanı türü `dynamic` ise ve derleme sırasında çalışma zamanında. Let `r` sürdürme temsilciyi ([yineleyiciler](classes.md#iterators)) gösterir:
+    * @No__t-0 ' ı @no__t uygulamadığından, `(a as (INotifyCompletion)).OnCompleted(r)` ifadesi değerlendirilir.
+    * @No__t-0 `ICriticalNotifyCompletion` ' i uygulıyorsa, `(a as (ICriticalNotifyCompletion)).UnsafeOnCompleted(r)` ifadesi değerlendirilir.
+    * Değerlendirme daha sonra askıya alınır ve denetim zaman uyumsuz işlevin geçerli çağıranına döndürülür.
+*  Hemen sonra (`b` `true` ise) veya daha sonra sürdürme temsilcisinin çağrılması durumunda (`b` `false` ise), `(a).GetResult()` ifadesi değerlendirilir. Değer döndürürse, bu değer *await_expression*sonucudur. Aksi takdirde sonuç Nothing olur.
 
-Arabirim yöntemleri bir awaiter'ın uygulaması `INotifyCompletion.OnCompleted` ve `ICriticalNotifyCompletion.UnsafeOnCompleted` temsilci edilmesini `r` en fazla bir kez çağrılacak. Aksi takdirde, kapsayan zaman uyumsuz işlev davranışı tanımsızdır.
+Awaiter 'ın `INotifyCompletion.OnCompleted` ve `ICriticalNotifyCompletion.UnsafeOnCompleted` Arabirim yöntemlerinin uygulanması, `r` temsilcisinin en çok bir kez çağrılmasına neden olmalıdır. Aksi takdirde, kapsayan zaman uyumsuz işlevinin davranışı tanımsız olur.
 
 ## <a name="arithmetic-operators"></a>Aritmetik İşleçler
 
-`*`, `/`, `%`, `+`, Ve `-` işleçleri aritmetik işleçler çağrılır.
+@No__t-0, `/`, `%`, `+` ve `-` işleçleri aritmetik işleçler olarak adlandırılır.
 
 ```antlr
 multiplicative_expression
@@ -2677,13 +2677,13 @@ additive_expression
     ;
 ```
 
-Bir aritmetik işlecinin bir işleneni derleme zamanı türü olup olmadığını `dynamic`, ifadeyi dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı ifadenin türüdür `dynamic`, ve çalışma zamanında derleme zamanı türü bu işlenenler çalışma zamanı türünü kullanarak aşağıda açıklanan çözümleme gerçekleşecek `dynamic`.
+Aritmetik işlecin bir işleneni derleme zamanı türü `dynamic` ise, ifade dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, ifadenin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, derleme zamanı türü `dynamic` olan bu işlenenlerinin çalışma zamanı türü kullanılarak çalışma zamanında gerçekleşmeyecektir.
 
 ### <a name="multiplication-operator"></a>Çarpma işleci
 
-Formun bir işlem için `x * y`, ikili İşleç aşırı yükleme çözümlemesi ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 biçiminde bir işlem için, ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Aşağıdaki önceden tanımlanmış çarpma işleçleri listelenir. Tüm işleçler çarpımını `x` ve `y`.
+Önceden tanımlanmış çarpma işleçleri aşağıda listelenmiştir. İşleçler `x` ve `y` çarpımını hesaplar.
 
 *  Tamsayı çarpma:
 
@@ -2694,7 +2694,7 @@ Aşağıdaki önceden tanımlanmış çarpma işleçleri listelenir. Tüm işle�
    ulong operator *(ulong x, ulong y);
    ```
 
-   İçinde bir `checked` ürün sonuç türü aralığının dışında ise bağlam bir `System.OverflowException` oluşturulur. İçinde bir `unchecked` bağlamı, taşan bildirilmez ve tüm önemli sonuç türü yüksek düzeyli bitleri aralığın dışında atılır.
+   @No__t-0 bağlamında, ürün sonuç türü aralığının dışındaysa, bir `System.OverflowException` atılır. @No__t-0 bağlamında, taşmalar raporlanmaz ve sonuç türü aralığı dışındaki önemli yüksek sıralı bitler atılır.
 
 
 *  Kayan nokta çarpma:
@@ -2704,17 +2704,17 @@ Aşağıdaki önceden tanımlanmış çarpma işleçleri listelenir. Tüm işle�
    double operator *(double x, double y);
    ```
 
-   Ürün aritmetik IEEE 754 kurallarına göre hesaplanır. Sıfır olmayan sınırlı değerler tüm olası eşleştirme birleşimlerini, sıfır sonsuz ve NaN'ın sonuçları aşağıdaki tabloda listelenmektedir. Tabloda `x` ve `y` sonlu pozitif değerler. `z` sonucu `x * y`. Sonucu hedef türü için çok büyük ise `z` sonsuz. Sonucu hedef türü için çok küçükse `z` sıfırdır.
+   Ürün, IEEE 754 aritmetik kurallarına göre hesaplanır. Aşağıdaki tabloda, sıfır dışında sınırlı değer, sıfır, sonsuz ve NaN 'nin tüm olası birleşimlerinin sonuçları listelenmiştir. Tabloda, `x` ve `y` pozitif sonlu değerlerdir. `z` ' ın @no__t sonucudur. Sonuç hedef türü için çok büyükse, `z` sonsuzluk olur. Sonuç hedef türü için çok küçükse, `z` sıfırdır.
 
    |      |      |      |     |     |      |      |     |
    |:----:|-----:|:----:|:---:|:---:|:----:|:----:|:----|
-   |      | +y   | -y   | +0  | -0  | + INF | -INF | NaN | 
-   | + x   | +z   | -z   | +0  | -0  | + INF | -INF | NaN | 
-   | -x   | -z   | +z   | -0  | +0  | -INF | + INF | NaN | 
+   |      | \+ y   | -y   | +0  | -0  | \+ INF | -INF | NaN | 
+   | \+ x   | \+ z   | -z   | +0  | -0  | \+ INF | -INF | NaN | 
+   | -x   | -z   | \+ z   | -0  | +0  | -INF | \+ INF | NaN | 
    | +0   | +0   | -0   | +0  | -0  | NaN  | NaN  | NaN | 
    | -0   | -0   | +0   | -0  | +0  | NaN  | NaN  | NaN | 
-   | + INF | + INF | -INF | NaN | NaN | + INF | -INF | NaN | 
-   | -INF | -INF | + INF | NaN | NaN | -INF | + INF | NaN | 
+   | \+ INF | \+ INF | -INF | NaN | NaN | \+ INF | -INF | NaN | 
+   | -INF | -INF | \+ INF | NaN | NaN | -INF | \+ INF | NaN | 
    | NaN  | NaN  | NaN  | NaN | NaN | NaN  | NaN  | NaN | 
 
 *  Ondalık çarpma:
@@ -2723,16 +2723,16 @@ Aşağıdaki önceden tanımlanmış çarpma işleçleri listelenir. Tüm işle�
    decimal operator *(decimal x, decimal y);
    ```
 
-   Sonuçta elde edilen değeri içinde temsil etmek için çok büyük ise `decimal` biçiminde bir `System.OverflowException` oluşturulur. Sonuç değeri içinde temsil etmek için çok küçük olup olmadığını `decimal` sonuç biçimi de sıfırdır. Bir yuvarlama önce bu sonucun ölçek iki işlenenden ölçekler toplamıdır.
+   Elde edilen değer `decimal` biçiminde temsil etmek için çok büyükse, bir `System.OverflowException` oluşturulur. Sonuç değeri `decimal` biçiminde temsil etmek için çok küçük ise, sonuç sıfırdır. Sonucun ölçeği, herhangi bir yuvarlamadan önce, iki işlenenin ölçeklerinin toplamıdır.
 
-   Ondalık çarpma çarpma işleci türünde kullanmaya eşdeğerdir `System.Decimal`.
+   Ondalık çarpma `System.Decimal` türünde çarpma işlecinin kullanılmasıyla eşdeğerdir.
 
 
 ### <a name="division-operator"></a>Bölme işleci
 
-Formun bir işlem için `x / y`, ikili İşleç aşırı yükleme çözümlemesi ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 biçiminde bir işlem için, ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Önceden tanımlanmış bölme işleçlerini aşağıda listelenmiştir. Tüm işleçler kalanını işlem `x` ve `y`.
+Önceden tanımlanmış bölüm işleçleri aşağıda listelenmiştir. İşleçler `x` ve `y` bölümünü hesaplar.
 
 *  Tamsayı bölme:
 
@@ -2743,30 +2743,30 @@ Formun bir işlem için `x / y`, ikili İşleç aşırı yükleme çözümlemesi
    ulong operator /(ulong x, ulong y);
    ```
 
-   Sağ işlenen değeri sıfır olursa bir `System.DivideByZeroException` oluşturulur.
+   Sağ işlenenin değeri sıfırsa, `System.DivideByZeroException` oluşturulur.
 
-   Bölme işlemi sonucu sıfıra doğru yuvarlar. Bu nedenle sonuç mutlak değerini iki işlenenden sayının mutlak değerini eşit veya küçük en büyük olası tamsayı ' dir. İki işlenen de aynı işarete ve sıfır veya iki işlenenden işaretleri olduğunda negatif sıfır ya da pozitif sonuç olur.
+   Bölme sonucu sıfıra doğru yuvarlar. Bu nedenle, sonucun mutlak değeri, iki işlenenin alanının mutlak değerinden küçük veya ona eşit olan en büyük olası tamsayıdır. İki işlenen iki işlenen de ters işaret sahibi olduğunda, sonuç sıfır veya pozitif, sıfır veya negatif olur.
 
-   Sol işlenen en küçük gösterilebilir ise `int` veya `long` değeri ve sağ işlenen `-1`, taşma meydana gelir. İçinde bir `checked` bağlam, bu neden olur. bir `System.ArithmeticException` (veya bir alt yapanın) oluşturulması için. İçinde bir `unchecked` bağlamında mı kullanılacağına uygulama tarafından tanımlanan bir `System.ArithmeticException` (veya bir alt yapanın) oluşturulur veya taşma, sol işlenen olan sonuç değerle bildirilmeyen gider.
+   Sol işlenen en küçük gösterilemeyen `int` veya `long` değeri ise ve sağ işlenen `-1` ise, taşma oluşur. @No__t-0 bağlamında, bu, bir `System.ArithmeticException` ' ın (veya alt sınıfının) oluşturulmasına neden olur. @No__t-0 bağlamında, uygulama tanımlı bir `System.ArithmeticException` (veya alt sınıfın) mi yoksa taşma değeri ise sol işlenenin elde edilen değerle bildirilmemiştir.
 
-*  Kayan nokta bölme:
+*  Kayan nokta bölmesi:
 
    ```csharp
    float operator /(float x, float y);
    double operator /(double x, double y);
    ```
 
-   Sayının aritmetik IEEE 754 kurallarına göre hesaplanır. Sıfır olmayan sınırlı değerler tüm olası eşleştirme birleşimlerini, sıfır sonsuz ve NaN'ın sonuçları aşağıdaki tabloda listelenmektedir. Tabloda `x` ve `y` sonlu pozitif değerler. `z` sonucu `x / y`. Sonucu hedef türü için çok büyük ise `z` sonsuz. Sonucu hedef türü için çok küçükse `z` sıfırdır.
+   Bu bölüm, IEEE 754 aritmetiğinin kurallarına göre hesaplanır. Aşağıdaki tabloda, sıfır dışında sınırlı değer, sıfır, sonsuz ve NaN 'nin tüm olası birleşimlerinin sonuçları listelenmiştir. Tabloda, `x` ve `y` pozitif sonlu değerlerdir. `z` ' ın @no__t sonucudur. Sonuç hedef türü için çok büyükse, `z` sonsuzluk olur. Sonuç hedef türü için çok küçükse, `z` sıfırdır.
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | +y   | -y   | +0   | -0   | + INF | -INF | NaN  | 
-   | + x   | +z   | -z   | + INF | -INF | +0   | -0   | NaN  | 
-   | -x   | -z   | +z   | -INF | + INF | -0   | +0   | NaN  | 
+   |      | \+ y   | -y   | +0   | -0   | \+ INF | -INF | NaN  | 
+   | \+ x   | \+ z   | -z   | \+ INF | -INF | +0   | -0   | NaN  | 
+   | -x   | -z   | \+ z   | -INF | \+ INF | -0   | +0   | NaN  | 
    | +0   | +0   | -0   | NaN  | NaN  | +0   | -0   | NaN  | 
    | -0   | -0   | +0   | NaN  | NaN  | -0   | +0   | NaN  | 
-   | + INF | + INF | -INF | + INF | -INF | NaN  | NaN  | NaN  | 
-   | -INF | -INF | + INF | -INF | + INF | NaN  | NaN  | NaN  | 
+   | \+ INF | \+ INF | -INF | \+ INF | -INF | NaN  | NaN  | NaN  | 
+   | -INF | -INF | \+ INF | -INF | \+ INF | NaN  | NaN  | NaN  | 
    | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
 
 *  Ondalık bölme:
@@ -2775,18 +2775,18 @@ Formun bir işlem için `x / y`, ikili İşleç aşırı yükleme çözümlemesi
    decimal operator /(decimal x, decimal y);
    ```
 
-   Sağ işlenen değeri sıfır olursa bir `System.DivideByZeroException` oluşturulur. Sonuçta elde edilen değeri içinde temsil etmek için çok büyük ise `decimal` biçiminde bir `System.OverflowException` oluşturulur. Sonuç değeri içinde temsil etmek için çok küçük olup olmadığını `decimal` sonuç biçimi de sıfırdır. Ölçek sonucu bir sonuç eşit korumak ölçeğin en küçük olan en yakın gerçek matematik sonucun ondalık gösterilebilir değere.
+   Sağ işlenenin değeri sıfırsa, `System.DivideByZeroException` oluşturulur. Elde edilen değer `decimal` biçiminde temsil etmek için çok büyükse, bir `System.OverflowException` oluşturulur. Sonuç değeri `decimal` biçiminde temsil etmek için çok küçük ise, sonuç sıfırdır. Sonucun ölçeği, en yakın gösterilebilir tablo ondalık değerine eşit olan bir sonucu doğru matematik sonucuyla koruyacak en küçük ölçeğe neden olur.
 
-   Ondalık bölme bölme işleci türünde kullanmaya eşdeğerdir `System.Decimal`.
+   Ondalık bölme `System.Decimal` türünde Bölme işlecinin kullanılmasıyla eşdeğerdir.
 
 
-### <a name="remainder-operator"></a>Kalan işleci
+### <a name="remainder-operator"></a>Kalan işleç
 
-Formun bir işlem için `x % y`, ikili İşleç aşırı yükleme çözümlemesi ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 biçiminde bir işlem için, ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Aşağıdaki önceden tanımlanmış kalan işleçleri listelenir. Tüm işleçleri arasında bölme kalanını işlem `x` ve `y`.
+Önceden tanımlanmış geri kalan işleçler aşağıda listelenmiştir. İşleçler, `x` ve `y` arasındaki bölmenin geri kalanını hesaplar.
 
-*  Tamsayı kalan:
+*  Tamsayı geri kalanı:
 
    ```csharp
    int operator %(int x, int y);
@@ -2795,27 +2795,27 @@ Aşağıdaki önceden tanımlanmış kalan işleçleri listelenir. Tüm işleçl
    ulong operator %(ulong x, ulong y);
    ```
 
-   Sonucu `x % y` değeri tarafından üretilen `x - (x / y) * y`. Varsa `y` sıfır, bir `System.DivideByZeroException` oluşturulur.
+   @No__t-0 sonucu, `x - (x / y) * y` tarafından üretilen değerdir. @No__t-0 sıfırsa, bir `System.DivideByZeroException` atılır.
 
-   Sol işlenen en küçük ise `int` veya `long` değeri ve sağ işlenen `-1`, `System.OverflowException` oluşturulur. Hiçbir durumda mu `x % y` bir özel durum burada `x / y` bir özel durum oluşturması beklenmiyor.
+   Sol işlenen en küçük `int` veya `long` değeri ise ve sağ işlenen `-1` ise, bir @no__t 3 oluşturulur. Hiçbir durumda `x % y`, `x / y` ' in bir özel durum oluşturmadığından bir özel durum oluşturur.
 
-*  Kayan nokta kalanını:
+*  Kayan nokta kalanı:
 
    ```csharp
    float operator %(float x, float y);
    double operator %(double x, double y);
    ```
 
-   Sıfır olmayan sınırlı değerler tüm olası eşleştirme birleşimlerini, sıfır sonsuz ve NaN'ın sonuçları aşağıdaki tabloda listelenmektedir. Tabloda `x` ve `y` sonlu pozitif değerler. `z` sonucu `x % y` ve olarak hesaplanan `x - n * y`burada `n` küçük veya eşit en büyük olası tamsayı `x / y`. Kalanı hesaplama, bu yöntem, tamsayı işlenenler için kullanılan benzer ancak IEEE 754 tanımından farklılık gösterir (burada `n` en yakın bir tamsayıdır `x / y`).
+   Aşağıdaki tabloda, sıfır dışında sınırlı değer, sıfır, sonsuz ve NaN 'nin tüm olası birleşimlerinin sonuçları listelenmiştir. Tabloda, `x` ve `y` pozitif sonlu değerlerdir. `z` `x % y` ' in sonucudur ve `x - n * y` olarak hesaplanır; burada `n` `x / y` ' e eşit veya daha küçük olan en büyük tamsayıdır. Bu geri kalanı hesaplama yöntemi, tamsayı işlenenleri için kullanılan ile benzerdir, ancak IEEE 754 tanımından (`n` `x / y` ' e en yakın tamsayıdır) farklıdır.
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | +y   | -y   | +0   | -0   | + INF | -INF | NaN  | 
-   | + x   | +z   | +z   | NaN  | NaN  | x    | x    | NaN  | 
+   |      | \+ y   | -y   | +0   | -0   | \+ INF | -INF | NaN  | 
+   | \+ x   | \+ z   | \+ z   | NaN  | NaN  | x    | x    | NaN  | 
    | -x   | -z   | -z   | NaN  | NaN  | -x   | -x   | NaN  | 
    | +0   | +0   | +0   | NaN  | NaN  | +0   | +0   | NaN  | 
    | -0   | -0   | -0   | NaN  | NaN  | -0   | -0   | NaN  | 
-   | + INF | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
+   | \+ INF | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
    | -INF | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
    | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
 
@@ -2825,18 +2825,18 @@ Aşağıdaki önceden tanımlanmış kalan işleçleri listelenir. Tüm işleçl
    decimal operator %(decimal x, decimal y);
    ```
 
-   Sağ işlenen değeri sıfır olursa bir `System.DivideByZeroException` oluşturulur. Bir yuvarlama önce bu sonucun ölçek büyük ölçekleri iki işlenenden biri ve sonucun oturum sıfır olmayan, aynı `x`.
+   Sağ işlenenin değeri sıfırsa, `System.DivideByZeroException` oluşturulur. Sonucun ölçeği, herhangi bir yuvarlamadan önce iki işlenenin ölçeklendirilmesi ve sıfır olmayan bir değer ise `x` ' la aynı olur.
 
-   Ondalık kalan kalan işleci türünde kullanmaya eşdeğerdir `System.Decimal`.
+   Ondalık geri kalanı `System.Decimal` türündeki geri kalan işlecin kullanılmasıyla eşdeğerdir.
 
 
 ### <a name="addition-operator"></a>Toplama işleci
 
-Formun bir işlem için `x + y`, ikili İşleç aşırı yükleme çözümlemesi ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 biçiminde bir işlem için, ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Aşağıdaki önceden tanımlanmış toplama işleçleri listelenir. Sayısal ve sabit listesi türleri için önceden tanımlanmış toplama işleçleri iki işlenenden toplam hesaplaması. Bir veya iki işlenenin türü dize olmadığında, önceden tanımlı toplama işleçleri işlenenler dize gösterimini art arda ekler.
+Önceden tanımlanmış ekleme işleçleri aşağıda listelenmiştir. Sayısal ve sabit listesi türlerinde, önceden tanımlanmış ekleme işleçleri iki işlenenin toplamını hesaplar. Bir veya her iki işlenen de dize türünde olduğunda, önceden tanımlanmış toplama işleçleri işlenen dize gösterimini birleştirir.
 
-*  Tamsayı ayrıca:
+*  Tamsayı ekleme:
 
    ```csharp
    int operator +(int x, int y);
@@ -2845,7 +2845,7 @@ Aşağıdaki önceden tanımlanmış toplama işleçleri listelenir. Sayısal ve
    ulong operator +(ulong x, ulong y);
    ```
 
-   İçinde bir `checked` toplamı sonuç türü aralığının dışında ise bağlam bir `System.OverflowException` oluşturulur. İçinde bir `unchecked` bağlamı, taşan bildirilmez ve tüm önemli sonuç türü yüksek düzeyli bitleri aralığın dışında atılır.
+   @No__t-0 bağlamında, Sum sonuç türü aralığının dışındaysa, bir `System.OverflowException` atılır. @No__t-0 bağlamında, taşmalar raporlanmaz ve sonuç türü aralığı dışındaki önemli yüksek sıralı bitler atılır.
 
 *  Kayan nokta ekleme:
 
@@ -2854,36 +2854,36 @@ Aşağıdaki önceden tanımlanmış toplama işleçleri listelenir. Sayısal ve
    double operator +(double x, double y);
    ```
 
-   Toplam aritmetik IEEE 754 kurallarına göre hesaplanır. Sıfır olmayan sınırlı değerler tüm olası eşleştirme birleşimlerini, sıfır sonsuz ve NaN'ın sonuçları aşağıdaki tabloda listelenmektedir. Tabloda `x` ve `y` sınırlı sıfır olmayan değerler ve `z` sonucu `x + y`. Varsa `x` ve `y` aynı büyüklük sahip ancak işaretlere ters `z` pozitif sıfır. Varsa `x + y` hedef türünde temsil etmek için çok büyük `z` aynı işarete sahip bir sonsuzluk olup `x + y`.
+   Toplam, IEEE 754 aritmetiğinin kurallarına göre hesaplanır. Aşağıdaki tabloda, sıfır dışında sınırlı değer, sıfır, sonsuz ve NaN 'nin tüm olası birleşimlerinin sonuçları listelenmiştir. Tabloda, `x` ve `y`, sıfır dışında sonlu değerlerdir ve @no__t @no__t 2 ' nin sonucudur. @No__t-0 ve `y` aynı büyüklük, ancak ters işaretlere sahipse, `z` pozitif sıfırdır. @No__t-0, hedef türünde temsil etmek için çok büyükse, `z`, `x + y` ile aynı işarete sahip bir sonsuzluk olur.
 
    |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | y    | +0   | -0   | + INF | -INF | NaN  | 
-   | x    | z    | x    | x    | + INF | -INF | NaN  | 
-   | +0   | y    | +0   | +0   | + INF | -INF | NaN  | 
-   | -0   | y    | +0   | -0   | + INF | -INF | NaN  | 
-   | + INF | + INF | + INF | + INF | + INF | NaN  | NaN  | 
+   |      | Y    | +0   | -0   | \+ INF | -INF | NaN  | 
+   | x    | z    | x    | x    | \+ INF | -INF | NaN  | 
+   | +0   | Y    | +0   | +0   | \+ INF | -INF | NaN  | 
+   | -0   | Y    | +0   | -0   | \+ INF | -INF | NaN  | 
+   | \+ INF | \+ INF | \+ INF | \+ INF | \+ INF | NaN  | NaN  | 
    | -INF | -INF | -INF | -INF | NaN  | -INF | NaN  | 
    | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
 
-*  Ondalık ayrıca:
+*  Ondalık ekleme:
 
    ```csharp
    decimal operator +(decimal x, decimal y);
    ```
 
-   Sonuçta elde edilen değeri içinde temsil etmek için çok büyük ise `decimal` biçiminde bir `System.OverflowException` oluşturulur. Bir yuvarlama önce bu sonucun ölçek büyük ölçekleri iki işlenenden biri ' dir.
+   Elde edilen değer `decimal` biçiminde temsil etmek için çok büyükse, bir `System.OverflowException` oluşturulur. Sonucun ölçeği, herhangi bir yuvarlamadan önce, iki işlenenin ölçeklendirilmesine göre daha büyüktür.
 
-   Ondalık toplama türü Toplama işleci kullanmaya eşdeğerdir `System.Decimal`.
+   Ondalık toplama, `System.Decimal` türünde toplama işlecinin kullanılmasıyla eşdeğerdir.
 
-*  Sabit listesi ekleme. Aşağıdaki önceden tanımlanmış işleçleri, her bir numaralandırma türü örtük olarak sağlar burada `E` sabit listesi türüdür ve `U` temel alınan türü `E`:
+*  Numaralandırma ekleme. Her numaralandırma türü örtük olarak aşağıdaki önceden tanımlı işleçleri sağlar; burada `E` sabit listesi türüdür ve `U` `E` ' nin temel türüdür:
 
    ```csharp
    E operator +(E x, U y);
    E operator +(U x, E y);
    ```
 
-   Çalışma zamanında tam olarak bu işleçler değerlendirilir `(E)((U)x + (U)y)`.
+   Çalışma zamanında bu işleçler tam olarak `(E)((U)x + (U)y)` olarak değerlendirilir.
 
 *  Dize birleştirme:
 
@@ -2893,7 +2893,7 @@ Aşağıdaki önceden tanımlanmış toplama işleçleri listelenir. Sayısal ve
    string operator +(object x, string y);
    ```
 
-   Bu aşırı yüklemeler ikili `+` dize birleştirme işlecini gerçekleştirin. Dize birleştirme işleci ise `null`, boş bir dize yerine konur. Aksi takdirde, herhangi bir dize olmayan bağımsız değişken dize gösterimine sanal çağırarak dönüştürülür `ToString` yöntemi türden devralınan `object`. Varsa `ToString` döndürür `null`, boş bir dize yerine konur.
+   İkili `+` işlecinin bu aşırı yüklemeleri, dizeyi birleştirme işlemini gerçekleştirir. Dize birleştirme işleneni `null` ise boş bir dize değiştirilir. Aksi takdirde, dize olmayan herhangi bir bağımsız değişken `object` türünden devralınan sanal `ToString` yöntemini çağırarak dize gösterimine dönüştürülür. @No__t-0 `null` döndürürse, boş bir dize değiştirilir.
 
    ```csharp
    using System;
@@ -2913,21 +2913,21 @@ Aşağıdaki önceden tanımlanmış toplama işleçleri listelenir. Sayısal ve
    }
    ```
 
-   Dize birleştirme işlecini sol işlenen sağ işlenenin karakterleridir karakterleri içeren bir dize sonucudur. Dize birleştirme işlecini hiç dönmüyor bir `null` değeri. A `System.OutOfMemoryException` sonuç dizesi ayırmak yeterli bellek yoksa oluşturulur.
+   Dize birleştirme işlecinin sonucu, sol işlenenin karakterlerinden ve ardından sağ işlenenin karakterlerinden oluşan bir dizedir. Dize birleştirme işleci hiçbir şekilde `null` değeri döndürmez. Elde edilen dizeyi ayırmak için yeterli kullanılabilir bellek yoksa bir `System.OutOfMemoryException` oluşturulabilir.
 
-*  Temsilci birleşimi. Her temsilci türü örtük olarak aşağıdaki önceden tanımlanmış işleç sağlar burada `D` temsilci türü:
+*  Temsilci birleşimi. Her temsilci türü örtük olarak aşağıdaki önceden tanımlı işleci sağlar; burada `D` temsilci türüdür:
 
    ```csharp
    D operator +(D x, D y);
    ```
 
-   İkili `+` işleci, temsilci birleşimi her iki işlenen de bazı temsilci türünde olduğunda gerçekleştirir `D`. (İşlenenleri farklı temsilci türleri varsa, bir bağlama zamanı hatası oluşur.) Birinci işlenenin ise `null`, işlemin sonucunu ikinci işlenenin değeri (Ayrıca olsa bile `null`). Aksi durumda, ikinci işleneni ise `null`, işlemin sonucunu birinci işlenenin değeridir. Aksi takdirde, işlemin sonucunu yeni bir temsilci örneği, çağrılır, birinci işlenenin çağırır ve ardından ikinci işlenenin çağırır olur. Temsilci birleşimi örnekleri için bkz: [çıkarma işleci](expressions.md#subtraction-operator) ve [temsilci çağırma](delegates.md#delegate-invocation). Bu yana `System.Delegate` bir temsilci türü değil `operator`  `+` için tanımlı değil.
+   İkili `+` işleci, her iki işlenen de `D` ' de bir temsilci türü olduğunda temsilci birleşimi gerçekleştirir. (İşlenenler farklı temsilci türlerine sahip ise, bir bağlama zamanı hatası oluşur.) İlk işlenen `null` ise, işlemin sonucu ikinci işlenenin değeridir (Bu da `null` olsa bile). Aksi takdirde, ikinci işlenen `null` ise, işlemin sonucu ilk işlenenin değeridir. Aksi takdirde, işlem sonucu çağrıldığında, ilk işleneni çağırır ve sonra ikinci işleneni çağıran yeni bir temsilci örneğidir. Temsilci birleşimi örnekleri için bkz. [çıkarma işleci](expressions.md#subtraction-operator) ve [temsilci çağrısı](delegates.md#delegate-invocation). @No__t-0 bir temsilci türü olmadığından, `operator` @ no__t-2 tanımlı değildir.
 
 ### <a name="subtraction-operator"></a>Çıkarma işleci
 
-Formun bir işlem için `x - y`, ikili İşleç aşırı yükleme çözümlemesi ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 biçiminde bir işlem için, ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) belirli bir operatör uygulamasını seçmek için uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Aşağıdaki önceden tanımlanmış çıkarma işleçleri listelenir. Tüm çıkarma işleçleri `y` gelen `x`.
+Önceden tanımlanmış çıkarma işleçleri aşağıda listelenmiştir. İşleçler `y` ' dan `x` ' den çıkar.
 
 *  Tamsayı çıkarma:
 
@@ -2938,7 +2938,7 @@ Aşağıdaki önceden tanımlanmış çıkarma işleçleri listelenir. Tüm çı
    ulong operator -(ulong x, ulong y);
    ```
 
-   İçinde bir `checked` fark sonuç türü aralığının dışında ise bağlam bir `System.OverflowException` oluşturulur. İçinde bir `unchecked` bağlamı, taşan bildirilmez ve tüm önemli sonuç türü yüksek düzeyli bitleri aralığın dışında atılır.
+   @No__t-0 bağlamında, fark sonuç türü aralığının dışındaysa, bir `System.OverflowException` atılır. @No__t-0 bağlamında, taşmalar raporlanmaz ve sonuç türü aralığı dışındaki önemli yüksek sıralı bitler atılır.
 
 *  Kayan nokta çıkarma:
 
@@ -2947,15 +2947,15 @@ Aşağıdaki önceden tanımlanmış çıkarma işleçleri listelenir. Tüm çı
    double operator -(double x, double y);
    ```
 
-   Fark aritmetik IEEE 754 kurallarına göre hesaplanır. Sıfır olmayan sınırlı değerler tüm olası eşleştirme birleşimlerini, sıfır sonsuz ve NaN'ler sonuçları aşağıdaki tabloda listelenmektedir. Tabloda `x` ve `y` sınırlı sıfır olmayan değerler ve `z` sonucu `x - y`. Varsa `x` ve `y` eşit olup olmadığını `z` pozitif sıfır. Varsa `x - y` hedef türünde temsil etmek için çok büyük `z` aynı işarete sahip bir sonsuzluk olup `x - y`.
+   Aradaki fark, IEEE 754 aritmetiğinin kurallarına göre hesaplanır. Aşağıdaki tabloda, sıfır dışında sınırlı değer, sıfır, sonsuz ve NaNs 'ın tüm olası birleşimlerinin sonuçları listelenmiştir. Tabloda, `x` ve `y`, sıfır dışında sonlu değerlerdir ve @no__t @no__t 2 ' nin sonucudur. @No__t-0 ve `y` eşitse, `z` pozitif sıfırdır. @No__t-0, hedef türünde temsil etmek için çok büyükse, `z`, `x - y` ile aynı işarete sahip bir sonsuzluk olur.
 
    |      |      |      |      |      |      |     |
    |:----:|:----:|:----:|:----:|:----:|:----:|:---:|
-   |      | y    | +0   | -0   | + INF | -INF | NaN | 
-   | x    | z    | x    | x    | -INF | + INF | NaN | 
-   | +0   | -y   | +0   | +0   | -INF | + INF | NaN | 
-   | -0   | -y   | -0   | +0   | -INF | + INF | NaN | 
-   | + INF | + INF | + INF | + INF | NaN  | + INF | NaN | 
+   |      | Y    | +0   | -0   | \+ INF | -INF | NaN | 
+   | x    | z    | x    | x    | -INF | \+ INF | NaN | 
+   | +0   | -y   | +0   | +0   | -INF | \+ INF | NaN | 
+   | -0   | -y   | -0   | +0   | -INF | \+ INF | NaN | 
+   | \+ INF | \+ INF | \+ INF | \+ INF | NaN  | \+ INF | NaN | 
    | -INF | -INF | -INF | -INF | -INF | NaN  | NaN | 
    | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN | 
 
@@ -2965,31 +2965,31 @@ Aşağıdaki önceden tanımlanmış çıkarma işleçleri listelenir. Tüm çı
    decimal operator -(decimal x, decimal y);
    ```
 
-   Sonuçta elde edilen değeri içinde temsil etmek için çok büyük ise `decimal` biçiminde bir `System.OverflowException` oluşturulur. Bir yuvarlama önce bu sonucun ölçek büyük ölçekleri iki işlenenden biri ' dir.
+   Elde edilen değer `decimal` biçiminde temsil etmek için çok büyükse, bir `System.OverflowException` oluşturulur. Sonucun ölçeği, herhangi bir yuvarlamadan önce, iki işlenenin ölçeklendirilmesine göre daha büyüktür.
 
-   Ondalık çıkarma tür çıkarma işleci kullanmaya eşdeğerdir `System.Decimal`.
+   Decimal çıkarma `System.Decimal` türünde çıkarma işlecinin kullanılmasıyla eşdeğerdir.
 
-*  Sabit listesi çıkarma. Her bir numaralandırma türü örtük olarak aşağıdaki önceden tanımlanmış işleç sağlar burada `E` sabit listesi türüdür ve `U` temel alınan türü `E`:
+*  Sabit Listesi çıkarma. Her numaralandırma türü örtük olarak aşağıdaki önceden tanımlı işleci sağlar; burada `E` sabit listesi türüdür ve `U` `E` ' nin temel türüdür:
 
    ```csharp
    U operator -(E x, E y);
    ```
 
-   Bu işleç, tam olarak değerlendirilir `(U)((U)x - (U)y)`. Diğer bir deyişle, işlecin sıralı değerlerini arasındaki farkı hesaplar `x` ve `y`, ve sonuç türü temel numaralandırma türüdür.
+   Bu işleç tam olarak `(U)((U)x - (U)y)` olarak değerlendirilir. Diğer bir deyişle, işleci `x` ve `y` ' in Ordinal değerleri arasındaki farkı hesaplar ve sonucun türü, numaralandırmanın temel alınan türüdür.
 
    ```csharp
    E operator -(E x, U y);
    ```
 
-   Bu işleç, tam olarak değerlendirilir `(E)((U)x - y)`. Diğer bir deyişle, işleci, bir numaralandırma değeri oluşturan bir sabit listesi türünü temel değeri çıkarır.
+   Bu işleç tam olarak `(E)((U)x - y)` olarak değerlendirilir. Diğer bir deyişle işleci, numaralandırmanın temel alınan türünden bir değeri çıkartır ve sabit listesinin bir değerini çıkarır.
 
-*  Temizleme temsilci. Her temsilci türü örtük olarak aşağıdaki önceden tanımlanmış işleç sağlar burada `D` temsilci türü:
+*  Temsilci kaldırma. Her temsilci türü örtük olarak aşağıdaki önceden tanımlı işleci sağlar; burada `D` temsilci türüdür:
 
    ```csharp
    D operator -(D x, D y);
    ```
 
-   İkili `-` işleç, her iki işlenen de bazı temsilci türünde olduğunda temsilci kaldırma gerçekleştirir `D`. İşlenenleri farklı temsilci türleri varsa, bir bağlama zamanı hatası oluşur. Birinci işlenenin ise `null`, işlem sonucu `null`. Aksi durumda, ikinci işleneni ise `null`, işlemin sonucunu birinci işlenenin değeridir. Aksi takdirde, her iki işlenen de çağırma listeleri temsil eden ([temsilci bildirimi](delegates.md#delegate-declarations)) bir veya daha fazla giriş ve sonuç sahip olan ilk işlenen 's listesi kaldırıldığında ikinci işlenenin ait girişleri ile oluşan yeni bir çağırma listesi Bu ikinci işlenenin 's liste sağlanmıştır, uygun bir bitişik alt liste ilk ait olur.     (Alt liste eşitlik belirlemek için karşılık gelen girişler için temsilci eşitlik işlecini karşılaştırılır ([temsilci eşitlik işleçleri](expressions.md#delegate-equality-operators)).) Aksi halde sol işlenenin sonucudur. İşlenenleri listeleri hiçbiri işlemde değiştirilir. İkinci işlenenin 's listesiyle eşleşen birden çok alt listelerin ilk işlenen 's listesinde bitişik girişlerinin bitişik girişlerinin en sağdaki eşleşen alt liste kaldırılır. Kaldırma işlemi boş bir liste sonuçlanırsa sonucudur `null`. Örneğin:
+   İkili `-` işleci her iki işlenen de `D` temsilcisinlerinde temsilci kaldırma gerçekleştirir. İşlenenler farklı temsilci türlerine sahip ise, bir bağlama zamanı hatası oluşur. İlk işlenen `null` ise, işlemin sonucu `null` ' dir. Aksi takdirde, ikinci işlenen `null` ise, işlemin sonucu ilk işlenenin değeridir. Aksi halde, her iki işlenen de bir veya daha fazla girişe sahip çağrı listelerini ([temsilci bildirimleri](delegates.md#delegate-declarations)) temsil eder ve sonuç, ikinci işlenenin işlenenin listesi, ilki için uygun bir bitişik alt liste.     (Alt liste eşitliğini belirleyebilmek için, karşılık gelen girişler, temsilci eşitlik işleci ([temsilci eşitlik işleçleri](expressions.md#delegate-equality-operators)) ile karşılaştırılır.) Aksi halde, sonuç sol işlenenin değeridir. İşlemde işlenen listelerden hiçbiri değiştirilmez. İkinci işlenenin listesi, ilk işlenen listesindeki bitişik girdilerin birden çok alt listesiyle eşleşiyorsa, bitişik girdilerin en sağ eşleşen alt listesi kaldırılır. Kaldırma işlemi boş bir liste ile sonuçlanırsa, sonuç `null` ' dır. Örneğin:
 
    ```csharp
    delegate void D(int x);
@@ -3025,7 +3025,7 @@ Aşağıdaki önceden tanımlanmış çıkarma işleçleri listelenir. Tüm çı
 
 ## <a name="shift-operators"></a>Kaydırma işleçleri
 
-`<<` Ve `>>` işleçler bit kaydırma işlemleri gerçekleştirmek için kullanılır.
+@No__t-0 ve `>>` işleçleri bit kaydırma işlemlerini gerçekleştirmek için kullanılır.
 
 ```antlr
 shift_expression
@@ -3035,15 +3035,15 @@ shift_expression
     ;
 ```
 
-İşleci, bir *öğesinin* derleme zamanı türü `dynamic`, ifadeyi dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı ifadenin türüdür `dynamic`, ve çalışma zamanında derleme zamanı türü bu işlenenler çalışma zamanı türünü kullanarak aşağıda açıklanan çözümleme gerçekleşecek `dynamic`.
+Bir *shift_expression* işleneni derleme zamanı türü `dynamic` ise, ifade dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, ifadenin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, derleme zamanı türü `dynamic` olan bu işlenenlerinin çalışma zamanı türü kullanılarak çalışma zamanında gerçekleşmeyecektir.
 
-Formun bir işlem için `x << count` veya `x >> count`, ikili İşleç aşırı yükleme çözümlemesi ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 veya `x >> count` biçiminde bir işlem için, belirli bir operatör uygulamasını seçmek üzere ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Aşırı yüklenen kaydırma işlecinin bildirirken, birinci işlenenin türü her zaman sınıfın veya yapının işleç bildirimi içeren olmalıdır ve ikinci işlenenin türü her zaman olmalıdır `int`.
+Aşırı yüklenmiş bir kaydırma işleci bildirirken, İlk işlenenin türü her zaman operatör bildirimini içeren sınıf veya yapı olmalıdır ve ikinci işlenenin türü her zaman `int` olmalıdır.
 
-Aşağıdaki önceden tanımlanmış kaydırma işleçleri listelenir.
+Önceden tanımlanmış kaydırma işleçleri aşağıda listelenmiştir.
 
-*  Sola kaydırma:
+*  Sola kaydır:
 
    ```csharp
    int operator <<(int x, int count);
@@ -3052,11 +3052,11 @@ Aşağıdaki önceden tanımlanmış kaydırma işleçleri listelenir.
    ulong operator <<(ulong x, int count);
    ```
 
-   `<<` İşleci kaydırmalar `x` aşağıda açıklandığı gibi sola bit sayısına göre hesaplanır.
+   @No__t-0 işleci, `x` ' i aşağıda açıklandığı şekilde hesaplanan sayıda bit ile sola kaydırır.
 
-   Sonuç türü aralık dışında yüksek düzeyli bitlerini `x` olan atılan, kalan bitleri sola kaydırılacak ve düşük düzey boş bit konumları sıfır olarak ayarlanır.
+   @No__t-0 ' ın sonuç türü aralığının dışında yüksek sıralı bitler atılır, kalan bitler sola kaydıralınır ve düşük sıralı boş bit konumları sıfır olarak ayarlanır.
 
-*  Sağa kaydırma:
+*  Sağa kaydır:
 
    ```csharp
    int operator >>(int x, int count);
@@ -3065,26 +3065,26 @@ Aşağıdaki önceden tanımlanmış kaydırma işleçleri listelenir.
    ulong operator >>(ulong x, int count);
    ```
 
-   `>>` İşleci kaydırmalar `x` aşağıda açıklandığı sağa bit sayısına göre hesaplanır.
+   @No__t-0 işleci, aşağıda açıklandığı gibi hesaplanmış bir bit sayısına `x` ' i kaydırır.
 
-   Zaman `x` türünde `int` veya `long`, alt sıra bitleri `x` olan atılan, kalan bitleri sağa kaydırılacak ve yüksek düzeyli boş bit konumları sıfır if ayarlanır `x` negatif olmayan ve bir halinde `x` negatiftir.
+   @No__t-0 `int` veya `long` türünde olduğunda, `x` ' ün düşük sıralı bitleri atılır, kalan bitler sağa kaydıralınır ve yüksek sıralı boş bit konumları sıfır olarak ayarlanır ve `x` negatifse bir tane olarak ayarlanır.
 
-   Zaman `x` türünde `uint` veya `ulong`, alt sıra bitleri `x` olan atılan, kalan bitleri sağa kaydırılacak ve yüksek düzeyli boş bit konumları sıfır olarak ayarlanır.
+   @No__t-0 `uint` veya `ulong` türünde olduğunda, `x` ' ün düşük sıralı bitleri atılır, kalan bitler sağ kaydıralınır ve yüksek sıralı boş bit konumları sıfır olarak ayarlanır.
 
-Önceden tanımlı operatörler için kaydırılacak bit sayısını gibi hesaplanır:
+Önceden tanımlanmış işleçler için, kaydırma yapılacak bit sayısı şu şekilde hesaplanır:
 
-*  Zaman türü `x` olduğu `int` veya `uint`, kaydırma sayısı düşük düzey beş bitleri tarafından verilen `count`. Kaydırma sayısı alanından başka bir deyişle, hesaplanan `count & 0x1F`.
-*  Zaman türü `x` olduğu `long` veya `ulong`, kaydırma sayısı düşük düzey altı bitleri tarafından verilen `count`. Kaydırma sayısı alanından başka bir deyişle, hesaplanan `count & 0x3F`.
+*  @No__t-0 `int` veya `uint` olduğunda, kaydırma sayısı düşük sıralı beş bit `count` ' i tarafından verilir. Diğer bir deyişle, kaydırma sayısı `count & 0x1F` ' dan hesaplanır.
+*  @No__t-0 `long` veya `ulong` olduğunda, kaydırma sayısı, `count` ' ün alt-sırası ile verilir. Diğer bir deyişle, kaydırma sayısı `count & 0x3F` ' dan hesaplanır.
 
-Elde edilen kaydırma sayısı sıfır ise, yalnızca dönüş değeri kaydırma işleçleri `x`.
+Elde edilen kaydırma sayısı sıfırsa, kaydırma işleçleri yalnızca `x` değerini döndürür.
 
-Kaydırma işleçlerini hiçbir zaman taşıyor neden ve aynı sonuçlar `checked` ve `unchecked` bağlamı.
+SHIFT işlemleri hiçbir şekilde taşmaya neden olmaz ve `checked` ve `unchecked` bağlamlarındaki aynı sonuçları üretir.
 
-Zaman sol işleneni `>>` işleci imzalı bir tamsayı türünde, burada görüntülerle en önemli bite (imza biti) işlenenin değerini yayılan aritmetik kaydırma şu yüksek düzeyli boş bit konumları için işleç gerçekleştirir. Zaman sol işleneni `>>` işleci bir işaretsiz tamsayı türü, mantıksal kaydırma gibi yüksek düzeyli boş bit konumları her zaman ayarlanır sıfıra bir sağ işlecini uygular. İşlenen türü ortaya çıkan ters işlemi gerçekleştirmek için açık yayınları kullanılabilir. Örneğin, varsa `x` türünde bir değişken `int`, işlemi `unchecked((int)((uint)x >> y))` sağında bir mantıksal kaydırma uygular `x`.
+@No__t-0 işlecinin sol işleneni işaretli bir integral türünde olduğunda, işleç, işlenenin en önemli bit (işaret biti) değerinde bir aritmetik kaydırma gerçekleştirir ve yüksek sıralı boş bit konumlarına yayılır. @No__t-0 işlecinin sol işleneni işaretsiz bir integral türünde olduğunda, işleç yüksek sıralı boş bit konumlarda her zaman sıfır olarak ayarlanmış bir mantıksal kaydırma gerçekleştirir. İşlenen türünden çıkarılan ' nin ters işlemini gerçekleştirmek için, açık atamalar kullanılabilir. Örneğin, `x` `int` türünde bir değişkense `unchecked((int)((uint)x >> y))` işlemi `x` ' ün bir mantıksal kaydırma uygular.
 
 ## <a name="relational-and-type-testing-operators"></a>İlişkisel ve tür testi işleçleri
 
-`==`, `!=`, `<`, `>`, `<=`, `>=`, `is` Ve `as` işleçleri, ilişkisel ve tür testi işleçleri denir.
+@No__t-0, `!=`, `<`, `>`, `<=`, `>=`, `is` ve `as` işleçleri ilişkisel ve tür testi işleçleri olarak adlandırılır.
 
 ```antlr
 relational_expression
@@ -3104,29 +3104,29 @@ equality_expression
     ;
 ```
 
-`is` İşleci açıklanan [işleci](expressions.md#the-is-operator) ve `as` işleci açıklanan [işleci olarak](expressions.md#the-as-operator).
+@No__t-0 işleci [,,](expressions.md#the-is-operator) ve `as` işlecinin [as işleci](expressions.md#the-as-operator)içinde açıklanmaktadır.
 
-`==`, `!=`, `<`, `>`, `<=` Ve `>=` işleçleri ***Karşılaştırma işleçleri***.
+@No__t-0, `!=`, `<`, `>`, `<=` ve `>=` işleçleri ***karşılaştırma işleçleridir***.
 
-Bir karşılaştırma işlecinin bir işleneni derleme zamanı türü olup olmadığını `dynamic`, ifadeyi dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı ifadenin türüdür `dynamic`, ve çalışma zamanında derleme zamanı türü bu işlenenler çalışma zamanı türünü kullanarak aşağıda açıklanan çözümleme gerçekleşecek `dynamic`.
+Karşılaştırma işlecinin bir işleneni derleme zamanı türü `dynamic` ise, ifade dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, ifadenin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, derleme zamanı türü `dynamic` olan bu işlenenlerinin çalışma zamanı türü kullanılarak çalışma zamanında gerçekleşmeyecektir.
 
-Formun bir işlem için `x` *op* `y`burada *op* bir karşılaştırma işleci, aşırı yükleme çözünürlüğü ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 *op* `y` biçiminde bir işlem için, *op* bir karşılaştırma operatörü olduğunda, belirli bir operatör uygulamasını seçmek için aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Önceden tanımlanmış Karşılaştırma işleçleri aşağıdaki bölümlerde açıklanmıştır. Tüm önceden tanımlanmış Karşılaştırma işleçleri bir sonuç türü `bool`aşağıdaki tabloda açıklandığı gibi.
+Önceden tanımlanmış karşılaştırma işleçleri aşağıdaki bölümlerde açıklanmıştır. Önceden tanımlanmış tüm karşılaştırma işleçleri, aşağıdaki tabloda açıklandığı gibi `bool` türünde bir sonuç döndürür.
 
 
 | __İşlem__ | __Sonuç__                                                       |
 |---------------|------------------------------------------------------------------|
-| `x == y`      | `true` varsa `x` eşittir `y`, `false` Aksi takdirde                 | 
-| `x != y`      | `true` varsa `x` eşit değildir `y`, `false` Aksi takdirde             | 
-| `x < y`       | `true` varsa `x` olduğu küçüktür `y`, `false` Aksi takdirde                | 
-| `x > y`       | `true` varsa `x` büyüktür `y`, `false` Aksi takdirde             | 
-| `x <= y`      | `true` varsa `x` küçüktür veya eşittir `y`, `false` Aksi takdirde    | 
-| `x >= y`      | `true` varsa `x` büyüktür veya eşittir `y`, `false` Aksi takdirde | 
+| `x == y`      | `x`  `y` ' ye eşitse `false` Aksi takdirde                 | 
+| `x != y`      | `x`  `y` ' ye eşit değilse `false` Aksi takdirde             | 
+| `x < y`       | `x`  `y` ' den küçükse `false` Aksi takdirde                | 
+| `x > y`       | `x`  `y` ' den büyükse `false` Aksi takdirde             | 
+| `x <= y`      | `x`  `y` ' ye eşit veya daha küçükse `false` Aksi takdirde    | 
+| `x >= y`      | `x`  `y` ' ye eşit veya daha büyükse `false` Aksi takdirde | 
 
-### <a name="integer-comparison-operators"></a>Tamsayı Karşılaştırma işleçleri
+### <a name="integer-comparison-operators"></a>Tamsayı karşılaştırma işleçleri
 
-Önceden tanımlanmış tamsayı Karşılaştırma işleçleri şunlardır:
+Önceden tanımlanmış tamsayı karşılaştırma işleçleri şunlardır:
 ```csharp
 bool operator ==(int x, int y);
 bool operator ==(uint x, uint y);
@@ -3159,11 +3159,11 @@ bool operator >=(long x, long y);
 bool operator >=(ulong x, ulong y);
 ```
 
-Bu işleçlerden her biri sayısal değerleri döndürür ve iki tamsayı işlenenler karşılaştıran bir `bool` belirli ilişki olup olmadığını belirten bir değer `true` veya `false`.
+Bu işleçlerin her biri, iki tamsayı işleneninin sayısal değerlerini karşılaştırır ve belirli bir ilişkinin `true` veya `false` olduğunu belirten `bool` değerini döndürür.
 
-### <a name="floating-point-comparison-operators"></a>Kayan nokta Karşılaştırma işleçleri
+### <a name="floating-point-comparison-operators"></a>Kayan nokta karşılaştırma işleçleri
 
-Önceden tanımlanmış bir kayan nokta Karşılaştırma işleçleri şunlardır:
+Önceden tanımlanmış kayan nokta karşılaştırma işleçleri şunlardır:
 ```csharp
 bool operator ==(float x, float y);
 bool operator ==(double x, double y);
@@ -3184,23 +3184,23 @@ bool operator >=(float x, float y);
 bool operator >=(double x, double y);
 ```
 
-İşleçler işlenenlerin standart IEEE 754 kurallarına göre karşılaştırın:
+İşleçler, işlenenleri IEEE 754 standardının kurallarına göre karşılaştırır:
 
-*  İki işlenenden NaN ise, sonucudur `false` tüm işleçleri `!=`, sonucu olan `true`. Her iki işlenenleri için `x != y` her zaman aynı sonucu üretir `!(x == y)`. Ancak, bir veya iki işlenenin olduğunda, NaN `<`, `>`, `<=`, ve `>=` işleçleri mantıksal olumsuzlama ters işleci,'dekiyle aynı sonucu üretir değil. Örneğin, ya da, `x` ve `y` NaN ise `x < y` olduğu `false`, ancak `!(x >= y)` olduğu `true`.
-*  İki işlenenin NaN olduğunda, işleçleri değerleri sıralama göre kayan nokta iki işlenenden karşılaştırın.
+*  Her iki işlenen de NaN ise, sonuç `true` olan `!=` hariç tüm işleçler için `false` olur. Her iki işlenen için `x != y` her zaman `!(x == y)` ile aynı sonucu üretir. Ancak, bir veya her iki işlenen de NaN olduğunda, `<`, `>`, `<=` ve `>=` işleçleri, ters işlecin mantıksal Olumsuzlaştırma ile aynı sonuçları oluşturmaz. Örneğin, `x` ve `y` NaN ise, `x < y` `false`, ancak `!(x >= y)` `true` ' tir.
+*  Hiçbir işlenen NaN olmadığında, işleçler iki kayan nokta işleneninin değerlerini sıralamaya göre karşılaştırır
 
-   ```
+   ```csharp
    -inf < -max < ... < -min < -0.0 == +0.0 < +min < ... < +max < +inf
    ```
 
-   Burada `min` ve `max` belirli kayan nokta biçiminde temsil edilebilir en küçük ve büyük pozitif sınırlı değerlerdir. Bu sıralama önemli etkileri verilmiştir:
-   * Negatif ve pozitif sıfır eşit olarak kabul edilir.
-   * Negatif sonsuz küçük diğer tüm değerler daha ancak başka bir negatif sonsuz eşit olarak kabul edilir.
-   * Diğer tüm değerler büyüktür, ancak başka bir pozitif sonsuz eşit bir pozitif sonsuz olarak kabul edilir.
+   Burada `min` ve `max`, verilen kayan nokta biçiminde temsil edilebilecek en küçük ve en büyük pozitif değerlerdir. Bu sıralamanın önemli etkileri şunlardır:
+   * Negatif ve pozitif sıfırlar eşit kabul edilir.
+   * Negatif sonsuzluk, diğer tüm değerlerden daha az kabul edilir, ancak başka bir negatif sonsuzya eşittir.
+   * Pozitif sonsuzluk, diğer tüm değerlerden daha büyük sayılır, ancak başka bir pozitif sonsuzya eşittir.
 
-### <a name="decimal-comparison-operators"></a>Ondalık Karşılaştırma işleçleri
+### <a name="decimal-comparison-operators"></a>Ondalık karşılaştırma işleçleri
 
-Önceden tanımlanmış ondalık Karşılaştırma işleçleri şunlardır:
+Önceden tanımlanmış ondalık karşılaştırma işleçleri şunlardır:
 ```csharp
 bool operator ==(decimal x, decimal y);
 bool operator !=(decimal x, decimal y);
@@ -3210,7 +3210,7 @@ bool operator <=(decimal x, decimal y);
 bool operator >=(decimal x, decimal y);
 ```
 
-Bu işleçlerden her biri iki ondalık işlenenler ve döndürür, sayısal değerler karşılaştıran bir `bool` belirli ilişki olup olmadığını belirten bir değer `true` veya `false`. Her bir ondalık karşılaştırma karşılık gelen ilişkisel veya eşitlik işleci türünde kullanmakla eşdeğerdir `System.Decimal`.
+Bu işleçlerin her biri, iki ondalık işlenenin sayısal değerlerini karşılaştırır ve belirli bir ilişkinin `true` veya `false` olduğunu belirten `bool` değeri döndürür. Her ondalık karşılaştırma, `System.Decimal` türünde karşılık gelen ilişkisel veya eşitlik işlecinin kullanılmasıyla eşdeğerdir.
 
 ### <a name="boolean-equality-operators"></a>Boole eşitlik işleçleri
 
@@ -3220,13 +3220,13 @@ bool operator ==(bool x, bool y);
 bool operator !=(bool x, bool y);
 ```
 
-Sonucu `==` olduğu `true` hem `x` ve `y` olan `true` veya her iki `x` ve `y` olan `false`. Aksi halde sonuç, `false`.
+@No__t-0 ' ın sonucu, hem `x` hem de `y` `true` ise ve `x` ve `y` `false` ise `true` ' dir. Aksi takdirde, sonuç `false` ' dır.
 
-Sonucu `!=` olduğu `false` hem `x` ve `y` olan `true` veya her iki `x` ve `y` olan `false`. Aksi halde sonuç, `true`. İşlenen türü olduğunda `bool`, `!=` işleci aynı sonucu üretir `^` işleci.
+@No__t-0 ' ın sonucu, hem `x` hem de `y` `true` ise ve `x` ve `y` `false` ise `false` ' dir. Aksi takdirde, sonuç `true` ' dır. İşlenenler `bool` türünde olduğunda `!=` işleci `^` işleci ile aynı sonucu üretir.
 
-### <a name="enumeration-comparison-operators"></a>Sabit listesi Karşılaştırma işleçleri
+### <a name="enumeration-comparison-operators"></a>Sabit Listesi karşılaştırma işleçleri
 
-Her bir numaralandırma türü örtük olarak aşağıdaki önceden tanımlanmış Karşılaştırma işleçleri sağlar:
+Her numaralandırma türü örtük olarak aşağıdaki önceden tanımlı karşılaştırma işleçlerini sağlar:
 ```csharp
 bool operator ==(E x, E y);
 bool operator !=(E x, E y);
@@ -3236,33 +3236,33 @@ bool operator <=(E x, E y);
 bool operator >=(E x, E y);
 ```
 
-Değerlendirme sonucu `x op y`burada `x` ve `y` ifadeler bir numaralandırma türünün `E` bir temel türü ile `U`, ve `op` Karşılaştırma işleçleri biridir, tamamen aynı. Değerlendirme `((U)x) op ((U)y)`. Diğer bir deyişle, sabit listesi türü Karşılaştırma işleçleri, yalnızca arka plandaki tamsayı değerlerini iki işlenenden karşılaştırın.
+@No__t-1 ve @no__t-@no__t 2 ' nin temel alınan bir tür `U` ve `op` ' i karşılaştırma işleçlerinden biri, `((U)x) op ((U)y)` değerlendirilirken tam olarak aynı olduğu `x op y` ' ı değerlendirme sonucu. Diğer bir deyişle, numaralandırma türü karşılaştırma işleçleri yalnızca iki işlenenin temel alınan integral değerlerini karşılaştırmaktır.
 
 ### <a name="reference-type-equality-operators"></a>Başvuru türü eşitlik işleçleri
 
-Önceden tanımlı başvuru türü eşitlik işleçleri şunlardır:
+Önceden tanımlanmış başvuru türü eşitlik işleçleri şunlardır:
 ```csharp
 bool operator ==(object x, object y);
 bool operator !=(object x, object y);
 ```
 
-İşleçler, karşılaştırma eşitlik ya da olmayan eşitlik için iki başvuru sonucunu döndürür.
+İşleçler, eşitlik veya eşitlik için iki başvuruyu karşılaştırmanın sonucunu döndürür.
 
-Önceden tanımlı başvuru türü eşitlik işleçleri türünde işlenenleri kabul beri `object`, bunlar uygun bildirmeyin tüm türleri için geçerli `operator ==` ve `operator !=` üyeleri. Buna karşılık, herhangi bir geçerli kullanıcı tanımlı eşitlik işlecini etkili bir şekilde önceden tanımlı başvuru türü eşitlik işleçleri gizleyin.
+Önceden tanımlanmış başvuru türü eşitlik işleçleri `object` türündeki işlenenleri kabul ettiğinde, uygulanabilir `operator ==` ve `operator !=` üyelerini bildirmiyor tüm türler için geçerlidir. Buna karşılık, geçerli kullanıcı tanımlı eşitlik işleçleri, önceden tanımlanmış başvuru türü eşitlik işleçlerini etkin bir şekilde gizler.
 
-Önceden tanımlı başvuru türü eşitlik işleçleri aşağıdakilerden birini gerektirir:
+Önceden tanımlanmış başvuru türü eşitlik işleçleri aşağıdakilerden birini gerektirir:
 
-*  Her iki işlenen de olduğu bilinen bir türde bir değer olan bir *reference_type* veya sabit değer `null`. Ayrıca, bir açık bir başvuru dönüştürmesi ([açık başvuru dönüşümleri](conversions.md#explicit-reference-conversions)) diğer işlenen türü için iki işlenenden türünden bulunmaktadır.
-*  Tek bir işlenen türünde bir değer olan `T` burada `T` olduğu bir *type_parameter* ve diğer işlenen değişmez değer `null`. Ayrıca `T` değer türü kısıtlaması yok.
+*  Her iki işlenen de, *reference_type* veya `null` sabit değeri olarak bilinen bir türün değeridir. Ayrıca, bir açık başvuru dönüştürmesi ([açık başvuru dönüştürmeleri](conversions.md#explicit-reference-conversions)), herhangi bir işlenenin türünden diğer işlenenin türüne de sahiptir.
+*  Bir işlenen `T` türünde, `T` ' in bir *type_parameter* ve diğer işlenen ise `null` ' tür. Ayrıca `T` ' ın değer türü kısıtlaması yoktur.
 
-Bu koşullardan biri olmadığı sürece true, bir bağlama zamanı hatası oluşur. Bu kurallar önemli etkileri verilmiştir:
+Bu koşullardan biri doğru değilse, bir bağlama zamanı hatası oluşur. Bu kuralların önemli etkileri şunlardır:
 
-*  Bu önceden tanımlı başvuru türü eşitlik işleçleri bağlama zamanında farklı olduğu bilinen iki başvuru karşılaştırmak için kullanılacak bir bağlama zamanı hatasıdır. Örneğin, iki sınıf türleri bağlama zamanı türleridir işlenenden `A` ve `B`ve ne `A` ya da `B` iki işlenenden aynı nesneye başvurmak imkansız sonra diğerinden, türetilir. Bu nedenle, işlemi bir bağlama zamanı hata olarak kabul edilir.
-*  Önceden tanımlı başvuru türü eşitlik işleçleri değer türü işlenen Karşılaştırılacak izin vermez. Bir yapı türü kendi eşitlik işleçleri bildirir sürece, bu nedenle, bu yapı türünün değerlerini karşılaştırmak mümkün değildir.
-*  Önceden tanımlı başvuru türü eşitlik işleçleri asla kutulama işlemleri, işlenenleri için oluşmasına neden. Bu yana yeni ayrılan paketlenmiş örneklerine başvuruları mutlaka diğer tüm başvurularından farklı gibi kutulama işlemleri gerçekleştirmek için etmezdi.
-*  Bir tür parametresi türünde bir işlenen, `T` karşılaştırılır `null`ve çalışma zamanı türü `T` bir değer türüdür karşılaştırmanın sonucudur `false`.
+*  Bu, bağlama zamanında farklı oldukları bilinen iki başvuruyu karşılaştırmak için önceden tanımlanmış başvuru türü eşitlik işleçlerini kullanmanın bir bağlama zamanı hatasıdır. Örneğin, işlenenlerin bağlama zamanı türleri `A` ve `B` olarak iki sınıf türütürlerdi ve hiçbiri ne `A` ne de `B` diğeri ondan türetilmediği takdirde, iki işlenen de aynı nesneye başvuruda bulunmak olanaksızdır. Bu nedenle, işlem bağlama zamanı hatası olarak değerlendirilir.
+*  Önceden tanımlanmış başvuru türü eşitlik işleçleri değer türü işlenenlerinin karşılaştırılabilmesi için izin vermez. Bu nedenle, bir struct türü kendi eşitlik işleçlerini bildirmediği için, bu yapı türünün değerlerini karşılaştırmak mümkün değildir.
+*  Önceden tanımlanmış başvuru türü eşitlik işleçleri, işlenenleri için paketleme işlemlerine neden olmaz. Yeni ayrılmış paketlenmiş örneklere yapılan başvuruların diğer tüm başvurulardan farklı olması gerektiğinden, bu tür kutulanabilir işlemleri gerçekleştirmek anlamlı değildir.
+*  @No__t-0 tür parametre türünün işleneni `null` ile karşılaştırılır ve `T` ' nin çalışma zamanı türü bir değer türü ise, karşılaştırma sonucu `false` ' tür.
 
-Aşağıdaki örnek, sınırlandırılmamış türü parametre türünde bir bağımsız değişken olup olmadığını denetler `null`.
+Aşağıdaki örnek, kısıtlanmamış bir tür parametre türünün bağımsız değişkeninin `null` olup olmadığını denetler.
 ```csharp
 class C<T>
 {
@@ -3273,9 +3273,9 @@ class C<T>
 }
 ```
 
-`x == null` Yapısı olsa bile izin `T` bir değer türü temsil edebilir ve sonucu yalnızca olarak tanımlanır `false` olduğunda `T` bir değer türüdür.
+@No__t-0 yapısına izin verilir, ancak `T` bir değer türünü temsil ediyor olsa da, `T` bir değer türü olduğunda sonuç yalnızca `false` olacak şekilde tanımlanır.
 
-Formun bir işlem için `x == y` veya `x != y`, her varsa `operator ==` veya `operator !=` yoksa, İşleç aşırı yükleme çözünürlüğü ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) kuralları, seçer önceden tanımlı başvuru türü eşitlik işlecini yerine işleci. Ancak, her zaman önceden tanımlı başvuru türü eşitlik işlecini birini veya her ikisini işlenenler türüne açıkça atayarak seçmek mümkündür `object`. Örnek
+@No__t-0 veya `x != y` biçiminde bir işlem varsa, herhangi bir `operator ==` veya `operator !=` varsa, işleç aşırı yükleme çözümü ([ikili işleç aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) kuralları önceden tanımlanmış başvuru türü eşitlik yerine bu işleci seçer işlecinde. Ancak, bir veya her ikisini de `object` türüne açıkça atayarak önceden tanımlanmış başvuru türü eşitlik işlecini seçmek her zaman mümkündür. Örnek
 ```csharp
 using System;
 
@@ -3292,16 +3292,16 @@ class Test
 }
 ```
 çıktıyı üretir
-```
+```console
 True
 False
 False
 False
 ```
 
-`s` Ve `t` değişkenleri başvuran iki farklı `string` aynı karakterleri içeren örnekleri. İlk karşılaştırma çıkarır `True` çünkü önceden tanımlı dize eşitlik işlecini ([dize eşitlik işleçleri](expressions.md#string-equality-operators)) her iki işlenen türünde olduğunda seçili `string`. Tüm diğer karşılaştırmalar çıkış `False` önceden tanımlı başvuru türü eşitlik işlecini bir veya iki işlenenden türünde olduğunda seçilmediğinden `object`.
+@No__t-0 ve `t` değişkenleri aynı karakterleri içeren iki ayrı @no__t 2 örneğe başvurur. Her iki işlenen de `string` türünde olduğunda, önceden tanımlanmış dize eşitlik işleci ([dize eşitlik işleçleri](expressions.md#string-equality-operators)) seçildiğinden ilk karşılaştırma çıktılarının `True` ' dır. Bir veya her ikisi de `object` türünde olduğunda, önceden tanımlanmış başvuru türü eşitlik işleci seçildiğinden, kalan tüm çıktılar `False` ' dır.
 
-Yukarıdaki tekniği değer türleri için anlamlı olmadığını unutmayın. Örnek
+Yukarıdaki tekniğinin değer türleri için anlamlı olmadığına unutmayın. Örnek
 ```csharp
 class Test
 {
@@ -3312,97 +3312,97 @@ class Test
     }
 }
 ```
-çıkaran `False` yayınları iki ayrı örneklerini başvuruları oluşturduğundan Kutulu `int` değerleri.
+yayınlar `False`, çünkü yayınlar kutulanmış `int` değerlerinin iki ayrı örneğine başvuru oluşturur.
 
 ### <a name="string-equality-operators"></a>Dize eşitlik işleçleri
 
-Önceden tanımlı dize eşitlik işleçleri şunlardır:
+Önceden tanımlanmış dize eşitlik işleçleri şunlardır:
 ```csharp
 bool operator ==(string x, string y);
 bool operator !=(string x, string y);
 ```
 
-İki `string` aşağıdakilerden biri doğruysa, değerleri eşit değerlendirilir:
+Aşağıdakilerden biri doğru olduğunda iki `string` değeri eşit kabul edilir:
 
-*  Her iki değerler `null`.
-*  Her iki aynı uzunluk ve aynı karakterlerin her karakter konumunda sahip dize örnekleri null olmayan başvurular değerlerdir.
+*  Her iki değer de `null` ' dır.
+*  Her iki değer de aynı uzunlukta ve her bir karakter konumunda özdeş karakterlere sahip olan dize örneklerine yönelik null olmayan başvurulardır.
 
-Dize başvurular yerine dize değerleri dize eşitlik işleçleri karşılaştırın. İki ayrı bir dize örneği tam olarak aynı karakter dizisi içerdiğinde, dizelerin değerlerin eşit olup, ancak başvuruları farklıdır. Bölümünde anlatıldığı gibi [başvuru türü eşitlik işleçleri](expressions.md#reference-type-equality-operators), başvuru türü eşitlik işleçleri dize başvurular yerine dize değerleri karşılaştırmak için kullanılabilir.
+Dize eşitlik işleçleri dize başvuruları yerine dize değerlerini karşılaştırır. İki ayrı dize örneği tam olarak aynı karakter dizisini içerdiğinde, dizelerin değerleri eşittir, ancak başvurular farklıdır. [Başvuru türü eşitlik işleçleri](expressions.md#reference-type-equality-operators)bölümünde açıklandığı gibi, dize değerleri yerine dize başvurularını karşılaştırmak için başvuru türü eşitlik işleçleri kullanılabilir.
 
-### <a name="delegate-equality-operators"></a>Temsilci eşitlik işleçleri
+### <a name="delegate-equality-operators"></a>Eşitlik işleçlerini devretmek
 
-Her temsilci türü örtük olarak aşağıdaki önceden tanımlanmış Karşılaştırma işleçleri sağlar:
+Her temsilci türü örtük olarak aşağıdaki önceden tanımlı karşılaştırma işleçlerini sağlar:
 
 ```csharp
 bool operator ==(System.Delegate x, System.Delegate y);
 bool operator !=(System.Delegate x, System.Delegate y);
 ```
 
-İki temsilci örneklerini şu şekilde eşit olarak kabul edilir:
+İki temsilci örneği aşağıdaki gibi kabul edilir:
 
-*  Temsilci örneklerini biri geçerli olduğunda `null`, her ikisi de ve yalnızca, eşit oldukları `null`.
-*  Hiçbir zaman eşit temsilcileri farklı çalışma zamanı türü varsa.
-*  Her iki temsilci örneklerini çağrı listesine sahip olup ([temsilci bildirimi](delegates.md#delegate-declarations)), çağırma listelerini aynı uzunlukta olan ve her birinin çağırma listesindeki girdinin (yukarıda tanımlandığı şekilde) eşittir ve yalnızca, bu örneğinin eşit olup karşılık gelen bir giriş için sırayla diğer tarafın çağırma listesi.
+*  Temsilci örneklerinden biri `null` ise, yalnızca ikisi de `null` ise eşittir.
+*  Temsilcilerin farklı çalışma zamanı türleri varsa, bunlar hiçbir zaman eşit değildir.
+*  Her iki temsilci örneği de bir çağırma listesine ([temsilci bildirimleri](delegates.md#delegate-declarations)) sahip ise, bu örnekler eşit olur ve yalnızca çağırma listeleri aynı uzunluktadır ve tek bir çağrı listesindeki her girdinin karşılık gelen girişin, diğer öğesinin çağrı listesinde olması.
 
-Aşağıdaki kurallar çağırma Liste girişlerini eşitliğine yöneten:
+Aşağıdaki kurallar, çağırma listesi girişlerinin eşitlik düzeyini yönetir:
 
-*  İki çağırma Liste girişlerini hem aynı statik başvuruyorsa yöntemi sonra girişleri eşit olur.
-*  İki çağırma Liste girişlerini hem aynı hedef nesne üzerinde aynı statik olmayan yöntemi (referans eşitlik operatörleri tarafından tanımlandığı gibi) başvurursanız girişleri eşit olur.
-*  Anlamsal olarak özdeş bir değerlendirmesinden gelen çağırma Liste girişlerini üretilen *anonymous_method_expression*s veya *lambda_expression*s yakalanan dış değişken aynı (büyük olasılıkla boş) kümesi örnekleri izin verilir (ancak gerekli değildir) eşit.
+*  İki çağırma listesi girişi her ikisi de aynı statik yönteme başvurursanız, girdiler eşittir.
+*  İki çağırma listesi girişi her ikisi de aynı hedef nesnede statik olmayan bir yönteme (başvuru eşitlik işleçleri tarafından tanımlandığı gibi) başvurmazsa, girdiler eşittir.
+*  Yakalanan dış değişken örnekleri kümesiyle aynı (büyük olasılıkla boş) olan anlamsal özdeş *anonymous_method_expression*s veya *lambda_expression*s değerlendirmesinden üretilen çağırma listesi girişleri için izin verilir (ancak gerekli değildir) sıfıra.
 
 ### <a name="equality-operators-and-null"></a>Eşitlik işleçleri ve null
 
-`==` Ve `!=` işleçleri, tek bir işlenen boş değer atanabilir bir tür ve diğer olması için bir değer olmasını izin `null` işlemi için (içinde unlifted veya form yükseltilmiş) önceden tanımlı veya kullanıcı tanımlı hiçbir işleç bulunuyor olsa bile değişmez.
+@No__t-0 ve `!=` işleçleri, işlem için önceden tanımlanmış veya Kullanıcı tanımlı bir operatör (unlifted veya yükseltilmemiş biçiminde) mevcut olmasa bile, tek bir işlenenin null yapılabilir türde ve diğeri de `null` sabit değeri olarak izin verir.
 
-Bir form için bir işlem
+Formlardan birine bir işlem için
 ```csharp
 x == null
 null == x
 x != null
 null != x
 ```
-Burada `x` işleci aşırı yükleme çözümlemesi bir ifade, null yapılabilir bir tür ise ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) başarısız sonucu geçerli bir işleç bulmak için gelen hesaplanan yerine `HasValue` özelliği `x`. Özellikle, ilk iki forms çevrilir `!x.HasValue`, ve son iki forms çevrilmiş içine `x.HasValue`.
+`x` ' ın null yapılabilir bir tür ifadesi olduğu durumlarda, işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) ilgili bir işleci bulamazsa, bunun yerine `x` ' ün `HasValue` özelliğinden hesaplanır. Özellikle, ilk iki form `!x.HasValue` ' a çevrilir ve son iki form `x.HasValue` ' e çevrilir.
 
-### <a name="the-is-operator"></a>Is işleci
+### <a name="the-is-operator"></a>SIS işleci
 
-`is` İşleci, dinamik olarak bir nesnenin çalışma zamanı türü belirli bir tür ile uyumlu olup olmadığını denetlemek için kullanılır. İşlemin sonucu `E is T`burada `E` ifade ve `T` bir tür, bir Boole değeri belirten değer olup olmadığını `E` başarıyla türüne dönüştürülebilir `T` bir başvuru dönüştürmesi, bir paketleme tarafından dönüştürme veya bir kutudan çıkarma dönüştürme. Tüm tip parametreleri için tür bağımsız değişkeni yapıştırıyorsanız sonra işlemi aşağıdaki gibi değerlendirilir:
+@No__t-0 işleci, bir nesnenin çalışma zamanı türünün belirli bir tür ile uyumlu olup olmadığını dinamik olarak denetlemek için kullanılır. @No__t-1 ' in bir ifade olduğu ve `T` bir tür olduğu `E is T` işleminin sonucu, `E` ' ün bir başvuru dönüştürmesi, paketleme dönüştürmesi veya bir kutudan çıkarma dönüştürmesi ile `T` türüne başarıyla dönüştürülüp dönüştürülmeyeceğini belirten bir Boole değeridir. Tür bağımsız değişkenleri tüm tür parametreleri yerine eklendikten sonra işlem aşağıdaki gibi değerlendirilir:
 
-*  Varsa `E` bir derleme zamanı hatası oluşur anonim bir işlev ise
-*  Varsa `E` bir yöntem grubu olduğundan veya `null` biri değişmez değer türü `E` bir başvuru türü veya boş değer atanabilir bir tür ve değerini `E` olan null, sonucun false olduğu.
-*  Aksi takdirde, izin `D` dinamik türünü temsil eden `E` gibi:
-   * Varsa türünü `E` bir başvuru türüdür `D` örneği başvuruya göre çalışma zamanı türü `E`.
-   * Varsa türünü `E` boş değer atanabilir bir tür `D` temel alınan türü, boş değer atanabilir bir tür.
-   * Varsa türünü `E` bir NULL olmayan değer türü `D` türü `E`.
-*  İşlemin sonucu bağımlı `D` ve `T` şu şekilde:
-   * Varsa `T` bir başvuru türü ise sonucun true olduğu, `D` ve `T` aynı türde olan `D` bir başvuru türü ve bir örtük bir başvuru dönüştürme `D` için `T` var, veya `D` bir değer türü ve kutulama dönüştürme `D` için `T` bulunmaktadır.
-   * Varsa `T` boş değer atanabilir bir tür olduğunda sonucun true olduğu, `D` temel alınan türü `T`.
-   * Varsa `T` bir NULL olmayan değer türü sonucun true olduğu, `D` ve `T` aynı türdeyse.
-   * Aksi takdirde sonuç yanlış olur.
+*  @No__t-0 Anonim bir işlevdir, derleme zamanı hatası oluşur
+*  @No__t-0 bir yöntem grubu veya `null` değişmez değeri ise, `E` türü bir başvuru türü veya null yapılabilir bir tür ise ve `E` değeri null ise sonuç false olur.
+*  Aksi takdirde, `D` `E` dinamik türünü aşağıdaki şekilde temsil eder:
+   * @No__t-0 türü bir başvuru türü ise, `D`, örnek başvurusunun çalışma zamanı türüdür `E`.
+   * @No__t-0 türü null yapılabilir bir tür ise, `D` null yapılabilir türün temel türüdür.
+   * @No__t-0 türü null yapılamayan bir değer türü ise, `D` `E` türüdür.
+*  İşlemin sonucu `D` ve `T` ' i şu şekilde değişir:
+   * @No__t-0 bir başvuru türü ise, `D` ve `T` aynı türde ise sonuç true olur. `D` bir başvuru türüdür ve `D` ' ten `T` ' e bir örtük başvuru dönüştürmesi varsa veya `D` bir değer türüdür ve `D` ' den kutulamayı dönüştürmedir `T` için var.
+   * @No__t-0 null yapılabilir bir tür ise, `D` `T` ' nin temel türü ise sonuç true olur.
+   * @No__t-0 null yapılamayan bir değer türü ise, `D` ve `T` aynı türde ise sonuç true olur.
+   * Aksi takdirde, sonuç false 'tur.
 
-Kullanıcı tanımlı dönüştürmeler dikkate alınmaz tarafından olduğunu unutmayın `is` işleci.
+Kullanıcı tanımlı dönüştürmelerin `is` işleci tarafından değerlendirilmediğini unutmayın.
 
-### <a name="the-as-operator"></a>AS işleci
+### <a name="the-as-operator"></a>As işleci
 
-`as` İşleci bir verilen başvuru türüyle veya null yapılabilir bir tür için bir değer açıkça dönüştürmek için kullanılır. Cast ifadesi aksine ([Cast ifadeleri](expressions.md#cast-expressions)), `as` işleci hiçbir zaman bir özel durum oluşturur. Bunun yerine, belirtilen dönüştürme mümkün değilse, sonuç değeri olan `null`.
+@No__t-0 işleci, açıkça bir değeri belirli bir başvuru türüne veya null yapılabilir türe dönüştürmek için kullanılır. Atama ifadesinin ([cast ifadeleri](expressions.md#cast-expressions)) aksine, `as` işleci hiçbir şekilde özel durum oluşturmaz. Bunun yerine, belirtilen dönüştürme mümkün değilse, elde edilen değer `null` ' dır.
 
-Formun işleminde `E as T`, `E` bir ifade olmalı ve `T` bir başvuru türü bir başvuru türüyle veya null yapılabilir bir tür olarak bilinen bir tür parametresi olması gerekir. Ayrıca, aşağıdakilerden en az biri true ya da aksi takdirde bir derleme zamanı hatası oluşur:
+@No__t-0 biçiminde bir işlemde, `E` bir ifade olmalıdır ve `T` bir başvuru türü, bir başvuru türü olarak bilinen bir tür parametresi veya null yapılabilir bir tür olmalıdır. Ayrıca, aşağıdakilerden en az birinin doğru olması gerekir, aksi takdirde bir derleme zamanı hatası oluşur:
 
-*  Bir kimlik ([kimlik dönüştürme](conversions.md#identity-conversion)), örtük boş değer atanabilir ([boş değer atanabilir örtük dönüştürmelerin](conversions.md#implicit-nullable-conversions)), örtük bir başvuru ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions)), (kutulama[ Kutulama dönüştürmeler](conversions.md#boxing-conversions)), açık boş değer atanabilir ([açık boş değer atanabilir dönüştürmeler](conversions.md#explicit-nullable-conversions)), açık bir başvuru ([açık başvuru dönüşümleri](conversions.md#explicit-reference-conversions)), veya kutudan çıkarma ([Kutudan çıkarma dönüştürme](conversions.md#unboxing-conversions)) dönüştürme var gelen `E` için `T`.
-*  Türünü `E` veya `T` bir açık türdür.
-*  `E` olan `null` değişmez.
+*  Bir kimlik ([kimlik dönüştürme](conversions.md#identity-conversion)), örtük null yapılabilir ([örtük Nullable dönüşümler](conversions.md#implicit-nullable-conversions)), örtük başvuru ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions)), paketleme ([kutulama dönüştürmeleri](conversions.md#boxing-conversions)), açık boş değer atanabilir ([Açık Nullable Dönüşümler](conversions.md#explicit-nullable-conversions)), açık başvuru ([açık başvuru dönüştürmeleri](conversions.md#explicit-reference-conversions)) veya kutudan çıkarma ([kutudan çıkarma dönüşümleri](conversions.md#unboxing-conversions)) dönüştürme `E` ' den `T` ' e kadar.
+*  @No__t-0 veya `T` türü açık bir tür.
+*  `E`, `null` sabit değerdir.
 
-Derleme zamanı türü `E` değil `dynamic`, işlemi `E as T` aynı sonucu üretir
+@No__t-0 ' ın derleme zamanı türü `dynamic` değilse, `E as T` işlemi ile aynı sonucu üretir
 ```csharp
 E is T ? (T)(E) : (T)null
 ```
-dışında `E` yalnızca bir kez değerlendirilir. Derleyici, en iyi duruma getirme beklenebilir `E as T` yukarıdaki genişletme tarafından kapsanan iki dinamik tür denetimlerini aksine en fazla bir dinamik tür denetimi gerçekleştirmek için.
+`E` hariç yalnızca bir kez değerlendirilir. Derleyicinin, yukarıdaki genişleme tarafından kapsanan iki dinamik tür denetimi yerine en çok bir dinamik tür denetimi gerçekleştirmesi için `E as T` ' i iyileştirmek için, derleyici bekleniyor.
 
-Derleme zamanı türü `E` olduğu `dynamic`, atama işleci aksine `as` işleci değil dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)). Bu nedenle bu durumda genişletme şöyledir:
+@No__t-0 ' ın derleme zamanı türü `dynamic` ise, atama işlecinin aksine `as` işleci dinamik olarak bağlı değildir ([dinamik bağlama](expressions.md#dynamic-binding)). Bu nedenle, bu durumda genişletme şu şekilde olur:
 ```csharp
 E is T ? (T)(object)(E) : (T)null
 ```
 
-Kullanıcı tanımlı dönüştürmeler gibi bazı dönüştürmeler mümkün olmadığını unutmayın `as` işleci ve bunun yerine cast ifadeleri kullanarak gerçekleştirilmelidir.
+Kullanıcı tanımlı dönüştürmeler gibi bazı dönüştürmelerin `as` işleci ile mümkün olmadığı ve bunun yerine atama ifadeleri kullanılarak gerçekleştirilmesi gerektiğini unutmayın.
 
 Örnekte
 ```csharp
@@ -3422,11 +3422,11 @@ class X
     }
 }
 ```
-tür parametresi `T` , `G` bir başvuru türü olması için sınıf kısıtlaması içerdiğinden bilinir. Tür parametresi `U` , `H` kullanımını değil ancak; bu nedenle `as` işlecinde `H` izin verilmiyor.
+sınıf kısıtlamasına sahip olduğundan, `G` ' in @no__t parametresi bir başvuru türü olarak bilinir. @No__t-1 ' in @no__t parametresi, ancak değil; Bu nedenle `H` ' te `as` işlecinin kullanılmasına izin verilmez.
 
 ## <a name="logical-operators"></a>Mantıksal işleçler
 
-`&`, `^`, Ve `|` işleçleri mantıksal işleçler çağrılır.
+@No__t-0, `^` ve `|` işleçleri mantıksal işleçler olarak adlandırılır.
 
 ```antlr
 and_expression
@@ -3445,15 +3445,15 @@ inclusive_or_expression
     ;
 ```
 
-Bir mantıksal işlecinin bir işleneni derleme zamanı türü olup olmadığını `dynamic`, ifadeyi dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı ifadenin türüdür `dynamic`, ve çalışma zamanında derleme zamanı türü bu işlenenler çalışma zamanı türünü kullanarak aşağıda açıklanan çözümleme gerçekleşecek `dynamic`.
+Bir mantıksal işlecin işleneni, derleme zamanı türü `dynamic` ise, ifade dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, ifadenin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, derleme zamanı türü `dynamic` olan bu işlenenlerinin çalışma zamanı türü kullanılarak çalışma zamanında gerçekleşmeyecektir.
 
-Formun bir işlem için `x op y`burada `op` mantıksal işleçler, aşırı yükleme çözünürlüğü biridir ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) belirli işleci uygulama seçmek için uygulanır. İşlenenler seçilen operatöre parametre türleri dönüştürülür ve sonuç türü işlecinin dönüş türüdür.
+@No__t-0 biçiminde bir işlem için, `op` mantıksal işleçlerden biri olduğunda, belirli bir operatör uygulamasını seçmek için aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) uygulanır. İşlenenler, seçili işlecin parametre türlerine dönüştürülür ve sonucun türü işlecin dönüş türüdür.
 
-Önceden tanımlanmış mantıksal işleçleri aşağıdaki bölümlerde açıklanmıştır.
+Önceden tanımlanmış mantıksal işleçler aşağıdaki bölümlerde açıklanmıştır.
 
-### <a name="integer-logical-operators"></a>Tamsayı mantıksal işleçler
+### <a name="integer-logical-operators"></a>Tamsayı mantıksal işleçleri
 
-Önceden tanımlanmış tamsayı mantıksal işleçler şunlardır:
+Önceden tanımlı tamsayı mantıksal işleçleri şunlardır:
 ```csharp
 int operator &(int x, int y);
 uint operator &(uint x, uint y);
@@ -3471,11 +3471,11 @@ long operator ^(long x, long y);
 ulong operator ^(ulong x, ulong y);
 ```
 
-`&` İşleci hesaplar. bit düzeyinde mantıksal `AND` iki işlenenden `|` işleci hesaplar. bit düzeyinde mantıksal `OR` iki işlenenden ve `^` işleci mantıksal bit düzeyinde özel hesaplar `OR` iki işlenenden. Bu işlemlerini hiçbir taşıyor mümkündür.
+@No__t-0 işleci iki işlenenin bit düzeyinde mantıksal `AND` ' i hesaplar, `|` işleci iki işlenenin bit düzeyinde mantıksal `OR` ' ü hesaplar ve `^` işleci iki işlenenin bit düzeyinde mantıksal dışlamalı `OR` ' i hesaplar. Bu işlemlerden taşmalar mümkün değildir.
 
-### <a name="enumeration-logical-operators"></a>Mantıksal işleçler numaralandırması
+### <a name="enumeration-logical-operators"></a>Sabit listesi mantıksal işleçleri
 
-Her bir numaralandırma türü `E` örtük olarak aşağıdaki önceden tanımlanmış mantıksal işleçleri sağlar:
+@No__t-0 her numaralandırma türü, aşağıdaki önceden tanımlanmış mantıksal işleçleri dolaylı olarak sağlar:
 
 ```csharp
 E operator &(E x, E y);
@@ -3483,33 +3483,33 @@ E operator |(E x, E y);
 E operator ^(E x, E y);
 ```
 
-Değerlendirme sonucu `x op y`burada `x` ve `y` ifadeler bir numaralandırma türünün `E` bir temel türü ile `U`, ve `op` mantıksal işleçler biridir, tamamen aynı. Değerlendirme `(E)((U)x op (U)y)`. Diğer bir deyişle, sabit listesi türü mantıksal işleçler yalnızca iki işlenenden temel alınan türü üzerinde mantıksal işlem gerçekleştirin.
+@No__t-1 ve @no__t-@no__t 2 ' nin temel alınan bir tür `U` ve `op` ' in mantıksal işleçlerden biri olduğu `x op y` ' ı değerlendirme sonucu, `(E)((U)x op (U)y)` değerlendirilirken tam olarak aynıdır. Diğer bir deyişle, mantıksal işleçler numaralandırma türü mantıksal işlemleri yalnızca iki işlenenin temel alınan türünde gerçekleştirir.
 
 ### <a name="boolean-logical-operators"></a>Boole mantıksal işleçleri
 
-Önceden tanımlanmış boolean mantıksal işleçler şunlardır:
+Önceden tanımlanmış Boole mantıksal işleçleri şunlardır:
 ```csharp
 bool operator &(bool x, bool y);
 bool operator |(bool x, bool y);
 bool operator ^(bool x, bool y);
 ```
 
-Sonucu `x & y` olduğu `true` hem `x` ve `y` olan `true`. Aksi halde sonuç, `false`.
+@No__t-0 ' ın sonucu, hem `x` hem de `y` `true` ise, `true` ' dir. Aksi takdirde, sonuç `false` ' dır.
 
-Sonucu `x | y` olduğu `true` ya da `x` veya `y` olduğu `true`. Aksi halde sonuç, `false`.
+@No__t-0 ' ın sonucu, `x` veya `y` ' ü `true` ise, `true` ' dir. Aksi takdirde, sonuç `false` ' dır.
 
-Sonucu `x ^ y` olduğu `true` varsa `x` olduğu `true` ve `y` olduğu `false`, veya `x` olan `false` ve `y` olan `true`. Aksi halde sonuç, `false`. İşlenen türü olduğunda `bool`, `^` işleci aynı sonucu hesaplar `!=` işleci.
+@No__t-0 `true` ' dir. `x` `true` ise `y` `false`, `x` `false` ve `y` `true` ' dur. Aksi takdirde, sonuç `false` ' dır. İşlenenler `bool` türünde olduğunda `^` işleci `!=` işleci ile aynı sonucu hesaplar.
 
-### <a name="nullable-boolean-logical-operators"></a>Boş değer atanabilir boolean mantıksal işleçler
+### <a name="nullable-boolean-logical-operators"></a>Null yapılabilir Boolean mantıksal işleçler
 
-Boş değer atanabilir bir boolean türü `bool?` üç değerleri temsil edebilen `true`, `false`, ve `null`ve SQL boolean ifadeler için kullanılan üç değerli türü kavramsal olarak benzer. Tarafından üretilen sonuçlar emin olmak için `&` ve `|` işleçleri `bool?` işlenenler SQL'in üç değerli mantığı ile tutarlı, aşağıdaki önceden tanımlı operatörler sağlanır:
+@No__t Nullable Boolean türü, `true`, `false` ve `null` olmak üzere üç değeri temsil edebilir ve kavramsal olarak SQL 'de Boolean ifadeler için kullanılan üç değerli tür ile benzerdir. @No__t-2 işlenenleri için `&` ve `|` işleçleri tarafından üretilen sonuçların SQL 'in üç değerli mantığıyla tutarlı olduğundan emin olmak için, aşağıdaki önceden tanımlanmış işleçler verilmiştir:
 
 ```csharp
 bool? operator &(bool? x, bool? y);
 bool? operator |(bool? x, bool? y);
 ```
 
-Bu işleçler için tüm değerleri birleşimlerini tarafından üretilen sonuçları aşağıdaki tabloda listelenmektedir `true`, `false`, ve `null`.
+Aşağıdaki tabloda, `true`, `false` ve `null` değerlerinin tüm birleşimleri için bu işleçler tarafından oluşturulan sonuçlar listelenmektedir.
 
 | `x`     | `y`     | `x & y` | <code>x &#124; y</code> |
 |:-------:|:-------:|:-------:|:-------:|
@@ -3525,7 +3525,7 @@ Bu işleçler için tüm değerleri birleşimlerini tarafından üretilen sonuç
 
 ## <a name="conditional-logical-operators"></a>Koşullu mantıksal işleçler
 
-`&&` Ve `||` işleçleri koşullu mantıksal işleçler çağrılır. "Short-circuiting" mantıksal işleçler de çağrılır.
+@No__t-0 ve `||` işleçleri Koşullu mantıksal işleçler olarak adlandırılır. Bunlar ayrıca "kısa devre dışı" mantıksal işleçler olarak da adlandırılır.
 
 ```antlr
 conditional_and_expression
@@ -3539,47 +3539,47 @@ conditional_or_expression
     ;
 ```
 
-`&&` Ve `||` işleçler şunlardır: koşullu sürümleri `&` ve `|` işleçleri:
+@No__t-0 ve `||` işleçleri, `&` ve `|` işleçlerinin koşullu sürümleridir:
 
-*  İşlemi `x && y` işlemine karşılık gelir `x & y`dışında `y` yalnızca değerlendirilir `x` değil `false`.
-*  İşlemi `x || y` işlemine karşılık gelir `x | y`dışında `y` yalnızca değerlendirilir `x` değil `true`.
+*  @No__t-0 işlemi, yalnızca `x` `false` değilse `y` ' nin değerlendirilmemesi dışında, `x & y` işlemine karşılık gelir.
+*  @No__t-0 işlemi, yalnızca `x` `true` değilse `y` ' nin değerlendirilmemesi dışında, `x | y` işlemine karşılık gelir.
 
-Koşullu bir mantıksal işlecinin bir işleneni derleme zamanı türü olup olmadığını `dynamic`, ifadeyi dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı ifadenin türüdür `dynamic`, ve çalışma zamanında derleme zamanı türü bu işlenenler çalışma zamanı türünü kullanarak aşağıda açıklanan çözümleme gerçekleşecek `dynamic`.
+Koşullu bir mantıksal işlecin işleneni, derleme zamanı türü `dynamic` ise, ifade dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, ifadenin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, derleme zamanı türü `dynamic` olan bu işlenenlerinin çalışma zamanı türü kullanılarak çalışma zamanında gerçekleşmeyecektir.
 
-Form işlemini `x && y` veya `x || y` aşırı yükleme çözünürlüğü uygulama tarafından işlenen ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) işlemi olarak yazılmışsa `x & y` veya `x | y`. Then,
+@No__t-0 veya `x || y` biçiminde bir işlem, işlem `x & y` veya `x | y` yazılmış gibi aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümü](expressions.md#binary-operator-overload-resolution)) uygulanarak işlenir. Ni
 
-*  Tek bir en iyi işleci bulmak aşırı yükleme çözümlemesi başarısız olursa veya aşırı yükleme çözünürlüğü önceden tanımlanmış tamsayı mantıksal işleçler seçerse, bir bağlama zamanı hatası oluşur.
-*  Aksi takdirde, seçilen operatöre önceden tanımlanmış boolean mantıksal işleçler ise ([Boolean mantıksal işleçler](expressions.md#boolean-logical-operators)) veya boş değer atanabilir boolean mantıksal işleçler ([null, boolean mantıksal işleçler](expressions.md#nullable-boolean-logical-operators)), işlem bölümünde anlatıldığı gibi işlenir [Boole koşullu mantıksal işleçleri](expressions.md#boolean-conditional-logical-operators).
-*  Aksi takdirde, seçilen operatöre bir kullanıcı tanımlı işleç ve işlem bölümünde anlatıldığı gibi işlenir [kullanıcı tanımlı koşullu mantıksal işleçler](expressions.md#user-defined-conditional-logical-operators).
+*  Aşırı yükleme çözümlemesi tek bir en iyi operatör bulamazsa veya aşırı yükleme çözümlemesi önceden tanımlı tamsayı mantıksal işleçlerinden birini seçerse bağlama zamanı hatası oluşur.
+*  Aksi takdirde, seçili operatör önceden tanımlanmış Boole mantıksal işleçlerinden ([Boolean mantıksal işleçler](expressions.md#boolean-logical-operators)) veya null yapılabilir Boolean mantıksal Işleçlerden ([null yapılabilir Boolean mantıksal işleçler](expressions.md#nullable-boolean-logical-operators)) biri ise, işlem şu konuda açıklandığı [gibi işlenir. Boole Koşullu mantıksal işleçler](expressions.md#boolean-conditional-logical-operators).
+*  Aksi takdirde, seçilen işleç Kullanıcı tanımlı bir işleçtir ve işlem [Kullanıcı tanımlı Koşullu mantıksal işleçler](expressions.md#user-defined-conditional-logical-operators)bölümünde açıklandığı şekilde işlenir.
 
-Doğrudan koşullu mantıksal işleçler aşırı mümkün değildir. Koşullu mantıksal işleçler normal mantıksal işleçler bakımından değerlendirildiği için ancak normal mantıksal işleçler aşırı belirli kısıtlamalar ile de koşullu mantıksal işleçler aşırı yüklemeleri olarak kabul edilir. Daha ayrıntılı açıklanır budur [kullanıcı tanımlı koşullu mantıksal işleçler](expressions.md#user-defined-conditional-logical-operators).
+Koşullu mantıksal işleçleri doğrudan aşırı yüklemek mümkün değildir. Ancak, Koşullu mantıksal işleçler normal mantıksal işleçler açısından değerlendirildiğinden, normal mantıksal operatörlerin aşırı yüklemeleri, Koşullu mantıksal işleçlerin aşırı yüklerini de kabul edilen belirli kısıtlamalarla birlikte bulunur. Bu, [Kullanıcı tanımlı Koşullu mantıksal işleçlerde](expressions.md#user-defined-conditional-logical-operators)daha ayrıntılı olarak açıklanmıştır.
 
-### <a name="boolean-conditional-logical-operators"></a>Boole koşullu mantıksal işleçleri
+### <a name="boolean-conditional-logical-operators"></a>Boole Koşullu mantıksal işleçler
 
-Zaman işleneni `&&` veya `||` türü `bool`, veya uygun bir tanımlamazsanız türde olduğunda işlenenler `operator &` veya `operator |`, ancak örtük dönüştürme `bool`, işlem şu şekilde işlenir:
+@No__t-0 veya `||` ' in işlenenleri `bool` türünde olduğunda veya işlenenler geçerli bir `operator &` veya `operator |` tanımlamaz, ancak `bool` ' e örtük dönüştürmeler tanımlamıyorsa, işlem aşağıdaki gibi işlenir :
 
-*  İşlemi `x && y` değerlendirmesinde `x ? y : false`. Diğer bir deyişle, `x` önce değerlendirilir ve türüne dönüştürülemediğinden `bool`. Ardından, eğer `x` olduğu `true`, `y` değerlendirilir ve türüne dönüştürülemediğinden `bool`, ve bu işlemin sonucunu olur. Aksi takdirde işlemi sonucudur `false`.
-*  İşlemi `x || y` değerlendirmesinde `x ? true : y`. Diğer bir deyişle, `x` önce değerlendirilir ve türüne dönüştürülemediğinden `bool`. Ardından, eğer `x` olduğu `true`, işlem sonucu `true`. Aksi takdirde, `y` değerlendirilir ve türüne dönüştürülemediğinden `bool`, ve bu işlemin sonucunu olur.
+*  @No__t-0 işlemi `x ? y : false` olarak değerlendirilir. Diğer bir deyişle, `x` ilk olarak değerlendirilir ve `bool` türüne dönüştürülür. Ardından, `x` `true` ise, `y` değerlendirilir ve `bool` türüne dönüştürülür ve bu işlemin sonucu olur. Aksi takdirde, işlemin sonucu `false` ' dır.
+*  @No__t-0 işlemi `x ? true : y` olarak değerlendirilir. Diğer bir deyişle, `x` ilk olarak değerlendirilir ve `bool` türüne dönüştürülür. @No__t-0 `true` ise, işlemin sonucu `true` olur. Aksi takdirde, `y` değerlendirilir ve `bool` türüne dönüştürülür ve bu işlemin sonucu olur.
 
-### <a name="user-defined-conditional-logical-operators"></a>Kullanıcı tanımlı koşullu mantıksal işleçler
+### <a name="user-defined-conditional-logical-operators"></a>Kullanıcı tanımlı Koşullu mantıksal işleçler
 
-Olduğunda, işlenenler `&&` veya `||` uygun bir bildirme türleri kullanıcı tanımlı `operator &` veya `operator |`, aşağıdaki her iki burada true olmalıdır `T` seçilen operatöre bildirilmiş türü:
+@No__t-0 veya `||` ' in işlenenleri, geçerli bir Kullanıcı tanımlı `operator &` veya `operator |` ' ü bildiren türlerse, aşağıdakilerin her ikisi de doğru olmalıdır; burada `T`, seçili işlecin bildirildiği türdür:
 
-*  Dönüş türü ile seçilen işlecinin her parametresinin türü olmalıdır `T`. Diğer bir deyişle, işlecin mantıksal işlem gerekir `AND` veya mantıksal `OR` türünde iki işlenenden `T`ve bir sonuç türü döndürmelidir `T`.
-*  `T` bildirimleri içermelidir `operator true` ve `operator false`.
+*  Seçili işlecin her bir parametresinin dönüş türü ve türü `T` olmalıdır. Diğer bir deyişle, işleç mantıksal `AND` veya `T` türünde iki işlenenin mantıksal `OR` ' i hesaplamalıdır ve `T` türünde bir sonuç döndürmelidir.
+*  `T` `operator true` ve `operator false` bildirimlerini içermelidir.
 
-Bu iki gereksinimi koşullar karşılanırsa bir bağlama zamanı hatası oluşur. Aksi takdirde, `&&` veya `||` işlemi, kullanıcı tanımlı birleştirerek değerlendirilir `operator true` veya `operator false` seçili kullanıcı tanımlı işleç ile:
+Bu gereksinimlerin herhangi biri karşılanmıyorsa bağlama zamanı hatası oluşur. Aksi takdirde, `&&` veya `||` işlemi, Kullanıcı tanımlı `operator true` veya `operator false` ' ü seçili kullanıcı tanımlı işleçle birleştirerek değerlendirilir:
 
-*  İşlemi `x && y` değerlendirmesinde `T.false(x) ? x : T.&(x, y)`burada `T.false(x)` bir çağrıdır, `operator false` bildirilen `T`, ve `T.&(x, y)` bir çağrıdır seçili `operator &`. Diğer bir deyişle, `x` ilk olarak değerlendirilir ve `operator false` sonucunu belirlemek için çağrılır `x` kesinlikle false'tur. Ardından, eğer `x` işleminin sonucu için önceden hesaplanan değerdir kesinlikle yanlış `x`. Aksi takdirde, `y` değerlendirilir ve seçili `operator &` için önceden hesaplanan değer çağrılır `x` ve için hesaplanan değer `y` işlemin sonucu verecek.
-*  İşlemi `x || y` değerlendirmesinde `T.true(x) ? x : T.|(x, y)`burada `T.true(x)` bir çağrıdır, `operator true` bildirilen `T`, ve `T.|(x,y)` bir çağrıdır seçili `operator|`. Diğer bir deyişle, `x` ilk olarak değerlendirilir ve `operator true` sonucunu belirlemek için çağrılır `x` kesinlikle geçerlidir. Ardından, eğer `x` işleminin sonucu için önceden hesaplanan değerdir kesinlikle true `x`. Aksi takdirde, `y` değerlendirilir ve seçili `operator |` için önceden hesaplanan değer çağrılır `x` ve için hesaplanan değer `y` işlemin sonucu verecek.
+*  @No__t-0 işlemi `T.false(x) ? x : T.&(x, y)` olarak değerlendirilir; burada `T.false(x)` `T` ' te belirtilen `operator false` ' ün bir çağrıdır ve `T.&(x, y)` ' i seçilen `operator &` ' ın bir çağrıdır. Diğer bir deyişle, `x` ilk değerlendirilir ve sonuç üzerinde `operator false` çağrıldığında `x` ' nin kesinlikle yanlış olduğunu tespit edilir. Sonra, `x` kesinlikle yanlış ise, işlemin sonucu daha önce `x` için hesaplanan değerdir. Aksi takdirde, `y` değerlendirilir ve seçilen `operator &`, daha önce `x` için hesaplanan değerde ve işlem sonucunu üretmek için `y` için hesaplanan değer üzerinde çağrılır.
+*  @No__t-0 işlemi `T.true(x) ? x : T.|(x, y)` olarak değerlendirilir; burada `T.true(x)` `T` ' te belirtilen `operator true` ' ün bir çağrıdır ve `T.|(x,y)` ' i seçilen `operator|` ' ın bir çağrıdır. Diğer bir deyişle, `x` ilk değerlendirilir ve `x` ' nin kesinlikle doğru doğru olup olmadığını anlamak için sonuç üzerinde `operator true` çağrılır. Sonra, `x` kesinlikle doğru ise, işlemin sonucu daha önce `x` için hesaplanan değerdir. Aksi takdirde, `y` değerlendirilir ve seçilen `operator |`, daha önce `x` için hesaplanan değerde ve işlem sonucunu üretmek için `y` için hesaplanan değer üzerinde çağrılır.
 
-Bu işlemler tarafından sağlanan ifadenin birini `x` yalnızca bir kez değerlendirilir ve tarafından sağlanan ifadenin `y` olmayan hesaplanan veya tam bir kez değerlendirilir.
+Bu işlemlerden birinde, `x` tarafından verilen ifade yalnızca bir kez değerlendirilir ve `y` tarafından verilen ifade değerlendirilmez ya da tam olarak bir kez değerlendirilmez.
 
-Uygulayan bir tür örneği `operator true` ve `operator false`, bkz: [veritabanı Boole türü](structs.md#database-boolean-type).
+@No__t-0 ve `operator false` uygulayan bir tür örneği için bkz. [veritabanı Boole türü](structs.md#database-boolean-type).
 
-## <a name="the-null-coalescing-operator"></a>Null birleşim işleci
+## <a name="the-null-coalescing-operator"></a>Null birleştirme işleci
 
-`??` İşleci, null birleşim işleci çağrılır.
+@No__t-0 işlecine null birleşim işleci denir.
 
 ```antlr
 null_coalescing_expression
@@ -3588,22 +3588,22 @@ null_coalescing_expression
     ;
 ```
 
-Bir null birleşim ifadesi formun `a ?? b` gerektirir `a` boş değer atanabilir bir tür ya da başvuru türünde olması. Varsa `a` kullanmaktan, sonucunu `a ?? b` olduğu `a`; Aksi takdirde sonuç `b`. İşlemi değerlendirir `b` yalnızca `a` null.
+@No__t-0 biçiminde boş bir birleştirme ifadesi @no__t, null yapılabilir bir tür veya başvuru türü olmasını gerektirir. @No__t-0 null değilse, `a ?? b` sonucu `a` ' dir; Aksi takdirde, sonuç `b` ' dir. İşlem yalnızca `a` null ise `b` olarak değerlendirilir.
 
-Null birleşim işleci sağla ilişkilendirilebilir, işlemler soldan sağa gruplandırılır anlamına gelir. Örneğin, bir ifade formun `a ?? b ?? c` değerlendirmesinde `a ?? (b ?? c)`. Genel koşulları, bir ifade formun `E1 ?? E2 ?? ... ?? En` ilk işlenenden null olmayan veya tüm işlenenler null ise null döndürür.
+Null birleştirme işleci, işlemlerin sağdan sola gruplanarak doğru ilişkilendirilebilir. Örneğin, `a ?? b ?? c` biçiminde bir ifade `a ?? (b ?? c)` olarak değerlendirilir. Genel koşullarda, `E1 ?? E2 ?? ... ?? En` biçiminde bir ifade, null olmayan veya tüm işlenenler null ise null olan işlenenleri ilk döndürür.
 
-İfadenin türü `a ?? b` hangi örtük dönüştürmelerin işlenenler üzerinde kullanılabilir olduğuna bağlıdır. Türünü tercih sırasına göre `a ?? b` olduğu `A0`, `A`, veya `B`burada `A` türü `a` (koşuluyla `a` türüne sahip), `B` türü `b` ( koşuluyla `b` türüne sahip), ve `A0` temel alınan türü `A` varsa `A` boş değer atanabilir bir tür veya `A` Aksi takdirde. Özellikle, `a ?? b` şu şekilde işlenir:
+@No__t-0 ifadesinin türü, işlenenler üzerinde hangi örtük dönüştürmelerin kullanılabilir olduğuna bağlıdır. Tercih sırasına göre `a ?? b` ' ın türü `A0`, `A` veya `B` ' dir; burada `A` ' ün türü `a` ' tir (`a` ' ın bir türü vardır) `B` türü `b` ' dir (`b` ' a bir tür vardır) ve 0, 2 null yapılabilir bir tür ya da 3 değilse 1 ' in temel türüdür. Özellikle, `a ?? b` şu şekilde işlenir:
 
-*  Varsa `A` var ve boş değer atanabilir bir tür veya bir başvuru türünün bir derleme zamanı hatası oluşur.
-*  Varsa `b` dinamik bir ifade sonucu türü `dynamic`. Çalışma zamanında, `a` ilk olarak değerlendirilir. Varsa `a` null değil `a` dinamik diske dönüştürülür ve bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve bu sonuç olur.
-*  Aksi takdirde `A` var ve boş değer atanabilir bir tür ve öğesinden örtük bir dönüştürme yok `b` için `A0`, sonuç türü olan `A0`. Çalışma zamanında, `a` ilk olarak değerlendirilir. Varsa `a` null değil `a` yazmak için sarmalanmamış `A0`, ve bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve türüne dönüştürülemediğinden `A0`, ve bu sonuç olur.
-*  Aksi takdirde `A` var ve gelen örtük bir dönüştürme var `b` için `A`, sonuç türü olan `A`. Çalışma zamanında, `a` ilk olarak değerlendirilir. Varsa `a` null değil `a` sonuç olur. Aksi takdirde, `b` değerlendirilir ve türüne dönüştürülemediğinden `A`, ve bu sonuç olur.
-*  Aksi takdirde `b` bir türe sahip `B` ve gelen örtük bir dönüştürme var `a` için `B`, sonuç türü olan `B`. Çalışma zamanında, `a` ilk olarak değerlendirilir. Varsa `a` null değil `a` yazmak için sarmalanmamış olur `A0` (varsa `A` yok ve null olabilir) ve türüne dönüştürülmüş `B`, ve bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve sonuç olur.
-*  Aksi takdirde, `a` ve `b` uyumlu olmayan ve bir derleme zamanı hatası oluşur.
+*  @No__t-0 varsa ve null yapılabilir bir tür ya da bir başvuru türü değilse, derleme zamanı hatası oluşur.
+*  @No__t-0 dinamik bir ifadesiyse, sonuç türü `dynamic` ' dir. Çalışma zamanında, `a` ilk olarak değerlendirilir. @No__t-0 null değilse, `a` dinamik olarak dönüştürülür ve bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve bu sonuç olur.
+*  Aksi takdirde, `A` varsa ve null yapılabilir bir tür ise ve `b` ' den `A0` ' ye örtük bir dönüştürme varsa, sonuç türü `A0` ' tür. Çalışma zamanında, `a` ilk olarak değerlendirilir. @No__t-0 null değilse, `a` `A0` türüne sarmalanmamış ve bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve `A0` türüne dönüştürülür ve bu sonuç olur.
+*  Aksi takdirde, `A` varsa ve `b` ' den `A` ' ye örtük bir dönüştürme varsa, sonuç türü `A` ' tür. Çalışma zamanında, `a` ilk olarak değerlendirilir. @No__t-0 null değilse, `a` sonuç haline gelir. Aksi takdirde, `b` değerlendirilir ve `A` türüne dönüştürülür ve bu sonuç olur.
+*  Aksi takdirde, `b` ' a `B` türü varsa ve `a` ' den `B` ' e örtük bir dönüştürme varsa, sonuç türü `B` olur. Çalışma zamanında, `a` ilk olarak değerlendirilir. @No__t-0 null değilse, `a` `A0` türüne sarmalanır (`A` varsa ve null yapılabilir) ve `B` türüne dönüştürülürse, bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve sonuç olur.
+*  Aksi takdirde, `a` ve `b` uyumsuzdur ve derleme zamanı hatası oluşur.
 
 ## <a name="conditional-operator"></a>Koşullu işleç
 
-`?:` İşleç, koşullu işleç çağrılır. Bazen de Üçlü işleç adı verilir.
+@No__t-0 işleci koşullu işleç olarak adlandırılır. Üçlü işleç olarak da adlandırılır.
 
 ```antlr
 conditional_expression
@@ -3612,34 +3612,34 @@ conditional_expression
     ;
 ```
 
-Bir koşullu ifade formun `b ? x : y` önce koşulu değerlendirir `b`. Ardından, eğer `b` olduğu `true`, `x` değerlendirilir ve işlemin sonucu olur. Aksi takdirde, `y` değerlendirilir ve işlemin sonucu olur. Bir koşullu ifade hiçbir zaman hem de değerlendirir `x` ve `y`.
+@No__t-0 ' ın koşullu bir ifadesi ilk olarak `b` koşulunu değerlendirir. Ardından, `b` `true` ise, `x` değerlendirilir ve işlemin sonucu olur. Aksi takdirde, `y` değerlendirilir ve işlemin sonucu olur. Koşullu bir ifade `x` ve `y` ' i hiçbir şekilde değerlendirmez.
 
-Koşullu işleç sağla ilişkilendirilebilir, işlemler soldan sağa gruplandırılır anlamına gelir. Örneğin, bir ifade formun `a ? b : c ? d : e` değerlendirmesinde `a ? b : (c ? d : e)`.
+Koşullu operatör doğru ilişkilendirilebilir, yani işlemler sağdan sola gruplandırılır. Örneğin, `a ? b : c ? d : e` biçiminde bir ifade `a ? b : (c ? d : e)` olarak değerlendirilir.
 
-İlk işleneni `?:` işleci, örtük olarak dönüştürülebilir bir ifade olmalıdır `bool`, veya bir ifade uygulayan bir tür `operator true`. Bu gereksinimleri hiçbiri sağlanıyorsa, bir derleme zamanı hatası oluşur.
+@No__t-0 işlecinin ilk işleneni örtük olarak `bool` ' e dönüştürülebilen bir ifade veya `operator true` uygulayan bir tür ifadesi olmalıdır. Bu gereksinimlerin hiçbiri karşılanmazsa, bir derleme zamanı hatası oluşur.
 
-İkinci ve üçüncü işlenenleri `x` ve `y`, biri `?:` işleci denetleyen koşullu ifadenin türü.
+İkinci ve üçüncü işlenen `?:` işlecinin `x` ve `y`, koşullu ifadenin türünü denetler.
 
-*  Varsa `x` türünde `X` ve `y` türünde `Y` sonra
-   * Örtük bir dönüştürme ise ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) öğesinden var. `X` için `Y`, ancak `Y` için `X`, ardından `Y` koşullu ifadenin türü.
-   * Örtük bir dönüştürme ise ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) öğesinden var. `Y` için `X`, ancak `X` için `Y`, ardından `X` koşullu ifadenin türü.
-   * Aksi takdirde, hiçbir ifade türü belirlenebilir ve bir derleme zamanı hatası oluşur.
-*  Yalnızca birini `x` ve `y` bir tür ve her ikisi de sahip `x` ve `y`, koşullu ifadenin türü ise, bu türe örtük olarak dönüştürülebilir olduğundan.
-*  Aksi takdirde, hiçbir ifade türü belirlenebilir ve bir derleme zamanı hatası oluşur.
+*  @No__t-0 ' a `X` türü varsa ve `y` türü `Y` ' e sahipse
+   * @No__t-1 ' den `Y` ' ye örtük dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) varsa ancak `Y` ' e `X` ' e kadar değilse, `Y` koşullu ifadenin türüdür.
+   * @No__t-1 ' den `X` ' ye örtük dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) varsa ancak `X` ' e `Y` ' e kadar değilse, `X` koşullu ifadenin türüdür.
+   * Aksi takdirde, hiçbir ifade türü belirlenemez ve derleme zamanı hatası oluşur.
+*  Yalnızca `x` ve `y` ' in bir türü varsa ve hem `x` hem de `y`, bu türe örtük olarak dönüştürülebilir ve bu, koşullu ifadenin türüdür.
+*  Aksi takdirde, hiçbir ifade türü belirlenemez ve derleme zamanı hatası oluşur.
 
-Bir koşullu ifade formun çalışma zamanı işlenmesini `b ? x : y` aşağıdaki adımlardan oluşur:
+@No__t-0 formundaki koşullu bir ifadenin çalışma zamanı işleme aşağıdaki adımlardan oluşur:
 
-*  İlk olarak, `b` değerlendirilir ve `bool` değerini `b` belirlenir:
-   * Örtük bir dönüştürme, türü `b` için `bool` üretmek için bu örtülü dönüştürme işlemi daha sonra mevcut bir `bool` değeri.
-   * Aksi takdirde, `operator true` türüne göre tanımlanan `b` oluşturmak için çağrılan bir `bool` değeri.
-*  Varsa `bool` Yukarıdaki adımı tarafından üretilen değer `true`, ardından `x` değerlendirilir ve koşullu ifade türüne dönüştürülür ve bu koşullu ifadenin sonuç olur.
-*  Aksi takdirde, `y` değerlendirilir ve koşullu ifade türüne dönüştürülür ve bu koşullu ifadenin sonuç olur.
+*  İlk olarak, `b` değerlendirilir ve `b` `bool` değeri belirlenir:
+   * @No__t-0 ile `bool` arasında örtük bir dönüştürme varsa, bu örtük dönüştürme `bool` değeri üretmek için gerçekleştirilir.
+   * Aksi takdirde, `b` türü tarafından tanımlanan `operator true` `bool` değeri üretmek için çağrılır.
+*  Yukarıdaki adım tarafından üretilen `bool` değeri `true` ise, `x` değerlendirilir ve koşullu ifadenin türüne dönüştürülür ve bu, koşullu ifadenin sonucu olur.
+*  Aksi takdirde, `y` değerlendirilir ve koşullu ifadenin türüne dönüştürülür ve bu, koşullu ifadenin sonucu olur.
 
 ## <a name="anonymous-function-expressions"></a>Anonim işlev ifadeleri
 
-Bir ***anonim işlev*** bir "satır içi" yöntem tanımını temsil eden bir ifadedir. Anonim bir işlev bir değer veya tür içinde ve kendisinin yok, ancak uyumlu temsilci veya ifade ağacı türüne dönüştürülemez. Bir anonim işlev dönüştürme değerlendirmesi dönüştürme hedef türüne bağlıdır: Bir temsilci türü ise, anonim işlevini tanımlayan yöntemin başvuran bir temsilci değerine dönüştürme değerlendirir. Bir ifade ağacı türü ise, dönüştürme yöntemi bir nesne yapısını olarak yapısını temsil eden bir ifade ağacı için değerlendirir.
+***Anonim işlev*** , "satır içi" yöntem tanımını temsil eden bir ifadedir. Anonim bir işlev, ve için bir değer veya tür içermez, ancak uyumlu bir temsilciye veya ifade ağacı türüne dönüştürülebilir. Anonim işlev dönüştürmenin değerlendirmesi, dönüştürmenin hedef türüne bağlıdır: Bir temsilci türü ise, dönüştürme, anonim işlevin tanımladığı yönteme başvuran bir temsilci değeri olarak değerlendirilir. Bir ifade ağacı türü ise dönüştürme, yöntemin yapısını bir nesne yapısı olarak temsil eden bir ifade ağacı olarak değerlendirilir.
 
-Geçmiş nedenleri vardır iki söz dizimsel türü anonim İşlevler, yani *lambda_expression*s ve *anonymous_method_expression*s. Neredeyse tüm amacıyla *lambda_expression*s daha kısa ve daha ifadesel *anonymous_method_expression*s, geriye dönük uyumluluk için dilde kalır.
+Geçmiş nedenlerle anonim işlevlerin iki sözdizimsel özelliği vardır, örneğin, *lambda_expression*s ve *anonymous_method_expression*s. Neredeyse tüm amaçlar için, *lambda_expression*s, geriye doğru uyumluluk için dilde kalacak şekilde, *anonymous_method_expression*s 'den daha kısa ve açıklayıcı olur.
 
 ```antlr
 lambda_expression
@@ -3691,26 +3691,26 @@ anonymous_function_body
     ;
 ```
 
-`=>` İşleci atamayla aynı önceliğe sahip (`=`) ve sağa ilişkilendirilmiştir.
+@No__t-0 işleci atama ile aynı önceliğe sahiptir (`=`) ve sağ ilişkilendirilebilir.
 
-Anonim bir işlevle `async` değiştiricisi bir zaman uyumsuz işlev ve açıklanan kurallara [yineleyiciler](classes.md#iterators).
+@No__t-0 değiştiricisi olan anonim bir işlev zaman uyumsuz bir işlevdir ve [yineleyiciler](classes.md#iterators)bölümünde açıklanan kuralları izler.
 
-Biçiminde anonim bir işlevin parametreleri bir *lambda_expression* açıkça veya dolaylı olarak yazılabilir. Bir açıkça belirtilmiş bir parametre listesinde her parametresinin türünü açıkça belirtilir. Bir türü örtük olarak belirlenmiş parametre listesinde parametre türleri anonim işlev oluştuğu bağlamdan algılanır — özellikle zaman anonim işlev bir uyumlu temsilci türü veya türü sağlayan ifade ağaç türüne dönüştürülür parametre türleri ([anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions)).
+Bir *lambda_expression* biçimindeki anonim bir işlevin parametreleri açık veya örtük olarak yazılabilir olabilir. Açıkça yazılmış bir parametre listesinde, her parametrenin türü açıkça belirtilir. Örtük olarak yazılmış bir parametre listesinde, parametrelerin türleri, anonim işlevin gerçekleştiği bağlamdan çıkarslanmıştır — özellikle anonim işlev, uyumlu bir temsilci türüne veya ifade ağacı türüne dönüştürüldüğünde, bu tür şunu sağlar parametre türleri ([anonim işlev dönüştürmeleri](conversions.md#anonymous-function-conversions)).
 
-Türü örtük olarak belirlenmiş, tek bir parametre ile anonim işlevde parametre listesinden parantezler atlanabilir. Formun başka bir deyişle, anonim bir işlev
+Tek ve örtük olarak yazılmış bir parametreye sahip anonim bir işlevde, parantez parametre listesinden atlanabilir. Diğer bir deyişle, formun anonim bir işlevi
 ```csharp
 ( param ) => expr
 ```
-olarak kısaltılır
+kısaltılabilir
 ```csharp
 param => expr
 ```
 
-Biçiminde anonim bir işlevin parametre listesine bir *anonymous_method_expression* isteğe bağlıdır. Verilen parametreler açıkça yazılması gerekir. Anonim işlevi herhangi bir parametre ile bir temsilciye dönüştürülebilir değilse değil içeren liste `out` parametreleri.
+Bir *anonymous_method_expression* biçimindeki adsız işlevin parametre listesi isteğe bağlıdır. Belirtilmişse, parametrelerin açıkça yazılması gerekir. Aksi takdirde, anonim işlev `out` parametrelerini içermeyen herhangi bir parametre listesi olan bir temsilciye dönüştürülebilir.
 
-A *blok* anonim bir işlev gövdesini erişilebilir ([uç noktaları ve ulaşılabilirliği](statements.md#end-points-and-reachability)) erişilemeyen bir ifadeye anonim işlev gerçekleşmediği sürece.
+Adsız bir işlevin *blok* gövdesine erişilebilir ([bitiş noktaları ve erişilebilirlik](statements.md#end-points-and-reachability)). Bu, anonim işlev ulaşılamaz bir bildirimde gerçekleşmezse.
 
-Anonim işlevler bazı örnekleri aşağıda izleyin:
+Anonim işlevlere bazı örnekler aşağıda verilmiştir:
 
 ```csharp
 x => x + 1                              // Implicitly typed, expression body
@@ -3724,41 +3724,41 @@ delegate (int x) { return x + 1; }      // Anonymous method expression
 delegate { return 1 + 1; }              // Parameter list omitted
 ```
 
-Davranışını *lambda_expression*s ve *anonymous_method_expression*s aşağıdaki noktaları dışında aynı olan:
+*Lambda_expression*s ve *anonymous_method_expression*s davranışı aşağıdaki noktaları hariç aynıdır:
 
-*  *anonymous_method_expression*s, herhangi bir değer parametreleri listesi türleri temsilci convertibility sonuçlanmıyor tamamen atlanacak parametre listesine izin verir.
-*  *lambda_expression*s izin atlanmış ve ancak çıkarımı yapılan parametre türleri *anonymous_method_expression*s açıkça belirtilmediği parametre türleri gerektirir.
-*  Gövdesi bir *lambda_expression* ise bir ifade ya da bir deyim bloğunu olabilir gövdesi bir *anonymous_method_expression* bir deyim bloğunu olması gerekir.
-*  Yalnızca *lambda_expression*s sahip uyumlu bir ifade ağacı türlerine dönüştürme işlemi ([ifade ağacı türleri](types.md#expression-tree-types)).
+*  *anonymous_method_expression*s, parametre listesinin tamamen atlanmasına izin verir ve herhangi bir değer parametreleri listesinin temsilci türlerine göz ardı edilir.
+*  *lambda_expression*s parametre türlerinin atlanmasına ve çıkarlanmasına izin verir, ancak *anonymous_method_expression*s parametre türlerinin açıkça belirtilmesini gerektirir.
+*  Bir *lambda_expression* gövdesi bir ifade veya deyim bloğu olabilir, ancak bir *anonymous_method_expression* gövdesi bir deyim bloğu olmalıdır.
+*  Yalnızca *lambda_expression*s, uyumlu ifade ağacı türlerine Dönüştürmelere sahiptir ([ifade ağacı türleri](types.md#expression-tree-types)).
 
-### <a name="anonymous-function-signatures"></a>Anonim işlev imzası
+### <a name="anonymous-function-signatures"></a>Anonim işlev imzaları
 
-İsteğe bağlı *anonymous_function_signature* anonim bir işlev adlarını ve isteğe bağlı olarak anonim işlev biçimsel parametre türlerini tanımlar. Anonim işlev parametrelerinin kapsamı *anonymous_function_body*. ([Kapsamları](basic-concepts.md#scopes)) (belirtilmişse) parametre listesi ile birlikte anonim yöntem-gövdesi bir bildirim alanı oluşturur ([bildirimleri](basic-concepts.md#declarations)). Bu nedenle bir yerel değişken, yerel sabit veya kapsamı içeren parametre adını eşleştirmek için anonim işlev bir parametre adı için bir derleme zamanı hatası olduğundan *anonymous_method_expression* veya *lambda_ ifade*.
+Anonim işlev için isteğe bağlı *anonymous_function_signature* , anonim işlev için adları ve isteğe bağlı olarak biçimsel parametrelerin türlerini tanımlar. Anonim işlevin parametrelerinin kapsamı *anonymous_function_body*' dir. ([Kapsamlar](basic-concepts.md#scopes)) Parametre listesi ile birlikte (verildiyse) anonim-yöntem-gövde bir bildirim alanı ([Bildirimler](basic-concepts.md#declarations)) oluşturur. Bu nedenle, anonim işlev parametresinin adı için bir yerel değişkenin adı, yerel sabit veya kapsamı *anonymous_method_expression* veya *lambda_expression*içeren bir parametre için derleme zamanı hatası oluşur.
 
-Anonim bir işlevdir varsa bir *explicit_anonymous_function_signature*, uyumlu temsilci türleri ve ifade ağacı türleri kümesini aynı sırada değiştiriciler ve aynı parametre türlerine sahip olanlar kısıtlanmış kaldırılır. Yöntem grubu dönüştürmeler aksine ([yöntem grubu dönüştürmeler](conversions.md#method-group-conversions)), anonim işlevi parametre türleri karşıt varyansını desteklenmiyor. Anonim bir işlevdir yoksa bir *anonymous_function_signature*, uyumlu temsilci türleri ve ifade ağacı türleri kümesini sahip olanlar kısıtlanmış ise `out` parametreleri.
+Anonim bir işlevde bir *explicit_anonymous_function_signature*varsa, uyumlu temsilci türleri ve ifade ağacı türleri kümesi aynı sırayla aynı parametre türleri ve değiştiricilerle kısıtlıdır. Yöntem grubu dönüştürmelerinde ([Yöntem grubu dönüştürmeleri](conversions.md#method-group-conversions)), anonim işlev parametre türlerinin Contra-varyansı desteklenmez. Anonim bir işlevde bir *anonymous_function_signature*yoksa, uyumlu temsilci türleri ve ifade ağacı türleri kümesi `out` parametrelerine sahip olanlarla kısıtlıdır.
 
-Unutmayın bir *anonymous_function_signature* öznitelikleri veya bir parametre dizisi içeremez. Bununla birlikte, bir *anonymous_function_signature* , parametre listesi içeren bir parametre dizisi bir temsilci türüyle uyumlu olmayabilir.
+Bir *anonymous_function_signature* öznitelikleri veya parametre dizisi içeremediğini unutmayın. Bununla birlikte, bir *anonymous_function_signature* , parametre listesi parametre dizisi içeren bir temsilci türüyle uyumlu olabilir.
 
-Derleme zamanında bile uyumlu yine de başarısız olabilir, ayrıca, bir ifade ağaç türüne dönüştürme unutmayın ([ifade ağacı türleri](types.md#expression-tree-types)).
+Ayrıca, aynı zamanda derleme zamanında ([ifade ağacı türleri](types.md#expression-tree-types)) hala başarısız olabilecek bir ifade ağacı türüne dönüştürme
 
 ### <a name="anonymous-function-bodies"></a>Anonim işlev gövdeleri
 
-Gövde (*ifade* veya *blok*) anonim bir işlev olan aşağıdaki kurallarına tabidir:
+Anonim bir işlevin gövdesi (*ifadesi* veya *bloğu*) aşağıdaki kurallara tabidir:
 
-*  Anonim işlev bir imza içeriyorsa, imzasında belirtilen parametreler gövdesinde kullanılabilir. Anonim işlev imzasına varsa, bir temsilci türü ya da ifade türü parametreleri olan dönüştürülebilir ([anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions)), ancak parametreler gövdesinde erişilemez.
-*  Dışında `ref` veya `out` en yakın kapsayan imzasında (varsa) belirtilen parametreler anonim işlev gövdesi erişmek için bir derleme zamanı hatası ise bir `ref` veya `out` parametresi.
-*  Zaman türü `this` bir yapı türü gövdesi erişmek için bir derleme zamanı hata `this`. Bu erişim açık olup geçerlidir (olarak `this.x`) ya da örtük (olarak `x` burada `x` struct'ın bir örnek üyesi). Bu kural yalnızca erişimi engeller ve üye araması sonuçları struct üyesi olup olmadığını etkilemez.
-*  Gövde dış değişkenlere erişebilir ([dış değişkenler](expressions.md#outer-variables)), anonim bir işlevdir. Dış bir değişkenin erişim sırasında etkin olan değişken örneğini başvuracağı *lambda_expression* veya *anonymous_method_expression* değerlendirilir ([değerlendirmesi Anonim işlev ifadeleri](expressions.md#evaluation-of-anonymous-function-expressions)).
-*  Bir derleme zamanı hata içerecek şekilde gövdesi için bir `goto` deyimi, `break` deyimi, veya `continue` hedefi, gövdenin dışında veya kapsanan anonim bir işlevin gövdesi içinde olan ifade.
-*  A `return` gövdesinde deyimi en yakın kapsayan bir çağrısından denetim döndürür kapsayan işlev üyesi değil, anonim işlev. Belirtilen bir ifade bir `return` ifadesi örtük olarak temsilci türüne veya ifade ağacı türü olan dönüş türüne dönüştürülebilir olmalıdır en yakın kapsayan *lambda_expression* veya *anonymous_ method_expression* dönüştürülür ([anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions)).
+*  Anonim işlev bir imza içeriyorsa, İmzada belirtilen parametreler gövdede kullanılabilir. Anonim işlevde imza yoksa, parametrelere sahip bir temsilci türüne veya ifade türüne dönüştürülebilir ([anonim işlev dönüştürmeleri](conversions.md#anonymous-function-conversions)), ancak parametrelere gövdede erişilemez.
+*  En yakın kapsayan anonim işlevin imzasında (varsa) belirtilen `ref` veya `out` parametreleri dışında, gövdenin bir `ref` veya `out` parametresine erişmesi için derleme zamanı hatası olur.
+*  @No__t-0 türü bir struct türü olduğunda, gövdenin `this` ' e erişmesi için derleme zamanı hatası olur. Bu, erişimin açık (`this.x`) veya örtük (`x` ' in yapının örnek üyesi olduğu `x` ' de olduğu gibi) için geçerlidir. Bu kural yalnızca bu erişimi yasaklar ve üye aramanın yapının bir üyesi olup olmadığını etkilemez.
+*  Gövde, anonim işlevin dış değişkenlerine ([dış değişkenler](expressions.md#outer-variables)) erişebilir. Bir dış değişkene erişim, *lambda_expression* veya *anonymous_method_expression* değerlendirildiği sırada etkin olan değişkenin örneğine başvuracaktır ([anonim işlev ifadelerinin değerlendirmesi](expressions.md#evaluation-of-anonymous-function-expressions)).
+*  Gövdede bir `goto` ifadesini, `break` ifadesini veya `continue` ifadesini içeren, hedefi gövdenin dışında veya kapsanan bir anonim işlevin gövdesinde olan bir derleme zamanı hatasıdır.
+*  Gövdedeki bir `return` ifadesinde, kapsayan işlev üyesinden değil, en yakın kapsayan anonim işlevin çağrısından denetim döndürülür. @No__t-0 ifadesinde belirtilen bir ifade, en yakın kapsayan *lambda_expression* veya *anonymous_method_expression* 'in dönüştürüldüğü temsilci türünün veya ifade ağacı türünün dönüş türüne örtük olarak dönüştürülebilir olmalıdır ( [Anonim işlev dönüştürmeleri](conversions.md#anonymous-function-conversions)).
 
-Dışında bir anonim İşlev değerlendirmesi ve çağırmayı aracılığıyla bloğunu yürütülecek herhangi bir şekilde olup olmadığını açıkça belirtilmeyen *lambda_expression* veya *anonymous_method_expression*. Özellikle, derleyici bir synthesizing anonim bir işlevdir uygulamayı seçebilir veya daha fazla yöntemleri veya türleri adlandırılmış. Derleyici kullanılmak üzere ayrılmış bir formun tür Sentezlenen öğeleri adları olması gerekir.
+*Lambda_expression* veya *anonymous_method_expression*' nin değerlendirmesi ve çağrılması dışında bir anonim işlevin bloğunu yürütme yolu olup olmadığı açıkça belirtilmemiş olur. Özellikle, derleyici bir veya daha fazla adlandırılmış yöntemi ya da türü birleştirerek anonim bir işlev uygulamayı tercih edebilir. Bu tür birleştirilmiş öğelerin adları, derleyici kullanımı için ayrılmış bir biçimde olmalıdır.
 
-### <a name="overload-resolution-and-anonymous-functions"></a>Aşırı yükleme çözünürlüğü ve anonim İşlevler
+### <a name="overload-resolution-and-anonymous-functions"></a>Aşırı yükleme çözümlemesi ve anonim işlevler
 
-Anonim işlevler bir bağımsız değişken listesindeki içinde tür çıkarımı katılmak ve aşırı yükleme çözümlemesi. Lütfen [anlam çıkarma](expressions.md#type-inference) ve [aşırı yükleme çözünürlüğü](expressions.md#overload-resolution) kesin kurallar için.
+Bir bağımsız değişken listesindeki anonim işlevler tür çıkarımı ve aşırı yükleme çözümüne katılır. Tam kurallar için lütfen [tür çıkarımı](expressions.md#type-inference) ve [aşırı yükleme çözümlemesi](expressions.md#overload-resolution) ' ne bakın.
 
-Aşağıdaki örnek, aşırı yükleme çözünürlüğü anonim işlevler etkisini gösterir.
+Aşağıdaki örnekte, anonim işlevlerin aşırı yükleme çözünürlüğünde etkileri gösterilmektedir.
 
 ```csharp
 class ItemList<T>: List<T>
@@ -3777,9 +3777,9 @@ class ItemList<T>: List<T>
 }
 ```
 
-`ItemList<T>` Sınıfına sahip iki `Sum` yöntemleri. Her alan bir `selector` değeri ayıklar bir liste öğesinden toplama üzerinden bağımsız değişken. Ayıklanan değerin şöyle bir `int` veya `double` ve altındaysa aynı şekilde ya da bir `int` veya `double`.
+@No__t-0 sınıfında iki `Sum` yöntemi vardır. Her biri, bir liste öğesinden toplanacak değeri çıkaran bir `selector` bağımsız değişkeni alır. Ayıklanan değer bir `int` ya da bir `double` olabilir ve elde edilen toplam değer aynı şekilde `int` veya `double` olur.
 
-`Sum` Yöntemleri örneğin kullanılabilir ayrıntı satırları bir sırada bir listeden toplamları hesaplamak için.
+@No__t-0 yöntemleri, bir sırayla ayrıntı satırları listesinden toplamları hesaplamak için kullanılabilir.
 
 ```csharp
 class Detail
@@ -3797,21 +3797,21 @@ void ComputeSums() {
 }
 ```
 
-İlk çağrısıysa, `orderDetails.Sum`hem `Sum` yöntemleri uygulanabilir olduğundan anonim işlev `d => d. UnitCount` ikisiyle uyumlu `Func<Detail,int>` ve `Func<Detail,double>`. Ancak, ilk aşırı yükleme çözünürlüğü seçer `Sum` yöntemi olduğundan dönüştürme `Func<Detail,int>` dönüştürme işlemini daha iyidir `Func<Detail,double>`.
+@No__t-0 ' ı ilk çağrılışında, anonim işlev `d => d. UnitCount` ' nin hem `Func<Detail,int>` hem de `Func<Detail,double>` ile uyumlu olduğu için `Sum` yöntemlerinin her ikisi de geçerlidir. Ancak, `Func<Detail,int>` ' e dönüştürme işlemi `Func<Detail,double>` ' ye dönüşümünden daha iyi olduğundan aşırı yükleme çözümlemesi ilk `Sum` yöntemini seçer.
 
-İkinci çağrılmasını içinde `orderDetails.Sum`yalnızca ikinci `Sum` yöntemi uygulanabilir olduğundan anonim işlev `d => d.UnitPrice * d.UnitCount` türünde bir değer üreten `double`. Bu nedenle, aşırı yükleme çözümlemesi seçer ikinci `Sum` , çağırma yöntemi.
+@No__t-0 ' ın ikinci çağrısında yalnızca ikinci `Sum` yöntemi geçerlidir çünkü `d => d.UnitPrice * d.UnitCount` anonim işlevi `double` türünde bir değer oluşturur. Bu nedenle, aşırı yükleme çözümlemesi bu çağrı için ikinci `Sum` yöntemini seçer.
 
 ### <a name="anonymous-functions-and-dynamic-binding"></a>Anonim işlevler ve dinamik bağlama
 
-Bir anonim işlev bir alıcı, bağımsız değişken veya dinamik olarak bağlı bir işlemin işlenen olamaz.
+Anonim bir işlev, dinamik olarak bağlı bir işlemin alıcısı, bağımsız değişkeni veya işleneni olamaz.
 
-### <a name="outer-variables"></a>Dış değişkenleri
+### <a name="outer-variables"></a>Dış değişkenler
 
-Herhangi bir yerel değişken, değer parametresi veya parametre dizisi kapsamı içerir *lambda_expression* veya *anonymous_method_expression* çağrılır bir ***dış değişken*** Anonim işlevi. Bir sınıfın bir örneği işlevi üyesinde `this` değeri bir değer parametresi olarak kabul edilir ve bir dış değişken işlev üyesi içinde yer alan anonim bir işlevdir.
+Kapsamı *lambda_expression* veya *anonymous_method_expression* içeren herhangi bir yerel değişken, değer parametresi veya parametre dizisine anonim işlevin ***dış değişkeni*** denir. Bir sınıfın örnek işlev üyesinde, `this` değeri bir değer parametresi olarak değerlendirilir ve işlev üyesi içinde bulunan herhangi bir anonim işlevin dış değişkenidir.
 
 #### <a name="captured-outer-variables"></a>Yakalanan dış değişkenler
 
-Bir dış değişkenine bir anonim işlev tarafından başvurulduğunda dış değişken olması bildirilir ***yakalanan*** tarafından anonim bir işlevdir. Normalde, blok veya olduğu ilişkili deyimi yürütme için bir yerel değişken ömrü sınırlıdır ([yerel değişkenler](variables.md#local-variables)). Ancak, yakalanan bir dış değişken ömrü en az bir temsilci kadar genişletilmiş veya ifade ağacı anonim işlevden oluşturulan çöp toplama işlemi için uygun hale gelir.
+Bir dış değişkene adsız bir işlev tarafından başvuruluyorsa, dış değişken anonim işlev tarafından ***yakalanarak*** bildirilir. Genellikle, yerel bir değişkenin ömrü, ilişkili olduğu blok veya deyimin yürütmesi ile sınırlıdır ([yerel değişkenler](variables.md#local-variables)). Ancak, yakalanan bir dış değişkenin ömrü, anonim işlevden oluşturulan temsilci veya ifade ağacı çöp toplama için uygun hale gelene kadar en az genişletilir.
 
 Örnekte
 ```csharp
@@ -3835,20 +3835,20 @@ class Test
     }
 }
 ```
-yerel değişken `x` anonim işlev ve ömrünü tarafından yakalanan `x` döndürüldüğü temsilci kadar en az Genişletilmiş `F` (hangi sonuna kadar gerçekleşmez çöp toplama işlemi için uygun hale gelir program). Anonim işlev her çağrıldığında'nın aynı örneğinde çalışır olduğundan `x`, örnek çıktısı:
-```
+`x` yerel değişkeni anonim işlev tarafından yakalanır ve `F` ' den döndürülen temsilci çöp toplama için uygun hale gelene kadar (programın çok sonuna kadar gerçekleşmeyen) en az 1 ' i @no__t. Anonymous işlevinin her çağrılması `x` ' ın aynı örneğinde çalışır, örneğin çıktısı şu şekilde olur:
+```console
 1
 2
 3
 ```
 
-Yerel bir değişken veya değer parametresi bir anonim işlev tarafından yakalandığında, yerel değişken veya parametre artık sabit bir değişken olarak kabul edilir ([sabit ve taşınabilir değişkenleri](unsafe-code.md#fixed-and-moveable-variables)), ancak bunun yerine bir taşınabilir olarak kabul edilir değişken. Bu nedenle herhangi `unsafe` yakalanan bir dış değişkenin adresini alır kod ilk kullanmalıdır `fixed` değişkeni düzeltmek için deyimi.
+Yerel bir değişken veya bir değer parametresi anonim bir işlev tarafından yakalandıktan sonra, yerel değişken veya parametre artık sabit bir değişken ([sabit ve taşınabilir değişkenler](unsafe-code.md#fixed-and-moveable-variables)) olarak kabul edilmez, ancak bunun yerine taşınabilir bir değişken olarak kabul edilir. Bu nedenle, yakalanan bir dış değişkenin adresini alan `unsafe` kodu, önce değişkeni çözmek için `fixed` ifadesini kullanmalıdır.
 
-Uncaptured bir değişkeni, yakalanan bir yerel değişken aynı anda birden çok iş parçacığı yürütme kullanıma sunulabilecek şekilde unutmayın.
+Yakalanamayan bir değişkenin aksine, yakalanan bir yerel değişkenin aynı anda birden fazla yürütme iş parçacığına sunulabileceğini unutmayın.
 
-#### <a name="instantiation-of-local-variables"></a>Yerel değişkenler örneklemesi
+#### <a name="instantiation-of-local-variables"></a>Yerel değişkenlerin örneklenmesi
 
-Yerel bir değişken olarak kabul edilir ***örneği*** yürütme, değişken kapsamını girdiğinde. Örneğin, aşağıdaki yöntem olduğunda çağrılır, yerel değişken `x` örneği ve üç kez başlatılan — döngünün her yinelemesinden için bir kez.
+Bir yerel değişken, yürütme değişkenin kapsamına girdiğinde ***örnek*** olarak değerlendirilir. Örneğin, aşağıdaki yöntem çağrıldığında, `x` yerel değişkeni, döngünün her yinelemesi için bir kez oluşturulur ve üç kez başlatılır.
 
 ```csharp
 static void F() {
@@ -3859,7 +3859,7 @@ static void F() {
 }
 ```
 
-Ancak, bildirimi taşıma `x` döngü sonuçları tek bir örneğinin dışında `x`:
+Ancak, `x` ' ın bildirimini döngü dışına taşımak, `x` ' in tek bir örneklemesinde oluşur:
 ```csharp
 static void F() {
     int x;
@@ -3870,7 +3870,7 @@ static void F() {
 }
 ```
 
-Yakalanan değil, yerel bir değişken tam olarak ne sıklıkta örneği gözlemek için bir yolu yoktur; örneklemeleri ömrü ayrık olduğundan, yalnızca aynı depolama konumu kullanmak üzere her örneklemesi için mümkündür. Ancak, bir anonim işlev bir yerel değişken yakaladığında örneklemesine etkisini belirgin hale gelir.
+Yakalanmadığı zaman, bir yerel değişkenin hangi sıklıkta örneklendirildiğini tam olarak gözlemleyebilmenin bir yolu yoktur. örneklemelerin yaşam süreleri kopuk olduğundan, her örnekleme için aynı depolama konumunu kullanmak mümkündür. Ancak, anonim bir işlev yerel bir değişken yakaladığında, örnekleme etkileri görünür hale gelir.
 
 Örnek
 ```csharp
@@ -3895,13 +3895,13 @@ class Test
 }
 ```
 çıktıyı üretir:
-```
+```console
 1
 3
 5
 ```
 
-Ancak, bildirimi `x` döngü dışına taşındı:
+Ancak, `x` bildirimi döngü dışına taşındığında:
 ```csharp
 static D[] F() {
     D[] result = new D[3];
@@ -3913,14 +3913,14 @@ static D[] F() {
     return result;
 }
 ```
-Çıktı.
-```
+Çıktı:
+```console
 5
 5
 5
 ```
 
-Bir for döngüsü bir yineleme değişkeni bildirirse, bu değişkeni döngü dışında bildirilmesi kabul edilir. Bu nedenle, yineleme değişkeni yakalamak için örnek değiştirilirse:
+Bir for döngüsü bir yineleme değişkeni bildirirse, bu değişkenin kendisi döngünün dışında bildirildikleri kabul edilir. Bu nedenle, örnek yineleme değişkeninin kendisini yakalamak üzere değiştirilirse:
 
 ```csharp
 static D[] F() {
@@ -3931,14 +3931,14 @@ static D[] F() {
     return result;
 }
 ```
-yineleme değişkeni yalnızca bir örneğini yakalanan, hangi çıktıyı üretir:
-```
+yalnızca bir yineleme değişkeni örneği yakalanır, bu da çıktıyı üretir:
+```console
 3
 3
 3
 ```
 
-Bazı yakalanan değişkenlere paylaşmak henüz başkalarının ayrı Örneğiniz için anonim işlev temsilciler için mümkündür. Örneğin, varsa `F` değiştirildi
+Bazı yakalanan değişkenlerin paylaşılması için anonim işlev temsilcilerinin, hala diğerlerinin farklı örneklerine sahip olması mümkündür. Örneğin, `F` olarak değiştirilirse
 ```csharp
 static D[] F() {
     D[] result = new D[3];
@@ -3950,14 +3950,14 @@ static D[] F() {
     return result;
 }
 ```
-' ın aynı örneğine üç temsilcileri yakalama `x` ancak örnekleri'ni ayrı `y`, çıktı şu şekildedir:
-```
+üç temsilci `x` ' ın aynı örneğini yakalar, ancak `y` ' in farklı örneklerini yakalar ve çıkış şu şekilde olur:
+```console
 1 1
 2 1
 3 1
 ```
 
-Ayrı anonim işlevler bir harici değişken'ın aynı örneğine yakalayabilirsiniz. Örnekte:
+Ayrı anonim işlevler, bir dış değişkenin aynı örneğini yakalayabilir. Örnekte:
 ```csharp
 using System;
 
@@ -3978,19 +3978,19 @@ class Test
     }
 }
 ```
-yerel değişken'ın aynı örneğine iki anonim işlevler yakalama `x`, ve bu nedenle "değişken üzerinden kurabilmek". Örneğin çıktısı şöyledir:
-```
+iki anonim işlev, `x` yerel değişkeninin aynı örneğini yakalar ve bu nedenle bu değişken ile "iletişim kurabilir". Örneğin çıktısı şu şekilde olur:
+```console
 5
 10
 ```
 
-### <a name="evaluation-of-anonymous-function-expressions"></a>Anonim işlev ifadeleri değerlendirme
+### <a name="evaluation-of-anonymous-function-expressions"></a>Anonim işlev ifadelerinin değerlendirmesi
 
-Anonim bir işlevdir `F` her zaman bir temsilci türüne dönüştürülmesi gerekir `D` veya bir ifade ağacı türü `E`, doğrudan ya da temsilci oluşturma ifadesine yürütülmesini aracılığıyla `new D(F)`. Bu dönüştürme sonucu anonim işlev açıklandığı belirler [anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions).
+@No__t-0 Anonim işlevinin her zaman doğrudan veya bir temsilci oluşturma @no__t ifadesinin yürütülmesi yoluyla, bir `D` veya `E` ifade ağacı türüne dönüştürülmesi gerekir. Bu dönüştürme, anonim işlev [dönüştürmeleri](conversions.md#anonymous-function-conversions)bölümünde açıklandığı gibi anonim işlevin sonucunu belirler.
 
 ## <a name="query-expressions"></a>Sorgu ifadeleri
 
-***Sorgu ifadelerinde*** SQL ve XQuery gibi ilişkisel ve hiyerarşik sorgu dillerini benzer sorgular için tümleşik dil söz dizimi sağlar.
+***Sorgu ifadeleri*** , SQL ve XQuery gibi ilişkisel ve hiyerarşik sorgu dillerine benzer sorgular için dil ile tümleşik bir sözdizimi sağlar.
 
 ```antlr
 query_expression
@@ -4070,40 +4070,40 @@ query_continuation
     ;
 ```
 
-Sorgu ifadesi ile başlayan bir `from` yan tümcesi ve biter ya da bir `select` veya `group` yan tümcesi. İlk `from` yan tümcesi ve ardından sıfır veya daha fazla `from`, `let`, `where`, `join` veya `orderby` yan tümceleri. Her `from` yan tümcesi ise bir oluşturucuyu Giriş bir ***aralık değişkeni*** öğelerinin aralıkları bir ***dizisi***. Her `let` yan tümce ortaya çıkarır, önceki aralık değişkenleri yoluyla hesaplanan bir değeri temsil eden bir aralık değişkeni. Her `where` öğeleri sonuçtan dışlar bir filtre yan tümcesi ise. Her `join` yan tümcesi, belirtilen kaynak sırası anahtarlarla eşleşen çiftleri sağlayan başka bir dizinin anahtarları karşılaştırır. Her `orderby` yan tümcesi belirtilen ölçütlere göre öğeleri yeniden sıralar. En son `select` veya `group` yan tümcesinin aralık değişkenleri açısından sonucun şeklini belirtir. Son olarak, bir `into` "sorguları bir sonraki sorguda bir oluşturucu olarak bir sorgunun sonuçlarını düşünerek splice için" yan tümcesi kullanılabilir.
+Sorgu ifadesi `from` yan tümcesiyle başlar ve `select` veya `group` yan tümcesiyle biter. İlk `from` yan tümcesinin ardından sıfır veya daha fazla `from`, `let`, `where`, `join` veya `orderby` yan tümcesi gelebilir. Her `from` yan tümcesi, bir ***dizinin***öğelerinin üzerinde değişen bir ***Aralık değişkeni*** sunan bir üreticidir. Her `let` yan tümcesi, önceki Aralık değişkenlerine göre hesaplanan bir değeri temsil eden bir Aralık değişkeni sunar. Her `where` yan tümcesi, nesneleri sonuçtan dışlayan bir filtredir. Her `join` yan tümcesi, eşleşen çiftleri oluşturan, kaynak dizinin belirtilen anahtarlarını başka bir dizinin anahtarlarıyla karşılaştırır. Her `orderby` yan tümcesi öğeleri belirtilen ölçütlere göre yeniden sıralar. Son `select` veya `group` yan tümcesi, Aralık değişkenleri bakımından sonucun şeklini belirtir. Son olarak, bir `into` yan tümcesi, bir sorgunun sonuçlarını sonraki bir sorguda Oluşturucu olarak düşünerek "splice" için kullanılabilir.
 
 ### <a name="ambiguities-in-query-expressions"></a>Sorgu ifadelerinde belirsizlikleri
 
-Sorgu ifadeleri "bağlamsal anahtar sözcükler", yani, belirli bir bağlamda özel bir anlamı yoktur tanımlayıcıları sayısını içerir. Bunlar özellikle `from`, `where`, `join`, `on`, `equals`, `into`, `let`, `orderby`, `ascending`, `descending`, `select`, `group` ve `by`. Sorgu ifadeleri anahtar sözcükler veya basit adları bu tanımlayıcıları karışık kullanımına neden belirsizliklerden kaçınmak için bu tanımlayıcıları anahtar sözcükleri herhangi bir yerde bir sorgu ifadesi içinde gerçekleşen zaman olarak kabul edilir.
+Sorgu ifadeleri, belirli bir bağlamda özel anlamı olan tanımlayıcılar içeren bir dizi "bağlamsal anahtar sözcük", yani. Bunlar özellikle `from`, `where`, `join`, `on`, `equals`, `into`, `let`, `orderby`, `ascending`, `descending`, 0, 1 ve 2 ' dir. Bu tanımlayıcıların, anahtar sözcük veya basit adlar olarak karışık olarak kullanılması nedeniyle sorgu ifadelerinde belirsizlikleri kaçınmak için, bu tanımlayıcılar bir sorgu ifadesinin içinde herhangi bir yerde olduğunda anahtar sözcük olarak kabul edilir.
 
-Bu amaç için bir sorgu ifadesi ile başlayan herhangi bir ifade olan "`from identifier`"dışında herhangi bir belirteci tarafından izlenen"`;`","`=`"veya"`,`".
+Bu amaçla, bir sorgu ifadesi "`from identifier`" ile başlayan ve "`;`", "`=`" veya "`,`" dışında herhangi bir belirteç tarafından başlayan ifadedir.
 
-Sorgu ifadesi içinde tanımlayıcı olarak bu sözcükleri kullanmak için bunlar ile belirtilebilir "`@`" ([tanımlayıcıları](lexical-structure.md#identifiers)).
+Bu sözcüklerin bir sorgu ifadesinde tanımlayıcı olarak kullanılabilmesi için, "`@`" ([tanımlayıcılar](lexical-structure.md#identifiers)) ön eki uygulanabilir.
 
-### <a name="query-expression-translation"></a>Sorgu ifade çevirisi
+### <a name="query-expression-translation"></a>Sorgu ifadesi çevirisi
 
-C# dili sorgu ifadeleri yürütme semantikleri belirtmiyor. Bunun yerine, sorgu ifadeleri izliyor yöntemlerine çağrılarını çevrilir *sorgu ifade deseninin* ([sorgu ifade deseninin](expressions.md#the-query-expression-pattern)). Sorgu ifadeleri adlı yöntem çağrılarını özellikle çevrilir `Where`, `Select`, `SelectMany`, `Join`, `GroupJoin`, `OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `GroupBy`, ve `Cast`. Bu yöntemler belirli imzalar ve sonuç türleri açıklandığı beklenir [sorgu ifade deseninin](expressions.md#the-query-expression-pattern). Bu yöntemler, sorgulanan nesne örnek yöntemlerine veya nesnenin dış genişletme yöntemleri olabilir ve sorgunun gerçek yürütmesi uyguladıkları.
+Dil C# , sorgu ifadelerinin yürütme semantiğini belirtmez. Bunun yerine sorgu ifadeleri *sorgu ifade düzenine* ([sorgu ifade deseninin](expressions.md#the-query-expression-pattern)) bağlı olan yöntemlerin etkinleştirilmesinde çevrilir. Özellikle, sorgu ifadeleri `Where`, `Select`, `SelectMany`, `Join`, `GroupJoin`, `OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `GroupBy` ve 0 adlı yöntemlerin etkinleştirilmesine çevrilir. [Sorgu ifadesi](expressions.md#the-query-expression-pattern)düzeninde açıklandığı gibi, bu yöntemlerin belirli imzaları ve sonuç türlerini olması beklenir. Bu yöntemler, sorgulanan nesnenin örnek yöntemleri veya nesne dışındaki genişletme yöntemleri olabilir ve sorgunun gerçek yürütmesini uygular.
 
-Sorgu ifadeleri gelen çeviri yöntem çağrılarına herhangi bir türü bağlamayı önce gerçekleşen bir söz dizimi eşlemesi ya da aşırı yükleme çözünürlüğü gerçekleştirildi. Çeviri sözdizimsel olarak doğru olmasını garanti edilmez, ancak anlamsal olarak doğru C# kod üretmek için garanti edilmez. Çeviri sorgu ifadeleri, aşağıdaki oluşturulan yöntem çağrıları normal yöntem çağrıları işlenir ve bu sırayla hataları, örneğin yanlış tür bağımsız değişkenleri varsa yöntemi, mevcut değilse ya da genel yöntemleri açığa çıkarmak ve tür çıkarımı başarısız olur.
+Sorgu ifadelerinden Yöntem etkinleştirmeleri 'e yapılan çeviri, herhangi bir tür bağlama veya aşırı yükleme çözümlemesi yapılmadan önce oluşan bir sözdizimsel eşleme olur. Çeviri, sözdizimsel olarak doğru bir şekilde garanti edilir, ancak anlamsal olarak doğru C# kodun üretilmesi garanti edilmez. Sorgu ifadelerinin çevirisinde, sonuçta elde edilen yöntem etkinleştirmeleri normal Yöntem etkinleştirmeleri olarak işlenir ve bu, örneğin Yöntemler yoksa, bağımsız değişkenlerin yanlış türleri varsa veya yöntemler geneldir ve Tür çıkarımı başarısız oluyor.
 
-Sorgu ifadesi, başka hiçbir indirimleri mümkün olana kadar sürekli olarak aşağıdaki çevirileri uygulayarak işlenir. Çevirileri uygulama sırasına göre listelenir: her bölüm önceki bölümlerde yer çevirileri ayrıntısına gerçekleştirilmiş ve tükenmiş sonra bir bölüm daha sonra aynı sorgu ifadesinde işleme tekrar ziyaret değil varsayar.
+Bir sorgu ifadesi, daha fazla azaltmayı mümkün olana kadar, aşağıdaki Çeviriler tekrar tekrar uygulanarak işlenir. Çeviriler uygulama sırasıyla listelenir: her bölümde, yukarıdaki bölümlerdeki çevirilerin tüketilildiği ve tükendiğinde, bir bölümün aynı sorgu ifadesinin işlenmesinde daha sonra yeniden ziyaret edilmesinin varsayıldığı varsayılır.
 
-Sorgu ifadelerinde aralık değişkenleri atamaya izin verilmiyor. Ancak bir C# uygulaması Bu bazen Burada sunulan söz dizimsel çeviri şemasıyla mümkün olmayabilir olduğundan bu kısıtlama, her zaman zorlamak için izin verilir.
+Sorgu ifadelerinde Aralık değişkenlerine atamaya izin verilmez. Ancak bir C# uygulamaya bu kısıtlamayı her zaman zorlamamasına izin verilir, çünkü bu durum bazen burada sunulan sözdizimsel çeviri düzeninde mümkün olmayabilir.
 
-Belirli çevirileri çağrılarınızla saydam tanımlayıcılarına sahip aralık değişkenleri ekleme `*`. Saydam tanımlayıcı özel özelliklerini ele alınmıştır daha ayrıntılı olarak [saydam tanımlayıcıları](expressions.md#transparent-identifiers).
+Belirli Çeviriler, `*` tarafından belirtilen saydam tanımlayıcılarla Aralık değişkenleri ekler. Saydam tanımlayıcıların özel özellikleri, [saydam tanımlayıcılarla](expressions.md#transparent-identifiers)daha ayrıntılı bir şekilde ele alınmıştır.
 
-#### <a name="select-and-groupby-clauses-with-continuations"></a>Devamlılıklarla seçin ve groupby yan tümceleri
+#### <a name="select-and-groupby-clauses-with-continuations"></a>Devamlılıklarla seçim ve GroupBy yan tümceleri
 
-Devamlılık sahip bir sorgu ifadesi
+Devam eden bir sorgu ifadesi
 ```csharp
 from ... into x ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from x in ( from ... ) ...
 ```
 
-Aşağıdaki bölümlerde çevirileri sorguları Hayır sahip olduğunuzu varsaymaktadır `into` devamlılıkları.
+Aşağıdaki bölümlerde yer alan Çeviriler, sorguların `into` devamlılıkları olmadığını varsayar.
 
 Örnek
 ```csharp
@@ -4111,41 +4111,41 @@ from c in customers
 group c by c.Country into g
 select new { Country = g.Key, CustCount = g.Count() }
 ```
-erişimcisine
+çevrilir
 ```csharp
 from g in
     from c in customers
     group c by c.Country
 select new { Country = g.Key, CustCount = g.Count() }
 ```
-hangi son çevrilmesidir
+son çeviri
 ```csharp
 customers.
 GroupBy(c => c.Country).
 Select(g => new { Country = g.Key, CustCount = g.Count() })
 ```
 
-#### <a name="explicit-range-variable-types"></a>Açık aralığı değişken türleri
+#### <a name="explicit-range-variable-types"></a>Açık Aralık değişken türleri
 
-A `from` aralığı değişken türünü açıkça belirten yan tümcesi
+Açıkça bir Aralık değişkeni türünü belirten `from` yan tümcesi
 ```csharp
 from T x in e
 ```
-erişimcisine
+çevrilir
 ```csharp
 from x in ( e ) . Cast < T > ( )
 ```
 
-A `join` aralığı değişken türünü açıkça belirten yan tümcesi
-```
+Açıkça bir Aralık değişkeni türünü belirten `join` yan tümcesi
+```csharp
 join T x in e on k1 equals k2
 ```
-erişimcisine
-```
+çevrilir
+```csharp
 join x in ( e ) . Cast < T > ( ) on k1 equals k2
 ```
 
-Aşağıdaki bölümlerde çevirileri sorguları hiçbir açık aralığı değişken türleri olduğunu varsayın.
+Aşağıdaki bölümlerde yer alan Çeviriler, sorguların hiçbir açık Aralık değişken türüne sahip olmadığını varsayar.
 
 Örnek
 ```csharp
@@ -4153,28 +4153,28 @@ from Customer c in customers
 where c.City == "London"
 select c
 ```
-erişimcisine
+çevrilir
 ```csharp
 from c in customers.Cast<Customer>()
 where c.City == "London"
 select c
 ```
-hangi son çevrilmesidir
+son çeviri
 ```csharp
 customers.
 Cast<Customer>().
 Where(c => c.City == "London")
 ```
 
-Açık aralığı değişken türleri: genel olmayan uygulama koleksiyonları sorgulamak için kullanışlı `IEnumerable` arabirimi, ancak genel `IEnumerable<T>` arabirimi. Yukarıdaki örnekte, bu durum geçerlidir olacaktır `customers` türü olan `ArrayList`.
+Açık Aralık değişkeni türleri genel olmayan `IEnumerable` arabirimini uygulayan, ancak genel `IEnumerable<T>` arabirimi olmayan koleksiyonları sorgulamak için yararlıdır. Yukarıdaki örnekte, `customers` `ArrayList` türünde ise bu durum olacaktır.
 
-#### <a name="degenerate-query-expressions"></a>Bozuk sorgu ifadeleri
+#### <a name="degenerate-query-expressions"></a>Sorgu ifadeleri oluşturmayı kaldırma
 
-Formun bir sorgu ifadesi
+Formun sorgu ifadesi
 ```csharp
 from x in e select x
 ```
-erişimcisine
+çevrilir
 ```csharp
 ( e ) . Select ( x => x )
 ```
@@ -4184,116 +4184,116 @@ erişimcisine
 from c in customers
 select c
 ```
-erişimcisine
+çevrilir
 ```csharp
 customers.Select(c => c)
 ```
 
-Bozuk bir sorgu ifadesinin artık önemsiz olarak kaynak öğelerini seçer biridir. Bir sonraki çeviri aşaması, kaynak ile değiştirerek diğer çeviri adımları tarafından sunulan bozuk sorguları kaldırır. Bir sorgunun sonucu emin olmak için ifade hiçbir zaman kaynak nesnenin kendisi, ancak, kaynak kimliğini ve türünü sorgu istemciye açığa gibi önemlidir. Bu nedenle bu adımı açıkça çağırarak doğrudan kaynak kodda yazılmış bozuk sorguları korur `Select` kaynak. Ardından uygulayıcılar kadar olan `Select` ve bu yöntemlerden hiç kaynak nesne döndürdüğünden emin olmak için diğer sorgu işleçleri.
+Bir bozuk sorgu ifadesi, kaynağın öğelerini önemli bir şekilde seçen bir ifadedir. Çevirinin daha sonraki bir aşaması, diğer çeviri adımları tarafından tanıtılan ve kaynakları kendi kaynağıyla değiştirerek çıkartılmış olan sorgu kaldırma işlemleri kaldırır. Sorgu ifadesinin sonucunun, sorgunun istemcisinin türünü ve kimliğini açığa çıkardığından, hiçbir şekilde kaynak nesnenin kendisi olduğundan emin olmak önemlidir. Bu nedenle bu adım, kaynakta `Select` ' ı açıkça çağırarak doğrudan kaynak kodunda yazılan sorguları kaldırır. Daha sonra, bu yöntemlerin kaynak nesnenin kendisini döndürmemesini sağlamak için `Select` ve diğer sorgu işleçleri uygulayıcılarına sahiptir.
 
-#### <a name="from-let-where-join-and-orderby-clauses"></a>From, where, birleştirme ve orderby yan tümceleri sağlar
+#### <a name="from-let-where-join-and-orderby-clauses"></a>Kimden, Let, WHERE, JOIN ve OrderBy yan tümceleri
 
-İkinci sorgu ifadesiyle `from` yan tümcesi tarafından izlenen bir `select` yan tümcesi
+İkinci bir `from` yan tümcesine ve ardından `select` yan tümcesine sahip bir sorgu ifadesi
 ```csharp
 from x1 in e1
 from x2 in e2
 select v
 ```
-erişimcisine
+çevrilir
 ```csharp
 ( e1 ) . SelectMany( x1 => e2 , ( x1 , x2 ) => v )
 ```
 
-İkinci sorgu ifadesiyle `from` yan tümcesi izleyen bir şey tarafından dışındaki bir `select` yan tümcesi:
+İkinci bir `from` yan tümcesine sahip bir sorgu ifadesi ve ardından `select` yan tümcesi dışında bir öğe.
 
 ```csharp
 from x1 in e1
 from x2 in e2
 ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in ( e1 ) . SelectMany( x1 => e2 , ( x1 , x2 ) => new { x1 , x2 } )
 ...
 ```
 
-Bir sorgu ifadesini içeren bir `let` yan tümcesi
+@No__t-0 yan tümcesiyle bir sorgu ifadesi
 ```csharp
 from x in e
 let y = f
 ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in ( e ) . Select ( x => new { x , y = f } )
 ...
 ```
 
-Bir sorgu ifadesini içeren bir `where` yan tümcesi
+@No__t-0 yan tümcesiyle bir sorgu ifadesi
 ```csharp
 from x in e
 where f
 ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from x in ( e ) . Where ( x => f )
 ...
 ```
 
-Bir sorgu ifadesini içeren bir `join` yan tümcesi olmadan bir `into` arkasından bir `select` yan tümcesi
+Bir `into` ve arkasından bir `select` yan tümcesi olmadan `join` yan tümcesiyle bir sorgu ifadesi
 ```csharp
 from x1 in e1
 join x2 in e2 on k1 equals k2
 select v
 ```
-erişimcisine
+çevrilir
 ```csharp
 ( e1 ) . Join( e2 , x1 => k1 , x2 => k2 , ( x1 , x2 ) => v )
 ```
 
-Bir sorgu ifadesini içeren bir `join` yan tümcesi olmadan bir `into` dışında bir şey tarafından izlenen bir `select` yan tümcesi
+@No__t-1 olmayan `join` yan tümcesiyle bir `select` yan tümcesi dışında bir sorgu ifadesi
 ```csharp
 from x1 in e1
 join x2 in e2 on k1 equals k2
 ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in ( e1 ) . Join( e2 , x1 => k1 , x2 => k2 , ( x1 , x2 ) => new { x1 , x2 })
 ...
 ```
 
-Bir sorgu ifadesi ile bir `join` yan tümcesiyle birlikte bir `into` arkasından bir `select` yan tümcesi
+@No__t-1 ve ardından bir `select` yan tümcesi içeren `join` yan tümcesiyle bir sorgu ifadesi
 ```csharp
 from x1 in e1
 join x2 in e2 on k1 equals k2 into g
 select v
 ```
-erişimcisine
+çevrilir
 ```csharp
 ( e1 ) . GroupJoin( e2 , x1 => k1 , x2 => k2 , ( x1 , g ) => v )
 ```
 
-Bir sorgu ifadesini içeren bir `join` yan tümcesiyle birlikte bir `into` dışında bir şey tarafından izlenen bir `select` yan tümcesi
+Bir `into` ve ardından `select` yan tümcesi dışında bir `join` yan tümcesiyle bir sorgu ifadesi
 ```csharp
 from x1 in e1
 join x2 in e2 on k1 equals k2 into g
 ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in ( e1 ) . GroupJoin( e2 , x1 => k1 , x2 => k2 , ( x1 , g ) => new { x1 , g })
 ...
 ```
 
-Bir sorgu ifadesini içeren bir `orderby` yan tümcesi
+@No__t-0 yan tümcesiyle bir sorgu ifadesi
 ```csharp
 from x in e
 orderby k1 , k2 , ..., kn
 ...
 ```
-erişimcisine
+çevrilir
 ```csharp
 from x in ( e ) . 
 OrderBy ( x => k1 ) . 
@@ -4303,9 +4303,9 @@ ThenBy ( x => kn )
 ...
 ```
 
-Sıralama yan tümcesi belirtir bir `descending` yönü gösterge, çağrısından `OrderByDescending` veya `ThenByDescending` yerine üretilir.
+Bir sıralama yan tümcesi `descending` yönü göstergesi belirtiyorsa, bunun yerine `OrderByDescending` veya `ThenByDescending` ' nin bir çağrılması üretilir.
 
-Aşağıdaki çevirileri olduğunu varsayın hiçbir `let`, `where`, `join` veya `orderby` yan tümceleri ve en fazla bir ilk `from` yan tümcesinde her sorgu ifadesi.
+Aşağıdaki Çeviriler `let`, `where`, `join` veya `orderby` yan tümceleri olmadığını ve her sorgu ifadesinde bir ilk `from` yan tümcesinin daha fazlasını olmadığını varsayar.
 
 Örnek
 ```csharp
@@ -4313,7 +4313,7 @@ from c in customers
 from o in c.Orders
 select new { c.Name, o.OrderID, o.Total }
 ```
-erişimcisine
+çevrilir
 ```csharp
 customers.
 SelectMany(c => c.Orders,
@@ -4328,21 +4328,21 @@ from o in c.Orders
 orderby o.Total descending
 select new { c.Name, o.OrderID, o.Total }
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in customers.
     SelectMany(c => c.Orders, (c,o) => new { c, o })
 orderby o.Total descending
 select new { c.Name, o.OrderID, o.Total }
 ```
-hangi son çevrilmesidir
+son çeviri
 ```csharp
 customers.
 SelectMany(c => c.Orders, (c,o) => new { c, o }).
 OrderByDescending(x => x.o.Total).
 Select(x => new { x.c.Name, x.o.OrderID, x.o.Total })
 ```
-Burada `x` yoksa görünmez ve erişilemez bir derleyicinin ürettiği tanımlayıcıdır.
+Burada `x`, aksi durumda görünmeyen ve erişilemeyen derleyici tarafından oluşturulan bir tanıtıcıdır.
 
 Örnek
 ```csharp
@@ -4351,21 +4351,21 @@ let t = o.Details.Sum(d => d.UnitPrice * d.Quantity)
 where t >= 1000
 select new { o.OrderID, Total = t }
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in orders.
     Select(o => new { o, t = o.Details.Sum(d => d.UnitPrice * d.Quantity) })
 where t >= 1000 
 select new { o.OrderID, Total = t }
 ```
-hangi son çevrilmesidir
+son çeviri
 ```csharp
 orders.
 Select(o => new { o, t = o.Details.Sum(d => d.UnitPrice * d.Quantity) }).
 Where(x => x.t >= 1000).
 Select(x => new { x.o.OrderID, Total = x.t })
 ```
-Burada `x` yoksa görünmez ve erişilemez bir derleyicinin ürettiği tanımlayıcıdır.
+Burada `x`, aksi durumda görünmeyen ve erişilemeyen derleyici tarafından oluşturulan bir tanıtıcıdır.
 
 Örnek
 ```csharp
@@ -4373,7 +4373,7 @@ from c in customers
 join o in orders on c.CustomerID equals o.CustomerID
 select new { c.Name, o.OrderDate, o.Total }
 ```
-erişimcisine
+çevrilir
 ```csharp
 customers.Join(orders, c => c.CustomerID, o => o.CustomerID,
     (c, o) => new { c.Name, o.OrderDate, o.Total })
@@ -4387,7 +4387,7 @@ let n = co.Count()
 where n >= 10
 select new { c.Name, OrderCount = n }
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in customers.
     GroupJoin(orders, c => c.CustomerID, o => o.CustomerID,
@@ -4396,7 +4396,7 @@ let n = co.Count()
 where n >= 10 
 select new { c.Name, OrderCount = n }
 ```
-hangi son çevrilmesidir
+son çeviri
 ```csharp
 customers.
 GroupJoin(orders, c => c.CustomerID, o => o.CustomerID,
@@ -4405,7 +4405,7 @@ Select(x => new { x, n = x.co.Count() }).
 Where(y => y.n >= 10).
 Select(y => new { y.x.c.Name, OrderCount = y.n)
 ```
-Burada `x` ve `y` aksi görünmez ve erişilemez derleyicinin ürettiği tanıtıcılardır.
+`x` ve `y`, aksi durumda görünmeyen ve erişilemeyen derleyici tarafından oluşturulan tanımlayıcılardır.
 
 Örnek
 ```csharp
@@ -4413,24 +4413,24 @@ from o in orders
 orderby o.Customer.Name, o.Total descending
 select o
 ```
-Son çeviri içeriyor
+Son çeviriyi içerir
 ```csharp
 orders.
 OrderBy(o => o.Customer.Name).
 ThenByDescending(o => o.Total)
 ```
 
-#### <a name="select-clauses"></a>SELECT yan tümceleri
+#### <a name="select-clauses"></a>Yan tümceleri Seç
 
-Formun bir sorgu ifadesi
+Formun sorgu ifadesi
 ```csharp
 from x in e select v
 ```
-erişimcisine
+çevrilir
 ```csharp
 ( e ) . Select ( x => v )
 ```
-v tanımlayıcı olduğunda dışında x, çeviri, yalnızca
+v 'nin x tanımlayıcısı olduğu durumlar dışında, çeviri yalnızca
 ```csharp
 ( e )
 ```
@@ -4440,22 +4440,22 @@ v tanımlayıcı olduğunda dışında x, çeviri, yalnızca
 from c in customers.Where(c => c.City == "London")
 select c
 ```
-yalnızca veri dönüştürülür
+yalnızca şuna çevrilir
 ```csharp
 customers.Where(c => c.City == "London")
 ```
 
-#### <a name="groupby-clauses"></a>Groupby yan tümceleri
+#### <a name="groupby-clauses"></a>GroupBy yan tümceleri
 
-Formun bir sorgu ifadesi
+Formun sorgu ifadesi
 ```csharp
 from x in e group v by k
 ```
-erişimcisine
+çevrilir
 ```csharp
 ( e ) . GroupBy ( x => k , x => v )
 ```
-v tanımlayıcı olduğunda dışında x, çeviri,
+v 'nin x tanımlayıcısı olduğu durumlar dışında, çeviri
 ```csharp
 ( e ) . GroupBy ( x => k )
 ```
@@ -4465,22 +4465,22 @@ v tanımlayıcı olduğunda dışında x, çeviri,
 from c in customers
 group c.Name by c.Country
 ```
-erişimcisine
+çevrilir
 ```csharp
 customers.
 GroupBy(c => c.Country, c => c.Name)
 ```
 
-#### <a name="transparent-identifiers"></a>Saydam tanımlayıcı
+#### <a name="transparent-identifiers"></a>Saydam tanımlayıcılar
 
-Aralık değişkenleri ile belirli çevirileri ekleme ***saydam tanımlayıcıları*** çağrılarınızla `*`. Saydam tanımlayıcı uygun dil özelliği değildir; yalnızca sorgu ifade çevirisi sürecinde ara adım olarak mevcut.
+Belirli Çeviriler `*` tarafından belirtilen ***saydam tanımlayıcılarla*** Aralık değişkenleri ekler. Saydam tanımlayıcılar uygun bir dil özelliği değildir; Bunlar yalnızca sorgu ifadesi çevirisi işleminde bir ara adım olarak mevcuttur.
 
-Daha fazla sorgu çevirisi saydam tanımlayıcı yerleştirir, çeviri adımları saydam tanımlayıcı anonim işlevler ve anonim nesne başlatıcıları yay. Bu bağlamda, aşağıdaki davranış saydam tanımlayıcıları vardır:
+Bir sorgu çevirisi bir saydam tanımlayıcıyı geçersiz kılar, ek çeviri adımları saydam tanımlayıcıyı anonim işlevlere ve anonim nesne başlatıcılarına yayar. Bu bağlamlarda saydam tanımlayıcılar aşağıdaki davranışa sahiptir:
 
-*  Saydam tanımlayıcı bir anonim işlev bir parametre olarak ortaya çıktığında, ilişkili anonim tür otomatik olarak anonim işlev gövdesinde kapsamda üyeleridir.
-*  Saydam tanımlayıcı üyesi kapsamında olduğunda, bu üyenin de kapsamda üyeleridir.
-*  Saydam tanımlayıcı olarak bir üye bildirimcisi anonim nesne başlatıcı içinde ortaya çıktığında, bir saydam tanımlayıcı üyesi tanıtır.
-*  Yukarıda açıklanan çeviri adımlarda saydam tanımlayıcılar her zaman tek bir nesnenin bir üyesi olarak birden çok aralık değişkenleri yakalama amacıyla anonim türleri ile birlikte sunulmuştur. C# uygulaması birden çok aralık değişkenleri gruplamak için anonim türler değerinden farklı bir mekanizma kullanmak için izin verilir. Anonim türleri kullanılır ve saydam tanımlayıcıları Göster aşağıdaki çeviri örnekler varsayılır hemen çevrilebilir.
+*  Bir saydam tanımlayıcı, anonim bir işlevde parametre olarak gerçekleştiğinde, ilişkili anonim türün üyeleri anonim işlevin gövdesinde otomatik olarak kapsam içinde olur.
+*  Saydam tanımlayıcısı olan bir üye kapsam içinde olduğunda, o üyenin üyeleri de kapsam içinde olur.
+*  Bir saydam tanımlayıcı, anonim nesne başlatıcısında bir üye bildirimci olarak oluştuğunda, saydam tanımlayıcı içeren bir üye tanıtır.
+*  Yukarıda açıklanan çeviri adımlarında, saydam tanımlayıcılar her zaman anonim türlerle birlikte tanıtılmıştır ve birden çok Aralık değişkenini tek bir nesnenin üyeleri olarak yakalama amacını taşıyan bir şekilde. C# Uygulamasının birden çok Aralık değişkenini gruplamak için anonim türlerden farklı bir mekanizma kullanmasına izin verilir. Aşağıdaki çeviri örnekleri, anonim türlerin kullanıldığını varsayar ve saydam tanımlayıcıların nasıl çevrilebilmesi gerektiğini gösterir.
 
 Örnek
 ```csharp
@@ -4489,7 +4489,7 @@ from o in c.Orders
 orderby o.Total descending
 select new { c.Name, o.Total }
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in customers.
     SelectMany(c => c.Orders, (c,o) => new { c, o })
@@ -4497,21 +4497,21 @@ orderby o.Total descending
 select new { c.Name, o.Total }
 ```
 
-Daha fazla olduğu çevrilir
+daha fazla çevrilmiş
 ```csharp
 customers.
 SelectMany(c => c.Orders, (c,o) => new { c, o }).
 OrderByDescending(* => o.Total).
 Select(* => new { c.Name, o.Total })
 ```
-Saydam tanımlayıcı silinmesi, hangi eşdeğerdir
+saydam tanımlayıcılar silindiklerinde, eşittir
 ```csharp
 customers.
 SelectMany(c => c.Orders, (c,o) => new { c, o }).
 OrderByDescending(x => x.o.Total).
 Select(x => new { x.c.Name, x.o.Total })
 ```
-Burada `x` yoksa görünmez ve erişilemez bir derleyicinin ürettiği tanımlayıcıdır.
+Burada `x`, aksi durumda görünmeyen ve erişilemeyen derleyici tarafından oluşturulan bir tanıtıcıdır.
 
 Örnek
 ```csharp
@@ -4521,7 +4521,7 @@ join d in details on o.OrderID equals d.OrderID
 join p in products on d.ProductID equals p.ProductID
 select new { c.Name, o.OrderDate, p.ProductName }
 ```
-erişimcisine
+çevrilir
 ```csharp
 from * in customers.
     Join(orders, c => c.CustomerID, o => o.CustomerID, 
@@ -4530,7 +4530,7 @@ join d in details on o.OrderID equals d.OrderID
 join p in products on d.ProductID equals p.ProductID
 select new { c.Name, o.OrderDate, p.ProductName }
 ```
-Daha fazla olduğu için azaltıldı
+daha az
 ```csharp
 customers.
 Join(orders, c => c.CustomerID, o => o.CustomerID, (c, o) => new { c, o }).
@@ -4538,7 +4538,7 @@ Join(details, * => o.OrderID, d => d.OrderID, (*, d) => new { *, d }).
 Join(products, * => d.ProductID, p => p.ProductID, (*, p) => new { *, p }).
 Select(* => new { c.Name, o.OrderDate, p.ProductName })
 ```
-hangi son çevrilmesidir
+son çeviri
 ```csharp
 customers.
 Join(orders, c => c.CustomerID, o => o.CustomerID,
@@ -4549,13 +4549,13 @@ Join(products, y => y.d.ProductID, p => p.ProductID,
     (y, p) => new { y, p }).
 Select(z => new { z.y.x.c.Name, z.y.x.o.OrderDate, z.p.ProductName })
 ```
-Burada `x`, `y`, ve `z` aksi görünmez ve erişilemez derleyicinin ürettiği tanıtıcılardır.
+`x`, `y` ve `z`, aksi durumda görünmeyen ve erişilemeyen derleyici tarafından oluşturulan tanımlayıcılardır.
 
-### <a name="the-query-expression-pattern"></a>Sorgu ifade deseni
+### <a name="the-query-expression-pattern"></a>Sorgu ifadesi deseninin
 
-***Sorgu ifade deseninin*** türleri sorgu ifadeleri desteklemek için uygulayabileceğiniz yöntemler desenini oluşturur. Sorgu ifadeleri yöntem çağrıları için söz dizimi bir eşleme yoluyla çevrilir için sorgu ifade deseninin nasıl uyguladıkları önemli ölçüde esneklik türleri sahiptir. Örneğin, düzeni yöntemlerini örnek yöntemlerine veya genişletme yöntemleri olarak çağırma sözdiziminde iki sahip, ve anonim işlevler hem de dönüştürülebilir olduğundan yöntemleri temsilci veya ifade ağaçları isteyebilir uygulanabilir.
+***Sorgu ifadesi stili*** , sorgu ifadelerini desteklemek için uygulayabileceğiniz yöntemlerin bir modelini oluşturur. Sorgu ifadeleri, sözdizimsel eşleme yoluyla Yöntem etkinleştirmeleri 'e çevrildiği için, türlerin sorgu ifadesi deseninin nasıl uygulandığı konusunda önemli ölçüde esneklik vardır. Örneğin, iki aynı çağırma söz dizimini içerdiğinden ve Yöntemler, anonim işlevler her ikisine de dönüştürülebildiğinden temsilci veya ifade ağaçları isteyebildiğinden, düzenin yöntemleri örnek yöntemleri veya genişletme yöntemleri olarak uygulanabilir.
 
-Önerilen genel bir tür şeklini `C<T>` desteklediği sorgu ifade deseninin aşağıda gösterilmiştir. Genel tür parametre ve sonuç türleri arasındaki ilişkileri doğru şekilde göstermek için kullanılır, ancak genel olmayan türler deseni uygulamak mümkündür.
+Sorgu ifadesi modelini destekleyen `C<T>` genel türünün önerilen şekli aşağıda gösterilmiştir. Parametre ve sonuç türleri arasındaki uygun ilişkileri göstermek için genel bir tür kullanılır, ancak genel olmayan türler için de düzeni uygulamak mümkündür.
 
 ```csharp
 delegate R Func<T1,R>(T1 arg1);
@@ -4605,15 +4605,15 @@ class G<K,T> : C<T>
 }
 ```
 
-Yukarıdaki yöntemleri Genel temsilci türleriyle kullanın `Func<T1,R>` ve `Func<T1,T2,R>`, ancak bunlar eşit derecede iyi diğer temsilci veya ifade ağacı türü aynı parametre ve sonuç türleri ilişkileri kullanmış.
+Yukarıdaki yöntemler `Func<T1,R>` ve `Func<T1,T2,R>` genel temsilci türlerini kullanır, ancak parametre ve sonuç türlerinde aynı ilişkilerle diğer temsilci veya ifade ağacı türleri de aynı şekilde kullanılabilir.
 
-Önerilen ilişki arasındaki fark `C<T>` ve `O<T>` da sağlar `ThenBy` ve `ThenByDescending` yöntemleri sonucu üzerinde yalnızca bir `OrderBy` veya `OrderByDescending`. Ayrıca sonucunu önerilen şeklini fark `GroupBy` --sıralarının, her iç sıra sahip olduğu ek `Key` özelliği.
+@No__t-0 ve `O<T>` arasında önerilen ilişkiye dikkat edin. Bu, `ThenBy` ve `ThenByDescending` yöntemlerinin yalnızca bir `OrderBy` veya `OrderByDescending` sonucu üzerinde kullanılabilir olmasını sağlar. Ayrıca, her iç sıranın ek bir `Key` özelliği olduğu `GroupBy` ' ın (dizi) sonucu için önerilen şekle de dikkat edin.
 
-`System.Linq` Uygulayan herhangi bir türü için ad alanı sağlar sorgu işleci deseninin bir uygulaması `System.Collections.Generic.IEnumerable<T>` arabirimi.
+@No__t-0 ad alanı, `System.Collections.Generic.IEnumerable<T>` arabirimini uygulayan herhangi bir tür için sorgu işleci deseninin bir uygulamasını sağlar.
 
 ## <a name="assignment-operators"></a>Atama işleçleri
 
-Atama İşleçleri, yeni bir değer bir değişken, bir özellik, bir olay veya dizin oluşturucu öğenin atayın.
+Atama işleçleri bir değişkene, özelliğe, olaya veya Dizin Oluşturucu öğesine yeni bir değer atar.
 
 ```antlr
 assignment
@@ -4635,41 +4635,41 @@ assignment_operator
     ;
 ```
 
-Atamanın sol işleneni, bir değişken, bir özellik erişimi, bir dizin oluşturucu erişim veya bir olay erişimini sınıflandırılmış bir ifade olmalıdır.
+Atamanın sol işleneni, değişken olarak sınıflandırılmış bir ifade, özellik erişimi, Dizin Oluşturucu erişimi veya olay erişimi olmalıdır.
 
-`=` İşleci çağrıldığında ***basit atama işleci***. Sağ işleneninin değerini sol işlenen tarafından belirtilen değişken, özellik veya dizin oluşturucu öğenin atar. Basit atama işlecinin sol işleneni, bir olay erişimini olmayabilir (açıklanan haller dışında [alan benzeri olaylara](classes.md#field-like-events)). Basit atama işleci açıklanan [basit atama](expressions.md#simple-assignment).
+@No__t-0 işlecine ***basit atama işleci***denir. Sağ işlenenin değerini, sol işlenen tarafından verilen değişken, özellik veya Dizin Oluşturucu öğesine atar. Basit atama işlecinin sol işleneni bir olay erişimi olmayabilir ( [alan benzeri olaylar](classes.md#field-like-events)bölümünde açıklananlar dışında). Basit atama işleci [basit atamada](expressions.md#simple-assignment)açıklanmıştır.
 
-Atama işleçleri dışında `=` işleci çağrılır ***bileşik atama işleçleri***. Bu işleçler, iki işlenen üzerinde belirtilen işlemi gerçekleştirmek ve ardından sonuç değerini sol işlenen tarafından belirtilen değişken, özellik veya dizin oluşturucu öğenin atayın. Bileşik atama işleçleri açıklanan [bileşik atama](expressions.md#compound-assignment).
+@No__t-0 işlecinden farklı atama işleçleri ***bileşik atama işleçleri***olarak adlandırılır. Bu işleçler iki işlenen üzerinde belirtilen işlemi gerçekleştirir ve ardından sonuçtaki değeri, sol işlenen tarafından verilen değişken, özellik veya Dizin Oluşturucu öğesine atar. Bileşik atama işleçleri [Birleşik atama](expressions.md#compound-assignment)bölümünde açıklanmıştır.
 
-`+=` Ve `-=` işleçleri ile bir olay erişim ifadesi sol işlenen olarak adlandırılır *olay atama işleçleri*. Diğer bir atama işleci sol işlenen olarak bir olay erişimini ile geçerlidir. Olay atama işleçleri açıklanan [olay ataması](expressions.md#event-assignment).
+Sol işlenen olarak bir olay erişim ifadesiyle `+=` ve `-=` işleçleri *olay atama işleçleri*olarak adlandırılır. Sol işlenen olarak bir olay erişimiyle hiçbir başka atama işleci geçerli değildir. Olay atama işleçleri [olay atamasında](expressions.md#event-assignment)açıklanmaktadır.
 
-Atama İşleçleri sağla ilişkilendirilebilir, işlemler soldan sağa gruplandırılır anlamına gelir. Örneğin, bir ifade formun `a = b = c` değerlendirmesinde `a = (b = c)`.
+Atama işleçleri doğru ilişkilendirilebilir, yani işlemler sağdan sola gruplandırılır. Örneğin, `a = b = c` biçiminde bir ifade `a = (b = c)` olarak değerlendirilir.
 
 ### <a name="simple-assignment"></a>Basit atama
 
-`=` İşleci basit atama işleci çağrılır.
+@No__t-0 işlecine basit atama işleci denir.
 
-Sol işleneni, bir basit atama biçiminde olup olmadığını `E.P` veya `E[Ei]` burada `E` derleme zamanı türü `dynamic`, atama dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı Atama ifadesinin türüdür `dynamic`, ve çalışma zamanında çalışma zamanı türüne göre aşağıda açıklanan çözümleme gerçekleşecek `E`.
+Basit bir atamanın sol işleneni `E.P` veya `E[Ei]` ' in `E` ' nin derleme zamanı türü `dynamic` ' ü içeriyorsa, atama dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, atama ifadesinin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, `E` ' in çalışma zamanı türüne göre çalışma zamanında gerçekleşmeyecektir.
 
-Bir basit atama sağ işlenen, sol işlenen türüne örtük olarak dönüştürülebilir bir ifade olması gerekir. İşlemi sağ işleneninin değerini sol işlenen tarafından belirtilen değişken, özellik veya dizin oluşturucu öğenin atar.
+Basit bir atamada, sağ işlenen, sol işlenenin türüne örtük olarak dönüştürülebilir bir ifade olmalıdır. İşlem, sol işlenen tarafından verilen değişken, özellik veya Dizin Oluşturucu öğesine sağ işlenenin değerini atar.
 
-Basit atama ifadesi sol işlenen için atanan değer sonucudur. Sonuç sol işlenenle aynı türde ve her zaman bir değer olarak sınıflandırılır.
+Basit atama ifadesinin sonucu, sol işlenene atanan değerdir. Sonuç, sol işleneniyle aynı türe sahiptir ve her zaman bir değer olarak sınıflandırılır.
 
-Sol işlenen bir özellik veya dizin oluşturucu erişimi varsa özelliği veya dizin oluşturucu olmalıdır bir `set` erişimcisi. Durum bu değilse, bir bağlama zamanı hatası oluşur.
+Sol işlenen bir özellik veya Dizin Oluşturucu erişimi ise, özelliğin veya dizin oluşturucunun `set` erişimcisi olmalıdır. Bu durumda, bir bağlama zamanı hatası oluşur.
 
-Bir basit atama formun çalışma zamanı işlenmesini `x = y` aşağıdaki adımlardan oluşur:
+@No__t-0 formunun basit atamasının çalışma zamanı işleme aşağıdaki adımlardan oluşur:
 
-*  Varsa `x` bir değişken olarak sınıflandırıldığını:
-   * `x` değişkeni oluşturmak için değerlendirilir.
-   * `y` değerlendirilir ve, gerekirse türüne dönüştürülmüş `x` aracılığıyla örtük bir dönüştürme ([örtük dönüştürmelerin](conversions.md#implicit-conversions)).
-   * Varsa tarafından verilen değişkeni `x` bir dizi öğesinin bir *reference_type*, için hesaplanan değer sağlamak için bir çalışma zamanı denetimi gerçekleştirilir `y` biri dizi örneği ile uyumlu `x` olduğu bir öğe. Varsa denetimi başarılı `y` olan `null`, ya da örtük bir başvuru dönüştürmesi, ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions)) gerçek tür tarafından başvurulan örnek var. `y` gerçek öğe türü dizi örneği içeren `x`. Aksi takdirde, bir `System.ArrayTypeMismatchException` oluşturulur.
-   * Dönüşümü ve değerlendirme elde edilen değer `y` değerlendirmesi tarafından verilen konuma depolanır `x`.
-*  Varsa `x` bir özellik veya dizin oluşturucu erişim sınıflandırıldığını:
-   * Örnek ifade (varsa `x` değil `static`) ve bağımsız değişken listesi (varsa `x` bir dizin oluşturucu erişim) ile ilişkili `x` değerlendirilir, ve sonuçları sonraki kullanılan `set` erişimci çağırma.
-   * `y` değerlendirilir ve, gerekirse türüne dönüştürülmüş `x` aracılığıyla örtük bir dönüştürme ([örtük dönüştürmelerin](conversions.md#implicit-conversions)).
-   * `set` Erişimcisine `x` için hesaplanan değer ile çağrılan `y` olarak kendi `value` bağımsız değişken.
+*  @No__t-0 bir değişken olarak sınıflandırıldıysanız:
+   * `x` değişkeni üretmek için değerlendirilir.
+   * `y` değerlendirilir ve gerekirse, örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) aracılığıyla `x` türüne dönüştürülür.
+   * @No__t-0 tarafından verilen değişken bir *reference_type*dizi öğesi ise, `y` için hesaplanan değerin, `x` ' ün bir öğesi olduğu dizi örneğiyle uyumlu olduğundan emin olmak için bir çalışma zamanı denetimi yapılır. @No__t-0 `null` olduğunda denetim başarılı olur veya `y` tarafından başvurulan örneğin gerçek türünden, `x` içeren dizi örneğinin gerçek öğe türüne bir örtük başvuru dönüştürmesi ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions)) varsa. Aksi takdirde, bir `System.ArrayTypeMismatchException` oluşturulur.
+   * @No__t-0 ' ın değerlendirmesinden ve dönüşümden elde edilen değer, `x` değerlendirmesi tarafından verilen konuma depolanır.
+*  @No__t-0 bir özellik veya Dizin Oluşturucu erişimi olarak sınıflandırıldığında:
+   * Örnek ifadesi (`x` `static` değilse) ve bağımsız değişken listesi (`x` ' in bir Dizin Oluşturucu erişimsiyse) `x` ile ilişkili olarak değerlendirilir ve sonuçlar sonraki `set` erişimci çağrısında kullanılır.
+   * `y` değerlendirilir ve gerekirse, örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) aracılığıyla `x` türüne dönüştürülür.
+   * @No__t-1 ' in `set` erişimcisi `value` bağımsız değişkeni olarak `y` için hesaplanan değerle çağrılır.
 
-Dizi değişimini kuralları ([dizi kovaryansı](arrays.md#array-covariance)) bir dizi türünde bir değer izin `A[]` bir dizi türünde bir örneğe bir başvuru olarak `B[]`, gelen bir örtük bir başvuru dönüştürmesi var sağlanan `B` için `A`. Bu kurallar, bir dizi öğesine atama nedeniyle bir *reference_type* atanan değerin dizi örneği ile uyumlu olduğundan emin olmak için bir çalışma zamanı denetimi gerektirir. Örnekte
+Dizi birlikte değişim kuralları ([dizi Kovaryans](arrays.md#array-covariance)), `A[]` dizi türünde bir değere izin verir. bu, `B` ' ten `A` ' e kadar örtük bir başvuru dönüştürmesi sağlanmış `B[]` dizi türünün bir örneğine başvuru sağlar. Bu kurallar nedeniyle, bir *reference_type* dizi öğesine atama, atanmakta olan değerin dizi örneğiyle uyumlu olduğundan emin olmak için bir çalışma zamanı denetimi gerektirir. Örnekte
 ```csharp
 string[] sa = new string[10];
 object[] oa = sa;
@@ -4678,11 +4678,11 @@ oa[0] = null;               // Ok
 oa[1] = "Hello";            // Ok
 oa[2] = new ArrayList();    // ArrayTypeMismatchException
 ```
-Son ataması neden olan bir `System.ArrayTypeMismatchException` çünkü durum örneğini `ArrayList` bir öğesinde depolanan bir `string[]`.
+Son atama bir `System.ArrayTypeMismatchException` oluşturulmasına neden olur çünkü bir `ArrayList` örneği bir `string[]` öğesinde depolanamaz.
 
-Bir özellik veya dizin oluşturucu ne zaman bildirilen bir *struct_type* örnek ifade atama işleminin hedefi, özellikle ilişkili veya dizin oluşturucu erişim bir değişken olarak sınıflandırılan gerekir. Örnek ifade bir değer olarak sınıflandırılmış bir bağlama zamanı hatası oluşur. Nedeniyle [üye erişimi](expressions.md#member-access), aynı kural alanları için de geçerlidir.
+Bir *struct_type* içinde belirtilen bir özellik veya Dizin Oluşturucu bir atamanın hedefi olduğunda, özellik veya Dizin Oluşturucu erişimi ile ilişkili örnek ifadesi bir değişken olarak sınıflandırılmalıdır. Örnek ifadesi bir değer olarak sınıflandırılasiyse, bağlama zamanı hatası oluşur. [Üye erişimi](expressions.md#member-access)nedeniyle aynı kural alanlar için de geçerli olur.
 
-Bildirimleri verildiğinde:
+Bildirimler verildi:
 ```csharp
 struct Point
 {
@@ -4733,7 +4733,7 @@ Rectangle r = new Rectangle();
 r.A = new Point(10, 10);
 r.B = p;
 ```
-atamaları `p.X`, `p.Y`, `r.A`, ve `r.B` için izin verilen `p` ve `r` değişkenlerdir. Ancak, örnekte
+`p` ve `r` değişkenleri olduğundan `p.X`, `p.Y`, `r.A` ve `r.B` ' e yönelik atamalara izin verilir. Ancak, örnekte
 ```csharp
 Rectangle r = new Rectangle();
 r.A.X = 10;
@@ -4741,25 +4741,25 @@ r.A.Y = 10;
 r.B.X = 100;
 r.B.Y = 100;
 ```
-atamaları itibaren tüm geçersiz `r.A` ve `r.B` değişkenleri değildir.
+`r.A` ve `r.B` değişkenleri olmadığından atamalar geçersiz.
 
 ### <a name="compound-assignment"></a>Bileşik atama
 
-Bileşik atama sol işleneni biçiminde olup olmadığını `E.P` veya `E[Ei]` burada `E` derleme zamanı türü `dynamic`, atama dinamik olarak bağlı sonra ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda derleme zamanı Atama ifadesinin türüdür `dynamic`, ve çalışma zamanında çalışma zamanı türüne göre aşağıda açıklanan çözümleme gerçekleşecek `E`.
+Bileşik atamanın sol işleneni `E.P` veya `E[Ei]` ' in `E` ' nin derleme zamanı türü `dynamic` ' ü içeriyorsa, atama dinamik olarak bağlanır ([dinamik bağlama](expressions.md#dynamic-binding)). Bu durumda, atama ifadesinin derleme zamanı türü `dynamic` ' dır ve aşağıda açıklanan çözüm, `E` ' in çalışma zamanı türüne göre çalışma zamanında gerçekleşmeyecektir.
 
-Formun bir işlem `x op= y` ikili işleci aşırı yükleme çözünürlüğü uygulama tarafından işlenen ([ikili işleci aşırı yükleme çözünürlüğü](expressions.md#binary-operator-overload-resolution)) işlemi olarak yazılmışsa `x op y`. Then,
+@No__t-0 biçiminde bir işlem, işlem @no__t yazılmış gibi ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) uygulanarak işlenir. Ni
 
-*  Seçili işlecinin dönüş türü türüne örtük olarak dönüştürülebilir ise `x`, işlemi olarak değerlendirilir `x = x op y`dışında `x` yalnızca bir kez değerlendirilir.
-*  Aksi takdirde seçilen işlecinin dönüş türü türüne açıkça dönüştürülebilir ise seçilen operatöre bir önceden tanımlanmış işleç ise `x`ve eğer `y` türüne açıkça dönüştürülemez `x` veya işlecin bir kaydırma işleci, sonra da işlemi olarak değerlendirilir `x = (T)(x op y)`burada `T` türü `x`dışında `x` yalnızca bir kez değerlendirilir.
-*  Aksi takdirde, bileşik atama geçersiz ve bir bağlama zamanı hatası oluşur.
+*  Seçili işlecin dönüş türü örtük olarak `x` türüne dönüştürüleiyorsa, işlem `x = x op y` olarak değerlendirilir, ancak `x` yalnızca bir kez değerlendirilir.
+*  Aksi takdirde, seçilen işleç önceden tanımlanmış bir işleçse, seçili işlecin dönüş türü açık olarak `x` türüne dönüştürülebilir ve `y` örtük olarak `x` türüne dönüştürülebilir ve işleç bir kaydırma işleçtir sonra işlem `x = (T)(x op y)` olarak değerlendirilir; burada `T` `x` türüdür, ancak `x` yalnızca bir kez değerlendirilir.
+*  Aksi takdirde, bileşik atama geçersizdir ve bir bağlama zamanı hatası oluşur.
 
-"Yalnızca bir kez değerlendirilir" terimi içinde değerlendirmesi anlamına `x op y`, bağlı tüm ifadelerin sonuçlarını `x` geçici olarak kaydedilir ve ardından atamaya gerçekleştirirken yeniden `x`. Örneğin, atama, `A()[B()] += C()`burada `A` döndüren bir yöntem `int[]`, ve `B` ve `C` döndüren yöntemi `int`, yöntemleri, yalnızca bir kez sırayla çağrılır `A`, `B`, `C`.
+"Yalnızca bir kez değerlendirilen" terimi, `x op y` ' nın değerlendirmesinde, `x` ' in yapısal ifadelerinin sonuçlarının geçici olarak kaydedildiği ve `x` ' ye atamasını gerçekleştirirken yeniden kullanıldığı anlamına gelir. Örneğin, `A` ' in `int[]` ' yi döndüren bir yöntem olduğu ve `B` ve `C` ' ün `int` döndüren yöntemleri @no__t, yöntemler yalnızca bir kez çağrılır; `A`, `B`, `C`.
 
-Bileşik atama sol işleneni bir özellik erişimi ya da dizin oluşturucu erişimi olduğunda özellik veya dizin oluşturucu her ikisi de olmalıdır bir `get` erişimci ve `set` erişimcisi. Durum bu değilse, bir bağlama zamanı hatası oluşur.
+Bileşik atamanın sol işleneni bir özellik erişimi veya Dizin Oluşturucu erişimi olduğunda, özelliğin veya dizin oluşturucunun hem `get` erişimcisi hem de bir `set` erişimcisi olmalıdır. Bu durumda, bir bağlama zamanı hatası oluşur.
 
-İkinci kuralı izinleri yukarıda `x op= y` olarak değerlendirilecek `x = (T)(x op y)` belirli bağlamlarda. Sol işlenen türü olduğunda, önceden tanımlı operatörler bileşik işleçleri kullanılabilir olacağı şekilde kuralı mevcut `sbyte`, `byte`, `short`, `ushort`, veya `char`. Ne zaman her iki değişken bu türlerin birini olsa bile, önceden tanımlı operatörler türünün bir sonucu üretmek `int`anlatılan şekilde [ikili sayısal promosyonlar](expressions.md#binary-numeric-promotions). Bu nedenle, bir yayın olmadan sol işleneni sonucu atamak mümkün olmayacaktır.
+Yukarıdaki ikinci kural, bazı bağlamlarda `x op= y` @no__t olarak değerlendirilmesine izin verir. Kural, sol işlenen `sbyte`, `byte`, `short`, `ushort` veya `char` türünde olduğunda, önceden tanımlanmış işleçlerin Bileşik işleçler olarak kullanılabilmesi için vardır. Her iki bağımsız değişken de bu türlerden birinde olsa da, önceden tanımlanmış işleçler, [ikili sayısal promosyonlar](expressions.md#binary-numeric-promotions)içinde açıklandığı gibi `int` türünde bir sonuç üretir. Bu nedenle, bir dönüştürme olmadan sonucu sol işlenene atamak mümkün olmaz.
 
-Kural önceden tanımlı operatörler için sezgisel etkisini yalnızca olan `x op= y` hem de izin verilir, `x op y` ve `x = y` izin verilir. Örnekte
+Önceden tanımlanmış işleçler için kuralın sezgisel etkisi, `x op y` ve `x = y` ' nin her ikisi de izin verildiğinde `x op= y` ' dır. Örnekte
 ```csharp
 byte b = 0;
 char ch = '\0';
@@ -4773,28 +4773,28 @@ b += (byte)i;       // Ok
 ch += 1;            // Error, ch = 1 not permitted
 ch += (char)1;      // Ok
 ```
-Her hata için sezgisel nedeni, karşılık gelen bir basit atama bir hata de olabilirdi olmasıdır.
+her hatanın sezgisel olmasının nedeni, karşılık gelen basit atamanın de hata olması olabilir.
 
-Bu, ayrıca işlemlerini destekleyen bileşik atama işlemlerinin yükseltilmiş anlamına gelir. Örnekte
+Bu ayrıca bileşik atama işlemlerinin yükseltilmemiş işlemlerini desteklediği anlamına gelir. Örnekte
 ```csharp
 int? i = 0;
 i += 1;             // Ok
 ```
-lifted işleci `+(int?,int?)` kullanılır.
+yükseltilmemiş işleci `+(int?,int?)` kullanılır.
 
-### <a name="event-assignment"></a>Olay atama
+### <a name="event-assignment"></a>Olay ataması
 
-Sol işleneni, bir `+=` veya `-=` işleci bir olay erişimini sınıflandırılır ve ardından ifade gibi değerlendirilir:
+@No__t-0 veya `-=` işlecinin sol işleneni bir olay erişimi olarak sınıflandırıldığında, ifade aşağıdaki gibi değerlendirilir:
 
-*  Örnek ifade varsa olay erişimini değerlendirilir.
-*  Sağ işleneninin `+=` veya `-=` işleci değerlendirilir ve, gerekirse, sol işlenen aracılığıyla örtük bir dönüştürme türü dönüştürülür ([örtük dönüştürmelerin](conversions.md#implicit-conversions)).
-*  Bir olayın olay erişimcisi sağ işleneni değerlendirmesinden sonra oluşan bağımsız değişken listesiyle çağrılır ve gerekirse, dönüştürme. İşleç olduysa `+=`, `add` erişimci çağrılır; işleci ise `-=`, `remove` erişimci çağrılır.
+*  Olay erişiminin, varsa örnek ifadesi değerlendirilir.
+*  @No__t-0 veya `-=` işlecinin sağ işleneni değerlendirilir ve gerekirse örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) aracılığıyla sol işlenenin türüne dönüştürülür.
+*  Etkinliğin olay erişimcisi, değerlendirmeden sonra ve gerekirse dönüştürme işlemi tamamlandıktan sonra bağımsız değişken listesiyle çağrılır. İşleç `+=` ise, `add` erişimcisi çağrılır; işleç `-=` ise, `remove` erişimcisi çağrılır.
 
-Bir olay atama ifadesi bir değer vermez. Bu nedenle, bir olay atama ifadesi yalnızca bağlamında geçerli bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)).
+Olay atama ifadesi bir değer vermez. Bu nedenle, bir olay atama ifadesi yalnızca bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)) bağlamında geçerlidir.
 
 ## <a name="expression"></a>İfade
 
-Bir *ifade* ya da bir *non_assignment_expression* veya *atama*.
+Bir *ifade* , bir *non_assignment_expression* ya da *atamadır*.
 
 ```antlr
 expression
@@ -4809,9 +4809,9 @@ non_assignment_expression
     ;
 ```
 
-## <a name="constant-expressions"></a>Sabit ifadeleri
+## <a name="constant-expressions"></a>Sabit ifadeler
 
-A *constant_expression* , derleme zamanında tam olarak değerlendirilebilecek bir ifadedir.
+*Constant_expression* , derleme zamanında tam olarak değerlendirilebilen bir ifadedir.
 
 ```antlr
 constant_expression
@@ -4819,59 +4819,59 @@ constant_expression
     ;
 ```
 
-Sabit ifade olmalıdır `null` değişmez değeri ya da bir değer şu türlerden biriyle: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char` , `float`, `double`, `decimal`, `bool`, `object`, `string`, ya da herhangi bir numaralandırma türü. Yalnızca aşağıdaki yapılar, sabit ifadelerde izin verilir:
+Sabit bir ifade `null` sabit değeri ya da aşağıdaki türlerden birine sahip bir değer olmalıdır: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, 0, 1, 2, 3, 4 , 5 veya herhangi bir numaralandırma türü. Sabit ifadelerde yalnızca aşağıdaki yapılara izin verilir:
 
-*  Değişmez değerler (dahil olmak üzere `null` değişmez değer).
-*  Başvurular `const` üyeleri sınıf ile yapı türü.
-*  Numaralandırma türleri üyeleri için başvurular.
-*  Başvurular `const` parametrelerin veya yerel değişkenler
-*  Kendileri sabit ifadeler parantezli alt ifadeleri.
-*  Cast ifadeleri, sağlanan hedef türü, yukarıda listelenen türler biridir.
+*  Değişmez değerler (`null` sabit değeri dahil).
+*  Sınıf ve yapı türlerinin `const` üyelerine başvurular.
+*  Numaralandırma türlerinin üyelerine başvurular.
+*  @No__t-0 parametrelerine veya yerel değişkenlere başvurular
+*  Kendi sabit ifadeleri olan parantezli alt ifadeler.
+*  Hedef türü yukarıda listelenen türlerden biri olarak verilen atama ifadeleri.
 *  `checked` ve `unchecked` ifadeleri
 *  Varsayılan değer ifadeleri
-*  Nameof ifadeleri
-*  Önceden tanımlanmış `+`, `-`, `!`, ve `~` birli işleçler.
-*  Önceden tanımlanmış `+`, `-`, `*`, `/`, `%`, `<<`, `>>`, `&`, `|`, `^`, `&&`, `||`, `==`, `!=`, `<`, `>`, `<=`, ve `>=` ikili işleçler, sağlanan her işlenen yukarıda listelenen bir tür.
-*  `?:` Koşullu işleç.
+*  NameOf ifadeleri
+*  Önceden tanımlı `+`, `-`, `!` ve `~` Birli İşleçler.
+*  Önceden tanımlanmış `+`, `-`, `*`, `/`, `%`, `<<`, `>>`, `&`, `|`, `^`, 0, 1, 2, 3, 4, 5 ve 6 Yukarıda listelenen tür.
+*  @No__t-0 koşullu işleci.
 
-Aşağıdaki dönüşümlerden sabit ifadelerde izin verilir:
+Sabit ifadelerde aşağıdaki Dönüştürmelere izin verilir:
 
-*  Kimlik dönüştürme
-*  Sayısal dönüşümler
-*  Sabit listesi dönüştürmeler
-*  Sabit ifade dönüştürmeler
-*  Örtük ve açık başvuru dönüşümleri, dönüştürmeler kaynağı null değer veren bir sabit ifade sağlanır.
+*  Kimlik dönüştürmeleri
+*  Sayısal Dönüşümler
+*  Sabit Listesi dönüştürmeleri
+*  Sabit ifade dönüştürmeleri
+*  Örtük ve açık başvuru dönüştürmeleri, dönüştürmelerin kaynağı null değeri değerlendiren sabit bir ifadedir.
 
-Kutulama dahil olmak üzere diğer dönüştürme, kutudan çıkarma ve dolaylı başvuru dönüşümleri null olmayan değerlerin sabit ifadelerde izin verilmez. Örneğin:
+Null olmayan değerlerin kutulamayı, kutudan çıkarma ve örtük başvuru dönüştürmelerine dahil diğer dönüştürmeler sabit ifadelerde kullanılamaz. Örneğin:
 ```csharp
 class C {
     const object i = 5;         // error: boxing conversion not permitted
     const object str = "hello"; // error: implicit reference conversion
 }
 ```
-başlatma i olduğundan bir hata paketleme dönüştürmesi gereklidir. Bir null olmayan değer dosyasından bir örtük bir başvuru dönüştürmesi gerektiğinden str başlatma bir hatadır.
+bir paketleme dönüştürmesi gerektiğinden, ı başlatması bir hatadır. Null olmayan bir değerden örtük bir başvuru dönüştürmesi gerektiğinden Str başlatma bir hatadır.
 
-Bir ifade yukarıda listelenen gereksinimleri karşılayan her ifade derleme zamanında değerlendirilir. İfade sabit olmayan yapıları içeren daha büyük bir ifadenin bir alt ifade olsa bile bu geçerlidir.
+Bir ifade yukarıda listelenen gereksinimleri karşılaışında, ifade derleme zamanında değerlendirilir. Bu, ifade sabit olmayan yapılar içeren daha büyük bir ifadenin alt ifadesi olsa da geçerlidir.
 
-Sabit ifadeler derleme zamanı değerlendirmesi bir derleme zamanı hatası oluşmasına neden olduğu çalışma zamanı değerlendirme atılmış bir özel durum, derleme zamanı değerlendirmesi dışında çalışma zamanı değerlendirme sabit olmayan ifade aynı kurallara kullanır.
+Sabit ifadelerin derleme zamanı değerlendirmesi, sabit olmayan ifadelerin çalışma zamanı değerlendirmesiyle aynı kuralları kullanır, ancak çalışma zamanı değerlendirmesinin bir özel durum oluşturması, derleme zamanı değerlendirmesinin de bir derleme zamanı hatası oluşmasına neden olması gerekir.
 
-Sabit bir ifade açıkça yerleştirilir sürece bir `unchecked` bağlam, Tamsayı türünde aritmetik işlemler ve dönüştürmeler ifade her zaman derleme zamanı değerlendirmesi sırasında gerçekleşen taşıyor derleme zamanı hatalarına neden olabilir ([Sabit ifadeler](expressions.md#constant-expressions)).
+Sabit bir ifade `unchecked` bağlamına açık bir şekilde yerleştirilmediği için, ifadenin derleme zamanı değerlendirmesi sırasında integral türü aritmetik işlemlerde ve dönüştürmelerde oluşan taşmalar her zaman derleme zamanı hatalarına neden olur ([sabit ifadeler](expressions.md#constant-expressions)).
 
-Sabit ifadeler, aşağıda listelenen bağlamlarda oluşur. Bir ifadenin derleme zamanında tam olarak değerlendirilemezse şu bağlamlarda Bu, bir derleme zamanı hatası oluşur.
+Sabit ifadeler aşağıda listelenen bağlamlarda oluşur. Bu bağlamlarda, bir ifade derleme zamanında tam olarak değerlendirilemez bir derleme zamanı hatası oluşur.
 
-*  Sabit bildirimi ([sabitleri](classes.md#constants)).
-*  Sabit listesi üye bildirimleri ([numaralandırma üyeleri](enums.md#enum-members)).
-*  Varsayılan bağımsız değişkenler biçimsel parametre listesi ([yöntem parametreleri](classes.md#method-parameters))
-*  `case` Etiketler, bir `switch` deyimi ([switch deyimi](statements.md#the-switch-statement)).
-*  `goto case` deyimler ([goto deyimi](statements.md#the-goto-statement)).
-*  Bir dizi oluşturma ifadesi içinde uzunluklarını boyut ([dizi oluşturma ifadeleri](expressions.md#array-creation-expressions)), bir başlatıcı içerir.
-*  Öznitelikler ([öznitelikleri](attributes.md)).
+*  Sabit bildirimler ([sabitler](classes.md#constants)).
+*  Numaralandırma üyesi bildirimleri ([enum üyeleri](enums.md#enum-members)).
+*  Biçimsel parametre listelerinin varsayılan bağımsız değişkenleri ([Yöntem parametreleri](classes.md#method-parameters))
+*  `switch` ifadesinin `case` etiketleri ([Switch bildirisi](statements.md#the-switch-statement)).
+*  `goto case` deyimleri ([goto deyimi](statements.md#the-goto-statement)).
+*  Bir Başlatıcı içeren bir dizi oluşturma ifadesinde ([dizi oluşturma ifadelerinde](expressions.md#array-creation-expressions)) boyut uzunlukları.
+*  Öznitelikler ([öznitelikler](attributes.md)).
 
-Örtük sabit ifade dönüştürme ([örtük sabit ifade dönüştürmeler](conversions.md#implicit-constant-expression-conversions)) türünde sabit bir ifade verir `int` dönüştürülecek `sbyte`, `byte`, `short`, `ushort`, `uint`, veya `ulong`, sağlanan sabit ifadenin değeri hedef türün aralığı içinde.
+Örtük bir sabit ifade dönüştürmesi ([örtük sabit ifade dönüştürmeleri](conversions.md#implicit-constant-expression-conversions)), `int` türündeki sabit bir ifadenin `sbyte`, `byte`, `short`, `ushort`, `uint` ya da `ulong` ' ye dönüştürülmesini sağlar ve bu değer Sabit ifade, hedef türünün aralığı içinde.
 
 ## <a name="boolean-expressions"></a>Boole ifadeleri
 
-A *boolean_expression* türünün bir sonucu veren ifade `bool`; ya da doğrudan veya uygulaması aracılığıyla `operator true` aşağıda belirtildiği gibi belirli bağlamlarda.
+*Boolean_expression* , `bool`; türünde bir sonuç veren bir ifadedir. Aşağıda belirtildiği gibi, belirli bağlamlarda doğrudan veya `operator true` uygulaması aracılığıyla.
 
 ```antlr
 boolean_expression
@@ -4879,12 +4879,12 @@ boolean_expression
     ;
 ```
 
-Denetleyen koşullu ifadede bir *if_statement* ([if deyimi](statements.md#the-if-statement)), *while_statement* ([while ifadesi](statements.md#the-while-statement)), *do_statement* ([do deyimi](statements.md#the-do-statement)), veya *for_statement* ([deyimi için](statements.md#the-for-statement)) olan bir *boolean_ ifade*. Denetleyen koşullu ifadede `?:` işleci ([koşullu işleç](expressions.md#conditional-operator)) olarak aynı kurallara bir *boolean_expression*, ancak işleci nedenlerle öncelik sınıflandırılır olarak bir *conditional_or_expression*.
+Bir *if_statement* ([IF deyimi](statements.md#the-if-statement)), *while_statement* ([while deyimi](statements.md#the-while-statement)), *do_statement* ([Do deyimi](statements.md#the-do-statement)) veya *for_statement* 'nin koşullu ifadesini denetleme ([için Bildiri](statements.md#the-for-statement)) bir *Boolean_expression*. @No__t-0 işlecinin ([koşullu işleç](expressions.md#conditional-operator)) denetim koşullu ifadesi, *Boolean_expression*ile aynı kurallara uyar, ancak işleç önceliğin nedenleri bir *conditional_or_expression*olarak sınıflandırıldı.
 
-A *boolean_expression* `E` türünde bir değer üretmek için gerekli `bool`gibi:
+*Boolean_expression* `E`, aşağıdaki gibi `bool` türünde bir değer üretebilmek için gereklidir:
 
-*  Varsa `E` örtük olarak dönüştürülebilir `bool` çalışma zamanında bu örtülü bir dönüştürme uygulanır.
-*  Aksi takdirde, birli işleç aşırı çözümleme ([birli işleç aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)) işlecinin benzersiz bir en iyi uygulama bulmak için kullanılan `true` üzerinde `E`, ve bu uygulamayı çalışma zamanında uygulanır.
-*  Böyle bir işleç bulunursa, bir bağlama zamanı hatası oluşur.
+*  @No__t-0 ' ı örtük olarak `bool` ' e dönüştürülebiliyorsanız, örtük dönüştürme uygulanmış çalışma zamanında.
+*  Aksi halde, birli operatör aşırı yükleme çözümlemesi ([birli operatör aşırı yükleme çözünürlüğü](expressions.md#unary-operator-overload-resolution)), `true` @no__t işlecinin en iyi bir en iyi uygulamasını bulmak için kullanılır ve bu uygulama çalışma zamanında uygulanır.
+*  Böyle bir işleç bulunmazsa, bir bağlama zamanı hatası oluşur.
 
-`DBBool` Yapı türünde [veritabanı Boole türü](structs.md#database-boolean-type) uygulayan bir tür bir örnek sağlar `operator true` ve `operator false`.
+[Veritabanı Boole türünde](structs.md#database-boolean-type) `DBBool` yapı türü, `operator true` ve `operator false` uygulayan bir türe örnek sağlar.

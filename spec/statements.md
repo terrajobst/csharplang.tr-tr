@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 94346034a667ad4af26796c0c4bbc96d6ed79aba
-ms.sourcegitcommit: 7f7fc6e9e195e51b7ff8229aeaa70aa9fbbb63cb
+ms.openlocfilehash: 7248a91976c479dc1b6b64b799639635617a7bec
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876843"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704039"
 ---
 # <a name="statements"></a>Deyimler
 
@@ -41,7 +41,7 @@ void F(bool b) {
         int i = 44;
 }
 ```
-bir `if` deyimin If dalı için bir *bildirim* yerine bir *embedded_statement* gerektirdiğinden derleme zamanı hatası oluşur. Bu koda izin verildiğinde, değişken `i` bildirilebilecek, ancak hiçbir şekilde kullanılamaz. Ancak, bir blokta bildirimi yerleştirilerek `i`örneğin geçerli olduğunu unutmayın.
+`if` ifadesinde, if dalı için bir *bildirim* yerine bir *embedded_statement* gerektiğinden, derleme zamanı hatası oluşur. Bu koda izin verildiğinde, değişken `i` bildirilebilecek, ancak hiçbir şekilde kullanılamaz. Ancak, bir blokta bildirimi yerleştirilerek `i`örneğin geçerli olduğunu unutmayın.
 
 ## <a name="end-points-and-reachability"></a>Bitiş noktaları ve ulaşılabilirlik
 
@@ -254,9 +254,9 @@ local_variable_initializer
     ;
 ```
 
-Bir *local_variable_declaration* 'ın `var` *local_variable_type* , bildirim tarafından tanıtılan değişkenlerin türünü doğrudan belirtir veya bir tür ile bir izer. Türün ardından, her biri yeni bir değişken tanıtan bir *local_variable_declarator*s listesi gelir. Bir *local_variable_declarator* değişkeni, isteğe bağlı olarak bir "`=`" belirteci ve değişkenin başlangıç değerini veren bir *local_variable_initializer* tarafından kullanılan bir *tanımlayıcıdan* oluşur.
+Bir *local_variable_declaration* 'ın *local_variable_type* , bildirime göre tanıtılan değişkenlerin türünü doğrudan belirtir veya türün bir başlatıcıya göre çıkarsanarak `var` tanımlayıcısını belirtir. Türün ardından, her biri yeni bir değişken tanıtan bir *local_variable_declarator*s listesi gelir. Bir *local_variable_declarator* , isteğe bağlı olarak, bir "`=`" belirteci ve sonra değişkenin başlangıçtaki değerini veren bir *local_variable_initializer* ile ilgili değişkeni oluşturan bir *tanımlayıcıdan* oluşur.
 
-Yerel bir değişken bildirimi bağlamında, tanımlayıcı var bir bağlamsal anahtar sözcük ([anahtar sözcük](lexical-structure.md#keywords)) olarak davranır. *Local_variable_type* `var` olarak belirtildiğinde ve adlandırılmış `var` hiçbir tür kapsamda olduğunda, bildirim ***örtük olarak yazılmış bir yerel değişken bildirimidir***ve türü ilişkili Başlatıcı türünden çıkarsandır ifadesini. Örtük olarak yazılan yerel değişken bildirimleri aşağıdaki kısıtlamalara tabidir:
+Yerel bir değişken bildirimi bağlamında, tanımlayıcı var bir bağlamsal anahtar sözcük ([anahtar sözcük](lexical-structure.md#keywords)) olarak davranır. *Local_variable_type* `var` olarak belirtildiğinde ve `var` adlı bir tür kapsamda olduğunda, bildirim ***örtük olarak yazılmış bir yerel değişken bildirimidir***ve türü ilişkili Başlatıcı ifadesinin türünden çıkarsandır. Örtük olarak yazılan yerel değişken bildirimleri aşağıdaki kısıtlamalara tabidir:
 
 *  *Local_variable_declaration* birden çok *local_variable_declarator*s içeremez.
 *  *Local_variable_declarator* bir *local_variable_initializer*içermelidir.
@@ -441,11 +441,11 @@ switch_label
     ;
 ```
 
-Bir *switch_statement* , öğesinden sonra parantez `switch`içine alınmış bir ifade (switch ifadesi olarak adlandırılır) ve ardından bir *switch_block*olan anahtar sözcüğünden oluşur. *Switch_block* , küme ayraçları içine alınmış sıfır veya daha fazla *switch_section*s içerir. Her *switch_section* , bir veya daha fazla *switch_label*s öğesinden sonra bir *statement_list* ([ifade listesi](statements.md#statement-lists)) içerir.
+Bir *switch_statement* `switch` anahtar sözcüğünden ve sonra parantez içine alınmış bir ifade (switch ifadesi olarak adlandırılır) ve ardından bir *switch_block*ile oluşur. *Switch_block* , küme ayraçları içine alınmış sıfır veya daha fazla *switch_section*s içerir. Her *switch_section* , bir veya daha fazla *switch_label*s öğesinden sonra bir *statement_list* ([ifade listesi](statements.md#statement-lists)) içerir.
 
 Bir`switch` deyimin ***yöneten türü*** , switch ifadesi tarafından oluşturulur.
 
-*  Anahtar `sbyte`ifadesinin türü ,`uint` ,,`char`,,, ,,`ulong`, ,`string`veya `byte` `short` `ushort` `long` `int` `bool`  *enum_type*ya da bu türlerden birine karşılık gelen null yapılabilir türde ise, bu `switch` bildirimin yöneten türüdür.
+*  Anahtar ifadesinin türü `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `bool`, `char`, 0 veya bir *enum_type*ya da bu türlerden birine karşılık gelen null yapılabilir türde ise , daha sonra 2 ifadesinin yöneten türüdür.
 *  Aksi halde, tek bir Kullanıcı tanımlı örtük dönüştürme ([Kullanıcı tanımlı dönüştürmeler](conversions.md#user-defined-conversions)), anahtar ifadesinin türünden aşağıdaki olası bir tür düzenleyen türlerden `sbyte`birine varolmalıdır:, `byte`,, `ushort` `short` `int` ,,`ulong`, ,,`char`, veya,butürlerdenbirinekarşılıkgelennullyapılabilirbirtür`string`. `uint` `long`
 *  Aksi takdirde, böyle bir örtük dönüştürme yoksa veya birden fazla örtük dönüştürme varsa, bir derleme zamanı hatası oluşur.
 
@@ -515,7 +515,7 @@ default:
     break;
 }
 ```
-geçerli. Bu örnek, Etiketler `case 2:` ve `default:` aynı *switch_section*bir parçası olduğundan "hiçbir düşüş olmadan" kuralını ihlal etmez.
+geçerli. @No__t-0 ve `default:` etiketleri aynı *switch_section*bir parçası olduğundan, bu örnek "Fall yok" kuralını ihlal etmez.
 
 "Fall yok" kuralı, C 'de oluşan ve C++ `break` deyimler yanlışlıkla atlandığında ortak bir hata sınıfını engeller. Ayrıca, bu kural nedeniyle, bir `switch` deyimin anahtar bölümleri deyimin davranışını etkilemeden rastgele bir şekilde yeniden düzenlenebilir. Örneğin, yukarıdaki `switch` deyimin bölümleri, deyimin davranışı etkilenmeden ters alınabilir:
 ```csharp
@@ -634,7 +634,7 @@ do_statement
 Bir `do` ifade aşağıdaki gibi yürütülür:
 
 *  Denetim katıştırılmış deyime aktarılır.
-*  Ve denetimi katıştırılmış deyimin bitiş noktasına ulaşırsa (muhtemelen bir `continue` deyimin yürütülmesinden), *Boolean_expression* ([Boolean ifadeler](expressions.md#boolean-expressions)) değerlendirilir. Boolean ifadesi `true`uygunsa denetim `do` deyimin başlangıcına aktarılır. Aksi takdirde denetim, `do` deyimin bitiş noktasına aktarılır.
+*  Ve denetimi katıştırılmış deyimin bitiş noktasına ulaşırsa (muhtemelen bir `continue` ifadesinin yürütülmesinden), *Boolean_expression* ([Boolean ifadeler](expressions.md#boolean-expressions)) değerlendirilir. Boolean ifadesi `true`uygunsa denetim `do` deyimin başlangıcına aktarılır. Aksi takdirde denetim, `do` deyimin bitiş noktasına aktarılır.
 
 Bir `do` deyimin gömülü ifadesinde `break` , `do` denetimi deyimin bitiş noktasına (Bu nedenle katıştırılmış deyimin sonuna kadar)[](statements.md#the-break-statement) aktarmakiçinbirifade(breakdeyimleri)kullanılabilir.`continue` bildirim ([Continue bildirisi](statements.md#the-continue-statement)), denetimi katıştırılmış deyimin bitiş noktasına aktarmak için kullanılabilir.
 
@@ -682,20 +682,20 @@ A for deyimleri aşağıdaki gibi yürütülür:
 
 *  Bir *for_initializer* varsa, değişken başlatıcıları veya deyim ifadeleri yazıldığı sırada yürütülür. Bu adım yalnızca bir kez gerçekleştirilir.
 *  Bir *for_condition* varsa, değerlendirilir.
-*  *For_condition* yoksa veya değerlendirme `true`uygunsa denetim katıştırılmış deyime aktarılır. Ve denetimi katıştırılmış deyimin bitiş noktasına ulaştığında (büyük olasılıkla bir `continue` deyimin yürütülmesinden), varsa, *for_iterator*ifadeleri sırayla değerlendirilir ve ardından, ile başlayan başka bir yineleme yapılır. Yukarıdaki adımda *for_condition* değerlendirmesi.
-*  *For_condition* varsa ve değerlendirme `false`uygunsa denetim, `for` deyimin bitiş noktasına aktarılır.
+*  *For_condition* yoksa veya değerlendirme `true` ' i alıyorsa, denetim katıştırılmış deyime aktarılır. Ve denetimi katıştırılmış deyimin bitiş noktasına ulaşırsa (muhtemelen bir `continue` deyimi yürütülebilmektedir), varsa, *for_iterator*ifadeleri sırayla değerlendirilir ve ardından, ile başlayan başka bir yineleme yapılır. Yukarıdaki adımda *for_condition* değerlendirmesi.
+*  *For_condition* varsa ve değerlendirme `false` ' i alıyorsa, denetim `for` ifadesinin bitiş noktasına aktarılır.
 
-Bir `for` deyimin gömülü ifadesinde `break` , `for` denetimi deyimin bitiş noktasına (Bu nedenle katıştırılmış deyimin sonuna kadar)[](statements.md#the-break-statement) aktarmakiçinbirifade(breakdeyimleri)kullanılabilir.`continue` deyimin ([Continue deyimleri](statements.md#the-continue-statement)), denetimi katıştırılmış deyimin bitiş noktasına aktarmak için kullanılabilir (Bu nedenle, *for_iterator* öğesini yürüten ve `for` *for_condition*).
+Bir `for` ifadesinin Embedded ifadesinde, denetimi `for` deyimin bitiş noktasına (Bu nedenle katıştırılmış deyimin yinelemesi sona eriyor) ve bir `continue` ifadesine aktarmak için bir `break` ekstresi ([Break bildirisi](statements.md#the-break-statement)) kullanılabilir. ([ Continue ifadesiyle](statements.md#the-continue-statement)), denetimi katıştırılmış deyimin bitiş noktasına aktarmak için kullanılabilir (Bu nedenle, *for_iterator* ve *for_condition*ile başlayan `for` ifadesinin başka bir yinelemesini gerçekleştirerek).
 
 Aşağıdakilerden biri doğruysa, bir `for` deyimin gömülü ifadesine ulaşılabilir:
 
-*  İfadeye ulaşılamıyor ve hiçbir for_condition yok. `for`
-*  Deyime erişilebilir ve bir *for_condition* var ve sabit değere `false`sahip değil. `for`
+*  @No__t-0 ifadesine erişilebilir ve hiçbir *for_condition* yok.
+*  @No__t-0 ifadesine erişilebilir ve bir *for_condition* var ve sabit değeri `false` ' dir.
 
 Aşağıdakilerden en az biri doğru `for` ise, bir deyimin bitiş noktasına ulaşılabilir:
 
 *  `for` İfade `break` , ifadesiyle`for` çıkış yapan erişilebilir bir ifade içeriyor.
-*  Deyime erişilebilir ve bir *for_condition* var ve sabit değere `true`sahip değil. `for`
+*  @No__t-0 ifadesine erişilebilir ve bir *for_condition* var ve sabit değeri `true` ' dir.
 
 ### <a name="the-foreach-statement"></a>Foreach ifadesi
 
@@ -707,14 +707,14 @@ foreach_statement
     ;
 ```
 
-`foreach` Deyimin *türü* ve *tanımlayıcısı* deyimin ***yineleme değişkenini*** bildirir. Tanımlayıcı, *local_variable_type*olarak verilirse ve adında `var` bir tür varsa, yineleme değişkeni ***örtük olarak yazılmış bir yineleme değişkeni***olarak adlandırılır ve türü, öğe türü olan `var` `foreach` ifadesini aşağıda belirtildiği gibi. Yineleme değişkeni, katıştırılmış deyimin kapsamını genişleten bir salt okunurdur yerel değişkene karşılık gelir. Bir `foreach` deyimin yürütülmesi sırasında yineleme değişkeni, bir yinelemenin Şu anda gerçekleştirildiği koleksiyon öğesini temsil eder. Katıştırılmış deyimin yineleme değişkenini `++` (atama ya da ve `--` işleçler aracılığıyla) değiştirmeye veya yineleme değişkenini bir `ref` veya `out` parametresi olarak geçirmeye çalışırsa bir derleme zamanı hatası oluşur.
+`foreach` Deyimin *türü* ve *tanımlayıcısı* deyimin ***yineleme değişkenini*** bildirir. @No__t-0 tanımlayıcısı *local_variable_type*olarak verilirse ve `var` adlı bir tür kapsamda yer alıyorsa, yineleme değişkeni ***örtük olarak yazılmış bir yineleme değişkeni***olarak adlandırılır ve türü `foreach` öğe türü olarak alınır ifadesini aşağıda belirtildiği gibi. Yineleme değişkeni, katıştırılmış deyimin kapsamını genişleten bir salt okunurdur yerel değişkene karşılık gelir. Bir `foreach` deyimin yürütülmesi sırasında yineleme değişkeni, bir yinelemenin Şu anda gerçekleştirildiği koleksiyon öğesini temsil eder. Katıştırılmış deyimin yineleme değişkenini `++` (atama ya da ve `--` işleçler aracılığıyla) değiştirmeye veya yineleme değişkenini bir `ref` veya `out` parametresi olarak geçirmeye çalışırsa bir derleme zamanı hatası oluşur.
 
 `IEnumerable`Aşağıda, kısaltma `IEnumerator` `IEnumerator<T>` `System.Collections` için,, vead`System.Collections.Generic`alanları ve içindeki ilgili türlere bakın. `IEnumerable<T>`
 
 Bir foreach deyiminin derleme zamanı işleme öncelikle deyimin ***koleksiyon türünü***, ***Numaralandırıcı türünü*** ve ***öğe türünü*** belirler. Bu belirleme işlemi aşağıdaki gibi gerçekleştirilir:
 
 *  `X` *İfade* türü bir dizi türü ise, `X` `IEnumerable` arabirime bir örtük başvuru dönüştürmesi vardır (Bu arabirimden bu yana `System.Array` ). ***Koleksiyon türü*** `IEnumerable` arabirimdir, ***Numaralandırıcı türü*** `IEnumerator` arayüztür ve ***öğe*** türü dizi türünün `X`öğe türüdür.
-*  `X` `IEnumerable` *İfadenin* [](conversions.md#implicit-dynamic-conversions)türü daha sonra deyimden arabirime (örtük dinamik dönüştürmeler) örtük bir dönüşüm varsa. `dynamic` ***Koleksiyon türü*** `IEnumerable` arayüztür ve `IEnumerator` ***Numaralandırıcı türü arayüztür*** . `dynamic` `object` Tanımlayıcı local_variable_type olarak verilirse öğe türü olur, aksi durumda. `var`
+*  `X` `IEnumerable` *İfadenin* [](conversions.md#implicit-dynamic-conversions)türü daha sonra deyimden arabirime (örtük dinamik dönüştürmeler) örtük bir dönüşüm varsa. `dynamic` ***Koleksiyon türü*** `IEnumerable` arayüztür ve `IEnumerator` ***Numaralandırıcı türü arayüztür*** . @No__t-0 tanımlayıcısı *local_variable_type* olarak verilirse, ***öğe türü*** `dynamic`, aksi durumda `object` olur.
 *  Aksi takdirde, türün `X` uygun `GetEnumerator` bir yönteme sahip olup olmadığını saptayın:
    * `X` Tanımlayıcı`GetEnumerator` ve tür bağımsız değişkeni olmayan tür üzerinde üye araması gerçekleştirin. Üye arama bir eşleşme oluşturmuyorsa veya bir belirsizlik üretir ya da bir yöntem grubu olmayan bir eşleşme üretirse, aşağıda açıklandığı gibi sıralanabilir bir arabirim olup olmadığını kontrol edin. Üye arama yöntemi bir yöntem grubu veya eşleşme dışında bir şey üretirse bir uyarı verilmesi önerilir.
    * Elde edilen yöntem grubunu ve boş bir bağımsız değişken listesini kullanarak aşırı yükleme çözümlemesi gerçekleştirin. Aşırı yükleme çözümlemesi uygulanabilir bir yöntem olmadan sonuçlanırsa, belirsizliğe neden olur veya tek bir en iyi yöntemle sonuçlanır, ancak bu yöntem statik veya genel değil, aşağıda açıklandığı gibi sıralanabilir bir arabirim olup olmadığını kontrol edin. Aşırı yükleme çözümlemesi, belirsiz bir ortak örnek yöntemi veya uygulanabilir Yöntemler dışında bir şey üretirse bir uyarı verilmesi önerilir.
@@ -750,11 +750,11 @@ daha sonra şu şekilde genişletilir:
 }
 ```
 
-Değişken `e` , ifade `x` veya katıştırılmış deyim ya da programın başka bir kaynak kodu için görünür veya erişilebilir değil. Değişken `v` , gömülü ifadede salt okunurdur. ( `T` *Öğe türü* )[](conversions.md#explicit-conversions) öğesinden(foreachdeyimindekilocal_variable_type)açıkbirdönüştürme(açıkdönüştürmeler)yoksa,birhataoluşturulurvebaşka`V` bir adım alınmaz. `System.NullReferenceException` Değeri `x` varsa`null`, çalışma zamanında bir oluşturulur.
+Değişken `e` , ifade `x` veya katıştırılmış deyim ya da programın başka bir kaynak kodu için görünür veya erişilebilir değil. Değişken `v` , gömülü ifadede salt okunurdur. @No__t-1 ' den (öğe türü) `V` ' ye (foreach deyimindeki *local_variable_type* ) açık bir dönüştürme ([Açık dönüştürmeler](conversions.md#explicit-conversions)) yoksa, bir hata oluşturulur ve başka bir adım alınmaz. `System.NullReferenceException` Değeri `x` varsa`null`, çalışma zamanında bir oluşturulur.
 
 Davranışın yukarıdaki genişlemeyle tutarlı olduğu sürece, bir uygulamanın belirli bir foreach-deyimin farklı şekilde uygulanmasına izin verilir; Örneğin performans nedenleriyle.
 
-While döngüsünün `v` içine yerleştirilmesi, *embedded_statement*içinde oluşan herhangi bir anonim işlev tarafından nasıl yakalandığından önemlidir.
+While döngüsünün içinde `v` ' ın yerleştirilmesi, *embedded_statement*içinde oluşan herhangi bir anonim işlev tarafından nasıl yakalandığından önemlidir.
 
 Örneğin:
 ```csharp
@@ -831,7 +831,7 @@ class Test
 }
 ```
 Oluşturulan çıkış aşağıdaki gibidir:
-```csharp
+```console
 1.2 2.3 3.4 4.5 5.6 6.7 7.8 8.9
 ```
 
@@ -890,7 +890,7 @@ class Test
 `finally` iki`try` deyimle ilişkili bloklar, denetim, sıçrama ifadesinin hedefine aktarılmadan önce yürütülür.
 
 Oluşturulan çıkış aşağıdaki gibidir:
-```
+```console
 Before break
 Innermost finally block
 Outermost finally block
@@ -984,7 +984,7 @@ class Test
 ```
 bir `goto` ifade, iç içe bir kapsamın denetimini aktarmak için kullanılır.
 
-Bir `goto case` deyimin hedefi, belirtilen sabit değere sahip bir `case` etiketi içeren hemen kapsayan `switch` deyimindeki ([Switch deyimindeki](statements.md#the-switch-statement)) ifade listesidir. [](conversions.md#implicit-conversions) `switch` İfade bir `switch` deyimden çevrede yoksa, constant_expression örtük olarak dönüştürülebilir (örtük dönüştürmeler), en yakın kapsayan deyimin yöneten türüne veya `goto case` En yakın kapsayan `switch` ifade verilen sabit değeri olan `case` bir etiket içermiyor, derleme zamanı hatası oluşur.
+Bir `goto case` deyimin hedefi, belirtilen sabit değere sahip bir `case` etiketi içeren hemen kapsayan `switch` deyimindeki ([Switch deyimindeki](statements.md#the-switch-statement)) ifade listesidir. @No__t-0 açıklaması bir `switch` ifadesiyle çevrede yoksa, *constant_expression* örtük olarak dönüştürülebilir ([örtük dönüştürmeler](conversions.md#implicit-conversions)) en yakın kapsayan `switch` ifadesinin yöneten türüne veya en yakın kapsayan `switch` ifadesinde verilen sabit değere sahip bir `case` etiketi yok, derleme zamanı hatası oluşur.
 
 Bir `goto default` deyimin hedefi, `switch` bir`default` etiketi içeren hemen kapsayan deyimindeki ([Switch deyimindeki](statements.md#the-switch-statement)) ifade listesidir. İfade bir `switch` deyimle çevrede yoksa veya en yakın kapsayan `switch` ifade bir `default` etiket içermiyorsa, derleme zamanı hatası oluşur. `goto default`
 
@@ -1092,13 +1092,13 @@ finally_clause
 *  Bir `try` blok ve ardından bir `finally` blok gelir.
 *  Bir blok ve ardından bir blok tarafından `catch` `finally` izlenen bir veya daha fazla blok. `try`
 
-Bir `catch` yan tümce bir *exception_specifier*belirttiğinde, türü `System.Exception`, geçerli temel sınıfı olarak `System.Exception` (veya bir alt `System.Exception` sınıfı) içeren tür parametre türünden veya türetilen bir tür olmalıdır.
+@No__t-0 yan tümcesi bir *exception_specifier*belirttiğinde, tür `System.Exception` olmalıdır. bu, `System.Exception` ' ten türetilen bir tür veya geçerli temel sınıfı olarak `System.Exception` (veya alt sınıfı) olan bir tür parametre türünden oluşur.
 
-Bir `catch` yan tümce her ikisi de *tanımlayıcı*içeren bir *exception_specifier* belirttiğinde, verilen ad ve tür için bir ***özel durum değişkeni*** bildirilmiştir. Özel durum değişkeni, `catch` yan tümcesini genişleten bir kapsama sahip yerel bir değişkene karşılık gelir. *Exception_filter* ve *bloğunun*yürütülmesi sırasında, özel durum değişkeni işlenmekte olan özel durumu temsil eder. Kesin atama denetimi amacıyla, özel durum değişkeni tüm kapsamda kesin olarak atanır olarak değerlendirilir.
+@No__t-0 yan tümcesi her ikisi de *tanımlayıcı*içeren bir *exception_specifier* belirttiğinde, verilen ad ve tür için bir ***özel durum değişkeni*** bildirilmiştir. Özel durum değişkeni, `catch` yan tümcesini genişleten bir kapsama sahip yerel bir değişkene karşılık gelir. *Exception_filter* ve *bloğunun*yürütülmesi sırasında, özel durum değişkeni işlenmekte olan özel durumu temsil eder. Kesin atama denetimi amacıyla, özel durum değişkeni tüm kapsamda kesin olarak atanır olarak değerlendirilir.
 
 Bir `catch` yan tümce bir özel durum değişkeni adı içermiyorsa, filtre ve `catch` bloktaki özel durum nesnesine erişmek olanaksız olur.
 
-Bir `catch` *exception_specifier* belirtmeyen bir yan tümce genel `catch` yan tümce olarak adlandırılır.
+Bir *exception_specifier* belirtmeyen bir `catch` yan tümcesi, genel `catch` yan tümcesi olarak adlandırılır.
 
 Bazı programlama dilleri, ' den `System.Exception`türetilmiş bir nesne olarak gösterilemeyen özel durumları destekleyebilir, ancak bu tür özel durumlar hiçbir şekilde kod tarafından C# üretilmeyebilir. Bu tür `catch` özel durumları yakalamak için genel bir yan tümce kullanılabilir. Bu nedenle, genel `catch` bir yan tümce türü `System.Exception`belirten bir değer olan anlam, diğer bir deyişle diğer dillerdeki özel durumları da yakalayabiliriz.
 
@@ -1138,13 +1138,13 @@ class Test
 }
 ```
 yöntemi `F` bir özel durumu yakalar, konsola bazı tanılama bilgileri yazar, özel durum değişkenini değiştirir ve özel durumu yeniden oluşturur. Yeniden oluşturulan özel durum özgün özel durumdur, bu nedenle oluşturulan çıkış şu şekilde yapılır:
-```
+```console
 Exception in F: G
 Exception in Main: G
 ```
 
 İlk catch bloğu `e` geçerli özel durumu yeniden oluşturmak yerine oluşursa, üretilen çıkış aşağıdaki gibi olacaktır:
-```
+```console
 Exception in F: G
 Exception in Main: F
 ```
@@ -1218,13 +1218,13 @@ lock_statement
     ;
 ```
 
-Bir `lock` deyimin ifadesi, *reference_type*olarak bilinen bir türün değerini belirtmelidir. [](conversions.md#boxing-conversions) Bir`lock` deyimin ifadesi için hiçbir örtük paketleme dönüştürmesi (kutulama dönüştürmesi) yapılmaz ve bu nedenle, ifadenin bir *value_type*değerini belirtmek için derleme zamanı hatası vardır.
+@No__t-0 deyiminin ifadesi, *reference_type*olarak bilinen bir türün değerini belirtmelidir. @No__t-1 deyiminin ifadesi için hiçbir örtük paketleme dönüştürmesi ([kutulama dönüştürmesi](conversions.md#boxing-conversions)) yapılmaz ve bu nedenle, ifadenin bir *value_type*değerini belirtmek için derleme zamanı hatası vardır.
 
 Formun `lock` bir açıklaması
 ```csharp
 lock (x) ...
 ```
-, reference_type 'in bir ifadesi olduğu için tam olarak eşdeğerdir `x`
+`x` ' ın bir *reference_type*ifadesi olduğu durumlarda, tam olarak şu şekilde eşdeğerdir
 ```csharp
 bool __lockWasTaken = false;
 try {
@@ -1276,7 +1276,7 @@ resource_acquisition
 
 ***Kaynak*** , adlı `System.IDisposable` `Dispose`tek bir parametresiz yöntemi içeren, uygulayan bir sınıf veya yapı olur. Kaynak kullanan kod, kaynağın artık gerekli olmadığını `Dispose` belirtmek için çağrı yapabilir. `Dispose` Çağrılırsa, çöp toplamanın bir sonucu olarak otomatik çıkarma işlemi gerçekleşir.
 
-*Resource_acquisition* biçimi *local_variable_declaration* ise *local_variable_declaration* türü ya da `dynamic` örtük olarak dönüştürülebilir `System.IDisposable`bir tür olmalıdır. *Resource_acquisition* , *ifadesi* ise, bu ifade `System.IDisposable`örtülü olarak dönüştürülebilir olmalıdır.
+*Resource_acquisition* biçimi *local_variable_declaration* ise *local_variable_declaration* türü `dynamic` ya da örtük olarak `System.IDisposable` ' e dönüştürülebilen bir tür olmalıdır. *Resource_acquisition* biçimi *deyimsiyse* , bu ifadenin `System.IDisposable` ' ye örtük olarak dönüştürülebilir olması gerekir.
 
 Bir *resource_acquisition* içinde belirtilen yerel değişkenler salt okunurdur ve bir başlatıcı içermelidir. Katıştırılmış ifade bu yerel değişkenleri değiştirmeye çalışırsa (atama `++` veya ve `--` işleçler aracılığıyla) bir derleme zamanı hatası oluşur, bunların adresini alın veya ya da parametreleri veya `out` parametreleri olarak `ref` geçirin.
 
@@ -1390,7 +1390,7 @@ yield_statement
 
 Aşağıda açıklandığı gibi bir `yield` deyimin görünebileceği çeşitli kısıtlamalar vardır.
 
-*  Bir `yield` deyimin (herhangi bir biçimde) bir *method_body*, *operator_body* veya *accessor_body* dışında görünmesi için derleme zamanı hatası
+*  Bu, bir *method_body*, *operator_body* veya *accessor_body* dışında görünmesi için bir `yield` ifadesinin (herhangi bir biçimde) bir derleme zamanı hatasıdır
 *  Bir deyimin (herhangi bir `yield` biçimde) anonim bir işlev içinde görünmesi için derleme zamanı hatasıdır.
 *  Bir deyimin `yield` `finally` yan tümcesinde `try` görünmesi için (her bir biçimde) bir derleme zamanı hatasıdır.
 *  Bir `yield return` deyimin, `try` herhangi`catch` bir yan tümce içeren bir ifadede görünmesini sağlayan derleme zamanı hatası.

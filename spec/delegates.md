@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: 994b22f5375d57cfc4c7537c64345a27ddf3e416
-ms.sourcegitcommit: 09e0ddec3bb6aa99b7340158bbac86a5a8243b43
+ms.openlocfilehash: d162d4b6a489032dcdfca9094a39d88fd03d4013
+ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66193883"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71704095"
 ---
 # <a name="delegates"></a>Temsilciler
 
-Temsilciler, diğer diller senaryoları etkinleştirmek — sahip işlev işaretçilerine, C++, Pascal ve Modula--gibi giderdik. C++ işlev işaretçilerinden farklı ancak temsilcileri nesne yönelimli tam olarak, ve hem nesne örneği hem de bir yöntem üye işlevlerinin C++ işaretçileri, temsilciler kapsüller.
+Temsilciler C++, diğer dillerin (örneğin, Pascal ve modüla) işlev işaretçileriyle ilgilenmesini sağlayan senaryolara olanak tanır. Ancak C++ , işlev işaretçilerinden farklı olarak, temsilciler tam nesne yönelimlidir ve C++ üye işlevlerine yönelik işaretçilerin aksine, temsilciler hem bir nesne örneğini hem de bir yöntemi kapsüller.
 
-Temsilci bildirimi sınıfından türetilen bir sınıf tanımlar `System.Delegate`. Bir temsilci örneği her biri için çağrılabilen bir varlık olarak adlandırılır yöntemleri, bir veya daha fazla listesi olan çağrı listesine kapsüller. Örneği için yöntemleri, örneği ve bir yöntem örneğine çağrılabilir varlık oluşur. Statik yöntemler için yalnızca bir yöntem çağrılabilir varlık oluşur. Uygun bir bağımsız değişkenler kümesiyle bir temsilci örneği çağırma her temsilcinin çağrılabilir varlıkların belirli bağımsız değişkenler kümesiyle çağrılmasına neden olur.
+Temsilci bildirimi `System.Delegate` sınıfından türetilmiş bir sınıfı tanımlar. Bir temsilci örneği, her biri çağrılabilir bir varlık olarak adlandırılan bir veya daha fazla yöntemin listesi olan bir çağırma listesini kapsüller. Örnek yöntemleri için, çağrılabilir bir varlık bir örnekten ve bu örnekteki yöntemden oluşur. Statik yöntemler için, çağrılabilir bir varlık yalnızca bir yöntemden oluşur. Uygun bir bağımsız değişken kümesiyle bir temsilci örneği çağırmak, her bir temsilcinin çağrılabilir varlıkların belirtilen bağımsız değişken kümesiyle çağrılmasına neden olur.
 
-Bir ilgi çekici ve kullanışlı bir temsilci örneği bildirin veya desteklemez, kapsülleyen yöntemleri sınıfları hakkında önemli olduğunu özelliğidir; önemli olan bu yöntemleri uyumlu ([temsilci bildirimi](delegates.md#delegate-declarations)) temsilcinin türüne sahip. Bu temsilciler mükemmel "anonim" çağırma için uygun hale getirir.
+Bir temsilci örneğinin ilginç ve yararlı bir özelliği, kapsülleyen yöntemlerin sınıflarını bilmiyor veya ilgilenmez; Bu yöntemlerin tümünün, temsilcinin türüyle uyumlu olması ([temsilci bildirimleri](delegates.md#delegate-declarations)). Bu, temsilcileri "anonim" çağrı için mükemmel bir hale getirir.
 
-## <a name="delegate-declarations"></a>Temsilci bildirimi
+## <a name="delegate-declarations"></a>Temsilci bildirimleri
 
-A *delegate_declaration* olduğu bir *type_declaration* ([tür bildirimleri](namespaces.md#type-declarations)), yeni bir temsilci türü bildirir.
+Bir *delegate_declaration* , yeni bir temsilci türü bildiren bir *type_declaration* ([tür bildirimleri](namespaces.md#type-declarations)).
 
 ```antlr
 delegate_declaration
@@ -35,23 +35,23 @@ delegate_modifier
     ;
 ```
 
-Aynı değiştiricisi bir temsilci bildiriminde birden çok kez görünmesi için bir derleme zamanı hatasıdır.
+Aynı değiştiricinin bir temsilci bildiriminde birden çok kez görünmesi için derleme zamanı hatası vardır.
 
-`new` Değiştiricisi temsilciler üzerinde yalnızca izin başka bir türde bildirilen, bu durumda, bu tür bir temsilci belirtir devralınmış bir üyeyi aynı adla açıklandığı gizler [yeni değiştiricisini](classes.md#the-new-modifier).
+@No__t-0 değiştiricisine yalnızca başka bir tür içinde belirtilen Temsilcilerde izin verilir. Bu durumda, bu tür bir temsilcinin [Yeni değiştiricide](classes.md#the-new-modifier)açıklandığı gibi aynı ada sahip bir devralınmış üyeyi gizlediğini belirtir.
 
-`public`, `protected`, `internal`, Ve `private` değiştiriciler temsilci türünün erişilebilirlik denetimi. Temsilci bildirimi oluştuğu bağlama bağlı olarak bu değiştiriciler bazıları değil izin verilir ([erişilebilirlik bildirilen](basic-concepts.md#declared-accessibility)).
+@No__t-0, `protected`, `internal` ve `private` değiştiricileri temsilci türünün erişilebilirliğini denetler. Temsilci bildiriminin gerçekleştiği içeriğe bağlı olarak, bu değiştiricilerin bazılarına izin verilmeyebilir ([belirtilen erişilebilirlik](basic-concepts.md#declared-accessibility)).
 
-Temsilcinin türü adı *tanımlayıcı*.
+Temsilcinin tür adı *tanımlayıcıdır*.
 
-İsteğe bağlı *formal_parameter_list* temsilcinin parametre belirtir ve *Döndür_tür* temsilcinin dönüş türünü belirtir.
+İsteğe bağlı *formal_parameter_list* , temsilcinin parametrelerini belirtir ve *Sbayrak* , temsilcinin dönüş türünü gösterir.
 
-İsteğe bağlı *variant_type_parameter_list* ([değişken türü parametre listeleri](interfaces.md#variant-type-parameter-lists)) için temsilci tür parametreleri belirtir.
+İsteğe bağlı *variant_type_parameter_list* ([değişken türü parametre listeleri](interfaces.md#variant-type-parameter-lists)), temsilcinin kendisi için tür parametrelerini belirtir.
 
-Dönüş türü bir temsilci türü olmalıdır `void`, veya çıkış için güvenli ([varyansı güvenliği](interfaces.md#variance-safety)).
+Bir temsilci türünün dönüş türü `void` ya da çıkış açısından güvenli ([varyans güvenliği](interfaces.md#variance-safety)) olmalıdır.
 
-Tüm biçimsel parametre türleri temsilci türü giriş uyumlu olması gerekir. Ayrıca, tüm `out` veya `ref` parametre türleri de çıkış uyumlu olmalıdır. Not, hatta `out` giriş güvenli bir temel yürütme platform sınırlaması nedeniyle olmasını gerekli parametreler.
+Bir temsilci türünün tüm biçimsel parametre türleri giriş açısından güvenli olmalıdır. Ayrıca, `out` veya `ref` parametre türlerinin Ayrıca çıkış açısından güvenli olması gerekir. Temel yürütme platformunun sınırlamasından dolayı, `out` parametrelerinin de giriş açısından güvenli olması gerektiğini unutmayın.
 
-C# ' temsilci türleri olan eşdeğer, yapısal olarak eşdeğer ad. Özellikle, aynı parametreye sahip iki farklı temsilci türleri listeler ve dönüş türü farklı bir temsilci türleri olarak kabul edilir. Ancak, iki farklı ancak yapısal olarak eşdeğer temsilci türleri örneklerini eşit olarak karşılaştırılır ([temsilci eşitlik işleçleri](expressions.md#delegate-equality-operators)).
+İçindeki C# temsilci türleri, yapısal olarak eşdeğer değil, ad eşdeğerdedir. Özellikle, aynı parametre listelerine ve dönüş türüne sahip iki farklı temsilci türü farklı temsilci türleri olarak değerlendirilir. Ancak, iki ayrı ancak yapısal olarak eşdeğer temsilci türünün örnekleri eşit ([temsilci eşitlik işleçleri](expressions.md#delegate-equality-operators)) olarak karşılaştırılabilir.
 
 Örneğin:
 
@@ -73,9 +73,9 @@ class B
 }
 ```
 
-Yöntemleri `A.M1` ve `B.M1` her iki temsilci türleriyle uyumlu `D1` ve `D2` , sahip oldukları olduğundan aynı dönüş türü ve parametre listesi; ancak, bu temsilci türleri olmadıkları için iki farklı türleri olan değiştirilebilir. Yöntemleri `B.M2`, `B.M3`, ve `B.M4` temsilci türleriyle uyumsuz `D1` ve `D2`, parametre listeleri ya da farklı dönüş türlerine sahip olduğu.
+@No__t-0 ve `B.M1` yöntemleri aynı dönüş türü ve parametre listesine sahip oldukları için hem `D1` hem de `D2` temsilci türleriyle uyumludur; Bununla birlikte, bu temsilci türleri iki farklı türlerdir, bu nedenle bunlar birbirinin yerine kullanılamaz. @No__t-0, `B.M3` ve `B.M4` yöntemleri farklı dönüş türlerine veya parametre listelerine sahip olduklarından, `D1` ve `D2` temsilci türleriyle uyumsuzdur.
 
-Diğer genel tür bildirimleri gibi bir oluşturulmuş bir temsilci türü oluşturmak için tür bağımsız değişkenleri verilmelidir. Parametre türleri ve dönüş türü bir oluşturulmuş bir temsilci türü, her tür parametresi temsilci bildirimi için karşılık gelen tür bağımsız değişkeni oluşturulmuş bir temsilci türünün getirilmesiyle oluşturulur. Parametre türleri ve sonuçta elde edilen dönüş türünü belirlemede yöntemleri oluşturulmuş temsilci türüyle uyumlu kullanılır. Örneğin:
+Diğer genel tür bildirimleri gibi, oluşturulmuş bir temsilci türü oluşturmak için tür bağımsız değişkenleri verilmelidir. Oluşturulmuş bir temsilci türünün parametre türleri ve dönüş türü, temsilci bildirimindeki her bir tür parametresi için yerine, oluşturulan temsilci türünün karşılık gelen tür bağımsız değişkeni ile oluşturulur. Elde edilen dönüş türü ve parametre türleri, oluşturulan bir temsilci türüyle hangi yöntemlerin uyumlu olduğunu belirlemek için kullanılır. Örneğin:
 
 ```csharp
 delegate bool Predicate<T>(T value);
@@ -87,17 +87,17 @@ class X
 }
 ```
 
-Yöntem `X.F` temsilci türüyle uyumlu `Predicate<int>` ve yöntem `X.G` temsilci türüyle uyumlu `Predicate<string>` .
+@No__t-0 yöntemi, `Predicate<int>` temsilci türüyle uyumludur ve `X.G` yöntemi `Predicate<string>` temsilci türüyle uyumludur.
 
-Aracılığıyla bir temsilci türü bildirmek için tek yolu olan bir *delegate_declaration*. Bir temsilci türü türetilen bir sınıf türüdür `System.Delegate`. Örtük olarak temsilci türleri olan `sealed`, herhangi bir tür bir temsilci türünden türetilmesi döndürülmesine izin verilmez. Ayrıca bir temsilci olmayan sınıf türünden türetmek için izin verilen değil `System.Delegate`. Unutmayın `System.Delegate` kendisi bir temsilci türü; tüm temsilci türleri türetildiği bir sınıf türü bir değer.
+Bir temsilci türü bildirmenin tek yolu bir *delegate_declaration*aracılığıyla yapılır. Temsilci türü `System.Delegate` ' dan türetilen bir sınıf türüdür. Temsilci türleri örtük olarak `sealed` olduğundan, temsilci türünden herhangi bir tür türetmeye izin verilmez. Ayrıca, `System.Delegate` ' dan temsilci olmayan bir sınıf türü türetmeye izin verilmez. @No__t-0 ' ın kendisi bir temsilci türü değil; Bu, tüm temsilci türlerinin türetildiği bir sınıf türüdür.
 
-C# özel sözdizimi için temsilci örnek oluşturma ve çağırma sağlar. Örnek oluşturma dışında bir sınıf veya sınıf örneği uygulanabilir herhangi bir işlem de bir temsilci sınıfı veya örneği, sırasıyla uygulanabilir. Özellikle, üyelere erişim mümkündür `System.Delegate` normal üye erişimi sözdizimini aracılığıyla türü.
+C#temsilci örneklemesi ve çağrısı için özel sözdizimi sağlar. Örnek oluşturma haricinde, bir sınıfa veya sınıf örneğine uygulanabilen her türlü işlem sırasıyla temsilci sınıfına veya örneğe de uygulanabilir. Özellikle, `System.Delegate` türünde üyelere olağan üye erişim sözdizimi aracılığıyla erişmek mümkündür.
 
-Bir temsilci örneği tarafından kapsüllenmiş yöntem kümesi çağrı listesine çağrılır. Bir temsilci örneği oluşturulduğunda ([temsilci Uyumluluk](delegates.md#delegate-compatibility)) isteğe bağlı olarak tek bir yöntemi, bu yöntem kapsüller ve çağırma listesinde yalnızca bir giriş içeriyor. İki null olmayan temsilci örneklerini bir araya geldiğinde, ancak çağırma listelerini--iki veya daha fazla giriş içeren yeni bir çağırma listesi oluşturmak için işlenen sonra sağ işlenen--sol sırayla bitiştirilir.
+Bir temsilci örneğiyle kapsüllenmiş yöntemlerin kümesine çağrı listesi denir. Tek bir yöntemden bir temsilci örneği oluşturulduğunda ([temsilci uyumluluğu](delegates.md#delegate-compatibility)), bu yöntemi kapsüller ve çağırma listesi yalnızca bir giriş içerir. Bununla birlikte, iki null olmayan temsilci örneği birleştirildiğinde, iki veya daha fazla giriş içeren yeni bir çağırma listesi oluşturmak için, bu, iki veya daha fazla girişi içeren yeni bir çağırma listesi oluşturmak üzere, çağrı listeleri birleştirilir.
 
-Temsilciler, ikili kullanılarak birleştirilir `+` ([Toplama işleci](expressions.md#addition-operator)) ve `+=` işleçleri ([bileşik atama](expressions.md#compound-assignment)). Bir temsilci bir bileşimini kullanarak ikili temsilcilerin kaldırılabilir `-` ([çıkarma işleci](expressions.md#subtraction-operator)) ve `-=` işleçleri ([bileşik atama](expressions.md#compound-assignment)). Temsilciler, eşitlik için karşılaştırılabilir ([temsilci eşitlik işleçleri](expressions.md#delegate-equality-operators)).
+Temsilciler `+` ([toplama işleci](expressions.md#addition-operator)) ve `+=` Işleçleri ([bileşik atama](expressions.md#compound-assignment)) kullanılarak birleştirilir. Bir temsilci, `-` ([çıkarma işleci](expressions.md#subtraction-operator)) ve `-=` Işleçleri ([bileşik atama](expressions.md#compound-assignment)) kullanılarak bir temsilciler birleşiminden kaldırılabilir. Temsilciler eşitlik için karşılaştırılabilir ([temsilci eşitlik işleçleri](expressions.md#delegate-equality-operators)).
 
-Aşağıdaki örnek temsilcilerin sayısına örneğinin gösterir ve bunların karşılık gelen çağırma listeler:
+Aşağıdaki örnekte, bir dizi temsilciyi ve bunlara karşılık gelen çağrı listelerini gösteren örnek gösterilmektedir:
 
 ```csharp
 delegate void D(int x);
@@ -122,23 +122,23 @@ class Test
 }
 ```
 
-Zaman `cd1` ve `cd2` olan örneği, her bir yöntem kapsüller. Zaman `cd3` olan örneği, iki yönteme bir çağrı listesine sahiptir `M1` ve `M2`bu sırası. `cd4`ın çağırma listesi içeren `M1`, `M2`, ve `M1`bu sırası. Son olarak, `cd5`'s çağırma listesi içeren `M1`, `M2`, `M1`, `M1`, ve `M2`bu sırası. Temsilciler (de olarak kaldırma) birleştirerek daha fazla örnek için bkz: [temsilci çağırma](delegates.md#delegate-invocation).
+@No__t-0 ve `cd2` örneği oluşturulduğunda, her biri bir yöntemi kapsüller. @No__t-0 örneği oluşturulduğunda, iki yöntemin çağırma listesine sahiptir, bu sırayla `M1` ve `M2`. `cd4` ' ın çağrı listesi, bu sırayla `M1`, `M2` ve `M1` içerir. Son olarak, `cd5` ' ın çağrı listesi bu sırayla `M1`, `M2`, `M1`, `M1` ve `M2` ' i içerir. Temsilcileri birleştirme (ve kaldırmanın yanı sıra) hakkında daha fazla örnek için bkz. [temsilci çağrısı](delegates.md#delegate-invocation).
 
 ## <a name="delegate-compatibility"></a>Temsilci uyumluluğu
 
-Bir yöntem veya temsilci `M` olduğu ***uyumlu*** bir temsilci türüyle `D` aşağıdakilerin tümü doğru olduğunda:
+@No__t-0 bir yöntem veya temsilci, aşağıdakilerin tümü doğru ise, `D` bir temsilci türüyle ***uyumludur*** :
 
-*  `D` ve `M` parametreleri ve her parametresinde aynı sayıda `D` aynı `ref` veya `out` karşılık gelen parametre olarak değiştiriciler `M`.
-*  Her değer parametresi için (parametre olmadan `ref` veya `out` değiştiricisi), bir kimlik dönüştürme ([kimlik dönüştürme](conversions.md#identity-conversion)) ya da örtük bir başvuru dönüştürmesi ([örtükbirbaşvurudönüşümleri](conversions.md#implicit-reference-conversions)) parametre türünden var. `D` karşılık gelen parametre türüne `M`.
-*  Her `ref` veya `out` içinde tür parametresi, parametre `D` parametre türü aynı `M`.
-*  Dönüş türünü bir kimlik veya örtük bir başvuru dönüştürmesi var `M` dönüş türüne `D`.
+*  `D` ve `M` aynı sayıda parametreye sahiptir ve `D` ' deki her bir parametre `M` ' teki karşılık gelen parametreyle aynı `ref` veya `out` değiştiricilerine sahiptir.
+*  Her değer parametresi için (`ref` veya `out` değiştiricisi olmayan bir parametre), `D` ' teki parametre türünden bir kimlik dönüştürme ([kimlik dönüştürme](conversions.md#identity-conversion)) veya örtük başvuru dönüştürmesi ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions)) var `M` ' teki karşılık gelen parametre türü.
+*  Her `ref` veya `out` parametresi için, `D` ' deki parametre türü `M` ' teki parametre türü ile aynıdır.
+*  @No__t-0 dönüş türünden `D` dönüş türüne bir kimlik veya örtük başvuru dönüştürmesi var.
 
-## <a name="delegate-instantiation"></a>Temsilci örneği oluşturma
+## <a name="delegate-instantiation"></a>Temsilci oluşturma
 
-Bir temsilci örneği tarafından oluşturulan bir *delegate_creation_expression* ([temsilci oluşturma ifadeleri](expressions.md#delegate-creation-expressions)) veya bir temsilci türüne dönüştürme. Yeni oluşturulan temsilci örneği sonra ya da ifade eder:
+Temsilcinin bir örneği, bir *delegate_creation_expression* ([temsilci oluşturma ifadeleri](expressions.md#delegate-creation-expressions)) veya bir temsilci türüne dönüştürme tarafından oluşturulur. Yeni oluşturulan temsilci örneği bundan sonra şu şekilde başvurur:
 
-*  Başvurulan statik yöntem *delegate_creation_expression*, veya
-*  Hedef nesne (olamaz `null`) ve örnek yöntemi içinde başvurulan *delegate_creation_expression*, veya
+*  *Delegate_creation_expression*içinde başvurulan statik yöntem veya
+*  Hedef nesne (`null` olamaz) ve *delegate_creation_expression*içinde başvurulan örnek yöntemi
 *  Başka bir temsilci.
 
 Örneğin:
@@ -163,19 +163,19 @@ class Test
 }
 ```
 
-Oluşturulduktan sonra temsilci örneklerini her zaman aynı hedef nesne ve yöntem bakın. Unutmayın, ne zaman iki temsilci olduğunda birleştirilir veya bir başka bir yeni bir temsilci sonuçları kendi çağırma listesiyle kaldırılır; Birleştirilen ya da kaldırılmış temsilcileri çağırma listelerini değişmeden kalır.
+Örneği oluşturulduktan sonra, temsilci örnekleri her zaman aynı hedef nesne ve yönteme başvurur. İki temsilci birleştirildiğinde ya da biri diğerinden kaldırıldığında, yeni bir temsilcinin kendi çağrı listesi ile sonuçlandığını unutmayın; Birleşik veya kaldırılan temsilcilerin çağırma listeleri değişmeden kalır.
 
-## <a name="delegate-invocation"></a>Temsilci çağrısı
+## <a name="delegate-invocation"></a>Temsilci çağırma
 
-C# bir temsilci çağırma için özel bir sözdizimi sağlar. Bir null olmayan temsilci örneği olan çağrı listesine bir giriş içerir çağrıldığında verildi ve başvurulan aynı değeri döndürür aynı bağımsız değişkenlerle bir yöntem çağırdığı için yöntemi. (Bkz [temsilci çağrılarını](expressions.md#delegate-invocations) temsilci çağrısı hakkında ayrıntılı bilgi için.) Bu yöntem doğrudan adında gibi bir temsilcinin çağırma sırasında bir özel durum oluşur ve çağrıldı yöntemi içinde özel durum yakalandı, arama gibi özel durum yakalama yan tümcesi için temsilci çağıran yöntemi devam eder yöntemi, temsilci olarak adlandırılır.
+C#bir temsilciyi çağırmak için özel bir sözdizimi sağlar. Çağırma listesi bir giriş içeren null olmayan bir temsilci örneği çağrıldığında, aynı bağımsız değişkenlerle bir yöntemi çağırır ve başvurulan yöntemiyle aynı değeri döndürür. (Temsilci çağırma hakkında ayrıntılı bilgi için bkz. [temsilci etkinleştirmeleri](expressions.md#delegate-invocations) .) Bu tür bir temsilcinin çağrılması sırasında bir özel durum oluşursa ve bu özel durum çağrılan yöntem içinde yakalanmadığında, özel durum catch yan tümcesi için arama, bu yöntemin doğrudan adı Bu temsilcinin başvurduğu yöntem.
 
-Çağrı, çağırma listesinde birden fazla varlık içeriyor. bir temsilci örneği, çağırma listesinde, yöntemlerin her biri zaman uyumlu olarak, sırasıyla çağırarak devam eder. Yorumun her yöntem için temsilci örneği sağlanmadı olarak bağımsız değişkenler aynı dizi geçirilir. Bu tür bir temsilci çağrısı başvuru parametreleri içeriyorsa ([başvuru parametreleri](classes.md#reference-parameters)), her yöntem çağırma aynı değişken başvuru ile meydana gelir; bu değişkeni bir yöntem çağırma listesinde tarafından yapılan olacaktır çağırma listeyi daha ayrıntılı yöntemler için görünür. Temsilci çağrısı çıkış parametreleri veya dönüş değeri içeriyorsa, bunların son değerini listedeki son temsilcinin çağırma kaynağından gelir.
+Çağırma listesi birden çok giriş içeren bir temsilci örneğinin çağrılması, çağrı listesindeki yöntemlerin her birini zaman uyumlu olarak sırayla çağırarak ilerler. Çağrısı yapılan her yöntem, temsilci örneğine verilen olarak aynı bağımsız değişken kümesine geçirilir. Bu tür bir temsilci çağrısı başvuru parametreleri ([başvuru parametreleri](classes.md#reference-parameters)) içeriyorsa, her yöntem çağrısı aynı değişkene bir başvuru ile gerçekleşir; çağırma listesindeki bir yönteme göre söz konusu değişkende yapılan değişiklikler, çağrı listesinin daha aşağı bir yöntemi olarak görünür olacaktır. Temsilci çağrısı çıkış parametreleri veya dönüş değeri içeriyorsa, son değeri listedeki son temsilcinin çağrısından gelir.
 
-Bu tür bir temsilci çağrısı işlenirken bir özel durum oluşur ve çağrıldı yöntemi içinde özel durum yakalandı, temsilci çağrılan yöntemi bir özel durum yakalama yan tümcesi için arama işlemi devam eder ve herhangi bir yöntem daha da aşağı değil çağırma listesi çağrılır.
+Böyle bir temsilcinin çağrılması sırasında bir özel durum oluşursa ve bu özel durum çağrılan yöntem içinde yakalanmadığında, özel durum catch yan tümcesi için arama, temsilciyi çağıran yönteme ve diğer yöntemlere devam eder çağırma listesi çağrılmıyor.
 
-Türünde bir özel durum'içinde null sonuç değeri olan bir temsilci örneği çağırmaya çalışırken `System.NullReferenceException`.
+Değeri null olan bir temsilci örneği çağrılmaya çalışılıyor `System.NullReferenceException` türünde bir özel durum oluşur.
 
-Aşağıdaki örnek, örneği, birleştirmek, kaldırmak ve temsilci çağırma gösterilmektedir:
+Aşağıdaki örnek, temsilcileri oluşturma, birleştirme, kaldırma ve çağırma işlemlerinin nasıl yapılacağını göstermektedir:
 
 ```csharp
 using System;
@@ -238,13 +238,13 @@ class Test
 }
 ```
 
-İfadede gösterildiği `cd3 += cd1;`, bir temsilci birden çok kez bir çağırma listesinde var olabilir. Bu durumda, yalnızca bir kez örneği çağrılır. Bu temsilci kaldırıldığında, bunun gibi bir çağırma listesinde çağırma listedeki son oluşum gerçekten kaldırıldı bir bileşendir.
+@No__t-0 ifadesinde gösterildiği gibi, bir temsilci bir çağırma listesinde birden çok kez bulunabilir. Bu durumda, her oluşum için yalnızca bir kez çağrılır. Bunun gibi bir çağırma listesinde, bu temsilci kaldırıldığında, aslında kaldırılan çağrı listesindeki son oluşum, aslında kaldırılmış bir şeydir.
 
-Son deyiminin yürütülmeden hemen önce `cd3 -= cd1;`, temsilci `cd3` bir boş çağırma listesine başvuruyor. Bir temsilci boş listeden kaldırmak için (veya var olmayan bir temsilci boş listeden kaldırmak için) çalışırken bir hata değildir.
+Son deyimin yürütmeden hemen önce, `cd3 -= cd1;`, `cd3` temsilcisi boş bir çağırma listesine başvurur. Bir temsilciyi boş bir listeden kaldırma girişimi (veya varolmayan bir temsilciyi boş olmayan bir listeden kaldırmak için) bir hata değildir.
 
-Oluşturulan çıktı.
+Oluşturulan çıkış:
 
-```
+```console
 C.M1: -1
 C.M2: -2
 C.M1: 10
