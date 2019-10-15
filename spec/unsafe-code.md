@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 4faef9a12bdff54fa59a55a0206fa72bda4ea585
-ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
+ms.openlocfilehash: dbea611280a644adc25247b9887986e129c59b68
+ms.sourcegitcommit: a5e393b018b04dfa55aae0000290ca087b508495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71704057"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72310363"
 ---
 # <a name="unsafe-code"></a>Güvenli olmayan kod
 
@@ -223,7 +223,7 @@ Bir *pointer_type* , tür bağımsız değişkeni olarak kullanılamaz ([oluştu
 
 Bir *pointer_type* , geçici bir alanın türü olarak kullanılabilir ([geçici alanlar](classes.md#volatile-fields)).
 
-İşaretçiler `ref` veya `out` parametresi olarak geçirilebilse de, işaretçi, çağrılan yöntemin döndürdüğü zaman mevcut olmayan bir yerel değişkene işaret etmek üzere ayarlanmış olabileceği veya işaret etmek için kullandığı sabit nesne olduğu için tanımsız davranışa neden olabilir. , artık düzeltilmedi. Örneğin:
+İşaretçiler `ref` veya `out` parametresi olarak geçirilebilse de, işaretçi, çağrılan yöntemin döndürdüğü zaman mevcut olmayan bir yerel değişkene işaret etmek üzere ayarlanmış olabileceği veya işaret etmek için kullandığı sabit nesne olduğu için tanımsız davranışa neden olabilir. , artık düzeltilmedi. Örnek:
 
 ```csharp
 using System;
@@ -284,7 +284,7 @@ Güvenli olmayan bir bağlamda, işaretçilerde çalıştırmak için birkaç ya
 
 ## <a name="fixed-and-moveable-variables"></a>Sabit ve taşınabilir değişkenler
 
-Address-of işleci ([Address-of işleci](unsafe-code.md#the-address-of-operator)) ve `fixed` deyimin ([fixed deyimin](unsafe-code.md#the-fixed-statement)) değişkenleri iki kategoriye ayırır: ***Sabit değişkenler*** ve ***taşınamayacak değişkenler***.
+Address-of işleci ([Address-of işleci](unsafe-code.md#the-address-of-operator)) ve `fixed` deyimin ([fixed deyimin](unsafe-code.md#the-fixed-statement)) değişkenleri Iki kategoriye ayırır: ***sabit değişkenler*** ve ***Taşınabilir değişkenler***.
 
 Sabit değişkenler çöp toplayıcı 'nin işleminden etkilenmeyen depolama konumlarında bulunur. (Sabit değişkenlere örnek olarak, yerel değişkenler, değer parametreleri ve başvuru işaretçileri tarafından oluşturulan değişkenler verilebilir.) Diğer yandan, taşınabilir değişkenler çöp toplayıcısının yerini değiştirme veya aktiften çıkarma konusunda yer alan depolama konumlarında bulunur. (Taşınamayacak değişkenlerin örnekleri, nesne ve dizi öğelerindeki alanları içerir.)
 
@@ -300,7 +300,7 @@ Diğer tüm değişkenler taşınabilir değişkenler olarak sınıflandırılma
 
 Statik bir alanın taşınamayacak değişken olarak sınıflandırıldığını unutmayın. Ayrıca, parametre için verilen bağımsız değişken sabit bir değişken olsa bile `ref` veya `out` parametresinin taşınabilir bir değişken olarak sınıflandırıldığını unutmayın. Son olarak, bir işaretçinin başvurusunun kaldırılması tarafından oluşturulan bir değişkenin her zaman sabit bir değişken olarak sınıflandırıldığını unutmayın.
 
-## <a name="pointer-conversions"></a>İşaretçi Dönüştürmeler
+## <a name="pointer-conversions"></a>İşaretçi dönüştürmeleri
 
 Güvenli olmayan bir bağlamda, kullanılabilir örtük dönüştürmeler ([örtük dönüştürmeler](conversions.md#implicit-conversions)) kümesi aşağıdaki örtük işaretçi dönüşümlerini içerecek şekilde genişletilir:
 
@@ -385,7 +385,7 @@ foreach (V v in x) embedded_statement
 }
 ```
 
-@No__t-0, `i0`, `i1`,..., `iN`, `x` veya *embedded_statement* ya da programın herhangi bir kaynak kodu için görünür veya erişilebilir değildir. Değişken `v` , gömülü ifadede salt okunurdur. @No__t-1 ' den (öğe türü) `V` ' ye açık bir dönüştürme ([işaretçi dönüşümleri](unsafe-code.md#pointer-conversions)) yoksa, bir hata oluşturulur ve başka bir adım alınmaz. `System.NullReferenceException` Değeri `x` varsa`null`, çalışma zamanında bir oluşturulur.
+@No__t-0, `i0`, `i1`,..., `iN`, `x` veya *embedded_statement* ya da programın herhangi bir kaynak kodu için görünür veya erişilebilir değildir. @No__t-0 değişkeni gömülü ifadede salt okunurdur. @No__t-1 ' den (öğe türü) `V` ' ye açık bir dönüştürme ([işaretçi dönüşümleri](unsafe-code.md#pointer-conversions)) yoksa, bir hata oluşturulur ve başka bir adım alınmaz. @No__t-0 değeri `null` ise, çalışma zamanında bir `System.NullReferenceException` oluşturulur.
 
 ## <a name="pointers-in-expressions"></a>İfadelerdeki işaretçiler
 
@@ -579,7 +579,7 @@ T* operator --(T* x);
 
 Bir işaretçi artıma veya azaltma işlemi işaretçi türünün etki alanını taşarsa, sonuç uygulama tanımlı olur, ancak hiçbir özel durum üretilmez.
 
-### <a name="pointer-arithmetic"></a>İşaretçi aritmetiği
+### <a name="pointer-arithmetic"></a>İşaretçi aritmetik
 
 Güvenli olmayan bir bağlamda `+` ve `-` işleçleri ([toplama işleci](expressions.md#addition-operator) ve [çıkarma işleci](expressions.md#subtraction-operator)), `void*` hariç tüm işaretçi türlerinin değerlerine uygulanabilir. Bu nedenle, her işaretçi türü için `T*`, aşağıdaki işleçler örtülü olarak tanımlanmıştır:
 
@@ -606,7 +606,7 @@ long operator -(T* x, T* y);
 
 @No__t-0 ve `Q` bir işaretçi türü `T*` olduğunda, `P - Q` ifadesi `P` ve `Q` tarafından verilen adresler arasındaki farkı hesaplar ve ardından bu farkı `sizeof(T)` ' ya böler. Sonucun türü her zaman `long` ' dır. Aslında `P - Q` `((long)(P) - (long)(Q)) / sizeof(T)` olarak hesaplanır.
 
-Örneğin:
+Örnek:
 
 ```csharp
 using System;
@@ -662,7 +662,7 @@ sizeof_expression
 @No__t-0 işlecinin sonucu, `int` türünde bir değerdir. Önceden tanımlanmış bazı türler için `sizeof` işleci, aşağıdaki tabloda gösterildiği gibi sabit bir değer verir.
 
 
-| __İfadesini__   | __Sonuç__ |
+| __İfadesini__   | __Kaynaklanan__ |
 |------------------|------------|
 | `sizeof(sbyte)`  | `1`        |
 | `sizeof(byte)`   | `1`        |
@@ -775,7 +775,7 @@ class Test
 
 Tek boyutlu dizilerin güvenli olmayan bir bağlam dizisi öğelerinde, `0` dizininden başlayıp Dizin `Length - 1` ile biten Dizin sırasında artan dizin sırasında depolanır. Çok boyutlu diziler için, dizi öğeleri, en sağdaki boyutun dizinlerinin önce, ardından bir sonraki sol boyutun ve bu şekilde sol tarafında arttığı şekilde depolanır. @No__t-2 ' den bir dizi örneğine `p` işaretçisi alan `fixed` ifadesinde, `p` ' ten `p + a.Length - 1` ' e kadar olan işaretçi değerleri dizideki öğelerin adreslerini temsil eder. Benzer şekilde, `p[0]` ile `p[a.Length - 1]` arasındaki değişkenler gerçek dizi öğelerini temsil eder. Dizilerin nerede depolandığına göre, herhangi bir boyutun dizisini doğrusal hale gelse de işleyebiliriz.
 
-Örneğin:
+Örnek:
 
 ```csharp
 using System;
@@ -871,7 +871,7 @@ Yönetilen türdeki nesneleri sabit işaretçiler aracılığıyla değiştirmek
 
 Dizelerin otomatik olarak boş sonlandırması, "C stili" dizelerini bekleyen dış API 'Leri çağırırken özellikle kullanışlıdır. Ancak, bir dize örneğinin null karakter içermesine izin verildiğini unutmayın. Bu null karakterler varsa dize, null sonlandırılmış `char*` olarak kabul edildiğinde kesilir.
 
-## <a name="fixed-size-buffers"></a>Sabit Boyutlu Arabellekler
+## <a name="fixed-size-buffers"></a>Sabit boyutlu arabellekler
 
 Sabit boyutlu arabellekler, "C stili" satır içi dizileri yapıların üyeleri olarak bildirmek için kullanılır ve öncelikle yönetilmeyen API 'lerle arabirim oluşturma için faydalıdır.
 
@@ -1048,75 +1048,79 @@ yığın üzerinde 16 karakterlik bir arabellek ayırmak için `IntToString` yö
 using System;
 using System.Runtime.InteropServices;
 
-public unsafe class Memory
+public static unsafe class Memory
 {
     // Handle for the process heap. This handle is used in all calls to the
     // HeapXXX APIs in the methods below.
-    static int ph = GetProcessHeap();
-
-    // Private instance constructor to prevent instantiation.
-    private Memory() {}
+    private static readonly IntPtr s_heap = GetProcessHeap();
 
     // Allocates a memory block of the given size. The allocated memory is
     // automatically initialized to zero.
-    public static void* Alloc(int size) {
-        void* result = HeapAlloc(ph, HEAP_ZERO_MEMORY, size);
+    public static void* Alloc(int size)
+    {
+        void* result = HeapAlloc(s_heap, HEAP_ZERO_MEMORY, (UIntPtr)size);
         if (result == null) throw new OutOfMemoryException();
         return result;
     }
 
     // Copies count bytes from src to dst. The source and destination
     // blocks are permitted to overlap.
-    public static void Copy(void* src, void* dst, int count) {
+    public static void Copy(void* src, void* dst, int count)
+    {
         byte* ps = (byte*)src;
         byte* pd = (byte*)dst;
-        if (ps > pd) {
+        if (ps > pd)
+        {
             for (; count != 0; count--) *pd++ = *ps++;
         }
-        else if (ps < pd) {
+        else if (ps < pd)
+        {
             for (ps += count, pd += count; count != 0; count--) *--pd = *--ps;
         }
     }
 
     // Frees a memory block.
-    public static void Free(void* block) {
-        if (!HeapFree(ph, 0, block)) throw new InvalidOperationException();
+    public static void Free(void* block)
+    {
+        if (!HeapFree(s_heap, 0, block)) throw new InvalidOperationException();
     }
 
     // Re-allocates a memory block. If the reallocation request is for a
     // larger size, the additional region of memory is automatically
     // initialized to zero.
-    public static void* ReAlloc(void* block, int size) {
-        void* result = HeapReAlloc(ph, HEAP_ZERO_MEMORY, block, size);
+    public static void* ReAlloc(void* block, int size)
+    {
+        void* result = HeapReAlloc(s_heap, HEAP_ZERO_MEMORY, block, (UIntPtr)size);
         if (result == null) throw new OutOfMemoryException();
         return result;
     }
 
     // Returns the size of a memory block.
-    public static int SizeOf(void* block) {
-        int result = HeapSize(ph, 0, block);
+    public static int SizeOf(void* block)
+    {
+        int result = (int)HeapSize(s_heap, 0, block);
         if (result == -1) throw new InvalidOperationException();
         return result;
     }
 
     // Heap API flags
-    const int HEAP_ZERO_MEMORY = 0x00000008;
+    private const int HEAP_ZERO_MEMORY = 0x00000008;
 
     // Heap API functions
     [DllImport("kernel32")]
-    static extern int GetProcessHeap();
+    private static extern IntPtr GetProcessHeap();
 
     [DllImport("kernel32")]
-    static extern void* HeapAlloc(int hHeap, int flags, int size);
+    private static extern void* HeapAlloc(IntPtr hHeap, int flags, UIntPtr size);
 
     [DllImport("kernel32")]
-    static extern bool HeapFree(int hHeap, int flags, void* block);
+    private static extern bool HeapFree(IntPtr hHeap, int flags, void* block);
 
     [DllImport("kernel32")]
-    static extern void* HeapReAlloc(int hHeap, int flags, void* block, int size);
+    private static extern void* HeapReAlloc(IntPtr hHeap, int flags, void* block, UIntPtr size);
 
     [DllImport("kernel32")]
-    static extern int HeapSize(int hHeap, int flags, void* block);
+    private static extern UIntPtr HeapSize(IntPtr hHeap, int flags, void* block);
 }
 ```
 
@@ -1125,18 +1129,21 @@ public unsafe class Memory
 ```csharp
 class Test
 {
-    static void Main() {
-        unsafe {
-            byte* buffer = (byte*)Memory.Alloc(256);
-            try {
-                for (int i = 0; i < 256; i++) buffer[i] = (byte)i;
-                byte[] array = new byte[256];
-                fixed (byte* p = array) Memory.Copy(buffer, p, 256); 
-            }
-            finally {
-                Memory.Free(buffer);
-            }
-            for (int i = 0; i < 256; i++) Console.WriteLine(array[i]);
+    static unsafe void Main()
+    {
+        byte* buffer = null;
+        try
+        {
+            const int Size = 256;
+            buffer = (byte*)Memory.Alloc(Size);
+            for (int i = 0; i < Size; i++) buffer[i] = (byte)i;
+            byte[] array = new byte[Size];
+            fixed (byte* p = array) Memory.Copy(buffer, p, Size);
+            for (int i = 0; i < Size; i++) Console.WriteLine(array[i]);
+        }
+        finally
+        {
+            if (buffer != null) Memory.Free(buffer);
         }
     }
 }
