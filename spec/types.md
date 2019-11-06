@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: a28397b1ce97dbead6d5014e2b20e108a1018502
-ms.sourcegitcommit: 94a3d151c438d34ede1d99de9eb4ebdc07ba4699
+ms.openlocfilehash: 088c4a77cecde490c556c44c239a3496f896582e
+ms.sourcegitcommit: 4ddf18d000734c1b6d0a48127bf338086fc3f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64488785"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73616135"
 ---
 # <a name="types"></a>Türler
 
-C# dili türlerini iki ana kategoriye ayrılır: ***değer türleri*** ve ***başvuru türleri***. Hem değer türleri ve başvuru türleri olabilir ***genel türler***, bir veya daha fazla almakta ***tür parametrelerindeki***. Tür parametreleri, her iki değer türleri belirlemek ve başvuru türleri.
+C# Dilin türleri iki ana kategoriye ayrılmıştır: ***değer türleri*** ve ***başvuru türleri***. Değer türleri ve başvuru türleri, bir veya daha fazla ***tür parametresi***alacak ***Genel türler***olabilir. Tür parametreleri hem değer türlerini hem de başvuru türlerini belirleyebilir.
 
 ```antlr
 type
@@ -19,15 +19,15 @@ type
     ;
 ```
 
-Son kategori türlerinin işaretçileri, yalnızca güvenli olmayan kod içinde kullanılabilir. Bunu ele alınan ayrıntılı olarak [işaretçi türleri](unsafe-code.md#pointer-types).
+Türlerin son kategorisi, işaretçiler, yalnızca güvenli olmayan kodda kullanılabilir. Bu, [işaretçi türlerinde](unsafe-code.md#pointer-types)daha fazla ele alınmıştır.
 
-Değer türleri farklı başvuru türleri, değer türlerinin değişkenleri kendi verilerini doğrudan içerdiği değişkenleri başvuru türleri ise depolama ***başvuruları*** ikinci olarak bilinen verilerine, ***nesneleri***. Başvuru türleri ile bu iki değişken aynı nesneye başvurmak mümkün ve dolayısıyla işlemler diğer değişkenin başvurduğu nesneyi etkileyebilir bir değişken üzerinde mümkün olur. Değer türleri ile her değişkenleri kendi veri kopyası vardır ve yapılan işlemlerin diğerini etkilemesi olanaklı birinde değil.
+Değer türleri, değer türlerinin değişkenlerinin verilerini doğrudan içerdiği başvuru türlerinden farklıdır, ancak başvuru türündeki değişkenler, ikinci olarak ***nesneler***olarak bilinmekte olan verilerine ***başvuruları*** depolar. Başvuru türleriyle, iki değişken aynı nesneye başvurabilir ve bu nedenle bir değişkende işlemler, diğer değişken tarafından başvurulan nesneyi etkilemek için mümkündür. Değer türleriyle, her birinin kendi verilerinin bir kopyasına sahip olduğu ve bir üzerindeki işlemlerin diğerini etkilemesi mümkün değildir.
 
-C# tür sistemi, herhangi bir türde bir değer bir nesne olarak davranılıp şekilde birleşiktir. C# ' de her tür doğrudan veya dolaylı olarak türetir `object` sınıf türü, ve `object` tüm türlerin ultimate temel sınıftır. Başvuru türlerindeki değerleri nesneler olarak değer türü olarak yalnızca görüntüleyerek edilir `object`. Değer türlerinin değerleri nesneler olarak kutulama ve kutudan çıkarma işlemleri gerçekleştirerek edilir ([kutulama ve kutudan çıkarma](types.md#boxing-and-unboxing)).
+C#tür sistemi, herhangi bir tür değeri bir nesne olarak işlenemeyeceği şekilde birleştirilmiştir. Her tür doğrudan C# veya dolaylı olarak `object` sınıf türünden türetilir ve `object` tüm türlerin en son temel sınıfıdır. Başvuru türlerinin değerleri, `object`türü olarak değerleri görüntüleyerek nesne olarak değerlendirilir. Değer türlerinin değerleri, kutulama ve kutudan çıkarma işlemleri ([kutulama ve kutudan](types.md#boxing-and-unboxing)çıkarma) gerçekleştirerek nesneler olarak değerlendirilir.
 
 ## <a name="value-types"></a>Değer türleri
 
-Bir değer türü veya bir yapı türü, hem de bir numaralandırma türü değil. C# adlı önceden tanımlanmış bir yapı türleri kümesi sağlar ***basit türler***. Basit türler ayrılmış sözcükler tanımlanır.
+Değer türü bir struct türü ya da bir numaralandırma türüdür. C#***basit türler***adlı önceden tanımlanmış bir yapı türleri kümesi sağlar. Basit türler, ayrılmış sözcükler aracılığıyla tanımlanır.
 
 ```antlr
 value_type
@@ -82,32 +82,32 @@ enum_type
     ;
 ```
 
-Bir değişkeni başvuru türünde bir değer türünün bir değişkeni değer içerebilir `null` yalnızca değer türü boş değer atanabilir bir tür ise.  Her değer atanamayan değer türü için aynı değerleri artı değer kümesini belirten karşılık gelen null yapılabilir değer türü var. `null`.
+Bir başvuru türü değişkeninin aksine, bir değer türü değişkeni, yalnızca değer türü null yapılabilir bir tür ise `null` değerini içerebilir.  Null yapılamayan her değer türü için, aynı değer kümesini ve `null`değeri belirten karşılık gelen null yapılabilir bir değer türü vardır.
 
-Bir değer türü bir değişkene atama atanan değerin bir kopyasını oluşturur. Bu başvuru ancak başvuru tarafından tanımlanan nesnesi değil kopyalar bir başvuru türündeki bir değişkene atamadan farklıdır.
+Değer türünde bir değişkene atama, atanmakta olan değerin bir kopyasını oluşturur. Bu, atamadan bir başvuru türü değişkenine farklılık gösterir ve başvuruyu, başvuru tarafından tanımlanan nesneyi kopyalar.
 
-### <a name="the-systemvaluetype-type"></a>System.ValueType türü
+### <a name="the-systemvaluetype-type"></a>System. ValueType türü
 
-Tüm değer türleri örtülü olarak sınıftan `System.ValueType`, sırasıyla sınıfından devralan `object`. Bir değer türünden türetilen herhangi bir tür için mümkün değildir ve değer türleri böylece türetme ([sınıflar korumalı](classes.md#sealed-classes)).
+Tüm değer türleri dolaylı olarak `System.ValueType`sınıfından devralır, bu, sırasıyla sınıf `object`devralır. Herhangi bir türün bir değer türünden türemesini mümkün değildir ve değer türleri örtülü olarak mühürlenebilir ([korumalı sınıflardır](classes.md#sealed-classes)).
 
-Unutmayın `System.ValueType` kendisi değil bir *value_type*. Bunun yerine, olan bir *class_type* tüm gelen *value_type*s otomatik olarak türetilmiş.
+`System.ValueType` kendisinin bir *value_type*olmadığı unutulmamalıdır. Bunun yerine, tüm *value_type*s 'nin otomatik olarak türetildiği bir *class_type* .
 
-### <a name="default-constructors"></a>Varsayılan Oluşturucu
+### <a name="default-constructors"></a>Varsayılan oluşturucular
 
-Tüm değer türleri örtülü olarak adlı bir Ortak parametresiz örnek oluşturucusu bildirme ***varsayılan oluşturucu***. Varsayılan oluşturucu olarak bilinen sıfır başlatılmayan bir örnek döndürür ***varsayılan değer*** değer türü için:
+Tüm değer türleri örtük olarak ***Varsayılan Oluşturucu***adlı ortak parametresiz bir örnek Oluşturucusu bildirir. Varsayılan Oluşturucu değer türü için ***varsayılan değer*** olarak bilinen sıfır ile başlatılmış bir örnek döndürür:
 
-*  Tüm *simple_type*s, varsayılan değer: değerin sıfır bit deseni tarafından üretilen:
-    * İçin `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, ve `ulong`, varsayılan değer `0`.
-    * İçin `char`, varsayılan değer `'\x0000'`.
-    * İçin `float`, varsayılan değer `0.0f`.
-    * İçin `double`, varsayılan değer `0.0d`.
-    * İçin `decimal`, varsayılan değer `0.0m`.
-    * İçin `bool`, varsayılan değer `false`.
-*  İçin bir *enum_type* `E`, varsayılan değer `0`, türe dönüştürülebilir `E`.
-*  İçin bir *struct_type*, varsayılan değer tür alanları için tüm değer tür alanları varsayılan değerlerine ve tüm başvuru ayarlayarak üretilen `null`.
-*  İçin bir *nullable_type* örneği, varsayılan değer: `HasValue` özelliği false ve `Value` özelliği tanımsız. Varsayılan değer olarak da bilinir: ***null değer*** boş değer atanabilir tür.
+*  Tüm *Simple_Type*s için, varsayılan değer tüm sıfırlardan oluşan bir bit düzeniyle oluşturulan değerdir:
+    * `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`ve `ulong`için varsayılan değer `0`.
+    * `char`için varsayılan değer `'\x0000'`.
+    * `float`için varsayılan değer `0.0f`.
+    * `double`için varsayılan değer `0.0d`.
+    * `decimal`için varsayılan değer `0.0m`.
+    * `bool`için varsayılan değer `false`.
+*  Bir *enum_type* `E`için, varsayılan değer `E`türüne dönüştürülür `0`.
+*  Bir *struct_type*için varsayılan değer, tüm değer türü alanları varsayılan değerlerine ve tüm başvuru türü `null`alanlarına ayarlanarak oluşturulan değerdir.
+*  Bir *nullable_type* için varsayılan değer `HasValue` özelliğinin false olduğu ve `Value` özelliğinin tanımsız olduğu bir örneğidir. Varsayılan değer null yapılabilir türün ***null değeri*** olarak da bilinir.
 
-Diğer örnek oluşturucusu gibi bir değer türünün varsayılan oluşturucu kullanılarak çağrılan `new` işleci. Verimliliği nedeniyle, bu gereksinim aslında bir oluşturucu çağrı oluşturma uygulama sağlamak için tasarlanmamıştır. Değişkenleri aşağıdaki örnekte `i` ve `j` her ikisi de sıfır olarak başlatılır.
+Diğer örnek Oluşturucu gibi, bir değer türünün varsayılan Oluşturucusu `new` işleci kullanılarak çağrılır. Verimlilik açısından, bu gereksinim aslında uygulamanın bir Oluşturucu çağrısı oluşturması için tasarlanmamıştır. Aşağıdaki örnekte, `i` ve `j` değişkenleri sıfır olarak başlatılır.
 
 ```csharp
 class A
@@ -119,18 +119,18 @@ class A
 }
 ```
 
-Her değer türü örtük olarak bir Ortak parametresiz örnek oluşturucusu olduğundan, bir açık parametresiz bir oluşturucu bildirimi içeren bir yapı türü için mümkün değildir. Bir yapı türü, ancak parametreli örnek oluşturucuları bildirme izni ([oluşturucular](structs.md#constructors)).
+Her değer türünün örtük olarak ortak parametresiz bir örnek Oluşturucusu olduğundan, bir yapı türünün parametresiz bir oluşturucunun açık bir bildirimini içermesi mümkün değildir. Yapı türüne ancak parametreli örnek oluşturucuları ([oluşturucular](structs.md#constructors)) bildirme izni verilir.
 
 ### <a name="struct-types"></a>Yapı türleri
 
-Bir yapı türü sabitleri, alanları, yöntemleri, özellikleri, Dizinleyicileri, işleçleri, örnek oluşturucuları, statik oluşturucular ve iç içe geçmiş türler bildirebilirsiniz bir değer türüdür. Yapı türleri bildirimi açıklanan [yapı bildirimleri](structs.md#struct-declarations).
+Yapı türü, sabitler, alanlar, Yöntemler, özellikler, Dizin oluşturucular, işleçler, örnek oluşturucular, statik oluşturucular ve iç içe geçmiş türleri bildirebilen bir değer türüdür. Struct türlerinin bildirimi [struct bildirimlerinde](structs.md#struct-declarations)açıklanmıştır.
 
 ### <a name="simple-types"></a>Basit türler
 
-C# adlı önceden tanımlanmış bir yapı türleri kümesi sağlar ***basit türler***. Basit türler ayrılmış sözcükler tanımlanır, ancak yalnızca önceden tanımlanmış bir yapı türleri için diğer adlar şu ayrılmış sözcüklerdir `System` aşağıdaki tabloda açıklandığı gibi ad alanı.
+C#***basit türler***adlı önceden tanımlanmış bir yapı türleri kümesi sağlar. Basit türler ayrılmış sözcükler aracılığıyla tanımlanır, ancak aşağıdaki tabloda açıklandığı gibi, bu ayrılmış sözcükler `System` ad alanındaki önceden tanımlanmış yapı türleri için diğer adlardır.
 
 
-| __Ayrılmış bir sözcük__ | __Diğer adlı türü__ |
+| __Ayrılmış sözcük__ | __Diğer ad türü__ |
 |-------------------|------------------|
 | `sbyte`           | `System.SByte`   | 
 | `byte`            | `System.Byte`    | 
@@ -146,7 +146,7 @@ C# adlı önceden tanımlanmış bir yapı türleri kümesi sağlar ***basit tü
 | `bool`            | `System.Boolean` | 
 | `decimal`         | `System.Decimal` | 
 
-Bir yapı türü diğer adlar basit bir tür olduğundan, her bir basit tür üyeleri var. Örneğin, `int` bildirilmiş üyeleri `System.Int32` ve üyeleri devralınan `System.Object`, ve aşağıdaki deyimleri izin verilir:
+Basit bir tür bir struct türü olarak diğer ad olduğundan, her basit türün üyeleri vardır. Örneğin, `int`, `System.Int32` ve `System.Object`devralınmış Üyeler ve aşağıdaki deyimlerde belirtilen üyelere sahiptir:
 
 ```csharp
 int i = int.MaxValue;           // System.Int32.MaxValue constant
@@ -154,122 +154,122 @@ string s = i.ToString();        // System.Int32.ToString() instance method
 string t = 123.ToString();      // System.Int32.ToString() instance method
 ```
 
-Basit türler, bazı ek işlemler izin vermek, diğer yapı türlerden farklılık gösterir:
+Basit türler, bazı ek işlemlere izin veren diğer yapı türlerinden farklıdır:
 
-*  En basit türler değerleri yazılarak oluşturulmak izin *değişmez değerleri* ([değişmez değerleri](lexical-structure.md#literals)). Örneğin, `123` bir sabit değer türü olan `int` ve `'a'` bir sabit değer türü olan `char`. C# değişmez değerler için hiçbir sağlama yapı türleri, genel yapar ve diğer yapı türlerinin varsayılan olmayan değerleri sonuçta her zaman bu yapı türü örnek oluşturucuları oluşturulur.
-*  Bir ifadenin işlenenleri tüm basit tür sabit olduğunda, derleyici derleme zamanında ifadeyi değerlendirmek mümkündür. Böyle bir ifade olarak da bilinen bir *constant_expression* ([sabit ifadeler](expressions.md#constant-expressions)). Diğer yapı türleri tarafından tanımlanan işleçleri içeren ifadeler sabit ifadeler olması için dikkate alınmaz.
-*  Aracılığıyla `const` bildirimleri mümkündür basit türler sabitler ([sabitleri](classes.md#constants)). Diğer yapı tür sabitleri mümkün değildir, ancak benzer bir etkisi tarafından sağlanan `static readonly` alanları.
-*  Basit türler içeren dönüştürmeler diğer yapı türleri tarafından tanımlanan dönüşüm işleçleri değerlendirmesini katılıyor, ancak kullanıcı tanımlı dönüştürme işleci hiçbir zaman içinde başka bir kullanıcı tanımlı işleç değerlendirme katılabilir ([değerlendirmesi Kullanıcı tanımlı dönüşümler](conversions.md#evaluation-of-user-defined-conversions)).
+*  Çoğu basit tür değerleri *değişmez* değerler ([değişmez](lexical-structure.md#literals)değerler) yazılarak oluşturulacak şekilde izin verir. Örneğin, `123` `int` türünde bir değişmez değerdir ve `'a'` `char`türünde bir sabit değerdir. C#, genel olarak yapı türlerinin değişmez değerleri için bir provizyon yapmaz ve diğer yapı türlerinin varsayılan olmayan değerleri, sonuçta bu yapı türlerinin örnek oluşturucular aracılığıyla her zaman oluşturulur.
+*  Bir ifadenin işlenenleri tüm basit tür sabitlersiyse, derleyicinin derlemeyi derleme zamanında değerlendirmesi mümkündür. Böyle bir ifade, *constant_expression* ([sabit ifadeler](expressions.md#constant-expressions)) olarak bilinir. Diğer yapı türleri tarafından tanımlanan işleçleri içeren ifadeler sabit ifadeler olarak kabul edilmez.
+*  `const` bildirimleri aracılığıyla basit türlerin ([sabitler](classes.md#constants)) sabitlerini bildirmek mümkündür. Diğer yapı türlerinin sabitlerinin olması mümkün değildir, ancak `static readonly` alanlar tarafından benzer bir efekt sağlanır.
+*  Basit türler içeren dönüştürmeler, diğer yapı türleri tarafından tanımlanan dönüştürme işleçleri değerlendirmesinde yer alabilir, ancak kullanıcı tanımlı bir dönüştürme işleci hiçbir şekilde Kullanıcı tanımlı başka bir işlecin değerlendirilmesine katılamaz ([değerlendirmesi Kullanıcı tanımlı dönüştürmeler](conversions.md#evaluation-of-user-defined-conversions)).
 
-### <a name="integral-types"></a>Tam sayı türleri
+### <a name="integral-types"></a>Integral türleri
 
-C# dokuz tamsayı türlerini destekler: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, ve `char`. Aşağıdaki boyutları ve değerler aralığı tam sayı türleri vardır:
+C#Dokuz integral türünü destekler: `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`ve `char`. İntegral türleri aşağıdaki boyutlara ve değer aralıklarına sahiptir:
 
-*  `sbyte` İmzalı -128 ile 127 arasında değerlerle 8 bit tamsayı türünü temsil eder.
-*  `byte` Türünü işaretsiz 8 bit tam sayı 0 ile 255 arasında değerlerle temsil eder.
-*  `short` Türü temsil imzalı -32768 ile 32767 arasında değerlerle 16 bitlik tamsayı.
-*  `ushort` Türünü işaretsiz 16 bit tam sayı 0 ile 65535 arasında değerlerle temsil eder.
-*  `int` İmzalı 32-bit tamsayı değerleri -2147483648 ile 2147483647 arasında olan türü temsil eder.
-*  `uint` Türünü işaretsiz 32-bit tamsayı değerleri 0 ve 4294967295 arasında ile temsil eder.
-*  `long` İmzalı -9223372036854775808 ile 9223372036854775807 arasındaki değerleri ile 64 bit tamsayı türü temsil eder.
-*  `ulong` Türünü işaretsiz 64-bit tamsayı değerleri 0 ile 18446744073709551615 arasında ile temsil eder.
-*  `char` Türünü işaretsiz 16 bit tam sayı 0 ile 65535 arasında değerlerle temsil eder. İçin olası değerler kümesini `char` UNICODE karakter kümesine karşılık gelen türü. Ancak `char` aynı gösterime sahip `ushort`, diğer tüm işlemler bir yola izin izin verilir.
+*  `sbyte` türü,-128 ile 127 arasında değerleri olan işaretli 8 bit tamsayıları temsil eder.
+*  `byte` türü, 0 ile 255 arasında değerler içeren işaretsiz 8 bit tamsayılar temsil eder.
+*  `short` türü,-32768 ile 32767 arasında değerleri olan işaretli 16 bit tamsayıları temsil eder.
+*  `ushort` türü, 0 ile 65535 arasında değerler içeren işaretsiz 16 bit tamsayılar temsil eder.
+*  `int` türü,-2147483648 ve 2147483647 değerlerini içeren imzalı 32 bitlik tamsayılar temsil eder.
+*  `uint` türü, 0 ile 4294967295 arasındaki değerlere sahip işaretsiz 32 bitlik tamsayılar temsil eder.
+*  `long` türü,-9223372036854775808 ve 9223372036854775807 değerlerini içeren imzalı 64 bitlik tamsayıları temsil eder.
+*  `ulong` türü, 0 ile 18446744073709551615 arasında değerler içeren işaretsiz 64 bitlik tamsayılar temsil eder.
+*  `char` türü, 0 ile 65535 arasında değerler içeren işaretsiz 16 bit tamsayılar temsil eder. `char` türü için olası değerler kümesi Unicode karakter kümesine karşılık gelir. `char`, `ushort`aynı gösterimine sahip olsa da, bir tür üzerinde izin verilen tüm işlemlere izin verilmez.
 
-İkili işleçler ve integral türünden birli imzalı 32-bit duyarlığa, işaretsiz 32-bit duyarlığa, imzalı 64-bit duyarlığa veya işaretsiz 64-bit kesinliği ile her zaman çalışır:
+Tam sayı türü birli ve ikili işleçler her zaman imzalanmış 32 bit duyarlık, imzasız 32 bit duyarlık, imzalı 64 bit duyarlık veya imzasız 64-bit duyarlık ile çalışır:
 
-*  Birli için `+` ve `~` işleçleri, işlenenin türüne dönüştürülür `T`burada `T` rehberin `int`, `uint`, `long`, ve `ulong` tam olarak temsil edebilen tüm Olası değerler işlenenin. Duyarlık türü kullanarak işlemi gerçekleştirilir `T`, ve sonuç türü `T`.
-*  Birli için `-` işleci, işlenenin türüne dönüştürülür `T`burada `T` rehberin `int` ve `long` tam olarak temsil edebilen işlenenin tüm olası değerler. Duyarlık türü kullanarak işlemi gerçekleştirilir `T`, ve sonuç türü `T`. Birli `-` işleci türündeki işlenenlere uygulanamaz `ulong`.
-*  İkili için `+`, `-`, `*`, `/`, `%`, `&`, `^`, `|`, `==`, `!=`, `>`, `<`, `>=`, ve `<=` işleçler işlenenlerin türüne dönüştürülür `T`burada `T` rehberin `int`, `uint`, `long`, ve `ulong` tam olarak temsil edebilen tüm olası Her iki işlenen de değerleri. Duyarlık türü kullanarak işlemi gerçekleştirilir `T`, ve sonuç türü `T` (veya `bool` operatörler için). Bir işlenen türünde olmasını verilmeyen `long` ve diğer türünde olmasını `ulong` ikili işleçlere sahip.
-*  İkili için `<<` ve `>>` işleçleri, sol işlenen türüne dönüştürülür `T`burada `T` rehberin `int`, `uint`, `long`, ve `ulong` tam olarak temsil edebilen tüm Olası değerler işlenenin. Duyarlık türü kullanarak işlemi gerçekleştirilir `T`, ve sonuç türü `T`.
+*  Birli `+` ve `~` işleçleri için, işlenen `T`türüne dönüştürülür, burada `T`, işlenenin tüm olası değerlerini tam olarak temsil eden `int`, `uint`, `long`ve `ulong`. Daha sonra işlem `T`türü duyarlık kullanılarak gerçekleştirilir ve sonucun türü `T`.
+*  Birli `-` işleci için, işlenen `T`türüne dönüştürülür; burada `T`, işlenenin tüm olası değerlerini tam olarak temsil eden `int` ve `long`. Daha sonra işlem `T`türü duyarlık kullanılarak gerçekleştirilir ve sonucun türü `T`. Birli `-` işleci `ulong`türündeki işlenenlere uygulanamaz.
+*  İkili `+`, `-`, `*`, `/`, `%`, `&`, `^`, `|`, `==`, `!=`, `>`, `<`, `>=`ve `<=` işleçleri için işlenen, her iki işlenenin olası tüm değerlerini tam olarak temsil eden `int`, `uint`, `long`ve `ulong` ilk `T` `T`türüne dönüştürülür. Daha sonra işlem, `T`türü duyarlık kullanılarak gerçekleştirilir ve sonucun türü `T` (veya ilişkisel işleçler için `bool`). Bir işlenenin `long` türü ve diğeri de ikili işleçlerle `ulong` türünden olması için izin verilmez.
+*  İkili `<<` ve `>>` işleçleri için, sol işlenen `T`türüne dönüştürülür; burada `T` ilki, `int`, `uint`ve `long`, işlenenin tüm olası değerlerini tam olarak temsil edebilir. Daha sonra işlem `T`türü duyarlık kullanılarak gerçekleştirilir ve sonucun türü `T`.
 
-`char` Türü bir tam sayı türü olarak sınıflandırılan, ancak diğer tamsayı türlerinin iki şekilde farklıdır:
+`char` türü bir integral türü olarak sınıflandırıldı, ancak diğer integral türlerinden iki şekilde farklı olur:
 
-*  Diğer türlerinden herhangi bir örtük dönüştürme vardır `char` türü. Özellikle, olsa bile `sbyte`, `byte`, ve `ushort` türlerine sahip tam olarak gösterilebilir kullanarak olan değerleri aralığı `char` türüne örtük dönüşümlere `sbyte`, `byte`, veya `ushort` için `char` mevcut değil.
-*  Sabitleri `char` türü olarak yazılmalıdır *character_literal*s veya as *integer_literal*yazmanız için bir yayın birlikte s `char`. Örneğin, `(char)10` aynı `'\x000A'`.
+*  Diğer türlerden `char` türüne örtük dönüştürme yok. Özellikle, `sbyte`, `byte`ve `ushort` türleri `char` türünü kullanarak tam olarak gösterilemeyen değer aralıklarına sahip olsa da, `sbyte`, `byte`veya `ushort` ' ten örtülü dönüştürmeler yok `char`.
+*  `char` türünün sabitleri, `char`türüne dönüştürme ile birlikte *character_literal*s veya as *integer_literal*s olarak yazılmalıdır. Örneğin, `(char)10` `'\x000A'`aynıdır.
 
-`checked` Ve `unchecked` işleçler ve ifadeler Tamsayı türünde aritmetik işlemler ve dönüştürmeler için denetleme taşma denetlemek için kullanılır ([checked ve unchecked işleçleri](expressions.md#the-checked-and-unchecked-operators)). İçinde bir `checked` bağlamı, taşma bir derleme zamanı hatası oluşturur veya neden olan bir `System.OverflowException` oluşturulması için. İçinde bir `unchecked` bağlamını, taşan yok sayılır ve hedef türüne uygun değil herhangi bir yüksek sıra bitleri atılır.
+`checked` ve `unchecked` işleçleri ve deyimleri, tam sayı türü aritmetik işlemler ve dönüştürmeler için taşma denetimini denetlemek için kullanılır ([denetlenen ve işaretlenmemiş işleçler](expressions.md#the-checked-and-unchecked-operators)). `checked` bağlamında, taşma bir derleme zamanı hatası üretir veya bir `System.OverflowException` oluşturulmasına neden olur. `unchecked` bağlamında, taşmalar yok sayılır ve hedef türüne uymayan tüm yüksek sıralı bitler atılır.
 
 ### <a name="floating-point-types"></a>Kayan nokta türleri
 
-C# destekleyen iki kayan nokta türleri: `float` ve `double`. `float` Ve `double` türleri, aşağıdaki değerleri kümesi sağlayan 32-bit tek duyarlıklı ve 64-bit çift duyarlıklı IEEE 754 biçimlerini kullanarak gösterilir:
+C#iki kayan nokta türünü destekler: `float` ve `double`. `float` ve `double` türleri, aşağıdaki değer kümelerini sağlayan 32 bitlik tek duyarlıklı ve 64 bit çift duyarlıklı IEEE 754 biçimleri kullanılarak temsil edilir:
 
-*  Pozitif sıfır ve sıfır negatif. Çoğu durumda, pozitif sıfır ve negatif sıfır aynı şekilde davranır basit değer sıfır, ancak belirli işlemleri ikisi arasında ayrım ([bölme işleci](expressions.md#division-operator)).
-*  Pozitif sonsuz ve negatif sonsuz. Sonsuz, sıfır olmayan bir sayı sıfıra bölme olarak bu işlemler tarafından oluşturulur. Örneğin, `1.0 / 0.0` Pozitif sonsuz verir ve `-1.0 / 0.0` konusundaki negatif sonsuz.
-*  ***Sayı değil*** genellikle kısaltılmış NaN değeri. NaN'ler sıfır olarak sıfıra bölme gibi geçersiz kayan nokta işlemleri tarafından oluşturulur.
-*  Sıfır olmayan değerler biçiminin sınırlı kümesini `s * m * 2^e`burada `s` 1 veya -1'dir ve `m` ve `e` belirli kayan nokta türüne göre belirlenir: İçin `float`, `0 < m < 2^24` ve `-149 <= e <= 104`ve `double`, `0 < m < 2^53` ve `1075 <= e <= 970`. Normalleştirilmemiş bir kayan noktalı sayılar, geçerli sıfır olmayan değerler olarak kabul edilir.
+*  Pozitif sıfır ve negatif sıfır. Çoğu durumda, pozitif sıfır ve negatif sıfır değeri basit değer sıfır ile aynı şekilde davranır, ancak belirli işlemler iki ([bölme işleci](expressions.md#division-operator)) arasında ayrım yapar.
+*  Pozitif sonsuzluk ve negatif sonsuz. Sonsuz sayısı sıfır olmayan bir sayı sıfıra bölünerek bu işlemler tarafından oluşturulur. Örneğin, `1.0 / 0.0` pozitif sonsuz verir ve `-1.0 / 0.0` negatif sonsuz verir.
+*  ***Bir sayı değil*** değeri genellikle kısaltılmış Nan. NaNs 'ler, sıfıra bölme gibi geçersiz kayan nokta işlemleri tarafından üretilir.
+*  `s * m * 2^e`, `s` 1 veya-1 olduğu ve `m` ve `e` belirli kayan nokta türü tarafından belirlendiği şekilde, sıfır olmayan değerler kümesi: `float`, `0 < m < 2^24` ve `-149 <= e <= 104`ve `double`, `0 < m < 2^53` ve `-1075 <= e <= 970`. Normalleştirilmemiş kayan noktalı sayılar geçerli sıfır olmayan değerler olarak kabul edilir.
 
-`float` Türü yaklaşık aralığındaki değerleri temsil eden `1.5 * 10^-45` için `3.4 * 10^38` 7 basamak kesinliği ile.
+`float` türü, yaklaşık `1.5 * 10^-45` 7 basamaklı bir duyarlık ile `3.4 * 10^38` kadar olan değerleri temsil edebilir.
 
-`double` Türü yaklaşık aralığındaki değerleri temsil eden `5.0 * 10^-324` için `1.7 × 10^308` 15-16 basamak kesinliği ile.
+`double` türü, 15-16 basamaklı bir duyarlık ile `1.7 × 10^308` kadar yaklaşık `5.0 * 10^-324` değişen değerleri temsil edebilir.
 
-İkili işlecinin işlenenleri kayan nokta türü ise, daha sonra diğer işlenen bir tamsayı türü veya bir kayan nokta türü olmalıdır ve işlem gibi değerlendirilir:
+Bir ikili işlecin işlenenlerinden biri kayan nokta türünde ise, diğer işlenen bir integral türü veya kayan nokta türünde olmalıdır ve işlem aşağıdaki gibi değerlendirilir:
 
-*  Ardından biri bir tamsayı türü ise, işlenen diğer işlenen kayan nokta türüne dönüştürülür.
-*  Daha sonra ya da işlenen türü ise `double`, diğer işlenen dönüştürülür `double`, en az kullanma işlemin gerçekleştirilmesinden `double` aralık ve duyarlık ve sonuç türü `double` (veya `bool` için İlişkisel işleçler:).
-*  Aksi takdirde işlemi en az kullanılarak gerçekleştirilir `float` aralık ve duyarlık ve sonuç türü `float` (veya `bool` operatörler için).
+*  İşlenenden biri integral türünde ise, bu işlenen diğer işlenenin kayan nokta türüne dönüştürülür.
+*  Ardından, işlenenlerden biri `double`türünde ise, diğer işlenen `double`dönüştürülür, işlem en az `double` Aralık ve duyarlık kullanılarak yapılır ve sonucun türü `double` (veya ilişkisel işleçler için `bool`).
+*  Aksi takdirde, işlem en az `float` Aralık ve duyarlık kullanılarak gerçekleştirilir ve sonucun türü `float` (veya ilişkisel işleçler için `bool`).
 
-Atama İşleçleri kayan nokta işleçlerin, hiçbir zaman özel durum oluşturur. Bunun yerine, olağanüstü durumlarda, kayan nokta işlemleri sıfır, sonsuzluk ve NaN, aşağıda açıklandığı gibi oluşturmak:
+Atama işleçleri de dahil olmak üzere kayan nokta işleçleri hiçbir şekilde özel durum oluşturmaz. Bunun yerine, bazı durumlarda kayan nokta işlemleri, aşağıda açıklandığı gibi sıfır, sonsuz veya NaN üretir:
 
-*  Kayan noktalı bir işlemin sonucunu hedef biçimi depolayamayacak kadar küçükse, işlemin sonucunu pozitif sıfır veya negatif sıfır.
-*  Kayan noktalı bir işlemin sonucunu hedef biçimi çok büyük ise, işlemin sonucunu, Pozitif sonsuz veya negatif sonsuz olur.
-*  Kayan noktalı bir işlemin geçersiz ise, NaN işleminin sonucu olur.
-*  İşlemin sonucu bir veya iki işlenenin de kayan noktalı bir işlemin NaN ise, NaN haline gelir.
+*  Kayan noktalı bir işlemin sonucu hedef biçim için çok küçükse, işlemin sonucu pozitif sıfır veya negatif sıfır olur.
+*  Kayan noktalı bir işlemin sonucu hedef biçim için çok büyükse, işlemin sonucu pozitif sonsuzluk veya negatif sonsuzluk olur.
+*  Kayan noktalı bir işlem geçersizse, işlemin sonucu NaN olur.
+*  Kayan noktalı bir işlemin bir veya her iki işleneni de NaN ise, işlemin sonucu NaN olur.
 
-Kayan nokta işlemleri, işlemin sonuç türü daha yüksek duyarlık ile gerçekleştirilebilir. Örneğin, bazı donanım mimarileri büyük aralık ve duyarlık daha ile bir "uzun" veya "long double" kayan nokta türü desteği `double` yazın ve örtük olarak bu daha yüksek duyarlılık türünü kullanan tüm kayan nokta işlemleri gerçekleştirin. Yalnızca ücret ödemeden aşırı performans gibi donanım mimarileri daha az hassas kayan nokta işlemleri gerçekleştirmek için yapılabilir ve C# daha yüksek duyarlılık türünün olmasını gerektiren bir uygulama hem performans hem de duyarlık kaybeder yerine sağlar tüm kayan nokta işlemleri için kullanılır. Daha kesin sonuç sağlama dışında bu nadiren herhangi ölçülebilir etkilere sahiptir. Bununla birlikte, formun ifadelerde `x * y / z`nerede çarpma dışında bir sonuç üretir `double` aralığı, ancak sonraki bölme geçici sonucu geri getirir `double` aralık ifade olgusu değerlendirilen daha yüksek bir aralık içinde sonsuzluk yerine üretilecek sınırlı bir sonuç biçimi neden olabilir.
+Kayan nokta işlemleri, işlemin sonuç türünden daha yüksek bir duyarlıkla gerçekleştirilebilir. Örneğin, bazı donanım mimarileri, `double` türünden daha fazla Aralık ve duyarlık içeren bir "genişletilmiş" veya "uzun çift" kayan nokta türü destekler ve bu daha yüksek duyarlık türünü kullanarak tüm kayan nokta işlemlerini örtülü olarak gerçekleştirir. Yalnızca yüksek maliyetli performans, bu tür donanım mimarileri daha az duyarlılıkla kayan nokta işlemleri gerçekleştirmek için yapılabilir ve hem performans hem de duyarlık sağlamak için bir uygulama istemek yerine, daha yüksek bir duyarlık türüne C# izin verir Tüm kayan nokta işlemleri için kullanılabilir. Daha kesin sonuçlar sunmaya kıyasla, bu nadiren de ölçülebilir etkileri vardır. Bununla birlikte, çarpma 'nın `double` aralığın dışında kalan bir sonuç oluşturduğu `x * y / z`, ancak sonraki bölme geçici sonucu `double` aralığına geri getirirse, ifadenin bir daha yüksek Aralık biçimi sonsuz bir sonucun bir sonsuzluk yerine üretilmesine neden olabilir.
 
-### <a name="the-decimal-type"></a>Decimal türü
+### <a name="the-decimal-type"></a>Ondalık tür
 
-`decimal` Türüdür finansal ve parasal hesaplamalar için uygun bir 128-bit veri türü. `decimal` Türü arasında değişen değerlerini temsil eden `1.0 * 10^-28` için yaklaşık `7.9 * 10^28` 28-29 belirgin basamağı ile.
+`decimal` türü, finansal ve parasal hesaplamalar için uygun olan 128 bitlik bir veri türüdür. `decimal` türü, 28-29 önemli bir basamakla `1.0 * 10^-28` yaklaşık olarak `7.9 * 10^28` kadar olan değerleri temsil edebilir.
 
-Sınırlı tür değerleri kümesi `decimal` biçimindedir `(-1)^s * c * 10^-e`burada oturum `s` 0 veya 1, katsayısı `c` tarafından verilen `0 <= *c* < 2^96`ve ölçek `e` olduğu gibi `0 <= e <= 28`. `decimal` İmzalı sıfır, sonsuz veya NaN'ın türü desteklemiyor. A `decimal` yaklaşık on kuvveti Ölçeklendirildi 96 bitlik bir tamsayı olarak temsil edilir. İçin `decimal`s mutlak bir değer ile kısa `1.0m`, 28 ondalık basamak için tam, ancak başka değerdir. İçin `decimal`mutlak bir değer büyüktür veya eşittir s `1.0m`, 28 ya da 29 basamağa kadar kesin bir değerdir. Contrary için `float` ve `double` veri türlerini ondalık kesirli sayılar gibi 0,1 gösterilebileceği tam olarak `decimal` gösterimi. İçinde `float` ve `double` temsilleri böyle sayılardır genellikle sonsuz kesir bu gösterimler yuvarlama daha açık hale getirme hataları.
+`decimal` türü sınırlı değerler kümesi, işaret `s` 0 veya 1 olduğunda, katsayı `c` `0 <= *c* < 2^96`tarafından verildiği ve ölçek `e` `0 <= e <= 28`gibi bir `(-1)^s * c * 10^-e`formundadır. `decimal` türü, imzalanmış sıfırları, sonsuz veya NaN 'yi desteklemez. Bir `decimal`, on ' un bir kuvvetine ölçeklenerek 96 bitlik bir tamsayı olarak temsil edilir. `1.0m`sıfırdan küçük bir değer olan `decimal`s için, değer tamamen 28 ondalık hanesiz, ancak başka bir değer değildir. `1.0m`sıfırdan büyük veya buna eşit bir mutlak değere sahip `decimal`s için, değer 28 veya 29 haneye eşittir. `float` ve `double` veri türlerinin aksine, 0,1 gibi ondalık kesirli sayılar tam olarak `decimal` gösteriminde temsil edilebilir. `float` ve `double` temsilleri genellikle sonsuz kesirler olur ve bu temsiller, yuvarlama hatalarına karşı daha açıktır.
 
-İkili işlecinin işlenenleri birini türde ise `decimal`, diğer işlenen bir tamsayı türü veya tür olmalıdır `decimal`. Bir tamsayı türü işlenen mevcutsa dönüştürülür `decimal` işlemi gerçekleştirilmeden önce.
+Bir ikili işlecin işlenenlerinden biri `decimal`türünde ise, diğer işlenenin bir integral türünde veya `decimal`türünde olması gerekir. İntegral tür işleneni varsa, işlem gerçekleştirilmeden önce `decimal` dönüştürülür.
 
-Türünün değerleri üzerinde bir işlemin sonucunu `decimal` olduğundan, tam bir sonucu (her işleç tanımlanmış olarak koruyucu ölçeklendirme) hesaplama ve ardından gösterimi uyacak şekilde yuvarlama sonuçlanır. Sonuç yuvarlanır en yakın gösterilebilir değere ve bir sonuç yakın iki temsil edilebilir değerler, bir çift sayı olan en az önemli basamak konumu (Bu bilinen "banker yuvarlama gibi") değerine eşit olduğunda. Sıfır sonuç her zaman 0'ın bir oturum ve ölçeği 0 sahiptir.
+`decimal` türündeki değerler üzerindeki bir işlemin sonucu, tam bir sonucun hesaplanmasının (ölçeği koruma, her operatör için tanımlanan şekilde koruma) ve ardından temsili sığacak şekilde yuvarlamasının sonuçlandığı anlamına gelir. Sonuçlar en yakın gösterilemeyen değere yuvarlanır ve bir sonuç iki gösterilemeyen değere eşit bir şekilde yakınsa, en az önemli basamak konumunda çift sayı olan değere ("banker 'in yuvarlanması" olarak bilinir). Sıfır sonucun her zaman 0 ve Ölçeği 0 olan bir imzası vardır.
 
-Eşit veya daha düşük bir değere ondalık bir aritmetik işlemi neden oluyorsa `5 * 10^-29` mutlak değeri, işlemin sonucunu sıfır olur. Varsa bir `decimal` aritmetik işlemi için çok büyük bir sonuç üretir `decimal` biçiminde bir `System.OverflowException` oluşturulur.
+Ondalık aritmetik işlem mutlak değerde `5 * 10^-29` değerinden küçük veya buna eşit bir değer üretirse, işlemin sonucu sıfır olur. Bir `decimal` aritmetik işlemi `decimal` biçimi için çok büyük bir sonuç üretirse, bir `System.OverflowException` oluşturulur.
 
-`decimal` Türünde daha fazla duyarlık ancak daha küçük aralığından daha kayan nokta türleri. Bu nedenle, kayan nokta türlerinden dönüşümler `decimal` taşması özel durumları ve dönüşümlerse üretebilir `decimal` kayan nokta türleri için duyarlık kaybına neden. Bu nedenlerle, kayan nokta türleri arasında örtük dönüştürme işlemi yok mevcut ve `decimal`, ve açık atamaları kayan nokta karıştırmak mümkün değildir ve `decimal` işlenenler aynı ifadede.
+`decimal` türünün daha fazla duyarlığı ancak kayan nokta türlerinden daha küçük bir aralığı vardır. Bu nedenle, kayan nokta türlerinden `decimal` dönüşümler, taşma özel durumları üretebilir ve `decimal` ' dan kayan nokta türlerine dönüşümler duyarlık kaybına neden olabilir. Bu nedenlerden dolayı, kayan nokta türleri ve `decimal`arasında örtük dönüştürmeler yoktur ve açık yayınlar olmadan, kayan nokta ve `decimal` işlenenlerini aynı ifadede karıştırmak mümkün değildir.
 
 ### <a name="the-bool-type"></a>Bool türü
 
-`bool` Türünü, boolean mantıksal miktarlar temsil eder. Olası değerler türü `bool` olan `true` ve `false`.
+`bool` türü, Boolean mantıksal miktarları temsil eder. `bool` türündeki olası değerler `true` ve `false`.
 
-Standart dönüştürme arasındaki farklara `bool` ve diğer türleri. Özellikle, `bool` türüdür ve tam sayı türlerinden ayrı ve `bool` değeri bir tamsayı değeri yerine ve bunun tersi de kullanılamaz.
+`bool` ve diğer türler arasında standart dönüştürme yok. Özellikle, `bool` türü benzersiz ve integral türlerden ayrıdır ve bir `bool` değeri bir tam sayı değeri yerine kullanılamaz ve tam tersi de geçerlidir.
 
-C ve C++ dillerinde, sıfır ayrılmaz veya kayan nokta değeri ya da bir null işaretçiyse boolean değerine dönüştürülebilir `false`, ve sıfır olmayan bir tamsayı veya kayan nokta değer veya null olmayan bir işaretçi boolean değerine dönüştürülebilir `true`. C# içinde bu tür dönüştürmeler açıkça bir tamsayı veya kayan nokta değeri sıfıra karşılaştırma ya da açıkça bir nesne başvurusu karşılaştırma gerçekleştirilir `null`.
+C ve C++ dillerde sıfır tamsayı veya kayan nokta değeri ya da null işaretçisi, boolean değer `false`, sıfır olmayan bir tamsayı veya kayan nokta değeri veya null olmayan bir işaretçi, `true`Boole değerine dönüştürülebilir. ' C#De, bu tür dönüştürmeler, tam olarak bir integral veya kayan nokta değeri sıfıra karşılaştırılarak veya bir nesne başvurusunu `null`açıkça karşılaştırarak gerçekleştirilir.
 
 ### <a name="enumeration-types"></a>Numaralandırma türleri
 
-Bir numaralandırma türü, adlandırılmış sabitler ile farklı bir türdür. Her sabit listesi türünde olmalıdır bir temel türü `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long` veya `ulong`. Numaralandırma türü değerleri kümesi, temel alınan tür değerleri kümesi ile aynıdır. Numaralandırma türünün değerlerini adlandırılmış sabitlerin değerleri için sınırlı değildir. Numaralandırma türleri numaralandırma bildirimleri tanımlanır ([Enum bildirimleri](enums.md#enum-declarations)).
+Sabit listesi türü, adlandırılmış sabitleri olan ayrı bir türdür. Her numaralandırma türünün, `byte`, `sbyte`, `short`, `ushort`, `int`, `uint`, `long` veya `ulong`olması gereken temel bir türü vardır. Numaralandırma türünün değer kümesi, temel alınan türün değerleri kümesiyle aynıdır. Numaralandırma türünün değerleri, adlandırılmış sabitlerin değerleriyle sınırlı değildir. Numaralandırma türleri, numaralandırma bildirimleri ([enum bildirimleri](enums.md#enum-declarations)) aracılığıyla tanımlanır.
 
 ### <a name="nullable-types"></a>Boş değer atanabilir tipler
 
-Boş değer atanabilir bir tür tüm değerleri temsil edebilen kendi ***temel alınan türü*** artı ek bir null değer. Boş değer atanabilir bir tür yazılan `T?`burada `T` temel alınan türü. İçin Toplu özellik bu sözdizimidir `System.Nullable<T>`, ve iki birbirlerinin yerine kullanılabilir.
+Null yapılabilir bir tür, ***temel türünün*** tüm değerlerini ve ek bir null değeri temsil edebilir. Null yapılabilir bir tür `T?`yazılır; burada `T` temel tür. Bu sözdizimi `System.Nullable<T>`için toplu bir özelliktir ve iki form birbirinin yerine kullanılabilir.
 
-A ***NULL olmayan değer türü*** tersine dışında herhangi bir değer türü olan `System.Nullable<T>` ve kendi toplu `T?` (herhangi `T`), bir NULL olmayan değer türü (diğer bir deyişle, tüm kısıtlanmış bir tür parametresi artı tür parametresi ile bir `struct` kısıtlama). `System.Nullable<T>` Türü için değer türü kısıtlaması belirtir `T` ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)), herhangi bir değer atanamayan değer türünün temel türünü null yapılabilir bir tür olabileceği anlamına gelir. Boş değer atanabilir bir tür temel türü, null yapılabilir bir tür veya bir başvuru türü olamaz. Örneğin, `int??` ve `string?` geçersiz türleridir.
+***Null yapılamayan bir değer türü*** , `System.Nullable<T>` dışında herhangi bir değer türü ve onun toplu `T?` (herhangi bir `T`için) ve null yapılamayan bir değer türü (yani, `struct` bir tür parametresi) olarak kısıtlanan herhangi bir tür parametresi. kısıtlama). `System.Nullable<T>` türü, `T` ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) için değer türü kısıtlamasını belirtir, yani null yapılabilir bir türün temel alınan türünün hiçbir null yapılamayan değer türü olabileceği anlamına gelir. Null yapılabilir bir türün temel alınan türü null yapılabilir bir tür veya başvuru türü olamaz. Örneğin, `int??` ve `string?` geçersiz türlerdir.
 
-Boş değer atanabilir bir tür örneği `T?` iki genel salt okunur özelliklere sahiptir:
+Null yapılabilir bir `T?` tür örneğinin iki ortak salt okuma özelliği vardır:
 
-*  A `HasValue` türünün özelliği `bool`
-*  A `Value` türünün özelliği `T`
+*  `bool` türünde bir `HasValue` özelliği
+*  `T` türünde bir `Value` özelliği
 
-Bir örneğin `HasValue` olan NULL olmayan söyledi true. Bilinen bir değerle null olmayan bir örnek içerir ve `Value` değeri döndürür.
+`HasValue` true olan bir örnek, null olmayan olarak kabul edilir. Null olmayan bir örnek bilinen bir değer içerir ve `Value` bu değeri döndürür.
 
-Bir örneğin `HasValue` olan false söyledi null olması. Null bir örnek, tanımlanmamış bir değere sahip. Okumaya `Value` null bir örneğini neden olan bir `System.InvalidOperationException` oluşturulması için. Erişme işlemi `Value` özelliği boş değer atanabilir bir örneği olarak adlandırılır ***açma***.
+`HasValue` false olan bir örnek null olarak kabul edilir. Null bir örnek tanımsız bir değere sahip. Null örneğinin `Value` okunmaya çalışılması `System.InvalidOperationException` oluşturulmasına neden olur. Null yapılabilir bir örneğin `Value` özelliğine erişme işlemi, ***sarmalama***olarak adlandırılır.
 
-Varsayılan Oluşturucu, her bir boş değer atanabilir tür yanı sıra `T?` türünde tek bir bağımsız değişken bir ortak yapıcıya sahip `T`. Verilen bir değer `x` türü `T`, formun bir oluşturucu çağrı
+Varsayılan oluşturucuya ek olarak, her Nullable tür `T?` `T`türünde tek bir bağımsız değişken alan bir ortak oluşturucuya sahiptir. `T`türünde bir değer `x` verildiğinde, formun Oluşturucu çağrısı
 
 ```csharp
 new T?(x)
 ```
-null olmayan bir örneğini oluşturur `T?` hangi `Value` özelliği `x`. Belirli bir değeri olarak adlandırılır için boş değer atanabilir bir tür null olmayan bir örneğini oluşturma işlemini ***sarmalama***.
+`Value` özelliğinin `x``T?` null olmayan bir örneğini oluşturur. Verili bir değer için null değer olmayan bir türün null olmayan bir örneğini oluşturma işlemi ***sarmalama***olarak adlandırılır.
 
-Örtük dönüştürmeleri web'da `null` literal `T?` ([Null sabit değer dönüştürme](conversions.md#null-literal-conversions)) ve `T` için `T?` ([boş değer atanabilir örtük dönüştürmelerin](conversions.md#implicit-nullable-conversions)).
+Örtük dönüştürmeler, `null` değişmez değerinden `T?` ([null değişmez değer dönüştürmeleri](conversions.md#null-literal-conversions)) ve `T` ile `T?` ([örtük Nullable dönüşümler](conversions.md#implicit-nullable-conversions)) arasında kullanılabilir.
 
 ## <a name="reference-types"></a>Başvuru türleri
 
-Bir başvuru sınıfı türü, bir arabirim türü, bir dizi türü veya bir temsilci türü türüdür.
+Başvuru türü bir sınıf türü, arabirim türü, bir dizi türü veya temsilci türüdür.
 
 ```antlr
 reference_type
@@ -311,101 +311,101 @@ delegate_type
     ;
 ```
 
-Bir başvuru bir başvuru türü değeri yanlış bir ***örneği*** türü olarak ikinci bilinen bir ***nesne***. Özel değeri `null` tüm başvuru türleri ile uyumludur ve olmaması örneğini gösterir.
+Başvuru türü değeri, ikinci bir ***nesne***olarak bilinen türünün bir ***örneğine*** başvurudur. `null` özel değer tüm başvuru türleriyle uyumludur ve bir örneğin yokluğunu gösterir.
 
 ### <a name="class-types"></a>Sınıf türleri
 
-Bir sınıf türü, veri üyeleri (sabitleri ve alanları), işlev üyeleri (yöntemler, özellikler, olaylar, dizin oluşturucular, işleçler, örnek oluşturucuları, yok ediciler ve statik oluşturucular) ve iç içe geçmiş türler içeren bir veri yapısını tanımlar. Sınıf türleri, devralma, yapabildiği türetilmiş sınıfları genişletmek ve temel sınıflar uzmanlaşmış bir mekanizma destekler. Sınıf türlerinin örneklerini kullanılarak oluşturulur *object_creation_expression*s ([nesne oluşturma ifadeleri](expressions.md#object-creation-expressions)).
+Bir sınıf türü veri üyelerini (sabitler ve alanlar), işlev üyelerini (Yöntemler, özellikler, olaylar, Dizin oluşturucular, işleçler, örnek oluşturucular, Yıkıcılar ve statik oluşturucular) ve iç içe geçmiş türleri içeren bir veri yapısını tanımlar. Sınıf türleri, türetilmiş sınıfların temel sınıfları genişletebilen ve özelleştireceği bir mekanizma olan devralmayı destekler. Sınıf türlerinin örnekleri, *object_creation_expression*s ([nesne oluşturma ifadeleri](expressions.md#object-creation-expressions)) kullanılarak oluşturulur.
 
-Sınıf türleri açıklanmıştır [sınıfları](classes.md).
+Sınıf türleri [sınıflarda](classes.md)açıklanmıştır.
 
-Belirli önceden tanımlanmış sınıf türleri, aşağıdaki tabloda açıklandığı gibi C# dili, özel bir anlamı yoktur.
+Önceden tanımlanmış bazı sınıf türleri, aşağıdaki tabloda açıklandığı C# gibi dilde özel anlamlara sahiptir.
 
 
 | __Sınıf türü__     | __Açıklama__                                         |
 |--------------------|---------------------------------------------------------|
-| `System.Object`    | Diğer tüm türlerin ultimate temel sınıf. Bkz: [nesne türü](types.md#the-object-type). | 
-| `System.String`    | C# dilinin string türü. Bkz: [dize türü](types.md#the-string-type).         |
-| `System.ValueType` | Tüm değer türlerinin bir taban sınıf. Bkz: [System.ValueType türü](types.md#the-systemvaluetype-type).          |
-| `System.Enum`      | Tüm sabit listesi türleri temel sınıf. Bkz: [numaralandırmalar](enums.md).              |
-| `System.Array`     | Tüm dizi türleri temel sınıf. Bkz: [diziler](arrays.md).             |
-| `System.Delegate`  | Tüm temsilci türlerinin bir taban sınıf. Bkz: [Temsilciler](delegates.md).          |
-| `System.Exception` | Tüm özel durum türlerini temel sınıfı. Bkz: [özel durumları](exceptions.md).         |
+| `System.Object`    | Diğer tüm türlerin Ultimate temel sınıfı. Bkz. [nesne türü](types.md#the-object-type). | 
+| `System.String`    | C# Dilin dize türü. [Dize türü](types.md#the-string-type)' ne bakın.         |
+| `System.ValueType` | Tüm değer türlerinin temel sınıfı. Bkz. [System. ValueType türü](types.md#the-systemvaluetype-type).          |
+| `System.Enum`      | Tüm sabit listesi türlerinin temel sınıfı. Bkz. [numaralandırmalar](enums.md).              |
+| `System.Array`     | Tüm dizi türlerinin temel sınıfı. Bkz. [diziler](arrays.md).             |
+| `System.Delegate`  | Tüm temsilci türlerinin temel sınıfı. Bkz. [Temsilciler](delegates.md).          |
+| `System.Exception` | Tüm özel durum türlerinin temel sınıfı. Bkz. [özel durumlar](exceptions.md).         |
 
 ### <a name="the-object-type"></a>Nesne türü
 
-`object` Sınıf türü, diğer tüm türlerin ultimate temel sınıftır. C# ' de her tür doğrudan veya dolaylı olarak türetir `object` sınıf türü.
+`object` sınıf türü, diğer tüm türlerin en son temel sınıfıdır. Her tür doğrudan C# veya dolaylı olarak `object` sınıf türünden türetilir.
 
-Anahtar sözcüğü `object` yalnızca önceden tanımlanmış sınıf için bir diğer addır `System.Object`.
+Anahtar sözcüğü `object` önceden tanımlanmış sınıf `System.Object`için yalnızca bir diğer addır.
 
 ### <a name="the-dynamic-type"></a>Dinamik tür
 
-`dynamic` Yazın, gibi `object`, herhangi bir nesneye başvurabilir. İşleçler türündeki ifadeler için uygulandığı zaman `dynamic`, bunların çözümü program çalıştırılıncaya kadar ertelenir. Bu nedenle, işlecin yasal başvurulan nesneye uygulanamaz, derleme sırasında herhangi bir hata verilir. Çözümleme işlecinin çalışma zamanında başarısız olduğunda, bunun yerine bir özel durum oluşturulur.
+`object`gibi `dynamic` türü herhangi bir nesneye başvurabilir. İşleçler `dynamic`türündeki ifadelere uygulandığında, çözüm program çalıştırılıncaya kadar ertelenir. Bu nedenle, işleç başvurulan nesneye yasal olarak uygulanamazlar, derleme sırasında herhangi bir hata verilmez. Bunun yerine, işlecin çözümlenmesi çalışma zamanında başarısız olduğunda bir özel durum oluşturulur.
 
-Amacı, ayrıntılı olarak açıklanan dinamik bağlama izin vermektir [dinamik bağlama](expressions.md#dynamic-binding).
+Amacı [, dinamik bağlamada](expressions.md#dynamic-binding)ayrıntılı olarak açıklanan dinamik bağlamaya izin versağlamaktır.
 
-`dynamic` aynı olarak kabul edilir `object` aşağıdaki yönden hariç:
+`dynamic`, aşağıdaki durumlar dışında `object` ile aynı kabul edilir:
 
-*  Türündeki ifade üzerinde işlemler `dynamic` dinamik olarak bağlı olabilir ([dinamik bağlama](expressions.md#dynamic-binding)).
-*  Anlam çıkarma ([anlam çıkarma](expressions.md#type-inference)) tercih eder `dynamic` üzerinden `object` hem de adayları olması gerekir.
+*  `dynamic` türündeki ifadelerde işlemler, dinamik olarak bağlanabilir ([dinamik bağlama](expressions.md#dynamic-binding)).
+*  Tür çıkarımı ([tür çıkarımı](expressions.md#type-inference)), her ikisi de aday ise `object` `dynamic` tercih eder.
 
-Bu denkliğin nedeniyle aşağıdakileri içerir:
+Bu denklik nedeniyle aşağıdakiler şunları içerir:
 
-*  Bir örtük kimlik dönüştürme arasında `object` ve `dynamic`, aynı değiştirilirken olan oluşturulan türler arasında `dynamic` ile `object`
-*  Örtük ve açık dönüştürmeler gelen ve giden `object` ve ondan de geçerli `dynamic`.
-*  Aynı değiştirilirken olan yöntem imzaları `dynamic` ile `object` aynı imzaya olarak kabul edilir
-*  Türü `dynamic` döndürsün olan `object` çalışma zamanında.
-*  Türündeki bir ifade `dynamic` şeklinde adlandırılan bir ***dinamik ifade***.
+*  `object` ve `dynamic`arasında ve `dynamic` değiştirirken aynı olan oluşturulmuş türler arasında örtük bir kimlik dönüştürmesi vardır `object`
+*  `object` ve öğesinden örtük ve açık dönüştürmeler, `dynamic`için de geçerlidir.
+*  `dynamic` `object` ile değiştirme sırasında aynı olan yöntem imzaları aynı imza olarak değerlendirilir
+*  Tür `dynamic`, çalışma zamanında `object` ayırt edilemez.
+*  `dynamic` türünün bir ifadesi, ***dinamik ifade***olarak adlandırılır.
 
 ### <a name="the-string-type"></a>Dize türü
 
-`string` Türüdür doğrudan devralan bir korumalı sınıf türü `object`. Örneklerini `string` sınıfı Unicode karakter dizeleri temsil eder.
+`string` türü, doğrudan `object`devralan kapalı bir sınıf türüdür. `string` sınıfının örnekleri Unicode karakter dizelerini temsil eder.
 
-Değerleri `string` tür dize değişmez değer olarak yazılabilir ([dize değişmez değerleri](lexical-structure.md#string-literals)).
+`string` türünün değerleri, dize değişmez değerleri ([dize sabit](lexical-structure.md#string-literals)değerleri) olarak yazılabilir.
 
-Anahtar sözcüğü `string` yalnızca önceden tanımlanmış sınıf için bir diğer addır `System.String`.
+Anahtar sözcüğü `string` önceden tanımlanmış sınıf `System.String`için yalnızca bir diğer addır.
 
 ### <a name="interface-types"></a>Arabirim türleri
 
-Bir arabirim bir sözleşmeyi tanımlar. Bir sınıf ya da bir arabirimi uygulayan yapı bu sözleşmeye uymalıdır. Birden fazla temel Ara birimden arabirim devralabilir ve bir sınıf veya yapı birden fazla arabirim uygulayabilir.
+Arabirim, bir sözleşmeyi tanımlar. Arabirim uygulayan bir sınıf veya yapı, sözleşmesine uymalıdır. Bir arabirim birden çok temel arabirimden devralınabilir ve bir sınıf ya da yapı birden çok arabirim uygulayabilir.
 
-Arabirim türlerinde açıklanmıştır [arabirimleri](interfaces.md).
+Arabirim türleri [arabirimlerde](interfaces.md)açıklanmıştır.
 
 ### <a name="array-types"></a>Dizi türleri
 
-Bir dizi hesaplanan dizinlerini erişilen sıfır veya daha fazla değişken içeren bir veri yapısıdır. Dizinin öğeleri olarak da bilinen bir dizi içindeki tüm aynı türdeki değişkenlerdir ve bu tür dizinin öğe türü olarak adlandırılır.
+Dizi, hesaplanan dizinler üzerinden erişilen sıfır veya daha fazla değişken içeren bir veri yapısıdır. Bir dizide bulunan değişkenler, dizi öğeleri de denir, hepsi aynı türdür ve bu tür dizinin öğe türü olarak adlandırılır.
 
-Dizi türleri açıklanmıştır [diziler](arrays.md).
+Dizi türleri [diziler](arrays.md)içinde açıklanmıştır.
 
 ### <a name="delegate-types"></a>Temsilci türleri
 
-Bir temsilci, bir veya daha fazla yönteme başvuran bir veri yapısıdır. Örneği için yöntemleri, ayrıca karşılık gelen nesne örneklerini anlamına gelmektedir.
+Bir temsilci, bir veya daha fazla yönteme başvuran bir veri yapısıdır. Örnek yöntemleri için de ilgili nesne örneklerine başvurur.
 
-En yakın bir Temsilcide C veya C++ işlev işaretçisi eşdeğerdir, ancak bir işlev işaretçisine, yalnızca statik işlevler başvurabilir gelirken, bir temsilci hem statik başvuru ve yöntemleri örneği. İkinci durumda, yalnızca metodun giriş noktası bir başvuru, aynı zamanda Pro instanci objektu yöntemi çağırmak için bir başvuru temsilci depolar.
+C veya C++ bir işlev işaretçisidir, ancak bir işlev işaretçisi yalnızca statik işlevlere başvurabilir, bir temsilci hem statik hem de örnek yöntemlerine başvurabilir. İkinci durumda, temsilci yalnızca metodun giriş noktasına bir başvuru değil, aynı zamanda yöntemi çağırmak için bir nesne örneğine de bir başvuru içerir.
 
-Temsilci türleri açıklanmıştır [Temsilciler](delegates.md).
+Temsilci türleri [Temsilcilerde](delegates.md)açıklanmıştır.
 
 ## <a name="boxing-and-unboxing"></a>Kutulama ve kutudan çıkarma
 
-Kutulama ve kutudan çıkarma kavramı, C# tür sistemi taşımaktadır. Arasında bir köprü sağlar *value_type*s ve *reference_type*s tarafından herhangi bir değerini izin veren bir *value_type* türü gelen ve giden dönüştürülecek `object`. Kutulama ve kutudan çıkarma gibi herhangi bir türde bir değer sonuçta bir nesne olarak davranılıp tür sistemi birleşik bir görünümünü sağlar.
+Kutulama ve kutudan çıkarma kavramı, Merkezi C#'nin tür sistemidir. *Value_type* herhangi bir değerin `object`türüne ve türüne dönüştürülmesine izin vererek *value_type*s ve *reference_type*s arasında bir köprü sağlar. Kutulama ve kutudan çıkarma, herhangi bir türde bir değer olan tür sisteminin birleştirilmiş bir görünümünü, sonunda bir nesne olarak kabul edilebilir.
 
-### <a name="boxing-conversions"></a>Kutulama dönüştürmeler
+### <a name="boxing-conversions"></a>Paketleme dönüştürmeleri
 
-Kutulama dönüştürmesi izin veren bir *value_type* için örtük olarak dönüştürülmesine bir *reference_type*. Aşağıdaki kutulama dönüştürmeler mevcuttur:
+Paketleme dönüştürmesi, bir *value_type* örtük olarak bir *reference_type*'e dönüştürülmesine izin verir. Aşağıdaki kutulama dönüştürmeleri mevcuttur:
 
-*  Herhangi *value_type* türüne `object`.
-*  Herhangi *value_type* türüne `System.ValueType`.
-*  Herhangi *non_nullable_value_type* herhangi *INTERFACE_TYPE* tarafından uygulanan *value_type*.
-*  Herhangi *nullable_type* herhangi *INTERFACE_TYPE* temel alınan türü tarafından uygulanan *nullable_type*.
-*  Herhangi *enum_type* türüne `System.Enum`.
-*  Herhangi *nullable_type* bir temel ile *enum_type* türüne `System.Enum`.
-*  Çalışma zamanında bir değer türünden bir başvuru türüne dönüştürme yukarı sona ererse örtük bir dönüştürme türü parametresi bir paketleme dönüştürmesi yürütülecek unutmayın ([tür parametreleri içeren örtük dönüştürmelerin](conversions.md#implicit-conversions-involving-type-parameters)).
+*  Herhangi bir *value_type* türünden `object`.
+*  Herhangi bir *value_type* türünden `System.ValueType`.
+*  Herhangi bir *non_nullable_value_type* , *value_type*tarafından uygulanan herhangi bir *interface_type* .
+*  Herhangi bir *nullable_type* , *nullable_type*temel türü tarafından uygulanan herhangi bir *interface_type* .
+*  Herhangi bir *enum_type* türünden `System.Enum`.
+*  Herhangi bir *nullable_type* , temel alınan *enum_type* `System.Enum`türüne sahiptir.
+*  Bir tür parametresindeki örtük dönüştürmenin, çalışma zamanında bir değer türünden bir başvuru türüne ([tür parametreleri Içeren örtük dönüştürmeler](conversions.md#implicit-conversions-involving-type-parameters)) dönüştürülmesini istiyorsanız kutulama dönüştürmesi olarak yürütüleceğini unutmayın.
 
-Değerini kutulama bir *non_nullable_value_type* nesne örneğini tahsis etme ve kopyalama oluşur *non_nullable_value_type* değerini söz konusu örneğine dönüştürür.
+Bir *non_nullable_value_type* değerini paketleme bir nesne örneği ayırmayı ve *non_nullable_value_type* değerini bu örneğe kopyalamayı içerir.
 
-Değerini kutulama bir *nullable_type* null başvuru ise üretir `null` değeri (`HasValue` olan `false`), veya çözülme ve temeldeki değeri aksi kutulama sonucu.
+Bir *nullable_type* değerinin kutulanması, `null` değer ise (`HasValue` `false`) veya temel alınan değeri sarmalamayı geri Kutulamadan ve Kutulamadan elde edilen null bir başvuru üretir.
 
-Gerçek değerini kutulama işlemini bir *non_nullable_value_type* en iyi genel varlığını imagining tarafından açıklanan ***kutulama sınıfı***, şu şekilde bildirilir yokmuş gibi davranır:
+Bir *non_nullable_value_type* değeri Kutulamak için gerçek işlem, aşağıdaki gibi bir genel ***paketleme sınıfının***mevcut olduğu gibi davranan, en iyi şekilde açıklanmıştır:
 
 ```csharp
 sealed class Box<T>: System.ValueType
@@ -418,18 +418,18 @@ sealed class Box<T>: System.ValueType
 }
 ```
 
-Bir değer olarak kutulama `v` türü `T` ifadeyi yürüten artık oluşur `new Box<T>(v)`ve elde edilen örnek türünde bir değer döndüren `object`. Bu nedenle, deyimleri
+`T` türündeki bir değerin `v` kutulenmesi, artık ifade `new Box<T>(v)`yürütmekten ve sonuçta elde edilen örneği `object`türünde bir değer olarak döndürmekten oluşur. Bu nedenle, deyimler
 ```csharp
 int i = 123;
 object box = i;
 ```
-kavramsal olarak karşılık gelir
+kavramsal olarak karşılık gelen
 ```csharp
 int i = 123;
 object box = new Box<int>(i);
 ```
 
-Kutulama sınıfı gibi `Box<T>` yukarıdaki gerçekten yok ve aslında bir sınıf türünün kutulanmış değer dinamik türü desteklenmez. Bunun yerine, kutulanmış bir değer türü `T` dinamik türünde `T`ve dinamik tür denetimi kullanılarak `is` işleci yalnızca türü başvuru `T`. Örneğin,
+Yukarıdaki `Box<T>` gibi bir paketleme sınıfı aslında yoktur ve paketlenmiş değerin dinamik türü aslında bir sınıf türü değildir. Bunun yerine, `T` türündeki paketlenmiş bir değer dinamik tür `T`ve `is` işleci kullanılarak dinamik bir tür denetimi yalnızca tür `T`başvurabilir. Örneğin,
 ```csharp
 int i = 123;
 object box = i;
@@ -437,9 +437,9 @@ if (box is int) {
     Console.Write("Box contains an int");
 }
 ```
-dize çıkarır "`Box contains an int`" konsolunda.
+, konsolundaki "`Box contains an int`" dizesini çıktısını alır.
 
-Kutulama dönüştürmesi Kutulu değer kopyalayarak anlamına gelir. Bu dönüştürme farklı bir *reference_type* türüne `object`hangi değeri aynı örneğine başvurmak devam eder ve yalnızca daha az türetilmiş bir türü olarak kabul edilir `object`. Örneğin, bildirimi verilen
+Kutulama dönüştürme, kutulanmış değerin bir kopyasını yapmayı gerektirir. Bu, değerin aynı örneğe başvurmaya devam ettiği ve yalnızca daha az türetilmiş tür `object`olarak kabul edilen `object`türünde bir *reference_type* dönüştürmesinden farklıdır. Örneğin, bildirim verildiğinde
 ```csharp
 struct Point
 {
@@ -451,53 +451,53 @@ struct Point
     }
 }
 ```
-aşağıdaki deyimleri
+Aşağıdaki deyimler
 ```csharp
 Point p = new Point(10, 10);
 object box = p;
 p.x = 20;
 Console.Write(((Point)box).x);
 ```
-' % s'değeri 10 konsolunda çünkü çıkış atamasını içinde oluşan örtük kutulama işlemi `p` için `box` değeri neden olur `p` kopyalanacak. Vardı `Point` edilmiş bildirilen bir `class` bunun yerine, ' % s'değeri 20 çıkış olurdu, çünkü `p` ve `box` aynı örneğine başvuru.
+`box` `p` atamasında oluşan örtük paketleme işlemi, `p` değerinin kopyalanmasına neden olduğundan, konsolda 10 değerini çıktı olarak alır. `Point` `class` olarak bildirildiği için, `p` ve `box` aynı örneğe başvuracağından, 20 değeri çıktı olur.
 
-### <a name="unboxing-conversions"></a>Kutudan çıkarma dönüştürme
+### <a name="unboxing-conversions"></a>Kutudan çıkarma dönüştürmeleri
 
-Bir paketi açma dönüştürmesi izin veren bir *reference_type* açıkça dönüştürülmesini bir *value_type*. Aşağıdaki kutudan çıkarma dönüştürme vardır:
+Kutudan çıkarma dönüştürmesi, bir *reference_type* açıkça bir *value_type*'e dönüştürülmesine izin verir. Aşağıdaki kutudan çıkarma dönüştürmeleri mevcuttur:
 
-*  Türünden `object` herhangi *value_type*.
-*  Türünden `System.ValueType` herhangi *value_type*.
-*  Herhangi *INTERFACE_TYPE* herhangi *non_nullable_value_type* uygulayan *INTERFACE_TYPE*.
-*  Herhangi *INTERFACE_TYPE* herhangi *nullable_type* temel türü uygulayan *INTERFACE_TYPE*.
-*  Türünden `System.Enum` herhangi *enum_type*.
-*  Türünden `System.Enum` herhangi *nullable_type* bir temel ile *enum_type*.
-*  Çalışma zamanında bir değer türüne başvuru türünden dönüştürme yukarı sona ererse açık bir dönüştürme için bir tür parametresi bir paketi açma dönüştürmesi yürütülecek unutmayın ([açık dinamik dönüştürmeler](conversions.md#explicit-dynamic-conversions)).
+*  `object` türünden herhangi bir *value_type*.
+*  `System.ValueType` türünden herhangi bir *value_type*.
+*  Herhangi bir *interface_type* , *interface_type*uygulayan herhangi bir *non_nullable_value_type* .
+*  Herhangi bir *interface_type* , temel alınan türü *interface_type*uygulayan herhangi bir *nullable_type* .
+*  `System.Enum` türünden herhangi bir *enum_type*.
+*  `System.Enum` türü, temel alınan bir *enum_type*ile herhangi bir *nullable_type* .
+*  Bir tür parametresine açık dönüştürme, bir başvuru türünden bir değer türüne ([Açık dinamik dönüştürmeler](conversions.md#explicit-dynamic-conversions)) dönüştürme sona erdiğinde, bir paket açma dönüştürmesi olarak yürütülür.
 
-Bir kutudan çıkarma işlemi için bir *non_nullable_value_type* ilk nesne örneği, kutulanmış bir değer olan denetimini oluşur verilen *non_nullable_value_type*ve ardından değeri / kopyalama örneği.
+Bir *non_nullable_value_type* kutudan çıkarma işlemi, nesne örneğinin verilen *non_nullable_value_type*'ın paketlenmiş bir değeri olup olmadığını kontrol ederek değeri örnekten dışarı kopyalamaktan oluşur.
 
-Kutudan çıkarma için bir *nullable_type* null değerini üretir *nullable_type* kaynak işlenen `null`, ya da temel alınan türü için nesne örneği kutudan çıkarma Sarmalanan sonucu *nullable_type* Aksi takdirde.
+Bir *nullable_type* öğesinin kutudan çıkarma işlemi, kaynak işleneni `null`veya nesne örneğini bir alt nesnenin temel alınan türüne *(Aksi takdirde* ) bir nesne örneğini kutudan çıkarma sonucu olarak, *nullable_type* null değerini üretir.
 
-Bir nesnenin bir paketi açma dönüştürmesi önceki bölümde açıklanan sanal kutulama sınıfa başvuran `box` için bir *value_type* `T` ifadeyi yürüten oluşur `((Box<T>)box).value`. Bu nedenle, deyimleri
+Önceki bölümde açıklanan sanal paketleme sınıfına işaret eden bir nesne için bir *value_type* `T` bir kutudan çıkarma dönüştürmesi, `((Box<T>)box).value`ifade `box` oluşur. Bu nedenle, deyimler
 ```csharp
 object box = 123;
 int i = (int)box;
 ```
-kavramsal olarak karşılık gelir
+kavramsal olarak karşılık gelen
 ```csharp
 object box = new Box<int>(123);
 int i = ((Box<int>)box).value;
 ```
 
-Bir kutudan çıkarma dönüştürme için bir verilen *non_nullable_value_type* çalışma zamanında başarılı olması için kaynak işlecinin değer, söz konusu paketlenmiş değere bir başvuru olmalıdır *non_nullable_value_type*. Kaynak işlenen `null`, `System.NullReferenceException` oluşturulur. Kaynak işlenen uyumsuz bir nesneye bir başvuru ise bir `System.InvalidCastException` oluşturulur.
+Belirli bir *non_nullable_value_type* , çalışma zamanında başarılı olmak için bir kutudan çıkarma dönüştürmesi için, kaynak işleneni değeri, bu *non_nullable_value_type*'ın paketlenmiş değerine bir başvuru olmalıdır. Kaynak işleneni `null`, bir `System.NullReferenceException` oluşturulur. Kaynak işleneni uyumsuz bir nesneye başvuru ise, bir `System.InvalidCastException` oluşturulur.
 
-Bir kutudan çıkarma dönüştürme için bir verilen *nullable_type* çalışma zamanında başarılı olması için kaynak işlecinin değer olmalıdır `null` veya arka plandaki paketlenmiş değere bir başvuru *non_nullable_value_type* , *nullable_type*. Kaynak işlenen uyumsuz bir nesneye bir başvuru ise bir `System.InvalidCastException` oluşturulur.
+Belirli bir *nullable_type* , çalışma zamanında başarılı olmak için bir kutudan çıkarma dönüştürmesi için, kaynak işlenenin değeri `null` ya da *nullable_type*temeldeki *non_nullable_value_type* kutulanmış bir değere başvuru olmalıdır. Kaynak işleneni uyumsuz bir nesneye başvuru ise, bir `System.InvalidCastException` oluşturulur.
 
-## <a name="constructed-types"></a>Oluşturulan türler
+## <a name="constructed-types"></a>Oluşturulmuş türler
 
-Bir genel tür bildirimi kendisi tarafından yapıttan bir ***genel tür ilişkisiz*** "plan" uygulama yoluyla, birçok farklı türler oluşturmak için kullanılan ***tür bağımsız değişkenleri***. Tür bağımsız değişkenleri köşeli ayraç içinde yazılan (`<` ve `>`) genel tür adını takip. En az bir tür bağımsız değişkeni bir tür olarak adlandırılan bir ***oluşturulan türü***. Oluşturulan bir tür içinde bir tür adı görünebilir dil birçok yerde kullanılabilir. İlişkisiz bir genel tür içinde yalnızca kullanılabilir bir *typeof_expression* ([typeof işleci](expressions.md#the-typeof-operator)).
+Genel tür bildirimi, tek başına, ***tür bağımsız değişkenleri***uygulama yoluyla birçok farklı tür oluşturmak için "Blueprint" olarak kullanılan ***ilişkisiz genel bir türü*** gösterir. Tür bağımsız değişkenleri, genel türün adının hemen ardından gelen açılı ayraç içinde (`<` ve `>`) yazılır. En az bir tür bağımsız değişkeni içeren bir türe ***oluşturulmuş tür***denir. Oluşturulmuş bir tür, bir tür adının görünebileceği dilde çoğu yerde kullanılabilir. İlişkisiz genel tür yalnızca bir *typeof_expression* içinde kullanılabilir ([typeof işleci](expressions.md#the-typeof-operator)).
 
-Oluşturulan türler de kullanılabilir ifadelerinde basit adları ([basit adları](expressions.md#simple-names)) veya bir üye erişirken ([üye erişimi](expressions.md#member-access)).
+Oluşturulan türler, ifadelerde basit adlar ([basit adlar](expressions.md#simple-names)) veya bir üyeye ([üye erişimi](expressions.md#member-access)) erişimi olarak da kullanılabilir.
 
-Olduğunda bir *namespace_or_type_name* Değerlendirilmiş, yalnızca genel türlerinin doğru sayısıyla türü parametreleri olarak kabul edilir. Bu nedenle, farklı sayıda tür parametreleri türlerine sahip olduğu sürece farklı türlerini tanımlamak üzere aynı tanımlayıcıyı kullanın mümkündür. Bu, genel ve genel olmayan sınıflar aynı programda kullanırken yararlıdır:
+Bir *namespace_or_type_name* değerlendirildiğinde, yalnızca doğru sayıda tür parametrelerine sahip genel türler kabul edilir. Bu nedenle, türlerin tür parametrelerine sahip olduğu sürece farklı türleri tanımlamak için aynı tanımlayıcıyı kullanmak mümkündür. Bu, genel ve genel olmayan sınıfları aynı programda karıştırdığınızda yararlı olur:
 
 ```csharp
 namespace Widgets
@@ -518,7 +518,7 @@ namespace MyApplication
 }
 ```
 
-A *type_name* oluşturulan tür, tür parametreleri doğrudan belirtmeyen olsa da tanımlayabilir. Burada bir tür genel bir sınıf bildirimi içinde iç içe geçmiş ve yönelik ad araması içeren bildirim örnek türü örtük olarak kullanılan oluşabilir ([türlerin genel sınıflardaki](classes.md#nested-types-in-generic-classes)):
+Bir *type_name* , doğrudan tür parametreleri belirtmese de, oluşturulmuş bir tür tanımlayabilir. Bu, bir türün genel sınıf bildiriminde iç içe kullanıldığı ve kapsayan bildirimin örnek türünün, ad araması için örtük olarak kullanıldığı bir durum olabilir ([genel sınıflarda Iç içe türler](classes.md#nested-types-in-generic-classes)):
 
 ```csharp
 class Outer<T>
@@ -529,11 +529,11 @@ class Outer<T>
 }
 ```
 
-Güvenli olmayan kod içinde oluşturulmuş bir türü olarak kullanılamaz bir *unmanaged_type* ([işaretçi türleri](unsafe-code.md#pointer-types)).
+Güvenli olmayan kodda, oluşturulan tür bir *unmanaged_type* ([işaretçi türleri](unsafe-code.md#pointer-types)) olarak kullanılamaz.
 
 ### <a name="type-arguments"></a>Tür bağımsız değişkenleri
 
-Tür bağımsız değişken listesindeki her bağımsız değişken teknolojidir bir *türü*.
+Bir tür bağımsız değişkeni listesindeki her bağımsız değişken yalnızca bir *türdür*.
 
 ```antlr
 type_argument_list
@@ -549,53 +549,53 @@ type_argument
     ;
 ```
 
-Güvenli olmayan kod ([güvenli olmayan kod](unsafe-code.md)), *type_argument* bir işaretçi türü olabilir. Her tür bağımsız değişkeni tür parametresi buna karşılık gelen tüm kısıtlamalar karşılaması gerekir ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
+Güvenli olmayan kodda ([güvenli olmayan kod](unsafe-code.md)), bir *type_argument* işaretçi türü olmayabilir. Her tür bağımsız değişkeni, karşılık gelen tür parametresindeki ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) tüm kısıtlamalara uymalıdır.
 
-### <a name="open-and-closed-types"></a>Açık ve kapalı türleri
+### <a name="open-and-closed-types"></a>Açık ve kapalı türler
 
-Tüm türleri olarak sınıflandırılabilir ***açın türleri*** veya ***kapalı türleri***. Tür parametreleri içeren bir tür bir açık türdür. Daha ayrıntılı belirtmek gerekirse:
+Tüm türler ***Açık türler*** veya ***kapalı türler***olarak sınıflandırılabilirler. Açık tür, tür parametrelerini içeren bir türdür. Daha özel olarak:
 
-*  Bir tür parametresi açık bir tür tanımlar.
-*  Öğe türünün bir açık türdür ve yalnızca, bir dizi türü bir açık türdür.
-*  Bir veya daha fazla tür bağımsız değişkenlerinden bir açık türdür ve yalnızca, oluşturulan tür bir açık türdür. Bir veya daha fazla tür bağımsız değişkenlerinden veya tür bağımsız değişkenlerini içeren kendi türünde bir açık türdür ve yalnızca, oluşturulan iç içe geçmiş tür bir açık türdür.
+*  Bir tür parametresi bir açık türü tanımlar.
+*  Bir dizi türü, ve yalnızca kendi öğe türü açık bir tür ise açık bir türdür.
+*  Oluşturulmuş bir tür, yalnızca bir veya daha fazla bağımsız değişkeni açık bir tür ise açık bir türdür. Oluşturulmuş iç içe bir tür, yalnızca bir veya daha fazla tür bağımsız değişkeni ya da kapsayan tür bağımsız değişkenleri bir açık tür ise açık bir türdür.
 
-Kapalı bir tür açık bir tür değil bir türdür.
+Kapalı bir tür, açık tür olmayan bir türdür.
 
-Çalışma zamanında, tüm genel tür bildirimi içinde kod yürütülür tür bağımsız değişkenleri için genel bildirimi uygulama tarafından oluşturulan kapalı bir oluşturulmuş tür bağlamında. Her tür parametresi, genel tür içinde belirli bir çalışma zamanı türüne bağlıdır. Çalışma zamanı, tüm ifadeleri ve ifadeler her zaman kapalı türleriyle işleneceğini ve açık türler yalnızca derleme zamanı sırasında işlem oluşur.
+Çalışma zamanında, genel bir tür bildirimi içindeki tüm kod, genel bildirime tür bağımsız değişkenleri uygulanarak oluşturulan kapalı oluşturulmuş bir tür bağlamında yürütülür. Genel tür içindeki her tür parametresi, belirli bir çalışma zamanı türüne bağlanır. Tüm deyimlerin ve ifadelerin çalışma zamanı işleme her zaman kapalı türlerle oluşur ve açık türler yalnızca derleme zamanı işleme sırasında oluşur.
 
-Her kapalı bir oluşturulmuş tür kendi herhangi diğer kapalı oluşturulan türler ile paylaşılmayan statik değişkenler kümesine sahiptir. Açık bir tür çalışma zamanında mevcut olmadığından, açık bir türü ile ilişkili hiçbir statik değişkenler vardır. İki kapalı oluşturulan türler, bunlar aynı ilişkisiz genel türünden oluşturulduğu ve bunların karşılık gelen tür bağımsız değişkenleri aynı türdeyse aynı türde olan.
+Her kapatılan oluşturulmuş türün kendi statik değişkenleri kümesi vardır ve bu, başka bir kapalı oluşturulmuş türle paylaşılmaz. Çalışma zamanında açık bir tür olmadığından, bir açık türle ilişkili statik değişken yoktur. Aynı ilişkisiz genel türden oluşturulmuşsa ve ilgili tür bağımsız değişkenleri aynı türde ise, bu iki adet oluşturulmuş tür oluşturulur.
 
-### <a name="bound-and-unbound-types"></a>İlişkili ve ilişkisiz türleri
+### <a name="bound-and-unbound-types"></a>Bağlı ve ilişkisiz türler
 
-Terim ***ilişkisiz türü*** genel olmayan bir tür veya ilişkisiz bir genel tür belirtir. Terim ***bağlı türü*** genel olmayan bir tür veya oluşturulan tür anlamına gelir.
+İlişkisiz terim ***türü*** genel olmayan bir türe veya ilişkisiz genel bir türe başvuruyor. Terim ***bağlantılı türü*** genel olmayan bir türe veya oluşturulmuş bir türe başvuruyor.
 
-İlişkisiz bir türü bir tür bildirimi tarafından bildirilen bir varlığa başvurur. İlişkisiz bir genel tür kendisi bir tür değildir ve bir değişken, bağımsız değişken veya dönüş değeri türünü veya bir taban türü olarak kullanılamaz. Hangi ilişkisiz bir genel tür başvurulabilir yalnızca yapıdır `typeof` ifade ([typeof işleci](expressions.md#the-typeof-operator)).
+İlişkisiz bir tür, bir tür bildirimiyle belirtilen varlığı ifade eder. İlişkisiz genel tür bir tür değildir ve bir değişken, bağımsız değişken veya dönüş değeri ya da bir temel tür olarak kullanılamaz. İlişkisiz genel bir türün başvurabilecebileceği tek yapı `typeof` ifadedir ([typeof işleci](expressions.md#the-typeof-operator)).
 
-### <a name="satisfying-constraints"></a>Tatmin kısıtlamaları
+### <a name="satisfying-constraints"></a>Yer çağıran kısıtlamalar
 
-Oluşturulan tür ya da genel yöntemin başvurduğu her sağlanan tür bağımsız değişkeni genel tür veya yöntem üzerinde bildirilen tür parametresi kısıtlamaları karşı denetlenir ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)). Her `where` yan tümcesi, tür bağımsız değişkeni `A` karşılık gelen adlandırılmış tür parametresi işaretli karşı her kısıtlama şu şekilde:
+Oluşturulmuş bir tür veya genel yönteme başvurulduğunda, sağlanan tür bağımsız değişkenleri genel tür veya yöntemde ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) belirtilen tür parametresi kısıtlamalarına göre denetlenir. Her bir `where` yan tümcesi için, adlandırılmış tür parametresine karşılık gelen `A` tür bağımsız değişkeni her bir kısıtlamaya göre aşağıdaki gibi denetlenir:
 
-*  Bir sınıf türü, bir arabirim türü veya tür parametresi kısıtlaması ise `C` kısıtlamasındaki görünen herhangi bir tür parametre kısıtlaması sağlanan tür bağımsız değişkenleri ile yerine temsil eder. Kısıtlamasını karşılamak için bunu yazın çalışması olmalıdır `A` türüne dönüştürülebilir olduğundan `C` aşağıdakilerden biri olarak:
+*  Kısıtlama bir sınıf türü, bir arabirim türü veya bir tür parametresi ise, kısıtlamada görünen tür parametrelerinin yerine sağlanan tür bağımsız değişkenleriyle bu kısıtlamayı `C`. Kısıtlamayı karşılamak için, tür `A`, aşağıdakilerden biri `C` türüne dönüştürülebilir olması gerekir:
     * Bir kimlik dönüştürme ([kimlik dönüştürme](conversions.md#identity-conversion))
-    * Örtük bir başvuru dönüştürmesi ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions))
-    * Kutulama dönüştürmesi ([kutulama dönüştürmeler](conversions.md#boxing-conversions)), tür A NULL olmayan bir değer türü olması şartıyla.
-    * Bir tür parametresi arasında'örtük bir başvuru, kutulama veya tür parametresi dönüştürme `A` için `C`.
-*  Başvuru türü kısıtlaması kısıtlaması varsa (`class`), türü `A` aşağıdakilerden birini karşılaması gerekir:
-    * `A` bir arabirim türü, sınıf türü, temsilci türü veya dizi türü olabilir. Unutmayın `System.ValueType` ve `System.Enum` bu kısıtlamasını başvuru türleridir.
-    * `A` bir başvuru türü olarak bilinen bir tür parametresi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
-*  Değer türü kısıtlaması kısıtlaması varsa (`struct`), türü `A` aşağıdakilerden birini karşılaması gerekir:
-    * `A` bir yapı türü veya sabit listesi türünde, ancak null yapılabilir bir tür değildir. Unutmayın `System.ValueType` ve `System.Enum` bu kısıtlamasını karşılamaz başvuru türleridir.
-    * `A` değer türü kısıtlamasına sahip bir tür parametresi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
-*  Kısıtlama Oluşturucu kısıtlaması ise `new()`, türü `A` olmamalıdır `abstract` ve ortak bir parametresiz oluşturucuya sahip olmalıdır. Aşağıdakilerden biri doğruysa uyulmuş olur:
-    * `A` tüm değer türleri ortak varsayılan oluşturucuya sahip bir değer türü olduğu ([varsayılan oluşturucular](types.md#default-constructors)).
-    * `A` Oluşturucu kısıtlaması sahip bir tür parametresi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
-    * `A` değer türü kısıtlamasına sahip bir tür parametresi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
-    * `A` olmayan bir sınıf olan `abstract` ve açıkça bildirilirse içeren `public` parametresiz oluşturucu.
-    * `A` değil `abstract` ve varsayılan bir oluşturucu vardır ([varsayılan oluşturucular](classes.md#default-constructors)).
+    * Örtük başvuru dönüştürmesi ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions))
+    * Bir kutulama dönüştürmesi ([kutulama dönüşümleri](conversions.md#boxing-conversions)), türü null yapılamayan bir değer türüdür.
+    * Bir tür parametresinden dolaylı başvuru, paketleme veya tür parametresi dönüştürme `C``A`.
+*  Kısıtlama başvuru türü kısıtlamasıdır (`class`) `A` tür, aşağıdakilerden birini karşılamalıdır:
+    * `A` bir arabirim türü, sınıf türü, temsilci türü veya dizi türüdür. `System.ValueType` ve `System.Enum` bu kısıtlamayı karşılayan başvuru türleri olduğunu unutmayın.
+    * `A`, başvuru türü olarak bilinen bir tür parametresidir ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
+*  Kısıtlama değer türü kısıtlamasıdır (`struct`) `A` tür, aşağıdakilerden birini karşılamalıdır:
+    * `A`, bir struct türü veya Enum türüdür, ancak null yapılabilir bir tür değildir. `System.ValueType` ve `System.Enum` bu kısıtlamayı karşılamayan başvuru türleri olduğunu unutmayın.
+    * `A`, değer türü kısıtlamasına ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) sahip bir tür parametresidir.
+*  Kısıtlama Oluşturucu kısıtlaması `new()`, tür `A` `abstract` olmamalı ve ortak parametresiz bir oluşturucuya sahip olmalıdır. Aşağıdakilerden biri doğruysa, bu karşılanır:
+    * `A`, tüm değer türleri ortak bir varsayılan oluşturucuya ([Varsayılan oluşturucular](types.md#default-constructors)) sahip olduğundan bir değer türüdür.
+    * `A`, Oluşturucu kısıtlamasına sahip bir tür parametresidir ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
+    * `A`, değer türü kısıtlamasına ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) sahip bir tür parametresidir.
+    * `A`, `abstract` olmayan ve açıkça tanımlanmış ve parametresi olmayan bir `public` Oluşturucusu içeren bir sınıftır.
+    * `A` `abstract` değildir ve varsayılan bir oluşturucuya ([Varsayılan oluşturucular](classes.md#default-constructors)) sahiptir.
 
-Bir veya daha fazla tür parametresinin kısıtlamalarını tarafından belirtilen tür bağımsız değişkenlerini tatmin edici değil, bir derleme zamanı hatası oluşur.
+Bir veya daha fazla tür parametresi kısıtlaması verilen tür bağımsız değişkenleri tarafından karşılanmıyorsa, derleme zamanı hatası oluşur.
 
-Tür parametreleri devralınmaz olduğundan, hiçbir zaman kısıtlamaları olan ya da devralındı. Aşağıdaki örnekte `D` kısıtlaması, tür parametresinin belirtilmesi gerekiyor `T` böylece `T` taban sınıfı tarafından uygulanan kısıtlamasına `B<T>`. Buna karşılık, sınıfının `E` bir kısıtlama nedeniyle belirtmemeniz gerekir `List<T>` uygulayan `IEnumerable` herhangi `T`.
+Tür parametreleri devralınmadığından, kısıtlamalar hiçbir şekilde devralınmaz. Aşağıdaki örnekte `D`, `T` temel `B<T>`sınıf tarafından uygulanan kısıtlamayı karşılayacak şekilde, `T` tür parametresinde kısıtlamayı belirtmesi gerekir. Buna karşılık, `List<T>` herhangi bir `T`için `IEnumerable` uyguladığı için, sınıf `E` bir kısıtlama belirtmemelidir.
 
 ```csharp
 class B<T> where T: IEnumerable {...}
@@ -607,7 +607,7 @@ class E<T>: B<List<T>> {...}
 
 ## <a name="type-parameters"></a>Tür parametreleri
 
-Bir tür parametresi, bir değer türü veya parametresi çalışma zamanında bağlı olduğu başvuru türüne atamak bir tanımlayıcıdır.
+Tür parametresi, parametrenin çalışma zamanında bağlandığı bir değer türü veya başvuru türü atayarak bir tanıtıcıdır.
 
 ```antlr
 type_parameter
@@ -615,30 +615,30 @@ type_parameter
     ;
 ```
 
-Bir tür parametresi, birçok farklı gerçek tür bağımsız değişkenleri ile oluşturulabilir olduğundan, Tür parametrelerine biraz daha farklı işlemler ve diğer türleri kısıtlamalara sahip. Bu güncelleştirmeler şunlardır:
+Bir tür parametresi birçok farklı gerçek tür bağımsız değişkeni ile örneklenmiş olduğundan, tür parametrelerinin farklı işlemleri ve kısıtlamaları diğer türlerden farklıdır. Bu güncelleştirmeler şunlardır:
 
-*  Bir tür parametresi, doğrudan temel sınıf bildirmek için kullanılamaz ([temel sınıfı](classes.md#base-class)) veya arabirimi ([değişken türü parametre listeleri](interfaces.md#variant-type-parameter-lists)).
-*  Tür parametresi için parametreleri kısıtlamalar varsa, bağımlı türündeki üye araması kuralları uygulanır. İçinde ayrıntılı [üye araması](expressions.md#member-lookup).
-*  Bağımlı bir tür parametresi için kısıtlamalar varsa, kullanılabilir dönüştürmeler için tür parametresi uygulanır. İçinde ayrıntılı [tür parametreleri içeren örtük dönüştürmelerin](conversions.md#implicit-conversions-involving-type-parameters) ve [açık dinamik dönüştürmeler](conversions.md#explicit-dynamic-conversions).
-*  Değişmez değer `null` tür parametresi bir başvuru türü olması biliniyorsa dışında bir tür parametresi tarafından belirtilen bir türe dönüştürülemez ([tür parametreleri içeren örtük dönüştürmelerin](conversions.md#implicit-conversions-involving-type-parameters)). Ancak, bir `default` ifade ([varsayılan değer ifadeleri](expressions.md#default-value-expressions)) bunun yerine kullanılabilir. Ayrıca, bir değer türü parametre tarafından sağlanan bir türü ile karşılaştırılabilir `null` kullanarak `==` ve `!=` ([başvuru türü eşitlik işleçleri](expressions.md#reference-type-equality-operators)) değer türü kısıtlaması tür parametresi sahip olmadığı sürece.
-*  A `new` ifade ([nesne oluşturma ifadeleri](expressions.md#object-creation-expressions)) tarafından tür parametresi kısıtlı yalnızca bir tür parametreyle kullanılabilir bir *constructor_constraint* veya kısıtlama (türüdeğeri[ Tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)).
-*  Bir tür parametresi, her yerde bir öznitelik içinde kullanılamaz.
-*  Bir tür parametresi bir üye erişimi kullanılamaz ([üye erişimi](expressions.md#member-access)) veya tür adı ([Namespace ve tür adları](basic-concepts.md#namespace-and-type-names)) statik bir üyeye veya iç içe geçmiş bir tür tanımlamak için.
-*  Güvenli olmayan kod içinde bir tür parametresi olarak kullanılamaz bir *unmanaged_type* ([işaretçi türleri](unsafe-code.md#pointer-types)).
+*  Bir tür parametresi doğrudan bir taban sınıf ([temel sınıf](classes.md#base-class)) veya arabirim ([değişken türü parametre listeleri](interfaces.md#variant-type-parameter-lists)) bildirmek için kullanılamaz.
+*  Tür parametrelerine üye arama kuralları, varsa tür parametresine uygulanan kısıtlamalara bağlıdır. Bunlar [üye aramada](expressions.md#member-lookup)ayrıntılıdır.
+*  Bir tür parametresi için kullanılabilir dönüştürmeler, varsa tür parametresine uygulanan kısıtlamalara bağlıdır. Bunlar tür parametreleri ve [Açık dinamik dönüştürmeleri](conversions.md#explicit-dynamic-conversions) [içeren örtük dönüştürmelerde](conversions.md#implicit-conversions-involving-type-parameters) ayrıntılandırılmıştır.
+*  Tür parametresi bir başvuru türü ([tür parametreleri Içeren örtük dönüştürmeler](conversions.md#implicit-conversions-involving-type-parameters)) olarak bilinmediği sürece, sabit `null` tür parametresi tarafından verilen bir türe dönüştürülemez. Ancak, bunun yerine bir `default` ifadesi ([varsayılan değer ifadeleri](expressions.md#default-value-expressions)) kullanılabilir. Ayrıca, bir tür parametresi tarafından verilen bir değer, tür parametresi değer türü kısıtlamasına sahip olmadığı takdirde, `==` ve `!=` ([başvuru türü eşitlik işleçleri](expressions.md#reference-type-equality-operators)) kullanılarak `null` karşılaştırılabilir.
+*  `new` ifadesi ([nesne oluşturma ifadeleri](expressions.md#object-creation-expressions)) yalnızca tür parametresi bir *constructor_constraint* veya değer türü kısıtlaması ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) tarafından kısıtlanmamışsa bir tür parametresiyle birlikte kullanılabilir.
+*  Bir tür parametresi bir öznitelik içinde herhangi bir yerde kullanılamaz.
+*  Bir statik üye veya iç içe bir tür tanımlamak için bir tür parametresi, üye erişimi ([üye erişimi](expressions.md#member-access)) veya tür adı ([ad alanı ve tür adları](basic-concepts.md#namespace-and-type-names)) içinde kullanılamaz.
+*  Güvenli olmayan kodda, bir tür parametresi bir *unmanaged_type* ([işaretçi türleri](unsafe-code.md#pointer-types)) olarak kullanılamaz.
 
-Bir türü olarak yalnızca bir derleme zamanı yapısı tür parametreleri var. Çalışma zamanında, her tür parametresi tür bağımsız değişkeni genel tür bildirimine sağlanarak belirtilen çalışma zamanı türüne bağlıdır. Bu nedenle, kapalı bir oluşturulmuş tür olabilir bir tür parametresi gerçekleştirilse çalışma zamanı ile bir değişken türü bildirilen ([açık ve kapalı türleri](types.md#open-and-closed-types)). Çalışma zamanı yürütme tüm ifadeleri ve tür parametreleri içeren ifadeler sağlanmadı gerçek tür, parametre türü bağımsız değişkeni olarak kullanır.
+Tür olarak, tür parametreleri yalnızca derleme zamanı yapısıdır. Çalışma zamanında, her tür parametresi genel tür bildirimine bir tür bağımsız değişkeni sağlanarak belirtilen bir çalışma zamanı türüne bağlanır. Bu nedenle, bir tür parametresiyle belirtilen değişkenin türü, çalışma zamanında, Kapalı oluşturulmuş bir tür ([açık ve kapalı türler](types.md#open-and-closed-types)) olur. Tüm deyimlerin ve tür parametreleri içeren ifadelerin çalışma zamanı yürütmesi, bu parametre için tür bağımsız değişkeni olarak sağlanan gerçek türü kullanır.
 
 ## <a name="expression-tree-types"></a>İfade ağacı türleri
 
-***İfade ağaçları*** lambda ifadeleri olarak yürütülebilir kod yerine veri yapılarını temsil edilmesini izin verir. İfade ağaçları olan değerleri ***ifade ağacı türleri*** formun `System.Linq.Expressions.Expression<D>`burada `D` herhangi bir temsilci türü. Bu belirtim geri kalanı için biz kısaltmalar kullanarak bu türlerine başvuracaktır `Expression<D>`.
+***İfade ağaçları*** , lambda ifadelerinin yürütülebilir kod yerine veri yapıları olarak gösterilmesine izin verir. İfade ağaçları `System.Linq.Expressions.Expression<D>`form ***ifade ağacı türlerinin*** değerlerdir; burada `D` herhangi bir temsilci türüdür. Bu şartın geri kalanında, bu türlere toplu `Expression<D>`başvuracağız.
 
-Bir temsilci türüne dönüştürme bir lambda ifadesinden varsa `D`, bir dönüştürme da ifade ağaç türüne olduğunu `Expression<D>`. Dönüştürme bir temsilci türü için bir lambda ifadesinin lambda ifadesi için yürütülebilir koda başvuran bir temsilci davranırken bir ifade ağacı türüne dönüştürme, lambda ifadesi bir ifade ağacı temsilini oluşturur.
+Lambda ifadesinden bir temsilci türü `D`bir dönüştürme varsa, ifade ağacı türü `Expression<D>`bir dönüştürme de mevcuttur. Bir lambda ifadesinin bir temsilci türüne dönüştürülmesi, lambda ifadesinin yürütülebilir koduna başvuran bir temsilci oluşturduğunda, bir ifade ağacı türüne dönüştürme lambda ifadesinin ifade ağacı gösterimini oluşturur.
 
-İfade ağaçları lambda ifadeleri verimli bellek içi verilerin temsillerini olan ve lambda ifadesinin yapısı saydam ve açık hale getirir.
+İfade ağaçları, lambda ifadelerinin verimli bellek içi veri temsilleridir ve lambda ifadesinin yapısını saydam ve açık hale getirir.
 
-Bir temsilci türü'olduğu gibi `D`, `Expression<D>` parametre ve dönüş türleri için kabul edilir, aynı olduğu `D`.
+Bir temsilci türü `D`benzer şekilde, `Expression<D>`, `D`ile aynı olan parametre ve dönüş türlerine sahip olarak kabul edilir.
 
-Aşağıdaki örnek, bir lambda ifadesi yürütülebilir kod hem bir ifade ağacı olarak temsil eder. Bir dönüştürme olmadığından `Func<int,int>`, dönüştürme için de mevcut `Expression<Func<int,int>>`:
+Aşağıdaki örnek, hem yürütülebilir kod hem de bir ifade ağacı olarak bir lambda ifadesini temsil eder. `Func<int,int>`bir dönüştürme olduğundan, `Expression<Func<int,int>>`için de bir dönüştürme de mevcuttur:
 
 ```csharp
 Func<int,int> del = x => x + 1;                    // Code
@@ -646,20 +646,20 @@ Func<int,int> del = x => x + 1;                    // Code
 Expression<Func<int,int>> exp = x => x + 1;        // Data
 ```
 
-Bu atamaları, temsilci aşağıdaki `del` döndüren bir yöntemin başvurduğu `x + 1`ve ifade ağacı `exp` ifade tanımlayan bir veri yapısı başvuran `x => x + 1`.
+Bu atamaları izleyerek temsilci `del` `x + 1`döndüren bir yönteme başvurur ve ifade ağacı `exp` ifade `x => x + 1`tanımlayan bir veri yapısına başvurur.
 
-Genel türün tam tanımı `Expression<D>` bir lambda ifadesi bir ifade ağacı türüne dönüştürülürken bir ifade ağacı oluşturmak için kesin yanı sıra, her ikisi de bu belirtim kapsamı dışında kurallardır.
+Genel tür `Expression<D>` tam tanımı ve bir lambda ifadesi bir ifade ağacı türüne dönüştürüldüğünde bir ifade ağacı oluşturmak için kesin kurallar, her ikisi de bu belirtim kapsamının dışındadır.
 
-İki şey açık hale getirmek önemlidir:
+Açık hale getirmek için iki şey önemlidir:
 
-*  Tüm lambda ifadeleri ifade ağaçlarına dönüştürülemez. Örneğin, deyim gövdesi olan lambda ifadeleri ve atama ifadeleri içeren lambda ifadeleri ifade edilemez. Bu gibi durumlarda, bir dönüştürme hala var, ancak derleme zamanında başarısız olur. Bu özel durum ayrıntıları [anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions).
-*   `Expression<D>` bir örnek yöntemi sunar `Compile` bir temsilci türü üretir `D`:
+*  Tüm lambda ifadeleri ifade ağaçlarına dönüştürülemez. Örneğin, deyim gövdeleriyle lambda ifadeleri ve atama ifadeleri içeren lambda ifadeleri temsil edilemez. Bu durumlarda, bir dönüştürme hala vardır ancak derleme zamanında başarısız olur. Bu özel durumlar [anonim işlev dönüştürmelerinde](conversions.md#anonymous-function-conversions)ayrıntılıdır.
+*   `Expression<D>`, `D`türünde bir temsilci üreten bir örnek yöntemi `Compile` sunar:
 
     ```csharp
     Func<int,int> del2 = exp.Compile();
     ```
 
-    Bu temsilci çağırma yürütülecek bir ifade ağacı tarafından temsil edilen koda neden olur. Bu nedenle, yukarıdaki tanımları göz önünde bulundurulduğunda, del ve del2 eşdeğerdir ve aşağıdaki iki deyimi aynı etkiye sahip olur:
+    Bu temsilciyi çağırmak, ifade ağacının gösterdiği kodun yürütülmesine neden olur. Bu nedenle, yukarıdaki tanımlar, del ve del2 eşdeğerdir ve aşağıdaki iki deyim aynı etkiye sahip olacaktır:
 
     ```csharp
     int i1 = del(1);
@@ -667,5 +667,5 @@ Genel türün tam tanımı `Expression<D>` bir lambda ifadesi bir ifade ağacı 
     int i2 = del2(1);
     ```
 
-    Bu kod çalıştırıldıktan sonra `i1` ve `i2` hem de değeri alacaktır. `2`.
+    Bu kodu yürüttükten sonra, `i1` ve `i2` her ikisi de `2`değeri olur.
 
