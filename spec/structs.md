@@ -12,11 +12,11 @@ Yapıları, veri üyeleri ve işlev üyeleri içerebilen veri yapılarını tems
 
 Yapılar, özellikle değer semantiği olan küçük veri yapıları için yararlıdır. Karmaşık sayılar, bir koordinat sistemindeki işaret veya bir sözlükte anahtar-değer çiftleri, yapı birimlerinin iyi örnekleridir. Bu veri yapılarına yönelik anahtar, çok sayıda veri üyesine sahip olduğundan, devralma veya başvuru kimliği kullanımını gerektirmediğinden ve atamanın başvuru yerine değeri kopyalayan değer semantiğinin kullanılmasıyla kolayca uygulanabilirler.
 
-[Basit türlerde](types.md#simple-types)açıklandığı gibi, tarafından C#sunulan `int`, `double` ve `bool` gibi basit türler aslında tüm yapı türleridir. Bu öntanımlı türlerin yapıları olduğu gibi, C# dilde yeni "temel" türler uygulamak için yapılar ve işleç aşırı yüklemesi de kullanabilirsiniz. Bu bölümün sonunda bu türden iki örnek verilmiştir ([struct örnekleri](structs.md#struct-examples)).
+[Basit türlerde](types.md#simple-types)açıklandığı gibi, tarafından C#sunulan `int`, `double`ve `bool`gibi basit türler aslında tüm yapı türleridir. Bu öntanımlı türlerin yapıları olduğu gibi, C# dilde yeni "temel" türler uygulamak için yapılar ve işleç aşırı yüklemesi de kullanabilirsiniz. Bu bölümün sonunda bu türden iki örnek verilmiştir ([struct örnekleri](structs.md#struct-examples)).
 
 ## <a name="struct-declarations"></a>Struct bildirimleri
 
-Bir *struct_declaration* , yeni bir yapı bildiren bir *type_declaration* ([tür bildirimleri](namespaces.md#type-declarations)):
+*Struct_declaration* , yeni bir yapı bildiren bir *type_declaration* ([tür bildirimleri](namespaces.md#type-declarations)):
 
 ```antlr
 struct_declaration
@@ -25,11 +25,11 @@ struct_declaration
     ;
 ```
 
-Bir *struct_declaration* , isteğe bağlı bir *öznitelik* kümesi ([öznitelikler](attributes.md)) ve ardından isteğe bağlı bir *struct_modifier*s kümesi ([Yapı değiştiricileri](structs.md#struct-modifiers)) ve ardından isteğe bağlı bir `partial` değiştiricisi ve ardından `struct` anahtar sözcüğü ve yapı adını ve ardından isteğe bağlı bir *type_parameter_list* belirtimi ([tür parametreleri](classes.md#type-parameters)) ve ardından isteğe *bağlı bir* *struct_interfaces* belirtimi ([kısmi değiştirici](structs.md#partial-modifier))) ve ardından, isteğe bağlı bir *type_parameter_constraints_clause*s belirtimi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) ve ardından bir *struct_body* ([struct Body](structs.md#struct-body)) ile, isteğe bağlı olarak bir noktalı virgül gelir.
+*Struct_declaration* , isteğe bağlı bir dizi *öznitelik* ([öznitelik](attributes.md) *struct_modifier*) ve ardından isteğe bağlı bir `partial` değiştiricisi ve ardından anahtar `struct`[](structs.md#struct-modifiers)sözcüğünün ardından isteğe bağlı bir *type_parameter_list* belirtimi (tür parametreleri) ve *ardından isteğe bağlı* bir Struct_interfaces belirtimi ([tür parametreleri](classes.md#type-parameters)) ve ardından isteğe bağlı bir belirtimi (kısmi değiştirici) içerir.[ ](structs.md#partial-modifier)) ve ardından isteğe bağlı bir *type_parameter_constraints_clause*s belirtimi ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) ve ardından bir *struct_body* ([struct Body](structs.md#struct-body)), isteğe bağlı olarak noktalı virgül gelir.
 
 ### <a name="struct-modifiers"></a>Yapı değiştiricileri
 
-Bir *struct_declaration* , isteğe bağlı olarak bir yapı değiştiricileri dizisi içerebilir:
+*Struct_declaration* , isteğe bağlı olarak bir yapı değiştiricileri dizisi içerebilir:
 
 ```antlr
 struct_modifier
@@ -48,11 +48,11 @@ Bir struct bildiriminin değiştiricileri, bir sınıf bildirimiyle ([sınıf bi
 
 ### <a name="partial-modifier"></a>Kısmi değiştirici
 
-@No__t-0 değiştiricisi, bu *struct_declaration* kısmi bir tür bildirimi olduğunu gösterir. Bir kapsayan ad alanı veya tür bildiriminde aynı ada sahip birden çok kısmi struct bildirimi, [kısmi türlerde](classes.md#partial-types)belirtilen kurallara göre tek bir struct bildirimi oluşturmak için birleştirilir.
+`partial` değiştirici, bu *struct_declaration* kısmi bir tür bildirimi olduğunu gösterir. Bir kapsayan ad alanı veya tür bildiriminde aynı ada sahip birden çok kısmi struct bildirimi, [kısmi türlerde](classes.md#partial-types)belirtilen kurallara göre tek bir struct bildirimi oluşturmak için birleştirilir.
 
 ### <a name="struct-interfaces"></a>Struct arabirimleri
 
-Yapı bildirimi bir *struct_interfaces* belirtimi içerebilir ve bu durumda yapının verilen arabirim türlerini doğrudan uygulaması söylenemez.
+Yapı bildirimi *struct_interfaces* bir belirtim içerebilir ve bu durumda yapının verilen arabirim türlerini doğrudan uygulaması söylenemez.
 
 ```antlr
 struct_interfaces
@@ -64,7 +64,7 @@ Arabirim Uygulamaları, [arabirim uygulamalarında](interfaces.md#interface-impl
 
 ### <a name="struct-body"></a>Yapı gövdesi
 
-Bir yapının *struct_body* , yapının üyelerini tanımlar.
+Bir yapının *struct_body* yapının üyelerini tanımlar.
 
 ```antlr
 struct_body
@@ -74,7 +74,7 @@ struct_body
 
 ## <a name="struct-members"></a>Yapı üyeleri
 
-Bir yapının üyeleri, *struct_member_declaration*s tarafından tanıtılan üyelerden ve `System.ValueType` türünden devralınan üyelere oluşur.
+Bir yapının üyeleri, *struct_member_declaration*s tarafından tanıtılan üyelerden ve `System.ValueType`türünden devralınan üyelere oluşur.
 
 ```antlr
 struct_member_declaration
@@ -102,8 +102,8 @@ Yapılar çeşitli önemli yollarla sınıflardan farklıdır:
 *  Tüm yapı türleri dolaylı olarak `System.ValueType` ([Devralma](structs.md#inheritance)) sınıfından devralınır.
 *  Struct türündeki bir değişkene atama, atanmakta olan değerin ([atama](structs.md#assignment)) bir kopyasını oluşturur.
 *  Bir yapının varsayılan değeri, tüm değer türü alanları varsayılan değerlerine ve tüm başvuru türü alanlarına `null` ([varsayılan değerler](structs.md#default-values)) olarak ayarlanarak oluşturulan değerdir.
-*  Kutulama ve kutudan çıkarma işlemleri bir struct türü ve `object` ([kutulama ve kutudan](structs.md#boxing-and-unboxing)çıkarma) arasında dönüştürmek için kullanılır.
-*  @No__t-0 ' nın anlamı yapılar için farklıdır ([Bu erişim](expressions.md#this-access)).
+*  Kutulama ve kutudan çıkarma işlemleri bir yapı türü ve `object` ([kutulama ve kutudan](structs.md#boxing-and-unboxing)çıkarma) arasında dönüştürmek için kullanılır.
+*  `this` anlamı yapılar için farklıdır ([Bu erişim](expressions.md#this-access)).
 *  Bir yapının örnek alanı bildirimlerine değişken başlatıcıları ([alan başlatıcıları](structs.md#field-initializers)) ekleme izni verilmez.
 *  Bir yapının parametresiz örnek Oluşturucusu ([oluşturucular](structs.md#constructors)) bildirme izni yok.
 *  Bir yapının yıkıcı ([Yıkıcılar](structs.md#destructors)) bildirme izni yok.
@@ -112,7 +112,7 @@ Yapılar çeşitli önemli yollarla sınıflardan farklıdır:
 
 Yapılar değer türlerdir ([değer türleri](types.md#value-types)) ve değer semantiğini kabul edilir. Diğer yandan sınıflar, başvuru türleridir ([başvuru türleri](types.md#reference-types)) ve başvuru semantiklerine sahip olarak söylenir.
 
-Yapı türünün bir değişkeni doğrudan yapı verilerini içerir, ancak bir sınıf türünün değişkeni, ikinci olarak bir nesne olarak bilinen veri başvurusunu içerir. @No__t-0 yapısı, `A` türünde bir örnek alanı içerdiğinde ve `A` bir struct türünde ise, `A` ' e yönelik derleme zamanı hatası, `B` ' e veya `B` ' ten oluşturulan bir türe bağlıdır. @No__t bir struct, @no__t bir yapıya ***bağımlıdır*** . `X` `Y` türünde bir örnek alanı içeriyorsa. Bu tanım verildiğinde, bir yapının bağlı olduğu yapı kümesinin tamamı, ilişkiye bağlı olarak, ***doğrudan '*** nin geçişli kapanışı olur.  Örneğin:
+Yapı türünün bir değişkeni doğrudan yapı verilerini içerir, ancak bir sınıf türünün değişkeni, ikinci olarak bir nesne olarak bilinen veri başvurusunu içerir. Bir struct `B` `A` türünde bir örnek alanı içerdiğinde ve `A` bir yapı türü ise, `A` `B` veya `B`oluşturulan bir türe bağlı olarak bir derleme zamanı hatası olur. Bir struct `X`, `X` `Y`bir örnek alanı içeriyorsa, bir struct `Y` ***doğrudan bağlıdır*** . Bu tanım verildiğinde, bir yapının bağlı olduğu yapı kümesinin tamamı, ilişkiye bağlı olarak, ***doğrudan '*** nin geçişli kapanışı olur.  Örneğin:
 ```csharp
 struct Node
 {
@@ -120,7 +120,7 @@ struct Node
     Node next; // error, Node directly depends on itself
 }
 ```
-`Node` kendi türünün bir örnek alanı içerdiğinden hata oluştu.  Başka bir örnek
+`Node`, kendi türünün bir örnek alanı içerdiğinden bir hatadır.  Başka bir örnek
 ```csharp
 struct A { B b; }
 
@@ -128,9 +128,9 @@ struct B { C c; }
 
 struct C { A a; }
 ```
-`A`, `B` ve `C` ' nin birbirlerine bağlı olduğu için bir hata.
+Her türden `A`, `B`ve `C` birbirlerine bağlı olduğundan bir hata oluştu.
 
-Sınıflar ile, iki değişkenin aynı nesneye başvurması ve bu nedenle bir değişkende işlemler için diğer değişken tarafından başvurulan nesneyi etkilemesi mümkündür. Yapılar ile, her birinin kendi verilerinin bir kopyasına sahiptir (`ref` ve `out` parametre değişkenlerinin olması dışında) ve bir üzerindeki işlemler diğerini etkilemeyebilir. Ayrıca, yapılar başvuru türleri olmadığından, yapı türünün değerlerinin `null` olması mümkün değildir.
+Sınıflar ile, iki değişkenin aynı nesneye başvurması ve bu nedenle bir değişkende işlemler için diğer değişken tarafından başvurulan nesneyi etkilemesi mümkündür. Yapılar ile, her birinin verilerin kendi kopyası vardır (`ref` ve `out` parametre değişkenleri olması dışında) ve birindeki işlemler diğerini etkilemeyebilir. Ayrıca, yapılar başvuru türleri olmadığından, yapı türünün değerlerinin `null`olması mümkün değildir.
 
 Bildirim verildi
 ```csharp
@@ -151,39 +151,39 @@ Point b = a;
 a.x = 100;
 System.Console.WriteLine(b.x);
 ```
-`10` değerini verir. @No__t-0 ' ı `b` ' e ataması değerin bir kopyasını oluşturur ve bu nedenle `b` `a.x` ' e atama tarafından etkilenmemiştir. @No__t-0 ' ın bir sınıf olarak bildirildiği için, `a` ve `b` aynı nesneye başvuracağından çıkış `100` olacaktır.
+`10`değerini verir. `a` `b` atama, değerin bir kopyasını oluşturur ve bu nedenle `b` `a.x`atamasından etkilenmez. Bunun yerine bir sınıf olarak bildirildiği `Point`, `a` ve `b` aynı nesneye başvuracağından çıkış `100`.
 
 ### <a name="inheritance"></a>Devralma
 
-Tüm yapı türleri dolaylı olarak `System.ValueType` sınıfından devralır, bu, sırasıyla `object` sınıfından devralır. Bir struct bildirimi uygulanan arabirimlerin bir listesini belirtebilir, ancak bir struct bildiriminin bir temel sınıf belirtmesi mümkün değildir.
+Tüm yapı türleri dolaylı olarak `System.ValueType`sınıfından devralır, bu, sırasıyla sınıf `object`devralır. Bir struct bildirimi uygulanan arabirimlerin bir listesini belirtebilir, ancak bir struct bildiriminin bir temel sınıf belirtmesi mümkün değildir.
 
-Yapı türleri hiçbir zaman soyut değildir ve her zaman örtük olarak mühürlenmez. @No__t-0 ve `sealed` değiştiricilerine bir struct bildiriminde izin verilmez.
+Yapı türleri hiçbir zaman soyut değildir ve her zaman örtük olarak mühürlenmez. Bu nedenle `abstract` ve `sealed` değiştiricilerine bir struct bildiriminde izin verilmez.
 
-Yapılar için devralma desteklenmediğinden, bir struct üyesinin tanımlanmış erişilebilirliği `protected` veya `protected internal` olamaz.
+Yapılar için devralma desteklenmediğinden, bir struct üyesinin tanımlanmış erişilebilirliği `protected` veya `protected internal`olamaz.
 
-Bir yapı içindeki işlev üyeleri `abstract` veya `virtual` olamaz ve `override` değiştiricisine yalnızca `System.ValueType` ' ten devralınan yöntemleri geçersiz kılmak için izin verilir.
+Bir yapıdaki işlev üyeleri `abstract` veya `virtual`olamaz ve `override` değiştiricisine yalnızca `System.ValueType`devralınan yöntemleri geçersiz kılmak için izin verilir.
 
 ### <a name="assignment"></a>Atama
 
 Struct türündeki bir değişkene atama, atanmakta olan değerin bir kopyasını oluşturur. Bu, atamadan bir sınıf türü değişkenine farklılık gösterir. Bu, başvuruyu kopyalayan ancak başvuru tarafından tanımlanan nesneye değil.
 
-Bir atamaya benzer şekilde, bir struct bir değer parametresi olarak geçirildiğinde veya bir işlev üyesinin sonucu olarak döndürüldüğünde, yapının bir kopyası oluşturulur. Bir struct, `ref` veya `out` parametresi kullanılarak bir işlev üyesine başvuru ile geçirilebilir.
+Bir atamaya benzer şekilde, bir struct bir değer parametresi olarak geçirildiğinde veya bir işlev üyesinin sonucu olarak döndürüldüğünde, yapının bir kopyası oluşturulur. Bir struct, bir `ref` veya `out` parametresi kullanılarak bir işlev üyesine başvuru ile geçirilebilir.
 
 Bir yapının özelliği veya Dizin Oluşturucusu bir atamanın hedefi olduğunda, özellik veya Dizin Oluşturucu erişimi ile ilişkili örnek ifadesi bir değişken olarak sınıflandırılmalıdır. Örnek ifadesi bir değer olarak sınıflandırıldığında, bir derleme zamanı hatası oluşur. Bu, [basit atamada](expressions.md#simple-assignment)daha ayrıntılı olarak açıklanmıştır.
 
 ### <a name="default-values"></a>Varsayılan değerler
 
-[Varsayılan değerler](variables.md#default-values)' de açıklandığı gibi çeşitli değişkenler, oluşturuldukları sırada varsayılan değerlerine otomatik olarak başlatılır. Sınıf türleri ve diğer başvuru türleri değişkenleri için bu varsayılan değer `null` ' dır. Ancak, yapılar `null` olamaz değer türleri olduğundan, bir yapının varsayılan değeri, tüm değer türü alanları varsayılan değerlerine ve tüm başvuru türü alanlarına `null` olarak ayarlanarak oluşturulan değerdir.
+[Varsayılan değerler](variables.md#default-values)' de açıklandığı gibi çeşitli değişkenler, oluşturuldukları sırada varsayılan değerlerine otomatik olarak başlatılır. Sınıf türleri ve diğer başvuru türleri değişkenleri için, bu varsayılan değer `null`. Ancak, yapılar `null`değer türleri olduğundan, yapının varsayılan değeri, tüm değer türü alanları varsayılan değerlerine ve tüm başvuru türü `null`alanlarına ayarlanarak oluşturulan değerdir.
 
-Yukarıda belirtilen `Point` yapısına başvuran örnek
+Yukarıda belirtilen `Point` yapısına başvurma, örnek
 ```csharp
 Point[] a = new Point[100];
 ```
-dizide her `Point` `x` ve `y` alanları sıfıra ayarlanarak oluşturulan değere başlatılır.
+dizideki her `Point`, `x` ve `y` alanları sıfıra ayarlanarak oluşturulan değere başlatır.
 
-Bir yapının varsayılan değeri, yapının varsayılan oluşturucusunun ([Varsayılan oluşturucular](types.md#default-constructors)) döndürdüğü değere karşılık gelir. Bir sınıfın aksine, bir yapının parametresiz örnek Oluşturucusu bildirmesine izin verilmez. Bunun yerine, her yapının örtük olarak, tüm değer türü alanlarını varsayılan değerlerine ve tüm başvuru türü alanlarına `null` ' a ayarlamasıyla sonuçlanan değeri döndüren, parametresiz bir örnek Oluşturucusu vardır.
+Bir yapının varsayılan değeri, yapının varsayılan oluşturucusunun ([Varsayılan oluşturucular](types.md#default-constructors)) döndürdüğü değere karşılık gelir. Bir sınıfın aksine, bir yapının parametresiz örnek Oluşturucusu bildirmesine izin verilmez. Bunun yerine, her yapının örtük olarak, tüm değer türü alanlarını varsayılan değerlerine ve tüm başvuru türü alanlarına `null`için ayarlamalarından elde edilen değeri döndüren, parametresiz bir örnek Oluşturucusu vardır.
 
-Yapılar, varsayılan başlatma durumunu geçerli bir durum olacak şekilde göz önünde bulundurmanız için tasarlanmalıdır. Örnekte
+Yapılar, varsayılan başlatma durumunu geçerli bir durum olacak şekilde göz önünde bulundurmanız için tasarlanmalıdır. örnekte
 ```csharp
 using System;
 
@@ -199,15 +199,15 @@ struct KeyValuePair
     }
 }
 ```
-Kullanıcı tanımlı örnek Oluşturucu yalnızca açıkça çağrıldığı yerde null değerlere karşı koruma sağlar. @No__t-0 değişkeninin varsayılan değer başlatmasına tabi olduğu durumlarda, `key` ve `value` alanları null olur ve yapının bu durumu işlemek için hazırlanması gerekir.
+Kullanıcı tanımlı örnek Oluşturucu yalnızca açıkça çağrıldığı yerde null değerlere karşı koruma sağlar. Bir `KeyValuePair` değişkeninin varsayılan değer başlatmasına tabi olduğu durumlarda, `key` ve `value` alanları null olur ve yapının bu durumu işlemek için hazırlanması gerekir.
 
 ### <a name="boxing-and-unboxing"></a>Kutulama ve kutudan çıkarma
 
-Bir sınıf türünün değeri, derlemeyi derleme zamanında başka bir tür olarak davranarak sınıf tarafından uygulanan `object` türüne veya arabirim türüne dönüştürülebilir. Benzer şekilde, `object` türünde bir değer ya da bir arabirim türünün değeri, başvuru değiştirilmeden bir sınıf türüne geri dönüştürülebilir (ancak bu durumda bir çalışma zamanı tür denetimi gereklidir).
+Bir sınıf türünün değeri, başvuruya yalnızca derleme zamanında başka bir tür olarak davranarak sınıf tarafından uygulanan bir arabirim türü `object` veya türü türüne dönüştürülebilir. Benzer şekilde, `object` veya bir arabirim türünün değeri bir değeri, başvuru değiştirilmeden bir sınıf türüne geri dönüştürülebilir (ancak bu durumda bir çalışma zamanı tür denetimi gereklidir).
 
-Yapılar başvuru türleri olmadığından, bu işlemler yapı türleri için farklı şekilde uygulanır. Yapı türünün bir değeri `object` türüne veya struct tarafından uygulanan bir arabirim türüne dönüştürüldüğünde, bir paketleme işlemi gerçekleşir. Benzer şekilde, `object` türünde bir değer veya bir arabirim türünün değeri bir yapı türüne geri dönüştürüldüğünde, kutudan çıkarma işlemi gerçekleşir. Sınıf türlerinde aynı işlemlerden önemli bir farklılık, kutulama ve kutudan çıkarma, yapı değerini kutulanmış örneğin içine veya dışına kopyaladır. Bu nedenle, kutulama veya kutudan çıkarma işleminin ardından kutulanmış yapıda yapılan değişiklikler kutulanmış yapıda yansıtılmaz.
+Yapılar başvuru türleri olmadığından, bu işlemler yapı türleri için farklı şekilde uygulanır. Yapı türünde bir değer `object` türüne veya yapı tarafından uygulanan bir arabirim türüne dönüştürüldüğünde, kutulama işlemi gerçekleşir. Benzer şekilde, `object` türü veya bir arabirim türünün değeri bir yapı türüne geri dönüştürüldüğünde, kutudan çıkarma işlemi gerçekleşir. Sınıf türlerinde aynı işlemlerden önemli bir farklılık, kutulama ve kutudan çıkarma, yapı değerini kutulanmış örneğin içine veya dışına kopyaladır. Bu nedenle, kutulama veya kutudan çıkarma işleminin ardından kutulanmış yapıda yapılan değişiklikler kutulanmış yapıda yansıtılmaz.
 
-Bir struct türü `System.Object` ' dan devralınan sanal bir yöntemi geçersiz kıldığında (`Equals`, `GetHashCode` veya `ToString`), yapı türünün bir örneği aracılığıyla sanal yöntemin çağrılması kutulama oluşmasına neden olmaz. Bu, struct bir tür parametresi olarak kullanıldığında ve çağrı tür parametre türünün bir örneği aracılığıyla gerçekleşse bile geçerlidir. Örneğin:
+Bir struct türü `System.Object` devralınan sanal bir yöntemi geçersiz kıldığında (`Equals`, `GetHashCode`veya `ToString`gibi), yapı türünün bir örneği aracılığıyla sanal yöntemin çağrılması kutulama oluşmasına neden olmaz. Bu, struct bir tür parametresi olarak kullanıldığında ve çağrı tür parametre türünün bir örneği aracılığıyla gerçekleşse bile geçerlidir. Örneğin:
 ```csharp
 using System;
 
@@ -243,9 +243,9 @@ Programın çıkışı:
 3
 ```
 
-@No__t-0 ' ın yan etkileri olması için hatalı stil olsa da, örnek, `x.ToString()` ' in üç çağırma işlemi için kutulanmanın olmadığını gösterir.
+`ToString` yan etkileri olması için hatalı stil olsa da, örnek üç `x.ToString()`çağırma için kutulanmanın olmadığını gösterir.
 
-Benzer şekilde, kısıtlı bir tür parametresindeki bir üyeye erişirken paketleme hiçbir zaman açıkça gerçekleşmez. Örneğin, `ICounter` ' ın bir değeri değiştirmek için kullanılabilecek bir yöntemi `Increment` olduğunu varsayalım. @No__t-0 bir kısıtlama olarak kullanılıyorsa, `Increment` yönteminin uygulanması `Increment` ' nin çağrıldığı değişkene bir başvuru ile çağrılır, hiçbir koşulda paketlenmiş kopya.
+Benzer şekilde, kısıtlı bir tür parametresindeki bir üyeye erişirken paketleme hiçbir zaman açıkça gerçekleşmez. Örneğin, bir arabirimin, bir değeri değiştirmek için kullanılabilecek bir yöntem `Increment` `ICounter` olduğunu varsayalım. `ICounter` bir kısıtlama olarak kullanılıyorsa, `Increment` yönteminin uygulanması, `Increment` çağrılan değişkene bir başvuru ile çağrılır, hiçbir koşulda paketlenmiş bir kopya.
 
 ```csharp
 using System;
@@ -285,7 +285,7 @@ class Program
 }
 ```
 
-@No__t-0 ' a yapılan ilk çağrı, `x` değişkeninde değeri değiştirir. Bu, `x` ' in kutulanmış kopyasında değeri değiştiren `Increment` ' a yönelik ikinci çağrıya eşdeğer değildir. Bu nedenle, programın çıktısı şu şekilde olur:
+İlk `Increment` çağrısı, `x`değişken içindeki değeri değiştirir. Bu, `x`paketlenmiş bir kopyasında değeri değiştiren `Increment`ikinci çağrısıyla eşdeğer değildir. Bu nedenle, programın çıktısı şu şekilde olur:
 ```console
 0
 1
@@ -296,13 +296,13 @@ Kutulama ve kutudan çıkarma hakkında daha fazla bilgi için bkz. [kutulama ve
 
 ### <a name="meaning-of-this"></a>Bunun anlamı
 
-Bir sınıfın örnek Oluşturucu veya örnek işlev üyesi içinde, `this` bir değer olarak sınıflandırılır. Bu nedenle `this`, işlev üyesinin çağrıldığı örneğe başvurmak için kullanılabilir. Bu, bir sınıfın işlev üyesinde `this` ' e atamak mümkün değildir.
+Bir sınıfın örnek Oluşturucu veya örnek işlev üyesi içinde `this`, bir değer olarak sınıflandırıldı. Bu nedenle `this`, işlev üyesinin çağrıldığı örneğe başvurmak için kullanılabilir ancak, bir sınıfın işlev üyesinde `this` atamak mümkün değildir.
 
-Bir yapının örnek Oluşturucusu içinde, `this` yapı türünün bir `out` parametresine karşılık gelir ve bir yapının örnek işlev üyesi içindeki `this` yapı türünün `ref` parametresine karşılık gelir. Her iki durumda da `this` bir değişken olarak sınıflandırıldı ve işlev üyesinin `this` ' e atanarak veya bunu `ref` veya `out` parametresi olarak geçirerek çağrıldığı yapının tamamını değiştirmek mümkündür.
+Bir yapının örnek Oluşturucusu içinde `this`, yapı türünün bir `out` parametresine karşılık gelir ve bir yapının örnek işlev üyesi `this`, yapı türünün `ref` parametresine karşılık gelir. Her iki durumda da, `this` bir değişken olarak sınıflandırıldı ve işlev üyesinin `this` atama ile veya `ref` ya da `out` parametresi olarak geçirerek çağrıldığı yapının tamamını değiştirmek mümkündür.
 
 ### <a name="field-initializers"></a>Alan başlatıcıları
 
-[Varsayılan değerler](structs.md#default-values)bölümünde açıklandığı gibi, bir yapının varsayılan değeri, tüm değer türü alanlarını varsayılan değerlerine ve tüm başvuru türü alanlarına `null` ' e ayarlamasından elde edilen değerden oluşur. Bu nedenle, bir yapı, örnek alan bildirimlerine değişken başlatıcıları dahil etmek için izin vermez. Bu kısıtlama yalnızca örnek alanları için geçerlidir. Yapının statik alanlarının değişken başlatıcıları içermesi için izin verilir.
+[Varsayılan değerler](structs.md#default-values)bölümünde açıklandığı gibi, bir yapının varsayılan değeri, tüm değer türü alanlarını varsayılan değerlerine ve tüm başvuru türü alanlarına `null`. Bu nedenle, bir yapı, örnek alan bildirimlerine değişken başlatıcıları dahil etmek için izin vermez. Bu kısıtlama yalnızca örnek alanları için geçerlidir. Yapının statik alanlarının değişken başlatıcıları içermesi için izin verilir.
 
 Örnek
 ```csharp
@@ -334,11 +334,11 @@ Yukarıdaki bildirim ve deyimler verildiğinde
 Point p1 = new Point();
 Point p2 = new Point(0, 0);
 ```
-her ikisi de `x` ve `y` ' i sıfır olarak başlatılan `Point` oluşturun.
+her ikisi de `x` ve `y` sıfırdan `Point` oluşturun.
 
-Bir struct Instance oluşturucusunun `base(...)` biçiminde bir Oluşturucu başlatıcısı içermesini izin verilmez.
+Bir struct Instance oluşturucusunun `base(...)`form Oluşturucu başlatıcısı içerme izni yoktur.
 
-Yapı örneği Oluşturucusu bir Oluşturucu başlatıcısı belirtmezse, `this` değişkeni yapı türünün bir `out` parametresine karşılık gelir ve bir @no__t 2 parametresine benzer, `this` ' i kesinlikle atanmalıdır ([kesin atama ](variables.md#definite-assignment)) oluşturucunun döndürdüğü her yerde. Yapı örneği Oluşturucusu bir Oluşturucu başlatıcısı belirtiyorsa, `this` değişkeni yapı türünün bir `ref` parametresine karşılık gelir ve bir @no__t 2 parametresine benzer şekilde, `this` ' i Oluşturucu gövdesine giriş üzerinde kesin olarak kabul edilir . Örnek Oluşturucu uygulamasını aşağıdan göz önünde bulundurun:
+Yapı örneği Oluşturucusu bir Oluşturucu başlatıcısı belirtmezse, `this` değişkeni yapı türünün bir `out` parametresine karşılık gelir ve bir `out` parametresine benzer şekilde, oluşturucunun döndürdüğü her yerde `this` kesinlikle atanmalıdır ([kesin atama](variables.md#definite-assignment)). Yapı örneği Oluşturucusu bir Oluşturucu başlatıcısı belirtiyorsa, `this` değişkeni yapı türünün bir `ref` parametresine karşılık gelir ve bir `ref` parametresine benzer `this`, Oluşturucu gövdesine kesin olarak atanmış olarak değerlendirilir. Örnek Oluşturucu uygulamasını aşağıdan göz önünde bulundurun:
 ```csharp
 struct Point
 {
@@ -359,7 +359,7 @@ struct Point
 }
 ```
 
-Oluşturulan yapının tüm alanları kesin olarak atanana kadar, örnek üye işlevi (`X` ve `Y`) için küme erişimcileri dahil değildir. Tek özel durum otomatik olarak uygulanan Özellikler ([Otomatik uygulanan özellikler](classes.md#automatically-implemented-properties)) içerir. Kesin atama kuralları ([basit atama ifadeleri](variables.md#simple-assignment-expressions)), bu yapı türünün örnek Oluşturucusu içindeki bir yapı türünün Auto özelliğine atamayı özel olarak muaf tut: böyle bir atama, gizli öğenin kesin bir atamasını kabul edilir Otomatik özelliğin yedekleme alanı. Bu nedenle aşağıdakilere izin verilir:
+Oluşturulan yapının tüm alanları kesinlikle atanana kadar, örnek üye işlevi (`X` ve `Y`için küme erişimcileri dahil) çağrılabilir. Tek özel durum otomatik olarak uygulanan Özellikler ([Otomatik uygulanan özellikler](classes.md#automatically-implemented-properties)) içerir. Kesin atama kuralları ([basit atama ifadeleri](variables.md#simple-assignment-expressions)), bu yapı türünün örnek Oluşturucusu içindeki bir yapı türünün bir otomatik özelliğine atamayı özel olarak muaf bulundurmaktır: böyle bir atama, otomatik özelliğin gizli yedekleme alanının kesin bir atamasını kabul edilir. Bu nedenle aşağıdakilere izin verilir:
 
 ```csharp
 struct Point
@@ -388,7 +388,7 @@ Yapı türlerinin varsayılan değerlerinin ([varsayılan değerler](structs.md#
 
 ## <a name="struct-examples"></a>Struct örnekleri
 
-Aşağıda, dilin önceden tanımlanmış türlerine benzer şekilde kullanılabilecek türler oluşturmak için `struct` türleri kullanmanın iki önemli örneği gösterilmektedir, ancak değiştirilmiş semantiklerdir.
+Aşağıda, dilin önceden tanımlanmış türlerine benzer şekilde kullanılabilecek türler oluşturmak için `struct` türlerini kullanmanın iki önemli örneği gösterilmektedir, ancak değiştirme semantiği vardır.
 
 ### <a name="database-integer-type"></a>Veritabanı tamsayı türü
 
@@ -510,7 +510,7 @@ public struct DBInt
 
 ### <a name="database-boolean-type"></a>Veritabanı Boole türü
 
-Aşağıdaki `DBBool` yapısı üç değerli bir mantıksal tür uygular. Bu türün olası değerleri, `Null` üyesinin bilinmeyen bir değeri gösterdiği `DBBool.True`, `DBBool.False` ve `DBBool.Null` ' dir. Bu üç değerli mantıksal türler genellikle veritabanlarında kullanılır.
+Aşağıdaki `DBBool` yapısı üç değerli bir mantıksal tür uygular. Bu türün olası değerleri, `Null` üyesinin bilinmeyen bir değeri gösterdiği `DBBool.True`, `DBBool.False`ve `DBBool.Null`. Bu üç değerli mantıksal türler genellikle veritabanlarında kullanılır.
 
 ```csharp
 using System;
