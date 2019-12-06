@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: d082393a00496b948ad4e3ff9e135d94e89d2448
-ms.sourcegitcommit: 1a46441156b13db6c845f4bbb886284387d73023
+ms.openlocfilehash: 4d6d28a3127bc701867afe157aa5496377a06f69
+ms.sourcegitcommit: 63d276488c9770a565fd787020783ffc1d2af9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67047030"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868010"
 ---
 # <a name="conversions"></a>Dönüşümler
 
-A ***dönüştürme*** bir ifadenin belirli bir tür olacak şekilde değerlendirilmesi olanak sağlar. Bir dönüştürme, farklı bir türe sahip olarak kabul edilmesi için belirli bir türde bir ifade neden olabilecek ya da bir tür için bir tür olmayan bir ifade neden olabilir. Dönüştürmeleri olabilir ***örtük*** veya ***açık***, ve bu bir açık tür dönüştürme gerekli olup olmadığını belirler. Örneği için tür dönüştürme `int` türüne `long` kapalıdır, bunu ifadeler tür `int` türü örtük olarak davranılıp `long`. Türünden ters dönüştürme `long` türüne `int`, açık olan ve açık bir tür dönüştürme gerekiyor.
+Bir ***dönüştürme*** , bir ifadenin belirli bir türde olması halinde değerlendirilmesine olanak sağlar. Bir dönüştürme, belirli bir türün ifadesinin farklı bir tür varmış gibi işlenmesine neden olabilir veya tür olmayan bir ifadenin tür almasını sağlayabilir. Dönüştürmeler ***örtük*** veya ***Açık***olabilir ve bu, açık bir dönüştürmenin gerekli olup olmadığını belirler. Örneğin, `int` türünden `long` türüne dönüştürme örtük olur, bu nedenle `int` türündeki ifadeler örtük olarak tür `long`olarak kabul edilebilir. `long` türünden `int`türüne ters dönüştürme açık olduğundan açık bir dönüştürme gerekir.
 
 ```csharp
 int a = 123;
@@ -16,137 +16,138 @@ long b = a;         // implicit conversion from int to long
 int c = (int) b;    // explicit conversion from long to int
 ```
 
-Bazı dönüştürmeler dil tarafından tanımlanır. Programları kendi dönüştürmeler de tanımlayabilir ([kullanıcı tanımlı dönüşümler](conversions.md#user-defined-conversions)).
+Bazı dönüşümler dil tarafından tanımlanır. Programlar, kendi dönüştürmelerini ([Kullanıcı tanımlı dönüştürmeler](conversions.md#user-defined-conversions)) de tanımlayabilir.
 
-## <a name="implicit-conversions"></a>Örtük dönüşümler
+## <a name="implicit-conversions"></a>Örtük dönüştürmeler
 
-Aşağıdaki dönüştürmeler, örtük dönüştürmelerin sınıflandırılır:
+Aşağıdaki dönüşümler örtük dönüştürmeler olarak sınıflandırılmaktadır:
 
-*  Kimlik dönüştürme
-*  Örtük sayısal dönüşümler
-*  Numaralandırma örtük dönüştürme.
-*  Boş değer atanabilir örtük dönüşümler
+*  Kimlik dönüştürmeleri
+*  Örtük Sayısal dönüştürmeler
+*  Örtük numaralandırma dönüştürmeleri
+*  Örtülü olarak bulunan dize dönüşümleri
+*  Örtük null yapılabilir dönüşümler
 *  Null değişmez değer dönüştürmeleri
-*  Örtük bir başvuru dönüşümleri
-*  Kutulama dönüştürmeler
+*  Örtük başvuru dönüştürmeleri
+*  Paketleme dönüştürmeleri
 *  Örtük dinamik dönüştürmeler
-*  Örtük sabit ifade dönüştürmeler
-*  Kullanıcı tanımlı örtük dönüşümler
-*  Anonim işlev dönüştürme
-*  Yöntem grubu dönüştürmeler
+*  Örtük sabit ifade dönüştürmeleri
+*  Kullanıcı tanımlı örtük dönüştürmeler
+*  Anonim işlev dönüştürmeleri
+*  Yöntem grubu dönüştürmeleri
 
-Örtük dönüştürmeleri durumlarda işlevi üye çağrıları dahil olmak üzere çeşitli meydana gelebilir ([derleme zamanı dinamik aşırı yükleme çözünürlüğü denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), cast ifadeleri ([Cast ifadeleri](expressions.md#cast-expressions)), ve atamaları ([atama işleçleri](expressions.md#assignment-operators)).
+Örtük dönüştürmeler işlev üyesi etkinleştirmeleri ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)), atama Ifadeleri (atama işleçleri[) ve](expressions.md#cast-expressions)atamalar ([atama işleçleri](expressions.md#assignment-operators)) dahil olmak üzere çeşitli durumlarda gerçekleşebilir.
 
-Önceden tanımlanmış örtük dönüştürmeler her zaman başarılı ve hiçbir zaman özel durum oluşturulmasına neden olur. Kullanıcı tanımlı düzgün bir şekilde tasarlanmış örtük dönüştürmeleri bu özellikleri de göstermesi gerekir.
+Önceden tanımlanmış örtük dönüştürmeler her zaman başarılı olur ve hiçbir zaman özel durum oluşturulmasına neden olmaz. Doğru şekilde tasarlanan Kullanıcı tanımlı örtük dönüştürmeler bu özellikleri de göstermelidir.
 
-Türleri dönüştürme amacıyla `object` ve `dynamic` eşdeğer olarak kabul edilir.
+Dönüştürme amaçları doğrultusunda `object` ve `dynamic` türleri eşdeğer kabul edilir.
 
-Ancak, dinamik dönüştürmeler ([dinamik örtük dönüştürmelerin](conversions.md#implicit-dynamic-conversions) ve [açık dinamik dönüştürmeler](conversions.md#explicit-dynamic-conversions)) yalnızca türündeki ifadeler için uygulama `dynamic` ([dinamik tür](types.md#the-dynamic-type)).
+Ancak dinamik dönüştürmeler ([örtük dinamik dönüştürmeler](conversions.md#implicit-dynamic-conversions) ve [Açık dinamik dönüştürmeler](conversions.md#explicit-dynamic-conversions)) yalnızca `dynamic` türündeki ifadeler için geçerlidir ([dinamik tür](types.md#the-dynamic-type)).
 
 ### <a name="identity-conversion"></a>Kimlik dönüştürme
 
-Bir kimlik dönüştürme herhangi bir türü aynı türe dönüştürür. Gerekli bir tür zaten olan bir varlık, bu türe dönüştürülebilir olmalıdır söylenebilir, bu dönüşümü yok.
+Bir kimlik dönüştürmesi herhangi bir türden aynı türe dönüştürür. Bu dönüştürme, zaten gerekli bir türü olan bir varlığın bu türe dönüştürülebilir olduğunu söylebilmelidir.
 
-*  Çünkü `object` ve `dynamic` eşdeğer bir kimlik dönüştürme arasında değerlendirilir `object` ve `dynamic`, aynı olan tüm oluşumlarını değiştirilirken oluşturulan türler arasında `dynamic` ile`object`.
+*  `object` ve `dynamic` eşit kabul edildiğinden, `object` ve `dynamic`arasında bir kimlik dönüştürmesi ve tüm `dynamic` tekrarlarının `object`ile değiştirilmesi sırasında aynı olan oluşturulmuş türler arasında.
 
-### <a name="implicit-numeric-conversions"></a>Örtük sayısal dönüşümler
+### <a name="implicit-numeric-conversions"></a>Örtük Sayısal dönüştürmeler
 
-Örtük sayısal dönüşümler verilmiştir:
+Örtük Sayısal dönüştürmeler şunlardır:
 
-*  Gelen `sbyte` için `short`, `int`, `long`, `float`, `double`, veya `decimal`.
-*  Gelen `byte` için `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, veya `decimal`.
-*  Gelen `short` için `int`, `long`, `float`, `double`, veya `decimal`.
-*  Gelen `ushort` için `int`, `uint`, `long`, `ulong`, `float`, `double`, veya `decimal`.
-*  Gelen `int` için `long`, `float`, `double`, veya `decimal`.
-*  Gelen `uint` için `long`, `ulong`, `float`, `double`, veya `decimal`.
-*  Gelen `long` için `float`, `double`, veya `decimal`.
-*  Gelen `ulong` için `float`, `double`, veya `decimal`.
-*  Gelen `char` için `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, veya `decimal`.
-*  Gelen `float` için `double`.
+*  `sbyte` `short`, `int`, `long`, `float`, `double`veya `decimal`.
+*  `byte` `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`veya `decimal`.
+*  `short` `int`, `long`, `float`, `double`veya `decimal`.
+*  `ushort` `int`, `uint`, `long`, `ulong`, `float`, `double`veya `decimal`.
+*  `int` `long`, `float`, `double`veya `decimal`.
+*  `uint` `long`, `ulong`, `float`, `double`veya `decimal`.
+*  `long` `float`, `double`veya `decimal`.
+*  `ulong` `float`, `double`veya `decimal`.
+*  `char` `ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`veya `decimal`.
+*  `float` `double`.
 
-Dönüştürmelere `int`, `uint`, `long`, veya `ulong` için `float` ve `long` veya `ulong` için `double` duyarlık kaybına neden ancak hiçbir zaman büyüklük kaybına neden olur. Diğer örtük sayısal dönüştürmeler, hiçbir zaman bilgileri kaybedersiniz.
+`int`, `uint`, `long`ya da `ulong` arasında dönüştürme `float` ve `long` ya da `ulong` `double`, bir duyarlık kaybına neden olabilir, ancak hiçbir şekilde bir büyüklük kaybına neden olmaz. Diğer örtük sayısal dönüştürmeler hiçbir bilgiyi hiçbir şekilde kaybetmez.
 
-Herhangi bir örtük dönüştürme vardır `char` türü için değer bir tam sayı türleri için otomatik olarak dönüştürmez `char` türü.
+`char` türüne örtük dönüştürmeler yoktur, bu nedenle diğer integral türlerin değerleri otomatik olarak `char` türüne dönüştürülemez.
 
-### <a name="implicit-enumeration-conversions"></a>Numaralandırma örtük dönüştürmeleri
+### <a name="implicit-enumeration-conversions"></a>Örtük numaralandırma dönüştürmeleri
 
-Bir numaralandırma örtük dönüştürme verir *decimal_integer_literal* `0` herhangi dönüştürülecek *enum_type* ve herhangi bir *nullable_type* olan temel alınan türü olan bir *enum_type*. İkinci durumda, temel alınan dönüştürerek dönüştürme değerlendirilir *enum_type* ve sonucu sarmalama ([boş değer atanabilir türler](types.md#nullable-types)).
+Örtük bir numaralandırma dönüştürmesi, *decimal_integer_literal* `0`, temel alınan türü *enum_type*olan herhangi bir *enum_type* ve herhangi bir *nullable_type* dönüştürülmesine izin verir. İkinci durumda, dönüştürme temel *enum_type* dönüştürülürken değerlendirilir ve sonuç ([null yapılabilir türler](types.md#nullable-types)) sarmalanacaktır.
 
-### <a name="implicit-interpolated-string-conversions"></a>Örtük ilişkilendirilmiş dize dönüştürme
+### <a name="implicit-interpolated-string-conversions"></a>Örtülü olarak bulunan dize dönüşümleri
 
-Örtük ilişkilendirilmiş dize dönüştürme izinleri bir *interpolated_string_expression* ([Ara değerli dizeler](expressions.md#interpolated-strings)) dönüştürülecek `System.IFormattable` veya `System.FormattableString` (uygulayan `System.IFormattable`).
+Örtük bir enterpolasyonlu dize dönüştürme *interpolated_string_expression* ([enterpolasyonlu dizeler](expressions.md#interpolated-strings)) `System.IFormattable` veya `System.FormattableString` (`System.IFormattable`uygulayan) biçimine izin verir.
 
-Bu dönüştürme uygulandığında bir dize değeri ilişkilendirilmiş dizeden oluşur değil. Bunun yerine bir örneğini `System.FormattableString` oluşturulmuş, daha ayrıntılı olarak açıklanan [Ara değerli dizeler](expressions.md#interpolated-strings).
+Bu dönüştürme uygulandığında, bir dize değeri, enterpolasyonlu dizeden oluşamaz. Bunun yerine, bir `System.FormattableString` örneği, [enterpolasyonlu dizelerde](expressions.md#interpolated-strings)açıklanacak şekilde oluşturulur.
 
-### <a name="implicit-nullable-conversions"></a>Boş değer atanabilir örtük dönüşümler
+### <a name="implicit-nullable-conversions"></a>Örtük null yapılabilir dönüşümler
 
-NULL olmayan değer türleri üzerinde çalışması önceden tanımlanmış örtük dönüştürmeleri bu türlerin boş değer atanabilir forms ile de kullanılabilir. Her bir NULL olmayan değer türünden dönüştürme sayısal dönüşümler ve önceden tanımlanmış bir örtük kimlik `S` NULL olmayan bir değer türü için `T`, aşağıdaki boş değer atanabilir örtük dönüştürmeleri vardır:
+Null olamayan değer türlerinde çalışan önceden tanımlanmış örtük dönüştürmeler, bu türlerin null atanabilir formlarıyla de kullanılabilir. `S` null olmayan bir değer türünden `T`null değeri alamayan bir değer türüne dönüştüren, önceden tanımlanmış örtük kimlik ve sayısal dönüştürmelerin her biri için, aşağıdaki örtük null yapılabilir dönüşümler mevcuttur:
 
-*  Örtük bir dönüştürme `S?` için `T?`.
-*  Örtük bir dönüştürme `S` için `T?`.
+*  `S?` 'den `T?`örtülü dönüşüm.
+*  `S` 'den `T?`örtülü dönüşüm.
 
-Temel alınan bir dönüştürme açık boş değer atanabilir bir dönüştürme değerlendirmesini temel `S` için `T` aşağıdaki gibi çalışır:
+`S` ile `T` arasında temel alınan dönüştürmeye göre örtük olarak null yapılabilir dönüştürme değerlendirmesi aşağıdaki gibi devam eder:
 
-*  Boş değer atanabilir bir dönüştürme ise `S?` için `T?`:
-    * Kaynak değeri null ise (`HasValue` özellik değer: false), sonuç türü null değeri `T?`.
-    * Aksi takdirde, dönüştürme bir gelen çözülme olarak değerlendirilir `S?` için `S`, temel alınan dönüştürme işlemi tarafından izlenen `S` için `T`bir sarmalama çizgidir ([boş değer atanabilir türler](types.md#nullable-types)) gelen`T` için `T?`.
+*  Null yapılabilir dönüştürme `S?` `T?`:
+    * Kaynak değeri null ise (`HasValue` özelliği false), sonuç `T?`türünün null değeridir.
+    * Aksi takdirde, dönüştürme `S?` `T``S` ' dan `S`' dan bir sarmalama olarak değerlendirilir ve ardından `T` ' dan `T?`' a kadar bir sarmalama ([null yapılabilir türler](types.md#nullable-types)) tarafından yapılır.
 
-*  Boş değer atanabilir bir dönüştürme ise `S` için `T?`, dönüştürme temel alınan dönüştürme işlemini değerlendirmesinde `S` için `T` diğerine kaydırma ardından `T` için `T?`.
+*  Null yapılabilir dönüştürme `S` `T?`ise, dönüştürme, temel alınan dönüşüm olarak `T` `S`, `T` ve `T?`arasında bir sarmalama izler olarak değerlendirilir.
 
 ### <a name="null-literal-conversions"></a>Null değişmez değer dönüştürmeleri
 
-Öğesinden örtük bir dönüştürme var `null` değişmez değer için boş değer atanabilir bir tür. Bu dönüştürme null değerini üretir ([boş değer atanabilir türler](types.md#nullable-types)) belirtilen boş değer atanabilir türde.
+`null` değişmez değerinden herhangi bir null yapılabilir tür için örtük bir dönüştürme bulunur. Bu dönüştürme, belirtilen null yapılabilir türdeki null değeri ([null yapılabilir türler](types.md#nullable-types)) oluşturur.
 
-### <a name="implicit-reference-conversions"></a>Örtük bir başvuru dönüşümleri
+### <a name="implicit-reference-conversions"></a>Örtük başvuru dönüştürmeleri
 
-Örtük bir başvuru dönüşümleri şunlardır:
+Örtük başvuru dönüştürmeleri şunlardır:
 
-*  Herhangi *reference_type* için `object` ve `dynamic`.
-*  Herhangi *class_type* `S` herhangi *class_type* `T`, sağlanan `S` türetilir `T`.
-*  Herhangi *class_type* `S` herhangi *INTERFACE_TYPE* `T`, sağlanan `S` uygulayan `T`.
-*  Herhangi *INTERFACE_TYPE* `S` herhangi *INTERFACE_TYPE* `T`, sağlanan `S` türetilir `T`.
-*  Gelen bir *array_type* `S` bir öğe türü ile `SE` için bir *array_type* `T` bir öğe türü ile `TE`, aşağıdakilerin tümü doğru şunlardır:
-    * `S` ve `T` yalnızca öğe türleri farklı. Diğer bir deyişle, `S` ve `T` aynı sayıda boyuta sahip.
-    * Her ikisi de `SE` ve `TE` olan *reference_type*s.
-    * Öğesinden örtük bir başvuru dönüştürmesi var `SE` için `TE`.
-*  Herhangi *array_type* için `System.Array` ve arabirimlerini uygular.
-*  Bir tek boyutlu dizi türünden `S[]` için `System.Collections.Generic.IList<T>` ve açık bir kimlik veya başvuru dönüştürme sağlanan temel arabirimlerini `S` için `T`.
-*  Herhangi *delegate_type* için `System.Delegate` ve arabirimlerini uygular.
-*  Null değişmez değer herhangi bir gelen *reference_type*.
-*  Herhangi *reference_type* için bir *reference_type* `T` örtük kimlik veya başvuru dönüştürmeleri varsa bir *reference_type* `T0` ve `T0` bir kimlik dönüştürmesi bulunmadığında `T`.
-*  Herhangi *reference_type* arabirim veya temsilci türünün `T` bir örtük kimlik veya başvuru dönüştürme bir arabirim veya temsilci türüne sahipse `T0` ve `T0` varyansı dönüştürülebilir (olduğu[ Varyans dönüştürme](interfaces.md#variance-conversion)) için `T`.
-*  Başvuru türleri olarak bilinen tür parametreleri içeren örtük dönüştürme. Bkz: [tür parametreleri içeren örtük dönüştürmelerin](conversions.md#implicit-conversions-involving-type-parameters) tür parametreleri içeren örtük dönüştürmeleri hakkında daha fazla ayrıntı için.
+*  Herhangi bir *reference_type* `object` ve `dynamic`.
+*  Herhangi bir *class_type* `S` herhangi bir *class_type* `T`, `S` tarafından belirtilen `T`elde edilir.
+*  Herhangi bir *class_type* `S` *interface_type* `T``S` uygular.
+*  Herhangi bir *interface_type* `S` herhangi bir *interface_type* `T`, `S` tarafından belirtilen `T`elde edilir.
+*  Öğe türü `T` bir *array_type* `S` `SE` öğe türü `TE`*array_type* , aşağıdakilerin tümü doğru olarak belirtilmelidir:
+    * `S` ve `T` yalnızca öğe türünde farklılık gösterir. Diğer bir deyişle, `S` ve `T` aynı sayıda boyuta sahiptir.
+    * `SE` ve `TE` her ikisi de *reference_type*s.
+    * `SE` ' den `TE`örtük bir başvuru dönüştürmesi vardır.
+*  Herhangi bir *array_type* `System.Array` ve uyguladığı arabirimlere.
+*  Tek boyutlu dizi türünden `S[]` `System.Collections.Generic.IList<T>` ve temel arabirimlerine `S`, örtülü bir kimlik veya başvuru dönüştürmesi olması şartıyla `T`.
+*  Herhangi bir *delegate_type* `System.Delegate` ve uyguladığı arabirimlere.
+*  Null değişmez değerinden herhangi bir *reference_type*.
+*  Herhangi bir *reference_type* , bir *reference_type* `T0` örtük bir kimlik veya başvuru dönüştürmesi varsa ve `T0` `T`bir kimlik dönüştürmesi varsa *reference_type* `T`.
+*  Herhangi bir *reference_type* bir arabirime veya temsilci türüne dönüştürme, bir arabirim veya temsilci türü `T0` ve `T0` varyans-dönüştürülebilir ([varyans dönüştürme](interfaces.md#variance-conversion)`T`) `T`.
+*  Başvuru türleri olarak bilinen tür parametreleri içeren örtük dönüştürmeler. Tür parametreleri içeren örtük dönüştürmeler hakkında daha fazla ayrıntı için bkz. [tür parametreleri Içeren örtük dönüştürmeler](conversions.md#implicit-conversions-involving-type-parameters) .
 
-Bu dönüştürmeler arasında örtük bir başvuru dönüşümleri olan *reference_type*her zaman başarılı olması için kanıtlanmış ve bu nedenle çalışma zamanında hiçbir denetim gerektiren s.
+Örtük başvuru dönüştürmeleri, her zaman başarılı olarak kanıtlanmış *reference_type*s arasındaki Dönüştürmelere sahiptir ve bu nedenle çalışma zamanında hiçbir denetim gerektirmez.
 
-Başvuru dönüşümleri, örtük veya açık, hiçbir zaman dönüştürülen nesne başvuru kimliğini değiştirin. Başvuru türü başvuru dönüştürmesi değişebilir olsa da başka bir deyişle, hiçbir zaman türü veya başvurulan nesnenin değerini değiştirir.
+Başvuru dönüştürmeleri, örtük veya açık, dönüştürülmekte olan nesnenin başvuru kimliğini hiçbir şekilde değiştirmeyin. Diğer bir deyişle, bir başvuru dönüştürmesi başvurunun türünü değiştiremeken, başvuruda bulunulan nesnenin türünü veya değerini hiçbir şekilde değiştirmez.
 
-### <a name="boxing-conversions"></a>Kutulama dönüştürmeler
+### <a name="boxing-conversions"></a>Paketleme dönüştürmeleri
 
-Kutulama dönüştürmesi izin veren bir *value_type* başvuru türüne örtük olarak dönüştürülecek. Herhangi bir paketleme dönüştürmesi var *non_nullable_value_type* için `object` ve `dynamic`, `System.ValueType` ve herhangi bir *INTERFACE_TYPE* tarafından uygulanan *non_ nullable_value_type*. Ayrıca bir *enum_type* türüne dönüştürülebilir `System.Enum`.
+Kutulama dönüştürme bir *value_type* örtülü olarak bir başvuru türüne dönüştürülmesine izin verir. Herhangi bir *non_nullable_value_type* `object` ve `dynamic`, *interface_type*tarafından uygulanan *non_nullable_value_type* `System.ValueType` için bir paketleme dönüştürmesi vardır. Ayrıca, bir *enum_type* `System.Enum`türüne dönüştürülebilir.
 
-Gelen bir paketleme dönüştürmesi mevcut bir *nullable_type* temel bir başvuru türü için bulunuyorsa ve yalnızca bir paketleme dönüştürmesi var *non_nullable_value_type* başvuru türü.
+Bir *nullable_type* bir referans türüne, yalnızca temeldeki *non_nullable_value_type* başvuru türüne bir paketleme dönüştürmesi varsa, bir paketleme dönüştürmesi vardır.
 
-Bir arabirim türüne paketleme dönüşümü bir değer türünde `I` Kutulama dönüştürmesi bir arabirim türüne sahipse `I0` ve `I0` bir kimlik dönüştürmesi bulunmadığında `I`.
+Bir değer türü, bir arabirim türüne paketleme dönüştürmesi varsa `I` bir arabirim türüne kutulama dönüştürmesi içerir `I0` ve `I0` bir kimlik dönüştürmesi `I`.
 
-Bir arabirim türüne paketleme dönüşümü bir değer türünde `I` bir arabirim veya temsilci türünün paketleme dönüştürmesi varsa `I0` ve `I0` varyansı dönüştürülebilir olduğundan ([varyansı dönüştürme](interfaces.md#variance-conversion)) için`I`.
+Bir değer türünün, bir arabirime veya temsilci türüne paketleme dönüştürmesi varsa `I` bir arabirim türüne paketleme dönüştürmesi vardır `I0` ve `I0` varyans-dönüştürülebilir ([varyans dönüştürme](interfaces.md#variance-conversion)) `I`.
 
-Değerini kutulama bir *non_nullable_value_type* nesne örneğini tahsis etme ve kopyalama oluşur *value_type* değerini söz konusu örneğine dönüştürür. Bir yapı türü kutulanabilir `System.ValueType`, tümü yapı için temel sınıf olan bu yana ([devralma](structs.md#inheritance)).
+Bir *non_nullable_value_type* değerini kutulama bir nesne örneği ayırmayı ve *value_type* değerini bu örneğe kopyalamayı içerir. Yapı, tüm yapılar ([Devralma](structs.md#inheritance)) için bir temel sınıf olduğundan `System.ValueType`türüne kutulanabilir.
 
-Değerini kutulama bir *nullable_type* aşağıdaki gibi çalışır:
+Bir *nullable_type* değerini kutulama aşağıdaki gibi devam eder:
 
-*  Kaynak değeri null ise (`HasValue` özellik değer: false), sonucu hedef türünün bir null başvurudur.
-*  Aksi takdirde, sonucu bir paketlenmiş bir başvurudur `T` çözülme ve kaynak değeri kutulama tarafından üretilen.
+*  Kaynak değer null ise (`HasValue` özelliği false), sonuç hedef türün null başvurusudur.
+*  Aksi takdirde, sonuç, kaynak değeri sarmalanmış ve paketleme tarafından oluşturulan kutulanmış `T` bir başvurudur.
 
-Kutulama dönüştürmeleri daha ayrıntılı açıklanır [kutulama dönüştürmeler](types.md#boxing-conversions).
+Paketleme dönüştürmeleri, [paketleme dönüştürmelerinde](types.md#boxing-conversions)daha ayrıntılı bir şekilde açıklanmıştır.
 
 ### <a name="implicit-dynamic-conversions"></a>Örtük dinamik dönüştürmeler
 
-Türündeki bir ifade dinamik örtülü dönüştürme var `dynamic` herhangi bir tür için `T`. Dönüştürme dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)), yani örtük bir dönüştürme, çalışma zamanında çalışma zamanı tür ifade aranır `T`. Hiçbir dönüştürme bulunursa, bir çalışma zamanı özel durum oluşturulur.
+`T`tür `dynamic` bir ifadeden örtük dinamik dönüştürme bulunur. Dönüştürme, dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)), bu, örtük bir dönüştürmenin `T`, ifadenin çalışma zamanı türünden çalışma zamanında arayacaktır. Dönüştürme bulunamazsa, bir çalışma zamanı özel durumu oluşturulur.
 
-Bu örtük dönüştürme görünüşte başında öneriler ihlal Not [örtük dönüştürmelerin](conversions.md#implicit-conversions) örtük bir dönüştürme hiçbir zaman bir özel durum neden olmamalıdır. Ancak bu dönüştürmeyi kendisi değil ancak *bulma* neden olan özel durumun dönüştürme. Çalışma zamanı özel durumlarını riskini dinamik bağlama kullanımını devralınır. Dinamik bağlama dönüştürme istenildiği gibi değilse, ifade ilk dönüştürülebilir `object`ve ardından istenen türde.
+Örtülü dönüştürmenin, örtük [dönüştürmelerin](conversions.md#implicit-conversions) başlangıcında asla bir özel duruma neden olmaması gerektiğine ilişkin önerileri ihlal ettiğini unutmayın. Ancak dönüştürmenin kendisi değil, özel duruma neden olan dönüştürmenin *bulunması* değildir. Çalışma zamanı özel durumlarının riski dinamik bağlama kullanımına sahiptir. Dönüştürmenin dinamik bağlaması istenmiyorsa, ifade önce `object`ve ardından istenen türe dönüştürülebilir.
 
-Aşağıdaki örnek örtük dinamik dönüştürme gösterilmektedir:
+Aşağıdaki örnekte örtük dinamik dönüştürmeler gösterilmektedir:
 
 ```csharp
 object o  = "object"
@@ -157,177 +158,177 @@ string s2 = d; // Compiles and succeeds at run-time
 int i     = d; // Compiles but fails at run-time -- no conversion exists
 ```
 
-Atamaları `s2` ve `i` hem de bağlama işlemlerinin çalışma zamanı kadar askıya burada dinamik örtülü dönüştürmeler kullanmak istemiyorsunuz. Çalışma zamanında, çalışma zamanı türünden örtük dönüştürmelerin aranır `d`  --  `string` --hedef türü. Dönüştürme için bulunan `string` değil `int`.
+`s2` ve `i` atamaları her ikisi de, çalışma zamanına kadar işlemlerin bağlantısının askıya alındığı örtük dinamik dönüştürmeler kullanmayı sağlar. Çalışma zamanında örtük dönüştürmeler, hedef türe `string` `d` -- çalışma zamanı türünden alınır. `string` bir dönüştürme bulunur, ancak `int`.
 
-### <a name="implicit-constant-expression-conversions"></a>Örtük sabit ifade dönüştürmeler
+### <a name="implicit-constant-expression-conversions"></a>Örtük sabit ifade dönüştürmeleri
 
-Örtük sabit ifade dönüştürme, aşağıdaki dönüştürmeleri izin verir:
+Örtük bir sabit ifade dönüştürmesi aşağıdaki Dönüştürmelere izin verir:
 
-*  A *constant_expression* ([sabit ifadeler](expressions.md#constant-expressions)) türü `int` türüne dönüştürülebilir `sbyte`, `byte`, `short`, `ushort`, `uint`, veya `ulong`, değerini sağlanan *constant_expression* hedef türünün aralığı içinde.
-*  A *constant_expression* türü `long` türüne dönüştürülebilir `ulong`, değerini sağlanan *constant_expression* negatif değil.
+*  `int` türündeki *constant_expression* ([sabit ifadeler](expressions.md#constant-expressions)) `sbyte`, `byte`, `short`, `ushort`, `uint`veya `ulong`türüne dönüştürülebilir. Bu değer, *constant_expression* değeri hedef türünün aralığı dahilinde.
+*  `long` türündeki *constant_expression* `ulong`türüne dönüştürülebilir, ancak *constant_expression* değeri negatif değil.
 
-### <a name="implicit-conversions-involving-type-parameters"></a>Tür parametreleri içeren örtük dönüşümler
+### <a name="implicit-conversions-involving-type-parameters"></a>Tür parametreleri içeren örtük dönüştürmeler
 
-Belirtilen tür parametresi için aşağıdaki örtük dönüştürmeler mevcut `T`:
+Verilen tür parametresi için aşağıdaki örtük dönüştürmeler mevcuttur `T`:
 
-*  Gelen `T` etkili temel sınıfı için `C`, gelen `T` tüm taban sınıfı için `C`, gelen ve giden `T` tarafından uygulanan herhangi bir arabirim için `C`. AT çalışma zamanı Eğer `T` bir değer türü dönüştürme bir paketleme dönüştürmesi yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
-*  Gelen `T` bir arabirim türüne `I` içinde `T`etkili arabirimi kümesinde ve `T` herhangi temel arabirimine `I`. AT çalışma zamanı Eğer `T` bir değer türü dönüştürme bir paketleme dönüştürmesi yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
-*  Gelen `T` bir tür parametresine `U`, sağlanan `T` bağlıdır `U` ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)). AT çalışma zamanı Eğer `U` bir değer türü ise `T` ve `U` mutlaka aynı türdeyse ve hiçbir dönüştürme işlemi gerçekleştirilir. Aksi takdirde `T` bir değer türü dönüştürme bir paketleme dönüştürmesi yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
-*  Null değişmez değer gelen `T`, sağlanan `T` bir başvuru türü olarak bilinir.
-*  Gelen `T` bir başvuru türü için `I` örtük bir dönüştürme için bir başvuru türü olup olmadığını `S0` ve `S0` bir kimlik dönüştürmesi bulunmadığında `S`. Çalışma zamanında dönüştürme dönüştürme aynı şekilde yürütülür `S0`.
-*  Gelen `T` bir arabirim türüne `I` bir arabirim veya temsilci türüne örtük bir dönüştürme varsa `I0` ve `I0` varyansı dönüştürülebilir olduğundan için `I` ([varyansı dönüştürme](interfaces.md#variance-conversion) ). AT çalışma zamanı Eğer `T` bir değer türü dönüştürme bir paketleme dönüştürmesi yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
+*  `T`, `T` temel `C`ve `T` tarafından uygulanan bir arabirime `C`geçerli temel sınıfına. Çalışma zamanında, `T` bir değer türü ise, dönüştürme paketleme dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
+*  `T`, `T`etkin arabirim kümesinde ve `T` `I`herhangi bir taban arabirimine `I` bir arabirim türüne. Çalışma zamanında, `T` bir değer türü ise, dönüştürme paketleme dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
+*  `T`, `U`bir tür parametresine `T` `U` ([tür parametre kısıtlamalarına](classes.md#type-parameter-constraints)) bağlıdır. Çalışma zamanında, `U` bir değer türü ise, `T` ve `U` aynı türde ve hiçbir dönüştürme gerçekleştirilmeyebilir. Aksi takdirde, `T` bir değer türü ise, dönüştürme paketleme dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
+*  Null değişmez değerinden `T`, `T` belirtilen bir başvuru türü olduğu bilinmektedir.
+*  `T`, bir başvuru türüne örtük bir dönüştürme içeriyorsa ve `S0` `S`'ye bir kimlik dönüştürmesi varsa `I` bir başvuru türüne `S0`. Çalışma zamanında dönüştürme `S0`dönüştürme ile aynı şekilde yürütülür.
+*  `T`, bir arabirim veya temsilci türüne örtülü olarak dönüştürme içeriyorsa ve `I0` varyans-`I` dönüştürülebilir ([varyans dönüştürmesi](interfaces.md#variance-conversion)) `I` bir arabirim türüne `I0`. Çalışma zamanında, `T` bir değer türü ise, dönüştürme paketleme dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme örtük bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
 
-Varsa `T` bir başvuru türü olarak bilinen ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)), yukarıdaki dönüştürmeleri tüm örtük bir başvuru dönüşümleri sınıflandırılan ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions)). Varsa `T` olan bir başvuru türü bilinmiyor, yukarıdaki dönüştürmeler kutulama dönüşümleri sınıflandırılan ([kutulama dönüştürmeler](conversions.md#boxing-conversions)).
+`T` bir başvuru türü ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) olarak bilindiğinde, yukarıdaki dönüşümler tamamen örtük başvuru dönüştürmeleri ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions)) olarak sınıflandırılır. `T` bir başvuru türü olarak bilinmiyorsa, yukarıdaki dönüştürmeler paketleme dönüştürmeleri ([kutulama dönüştürmeleri](conversions.md#boxing-conversions)) olarak sınıflandırılır.
 
-### <a name="user-defined-implicit-conversions"></a>Kullanıcı tanımlı örtük dönüşümler
+### <a name="user-defined-implicit-conversions"></a>Kullanıcı tanımlı örtük dönüştürmeler
 
-Başka bir isteğe bağlı standart örtük dönüştürme tarafından izlenen bir kullanıcı tanımlı örtük dönüştürme işleci yürütülmesini arkasından isteğe bağlı standart örtülü dönüştürme, kullanıcı tanımlı bir örtük dönüştürme oluşur. Kullanıcı tanımlı örtük dönüştürmelerin değerlendirmek için kesin kurallar açıklanan [kullanıcı tanımlı örtük dönüştürmeler işleme](conversions.md#processing-of-user-defined-implicit-conversions).
+Kullanıcı tanımlı örtük dönüştürme, isteğe bağlı standart bir örtük dönüştürme, ardından Kullanıcı tanımlı örtük dönüştürme işlecinin yürütülmesi ve ardından isteğe bağlı bir standart örtük dönüştürme ile oluşur. Kullanıcı tanımlı örtük dönüştürmeleri değerlendirmek için tam kurallar, [Kullanıcı tanımlı örtük dönüştürmelerin işlenmesinde](conversions.md#processing-of-user-defined-implicit-conversions)açıklanmıştır.
 
-### <a name="anonymous-function-conversions-and-method-group-conversions"></a>Anonim işlev dönüştürmeler veya yöntem grubu dönüştürmeler
+### <a name="anonymous-function-conversions-and-method-group-conversions"></a>Anonim işlev dönüştürmeleri ve Yöntem grubu dönüştürmeleri
 
-Anonim işlevler ve yöntem grupları türleri içinde ve kendilerini yoktur, ancak türleri ya da ifade ağaç türleri temsilci seçmek için örtük olarak dönüştürülebilir. Anonim işlev dönüştürmeleri daha ayrıntılı olarak açıklanmıştır [anonim işlev dönüştürmeler](conversions.md#anonymous-function-conversions) ve yöntem grubu Dönüşümlerde [yöntem grubu dönüştürmeler](conversions.md#method-group-conversions).
+Anonim işlevler ve yöntem grupları, ve içinde türlerine sahip değildir, ancak dolaylı olarak temsilci türlerine veya ifade ağaç türlerine dönüştürülebilir. Anonim işlev dönüştürmeleri, [metot grubu dönüştürmelerinde](conversions.md#method-group-conversions) [Adsız işlev dönüştürmelerinde](conversions.md#anonymous-function-conversions) ve Yöntem grubu dönüştürmelerinde daha ayrıntılı bir şekilde açıklanmıştır.
 
-## <a name="explicit-conversions"></a>Açık dönüştürmeler
+## <a name="explicit-conversions"></a>Açık dönüşümler
 
-Aşağıdaki dönüştürmeleri, açık dönüştürmeler sınıflandırılan:
+Aşağıdaki dönüşümler açık dönüştürmeler olarak sınıflandırılmaktadır:
 
-*  Tüm örtük dönüştürme.
-*  Açık sayısal dönüşümler.
-*  Açık numaralandırma dönüştürme.
-*  Açık dönüştürmeler boş değer atanabilir.
-*  Açık bir başvuru dönüşümleri.
-*  Açık arabirim dönüşümler.
-*  Kutudan çıkarma dönüştürme.
-*  Dinamik açık dönüştürmeler
+*  Tüm örtük dönüştürmeler.
+*  Açık sayısal dönüştürmeler.
+*  Açık sabit listesi dönüştürmeleri.
+*  Açık boş değer atanabilir dönüşümler.
+*  Açık başvuru dönüştürmeleri.
+*  Açık arabirim dönüştürmeleri.
+*  Kutudan çıkarma dönüştürmeleri.
+*  Açık dinamik dönüştürmeler
 *  Kullanıcı tanımlı açık dönüştürmeler.
 
-Açık dönüştürmeler cast ifadeleri meydana gelebilir ([Cast ifadeleri](expressions.md#cast-expressions)).
+Dönüştürme ifadelerinde açık dönüştürmeler oluşabilir ([atama ifadeleri](expressions.md#cast-expressions)).
 
-Açık dönüştürmeler tüm örtük dönüştürmelerin içermektedir. Başka bir deyişle, yedekli cast ifadeleri izin verilir.
+Açık dönüştürmeler kümesi tüm örtük dönüştürmeleri içerir. Bu, gereksiz atama ifadelerine izin verilen anlamına gelir.
 
-Örtük dönüştürmeleri olmayan açık dönüştürmeler türleri merit açık yeterince farklı etki alanlarında her zaman başarılı olması için kanıtlanmış olamaz dönüştürmeler, büyük olasılıkla bilgileri kaybedersiniz bilinen dönüştürmeler ve dönüştürmeler olan gösterim.
+Örtük dönüştürmeler olmayan açık dönüştürmeler, her zaman başarılı olmak üzere kendini kanıtlanamaz dönüşümlerdir, bilinen dönüştürmeler, büyük olasılıkla bilgi kaybedecektir ve türlerin etki alanları arasında dönüştürme imle.
 
-### <a name="explicit-numeric-conversions"></a>Açık sayısal dönüşümler
+### <a name="explicit-numeric-conversions"></a>Açık sayısal dönüştürmeler
 
-Açık sayısal dönüşümler dönüşümlerse olan bir *numeric_type* diğerine *numeric_type* kendisi için bir örtülü sayısal dönüştürme ([örtük sayısal dönüşümler](conversions.md#implicit-numeric-conversions)) zaten mevcut değil:
+Açık sayısal dönüştürmeler, bir *numeric_type* örtük bir sayısal dönüştürmenin ([örtük sayısal dönüştürmeler](conversions.md#implicit-numeric-conversions)) zaten mevcut olmadığı başka bir *numeric_type* dönüşümlerdir:
 
-*  Gelen `sbyte` için `byte`, `ushort`, `uint`, `ulong`, veya `char`.
-*  Gelen `byte` için `sbyte` ve `char`.
-*  Gelen `short` için `sbyte`, `byte`, `ushort`, `uint`, `ulong`, veya `char`.
-*  Gelen `ushort` için `sbyte`, `byte`, `short`, veya `char`.
-*  Gelen `int` için `sbyte`, `byte`, `short`, `ushort`, `uint`, `ulong`, veya `char`.
-*  Gelen `uint` için `sbyte`, `byte`, `short`, `ushort`, `int`, veya `char`.
-*  Gelen `long` için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `ulong`, veya `char`.
-*  Gelen `ulong` için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, veya `char`.
-*  Gelen `char` için `sbyte`, `byte`, veya `short`.
-*  Gelen `float` için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, veya `decimal`.
-*  Gelen `double` için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, veya `decimal`.
-*  Gelen `decimal` için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, veya `double`.
+*  `sbyte` `byte`, `ushort`, `uint`, `ulong`veya `char`.
+*  `byte` `sbyte` ve `char`.
+*  `short` `sbyte`, `byte`, `ushort`, `uint`, `ulong`veya `char`.
+*  `ushort` `sbyte`, `byte`, `short`veya `char`.
+*  `int` `sbyte`, `byte`, `short`, `ushort`, `uint`, `ulong`veya `char`.
+*  `uint` `sbyte`, `byte`, `short`, `ushort`, `int`veya `char`.
+*  `long` `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `ulong`veya `char`.
+*  `ulong` `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`veya `char`.
+*  `char` `sbyte`, `byte`veya `short`.
+*  `float` `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`veya `decimal`.
+*  `double` `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`veya `decimal`.
+*  `decimal` `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`veya `double`.
 
-Açık dönüştürmeler tüm örtük ve açık sayısal dönüşümler içerdiğinden, her zaman herhangi bir dönüştürme mümkün *numeric_type* herhangi diğer *numeric_type* atama ifadesi (kullanma [Cast ifadeleri](expressions.md#cast-expressions)).
+Açık dönüştürmeler tüm örtük ve açık sayısal dönüştürmeleri içerdiğinden, herhangi bir *numeric_type* bir atama Ifadesi ([atama ifadeleri](expressions.md#cast-expressions)) kullanarak herhangi bir numeric_type başka bir dönüştürmek her zaman mümkündür.
 
-Açık sayısal dönüştürmeler, büyük olasılıkla bilgileri kaybeder veya büyük olasılıkla özel durum oluşturulmasına neden. Açık sayısal dönüştürme şu şekilde işlenir:
+Açık sayısal dönüştürmeler büyük olasılıkla bilgileri kaybedebilir veya büyük olasılıkla özel durumların oluşturulmasına neden olabilir. Açık bir sayısal dönüştürme şu şekilde işlenir:
 
-*  İçin bir integral türünden başka bir integral türüne dönüştürme, içerik denetleme overflow'da işleme bağlıdır ([checked ve unchecked işleçleri](expressions.md#the-checked-and-unchecked-operators)) dönüştürme aldığı yerleştirin:
-    * İçinde bir `checked` bağlamı, dönüştürmenin başarılı kaynak işlecinin değeri hedef türün aralığı içinde ancak oluşturur bir `System.OverflowException` kaynak işlecinin değeri hedef türün aralığı dışında ise.
-    * İçinde bir `unchecked` bağlamını, dönüştürme her zaman başarılı olur ve aşağıdaki gibi çalışır.
-        * Kaynak türü hedef türünden daha büyük ise sonra kaynak değeri, "fazladan" atarak kesilmiş en önemli bitleri. Sonuç, ardından hedef türünde bir değer kabul edilir.
-        * Kaynak türü, hedef türünden küçükse, hedef türüyle aynı boyutta olması ardından kaynağı işaret genişletilmiş veya sıfır genişletilmiş değeridir. Kaynak türü açtıysanız oturum uzantısı kullanılır. Kaynak türü imzalanmamış ise sıfır uzantısı kullanılır. Sonuç, ardından hedef türünde bir değer kabul edilir.
-        * Hedef türü olarak aynı boyutta kaynak türü ise kaynak değer hedef türünde bir değer kabul edilir.
-*  Dönüştürme için `decimal` integral türü için kaynak değeri sıfır en yakın tamsayı değerine yuvarlanır ve dönüştürme sonucu olarak bu tamsayı değeri olur. Sonuçta elde edilen tamsayı değeri hedef türün aralığı dışında ise bir `System.OverflowException` oluşturulur.
-*  Dönüştürme için `float` veya `double` integral türü için içerik denetimi overflow'da işleme bağlıdır ([checked ve unchecked işleçleri](expressions.md#the-checked-and-unchecked-operators)) dönüştürme aldığı yerleştirin:
-    * İçinde bir `checked` bağlamı, dönüştürme geçer gibi:
-        * İşlenenin NaN veya sonsuz, olması durumunda bir `System.OverflowException` oluşturulur.
-        * Aksi takdirde, kaynak işlenen sıfır en yakın tamsayı değerine yuvarlanır. Bu tamsayı değeri hedef türün aralığı içinde ise, ardından bu dönüştürme sonucu olarak değerdir.
+*  İntegral türünden başka bir integral türüne dönüştürme işlemi için işleme, dönüştürmenin gerçekleştiği taşma Denetim bağlamına ([denetlenen ve işaretlenmemiş operatörler](expressions.md#the-checked-and-unchecked-operators)) bağlıdır:
+    * `checked` bağlamında, kaynak işlenenin değeri hedef türü Aralık içindeyse, ancak kaynak işlenenin değeri hedef türü aralığının dışında bir `System.OverflowException` oluşturduğunda dönüştürme başarılı olur.
+    * `unchecked` bağlamında, dönüştürme her zaman başarılı olur ve aşağıdaki gibi devam eder.
+        * Kaynak türü hedef türünden büyükse, "ekstra" en önemli bitleri atarak kaynak değer kesilir. Sonuç daha sonra hedef türünün bir değeri olarak değerlendirilir.
+        * Kaynak türü hedef türünden küçükse, hedef türle aynı boyutta olması için, kaynak değeri ya imza veya sıfır genişletilmiş ya da sıfır genişletilmiş olur. Kaynak türü imzalanmışsa, oturum açma uzantısı kullanılır; Kaynak türü işaretsiz ise sıfır uzantı kullanılır. Sonuç daha sonra hedef türünün bir değeri olarak değerlendirilir.
+        * Kaynak türü hedef türle aynı boyutta ise, kaynak değer hedef türün bir değeri olarak değerlendirilir.
+*  `decimal` bir integral türüne dönüştürme için, kaynak değer en yakın tamsayı değerine sıfır doğru yuvarlanır ve bu tam sayı değeri dönüştürmenin sonucu olur. Elde edilen integral değeri, hedef türü aralığının dışındaysa bir `System.OverflowException` oluşturulur.
+*  `float` veya `double` bir integral türüne dönüştürme için, işleme, dönüştürmenin gerçekleştiği taşma Denetim bağlamına ([denetlenen ve işaretlenmemiş operatörler](expressions.md#the-checked-and-unchecked-operators)) bağlıdır:
+    * `checked` bağlamında, dönüştürme aşağıdaki gibi devam eder:
+        * İşlenenin değeri NaN veya sonsuz ise, bir `System.OverflowException` oluşturulur.
+        * Aksi takdirde, kaynak işleneni en yakın tamsayı değerine sıfır doğru yuvarlanır. Bu integral değeri hedef türünün aralığı içindeyse, bu değer dönüştürmenin sonucudur.
         * Aksi takdirde, bir `System.OverflowException` oluşturulur.
-    * İçinde bir `unchecked` bağlamını, dönüştürme her zaman başarılı olur ve aşağıdaki gibi çalışır.
-        * İşlenenin NaN veya sonsuz ise, dönüştürmenin sonucu hedef türü belirtilmemiş bir değerdir.
-        * Aksi takdirde, kaynak işlenen sıfır en yakın tamsayı değerine yuvarlanır. Bu tamsayı değeri hedef türün aralığı içinde ise, ardından bu dönüştürme sonucu olarak değerdir.
-        * Aksi takdirde, dönüştürmenin sonucu hedef türü belirtilmemiş bir değerdir.
-*  Dönüştürme için `double` için `float`, `double` değer yuvarlanır en yakın `float` değeri. Varsa `double` değeri olarak temsil etmek için çok küçük bir `float`, sonuç pozitif sıfır veya negatif sıfır. Varsa `double` değeri olarak temsil etmek için çok büyük bir `float`, sonuç Pozitif sonsuz veya negatif sonsuz olur. Varsa `double` değeri NaN ise, NaN sonucudur de.
-*  Dönüştürme için `float` veya `double` için `decimal`, kaynak değeri dönüştürülür `decimal` gösterimi ve gerekirse 28 ondalık basamağın sonra en yakın sayıya yuvarlanmasını ([decimal türü](types.md#the-decimal-type)). Kaynak değeri olarak temsil etmek için çok küçük ise bir `decimal`, sıfır sonuç olur. Kaynak değeri NaN ise, sonsuz veya olarak göstermek için çok büyük bir `decimal`, `System.OverflowException` oluşturulur.
-*  Dönüştürme için `decimal` için `float` veya `double`, `decimal` değer yuvarlanır en yakın `double` veya `float` değeri. Bu dönüştürme duyarlık kaybedebileceği olsa da, hiçbir zaman bir özel durum oluşturulmasına neden olur.
+    * `unchecked` bağlamında, dönüştürme her zaman başarılı olur ve aşağıdaki gibi devam eder.
+        * İşlenenin değeri NaN veya sonsuz ise, dönüştürmenin sonucu hedef türün belirtilmemiş bir değeridir.
+        * Aksi takdirde, kaynak işleneni en yakın tamsayı değerine sıfır doğru yuvarlanır. Bu integral değeri hedef türünün aralığı içindeyse, bu değer dönüştürmenin sonucudur.
+        * Aksi takdirde, dönüştürmenin sonucu hedef türün belirtilmemiş bir değeridir.
+*  `double` `float`bir dönüştürme için `double` değeri en yakın `float` değerine yuvarlanır. `double` değeri `float`olarak temsil etmek için çok küçükse, sonuç pozitif sıfır veya negatif sıfır olur. `double` değeri `float`olarak temsil etmek için çok büyükse, sonuç pozitif sonsuzluk veya negatif sonsuzluk olur. `double` değeri NaN ise, sonuç de NaN olur.
+*  `float` veya `double` `decimal`'e dönüştürme için, kaynak değer `decimal` gösterimine dönüştürülür ve gerekirse 28 ondalık konumundan sonra en yakın sayıya yuvarlanır ([ondalık türü](types.md#the-decimal-type)). Kaynak değeri `decimal`olarak temsil etmek için çok küçükse, sonuç sıfır olur. Kaynak değeri NaN, Infinity veya `decimal`olarak temsil edilebilmesi için çok büyükse, bir `System.OverflowException` oluşturulur.
+*  `decimal` `float` veya `double`'e dönüştürme için `decimal` değeri en yakın `double` veya `float` değerine yuvarlanır. Bu dönüştürme duyarlığı kaybedebilir, ancak hiçbir durum özel durum oluşturulmasına neden olmaz.
 
-### <a name="explicit-enumeration-conversions"></a>Açık numaralandırma dönüştürmeler
+### <a name="explicit-enumeration-conversions"></a>Açık sabit listesi dönüştürmeleri
 
-Açık numaralandırma dönüştürmeler şunlardır:
+Açık numaralandırma dönüştürmeleri şunlardır:
 
-*  Gelen `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, veya `decimal` herhangi için*enum_type*.
-*  Herhangi *enum_type* için `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`, veya `decimal`.
-*  Herhangi *enum_type* herhangi diğer *enum_type*.
+*  `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`veya `decimal` herhangi bir *enum_type*.
+*  Herhangi bir *enum_type* `sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`, `char`, `float`, `double`veya `decimal`.
+*  Herhangi bir *enum_type* başka bir *enum_type*.
 
-İki tür arasında bir açık numaralandırma dönüştürme katılan tüm düşünerek işlenen *enum_type* , temel alınan türü olarak *enum_type*ve ardından kapalı veya açık gerçekleştirme Sonuç türleri arasında sayısal dönüştürme. Örneğin, belirtilen bir *enum_type* `E` ile ve temel alınan türü `int`, dönüştürme `E` için `byte` açık bir sayısal dönüştürme olarak işlenir ([açık sayısal dönüşümler](conversions.md#explicit-numeric-conversions)) öğesinden `int` için `byte`ve dönüştürme `byte` için `E` örtük sayısal dönüştürme olarak işlenir ([örtük sayısal dönüşümler](conversions.md#implicit-numeric-conversions)) gelen `byte` için `int`.
+İki tür arasında açık bir sabit listesi dönüştürme işlemi, herhangi bir katılım *enum_type* , bu *enum_type*temel alınan türü olarak davranarak işlenir ve ardından sonuçtaki türler arasında örtük veya açık bir sayısal dönüştürme gerçekleştirerek. Örneğin, *enum_type* `E` ve temel alınan `int`türü verildiğinde, `E` 'den `byte` 'ye dönüştürme, `int` 'den `byte`'e açık bir sayısal dönüştürme ([Açık sayısal dönüştürmeler](conversions.md#explicit-numeric-conversions)) olarak işlenir ve `byte` 'den `E` 'ye dönüştürme işlemi `byte` 'den `int`örtülü bir sayısal dönüştürme ([örtük sayısal dönüştürmeler](conversions.md#implicit-numeric-conversions)) olarak işlenir.
 
-### <a name="explicit-nullable-conversions"></a>Boş değer atanabilir açık dönüştürmeler
+### <a name="explicit-nullable-conversions"></a>Açık boş değer atanabilir dönüşümler
 
-***Boş değer atanabilir açık dönüştürmeler*** izin da bu türlerin boş değer atanabilir forms ile kullanılmak üzere atanamayan değer türleri üzerinde çalışan açık dönüştürmeler önceden tanımlanmış. Her bir NULL olmayan değer türünden dönüştürme önceden tanımlanmış açık dönüştürmeler `S` NULL olmayan bir değer türü için `T` ([kimlik dönüştürme](conversions.md#identity-conversion), [örtük sayısal dönüşümler](conversions.md#implicit-numeric-conversions), [Numaralandırma örtük dönüştürmeleri](conversions.md#implicit-enumeration-conversions), [açık sayısal dönüşümler](conversions.md#explicit-numeric-conversions), ve [açık numaralandırma dönüştürmeler](conversions.md#explicit-enumeration-conversions)), aşağıdaki boş değer atanabilir dönüştürmeler mevcuttur:
+***Açık null yapılabilir dönüşümler*** , null olamayan değer türlerinde çalışan önceden tanımlı açık Dönüştürmelere izin verir ve bu türlerin null yapılabilir formlarıyla de kullanılır. Null yapılamayan bir değer türünden `S`, null olamayan bir değer türü `T` ([kimlik dönüştürme](conversions.md#identity-conversion), [örtük sayısal dönüştürmeler](conversions.md#implicit-numeric-conversions), [örtük numaralandırma dönüştürmeleri](conversions.md#implicit-enumeration-conversions), [Açık sayısal dönüştürmeler](conversions.md#explicit-numeric-conversions)ve [Açık sabit listesi dönüştürmeleri](conversions.md#explicit-enumeration-conversions)) dönüştüren önceden tanımlanmış açık dönüştürmelerin her biri için, aşağıdaki null yapılabilir dönüşümler mevcuttur:
 
-*  Açık bir dönüştürme `S?` için `T?`.
-*  Açık bir dönüştürme `S` için `T?`.
-*  Açık bir dönüştürme `S?` için `T`.
+*  `S?` ' den `T?`açık bir dönüştürme.
+*  `S` ' den `T?`açık bir dönüştürme.
+*  `S?` ' den `T`açık bir dönüştürme.
 
-Boş değer atanabilir bir dönüştürmenin değerlendirme, temel alınan bir dönüştürme temel `S` için `T` aşağıdaki gibi çalışır:
+`S` ile `T` arasında temel alınan dönüştürmeye göre null yapılabilir dönüştürme değerlendirmesi aşağıdaki gibi devam eder:
 
-*  Boş değer atanabilir bir dönüştürme ise `S?` için `T?`:
-    * Kaynak değeri null ise (`HasValue` özellik değer: false), sonuç türü null değeri `T?`.
-    * Aksi takdirde, dönüştürme bir gelen çözülme olarak değerlendirilir `S?` için `S`, temel alınan dönüştürme işlemi tarafından izlenen `S` için `T`diğerine kaydırma çizgidir `T` için `T?`.
-*  Boş değer atanabilir bir dönüştürme ise `S` için `T?`, dönüştürme temel alınan dönüştürme işlemini değerlendirmesinde `S` için `T` diğerine kaydırma ardından `T` için `T?`.
-*  Boş değer atanabilir bir dönüştürme ise `S?` için `T`, dönüştürme, bir gelen çözülme olarak değerlendirilir `S?` için `S` temel dönüştürme ardından `S` için `T`.
+*  Null yapılabilir dönüştürme `S?` `T?`:
+    * Kaynak değeri null ise (`HasValue` özelliği false), sonuç `T?`türünün null değeridir.
+    * Aksi takdirde, dönüştürme `S?` `T``S` ' den `S`' dan bir sarmalama olarak değerlendirilir ve ardından `T` ' den `T?`' a bir sarmalama tarafından yapılır.
+*  Null yapılabilir dönüştürme `S` `T?`ise, dönüştürme, temel alınan dönüşüm olarak `T` `S`, `T` ve `T?`arasında bir sarmalama izler olarak değerlendirilir.
+*  Null yapılabilir dönüştürme `S?` `T`ise, dönüştürme `S?` ' dan bir sarmalama olarak değerlendirilir `S` ve `S` ' den `T`' e doğru dönüştürme olur.
 
-Değer ise bir boş değer atanabilir değer sarmalamadan çıkarma girişimi, bir özel durum oluşturur Not `null`.
+Null yapılabilir bir değeri sarmalama girişimi, değer `null`bir özel durum oluşturur.
 
-### <a name="explicit-reference-conversions"></a>Açık bir başvuru dönüşümleri
+### <a name="explicit-reference-conversions"></a>Açık başvuru dönüştürmeleri
 
-Açık bir başvuru dönüşümleri şunlardır:
+Açık başvuru dönüştürmeleri şunlardır:
 
-*  Gelen `object` ve `dynamic` herhangi diğer *reference_type*.
-*  Herhangi *class_type* `S` herhangi *class_type* `T`, sağlanan `S` bir taban sınıfıdır `T`.
-*  Herhangi *class_type* `S` herhangi *INTERFACE_TYPE* `T`, sağlanan `S` korumalı sağlanan değilse ve `S` uygulamıyor `T`.
-*  Herhangi *INTERFACE_TYPE* `S` herhangi *class_type* `T`, sağlanan `T` korumalı sağlanan ya da `T` uygulayan `S`.
-*  Herhangi *INTERFACE_TYPE* `S` herhangi *INTERFACE_TYPE* `T`, sağlanan `S` türünden türetilmediğinden `T`.
-*  Gelen bir *array_type* `S` bir öğe türü ile `SE` için bir *array_type* `T` bir öğe türü ile `TE`, aşağıdakilerin tümü doğru şunlardır:
-    * `S` ve `T` yalnızca öğe türleri farklı. Diğer bir deyişle, `S` ve `T` aynı sayıda boyuta sahip.
-    * Her ikisi de `SE` ve `TE` olan *reference_type*s.
-    * Gelen bir açık bir başvuru dönüştürmesi var `SE` için `TE`.
-*  Gelen `System.Array` ve arabirimler için uygular *array_type*.
-*  Bir tek boyutlu dizi türünden `S[]` için `System.Collections.Generic.IList<T>` ve bir açık başvuru dönüştürme sağlanan temel arabirimlerini `S` için `T`.
-*  Gelen `System.Collections.Generic.IList<S>` ve bunun temel arabirimleri için bir tek boyutlu dizi türü `T[]`, bir açık kimlik veya başvuru dönüştürme olmasını sağlanan `S` için `T`.
-*  Gelen `System.Delegate` ve arabirimler için uygular *delegate_type*.
-*  Bir başvuru türü için bir başvuru türünden `T` bir açık bir başvuru dönüştürmesi için bir başvuru türü olup olmadığını `T0` ve `T0` sahip bir kimlik dönüştürme `T`.
-*  Bir arabirim veya temsilci türüne başvuru türünden `T` arabirim veya temsilci türünün bir açık bir başvuru dönüştürmesi varsa `T0` ve her iki `T0` varyansı dönüştürülebilir olduğundan için `T` veya `T` olduğu Varyans dönüştürülebilir `T0` ([varyansı dönüştürme](interfaces.md#variance-conversion)).
-*  Gelen `D<S1...Sn>` için `D<T1...Tn>` burada `D<X1...Xn>` bir genel temsilci türünde `D<S1...Sn>` uyumlu ya da aynı `D<T1...Tn>`ve her tür parametresi için `Xi` , `D` aşağıdaki tutar:
-    * Varsa `Xi` sabit, ise `Si` aynıdır `Ti`.
-    * Varsa `Xi` değişkendir, sonra bir örtük veya açık kimlik veya başvuru dönüştürmesi `Si` için `Ti`.
-    * Varsa `Xi` değişken karşıtı, ise `Si` ve `Ti` ötekisi özdeş veya her ikisi de başvuru türleri.
-*  Başvuru türleri olarak bilinen tür parametreleri içeren açık dönüştürmeler. Tür parametreleri içeren açık dönüştürmeler hakkında daha fazla bilgi için bkz. [tür parametreleri içeren açık dönüştürmeler](conversions.md#explicit-conversions-involving-type-parameters).
+*  `object` ve `dynamic` diğer *reference_type*.
+*  Herhangi bir *class_type* `S` herhangi bir *class_type* `T`, `S` bir `T`taban sınıfıdır.
+*  Herhangi bir *class_type* `S` herhangi bir *interface_type* `T`, `S`, ve `S` `T`uygulamaz.
+*  Herhangi bir *interface_type* `S` herhangi bir *class_type* `T`için, `T`, `T` `S`uygulayan.
+*  Herhangi bir *interface_type* `S` herhangi bir *interface_type* `T``S`, belirtilen `T`türetilmez.
+*  Öğe türü `T` bir *array_type* `S` `SE` öğe türü `TE`*array_type* , aşağıdakilerin tümü doğru olarak belirtilmelidir:
+    * `S` ve `T` yalnızca öğe türünde farklılık gösterir. Diğer bir deyişle, `S` ve `T` aynı sayıda boyuta sahiptir.
+    * `SE` ve `TE` her ikisi de *reference_type*s.
+    * `SE` `TE`bir açık başvuru dönüştürmesi vardır.
+*  `System.Array` ve uyguladığı arabirimler *array_type*.
+*  Tek boyutlu dizi türünden `System.Collections.Generic.IList<T>` ve temel arabirimlerine `S[]`, `S` bir açık başvuru dönüştürmesi olması şartıyla `T`.
+*  `System.Collections.Generic.IList<S>` ve temel arabirimlerinden `T[]`, `T``S` bir açık kimlik veya başvuru dönüştürmesi olması şartıyla, tek boyutlu bir dizi türüne.
+*  `System.Delegate` ve uyguladığı arabirimler *delegate_type*.
+*  Başvuru türü olan bir başvuru türüne `T`, bir başvuru türü `T0` açık başvuru dönüştürmesi varsa ve `T0` bir kimlik dönüştürme `T`sahipse
+*  Bir arabirim veya temsilci türüne açık başvuru dönüştürmesi varsa, bir başvuru türünden bir arabirime veya temsilci türüne `T` `T0` ve `T0` fark-`T` dönüştürülebilir ya da `T` ([varyans dönüştürmesi](interfaces.md#variance-conversion)) arasında değişim yapılır.
+*  `D<S1...Sn>`, `D<X1...Xn>` genel bir temsilci türü olduğu `D<T1...Tn>`, `D<S1...Sn>` `D<T1...Tn>`ile uyumlu değil ve `Xi` her bir tür parametresi için `D` aşağıdaki tutmalar:
+    * `Xi` sabit ise, `Si` `Ti`aynıdır.
+    * `Xi` covaryant ise, örtülü veya açık bir kimlik ya da `Si` `Ti`'e başvuru dönüştürmesi vardır.
+    * `Xi` değişken karşıtı ise, `Si` ve `Ti` aynı ya da her iki başvuru türü olur.
+*  Başvuru türleri olarak bilinen tür parametreleri içeren açık dönüştürmeler. Tür parametreleriyle ilgili açık dönüştürmeler hakkında daha fazla ayrıntı için bkz. [tür parametreleri Içeren açık dönüştürmeler](conversions.md#explicit-conversions-involving-type-parameters).
 
-Bu dönüştürmeler doğru olduklarından emin olmak için çalışma zamanı denetimleri gerektiren başvuru türleri arasında açık bir başvuru dönüşümleri var.
+Açık başvuru dönüştürmeleri, doğru olduklarından emin olmak için çalışma zamanı denetimleri gerektiren başvuru türleri arasındaki dönüşümlerdir.
 
-Açık bir başvuru dönüştürmesi çalışma zamanında başarılı olması bir kaynak işlecinin değer olmalıdır `null`, ya da gerçek kaynak işlenen tarafından başvurulan nesne türü hedef türe örtük bir başvuru tarafından dönüştürülebilir bir türü olmalıdır dönüştürme ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions)) veya paketleme dönüştürmesi ([kutulama dönüştürmeler](conversions.md#boxing-conversions)). Bir açık başvuru dönüştürme başarısız olursa bir `System.InvalidCastException` oluşturulur.
+Açık bir başvuru dönüştürmenin çalışma zamanında başarılı olması için, kaynak işlenenin değeri `null`olmalı veya kaynak işleneni tarafından başvurulan nesnenin gerçek türü, örtük bir başvuru dönüştürmesi ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions)) veya paketleme dönüştürmesi ([kutulama dönüştürmeleri](conversions.md#boxing-conversions)) tarafından hedef türe dönüştürülebilen bir tür olmalıdır. Açık bir başvuru dönüştürmesi başarısız olursa, bir `System.InvalidCastException` oluşturulur.
 
-Başvuru dönüşümleri, örtük veya açık, hiçbir zaman dönüştürülen nesne başvuru kimliğini değiştirin. Başvuru türü başvuru dönüştürmesi değişebilir olsa da başka bir deyişle, hiçbir zaman türü veya başvurulan nesnenin değerini değiştirir.
+Başvuru dönüştürmeleri, örtük veya açık, dönüştürülmekte olan nesnenin başvuru kimliğini hiçbir şekilde değiştirmeyin. Diğer bir deyişle, bir başvuru dönüştürmesi başvurunun türünü değiştiremeken, başvuruda bulunulan nesnenin türünü veya değerini hiçbir şekilde değiştirmez.
 
-### <a name="unboxing-conversions"></a>Kutudan çıkarma dönüştürme
+### <a name="unboxing-conversions"></a>Kutudan çıkarma dönüştürmeleri
 
-Bir başvuru türünün açıkça dönüştürülmesi için bir paket açma dönüşümünün izin veren bir *value_type*. Bir paketi açma dönüştürmesi var türlerinden `object`, `dynamic` ve `System.ValueType` herhangi *non_nullable_value_type*ve herhangi *INTERFACE_TYPE* herhangi *non_ nullable_value_type* uygulayan *INTERFACE_TYPE*. Ayrıca yazın `System.Enum` herhangi kutulanmamış olabilir *enum_type*.
+Kutudan çıkarma dönüştürmesi, bir başvuru türünün açıkça bir *value_type*dönüştürülmesine izin verir. Türler `object`, `dynamic` ve `System.ValueType` herhangi bir *non_nullable_value_type* *ve interface_type uygulayan tüm non_nullable_value_type için bir* kutudan çıkarma dönüştürmesi *vardır.* Ayrıca tür `System.Enum` herhangi bir *enum_type*kutulanabilir.
 
-Bir başvuru türü için gelen bir paketi açma dönüştürmesi mevcut bir *nullable_type* temel alınan bir paket açma dönüşümünün başvuru türü varsa *non_nullable_value_type* ,  *nullable_type*.
+Başvuru türünden *nullable_type*temel *non_nullable_value_type* bir kutudan çıkarma dönüştürmesi varsa, bir başvuru türünden bir paket açma dönüştürmesi *nullable_type* vardır.
 
-Bir değer türü `S` sahip bir paketi açma dönüştürmesi bir arabirim türünden `I` dönüşümünün bir arabirim türünden olup olmadığını `I0` ve `I0` bir kimlik dönüştürmesi bulunmadığında `I`.
+`S` değer türü bir arabirim türünden kutudan çıkarma dönüştürmesi varsa `I` bir arabirim türü `I0` ve `I0` `I`bir kimlik dönüştürmesi varsa.
 
-Bir değer türü `S` sahip bir paketi açma dönüştürmesi bir arabirim türünden `I` bir arabirim veya temsilci türünden bir paketi açma dönüştürmesi varsa `I0` ve her iki `I0` varyansı dönüştürülebilir olduğundan için `I` veya `I`varyansı dönüştürülebilir olduğundan için `I0` ([varyansı dönüştürme](interfaces.md#variance-conversion)).
+Bir değer türü `S` bir arabirim türünden bir paket açma dönüştürmesi varsa `I`, `I0` bir arabirim veya temsilci türünden bir paket açma dönüştürmesi varsa ve `I0` varyans-dönüştürülebilir veya `I`, `I` ([varyans dönüştürmesi](interfaces.md#variance-conversion)) olarak değiştirildi.
 
-Bir kutudan çıkarma işlemi, ilk nesne örneği, kutulanmış bir değer olan denetimini oluşur verilen *value_type*ve ardından değeri örneğinin dışında kopyalama. Bir null başvuru kutudan çıkarma bir *nullable_type* null değerini üretir *nullable_type*. Bir yapı türünden kutulanmamış `System.ValueType`, tümü yapı için temel sınıf olan bu yana ([devralma](structs.md#inheritance)).
+Kutudan çıkarma işlemi, nesne örneğinin verilen *value_type*kutulanmış bir değer olup olmadığını kontrol ederek değeri örnekten dışarı kopyalamaktan oluşur. Bir *nullable_type* null başvurusunun kutudan çıkarma *nullable_type*null değeri üretir. Bir struct, tüm yapılar ([Devralma](structs.md#inheritance)) için bir temel sınıf olduğundan `System.ValueType`türünden kutulanabilir.
 
-Kutudan çıkarma dönüştürme daha ayrıntılı açıklanır [kutudan çıkarma dönüştürme](types.md#unboxing-conversions).
+Kutudan çıkarma dönüştürmeleri, kutudan çıkarma [dönüştürmelerinde](types.md#unboxing-conversions)açıklanacaktır.
 
-### <a name="explicit-dynamic-conversions"></a>Dinamik açık dönüştürmeler
+### <a name="explicit-dynamic-conversions"></a>Açık dinamik dönüştürmeler
 
-Türündeki bir ifade açık dinamik dönüştürme var `dynamic` herhangi bir tür için `T`. Dönüştürme dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)), yani açık bir dönüştürme, çalışma zamanında çalışma zamanı tür ifade aranır `T`. Hiçbir dönüştürme bulunursa, bir çalışma zamanı özel durum oluşturulur.
+`T`tür `dynamic` bir ifadeden açık dinamik dönüştürme bulunur. Dönüştürme, dinamik olarak bağlı ([dinamik bağlama](expressions.md#dynamic-binding)), yani `T`için ifadenin çalışma zamanı türünden çalışma zamanında açık bir dönüştürme yapılır. Dönüştürme bulunamazsa, bir çalışma zamanı özel durumu oluşturulur.
 
-Dinamik bağlama dönüştürme istenildiği gibi değilse, ifade ilk dönüştürülebilir `object`ve ardından istenen türde.
+Dönüştürmenin dinamik bağlaması istenmiyorsa, ifade önce `object`ve ardından istenen türe dönüştürülebilir.
 
-Aşağıdaki sınıf tanımlanan varsayın:
+Aşağıdaki sınıfın tanımlandığını varsayalım:
 ```csharp
 class C
 {
@@ -342,7 +343,7 @@ class C
 }
 ```
 
-Aşağıdaki örnekte, dinamik açık dönüştürmeler gösterilmektedir:
+Aşağıdaki örnekte açık dinamik dönüştürmeler gösterilmektedir:
 ```csharp
 object o  = "1";
 dynamic d = "2";
@@ -351,20 +352,20 @@ var c1 = (C)o; // Compiles, but explicit reference conversion fails
 var c2 = (C)d; // Compiles and user defined conversion succeeds
 ```
 
-En iyi dönüştürülmesi `o` için `C` derleme olması bir açık bir başvuru dönüştürmesi sırasında bulunamadı. Bu çalışma zamanında, çünkü başarısız `"1"` aslında değil bir `C`. Dönüştürme `d` için `C` ancak, çalışma zamanı, çalışma zamanı tür dönüştürme tanımlandığı bir kullanıcı için açık dinamik bir dönüştürme askıya `d`  --  `string` --çok `C` bulunursa ve başarılı olur.
+`C` `o` en iyi dönüşümü, derleme zamanında açık bir başvuru dönüştürmesi olacak şekilde bulunur. `"1"` aslında bir `C`olmadığından, çalışma zamanında bu başarısız olur. `d` `C` ancak açık dinamik dönüştürme olarak dönüştürme işlemi, `d` -- `string`---arasında bir Kullanıcı tanımlı dönüştürme olduğu ve başarılı olduğu zaman çalışma zamanına askıya alınır.
 
 ### <a name="explicit-conversions-involving-type-parameters"></a>Tür parametreleri içeren açık dönüştürmeler
 
-Belirtilen tür parametresi için aşağıdaki açık dönüştürmeler mevcut `T`:
+Verilen tür parametresi için aşağıdaki açık dönüştürmeler mevcuttur `T`:
 
-*  Etkili temel sınıftan `C` , `T` için `T` ve herhangi bir taban sınıftan `C` için `T`. AT çalışma zamanı Eğer `T` bir değer türü dönüştürme bir kutudan çıkarma dönüştürme olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
-*  İçin herhangi bir arabirim türünden `T`. AT çalışma zamanı Eğer `T` bir değer türü dönüştürme bir kutudan çıkarma dönüştürme olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
-*  Gelen `T` herhangi *INTERFACE_TYPE* `I` örtük bir dönüştürme yok sağlanan `T` için `I`. AT çalışma zamanı Eğer `T` bir değer türü dönüştürme bir açık bir başvuru dönüştürmesi tarafından izlenen bir paketleme dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
-*  Bir tür parametresi'den `U` için `T`, sağlanan `T` bağlıdır `U` ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)). AT çalışma zamanı Eğer `U` bir değer türü ise `T` ve `U` mutlaka aynı türdeyse ve hiçbir dönüştürme işlemi gerçekleştirilir. Aksi takdirde `T` bir değer türü dönüştürme bir kutudan çıkarma dönüştürme olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürme olarak yürütülür.
+*  `T` `C` geçerli taban sınıftan `T` ve `C` herhangi bir taban sınıftan `T`. Çalışma zamanında, `T` bir değer türü ise, dönüştürme bir kutudan çıkarma dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
+*  Herhangi bir arabirim türünden `T`. Çalışma zamanında, `T` bir değer türü ise, dönüştürme bir kutudan çıkarma dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
+*  `T` *interface_type* `I`, `T` ' den `I`'e örtük bir dönüştürme olmadığı için. Çalışma zamanında, `T` bir değer türü ise, dönüştürme bir paketleme dönüştürmesi ve ardından açık bir başvuru dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
+*  Bir tür parametresi `T``U`, `T` belirtilen `U` ([tür parametresi kısıtlamaları](classes.md#type-parameter-constraints)) bağlıdır. Çalışma zamanında, `U` bir değer türü ise, `T` ve `U` aynı türde ve hiçbir dönüştürme gerçekleştirilmeyebilir. Aksi takdirde, `T` bir değer türü ise, dönüştürme bir kutudan çıkarma dönüştürmesi olarak yürütülür. Aksi takdirde, dönüştürme açık bir başvuru dönüştürmesi veya kimlik dönüştürmesi olarak yürütülür.
 
-Varsa `T` olan bir başvuru türü olarak bilinen, yukarıdaki dönüştürmeleri tüm açık başvuru dönüşümleri sınıflandırılan ([açık başvuru dönüşümleri](conversions.md#explicit-reference-conversions)). Varsa `T` olan bir başvuru türü bilinmiyor, yukarıdaki dönüştürmeler kutudan çıkarma dönüştürme sınıflandırılan ([kutudan çıkarma dönüştürme](conversions.md#unboxing-conversions)).
+`T` bir başvuru türü olarak bilindiğinde, yukarıdaki dönüşümler tamamen açık başvuru dönüştürmeleri ([açık başvuru dönüştürmeleri](conversions.md#explicit-reference-conversions)) olarak sınıflandırılır. `T` bir başvuru türü olarak bilinmiyorsa, yukarıdaki dönüştürmeler kutudan çıkarma dönüştürmeleri ([kutudan çıkarma dönüştürmeleri](conversions.md#unboxing-conversions)) olarak sınıflandırılır.
 
-Yukarıdaki kuralları, şaşırtıcı olabilir bir sınırlandırılmamış tür parametresi doğrudan Açık dönüştürme bir arabirim olmayan türe izin vermez. Bu kural için bir neden, Karışıklığı önlemek ve semantikleri açık tür dönüştürmeleri yapmaktır. Örneğin, aşağıdaki bildirimi ele alalım:
+Yukarıdaki kurallar, kısıtlanmamış bir tür parametresinden doğrudan açık dönüştürmeye, arabirim olmayan bir türe izin vermez, bu da şaşırtıcı olabilir. Bu kuralın nedeni karışıklığa engel olmak ve bu tür dönüştürmelerin semantiğini temizlemek için kullanılır. Örneğin, aşağıdaki bildirimi ele alalım:
 ```csharp
 class X<T>
 {
@@ -374,7 +375,7 @@ class X<T>
 }
 ```
 
-Varsa doğrudan açıkça dönüştürülmesini `t` için `int` bir kolayca beklenebilir izni, `X<int>.F(7)` döndürecekti `7L`. Standart sayısal dönüştürmeler, yalnızca türleri bağlama zamanında sayısal bir değer olduğunda kabul edildiği için ancak bunu istemezsiniz. Semantiği yapmak için Temizle, yukarıdaki örnekte bunun yerine yazılmış olmalıdır:
+`int` `t` doğrudan açık dönüştürmeye izin verildiğinde, bir `X<int>.F(7)` `7L`döndürmesini kolayca bekleyebilir. Ancak, Standart Sayısal Dönüşümler yalnızca türlerin bağlama sırasında sayısal olarak bilindiğinde kabul edildiği için değildir. Semantiğini açık hale getirmek için yukarıdaki örneğin yazılması gerekir:
 ```csharp
 class X<T>
 {
@@ -384,155 +385,155 @@ class X<T>
 }
 ```
 
-Bu kod artık derlemez ancak yürütme `X<int>.F(7)` ardından çalışma zamanında, bu yana paketlenmiş bir özel durum `int` doğrudan dönüştürülemeyen bir `long`.
+Bu kod artık derlenir, ancak `X<int>.F(7)` kutulanmış `int` doğrudan bir `long`dönüştürülemediğinden çalışma zamanında bir özel durum oluşturur.
 
-### <a name="user-defined-explicit-conversions"></a>Kullanıcı tanımlı açık dönüştürmeler
+### <a name="user-defined-explicit-conversions"></a>Kullanıcı tanımlı açık dönüşümler
 
-Başka bir isteğe bağlı standart açık dönüştürme tarafından izlenen bir kullanıcı tanımlı dönüştürme örtük veya açık işlecinin yürütme sonrasında isteğe bağlı standart açık dönüştürme, kullanıcı tanımlı açık dönüştürme oluşur. Kullanıcı tanımlı açık dönüştürmeler değerlendirmek için kesin kurallar açıklanan [kullanıcı tanımlı açık dönüştürmeler işleme](conversions.md#processing-of-user-defined-explicit-conversions).
+Kullanıcı tanımlı açık dönüştürme, isteğe bağlı bir standart açık dönüşümden, ardından Kullanıcı tanımlı örtük veya açık bir dönüştürme işlecinin yürütülmesi ve ardından isteğe bağlı bir standart açık dönüştürme ile oluşur. Kullanıcı tanımlı Açık dönüştürmeleri değerlendirmek için tam kurallar, [Kullanıcı tanımlı açık dönüştürmelerin işlenmesinde](conversions.md#processing-of-user-defined-explicit-conversions)açıklanmıştır.
 
 ## <a name="standard-conversions"></a>Standart dönüşümler
 
-Standart dönüştürmeler bir kullanıcı tanımlı dönüştürme bir parçası olarak ortaya çıkabilecek bu önceden tanımlı dönüşümler ' dir.
+Standart dönüştürmeler, Kullanıcı tanımlı dönüştürmenin bir parçası olarak gerçekleşebileceğini önceden tanımlanmış dönüşümlerdir.
 
 ### <a name="standard-implicit-conversions"></a>Standart örtük dönüştürmeler
 
-Aşağıdaki örtük dönüştürmeler standart örtük dönüştürmeler sınıflandırılan:
+Aşağıdaki örtük dönüştürmeler standart örtük dönüştürmeler olarak sınıflandırılmaktadır:
 
-*  Kimlik dönüştürme ([kimlik dönüştürme](conversions.md#identity-conversion))
-*  Örtük sayısal Dönüşümler ([örtük sayısal dönüşümler](conversions.md#implicit-numeric-conversions))
-*  Boş değer atanabilir örtülü dönüştürmeler ([boş değer atanabilir örtük dönüştürmelerin](conversions.md#implicit-nullable-conversions))
-*  Örtük bir başvuru Dönüşümleri ([örtük bir başvuru dönüşümleri](conversions.md#implicit-reference-conversions))
-*  Kutulama dönüştürmeler ([kutulama dönüştürmeler](conversions.md#boxing-conversions))
-*  Örtük sabit ifade dönüştürmeler ([dinamik örtük dönüştürmelerin](conversions.md#implicit-dynamic-conversions))
-*  Tür parametreleri içeren örtülü dönüştürmeler ([tür parametreleri içeren örtük dönüştürmelerin](conversions.md#implicit-conversions-involving-type-parameters))
+*  Kimlik dönüştürmeleri ([kimlik dönüştürme](conversions.md#identity-conversion))
+*  Örtük Sayısal Dönüşümler ([örtük sayısal dönüştürmeler](conversions.md#implicit-numeric-conversions))
+*  Örtük null yapılabilir dönüşümler ([örtük Nullable dönüşümler](conversions.md#implicit-nullable-conversions))
+*  Örtük başvuru dönüştürmeleri ([örtük başvuru dönüştürmeleri](conversions.md#implicit-reference-conversions))
+*  Paketleme dönüştürmeleri ([kutulama dönüştürmeleri](conversions.md#boxing-conversions))
+*  Örtük sabit ifade dönüştürmeleri ([örtük dinamik dönüştürmeler](conversions.md#implicit-dynamic-conversions))
+*  Tür parametreleri içeren örtük dönüştürmeler ([tür parametreleri Içeren örtük dönüştürmeler](conversions.md#implicit-conversions-involving-type-parameters))
 
-Standart örtük dönüştürmeler, örtük dönüştürmelerin kullanıcı tanımlı özellikle hariç tutun.
+Standart örtük dönüştürmeler özellikle Kullanıcı tanımlı örtük dönüştürmeleri hariç tutar.
 
-### <a name="standard-explicit-conversions"></a>Standart açık dönüştürmeler
+### <a name="standard-explicit-conversions"></a>Standart açık dönüşümler
 
-Standart açık dönüştürmeler, tüm standart örtük dönüştürmeler yanı sıra alt kümesini bir ters standart örtük dönüştürme bulunduğu açık dönüştürmeler ' dir. Diğer bir deyişle, standart bir örtük dönüştürme bir türden varsa `A` türüne `B`, standart bir açık dönüştürme türünden varsa `A` türüne `B` ve türünden `B` türüne `A`.
+Standart açık dönüştürmeler tüm standart örtük dönüştürmelerdir ve ters bir standart örtük dönüştürmenin bulunduğu açık dönüştürmelerin alt kümesidir. Diğer bir deyişle, bir tür `B`türüne standart bir örtük `A` dönüştürme varsa, tür `A` türünden `B` türüne ve `B` tür `A`türüne standart bir açık dönüştürme bulunur.
 
 ## <a name="user-defined-conversions"></a>Kullanıcı tanımlı dönüştürmeler
 
-C# ile genişletilmesi önceden tanımlanmış örtük ve açık dönüştürmeler sağlar ***kullanıcı tanımlı dönüşümler***. Dönüştürme işleçleri bildirerek kullanıcı tanımlı dönüştürmeler sunulmuştur ([dönüştürme işleçleri](classes.md#conversion-operators)) sınıf ile yapı türleri.
+C#önceden tanımlanmış örtük ve açık dönüştürmelerin ***Kullanıcı tanımlı dönüşümlerde***artırılmasına izin verir. Kullanıcı tanımlı dönüştürmeler, sınıf ve yapı türlerinde dönüştürme işleçleri ([dönüştürme işleçleri](classes.md#conversion-operators)) bildirerek ortaya çıkartılır.
 
-### <a name="permitted-user-defined-conversions"></a>Kullanıcı tanımlı Dönüştürmelere izin verilir
+### <a name="permitted-user-defined-conversions"></a>İzin verilen Kullanıcı tanımlı dönüştürmeler
 
-C# bildirilmesi için yalnızca belirli kullanıcı tanımlı Dönüştürmelere izin verir. Özellikle, zaten var olan bir örtük veya açık dönüştürme tanımlanacak mümkün değildir.
+C#yalnızca belirli kullanıcı tanımlı dönüştürmelerin bildirilmesine izin verir. Özellikle, zaten varolan bir örtük veya açık dönüştürmeyi yeniden tanımlamak mümkün değildir.
 
-Belirtilen kaynak türü için `S` ve hedef türü `T`, `S` veya `T` boş değer atanabilir türler izin `S0` ve `T0` Aksi takdirde, temel alınan türler için başvuru `S0` ve `T0` olan eşit `S` ve `T` sırasıyla. Bir kaynak türünden dönüştürme bildirmek için bir sınıf veya yapı izin `S` hedef türüyle `T` yalnızca aşağıdakilerin tümü doğru olduğunda:
+Belirli bir kaynak türü `S` ve hedef türü `T`, `S` veya `T` null yapılabilir türlerse, `S0` ve `T0` temel türlerine başvurmasına izin verir, aksi takdirde `S0` ve `T0` sırasıyla `S` ve `T` eşittir. Bir sınıf veya yapının bir kaynak türü `S` bir hedef türüne dönüştürme bildirmesine izin verilir `T` yalnızca aşağıdakilerin tümü doğru ise geçerlidir:
 
-*  `S0` ve `T0` farklı tür aşağıda verilmiştir.
-*  Ya da `S0` veya `T0` işleç bildirimi yer alan sınıf veya yapı türü.
-*  Ne `S0` ya da `T0` olduğu bir *INTERFACE_TYPE*.
-*  Kullanıcı tanımlı dönüşümler, bir dönüştürme yok gelen `S` için `T` veya `T` için `S`.
+*  `S0` ve `T0` farklı türlerdir.
+*  `S0` ya da `T0`, işleç bildiriminin gerçekleştiği sınıf veya yapı türüdür.
+*  Ne `S0` ne de `T0` bir *interface_type*.
+*  Kullanıcı tanımlı dönüştürmeler hariç olmak üzere, `S` `T` veya `T` ' den `S`' e kadar bir dönüştürme yok.
 
-Kullanıcı tanımlı dönüştürmeler için kısıtlamalar açıklanan daha ayrıntılı olarak [dönüştürme işleçleri](classes.md#conversion-operators).
+Kullanıcı tanımlı dönüştürmeler için uygulanan kısıtlamalar, [dönüştürme işleçlerinde](classes.md#conversion-operators)daha ayrıntılı bir şekilde ele alınmıştır.
 
-### <a name="lifted-conversion-operators"></a>Yükseltilmiş dönüştürme işleçleri
+### <a name="lifted-conversion-operators"></a>Yükseltilmemiş dönüştürme işleçleri
 
-Bir NULL olmayan değer türünden dönüştüren bir kullanıcı tanımlı dönüştürme işleci göz önünde bulundurulduğunda `S` NULL olmayan bir değer türü için `T`, ***dönüştürme işleci yükseltilmiş*** var. Bu dönüştürür gelen `S?` için`T?`. Bu yükseltilmiş dönüştürme işleci bir gelen çözülmesini gerçekleştirir `S?` için `S` kullanıcı tanımlı dönüştürme ardından `S` için `T` diğerine kaydırma ardından `T` için `T?`dışında bir null değerli `S?` doğrudan bir null değerli dönüştürür `T?`.
+Null yapılamayan bir değer türü `S`, null olamayan bir değer türü `T`dönüştüren bir Kullanıcı tanımlı dönüştürme işleci verildiğinde, `S?` ' den `T?`dönüştüren bir ***yükseltilmemiş dönüştürme işleci*** vardır. Bu yükseltilmemiş dönüştürme işleci, `S?` ' den `S` ' den `T` ' a bir kaydırma gerçekleştirerek, null değerli `T?`doğrudan bir null değerli `S?` dönüştürülebilinerek, `T` `S` ' dan `T?`' a bir sarmalama uygular.
 
-Yükseltilmiş dönüştürme işleci, temel alınan kullanıcı tanımlı dönüştürme işleci olarak aynı örtük veya açık sınıflandırma vardır. "Kullanıcı tanımlı dönüştürme" her ikisi de kullanımını geçerli dönem, kullanıcı tanımlı ve dönüştürme işleçleri yükseltilmiş.
+Bir yükseltilmemiş dönüştürme işleci, temel aldığı Kullanıcı tanımlı dönüştürme işleci ile aynı örtük veya açık sınıflandırmasına sahiptir. "Kullanıcı tanımlı dönüştürme" terimi hem Kullanıcı tanımlı hem de yükseltilmemiş dönüştürme işleçlerinin kullanımı için geçerlidir.
 
-### <a name="evaluation-of-user-defined-conversions"></a>Kullanıcı tanımlı dönüşümler değerlendirmesi
+### <a name="evaluation-of-user-defined-conversions"></a>Kullanıcı tanımlı dönüştürmeler değerlendirmesi
 
-Bir kullanıcı tanımlı dönüştürme çağrılır, türünden bir değer dönüştürür ***kaynak türünü***, başka bir türe adlı ***hedef türü***. Kullanıcı tanımlı bir dönüştürmenin değerlendirme merkezi bulma ile ilgili ***en belirgin*** belirli kaynak ve hedef türleri için kullanıcı tanımlı dönüştürme işleci. Bu belirleme, birkaç aşamaya ayrılır:
+Kullanıcı tanımlı dönüştürme, ***kaynak türü***olarak adlandırılan türünden bir değeri, ***hedef türü***olarak adlandırılan başka bir türe dönüştürür. Belirli bir kaynak ve hedef türleri için ***en özel*** Kullanıcı tanımlı dönüştürme işlecini bulmada Kullanıcı tanımlı dönüştürme merkezlerinin değerlendirmesi. Bu belirleme birkaç adımda bozulur:
 
-*  Sınıflar ve yapılar kullanıcı tanımlı dönüştürme işleçlerini kabul edilir kümesi bulunuyor. Bu kaynak türü ve temel sınıflarının ve hedef türü ve kendi temel sınıflarla (kullanıcı tanımlı işleçler yalnızca sınıfları ve yapıları bildirebilir ve sınıf olmayan türler temel sınıfa sahip örtük varsayımların) oluşur. Kaynak veya hedef türü ise bu adımı amaçları için bir *nullable_type*, kendi temel alınan türü kullanılan yerine.
-*  Bu türleri kümesinden kullanıcı tanımlı ve dönüştürme işleçleri yükseltilmiş belirleme uygulanabilir. Bir dönüştürme operatörünün uygulanabilmesi standart bir dönüştürme gerçekleştirmek mümkün olmalıdır ([standart dönüştürmeler](conversions.md#standard-conversions)) işlenenin kaynak türünden işleci ve standart bir dönüştürme gerçekleştirmek mümkün türünde olmalıdır Hedef türü işlecinin sonucu türünden.
-*  Geçerli kullanıcı tanımlı işleçler kümesinden hangi işleci dönüştürmelerle en belirgin değil belirleme. Genel koşullarını en belirgin işleci, işlenenin türü "kaynak türü için en yakın" ve "hedef türüne en yakın" sonuç türü olan işlecidir. Kullanıcı tanımlı dönüştürme işleçleri yükseltilmiş dönüştürme işleçleri tercih edilir. Aşağıdaki bölümlerde en belirgin kullanıcı tanımlı dönüştürme işleci oluşturma tam kurallarını tanımlanır.
+*  Kullanıcı tanımlı dönüştürme işleçlerinin kabul edileceği sınıfların ve yapıların kümesini bulma. Bu küme, kaynak türünden ve temel sınıflarından ve hedef türünden ve temel sınıflarından oluşur (yalnızca sınıfların ve yapıların Kullanıcı tanımlı işleçleri bildirebilme ve sınıf olmayan türlerin temel sınıfları olmadığı örtük varsayımlar ile). Bu adımın amaçları doğrultusunda, kaynak veya hedef tür bir *nullable_type*ise bunun yerine temel alınan türü kullanılır.
+*  Bu tür kümesinden, hangi kullanıcı tanımlı ve yükseltilmemiş dönüştürme işleçlerinin geçerli olduğunu belirlemek. Bir dönüştürme işlecinin geçerli olması için, kaynak türünden işlecin işlenen türüne Standart dönüştürme ([Standart dönüşümler](conversions.md#standard-conversions)) gerçekleştirmek mümkün olmalıdır ve işlecin sonuç türünden hedef türüne standart bir dönüştürme gerçekleştirmek mümkün olmalıdır.
+*  Geçerli Kullanıcı tanımlı işleçler kümesinden, hangi işlecin kesin olarak en belirgin olduğunu belirleme. Genel koşullarda, en özel işleç, işlenen türü kaynak türüne "en yakın" olan ve sonuç türü hedef türüne "en yakın" olan işleçtir. Kullanıcı tanımlı dönüştürme işleçleri yükseltilmemiş dönüştürme işleçleri üzerinden tercih edilir. En belirli kullanıcı tanımlı dönüştürme işlecini oluşturmaya yönelik kuralların tam kuralları aşağıdaki bölümlerde tanımlanmıştır.
 
-En belirli bir kullanıcı tanımlı dönüştürme işleci belirlendikten sonra kullanıcı tanımlı dönüştürme gerçek yürütülmesi en çok üç adımdan oluşur:
+En çok belirli bir Kullanıcı tanımlı dönüştürme işleci tanımlandıktan sonra, Kullanıcı tanımlı dönüştürmenin gerçek yürütmesi üç adımdan oluşur:
 
-*  İlk olarak, gerekli olursa yükseltilmiş veya kullanıcı tanımlı dönüştürme işleci işlenen türü kaynak türü bir standart dönüştürme gerçekleştirme.
-*  Ardından, dönüştürmeyi gerçekleştirmek için yükseltilmiş veya kullanıcı tanımlı dönüştürme işleci çağrılıyor.
-*  Son olarak, gerekli olursa yükseltilmiş veya kullanıcı tanımlı dönüştürme işleci sonuç türü hedef türüne standart dönüştürme gerçekleştirme.
+*  İlk olarak, gerekirse, kaynak türünden Kullanıcı tanımlı veya yükseltilmemiş dönüştürme işlecinin işlenen türüne standart bir dönüştürme işlemi gerçekleştiriliyor.
+*  Sonra, dönüştürmeyi gerçekleştirmek için Kullanıcı tanımlı veya yükseltilmemiş dönüştürme işlecini çağırma.
+*  Son olarak, gerekirse Kullanıcı tanımlı veya yükseltilmemiş dönüştürme işlecinin sonuç türünden hedef türüne standart bir dönüştürme işlemi gerçekleştiriliyor.
 
-Bir kullanıcı tanımlı dönüşümü hiçbir zaman birden fazla yükseltilmiş veya kullanıcı tanımlı dönüştürme işleci içeriyor. Diğer bir deyişle, türünden dönüştürme `S` türüne `T` bir kullanıcı tanımlı dönüşümü hiçbir zaman önce yürütülür `S` için `X` ve kullanıcı tanımlı dönüştürme yürüten `X` için `T`.
+Kullanıcı tanımlı bir dönüştürmenin değerlendirmesi hiçbir şekilde birden fazla Kullanıcı tanımlı veya yükseltilmemiş dönüştürme işleci içerir. Diğer bir deyişle `S` türünden `T` türüne dönüştürme, önce `S` 'den `X` 'e Kullanıcı tanımlı bir dönüştürme yürütmez ve ardından `X` 'den `T`'e Kullanıcı tanımlı bir dönüştürme yürütmeyecektir.
 
-Kullanıcı tanımlı dönüştürme örtük veya açık değerlendirme tam tanımları aşağıdaki bölümlerde verilmiştir. Tanımları olun aşağıdaki koşulları kullanın:
+Aşağıdaki bölümlerde Kullanıcı tanımlı örtük veya açık dönüşümler değerlendirmesinin tam tanımları verilmiştir. Tanımlar aşağıdaki terimleri kullanır:
 
-*  Standart örtük bir dönüştürme ise ([standart örtük dönüştürmeler](conversions.md#standard-implicit-conversions)) bir türden var. `A` türüne `B`ve kullanılmazsa `A` ya da `B` olan *INTERFACE_TYPE*s, ardından `A` olduğu söylenir ***ile çevrelenmiş*** `B`, ve `B` edilir ***kapsayacak*** `A`.
-*  ***En kapsamlı türü*** türleri kümesi içinde kümedeki diğer tüm türleri kapsayan bir türdür. Tek tür diğer tüm türleri kapsıyorsa, kümenin en kapsamlı tür yok. En kapsamlı türü daha sezgisel bağlamında, "büyük" kümesindeki türüdür — istediğiniz diğer türlerinin her biri örtük olarak dönüştürülebilir bir tür.
-*  ***Türü'en çevrelenmiş*** türleri kümesi, kümedeki diğer tüm türleri ile çevrelenmiş bir türdür. Ardından tek tür diğer türleri tarafından kapsadığı, küme türü çevrelenmiş Hayır en. En encompassed türü daha sezgisel bağlamında, "küçük" kümesindeki türüdür; her diğer türleri için örtük olarak dönüştürülebilir bir tür.
+*  Bir tür `B`bir türden standart örtük dönüştürme ([Standart örtük dönüştürmeler](conversions.md#standard-implicit-conversions)) varsa ve ne `A` ne de `B` *interface_type*`A`, ***`A` `B`olarak*** kabul edilir ve ***`B` `A`.***
+*  Bir tür kümesindeki ***en kapsamlı tür*** , küme içindeki diğer tüm türleri kapsayan tek türdür. Tek bir tür diğer tüm türleri kapsadığı takdirde, küme en fazla kapsayan türe sahip değildir. Daha sezgisel koşullarda, en çok kapsayan tür, küme içindeki "en büyük" türdür — diğer türlerin her birinin örtük olarak dönüştürülebileceği bir tür.
+*  Bir tür kümesindeki ***en kapsamlı tür*** , küme içindeki tüm diğer türler tarafından dahil edilen tek türdür. Tüm diğer türler tarafından tek bir tür yoksa, küme, en çok kullanılan türe sahip değildir. Daha sezgisel koşullarda, en kapsamlı tür, küme içindeki "en küçük" türüdür ve örtülü olarak diğer türlerin her birine dönüştürülebilirler.
 
-### <a name="processing-of-user-defined-implicit-conversions"></a>İşlem kullanıcı tarafından tanımlanan örtük dönüştürme
+### <a name="processing-of-user-defined-implicit-conversions"></a>Kullanıcı tanımlı örtük dönüştürmeleri işleme
 
-Türünden kullanıcı tanımlı örtük dönüştürme `S` türüne `T` şu şekilde işlenir:
+`S` türünden `T` türüne Kullanıcı tanımlı örtük dönüştürme şu şekilde işlenir:
 
-*  Türlerini belirleyin `S0` ve `T0`. Varsa `S` veya `T` boş değer atanabilir türler `S0` ve `T0` Aksi takdirde, temel alınan türler olan `S0` ve `T0` eşit olan `S` ve `T` sırasıyla.
-*  Bulma türleri, `D`, hangi kullanıcı tanımlı dönüştürme işleçlerini kabul edilir. Bu kümesi oluşur `S0` (varsa `S0` bir sınıf veya yapı), temel sınıflarını `S0` (varsa `S0` bir sınıf), ve `T0` (varsa `T0` bir sınıf veya yapı).
-*  Geçerli kullanıcı tanımlı ve yükseltilmiş dönüştürme işleçleri kümesini bulmak `U`. Bu sınıflar veya yapılar için tarafından bildirilen kullanıcı tanımlı ve yükseltilmiş örtük dönüşüm işleçleri oluşur `D` gelen bir kapsayan tür dönüştürme `S` ile çevrelenmiş bir türe `T`. Varsa `U` boş dönüştürme tanımlı değildir ve bir derleme zamanı hatası oluşur.
-*  En belirgin kaynak türü bulma `SX`, işleçler, `U`:
-    * İşleçler, biri geçerliyse `U` dönüştürmek `S`, ardından `SX` olduğu `S`.
-    * Aksi takdirde, `SX` en encompassed kaynak türleri, işleçler, birleştirilmiş bir dizi türünde `U`. Tam olarak bir en çevrelenmiş tür bulunamıyor, sonra dönüştürme belirsiz değildir ve bir derleme zamanı hatası oluşur.
-*  En belirgin hedef türü, bulma `TX`, işleçler, `U`:
-    * İşleçler, biri geçerliyse `U` Dönüştür `T`, ardından `TX` olduğu `T`.
-    * Aksi takdirde, `TX` en kapsamlı türü hedef türleri, işleçler, birleştirilmiş bir dizi içinde `U`. En kapsamlı tam olarak bir tür dönüştürme belirsiz olduğu ve bir derleme zamanı hatası oluşur.
-*  En belirgin dönüştürme işleci bulun:
-    * Varsa `U` dönüştürür tam olarak bir kullanıcı tanımlı dönüştürme işleci içeren `SX` için `TX`, bu ise en belirgin dönüştürme işleci.
-    * Aksi takdirde `U` dönüştürür tam olarak bir yükseltilmiş dönüştürme işleci içeren `SX` için `TX`, bu ise en belirgin dönüştürme işleci.
-    * Aksi takdirde, dönüştürme belirsiz değildir ve bir derleme zamanı hatası oluşur.
-*  Son olarak, bir dönüştürme uygulanır:
-    * Varsa `S` değil `SX`, ardından standart örtük dönüştürme `S` için `SX` gerçekleştirilir.
-    * En belirgin dönüştürme işleci dönüştürmek için çağrılan `SX` için `TX`.
-    * Varsa `TX` değil `T`, ardından standart örtük dönüştürme `TX` için `T` gerçekleştirilir.
+*  `S0` ve `T0`türleri belirlenir. `S` veya `T` null yapılabilir türlerse, `S0` ve `T0` temel alınan türlerdir, aksi takdirde `S0` ve `T0` sırasıyla `S` ve `T` eşittir.
+*  Kullanıcı tanımlı dönüştürme işleçlerinin kabul edileceği `D`türü kümesini bulur. Bu küme `S0` (`S0` bir sınıf veya yapı ise), `S0` temel sınıfları (`S0` bir sınıfsa) ve `T0` (`T0` bir sınıf veya yapı ise) oluşur.
+*  Geçerli Kullanıcı tanımlı ve yükseltilmemiş dönüştürme işleçleri kümesini bulun `U`. Bu küme, Kullanıcı tanımlı ve yükseltilmemiş örtük dönüştürme işleçlerinden oluşur ve bir tür kapsayan `S` `T`tarafından dahil edilen bir türe dönüşüm olan `D`. `U` boş ise, dönüştürme tanımsız olur ve derleme zamanı hatası oluşur.
+*  `U`işleçleri `SX`en çok belirli kaynak türünü bulun:
+    * `U` ' deki işleçlerden herhangi biri `S`' den dönüştürürseniz `SX` `S`.
+    * Aksi takdirde `SX`, `U`operatörlerinin Birleşik kaynak türleri kümesindeki en kapsamlı türdür. Tam olarak en kapsamlı bir tür bulunamazsa, dönüştürme belirsizdir ve derleme zamanı hatası oluşur.
+*  `U`işleçleri `TX`en çok belirli hedef türünü bulun:
+    * `U` ' deki işleçlerden herhangi biri `T`' e dönüştürürsünüz `TX` `T`.
+    * Aksi takdirde `TX`, `U`operatörlerinin Birleşik hedef türleri kümesindeki en kapsamlı bir türdür. Tam olarak en kapsamlı bir tür bulunamazsa, dönüştürme belirsizdir ve derleme zamanı hatası oluşur.
+*  En belirli dönüştürme işlecini bulun:
+    * `U`, `SX` ' ten `TX`dönüştürdüğü tam olarak bir Kullanıcı tanımlı dönüştürme işleci içeriyorsa, bu, en belirli dönüştürme işleçtir.
+    * Aksi takdirde, `U` `SX` ' ten `TX`dönüştüren tam olarak bir yükseltilmemiş dönüştürme işleci içeriyorsa, bu, en belirli dönüştürme işleçtir.
+    * Aksi takdirde, dönüştürme belirsizdir ve bir derleme zamanı hatası oluşur.
+*  Son olarak, dönüştürmeyi uygulayın:
+    * `S` `SX`değilse, `S` 'den `SX` 'e standart bir örtük dönüşüm yapılır.
+    * En özel dönüştürme işleci, `SX` ' den `TX`dönüştürmek için çağrılır.
+    * `TX` `T`değilse, `TX` 'den `T` 'e standart bir örtük dönüşüm yapılır.
 
-### <a name="processing-of-user-defined-explicit-conversions"></a>Kullanıcı tanımlı açık dönüştürmeler işlenmesini
+### <a name="processing-of-user-defined-explicit-conversions"></a>Kullanıcı tanımlı Açık dönüştürmeleri işleme
 
-Türünden kullanıcı tanımlı açık dönüştürme `S` türüne `T` şu şekilde işlenir:
+`S` türünden `T` türüne bir Kullanıcı tanımlı açık dönüştürme aşağıdaki şekilde işlenir:
 
-*  Türlerini belirleyin `S0` ve `T0`. Varsa `S` veya `T` boş değer atanabilir türler `S0` ve `T0` Aksi takdirde, temel alınan türler olan `S0` ve `T0` eşit olan `S` ve `T` sırasıyla.
-*  Bulma türleri, `D`, hangi kullanıcı tanımlı dönüştürme işleçlerini kabul edilir. Bu kümesi oluşur `S0` (varsa `S0` bir sınıf veya yapı), temel sınıflarını `S0` (varsa `S0` bir sınıftır), `T0` (varsa `T0` bir sınıf veya yapı) ve temel sınıfları `T0` (varsa `T0`bir sınıfı).
-*  Geçerli kullanıcı tanımlı ve yükseltilmiş dönüştürme işleçleri kümesini bulmak `U`. Bu kullanıcı tarafından tanımlanan ve lifted örtük oluşur veya açık dönüştürme işleçleri bildirilen sınıflar veya yapılar için `D` gelen bir kapsayan tür dönüştürme veya ile çevrelenmiş `S` kapsayan veya ileçevrelenmişbirtürü`T`. Varsa `U` boş dönüştürme tanımlı değildir ve bir derleme zamanı hatası oluşur.
-*  En belirgin kaynak türü bulma `SX`, işleçler, `U`:
-    * İşleçler, biri geçerliyse `U` dönüştürmek `S`, ardından `SX` olduğu `S`.
-    * Aksi durumda, işleçler, biri geçerliyse `U` kapsayacak türlerinden dönüştürme `S`, ardından `SX` kaynağı bu işleçleri tür birleşik kümesindeki en encompassed türüdür. Çevrelenmiş hiçbir çoğu, türü bulunabilir, daha sonra dönüştürme belirsiz ve bir derleme zamanı hatası oluşur.
-    * Aksi takdirde, `SX` en kapsamlı kaynak türleri, işleçler, birleştirilmiş bir dizi türünde `U`. En kapsamlı tam olarak bir tür dönüştürme belirsiz olduğu ve bir derleme zamanı hatası oluşur.
-*  En belirgin hedef türü, bulma `TX`, işleçler, `U`:
-    * İşleçler, biri geçerliyse `U` Dönüştür `T`, ardından `TX` olduğu `T`.
-    * Aksi durumda, işleçler, biri geçerliyse `U` tarafından çevrelenen türlere dönüştürmeniz `T`, ardından `TX` hedef türleri bu işleçleri birleştirilmiş bir dizi içinde en kapsamlı bir türdür. En kapsamlı tam olarak bir tür dönüştürme belirsiz olduğu ve bir derleme zamanı hatası oluşur.
-    * Aksi takdirde, `TX` en encompassed türü hedef türleri, işleçler, birleştirilmiş bir dizi içinde `U`. Çevrelenmiş hiçbir çoğu, türü bulunabilir, daha sonra dönüştürme belirsiz ve bir derleme zamanı hatası oluşur.
-*  En belirgin dönüştürme işleci bulun:
-    * Varsa `U` dönüştürür tam olarak bir kullanıcı tanımlı dönüştürme işleci içeren `SX` için `TX`, bu ise en belirgin dönüştürme işleci.
-    * Aksi takdirde `U` dönüştürür tam olarak bir yükseltilmiş dönüştürme işleci içeren `SX` için `TX`, bu ise en belirgin dönüştürme işleci.
-    * Aksi takdirde, dönüştürme belirsiz değildir ve bir derleme zamanı hatası oluşur.
-*  Son olarak, bir dönüştürme uygulanır:
-    * Varsa `S` değil `SX`, ardından standart açık dönüştürme `S` için `SX` gerçekleştirilir.
-    * En belirgin kullanıcı tanımlı dönüştürme işleci dönüştürmek için çağrılan `SX` için `TX`.
-    * Varsa `TX` değil `T`, ardından standart açık dönüştürme `TX` için `T` gerçekleştirilir.
+*  `S0` ve `T0`türleri belirlenir. `S` veya `T` null yapılabilir türlerse, `S0` ve `T0` temel alınan türlerdir, aksi takdirde `S0` ve `T0` sırasıyla `S` ve `T` eşittir.
+*  Kullanıcı tanımlı dönüştürme işleçlerinin kabul edileceği `D`türü kümesini bulur. Bu küme `S0` oluşur (`S0` bir sınıf veya yapı ise), `S0` temel sınıfları (`S0` bir sınıfsa), `T0` (`T0` bir sınıf veya yapı ise) ve temel sınıfları (`T0` bir sınıfsa) oluşur.
+*  Geçerli Kullanıcı tanımlı ve yükseltilmemiş dönüştürme işleçleri kümesini bulun `U`. Bu küme, `T`tarafından dahil edilen veya dahil edilen bir tür `S` tarafından dahil edilen veya dahil edilen bir türden veya dahil edilen bir tür tarafından tanımlanan bir türden veya dahil olmak üzere `D`, Kullanıcı tanımlı ve yükseltilmemiş örtük veya açık dönüştürme işleçlerinden oluşur. `U` boş ise, dönüştürme tanımsız olur ve derleme zamanı hatası oluşur.
+*  `U`işleçleri `SX`en çok belirli kaynak türünü bulun:
+    * `U` ' deki işleçlerden herhangi biri `S`' den dönüştürürseniz `SX` `S`.
+    * Aksi takdirde, `U` ' deki işleçlerden herhangi biri `S`çevreleyen türlerden dönüşütürse `SX`, bu operatörlerin Birleşik kaynak türleri kümesindeki en kapsamlı türdür. En çok kullanılan tür bulunamıyorsa, dönüştürme belirsizdir ve derleme zamanı hatası oluşur.
+    * Aksi takdirde `SX`, `U`operatörlerinin Birleşik kaynak türleri kümesindeki en kapsamlı bir türdür. Tam olarak en kapsamlı bir tür bulunamazsa, dönüştürme belirsizdir ve derleme zamanı hatası oluşur.
+*  `U`işleçleri `TX`en çok belirli hedef türünü bulun:
+    * `U` ' deki işleçlerden herhangi biri `T`' e dönüştürürsünüz `TX` `T`.
+    * Aksi takdirde, `U` içindeki işleçlerden herhangi biri `T`tarafından dahil edilen türlere dönüşütürse `TX`, bu operatörlerin birleştirilmiş hedef türleri kümesindeki en kapsamlı bir tür olur. Tam olarak en kapsamlı bir tür bulunamazsa, dönüştürme belirsizdir ve derleme zamanı hatası oluşur.
+    * Aksi takdirde `TX`, `U`operatörlerin Birleşik hedef türleri kümesindeki en kapsamlı türdür. En çok kullanılan tür bulunamıyorsa, dönüştürme belirsizdir ve derleme zamanı hatası oluşur.
+*  En belirli dönüştürme işlecini bulun:
+    * `U`, `SX` ' ten `TX`dönüştürdüğü tam olarak bir Kullanıcı tanımlı dönüştürme işleci içeriyorsa, bu, en belirli dönüştürme işleçtir.
+    * Aksi takdirde, `U` `SX` ' ten `TX`dönüştüren tam olarak bir yükseltilmemiş dönüştürme işleci içeriyorsa, bu, en belirli dönüştürme işleçtir.
+    * Aksi takdirde, dönüştürme belirsizdir ve bir derleme zamanı hatası oluşur.
+*  Son olarak, dönüştürmeyi uygulayın:
+    * `S` `SX`değilse, `S` 'den `SX` 'e standart bir açık dönüştürme yapılır.
+    * En özel kullanıcı tanımlı dönüştürme işleci `SX` `TX`' den ' a dönüştürmek için çağrılır.
+    * `TX` `T`değilse, `TX` 'den `T` 'e standart bir açık dönüştürme yapılır.
 
-## <a name="anonymous-function-conversions"></a>Anonim işlev dönüştürme
+## <a name="anonymous-function-conversions"></a>Anonim işlev dönüştürmeleri
 
-Bir *anonymous_method_expression* veya *lambda_expression* anonim bir işlev sınıflandırılır ([anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)). İfade, bir tür yoktur ama bir uyumlu temsilci türü ya da ifade ağaç türüne örtük olarak dönüştürülebilir. Özellikle, anonim bir işlev `F` bir temsilci türüyle uyumlu `D` sağlanan:
+Bir *anonymous_method_expression* veya *lambda_expression* anonim Işlev olarak sınıflandırılır ([anonim işlev ifadeleri](expressions.md#anonymous-function-expressions)). İfade bir türe sahip değil, ancak örtülü olarak uyumlu bir temsilci türüne veya ifade ağacı türüne dönüştürülebilir. Özellikle, anonim bir işlev `F`, sağlanmış `D` bir temsilci türü ile uyumludur:
 
-*  Varsa `F` içeren bir *anonymous_function_signature*, ardından `D` ve `F` parametreleri aynı sayıda sahip.
-*  Varsa `F` içermeyen bir *anonymous_function_signature*, ardından `D` hiçbir parametresi olarak uzun, her tür sıfır veya daha fazla parametrelere sahip `D` sahip `out` parametre değiştiricisi.
-*  Varsa `F` her parametresinde bir açıkça belirtilmiş bir parametre listesine sahip `D` karşılık gelen parametre olarak aynı türde ve değiştiricilere sahip `F`.
-*  Varsa `F` bir örtük olarak yazılan parametre listesine sahip `D` hiçbir `ref` veya `out` parametreleri.
-*  Varsa gövdesinin `F` bir ifade ve ya da `D` sahip bir `void` dönüş türü veya `F` zaman uyumsuz olduğunu ve `D` dönüş türüne sahip `Task`, sonra ne zaman her parametresinin `F` türünü verilir karşılık gelen parametre `D`, gövdesi `F` geçerli bir ifade (wrt [ifadeleri](expressions.md)), izin olarak bir *statement_expression* ([İfade deyimleri](statements.md#expression-statements)).
-*  Varsa gövdesinin `F` bir deyim bloğunu ve ya da `D` sahip bir `void` dönüş türü veya `F` zaman uyumsuz olduğunu ve `D` dönüş türüne sahip `Task`, sonra ne zaman her parametresinin `F` türünü verilir karşılık gelen parametre `D`, gövdesi `F` geçerli deyim bloğu (wrt [blokları](statements.md#blocks)) hangi Hayır olarak `return` deyimi bir ifade belirtir.
-*  Varsa gövdesinin `F` bir ifadedir ve *ya da* `F` olmayan zaman uyumsuz olduğunu ve `D` void olmayan dönüş türü olan `T`, *veya* `F` zaman uyumsuz olduğunu ve `D` dönüş türü olan `Task<T>`, sonra her parametresinin `F` karşılık gelen parametre türünü verilen `D`, gövdesi `F` geçerli bir ifade (wrt [ İfadeleri](expressions.md)), örtük olarak dönüştürülebilir `T`.
-*  Varsa gövdesinin `F` bir deyim bloğunu olduğu ve *ya da* `F` olmayan zaman uyumsuz olduğunu ve `D` void olmayan dönüş türü olan `T`, *veya* `F` zaman uyumsuz olduğunu ve `D` dönüş türü olan `Task<T>`, sonra her parametresinin `F` karşılık gelen parametre türünü verilen `D`, gövdesi `F` geçerli deyim bloğu (wrt [blokları ](statements.md#blocks)) her erişilebilir olmayan bir uç noktasıyla `return` ifadesi örtük olarak dönüştürülebilir bir ifade belirtir `T`.
+*  `F` bir *anonymous_function_signature*içeriyorsa `D` ve `F` aynı sayıda parametreye sahip olmalıdır.
+*  `F` bir *anonymous_function_signature*içermiyorsa, `D` hiçbir parametresi `out` parametre değiştiricisine sahip olmadığı sürece `D` herhangi bir türde sıfır veya daha fazla parametreye sahip olabilir.
+*  `F` açıkça belirlenmiş bir parametre listesi varsa, `D` her bir parametre, `F`karşılık gelen parametresiyle aynı tür ve değiştiricilere sahiptir.
+*  `F` örtük olarak yazılmış bir parametre listesine sahipse, `D` `ref` veya `out` parametreye sahip değildir.
+*  `F` gövdesi bir ifadesiyse ve `D` bir `void` dönüş türüne sahipse veya `F` zaman uyumsuz ise ve `D` dönüş türü `Task`ise, *her bir `F`* parametresi `D`karşılık gelen parametrenin türüne verildiğinde, `F` gövdesi statement_expression ([ifade deyimleri](statements.md#expression-statements)) olarak izin verilen geçerli bir Ifadedir (WRT [ifadeleri](expressions.md)).
+*  `F` gövdesi bir deyim bloğu ise ve `D` bir `void` dönüş türüne sahipse veya `F` zaman uyumsuz ise ve `D` dönüş türü `Task`ise, her bir `F` parametresi `D`ilgili parametresinin türü verildiğinde, `F` gövdesi, hiçbir `return` deyiminin bir ifadeyi belirttiği geçerli bir deyim bloğu (WRT [blokları](statements.md#blocks)) olur.
+*  `F` gövdesi bir ifade ise *ve `F` zaman* uyumsuz ve `D` void olmayan bir dönüş türü `T`, *ya* da `F` zaman uyumsuz ve `D` bir dönüş türüne sahip `Task<T>`, `F` her bir parametresi `D`için örtük olarak dönüştürülebilir geçerli bir Ifadedir (WRT [ifadeleri](expressions.md)).
+*  `F` gövdesi bir ifade bloğudur *ve `F` zaman uyumsuz ve `D`* void olmayan bir dönüş türüne sahip `T`, *ya* da `F` zaman uyumsuz ve `D` bir dönüş türüne sahip `Task<T>`, her bir `F` parametresi `D`karşılık gelen parametrenin türü verildiğinde, `F` gövdesi, her `return` deyiminin `T`örtük olarak dönüştürülebilir bir ifadeyi belirttiği, erişilebilir olmayan bir uç noktası olan geçerli bir deyim bloğu (WRT [blokları](statements.md#blocks)).
 
-Konuyu uzatmamak amacıyla, bu bölümde kısa formunu görev türleri için kullanılır. `Task` ve `Task<T>` ([zaman uyumsuz işlevleri](classes.md#async-functions)).
+Bu bölümde, breçekimi için, `Task` ve `Task<T>` ([zaman uyumsuz işlevler](classes.md#async-functions)) görev türleri için kısa form kullanılır.
 
-Bir lambda ifadesi `F` bir ifade ağacı türü ile uyumlu `Expression<D>` varsa `F` temsilci türüyle uyumlu `D`. Bu anonim yöntem, lambda ifadeleri uygulanmaz unutmayın.
+Bir lambda ifadesi `F`, `F` temsilci `D`türüyle uyumluysa `Expression<D>` bir ifade ağacı türü ile uyumludur. Bu, anonim metotlar için, yalnızca Lambda ifadelerinde uygulanmadığını unutmayın.
 
-Belirli lambda ifadeleri ifade ağacı türlere dönüştürülemez: Olsa da dönüştürmenin *var*, derleme zamanında başarısız olur. Bu büyük/küçük harf ise lambda ifadesi:
+Bazı lambda ifadeleri ifade ağacı türlerine dönüştürülemez: dönüştürme *mevcut*olsa bile, derleme zamanında başarısız olur. Lambda ifadesi ise bu durum budur:
 
-*  Sahip bir *blok* gövdesi
-*  Basit ve bileşik atama işleçleri içeriyor
-*  Dinamik olarak bağlı bir ifade içeriyor
-*  Zaman uyumsuz olduğu
+*  Bir *blok* gövdesine sahiptir
+*  Basit veya bileşik atama işleçleri içerir
+*  Dinamik olarak bağlı bir ifade içerir
+*  Zaman uyumsuz
 
-Genel temsilci türünde aşağıdaki örneklerde kullanın `Func<A,R>` türünde bir bağımsız değişken bir işlevi temsil eden `A` ve türünde bir değer döndürür `R`:
+Aşağıdaki örnekler, `A` türünde bir bağımsız değişken alan ve `R`türünde bir değer döndüren bir işlevi temsil eden `Func<A,R>` genel bir temsilci türü kullanır.
 ```csharp
 delegate R Func<A,R>(A arg);
 ```
 
-Atamaları
+Atamalarında
 ```csharp
 Func<int,int> f1 = x => x + 1;                 // Ok
 
@@ -542,25 +543,25 @@ Func<double,int> f3 = x => x + 1;              // Error
 
 Func<int, Task<int>> f4 = async x => x + 1;    // Ok
 ```
-Her anonim işlev parametre ve dönüş türleri anonim işlev atanmış olduğu değişken türünden belirlenir.
+Her adsız işlevin parametre ve dönüş türleri, adsız işlevin atandığı değişkenin türünden belirlenir.
 
-İlk atama, anonim işlev başarıyla temsilci türüne dönüştürür. `Func<int,int>` olduğundan, `x` türü verilen `int`, `x+1` türüne örtük olarak dönüştürülebilir bir geçerli ifade `int`.
+İlk atama, anonim işlevi `Func<int,int>` temsilci türüne başarıyla dönüştürür çünkü `x` tür `int`verildiğinde, `x+1` örtük olarak `int`türüne dönüştürülebilir geçerli bir ifadedir.
 
-Benzer şekilde, ikinci atama başarıyla anonim işlev temsilci türüne dönüştürür `Func<int,double>` çünkü sonucunu `x+1` (tür `int`) türüne açıkça dönüştürülemez `double`.
+Benzer şekilde, `x+1` (`int`) sonucu `double`türüne örtülü olarak dönüştürülebilir olduğundan, ikinci atama anonim işlevi `Func<int,double>` temsilci türüne başarıyla dönüştürür.
 
-Ancak, üçüncü bir derleme zamanı hatası nedeniyle atamadır, `x` türü verilen `double`, sonucunu `x+1` (tür `double`) türüne örtük olarak dönüştürülebilir değil `int`.
+Ancak, üçüncü atama bir derleme zamanı hatasıdır çünkü `x` `double`türü verildiğinde `double``x+1` sonucu, `int`türüne örtülü olarak dönüştürülebilir değildir.
 
-Dördüncü atama, anonim zaman uyumsuz işlev başarıyla temsilci türüne dönüştürür. `Func<int, Task<int>>` çünkü sonucunu `x+1` (tür `int`) sonuç türüne açıkça dönüştürülemez `int` görev türü `Task<int>`.
+Dördüncü atama, anonim zaman uyumsuz işlevi `Func<int, Task<int>>` temsilci türüne başarıyla dönüştürür çünkü `x+1` (`int`) sonucu, `Task<int>`görev türü `int` sonuç türüne örtük olarak dönüştürülebilir.
 
-Anonim işlevler aşırı yükleme çözünürlüğü etkiler ve içinde tür çıkarımı katılın. Bkz: [işlev üyeleri](expressions.md#function-members) daha ayrıntılı bilgi için.
+Anonim işlevler aşırı yükleme çözünürlüğünü etkileyebilir ve tür çıkarımı içine katılabilir. Daha fazla ayrıntı için bkz. [işlev üyeleri](expressions.md#function-members) .
 
-### <a name="evaluation-of-anonymous-function-conversions-to-delegate-types"></a>Değerlendirme temsilci türleri olarak anonim işlev dönüştürme
+### <a name="evaluation-of-anonymous-function-conversions-to-delegate-types"></a>Temsilci türlerine adsız işlev dönüştürmelerini değerlendirme
 
-Anonim bir işlevin bir temsilci türüne dönüştürme anonim işlev ve değerlendirme sırasındaki etkin olan dış yakalanan değişkenlere (büyük olasılıkla boş) kümesini başvuran bir temsilci örneği oluşturur. Temsilci çağrıldığında, anonim işlev gövdesi yürütülür. Temsilci tarafından başvurulan yakalanan dış değişkenler kümesini kullanarak gövdesindeki kod yürütülür.
+Anonim bir işlevin bir temsilci türüne dönüştürülmesi,, değerlendirme sırasında etkin olan yakalanan dış değişkenlerin adsız işlevine ve (muhtemelen boş) başvuruda bulunduğu bir temsilci örneği oluşturur. Temsilci çağrıldığında, adsız işlevin gövdesi yürütülür. Gövdedeki kod, temsilci tarafından başvurulan yakalanan dış değişkenler kümesi kullanılarak yürütülür.
 
-Anonim bir işlevden üretilen bir temsilcinin çağırma listesi tek bir giriş içerir. Hedef yöntemin temsilcisi ve tam hedef nesne belirtilmemiş. Özellikle, bu temsilci hedef nesneye olup belirtilmezse `null`, `this` kapsayan işlev üyesi veya başka bir nesnenin değeri.
+Anonim bir işlevden üretilen temsilcinin çağırma listesi tek bir giriş içerir. Temsilcinin tam hedef nesnesi ve Target Yöntemi belirtilmemiş. Özellikle, temsilcinin hedef nesnesinin `null`, kapsayan işlev üyesinin `this` değeri veya başka bir nesne olup olmadığı belirlenmediğini belirtir.
 
-Anlamsal olarak eşdeğer anonim işlevleri aynı temsilci türleri için dönüştürme yakalanan dış değişken örnekleri aynı (büyük olasılıkla boş) kümesi ile izin verilir (ancak gerekli değildir) aynı temsilci örneği dönün. Anlamsal olarak eşdeğer terimi, burada anonim işlevler yürütülmesini her durumda, aynı bağımsız değişkenleri verilen aynı etkileri üreteceği ifade etmek için kullanılır. Bu kural, en iyi duruma getirilmesi aşağıdaki gibi bir kod izin verir.
+Aynı temsilci türlerine aynı (muhtemelen boş) yakalanan dış değişken örnekleri kümesine sahip anlamsal özdeş anonim işlevlerin dönüştürülmesine izin verilir (ancak gerekli değildir). Aynı bağımsız değişkenlerle aynı etkileri sunan, her durumda, anonim işlevlerin yürütülmesi için, burada anlamsal olarak özdeş terimi kullanılır. Bu kural, aşağıdakiler gibi kodun iyileştirilmesine izin verir.
 
 ```csharp
 delegate double Function(double x);
@@ -581,22 +582,22 @@ class Test
 }
 ```
 
-İki anonim işlev temsilcileri aynı (boş) yakalanan dış değişkenlerin ve anonim işlevler anlamsal olarak aynı olduğundan olduğundan, derleyici başvurmak için aynı hedef yöntemin temsilcilerin izin verilir. Aslında, derleyici hem anonim işlev ifadeleri çok aynı temsilci örneği döndürmek için izin verilir.
+İki anonim işlev temsilcisi aynı (boş) yakalanan dış değişken kümesine sahip olduğundan ve anonim işlevler anlam açısından özdeş olduğundan, derleyicinin temsilcilerin aynı hedef yönteme başvurmasına izin verilir. Aslında, derleyicinin hem anonim işlev ifadelerinden çok aynı temsilci örneğini döndürmesine izin verilir.
 
-### <a name="evaluation-of-anonymous-function-conversions-to-expression-tree-types"></a>İfade ağacı türlerine dönüştürme işlemi anonim İşlev değerlendirmesi
+### <a name="evaluation-of-anonymous-function-conversions-to-expression-tree-types"></a>İfade ağacı türlerine anonim işlev dönüştürmeleri değerlendirmesi
 
-İfade ağacı anonim bir işlevin bir ifade ağacı türü dönüştürme üretir ([ifade ağacı türleri](types.md#expression-tree-types)). Anonim işlev yapısını temsil eden bir nesne yapısını oluşumu için daha kesin bir şekilde değerlendirme anonim işlev dönüştürme yol açar. Uygulama tanımlı kesin yapısını ifade ağacı yanı sıra, tam, oluşturma işlemi var.
+Anonim bir işlevin ifade ağacı türüne dönüştürülmesi bir ifade ağacı ([ifade ağacı türleri](types.md#expression-tree-types)) oluşturur. Daha kesin olarak, anonim işlev dönüştürmenin değerlendirmesi, anonim işlevin yapısını temsil eden bir nesne yapısının oluşturulmasına yol açar. İfade ağacının kesin yapısı ve bunu oluşturmak için tam işlem, uygulama tanımlı olur.
 
 ### <a name="implementation-example"></a>Uygulama örneği
 
-Bu bölümde, anonim işlev dönüştürmeler diğer C# yapılarını açısından olası bir uygulaması açıklanmaktadır. Burada açıklanan uygulama Microsoft C# derleyicisi tarafından kullanılan aynı ilkeler temel alır, ancak göre Hayır olmadığı bir mandated uygulamasıdır veya yalnızca bir mümkün değil. Bu belirtim kapsamı dışında tam semantiği olduğu gibi yalnızca kısa bir süreliğine ifade ağaçlarında yapılan dönüştürmeler bahseder.
+Bu bölümde, anonim işlev dönüştürmelerinden diğer C# yapılar açısından olası bir uygulama açıklanmaktadır. Burada açıklanan uygulama, Microsoft C# derleyicisi tarafından kullanılan ilkelere dayanır, ancak bu, bir uygulanan uygulamasına sahip değildir ve tek mümkün değildir. Bu belirtim, tam semantiği bu şartların kapsamı dışında olduğu için yalnızca Dönüştürmelere ifade ağaçlarına değinmektedir.
 
-Bu bölümün geri kalanında, çeşitli farklı özelliklere sahip anonim işlevler içeren kod örneklerini sağlar. Her örnek için yalnızca diğer C# yapılarını kullanan kod için karşılık gelen bir çeviri sağlanır. Örneklerde, tanımlayıcı `D` aşağıdaki temsilci türünü temsil tarafından kabul edilir:
+Bu bölümün geri kalanında, farklı özelliklere sahip anonim işlevler içeren çeşitli kod örnekleri verilmiştir. Her örnek için, yalnızca diğer C# yapıları kullanan koda karşılık gelen bir çeviri sağlanır. Örneklerde tanımlayıcı `D`, aşağıdaki temsilci türünü temsil eden kabul edilir:
 ```csharp
 public delegate void D();
 ```
 
-Anonim bir işlevdir en basit biçimi dış değişken yakalayan biridir:
+Anonim bir işlevin en basit biçimi, dış değişken içermeyen bir işlevdir:
 ```csharp
 class Test
 {
@@ -606,7 +607,7 @@ class Test
 }
 ```
 
-Bu, anonim işlev kodunu yerleştirildiği bir derleyicinin ürettiği statik bir yönteme başvuran bir temsilci örneklemesine çevrilebilir:
+Bu, anonim işlevin kodunun yerleştirildiği bir derleyicinin ürettiği statik metoda başvuran bir temsilci örneklemesine çevrilebilir:
 ```csharp
 class Test
 {
@@ -620,7 +621,7 @@ class Test
 }
 ```
 
-Aşağıdaki örnekte, örnek üyeleri anonim işlev başvuruyor `this`:
+Aşağıdaki örnekte, anonim işlev `this`örnek üyelerine başvurur:
 ```csharp
 class Test
 {
@@ -632,7 +633,7 @@ class Test
 }
 ```
 
-Bu, derleyicinin ürettiği örnek yöntemine anonim işlev kodunu içeren bir çevrilebilir:
+Bu, anonim işlevin kodunu içeren bir derleyici tarafından oluşturulan örnek metoduna çevrilebilir:
 ```csharp
 class Test
 {
@@ -648,7 +649,7 @@ class Test
 }
 ```
 
-Bu örnekte, anonim işlev bir yerel değişken yakalar:
+Bu örnekte, anonim işlev yerel bir değişken yakalar:
 ```csharp
 class Test
 {
@@ -659,7 +660,7 @@ class Test
 }
 ```
 
-Yerel değişken ömrü artık en az anonim işlev temsilcisi ömrünü genişletilmesi gerekir. Bu, "yerel değişken bir derleyicinin ürettiği sınıfının bir alanı hoisting tarafından" gerçekleştirilebilir. Yerel değişken örneğinin ([yerel değişkenler örneğinin](expressions.md#instantiation-of-local-variables)) derleyicinin ürettiği sınıfı ve yerel değişken karşılık gelen örneğini bir alana erişimi erişen bir örneğini oluşturmak için'karşılık gelir Derleyicinin ürettiği sınıfı. Ayrıca, derleyicinin ürettiği sınıfının bir örneği yöntemi anonim işlev olur:
+Yerel değişkenin kullanım ömrü artık en azından adsız işlev temsilcisinin kullanım ömrüne kadar genişletilmelidir. Bu, yerel değişken derleyicinin ürettiği bir sınıfın bir alanına "barındırıdırarak" elde edilebilir. Yerel değişkenin ([yerel değişkenlerin örneklenmesi](expressions.md#instantiation-of-local-variables)) örneklenmesi, ardından derleyici tarafından oluşturulan sınıfın bir örneğini oluşturmaya karşılık gelir ve yerel değişkene erişmek, derleyici tarafından oluşturulan sınıfın örneğindeki bir alana erişmeye karşılık gelir. Ayrıca, anonim işlev derleyicinin ürettiği sınıfının örnek yöntemi olur:
 ```csharp
 class Test
 {
@@ -680,7 +681,7 @@ class Test
 }
 ```
 
-Son olarak, aşağıdaki anonim yakalamaları işlev `this` iki yerel değişkenler farklı ömürleriyle yanı sıra:
+Son olarak, aşağıdaki anonim işlev `this` ve farklı yaşam süreleri olan iki yerel değişken yakalar:
 ```csharp
 class Test
 {
@@ -696,7 +697,7 @@ class Test
 }
 ```
 
-Burada, derleyicinin ürettiği sınıfı for each deyimi oluşturulur hangi Yereller yakalanan farklı bloklar yerel öğeler, bağımsız yaşam süreleri olabilir, içinde engelleyin. Örneği `__Locals2`, iç deyim bloğu için derleyicinin ürettiği sınıfı içeren yerel değişken `z` örneği başvuran bir alan `__Locals1`.  Örneği `__Locals1`, derleyicinin ürettiği sınıfı için dış bir deyim bloğunu içeren yerel değişken `y` ve başvuran bir alan `this` kapsayan işlevi üyesinin. Bu veri yapıları ulaşmak mümkün olduğu bir örneği üzerinden dış değişkenlere yakalanan `__Local2`, ve anonim işlev kodunu böylece söz konusu sınıfın bir örnek yöntemi olarak uygulanabilir.
+Burada, yerellerin yakalandığı her bir ekstre bloğu için, farklı bloklara ait yerellerin bağımsız yaşam sürelerinin bulunduğu bir derleyici tarafından oluşturulan bir sınıf oluşturulur. `__Locals2`örneği, iç ifade bloğunun derleyici tarafından üretilen sınıfı, `z` yerel değişkeni ve bir `__Locals1`örneğine başvuran bir alanı içerir.  Bir `__Locals1`örneği, dış ifade bloğu için derleyici tarafından oluşturulan sınıf, `y` yerel değişkeni ve kapsayan işlev üyesinin `this` başvuruda bulunan bir alanı içerir. Bu veri yapıları ile, bir `__Local2`örneği aracılığıyla yakalanan tüm dış değişkenlere ulaşmak mümkündür ve anonim işlevin kodu bu sınıfın örnek yöntemi olarak uygulanabilir.
 
 ```csharp
 class Test
@@ -731,25 +732,25 @@ class Test
 }
 ```
 
-Anonim işlevler için ifade ağaçları dönüştürülürken burada yerel değişkenler yakalamak için uygulanan aynı yöntemleri de kullanılabilir: Derleyicinin ürettiği nesnelere başvuru ifade ağacında depolanabilir ve bu nesneler üzerinde alan erişir gibi yerel değişkenlere erişim temsil edilebilir. Bu yaklaşımın avantajı, temsilciler ve ifade ağaçları arasında paylaşılmak üzere "lifted" yerel değişkenler olanak sağlamasıdır.
+Yerel değişkenleri yakalamak için burada uygulanan teknik, anonim işlevler ifade ağaçlarına dönüştürülürken de kullanılabilir: derleyicinin ürettiği nesneler için başvurular ifade ağacında depolanabilir ve yerel değişkenlere erişim şu olabilir: Bu nesnelerde alan erişimi olarak gösterilir. Bu yaklaşımın avantajı, "yükseltilmemiş" yerel değişkenlerinin temsilciler ve ifade ağaçları arasında paylaşılmasını olanaklı kılar.
 
-## <a name="method-group-conversions"></a>Yöntem grubu dönüştürmeler
+## <a name="method-group-conversions"></a>Yöntem grubu dönüştürmeleri
 
-Örtük bir dönüştürme ([örtük dönüştürmelerin](conversions.md#implicit-conversions)) bir yöntem grubu var ([ifade sınıflandırmaları](expressions.md#expression-classifications)) uyumlu temsilci türü. Bir temsilci türü verilen `D` ve ifade `E` öğesinden örtük bir dönüştürme var, bir yöntem grubu sınıflandırılan `E` için `D` varsa `E` içinde normal bir form (geçerli olan en az bir yöntem içerir [Geçerli işlev üyesi](expressions.md#applicable-function-member)) için bir bağımsız değişken listesi parametre türlerinin kullanımı ve öğesinin değiştiricilerini tarafından oluşturulan `D`aşağıda açıklandığı gibi.
+Bir yöntem grubundan ([örtük dönüştürmeler](conversions.md#implicit-conversions)), uyumlu bir temsilci türüne ([ifade sınıflandırmaları](expressions.md#expression-classifications)) sahiptir. Bir temsilci türü `D` ve bir yöntem grubu olarak sınıflandırılan bir ifade `E` verildiğinde, `E`, normal biçimde (uygulanabilir işlev üyesi), aşağıdaki gibi `D`parametre türleri ve değiştiriciler kullanılarak oluşturulan bir bağımsız değişken listesine ([geçerli işlev üyesi](expressions.md#applicable-function-member)) göre oluşturulan bir bağımsız değişken listesine sahip olan bir bağımsız değişken listesine `D` `E` bir örtük dönüştürme bulunur.
 
-Bir yöntem grubu dönüştürme derleme zamanı uygulamasının `E` temsilci türüne `D` aşağıda açıklanmıştır. Unutmayın örtük bir dönüştürme varlığını `E` için `D` dönüştürme derleme zamanı uygulamasının hata başarılı olduğunu garanti etmez.
+Bir yöntem grubundan dönüştürmenin derleme zamanı uygulaması, `D` bir temsilci türüne `E`, aşağıda açıklanmaktadır. `E` 'den `D` örtük dönüştürmenin mevcut olması, dönüştürmenin derleme zamanı uygulamasının hata olmadan başarılı olacağını garanti etmez.
 
-*  Tek bir yöntem `M` bir yöntem çağırma için karşılık gelen seçili ([yöntem çağrıları](expressions.md#method-invocations)) biçiminde `E(A)`, aşağıdaki değişiklikler ile:
-    * Bağımsız değişken listesi `A` ifadeleri, bir değişken olarak ve tür ve değiştiricisi ile her sınıflandırılmış bir listesi verilmiştir (`ref` veya `out`) karşılık gelen parametre, *formal_parameter_list* ,`D`.
-    * Normal formlarına için geçerli olan yöntemlerden kabul aday yöntemler şunlardır ([geçerli işlev üyesi](expressions.md#applicable-function-member)), olanları yalnızca kendi genişletilmiş biçimde uygulanabilir.
-*  Varsa algoritmasının [yöntem çağrıları](expressions.md#method-invocations) bir derleme zamanı hatası oluşursa bir hata üretir. Aksi takdirde algoritma tek bir en iyi yöntem üretir `M` aynı sayıda parametrelere sahip `D` ve dönüştürme yok sayılır.
-*  Seçilen yöntemi `M` uyumlu olması gerekir ([temsilci Uyumluluk](delegates.md#delegate-compatibility)) temsilci türüyle `D`, veya aksi halde, bir derleme zamanı hatası oluşur.
-*  Seçilen yöntemi `M` örnek ifade ile ilişkili bir örnek yöntemi olduğundan `E` hedef nesneye temsilci belirler.
-*  Seçili yöntem M örnek bir ifade üzerinde bir üye erişimi ile belirtilir bir genişletme yöntemi ise, hedef nesneye temsilci örneği ifade belirler.
-*  Dönüştürme sonucu olarak bir tür değeri `D`, yani seçili yöntemi ve hedef nesneye başvuran bir yeni oluşturulan temsilci.
-*  Bu işlem bir genişletme yöntemi için bir temsilci oluşturulmasına yol açabilir Not algoritmasının [yöntem çağrıları](expressions.md#method-invocations) bir örnek yöntemi bulmada başarısız ancak çağırmayı işlenirken başarılı `E(A)` bir uzantısı olarak yöntem çağırma ([uzantısı yöntem çağrıları](expressions.md#extension-method-invocations)). Bu nedenle oluşturulan bir temsilci, genişletme yönteminin yanı sıra, ilk bağımsız değişkeninin yakalar.
+*  Tek bir yöntem `M`, aşağıdaki değişikliklerle birlikte, `E(A)`form bir yöntem çağrısına ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) karşılık gelen seçilir:
+    * `A` bağımsız değişken listesi, her biri bir değişken olarak sınıflandırılan ve `D`*formal_parameter_list* karşılık gelen parametrenin türü ve değiştiricisi (`ref` veya `out`) olan ifadelerin bir listesidir.
+    * Göz önünde bulundurulması gereken aday yöntemleri yalnızca kendi normal biçimlerinde ([uygulanabilir işlev üyesi](expressions.md#applicable-function-member)) uygulanabilen ve yalnızca genişletilmiş biçimlerinde geçerli olan yöntemlerdir.
+*  [Yöntem etkinleştirmeleri](expressions.md#method-invocations) algoritması bir hata üretirse, derleme zamanı hatası oluşur. Aksi takdirde, algoritma `D` aynı sayıda parametreye sahip `M` tek bir en iyi yöntem üretir ve dönüştürme var olarak kabul edilir.
+*  Seçilen yöntem `M`, temsilci türü `D`uyumlu olmalıdır ([temsilci uyumluluğu](delegates.md#delegate-compatibility)) veya aksi halde bir derleme zamanı hatası oluşur.
+*  Seçilen `M` Yöntem bir örnek yöntemi ise, `E` ile ilişkili örnek ifadesi temsilcinin hedef nesnesini belirler.
+*  Seçili Yöntem, bir örnek ifadesinde üye erişimi aracılığıyla belirtilen bir genişletme yöntemi ise, bu örnek ifadesi temsilcinin hedef nesnesini belirler.
+*  Dönüştürmenin sonucu `D`türünde bir değerdir, yani seçili yönteme ve hedef nesneye başvuran yeni oluşturulmuş bir temsilcisidir.
+*  Bu işlemin bir uzantı yöntemine bir temsilci oluşturulmasına yol açabileceğini unutmayın. [Yöntem etkinleştirmeleri](expressions.md#method-invocations) algoritması bir örnek yöntemi bulamazsa, ancak `E(A)` bir uzantı yöntemi çağırma ([genişletme yöntemi etkinleştirmeleri](expressions.md#extension-method-invocations)) olarak çağırma işlemini işlerken başarılı olur. Bu nedenle oluşturulan bir temsilci, Uzantı yönteminin yanı sıra ilk bağımsız değişkenini de yakalar.
 
-Aşağıdaki örnekte, yöntem grubu dönüştürmeler göstermektedir:
+Aşağıdaki örnekte, Yöntem grubu dönüştürmeleri gösterilmektedir:
 ```csharp
 delegate string D1(object o);
 
@@ -776,17 +777,17 @@ class Test
 }
 ```
 
-Atamayı `d1` örtük olarak yöntem grubu dönüştürür `F` türünde bir değer için `D1`.
+`d1` atama, `F` Yöntem grubunu `D1`türünde bir değere örtülü olarak dönüştürür.
 
-Atamayı `d2` nasıl daha az türetilmiş (değişken karşıtı) parametre türleri içeren bir yöntem için temsilci oluşturmak mümkündür ve daha türetilmiş (değişken) dönüş türü gösterir.
+`d2` atama, daha az türetilmiş (değişken karşıtı) parametre türleri ve daha türetilmiş (covaryant) dönüş türü olan bir yönteme bir temsilci oluşturmak için nasıl mümkün olduğunu gösterir.
 
-Atamayı `d3` nasıl dönüştürme var yöntemi uygulanabilir değilse gösterir.
+`d3` atama, yöntemin geçerli olmadığı durumlarda dönüştürmenin nasıl mevcut olmadığını gösterir.
 
-Atamayı `d4` nasıl yöntemi, normal bir biçimde uygun olmalıdır gösterir.
+`d4` atama, yönteminin normal biçiminde nasıl geçerli olması gerektiğini gösterir.
 
-Atamayı `d5` parametre ve dönüş türlerinin ve temsilci yöntemi yalnızca başvuru türleri için farklı nasıl verildiğini gösterir.
+`d5` atama, temsilci ve yöntemin dönüş türlerinin ve yalnızca başvuru türleri için farklı olmasına izin verildiğini gösterir.
 
-İle tüm diğer örtük ve açık dönüştürmeler gibi atama işleci açıkça bir yöntem grubu dönüştürme gerçekleştirmek için kullanılabilir. Bu nedenle, örneğin
+Diğer tüm örtük ve açık dönüşümlerde olduğu gibi, atama işleci açıkça bir yöntem grubu dönüştürmesi gerçekleştirmek için kullanılabilir. Bu nedenle örnek
 ```csharp
 object obj = new EventHandler(myDialog.OkClick);
 ```
@@ -795,14 +796,14 @@ Bunun yerine yazılabilir
 object obj = (EventHandler)myDialog.OkClick;
 ```
 
-Yöntemi gruplarına aşırı yükleme çözünürlüğü etkilemek ve içinde tür çıkarımı katılın. Bkz: [işlev üyeleri](expressions.md#function-members) daha ayrıntılı bilgi için.
+Yöntem grupları aşırı yükleme çözümlemesini etkileyebilir ve tür çıkarımı içine katılabilir. Daha fazla ayrıntı için bkz. [işlev üyeleri](expressions.md#function-members) .
 
-Bir yöntem grubu dönüştürmenin çalışma zamanı değerlendirme gibi çalışır:
+Bir yöntem grubu dönüşümünün çalışma zamanı değerlendirmesi aşağıdaki gibi devam eder:
 
-*  Derleme zamanında seçilen yöntemi bir örnek yöntemi olduğundan veya bir örnek yöntemi erişilebilen bir genişletme yöntemi, temsilci hedef nesnesi ile ilişkili örneği ifadesinden belirlenir `E`:
-    * Örnek ifade değerlendirilir. Bu değerlendirme bir özel durum neden olursa, başka bir adım yürütülür.
-    * Örnek ifade ise bir *reference_type*, örnek ifade tarafından hesaplanan değer hedef nesne haline gelir. Seçilen yöntemi bir örnek yöntemi olduğundan ve hedef nesnesi `null`, `System.NullReferenceException` oluşturulur ve başka bir adım yürütülür.
-    * Örnek ifade ise bir *value_type*, bir paketleme işlemi ([kutulama dönüştürmeler](types.md#boxing-conversions)) değeri bir nesneye dönüştürmek için gerçekleştirilir ve bu nesne, hedef nesne haline gelir.
-*  Aksi takdirde seçilen yöntemi statik yöntem çağrısı bir parçasıdır ve temsilcinin hedef nesnesi `null`.
-*  Temsilci türüne yeni bir örneğini `D` ayrılır. Yeni bir örneğini ayırmak yeterli bellek yoksa bir `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülür.
-*  Derleme zamanında belirlenen bir yönteme başvuru ile yeni temsilci örneği başlatılır ve hedef nesneye bir başvuru üzerinde hesaplanan.
+*  Derleme zamanında seçilen yöntem bir örnek yöntemi ise veya bir örnek yöntemi olarak erişilen bir genişletme yöntemi ise, temsilcinin hedef nesnesi `E`ilişkili örnek ifadeden belirlenir:
+    * Örnek ifadesi değerlendirilir. Bu değerlendirme bir özel duruma neden olursa başka bir adım yürütülmez.
+    * Örnek ifadesi bir *reference_type*ise, örnek ifadesi tarafından hesaplanan değer hedef nesne olur. Seçilen yöntem bir örnek yöntemi ise ve hedef nesne `null`, bir `System.NullReferenceException` oluşturulur ve başka bir adım yürütülmez.
+    * Örnek ifadesi bir *value_type*ise, değeri bir nesneye dönüştürmek için bir paketleme Işlemi ([kutulama dönüştürmeleri](types.md#boxing-conversions)) gerçekleştirilir ve bu nesne hedef nesne haline gelir.
+*  Aksi takdirde, seçilen yöntem bir statik yöntem çağrısının parçasıdır ve temsilcinin hedef nesnesi `null`.
+*  `D` temsilci türünün yeni bir örneği ayrılır. Yeni örneği ayırmak için yeterli kullanılabilir bellek yoksa bir `System.OutOfMemoryException` oluşturulur ve başka bir adım yürütülmez.
+*  Yeni temsilci örneği, derleme zamanında belirlenen yönteme ve yukarıda hesaplanan hedef nesneye bir başvuruya sahip bir başvuru ile başlatılır.
