@@ -1,12 +1,12 @@
 ---
 ms.openlocfilehash: f61039abd6bd557ac0ea625e6aac1c8bafa57b02
-ms.sourcegitcommit: 892af9016b3317a8fae12d195014dc38ba51cf16
+ms.sourcegitcommit: e134bb7058e9848120b93b345f96d6ac0cb8c815
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 01/17/2020
 ms.locfileid: "71704082"
 ---
-# <a name="expressions"></a>İfadeler
+# <a name="expressions"></a>{1&gt;İfadeler&lt;1}
 
 İfade, işleç ve işlenen dizisidir. Bu bölümde sözdizimi, işlenenler ve işleçler değerlendirmesi sırası ve ifadelerin anlamı tanımlanmaktadır.
 
@@ -24,7 +24,7 @@ Bir ifade, aşağıdakilerden biri olarak sınıflandırıldı:
 *  Özellik erişimi. Her özellik erişiminin, özelliğin türü olarak ilişkili bir türü vardır. Ayrıca, özellik erişiminin ilişkili bir örnek ifadesi olabilir. Örnek özellik erişiminin bir erişimcisi (`get` veya `set` bloğu) çağrıldığında, örnek ifadesinin değerlendirilme sonucu `this` ([Bu erişim](expressions.md#this-access)) tarafından temsil edilen örnek haline gelir.
 *  Bir olay erişimi. Her olay erişiminde ilişkili bir tür bulunur, bu olay türü olayın türüdür. Ayrıca, bir olay erişiminin ilişkili bir örnek ifadesi olabilir. `+=` ve `-=` işleçlerinin ([olay atama](expressions.md#event-assignment)) sol tarafında bir olay erişimi görünebilir. Diğer bir bağlamda, olay erişimi olarak sınıflandırılan bir ifade, derleme zamanı hatasına neden olur.
 *  Dizin Oluşturucu erişimi. Her Dizin Oluşturucu erişiminin ilişkili bir türü vardır, yani dizin oluşturucunun öğe türü. Ayrıca, Dizin Oluşturucu erişiminin ilişkili bir örnek ifadesi ve ilişkili bağımsız değişken listesi vardır. Bir Dizin Oluşturucu erişiminin bir erişimcisi (`get` veya `set` bloğu) çağrıldığında, örnek ifadesinin değerlendirilme sonucu `this` ([Bu erişim](expressions.md#this-access)) tarafından temsil edilen örnek olur ve bağımsız değişken listesinin değerlendirilme sonucu, çağrının parametre listesi olur.
-*  Yapma. Bu, ifade `void`dönüş türü olan bir yöntemin çağrılışında oluşur. Nothing olarak sınıflandırılan bir ifade yalnızca bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)) bağlamında geçerlidir.
+*  Hiçbir şey. Bu, ifade `void`dönüş türü olan bir yöntemin çağrılışında oluşur. Nothing olarak sınıflandırılan bir ifade yalnızca bir *statement_expression* ([ifade deyimleri](statements.md#expression-statements)) bağlamında geçerlidir.
 
 Bir ifadenin nihai sonucu hiçbir şekilde bir ad alanı, tür, Yöntem grubu veya olay erişimdir. Bunun yerine, yukarıda belirtildiği gibi, bu ifade kategorileri yalnızca belirli bağlamlarda izin verilen ara yapılardır.
 
@@ -122,7 +122,7 @@ Bir ifade birden çok işleç içerdiğinde, işleçlerin ***önceliği*** ayrı
 
 Aşağıdaki tablo, en yüksekten en düşüğe öncelik sırasına göre tüm işleçleri özetler:
 
-| __Kısmı__                                                                                   | __Kategori__                | __İşleçler__ | 
+| __Bölüm__                                                                                   | __Kategori__                | __İşleçler__ | 
 |-----------------------------------------------------------------------------------------------|-----------------------------|---------------|
 | [Birincil ifadeler](expressions.md#primary-expressions)                                     | Birincil                     | `x.y`  `f(x)`  `a[x]`  `x++`  `x--`  `new`  `typeof`  `default`  `checked`  `unchecked`  `delegate` | 
 | [Birli İşleçler](expressions.md#unary-operators)                                             | Li                       | `+`  `-`  `!`  `~`  `++x`  `--x`  `(T)x` | 
@@ -254,7 +254,7 @@ Ayrıca, diğer işlenen işaretli bir integral türü olduğunda bir işlenenin
 
 Yukarıdaki her iki durumda da, bir işleneni açıkça diğer işlenenle uyumlu bir türe dönüştürmek için bir atama ifadesi kullanılabilir.
 
-örnekte
+Örnekte
 ```csharp
 decimal AddPercent(decimal x, double percent) {
     return x * (1.0 + percent / 100.0);
@@ -492,7 +492,7 @@ x = 0, y = 1, z = 2
 x = 4, y = -1, z = 3
 ```
 
-Dizi birlikte değişim kuralları ([dizi Kovaryans](arrays.md#array-covariance)), dizi türü bir değere `A[]` `B[]`bir dizi türü örneğine izin verir, `B` ' den `A`örtük bir başvuru dönüştürmesi sağlanmış olur. Bu kurallar nedeniyle, bir *reference_type* dizi öğesi başvuru veya çıkış parametresi olarak geçirildiğinde, dizinin gerçek öğe türünün parametreyle aynı olduğundan emin olmak için bir çalışma zamanı denetimi gereklidir. örnekte
+Dizi birlikte değişim kuralları ([dizi Kovaryans](arrays.md#array-covariance)), dizi türü bir değere `A[]` `B[]`bir dizi türü örneğine izin verir, `B` ' den `A`örtük bir başvuru dönüştürmesi sağlanmış olur. Bu kurallar nedeniyle, bir *reference_type* dizi öğesi başvuru veya çıkış parametresi olarak geçirildiğinde, dizinin gerçek öğe türünün parametreyle aynı olduğundan emin olmak için bir çalışma zamanı denetimi gereklidir. Örnekte
 ```csharp
 class Test
 {
@@ -598,7 +598,7 @@ Yöntem bağımsız değişkenlerinin her biri için `Ei`:
 
 #### <a name="dependence"></a>Düzeyde bağımlı
 
-*Sabit olmayan* *bir tür değişkeni `Xi`,* `Xj` türünde bir `Ek` *giriş türünde* meydana gelir ve `Tk` türünde `Xi` bir *çıkış türünde* meydana gelen bir `Ek` `Xj` `Tk``Ek``Tk`
+*Sabit olmayan* *bir tür değişkeni `Xi`,* `Xj` türünde bir `Ek` *giriş türünde* meydana gelir ve `Tk` türünde `Xi` bir *çıkış türünde* meydana gelen bir `Ek` `Xj` `Tk`
 
 `Xj`, `Xj` *doğrudan* `Xi` bağımlıysa veya `Xi` *doğrudan `Xk` 'ye* bağımlıysa ve `Xk` *`Xj`bağımlı ise* `Xi` *bağlıdır* . Bu nedenle "bağlı olan", geçişli ancak yansımalı olmayan "açık" kapanışı değildir.
 
@@ -821,7 +821,7 @@ Aday işlev üyelerinin her biri için parametre listeleri aşağıdaki şekilde
 *  Karşılık gelen bağımsız değişken içermeyen isteğe bağlı parametreler parametre listesinden kaldırılır
 *  Parametreler, bağımsız değişken listesindeki ilgili bağımsız değişkenle aynı konumda gerçekleşmeleri için yeniden sıralanmaz.
 
-Bağımsız değişken listesi `A` verildiğinde `{E1, E2, ..., En}` ve iki uygulanabilir ***işlev üyesi `Mp`*** ve `Mq` `{P1, P2, ..., Pn}` ve `{Q1, Q2, ..., Qn}`parametre türleri ile `Mp``Mq`
+Bağımsız değişken listesi `A` verildiğinde `{E1, E2, ..., En}` ve iki uygulanabilir ***işlev üyesi `Mp`*** ve `Mq` `{P1, P2, ..., Pn}` ve `{Q1, Q2, ..., Qn}`parametre türleri ile `Mp`
 
 *  Her bağımsız değişken için, `Ex` 'den `Qx` örtük dönüştürme `Ex` ' den `Px`' a örtük dönüşümden daha iyi değildir ve
 *  en az bir bağımsız değişken için `Ex` 'den `Px` dönüştürme `Ex` 'dan `Qx`dönüştürenden daha iyidir.
@@ -868,7 +868,7 @@ Bir ifade `E` ve bir tür `T`verildiğinde, aşağıdakilerden biri varsa `T` `E
    * `D2` void döndürüyor
    * `D2`, `S2`bir dönüş türüne sahiptir ve `S1` daha iyi bir dönüştürme hedefidir `S2`
 *  `T1` `Task<S1>`, `T2` `Task<S2>`ve `S1` daha iyi bir dönüştürme hedefi `S2`
-*  `T1` `S1` veya `S1?` `S1` işaretli bir integral türüdür ve `T2`, `S2` işaretsiz bir integral türü olduğu `S2?` veya `S2`. Engelle
+*  `T1` `S1` veya `S1?` `S1` işaretli bir integral türüdür ve `T2`, `S2` işaretsiz bir integral türü olduğu `S2?` veya `S2`. Özellikle:
    * `S1` `sbyte` ve `S2` `byte`, `ushort`, `uint`veya `ulong`
    * `S1` `short` ve `S2` `ushort`, `uint`veya `ulong`
    * `S1` `int` ve `S2` `uint`veya `ulong`
@@ -1148,7 +1148,7 @@ predefined_type
 
 *  `K` sıfırsa ve `E` bir ad alanı ve `E` `I`ada sahip bir iç içe ad alanı içeriyorsa, sonuç bu ad alanıdır.
 *  Aksi takdirde, `E` bir ad alanı ise ve `E` ad `I` ve `K` tür parametrelerine sahip erişilebilir bir tür içeriyorsa, sonuç verilen tür bağımsız değişkenleriyle oluşturulur.
-*  `E` bir *predefined_type* ya da tür olarak sınıflandırılan bir *primary_expression* ise, `E` bir tür parametresi değilse ve `I` `E` tür parametrelerine sahip `K`bir üye araması ([üye arama](expressions.md#member-lookup)) bir eşleşme üretirse,  değerlendirilir ve aşağıdaki gibi sınıflandırılacaktır:`E.I`
+*  `E` bir *predefined_type* ya da tür olarak sınıflandırılan bir *primary_expression* ise, `E` bir tür parametresi değilse ve `I` `E` tür parametrelerine sahip `K`bir üye araması ([üye arama](expressions.md#member-lookup)) bir eşleşme üretirse,  değerlendirilir ve aşağıdaki gibi sınıflandırılacaktır:
    *  `I`, bir türü tanımlarsa, bu tür belirtilen tür bağımsız değişkenleriyle oluşturulur.
    *  `I` bir veya daha fazla yöntemi tanımlarsa, sonuç ilişkili örnek ifadesi olmayan bir yöntem grubudur. Bir tür bağımsız değişken listesi belirtilmişse, genel bir yöntemi ([Yöntem etkinleştirmeleri](expressions.md#method-invocations)) çağırmak için kullanılır.
    *  `I` bir `static` özelliğini tanımlarsa, sonuç, ilişkili örnek ifadesi olmayan bir özellik erişimiydi.
@@ -1513,7 +1513,7 @@ base_access
 
 Geçerli sınıf veya yapıda benzer adlandırılmış Üyeler tarafından gizlenen temel sınıf üyelerine erişmek için bir *base_access* kullanılır. Bir *base_access* yalnızca bir örnek oluşturucusunun, örnek yönteminin veya örnek erişimcinin *bloğunda* izin verilir. `base.I` bir sınıfta veya yapıda olduğunda, `I` bu sınıfın veya yapının temel sınıfının bir üyesini belirtmelidir. Benzer şekilde, bir sınıfta `base[E]` oluştuğunda, temel sınıfta ilgili bir Dizin Oluşturucu bulunmalıdır.
 
-Bağlama zamanında, `base.I` ve `base[E]` `((B)this).I` *base_access* ifadeleri tam olarak yazılmış gibi değerlendirilir; burada `((B)this)[E]`, yapının gerçekleştiği sınıfın veya yapının temel sınıfıdır.`B` Bu nedenle, `base.I` ve `base[E]` `this.I` ve `this[E]`karşılık gelir, bunun dışında `this` temel sınıfın bir örneği olarak görüntülenir.
+Bağlama zamanında, `base.I` ve `base[E]` `((B)this).I` *base_access* ifadeleri tam olarak yazılmış gibi değerlendirilir; burada `((B)this)[E]`, yapının gerçekleştiği sınıfın veya yapının temel sınıfıdır. Bu nedenle, `base.I` ve `base[E]` `this.I` ve `this[E]`karşılık gelir, bunun dışında `this` temel sınıfın bir örneği olarak görüntülenir.
 
 Bir *base_access* bir sanal işlev üyesine (bir yöntem, özellik veya Dizin Oluşturucu) başvurduğunda, çalışma zamanında hangi işlev üyesinin çalıştırılacağını belirleme ([dinamik aşırı yükleme çözümünün derleme zamanı denetimi](expressions.md#compile-time-checking-of-dynamic-overload-resolution)) değiştirilir. Çağrılan işlev üyesi, işlev üyesinin, `B` (`this`çalışma zamanı türüne göre değil, temel olmayan bir erişimde olduğu gibi) ilgili en çok türetilmiş uygulama ([sanal yöntemler](classes.md#virtual-methods)) ile belirlenir. Bu nedenle, bir `virtual` işlevi üyesinin `override` içinde, işlev üyesinin devralınmış uygulamasını çağırmak için bir *base_access* kullanılabilir. Bir *base_access* tarafından başvurulan işlev üyesi Özet ise, bir bağlama zamanı hatası oluşur.
 
@@ -1967,7 +1967,7 @@ Temsilcinin çağırma listesi, temsilcinin örneklendiği zaman belirlenir ve s
 
 Bir özellik, Dizin Oluşturucu, Kullanıcı tanımlı işleç, örnek Oluşturucu, yıkıcı veya statik oluşturucuya başvuran bir temsilci oluşturmak mümkün değildir.
 
-Yukarıda açıklandığı gibi, bir yöntem grubundan bir temsilci oluşturulduğunda, temsilci 'nin biçimsel parametre listesi ve dönüş türü, ne tür aşırı yüklenmiş yöntemlerin ekleneceğini belirleyin. örnekte
+Yukarıda açıklandığı gibi, bir yöntem grubundan bir temsilci oluşturulduğunda, temsilci 'nin biçimsel parametre listesi ve dönüş türü, ne tür aşırı yüklenmiş yöntemlerin ekleneceğini belirleyin. Örnekte
 ```csharp
 delegate double DoubleFunc(double x);
 
@@ -2048,7 +2048,7 @@ Anonim bir türün adı ve `Equals` yöntemi parametresi, derleyici tarafından 
 
 Aynı programda aynı ada ve derleme zamanı türlerine sahip bir özellikler dizisini belirten iki anonim nesne başlatıcıları aynı şekilde aynı anonim türde örnekler oluşturacaktır.
 
-örnekte
+Örnekte
 ```csharp
 var p1 = new { Name = "Lawnmower", Price = 495.00 };
 var p2 = new { Name = "Shovel", Price = 26.95 };
@@ -2195,7 +2195,7 @@ Sabit ifadeler (derleme zamanında tam olarak değerlendirilebilecek ifadeler) i
 
 Anonim işlevin gövdesi, anonim işlevin gerçekleştiği `checked` veya `unchecked` bağlamlarından etkilenmez.
 
-örnekte
+Örnekte
 ```csharp
 class Test
 {
@@ -2217,7 +2217,7 @@ class Test
 ```
 hiçbir deyimin hiçbiri derleme zamanında değerlendirilemediğinden, derleme zamanı hataları bildirilmemiştir. Çalışma zamanında `F` yöntemi bir `System.OverflowException`oluşturur ve `G` yöntemi-727379968 döndürür (Aralık dışı sonucun alt 32 bitleridir). `H` yönteminin davranışı, derleme için varsayılan taşma denetimi bağlamına bağlıdır, ancak `F` veya `G`ile aynı olur.
 
-örnekte
+Örnekte
 ```csharp
 class Test
 {
@@ -2239,7 +2239,7 @@ class Test
 ```
 `F` sabit ifadeler değerlendirilirken meydana gelen taşmalar ve `H` ifadeler bir `checked` bağlamında değerlendirildiğinden derleme zamanı hatalarının raporlanmasına neden olur. `G`sabit ifade değerlendirilirken bir taşma da oluşur, ancak değerlendirme bir `unchecked` bağlamında gerçekleşirken taşma bildirilmedi.
 
-`checked` ve `unchecked` işleçleri yalnızca "`(`" ve "`)`" belirteçlerinde bulunan metin içeriğini eklemek bu işlemler için taşma denetimi bağlamını etkiler. İşleçler, içerilen ifadenin hesaplanmasının sonucu olarak çağrılan işlev üyelerini etkilemez. örnekte
+`checked` ve `unchecked` işleçleri yalnızca "`(`" ve "`)`" belirteçlerinde bulunan metin içeriğini eklemek bu işlemler için taşma denetimi bağlamını etkiler. İşleçler, içerilen ifadenin hesaplanmasının sonucu olarak çağrılan işlev üyelerini etkilemez. Örnekte
 ```csharp
 class Test
 {
@@ -2370,7 +2370,7 @@ null_conditional_operations
 
 Örneğin, `a.b?[0]?.c()` ifadesi bir *primary_expression* `a.b` ve *null_conditional_operations* `?[0]` (null-koşullu öğe erişimi), `?.c` (null-koşullu üye erişimi) ve `()` (çağırma) içeren bir *null_conditional_expression* .
 
-*Primary_expression* `P`sahip bir *null_conditional_expression* `E` için, metin içeriğini eklemek tarafından alınan ve bir *`E0` `?` her* birinden önde gelen null_conditional_operations kaldıran ifade olmasına izin ver.`E` Kavramsal olarak, `E0` `?`s tarafından temsil edilen null denetimlerin hiçbiri bir `null`bulmadığı takdirde değerlendirilecek ifadedir.
+*Primary_expression* `P`sahip bir *null_conditional_expression* `E` için, metin içeriğini eklemek tarafından alınan ve bir *`E0` `?` her* birinden önde gelen null_conditional_operations kaldıran ifade olmasına izin ver. Kavramsal olarak, `E0` `?`s tarafından temsil edilen null denetimlerin hiçbiri bir `null`bulmadığı takdirde değerlendirilecek ifadedir.
 
 Ayrıca, metin içeriğini eklemek tarafından elde edilen `E1`, önde gelen `?` `E`' deki *null_conditional_operations* yalnızca ilkini kaldırarak elde edin. Bu, *birincil ifadeye* (yalnızca bir `?`) veya başka bir *null_conditional_expression*yol açabilir.
 
@@ -2539,7 +2539,7 @@ Her numaralandırma türü `E` örtük olarak aşağıdaki bit düzeyinde tamaml
 E operator ~(E x);
 ```
 
-`~x`değerlendirilmesinin sonucu, `x` bir numaralandırma türünün temel alınan `U`türü `E` bir ifadesiyse, `(E)(~(U)x)`' a dönüştürme her zaman `E` bağlamında ([denetlenen ve işaretlenmemiş operatörler](expressions.md#the-checked-and-unchecked-operators)) gibi gerçekleştirilir.`unchecked`
+`~x`değerlendirilmesinin sonucu, `x` bir numaralandırma türünün temel alınan `U`türü `E` bir ifadesiyse, `(E)(~(U)x)`' a dönüştürme her zaman `E` bağlamında ([denetlenen ve işaretlenmemiş operatörler](expressions.md#the-checked-and-unchecked-operators)) gibi gerçekleştirilir.
 
 ### <a name="prefix-increment-and-decrement-operators"></a>Önek arttırma ve azaltma işleçleri
 
@@ -2598,7 +2598,7 @@ Bir *cast_expression* için dilbilgisi, belirli sözdizimsel belirsizlikleri sa�
 
 Yukarıdaki "doğru dilbilgisi" terimi, yalnızca belirteçlerin sırasının belirli dilbilgisi üretimine uyması gerektiği anlamına gelir. Bu, özellikle herhangi bir anayayrılan tanımlayıcıların gerçek anlamını düşünmez. Örneğin, `x` ve `y` tanımlayıcılar ise, `x.y` gerçekten bir tür belirtmese bile `x.y`, bir tür için doğru dilbilgisi olur.
 
-Kesinleştirme kuralından, `x` ve `y` tanımlayıcılar ise, `(x)y`, `(x)(y)`ve `(x)(-y)` *, cast_expression bir*tür tanımlasa bile, `(x)-y` değildir.`x` Ancak, `x` önceden tanımlanmış bir türü tanımlayan bir anahtar sözcüktür (örneğin, `int`), dört *cast_expression*formun tamamı, bu tür bir anahtar sözcük muhtemelen bir ifade olamaz.
+Kesinleştirme kuralından, `x` ve `y` tanımlayıcılar ise, `(x)y`, `(x)(y)`ve `(x)(-y)` *, cast_expression bir*tür tanımlasa bile, `(x)-y` değildir. Ancak, `x` önceden tanımlanmış bir türü tanımlayan bir anahtar sözcüktür (örneğin, `int`), dört *cast_expression*formun tamamı, bu tür bir anahtar sözcük muhtemelen bir ifade olamaz.
 
 ### <a name="await-expressions"></a>Await ifadeleri
 
@@ -2708,14 +2708,14 @@ Aritmetik işlecin bir işleneni derleme zamanı türü `dynamic`, ifade dinamik
 
    |      |      |      |     |     |      |      |     |
    |:----:|-----:|:----:|:---:|:---:|:----:|:----:|:----|
-   |      | \+ y   | -y   | +0  | -0  | \+ INF | -INF | NaN | 
-   | {1&gt;+&lt;1}x   | \+ z   | -z   | +0  | -0  | \+ INF | -INF | NaN | 
-   | {1&gt;-&lt;1}x   | -z   | \+ z   | -0  | +0  | -INF | \+ INF | NaN | 
-   | +0   | +0   | -0   | +0  | -0  | NaN  | NaN  | NaN | 
-   | -0   | -0   | +0   | -0  | +0  | NaN  | NaN  | NaN | 
-   | \+ INF | \+ INF | -INF | NaN | NaN | \+ INF | -INF | NaN | 
-   | -INF | -INF | \+ INF | NaN | NaN | -INF | \+ INF | NaN | 
-   | NaN  | NaN  | NaN  | NaN | NaN | NaN  | NaN  | NaN | 
+   |      | \+ y   | -y   | +0  | -0  | \+ INF | -INF | {1&gt;NaN&lt;1} | 
+   | {1&gt;+&lt;1}x   | \+ z   | -z   | +0  | -0  | \+ INF | -INF | {1&gt;NaN&lt;1} | 
+   | {1&gt;-&lt;1}x   | -z   | \+ z   | -0  | +0  | -INF | \+ INF | {1&gt;NaN&lt;1} | 
+   | +0   | +0   | -0   | +0  | -0  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
+   | -0   | -0   | +0   | -0  | +0  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
+   | \+ INF | \+ INF | -INF | {1&gt;NaN&lt;1} | {1&gt;NaN&lt;1} | \+ INF | -INF | {1&gt;NaN&lt;1} | 
+   | -INF | -INF | \+ INF | {1&gt;NaN&lt;1} | {1&gt;NaN&lt;1} | -INF | \+ INF | {1&gt;NaN&lt;1} | 
+   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | {1&gt;NaN&lt;1} | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
 
 *  Ondalık çarpma:
 
@@ -2760,14 +2760,14 @@ Aritmetik işlecin bir işleneni derleme zamanı türü `dynamic`, ifade dinamik
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | \+ y   | -y   | +0   | -0   | \+ INF | -INF | NaN  | 
-   | {1&gt;+&lt;1}x   | \+ z   | -z   | \+ INF | -INF | +0   | -0   | NaN  | 
-   | {1&gt;-&lt;1}x   | -z   | \+ z   | -INF | \+ INF | -0   | +0   | NaN  | 
-   | +0   | +0   | -0   | NaN  | NaN  | +0   | -0   | NaN  | 
-   | -0   | -0   | +0   | NaN  | NaN  | -0   | +0   | NaN  | 
-   | \+ INF | \+ INF | -INF | \+ INF | -INF | NaN  | NaN  | NaN  | 
-   | -INF | -INF | \+ INF | -INF | \+ INF | NaN  | NaN  | NaN  | 
-   | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
+   |      | \+ y   | -y   | +0   | -0   | \+ INF | -INF | {1&gt;NaN&lt;1}  | 
+   | {1&gt;+&lt;1}x   | \+ z   | -z   | \+ INF | -INF | +0   | -0   | {1&gt;NaN&lt;1}  | 
+   | {1&gt;-&lt;1}x   | -z   | \+ z   | -INF | \+ INF | -0   | +0   | {1&gt;NaN&lt;1}  | 
+   | +0   | +0   | -0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | +0   | -0   | {1&gt;NaN&lt;1}  | 
+   | -0   | -0   | +0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | -0   | +0   | {1&gt;NaN&lt;1}  | 
+   | \+ INF | \+ INF | -INF | \+ INF | -INF | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
+   | -INF | -INF | \+ INF | -INF | \+ INF | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
+   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
 
 *  Ondalık bölme:
 
@@ -2810,14 +2810,14 @@ Aritmetik işlecin bir işleneni derleme zamanı türü `dynamic`, ifade dinamik
 
    |      |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | \+ y   | -y   | +0   | -0   | \+ INF | -INF | NaN  | 
-   | {1&gt;+&lt;1}x   | \+ z   | \+ z   | NaN  | NaN  | x    | x    | NaN  | 
-   | {1&gt;-&lt;1}x   | -z   | -z   | NaN  | NaN  | {1&gt;-&lt;1}x   | {1&gt;-&lt;1}x   | NaN  | 
-   | +0   | +0   | +0   | NaN  | NaN  | +0   | +0   | NaN  | 
-   | -0   | -0   | -0   | NaN  | NaN  | -0   | -0   | NaN  | 
-   | \+ INF | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
-   | -INF | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
-   | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
+   |      | \+ y   | -y   | +0   | -0   | \+ INF | -INF | {1&gt;NaN&lt;1}  | 
+   | {1&gt;+&lt;1}x   | \+ z   | \+ z   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | x    | x    | {1&gt;NaN&lt;1}  | 
+   | {1&gt;-&lt;1}x   | -z   | -z   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;-&lt;1}x   | {1&gt;-&lt;1}x   | {1&gt;NaN&lt;1}  | 
+   | +0   | +0   | +0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | +0   | +0   | {1&gt;NaN&lt;1}  | 
+   | -0   | -0   | -0   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | -0   | -0   | {1&gt;NaN&lt;1}  | 
+   | \+ INF | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
+   | -INF | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
+   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
 
 *  Ondalık kalan:
 
@@ -2858,13 +2858,13 @@ Aritmetik işlecin bir işleneni derleme zamanı türü `dynamic`, ifade dinamik
 
    |      |      |      |      |      |      |      |
    |:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-   |      | {1&gt;y&lt;1}    | +0   | -0   | \+ INF | -INF | NaN  | 
-   | x    | z    | x    | x    | \+ INF | -INF | NaN  | 
-   | +0   | {1&gt;y&lt;1}    | +0   | +0   | \+ INF | -INF | NaN  | 
-   | -0   | {1&gt;y&lt;1}    | +0   | -0   | \+ INF | -INF | NaN  | 
-   | \+ INF | \+ INF | \+ INF | \+ INF | \+ INF | NaN  | NaN  | 
-   | -INF | -INF | -INF | -INF | NaN  | -INF | NaN  | 
-   | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | 
+   |      | {1&gt;y&lt;1}    | +0   | -0   | \+ INF | -INF | {1&gt;NaN&lt;1}  | 
+   | x    | z    | x    | x    | \+ INF | -INF | {1&gt;NaN&lt;1}  | 
+   | +0   | {1&gt;y&lt;1}    | +0   | +0   | \+ INF | -INF | {1&gt;NaN&lt;1}  | 
+   | -0   | {1&gt;y&lt;1}    | +0   | -0   | \+ INF | -INF | {1&gt;NaN&lt;1}  | 
+   | \+ INF | \+ INF | \+ INF | \+ INF | \+ INF | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
+   | -INF | -INF | -INF | -INF | {1&gt;NaN&lt;1}  | -INF | {1&gt;NaN&lt;1}  | 
+   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | 
 
 *  Ondalık ekleme:
 
@@ -2951,13 +2951,13 @@ Aritmetik işlecin bir işleneni derleme zamanı türü `dynamic`, ifade dinamik
 
    |      |      |      |      |      |      |     |
    |:----:|:----:|:----:|:----:|:----:|:----:|:---:|
-   |      | {1&gt;y&lt;1}    | +0   | -0   | \+ INF | -INF | NaN | 
-   | x    | z    | x    | x    | -INF | \+ INF | NaN | 
-   | +0   | -y   | +0   | +0   | -INF | \+ INF | NaN | 
-   | -0   | -y   | -0   | +0   | -INF | \+ INF | NaN | 
-   | \+ INF | \+ INF | \+ INF | \+ INF | NaN  | \+ INF | NaN | 
-   | -INF | -INF | -INF | -INF | -INF | NaN  | NaN | 
-   | NaN  | NaN  | NaN  | NaN  | NaN  | NaN  | NaN | 
+   |      | {1&gt;y&lt;1}    | +0   | -0   | \+ INF | -INF | {1&gt;NaN&lt;1} | 
+   | x    | z    | x    | x    | -INF | \+ INF | {1&gt;NaN&lt;1} | 
+   | +0   | -y   | +0   | +0   | -INF | \+ INF | {1&gt;NaN&lt;1} | 
+   | -0   | -y   | -0   | +0   | -INF | \+ INF | {1&gt;NaN&lt;1} | 
+   | \+ INF | \+ INF | \+ INF | \+ INF | {1&gt;NaN&lt;1}  | \+ INF | {1&gt;NaN&lt;1} | 
+   | -INF | -INF | -INF | -INF | -INF | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
+   | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1}  | {1&gt;NaN&lt;1} | 
 
 *  Ondalık çıkarma:
 
@@ -3374,7 +3374,7 @@ null != x
    * `E` türü null yapılabilir bir tür ise, `D` bu null yapılabilir türün temel türüdür.
    * `E` türü null yapılamayan bir değer türü ise, `D` `E`türüdür.
 *  İşlemin sonucu `D` ve `T` aşağıdaki gibi değişir:
-   * `T` bir başvuru türü ise, `D` ve `T` aynı türde ise sonuç true olur. `D` bir başvuru türüdür ve `D` bir değer türü ise ve `T` ' dan `D` ' a bir paketleme dönüştürmesi varsa.`D``T`
+   * `T` bir başvuru türü ise, `D` ve `T` aynı türde ise sonuç true olur. `D` bir başvuru türüdür ve `D` bir değer türü ise ve `T` ' dan `D` ' a bir paketleme dönüştürmesi varsa.
    * `T` null yapılabilir bir tür ise, `D` temeldeki `T`türü ise sonuç true olur.
    * `T` null yapılamayan bir değer türü ise, `D` ve `T` aynı türde ise sonuç true olur.
    * Aksi takdirde, sonuç false 'tur.
@@ -3404,7 +3404,7 @@ E is T ? (T)(object)(E) : (T)null
 
 Kullanıcı tanımlı dönüştürmeler gibi bazı dönüştürmelerin `as` işleçleriyle mümkün olmadığına ve bunun yerine atama ifadeleri kullanılarak gerçekleştirilmesi gerektiğini unutmayın.
 
-örnekte
+Örnekte
 ```csharp
 class X
 {
@@ -3592,7 +3592,7 @@ Form `a ?? b` bir boş birleştirme ifadesi, `a` null yapılabilir bir tür veya
 
 Null birleştirme işleci, işlemlerin sağdan sola gruplanarak doğru ilişkilendirilebilir. Örneğin, `a ?? b ?? c` form ifadesi `a ?? (b ?? c)`olarak değerlendirilir. Genel koşullarda, form `E1 ?? E2 ?? ... ?? En` bir ifade, null olmayan veya tüm işlenenler null ise null olan işlenenlerin Birincini döndürür.
 
-`a ?? b` ifadenin türü, işlenenlerde hangi örtük dönüştürmelerin kullanılabilir olduğuna bağlıdır. Tercih sırasına göre `a ?? b` türü `A0`, `A`veya `B`, burada `A` tür olan `a` (`a` bir tür olduğunda), `B` türü `b` olur (`b` bir tür olduğunda) ve `A0`, null yapılabilir bir tür ise `A` temel türüdür.`A``A` Özellikle, `a ?? b` aşağıdaki şekilde işlenir:
+`a ?? b` ifadenin türü, işlenenlerde hangi örtük dönüştürmelerin kullanılabilir olduğuna bağlıdır. Tercih sırasına göre `a ?? b` türü `A0`, `A`veya `B`, burada `A` tür olan `a` (`a` bir tür olduğunda), `B` türü `b` olur (`b` bir tür olduğunda) ve `A0`, null yapılabilir bir tür ise `A` temel türüdür. Özellikle, `a ?? b` aşağıdaki şekilde işlenir:
 
 *  `A` varsa ve null yapılabilir bir tür ya da bir başvuru türü değilse, derleme zamanı hatası oluşur.
 *  `b` dinamik bir ifadesiyse, sonuç türü `dynamic`. Çalışma zamanında `a` ilk olarak değerlendirilir. `a` null değilse, `a` dinamik olarak dönüştürülür ve bu sonuç olur. Aksi takdirde, `b` değerlendirilir ve bu sonuç olur.
@@ -3813,7 +3813,7 @@ Kapsamı *lambda_expression* veya *anonymous_method_expression* içeren herhangi
 
 Bir dış değişkene adsız bir işlev tarafından başvuruluyorsa, dış değişken anonim işlev tarafından ***yakalanarak*** bildirilir. Genellikle, yerel bir değişkenin ömrü, ilişkili olduğu blok veya deyimin yürütmesi ile sınırlıdır ([yerel değişkenler](variables.md#local-variables)). Ancak, yakalanan bir dış değişkenin ömrü, anonim işlevden oluşturulan temsilci veya ifade ağacı çöp toplama için uygun hale gelene kadar en az genişletilir.
 
-örnekte
+Örnekte
 ```csharp
 using System;
 
@@ -3913,7 +3913,7 @@ static D[] F() {
     return result;
 }
 ```
-Çıktı:
+çıktı:
 ```console
 5
 5
@@ -4669,7 +4669,7 @@ Form `x = y` basit atamanın çalışma zamanı işleme aşağıdaki adımlardan
    * `y` değerlendirilir ve gerekirse örtük bir dönüştürme ([örtük dönüştürmeler](conversions.md#implicit-conversions)) aracılığıyla `x` türüne dönüştürülür.
    * `x` `set` erişimcisi `value` bağımsız değişkeni olarak `y` için hesaplanan değerle çağrılır.
 
-Dizi birlikte değişim kuralları ([dizi Kovaryans](arrays.md#array-covariance)), dizi türü bir değere `A[]` `B[]`bir dizi türü örneğine izin verir, `B` ' den `A`örtük bir başvuru dönüştürmesi sağlanmış olur. Bu kurallar nedeniyle, bir *reference_type* dizi öğesine atama, atanmakta olan değerin dizi örneğiyle uyumlu olduğundan emin olmak için bir çalışma zamanı denetimi gerektirir. örnekte
+Dizi birlikte değişim kuralları ([dizi Kovaryans](arrays.md#array-covariance)), dizi türü bir değere `A[]` `B[]`bir dizi türü örneğine izin verir, `B` ' den `A`örtük bir başvuru dönüştürmesi sağlanmış olur. Bu kurallar nedeniyle, bir *reference_type* dizi öğesine atama, atanmakta olan değerin dizi örneğiyle uyumlu olduğundan emin olmak için bir çalışma zamanı denetimi gerektirir. Örnekte
 ```csharp
 string[] sa = new string[10];
 object[] oa = sa;
@@ -4724,7 +4724,7 @@ struct Rectangle
     }
 }
 ```
-örnekte
+Örnekte
 ```csharp
 Point p = new Point();
 p.X = 100;
@@ -4750,7 +4750,7 @@ Bileşik atamanın sol işleneni `E.P` veya `E` derleme zamanı türü `dynamic`
 `x op= y` bir işlem, işlem `x op y`yazılmış gibi ikili işleç aşırı yükleme çözümlemesi ([ikili işleç aşırı yükleme çözümlemesi](expressions.md#binary-operator-overload-resolution)) uygulanarak işlenir. Ni
 
 *  Seçili işlecin dönüş türü örtük olarak `x`türüne dönüştürülebilir ise, işlem `x = x op y`olarak değerlendirilir, ancak `x` yalnızca bir kez değerlendirilir.
-*  Aksi takdirde, seçilen işleç önceden tanımlanmış bir işleçse, seçili işlecin dönüş türü `x`türüne açıkça dönüştürülebilir ve `y` `x` türüne örtük olarak dönüştürülebilir veya işleç bir kaydırma işleçse, işlem `x = (T)(x op y)`olarak değerlendirilir; burada `T`, `x`yalnızca bir kez değerlendirilir.`x`
+*  Aksi takdirde, seçilen işleç önceden tanımlanmış bir işleçse, seçili işlecin dönüş türü `x`türüne açıkça dönüştürülebilir ve `y` `x` türüne örtük olarak dönüştürülebilir veya işleç bir kaydırma işleçse, işlem `x = (T)(x op y)`olarak değerlendirilir; burada `T`, `x`yalnızca bir kez değerlendirilir.
 *  Aksi takdirde, bileşik atama geçersizdir ve bir bağlama zamanı hatası oluşur.
 
 "Yalnızca bir kez değerlendirilir" terimi, `x op y`değerlendirmesinde, `x` yapısal ifadelerin sonuçlarının geçici olarak kaydedildiği ve `x`atamasını gerçekleştirirken yeniden kullanıldığı anlamına gelir. Örneğin, atama `A()[B()] += C()`, `A` `int[]`döndüren bir yöntem olduğu ve `B` ve `C` `int`döndüren metotlardır, yöntemler yalnızca bir kez çağrılır; sırasıyla `A`, `B``C`.
@@ -4759,7 +4759,7 @@ Bileşik atamanın sol işleneni bir özellik erişimi veya Dizin Oluşturucu er
 
 Yukarıdaki ikinci kural, `x op= y` belirli bağlamlarda `x = (T)(x op y)` olarak değerlendirilmesine izin verir. Kural, sol işlenen `sbyte`, `byte`, `short`, `ushort`veya `char`türünde olduğunda, önceden tanımlanmış işleçlerin Bileşik işleçler olarak kullanılabilmesi için vardır. Her iki bağımsız değişken de bu türlerden birinde olsa da, önceden tanımlanmış işleçler, [ikili sayısal yükseltmeler](expressions.md#binary-numeric-promotions)bölümünde açıklandığı gibi `int`türünde bir sonuç üretir. Bu nedenle, bir dönüştürme olmadan sonucu sol işlenene atamak mümkün olmaz.
 
-Önceden tanımlanmış işleçler için kuralın sezgisel etkisi, hem `x op y` hem de `x = y` izin verildiğinde `x op= y` izin verilir. örnekte
+Önceden tanımlanmış işleçler için kuralın sezgisel etkisi, hem `x op y` hem de `x = y` izin verildiğinde `x op= y` izin verilir. Örnekte
 ```csharp
 byte b = 0;
 char ch = '\0';
@@ -4775,7 +4775,7 @@ ch += (char)1;      // Ok
 ```
 her hatanın sezgisel olmasının nedeni, karşılık gelen basit atamanın de hata olması olabilir.
 
-Bu ayrıca bileşik atama işlemlerinin yükseltilmemiş işlemlerini desteklediği anlamına gelir. örnekte
+Bu ayrıca bileşik atama işlemlerinin yükseltilmemiş işlemlerini desteklediği anlamına gelir. Örnekte
 ```csharp
 int? i = 0;
 i += 1;             // Ok
