@@ -6,7 +6,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 01/17/2020
 ms.locfileid: "71704082"
 ---
-# <a name="expressions"></a>{1&gt;İfadeler&lt;1}
+# <a name="expressions"></a>İfadeler
 
 İfade, işleç ve işlenen dizisidir. Bu bölümde sözdizimi, işlenenler ve işleçler değerlendirmesi sırası ve ifadelerin anlamı tanımlanmaktadır.
 
