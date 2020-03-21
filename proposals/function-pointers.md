@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d9080202f9413f8beb80db222d47f5fc082ae641
-ms.sourcegitcommit: f3170512e7a3193efbcea52ec330648375e36915
+ms.openlocfilehash: 8bf3a18dc42e225e64bd3ccda2106aed89b421ed
+ms.sourcegitcommit: 9aa177443b83116fe1be2ab28e2c7291947fe32d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79485506"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108395"
 ---
 # <a name="function-pointers"></a>İşlev İşaretçileri
 
@@ -174,7 +174,8 @@ Güvenli olmayan bir bağlamda, bir yöntem `M`, aşağıdakilerin tümü doğru
 Güvenli olmayan bir bağlamda, hedefi bir yöntem grubu olan bir adres ifadeden (örneğin, hedefi bir yöntem grubu) `E` uyumlu bir işlev işaretçisi türünde bir örtük dönüştürme bulunur `F`, `E`, aşağıdaki konuda açıklandığı gibi, parametre türleri ve `F`değiştiriciler kullanılarak oluşturulan bir bağımsız değişken listesine sahiptir.
 - Aşağıdaki değişikliklerle form `E(A)` bir yöntem çağrısına karşılık gelen tek bir yöntem `M` seçilir:
    - Bağımsız değişkenler listesi `A`, her biri bir değişken olarak sınıflandırılan ve karşılık gelen _biçimsel\_parametre\_listesinin_ türü ve değiştiricisi (`ref`, `out`veya `in`) olan ifadelerin bir listesidir.`D`
-   - Aday yöntemler yalnızca kendi normal biçimlerinde geçerli olan ve genişletilmiş biçimlerinde geçerli olmayan yöntemler olan yöntemlerdir.
+   - Aday Yöntemler, genişletilmiş biçiminde uygulananlar değil, yalnızca normal biçimlerinde geçerli olan yöntemlerdir.
+   - Aday yöntemler yalnızca statik olan yöntemlerdir.
 - Yöntem etkinleştirmeleri algoritması bir hata üretirse, derleme zamanı hatası oluşur. Aksi takdirde, algoritma `F` aynı sayıda parametreye sahip `M` tek bir en iyi yöntem üretir ve dönüştürme var olarak kabul edilir.
 - Seçilen yöntem `M`, işlev işaretçisi türü `F`uyumlu olmalıdır (yukarıda tanımlandığı şekilde). Aksi takdirde, bir derleme zamanı hatası oluşur.
 - Dönüştürmenin sonucu `F`türünde bir işlev işaretçisidir.
@@ -260,7 +261,7 @@ Bu özelliğin tasarımı, daha sonra gerektiğinde, yönetilmeyen çağırma ku
 
 Başvuru için, https://github.com/llvm/llvm-project/blob/master/llvm/include/llvm/IR/CallingConv.h LLVM tarafından desteklenen çağırma kurallarının listesini içerir. .NET, tüm bunları desteklemeye gerek duymadan, çağrı kuralları alanının çok daha zengin olduğunu gösterir.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Dikkat Edilecekler
 
 ### <a name="allow-instance-methods"></a>Örnek yöntemlerine izin ver
 
@@ -293,7 +294,7 @@ unsafe class Instance {
 
 Tasarımın ilk amacı budur. Ancak elde edilen dil kuralları, çok daha fazla. Bu bir işaretçi değeri olduğu ve `unsafe` anahtar sözcüğü olmadan bile göz atma işlemini gizleyebilmek olanaksızdır. Örneğin `object` dönüştürmeye izin verilmiyorsa, bir `class`üyesi olamaz, vb... C# Tasarım, tüm işaretçinin kullanması için `unsafe` gerektirirken, bu tasarımın bu tasarımı takip eder.
 
-Geliştiriciler, `delegate*` değerlerinin üzerine, bugün normal işaretçi türleri için yaptıkları gibi bir _güvenli_ sarmalayıcı sunma yeteneğine sahip olmaya devam edecektir. Aşağıdakileri dikkate alın:
+Geliştiriciler, `delegate*` değerlerinin üzerine, bugün normal işaretçi türleri için yaptıkları gibi bir _güvenli_ sarmalayıcı sunma yeteneğine sahip olmaya devam edecektir. Göz önünde bulundurun:
 
 ``` csharp
 unsafe struct Action {
@@ -356,7 +357,7 @@ Tartışmadan sonra `delegate*` türlerin adlandırılmış bildirimine izin ver
 
 ## <a name="future-considerations"></a>Gelecekteki konular
 
-### <a name="static-local-functions"></a>statik yerel işlevler
+### <a name="static-local-functions"></a>Statik yerel işlevler
 
 Bu, yerel işlevlerde `static` değiştiriciye izin veren [öneriyi](https://github.com/dotnet/csharplang/issues/1565) ifade eder. Bu tür bir işlevin, `static` olarak ve kaynak kodunda tam imzayla belirtilen şekilde yayınlanacağı garanti edilir. Bu tür bir işlev, yerel işlevlerin bugün bulunduğu sorunlardan hiçbirini içermediğinden `&` için geçerli bir bağımsız değişken olmalıdır
 
