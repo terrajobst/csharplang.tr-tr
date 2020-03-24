@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d6519ff57b4a98c4eec8ccbf310303432ac3255e
-ms.sourcegitcommit: 65ea1e6dc02853e37e7f2088e2b6cc08d01d1044
+ms.openlocfilehash: 50f2bd2d0a84064cfe35fe65b9e5c59c052d19ac
+ms.sourcegitcommit: 1dbb8e82bed5012a58a3a035bf2c3737ed570d07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "79485030"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80122942"
 ---
 # <a name="ranges"></a>Aralıklar
 
@@ -100,7 +100,7 @@ C#, koleksiyonların "aralıklarına" veya "dilimlerine" erişmenin sözdizimsel
 
 Dil `x..y`yeni bir Aralık işleci getirir. İki ifadeyi kabul eden bir ikili dosya operatörü işleçtir. Her iki işlenen de atlanabilir (Aşağıdaki örnekler) ve `System.Index`dönüştürülebilir olması gerekir. Bu, uygun `System.Range` Factory yöntemi çağrısına indirgenmelidir.
 
-\- C# *Multiplicative_expression* için dilbilgisi kurallarını aşağıdakiler ile değiştirin (yeni bir öncelik düzeyi tanıtmak için):
+C# *Multiplicative_expression* için dilbilgisi kurallarını aşağıdakiler ile değiştirin (yeni bir öncelik düzeyi tanıtmak için):
 
 ```antlr
 range_expression
@@ -149,9 +149,9 @@ Dil, aşağıdaki ölçütlere uyan türler için `Index` türünde tek bir para
 
 Bir tür, erişilebilir bir alıcı ve `int`dönüş türü `Length` veya `Count` adlı bir ***özelliğe sahipse bir*** tür oluşturulabilir. Dil, bir türü `Index` bir ifadeyi, `int` tür `Index` kullanılmasına gerek kalmadan ifadenin noktasında dönüştürmek için bu özellikten yararlanabilirsiniz. Hem `Length` hem de `Count` varsa `Length` tercih edilir. Kolaylık sağlamak için teklif, `Count` veya `Length`temsil etmek için `Length` adını kullanır.
 
-Bu tür türler için, dil `ref` stil ek açıklamaları dahil olmak üzere `int` tabanlı dizin oluşturucunun dönüş türü olduğu `T` `T this[Index index]`, dilin bir dizin üyesi olup olmadığı şekilde çalışır. Yeni üye, `int` Dizin Oluşturucu olarak eşleşen erişilebilirliği taşıyan `get` ve `set` üyelere sahip olur. 
+Bu tür türler için, dil `ref` stil ek açıklamaları dahil olmak üzere `int` tabanlı dizin oluşturucunun dönüş türü olduğu `T` `T this[Index index]`, dilin bir Dizin Oluşturucu üyesi olduğu gibi davranır. Yeni üye, `int` Dizin Oluşturucu olarak eşleşen erişilebilirliği taşıyan `get` ve `set` üyelere sahip olur. 
 
-Yeni Dizin Oluşturucu, `Index` türünün bağımsız değişkeni bir `int` dönüştürerek ve `int` tabanlı dizin oluşturucuya bir çağrı yayarak uygulanır. Tartışma amacıyla, `receiver[expr]`örneğini kullanır. `expr` `int` dönüşümü aşağıdaki gibi olacaktır:
+Yeni Dizin Oluşturucu, `Index` türünün bağımsız değişkeni bir `int` dönüştürerek ve `int` tabanlı dizin oluşturucuya bir çağrı yayarak uygulanır. Tartışma amacıyla, `receiver[expr]`örneğini kullanalım. `expr` `int` dönüşümü aşağıdaki gibi olacaktır:
 
 - Bağımsız değişken `^expr2` form ve `expr2` türü `int`olduğunda, `receiver.Length - expr2`çevrilir.
 - Aksi takdirde, `expr.GetOffset(receiver.Length)`olarak çevrilir.
@@ -205,11 +205,11 @@ Dil, aşağıdaki ölçütlere uyan türler için `Range` türünde tek bir para
 - Tür, `int`türünde iki parametreye sahip `Slice` adlı erişilebilir bir üyeye sahiptir.
 - Türün ilk parametre olarak tek bir `Range` alan bir örnek dizin oluşturucusu yok. `Range` tek parametre olmalıdır veya kalan parametrelerin isteğe bağlı olması gerekir.
 
-Bu tür türler için dil, `ref` stil ek açıklamaları dahil `Slice` yönteminin dönüş türü olduğu `T` `T this[Range range]`, formun bir dizin üyesi olduğu gibi bağlanır. Yeni üyenin `Slice`ile eşleşen erişilebilirliği da olur. 
+Bu tür türler için dil, `ref` stil ek açıklamaları dahil olmak üzere `Slice` yönteminin dönüş türü olduğu `T` `T this[Range range]` formun bir Dizin Oluşturucu üyesi olduğu gibi bağlanır. Yeni üyenin `Slice`ile eşleşen erişilebilirliği da olur. 
 
-`Range` tabanlı dizin oluşturucu `receiver`adlı bir ifadeye bağlandığında, `Range` ifadesi daha sonra `Slice` yöntemine geçirilmiş iki değere dönüştürülerek indirgenirsiniz. Tartışma amacıyla, `receiver[expr]`örneğini kullanır.
+`Range` tabanlı dizin oluşturucu `receiver`adlı bir ifadeye bağlandığında, `Range` ifadesi daha sonra `Slice` yöntemine geçirilmiş iki değere dönüştürülerek indirgenirsiniz. Tartışma amacıyla, `receiver[expr]`örneğini kullanalım.
 
-`Slice` ilk bağımsız değişkeni, yazılan ifade aşağıdaki şekilde dönüştürülürken elde edilir:
+`Slice` ilk bağımsız değişkeni, Aralık türü belirtilen ifade aşağıdaki şekilde dönüştürülürken elde edilir:
 
 - `expr` form `expr1..expr2` (`expr2` atlanabileceğini) ve `expr1` türü `int`olduğunda, `expr1`olarak yayılır.
 - `expr` `^expr1..expr2` form olduğunda (`expr2` atlanabilir), `receiver.Length - expr1`olarak yayılır.
@@ -223,7 +223,7 @@ Bu değer, ikinci `Slice` bağımsız değişkeninin hesaplamasında yeniden kul
 - `expr` `expr1..` form olduğunda (`expr1` atlanabilir), `receiver.Length - start`olarak yayılır.
 - Aksi takdirde, `expr.End.GetOffset(receiver.Length) - start`olarak yayınlanacaktır.
 
-`receiver`, `Length` ve `expr` ifadeleri, herhangi bir yan etkilerin yalnızca bir kez yürütüldüğünden emin olmak için uygun şekilde taşacaktır. Örneğin:
+`receiver`, `Length`ve `expr` ifadeleri, herhangi bir yan etkilerin yalnızca bir kez yürütüldüğünden emin olmak için uygun şekilde taşacaktır. Örneğin:
 
 ``` csharp
 class Collection {
