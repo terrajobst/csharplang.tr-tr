@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 38740069a2e105f920fa275c443f4560055e2901
-ms.sourcegitcommit: 9aa177443b83116fe1be2ab28e2c7291947fe32d
+ms.openlocfilehash: 07b4afe4a3fcbf10c978f05e642dfd8a47d53ea5
+ms.sourcegitcommit: 194a043db72b9244f8db45db326cc82de6cec965
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80108382"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80217209"
 ---
 
 # <a name="target-typed-new-expressions"></a>Hedef türü belirlenmiş `new` ifadeleri
@@ -80,35 +80,36 @@ Action a = new(() => {}); // "new" is redundant
 
 (int a, int b) t = new(); // ruled out by "use of struct default constructor"
 Action a = new(); // no constructor found
+```
 
-### Miscellaneous
+### <a name="miscellaneous"></a>Çeşitli
 
-`throw new()` is disallowed.
+`throw new()` izin verilmiyor.
 
-Target-typed `new` is not allowed with binary operators.
+Target-Typed `new` ikili işleçlerle kullanılamaz.
 
-It is disallowed when there is no type to target: unary operators, collection of a `foreach`, in a `using`, in a deconstruction, in an `await` expression, as an anonymous type property (`new { Prop = new() }`), in a `lock` statement, in a `sizeof`, in a `fixed` statement, in a member access (`new().field`), in a dynamically dispatched operation (`someDynamic.Method(new())`), in a LINQ query, as the operand of the `is` operator, as the left operand of the `??` operator,  ...
+Target için tür olmadığında bu izin verilmez: Birli İşleçler, `foreach`koleksiyonu bir `using`, bir `await` ifadesinde, `sizeof`işlecinin sol işleneni olarak `fixed` işlecinin işleneni olarak, bir`new().field`bildiriminde bir`someDynamic.Method(new())`deyimindeki bir`new { Prop = new() }`) anonim tür özelliği (`is`) olarak, bir `??` deyimi içinde `lock`, işleci içindeki bir deyiminde, bir ifadesinde ,  ...
 
-It is also disallowed as a `ref`.
+Ayrıca, `ref`olarak da izin verilmez.
 
-## Drawbacks
+## <a name="drawbacks"></a>Bulunmaktadır
 [drawbacks]: #drawbacks
 
-There were some concerns with target-typed `new` creating new categories of breaking changes, but we already have that with `null` and `default`, and that has not been a significant problem.
+Hedef türü bazı sorunlar vardı `new` yeni son değişiklikler kategorileri oluşturuyor, ancak zaten `null` ve `default`ve bu da önemli bir sorun olmadık.
 
-## Alternatives
+## <a name="alternatives"></a>Alternatifler
 [alternatives]: #alternatives
 
-Most of complaints about types being too long to duplicate in field initialization is about *type arguments* not the type itself, we could infer only type arguments like `new Dictionary(...)` (or similar) and infer type arguments locally from arguments or the collection initializer.
+Alan başlatılmasında yinelenmek için çok uzun olan türlerin büyük bir kısmının türü, türün kendisi değil tür *bağımsız değişkenleri* hakkında bilgi verebiliriz. yalnızca `new Dictionary(...)` (veya benzeri) gibi tür bağımsız değişkenleri ve bağımsız değişkenlerden ya da koleksiyon başlatıcıdan yerel olarak tür bağımsız değişkenleri çıkarsız.
 
-## Questions
+## <a name="questions"></a>UL
 [questions]: #questions
 
-- Should we forbid usages in expression trees? (no)
-- How the feature interacts with `dynamic` arguments? (no special treatment)
-- How IntelliSense should work with `new()`? (only when there is a single target-type)
+- İfade ağaçlarında kullanımları planlıyoruz mı? eşleşen
+- Özellik `dynamic` bağımsız değişkenlerle nasıl etkileşime girer? (özel bir işleme yok)
+- IntelliSense `new()`ile nasıl çalışır? (yalnızca tek bir hedef türü olduğunda)
 
-## Design meetings
+## <a name="design-meetings"></a>Tasarım toplantıları
 
 - [LDM-2017-10-18](https://github.com/dotnet/csharplang/blob/master/meetings/2017/LDM-2017-10-18.md#100)
 - [LDM-2018-05-21](https://github.com/dotnet/csharplang/blob/master/meetings/2018/LDM-2018-05-21.md)
