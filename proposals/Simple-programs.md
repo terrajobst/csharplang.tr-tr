@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b9697fc1d772ba59ed3b1de339a5a3d4eb24b1bd
-ms.sourcegitcommit: 36b028f4d6e88bd7d4a843c6d384d1b63cc73334
+ms.openlocfilehash: 54ae4ffabde6dca49b7e6bfb626d65837eabc8f5
+ms.sourcegitcommit: 1e1c7c72b156e2fbc54d6d6ac8d21bca9934d8d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "79485226"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80281950"
 ---
 # <a name="simple-programs"></a>Basit programlar
 
@@ -50,18 +50,16 @@ compilation_unit
     ;
 ```
 
-Her birinde, bir *compilation_unit* *deyimin*hepsi yerel işlev bildirimleri olmalıdır. 
+Yalnızca bir *compilation_unit* *deyimler*olmasına izin verilir. 
 
 Örnek:
 
 ``` c#
-// File 1 - any statements
-if (args.Length == 0
-    || !int.TryParse(args[0], out int n)
+if (System.Environment.CommandLine.Length == 0
+    || !int.TryParse(System.Environment.CommandLine, out int n)
     || n < 0) return;
 Console.WriteLine(Fib(n).curr);
 
-// File 2 - only local functions
 (int curr, int prev) Fib(int i)
 {
     if (i == 0) return (1, 0);
@@ -79,18 +77,14 @@ static class Program
 {
     static async Task Main()
     {
-        // File 1 statements
-        // File 2 local functions
-        // ...
+        // statements
     }
 }
 ```
 
 "Program" ve "Main" adlarının yalnızca çizimler amacıyla kullanıldığını, derleyici tarafından kullanılan gerçek adların uygulamaya bağımlı olduğunu ve ne tür, ne de kaynak koddan ad tarafından başvurulduğunu unutmayın.
 
-Yöntemi, programın giriş noktası olarak atanır. Kurala göre açıkça tanımlanmış yöntemler, giriş noktası adayları yok sayılır. Meydana geldiğinde bir uyarı bildirilir. `-main:<type>` derleyici anahtarı belirtmek hatadır.
-
-Herhangi bir derleme biriminde yerel işlev bildirimleri dışındaki deyimler varsa, bu derleme biriminden gelen deyimler önce oluşur. Bunun nedeni, bir dosyadaki yerel işlevlerin başka bir dosyada yerel değişkenlere başvurması için geçerli olmasına neden olur. Diğer derleme birimlerinden (tüm yerel işlevler olacak) ifade katkılarının sırası tanımsız.
+Yöntemi, programın giriş noktası olarak atanır. Kurala göre açıkça tanımlanmış yöntemler, giriş noktası adayları yok sayılır. Meydana geldiğinde bir uyarı bildirilir. En üst düzey deyimler olduğunda `-main:<type>` derleyici anahtarı belirtmek hatadır.
 
 Zaman uyumsuz işlemlere, en üst düzey deyimlerde, düzenli bir zaman uyumsuz giriş noktası yöntemi içindeki ifadelerde izin verilen dereceye kadar izin verilir. Ancak, bunlar gerekli değildir, `await` ifadeleri ve diğer zaman uyumsuz işlemler atlanırsa hiçbir uyarı üretilmez. Bunun yerine, oluşturulan giriş noktası yönteminin imzası şu şekilde eşdeğerdir 
 ``` c#
@@ -104,13 +98,11 @@ static class $Program
 {
     static void $Main()
     {
-        // Statements from File 1
-        if (args.Length == 0
-            || !int.TryParse(args[0], out int n)
+        if (System.Environment.CommandLine.Length == 0
+            || !int.TryParse(System.Environment.CommandLine, out int n)
             || n < 0) return;
         Console.WriteLine(Fib(n).curr);
         
-        // Local functions from File 2
         (int curr, int prev) Fib(int i)
         {
             if (i == 0) return (1, 0);
@@ -123,7 +115,6 @@ static class $Program
 
 Aynı zamanda aşağıdakine benzer bir örnek:
 ``` c#
-// File 1
 await System.Threading.Tasks.Task.Delay(1000);
 System.Console.WriteLine("Hi!");
 ```
@@ -134,7 +125,6 @@ static class $Program
 {
     static async Task $Main()
     {
-        // Statements from File 1
         await System.Threading.Tasks.Task.Delay(1000);
         System.Console.WriteLine("Hi!");
     }
@@ -143,7 +133,7 @@ static class $Program
 
 ### <a name="scope-of-top-level-local-variables-and-local-functions"></a>Üst düzey yerel değişkenlerin kapsamı ve yerel işlevler
 
-En üst düzey yerel değişkenler ve işlevler, oluşturulan giriş noktası yöntemine "sarmalanmış" olsa da, bunlar programın tamamında hala kapsam içinde olmalıdır.
+Üst düzey yerel değişkenler ve işlevler, oluşturulan giriş noktası yöntemine "sarmalanmış" olsa da, her derleme birimindeki program genelinde kapsamda olmaları gerekir.
 Basit ad değerlendirmesinin amacı için, genel ad alanına ulaşıldığında:
 - İlk olarak, oluşturulan giriş noktası yöntemi içinde adı değerlendirmek için bir girişimde bulunuldu ve bu deneme başarısız olursa 
 - Genel ad alanı bildirimi içindeki "normal" değerlendirme gerçekleştirilir. 

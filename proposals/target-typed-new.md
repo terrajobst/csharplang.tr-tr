@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 07b4afe4a3fcbf10c978f05e642dfd8a47d53ea5
-ms.sourcegitcommit: 194a043db72b9244f8db45db326cc82de6cec965
+ms.openlocfilehash: f000dda7eeb1c4f17c26f94c326a12a9d0014288
+ms.sourcegitcommit: 1e1c7c72b156e2fbc54d6d6ac8d21bca9934d8d2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80217209"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80281976"
 ---
 
 # <a name="target-typed-new-expressions"></a>Hedef türü belirlenmiş `new` ifadeleri
@@ -39,37 +39,27 @@ Türü yazarken bir nesne oluşturun.
 private readonly static object s_syncObj = new();
 ```
 
-## <a name="detailed-design"></a>Ayrıntılı tasarım
+## <a name="specification"></a>Min
 [design]: #detailed-design
 
-*Object_creation_expression* sözdizimi, parantezler mevcut olduğunda *türü* isteğe bağlı hale getirmek için değiştirilir. Bu, *anonymous_object_creation_expression*belirsizliğin ele almak için gereklidir.
+Yeni bir sözdizimsel form, *object_creation_expression* *target_typed_new* , *türün* isteğe bağlı olduğu kabul edilir.
+
 ```antlr
 object_creation_expression
-    : 'new' type? '(' argument_list? ')' object_or_collection_initializer?
+    : 'new' type '(' argument_list? ')' object_or_collection_initializer?
     | 'new' type object_or_collection_initializer
+    | target_typed_new
+    ;
+target_typed_new
+    : 'new' '(' argument_list? ')' object_or_collection_initializer?
     ;
 ```
 
-Hedef türü belirlenmiş bir `new` herhangi bir türe dönüştürülebilir. Sonuç olarak, aşırı yükleme çözümüne katkıda bulunmaz. Bu, genellikle öngörülemeyen son değişikliklerden kaçınmaktır.
+*Target_typed_new* ifadesinin türü yok. Ancak, ifadeden örtük dönüştürme olan yeni bir *nesne oluşturma dönüştürmesi* vardır. bu bir target_typed_new, her türe bir *target_typed_new* vardır.
 
-Bağımsız değişken listesi ve başlatıcı ifadeleri tür saptandıktan sonra bağlanacak.
+Hedef türü `T`verildiğinde tür `T0`, `T` `System.Nullable`bir örneğidir `T`temel türüdür. Aksi takdirde `T0` `T`. `T` türüne dönüştürülen *target_typed_new* ifadesinin anlamı, türü olarak `T0` belirten karşılık gelen bir *object_creation_expression* anlamı ile aynıdır.
 
-İfadenin türü, aşağıdakilerden biri olması gereken hedef türden çıkarsanamıyor:
-
-- **Herhangi bir struct türü** (demet türleri dahil)
-- **Herhangi bir başvuru türü** (temsilci türleri dahil)
-- Oluşturucu veya `struct` kısıtlaması olan **herhangi bir tür parametresi**
-
-Aşağıdaki özel durumlarla birlikte:
-
-- Sabit listesi türleri **:** tüm sabit listesi türleri sıfır sabiti içermez, bu nedenle açık numaralandırma üyesinin kullanılması istenebilir.
-- **Arabirim türleri:** bu bir sunarak pazarların özelliğidir ve türün açıkça bahsetmek için tercih edilmelidir.
-- **Dizi türleri:** dizilerin uzunluğu sağlamak için özel bir sözdizimi olması gerekir.
-- **dinamik:** `new dynamic()`izin vermedik, bu nedenle hedef tür olarak `dynamic` `new()` izin vermedik.
-
-*Object_creation_expression* izin verilmeyen tüm diğer türler Ayrıca, örneğin işaretçi türleri hariç tutulur.
-
-Hedef türü null yapılabilir bir değer türü olduğunda, hedef türü belirlenmiş `new` null yapılabilir tür yerine temel alınan türe dönüştürülür.
+Bir *target_typed_new* birli veya ikili işlecin işleneni olarak kullanılıyorsa ya da bir *nesne oluşturma dönüştürmesinin*konusu olmadığı durumlarda kullanılıyorsa, derleme zamanı hatasıdır.
 
 > **Açık sorun:** temsilcilerin ve tanımlama gruplarının hedef tür olarak izin vermesi gerekir mi?
 
@@ -78,19 +68,25 @@ Yukarıdaki kurallar temsilcileri (bir başvuru türü) ve tanımlama grupların
 (int a, int b) t = new(1, 2); // "new" is redundant
 Action a = new(() => {}); // "new" is redundant
 
-(int a, int b) t = new(); // ruled out by "use of struct default constructor"
+(int a, int b) t = new(); // OK; same as (0, 0)
 Action a = new(); // no constructor found
 ```
 
 ### <a name="miscellaneous"></a>Çeşitli
 
-`throw new()` izin verilmiyor.
+Aşağıda, belirtimin sonuçları verilmiştir:
 
-Target-Typed `new` ikili işleçlerle kullanılamaz.
-
-Target için tür olmadığında bu izin verilmez: Birli İşleçler, `foreach`koleksiyonu bir `using`, bir `await` ifadesinde, `sizeof`işlecinin sol işleneni olarak `fixed` işlecinin işleneni olarak, bir`new().field`bildiriminde bir`someDynamic.Method(new())`deyimindeki bir`new { Prop = new() }`) anonim tür özelliği (`is`) olarak, bir `??` deyimi içinde `lock`, işleci içindeki bir deyiminde, bir ifadesinde ,  ...
-
-Ayrıca, `ref`olarak da izin verilmez.
+- `throw new()` izin veriliyor (hedef tür `System.Exception`)
+- Target-Typed `new` ikili işleçlerle kullanılamaz.
+- Target için tür olmadığında bu izin verilmez: Birli İşleçler, `foreach`koleksiyonu bir `using`, bir `await` ifadesinde, `sizeof`işlecinin sol işleneni olarak `fixed` işlecinin işleneni olarak, bir`new().field`bildiriminde bir`someDynamic.Method(new())`deyimindeki bir`new { Prop = new() }`) anonim tür özelliği (`is`) olarak, bir `??` deyimi içinde `lock`, işleci içindeki bir deyiminde, bir ifadesinde ,  ...
+- Ayrıca, `ref`olarak da izin verilmez.
+- Dönüştürme hedefleri olarak aşağıdaki tür türlere izin verilmez
+  - **Sabit listesi türleri:** `new()` çalışacaktır (`new Enum()` varsayılan değer vermek için çalışır), ancak `new(1)` iş numaralama türlerinde bir oluşturucuya sahip değildir.
+  - **Arabirim türleri:** Bu, COM türleri için ilgili oluşturma ifadesiyle aynı şekilde çalışır.
+  - **Dizi türleri:** dizilerin uzunluğu sağlamak için özel bir sözdizimi olması gerekir.    
+  - **dinamik:** `new dynamic()`izin vermedik, bu nedenle hedef tür olarak `dynamic` `new()` izin vermedik.
+  - **Tanımlama grupları:** Bunlar, temel alınan türü kullanarak bir nesne oluşturma ile aynı anlama sahiptir.
+  - *Object_creation_expression* izin verilmeyen tüm diğer türler Ayrıca, örneğin işaretçi türleri hariç tutulur.   
 
 ## <a name="drawbacks"></a>Bulunmaktadır
 [drawbacks]: #drawbacks
@@ -116,3 +112,4 @@ Alan başlatılmasında yinelenmek için çok uzun olan türlerin büyük bir k�
 - [LDM-2018-06-25](https://github.com/dotnet/csharplang/blob/master/meetings/2018/LDM-2018-06-25.md)
 - [LDM-2018-08-22](https://github.com/dotnet/csharplang/blob/master/meetings/2018/LDM-2018-08-22.md#target-typed-new)
 - [LDM-2018-10-17](https://github.com/dotnet/csharplang/blob/master/meetings/2018/LDM-2018-10-17.md)
+- [LDM-2020-03-25](https://github.com/dotnet/csharplang/blob/master/meetings/2020/LDM-2020-03-25.md)
